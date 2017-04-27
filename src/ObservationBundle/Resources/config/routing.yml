@@ -1,3 +1,7 @@
+user:
+    prefix: user
+    resource: 'Routing/user.yml'
+
 observation_homepage:
     path:     /
     defaults: { _controller: ObservationBundle:Default:index }

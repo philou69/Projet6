@@ -1,0 +1,4 @@
+user_registration:
+    path: /registration
+    defaults:
+      _controller: ObservationBundle:User:registration
