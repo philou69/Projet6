@@ -1,0 +1,5 @@
+observation:
+    resource: "@ObservationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
