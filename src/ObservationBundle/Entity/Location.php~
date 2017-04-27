@@ -36,9 +36,8 @@ class Location
     private $longitude;
 
     /**
-     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Birds", mappedBy="locations", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Birds", mappedBy="location", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
 
     private $birds;
@@ -101,5 +100,5 @@ class Location
     {
         return $this->longitude;
     }
-}
 
+}

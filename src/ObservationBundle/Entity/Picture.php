@@ -35,6 +35,18 @@ class Picture
      */
     private $alt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Birds", inversedBy="picture")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $bird;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Observation", inversedBy="observation")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $observation;
+
 
     /**
      * Get id
@@ -93,5 +105,53 @@ class Picture
     public function getAlt()
     {
         return $this->alt;
+    }
+
+    /**
+     * Set bird
+     *
+     * @param \ObservationBundle\Entity\Birds $bird
+     *
+     * @return Picture
+     */
+    public function setBird(\ObservationBundle\Entity\Birds $bird)
+    {
+        $this->bird = $bird;
+
+        return $this;
+    }
+
+    /**
+     * Get bird
+     *
+     * @return \ObservationBundle\Entity\Birds
+     */
+    public function getBird()
+    {
+        return $this->bird;
+    }
+
+    /**
+     * Set observation
+     *
+     * @param \ObservationBundle\Entity\Observation $observation
+     *
+     * @return Picture
+     */
+    public function setObservation(\ObservationBundle\Entity\Observation $observation)
+    {
+        $this->observation = $observation;
+
+        return $this;
+    }
+
+    /**
+     * Get observation
+     *
+     * @return \ObservationBundle\Entity\Observation
+     */
+    public function getObservation()
+    {
+        return $this->observation;
     }
 }

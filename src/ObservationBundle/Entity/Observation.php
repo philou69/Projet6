@@ -63,7 +63,7 @@ class Observation
     private $bird;
 
     /**
-     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="Observation")
+     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="observation")
      * @ORM\JoinColumn(nullable=false)
      */
     private $pictures;
