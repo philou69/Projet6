@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Class User
  * @package ObservationBundle\Entity
  *
- * @ORM\Table(name='user)
+ * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="ObservationBundle\Repository\UserRepository")
  * @UniqueEntity(fields="email", message="L'email est déjà utilisé")
  * @UniqueEntity(fields="username", message="Le pseudo est déjà utilisé")
@@ -49,7 +49,7 @@ class User implements AdvancedUserInterface, \Serializable
     protected $email;
 
     /**
-     * @ORM\Column(name="is-active", type="boolean")
+     * @ORM\Column(name="is_active", type="boolean")
      */
     protected $isActive;
 
@@ -298,7 +298,7 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function isEnabled()
     {
-        return $this->active;
+        return $this->isActive;
     }
 
     /**
@@ -325,17 +325,6 @@ class User implements AdvancedUserInterface, \Serializable
         return $this;
     }
 
-
-
-    /**
-     * Get active
-     *
-     * @return boolean
-     */
-    public function getActive()
-    {
-        return $this->active;
-    }
 
     /**
      * Set roles
