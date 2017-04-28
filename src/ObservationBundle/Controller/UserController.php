@@ -80,4 +80,9 @@ class UserController extends Controller
         }
     }
 
+    public function profilAction(Request $request)
+    {
+
+    }
+
 }

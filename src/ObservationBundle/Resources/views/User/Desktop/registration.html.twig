@@ -2,6 +2,7 @@
 {% block title %}S'inscrire{% endblock %}
 
 {% block content %}
+
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1 class="panel-title">
@@ -26,7 +27,16 @@
                         <div class="form-group">
                             {{ form_label(child, child.vars.label, {'label_attr': {'class': 'col-md-3 control-label'}}) }}
                             <div class="col-md-5">
-                                {{ form_widget(child, {'attr': {'class': 'form-control'}}) }}
+                                {% if child.vars.name == 'birthDate' %}
+                                    <div class="form-inline">
+                                        {% for select in form.birthDate.children %}
+                                            {{ form_widget(select, {'attr': {'class': 'form-control'}}) }}
+                                        {% endfor %}
+                                    </div>
+
+                                    {% else %}
+                                        {{ form_widget(child, {'attr': {'class': 'form-control'}}) }}
+                                {% endif %}
                             </div>
                             {{ form_errors(child) }}
                         </div>
