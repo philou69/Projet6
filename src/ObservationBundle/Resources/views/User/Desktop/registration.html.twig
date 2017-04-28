@@ -1,0 +1,43 @@
+{% extends 'ObservationBundle::layout.desktop.html.twig' %}
+{% block title %}S'inscrire{% endblock %}
+
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1 class="panel-title">
+                Formulaire d'inscription
+            </h1>
+        </div>
+        <div class="panel-body">
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+            {{ form_errors(form) }}
+            {% for child in form.children if child.vars.name != 'save' and child.vars.name != '_token' %}
+                {% if child.vars.name == 'plainPassword' %}
+                    {% for password in child.children %}
+                        <div class="form-group">
+                            {{ form_label(password, password.vars.label, {'label_attr': {'class': 'col-md-3 control-label'}}) }}
+                            <div class="col-md-5">
+                                {{ form_widget(password, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            {{ form_errors(password) }}
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                        <div class="form-group">
+                            {{ form_label(child, child.vars.label, {'label_attr': {'class': 'col-md-3 control-label'}}) }}
+                            <div class="col-md-5">
+                                {{ form_widget(child, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            {{ form_errors(child) }}
+                        </div>
+                {% endif %}
+
+            {% endfor %}
+            <div class="text-center">
+                {{ form_widget(form.save) }}
+            </div>
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

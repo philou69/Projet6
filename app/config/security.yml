@@ -1,11 +1,14 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/security.html
 security:
-
+    encoders:
+        ObservationBundle\Entity\User:
+            algorithm: bcrypt
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory: ~
+        user_provider:
+          entity:
+              class: ObservationBundle:User
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -15,6 +18,11 @@ security:
 
         main:
             anonymous: ~
+            form_login:
+              login_path: user_login
+              check_path: user_login
+              remember_me: true
+
             # activate different ways to authenticate
 
             # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
