@@ -6,6 +6,7 @@ namespace ObservationBundle\Form\User;
 
 use ObservationBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -22,12 +23,6 @@ class UserType extends AbstractType
         $builder->add('username', TextType::class, array(
             'label' => 'Pseudo',
         ))
-            ->add('firstname', TextType::class, array(
-                'label' => 'Prénom'
-            ))
-            ->add('lastname', TextType::class,array(
-                'label' => 'Nom'
-            ))
             ->add('email', EmailType::class,array(
                 'label' => 'Email'
             ))
@@ -39,6 +34,22 @@ class UserType extends AbstractType
                 ),
                 'second_options' => array(
                     'label' => 'Confirmation'
+                )
+            ))
+            ->add('firstname', TextType::class, array(
+                'label' => 'Prénom'
+            ))
+            ->add('lastname', TextType::class,array(
+                'label' => 'Nom'
+            ))
+            ->add('birthDate', DateType::class, array(
+                'label' => 'Date de naissance',
+                'years' => range(1917, 2016),
+                'required' => false,
+                'placeholder' => array(
+                    'year' => 'Année',
+                    'month' => 'Mois',
+                    'day' =>'Jour'
                 )
             ))
             ->add('save', SubmitType::class, array(

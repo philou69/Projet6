@@ -22,7 +22,9 @@ security:
               login_path: user_login
               check_path: user_login
               remember_me: true
-
+            logout:
+                path: user_logout
+                target: /
             # activate different ways to authenticate
 
             # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate

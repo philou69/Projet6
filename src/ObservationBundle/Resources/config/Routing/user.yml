@@ -7,3 +7,6 @@ user_login:
     path: /login
     defaults:
       _controller: ObservationBundle:User:login
+
+user_logout:
+    path: /logout
