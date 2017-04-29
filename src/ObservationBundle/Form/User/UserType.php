@@ -6,6 +6,7 @@ namespace ObservationBundle\Form\User;
 
 use ObservationBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -42,15 +43,12 @@ class UserType extends AbstractType
             ->add('lastname', TextType::class,array(
                 'label' => 'Nom'
             ))
-            ->add('birthDate', DateType::class, array(
+            ->add('birthDate', BirthdayType::class, array(
                 'label' => 'Date de naissance',
+                'choice_translation_domain' => true,
+                'format' => 'dd/MM/yyyy',
                 'years' => range(1917, 2016),
                 'required' => false,
-                'placeholder' => array(
-                    'year' => 'Année',
-                    'month' => 'Mois',
-                    'day' =>'Jour'
-                )
             ))
             ->add('save', SubmitType::class, array(
                 'label' => 'Enregistrer',

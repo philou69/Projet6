@@ -79,6 +79,16 @@ class User implements AdvancedUserInterface, \Serializable
      */
     protected $roles;
 
+    /**
+     * @ORM\Column(name="token", type="string", nullable=true)
+     */
+    protected $token;
+
+    /**
+     * @ORM\Column(name="token_date", type="datetime", nullable=true)
+     */
+    protected $dateToken;
+
 
 
     /**
@@ -342,4 +352,52 @@ class User implements AdvancedUserInterface, \Serializable
 
     
 
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     *
+     * @return User
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Set birthDate
+     *
+     * @param \DateTime $birthDate
+     *
+     * @return User
+     */
+    public function setBirthDate($birthDate)
+    {
+        $this->birthDate = $birthDate;
+
+        return $this;
+    }
+
+    /**
+     * Get birthDate
+     *
+     * @return \DateTime
+     */
+    public function getBirthDate()
+    {
+        return $this->birthDate;
+    }
 }

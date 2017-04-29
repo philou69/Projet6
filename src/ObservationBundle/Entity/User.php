@@ -79,6 +79,16 @@ class User implements AdvancedUserInterface, \Serializable
      */
     protected $roles;
 
+    /**
+     * @ORM\Column(name="token", type="string", nullable=true)
+     */
+    protected $token;
+
+    /**
+     * @ORM\Column(name="token_date", type="datetime", nullable=true)
+     */
+    protected $dateToken;
+
 
 
     /**
@@ -389,5 +399,53 @@ class User implements AdvancedUserInterface, \Serializable
     public function getBirthDate()
     {
         return $this->birthDate;
+    }
+
+    /**
+     * Set token
+     *
+     * @param string $token
+     *
+     * @return User
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * Set dateToken
+     *
+     * @param \DateTime $dateToken
+     *
+     * @return User
+     */
+    public function setDateToken($dateToken)
+    {
+        $this->dateToken = $dateToken;
+
+        return $this;
+    }
+
+    /**
+     * Get dateToken
+     *
+     * @return \DateTime
+     */
+    public function getDateToken()
+    {
+        return $this->dateToken;
     }
 }

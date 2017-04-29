@@ -2,3 +2,6 @@ services:
 #    observation.example:
 #        class: ObservationBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    observation.user.mailer:
+        class: ObservationBundle\Mailer\UserMailer
+        arguments: ['@mailer', '%mailer_user%', '@twig']

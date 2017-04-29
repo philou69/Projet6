@@ -10,3 +10,24 @@ user_login:
 
 user_logout:
     path: /logout
+
+user_forgot_password:
+    path: /reset
+    defaults:
+      _controller: ObservationBundle:User:reset
+
+user_link_forgot:
+    path: /reset/{token}
+    defaults:
+      _controller: ObservationBundle:User:resetPassword
+      token: \.+
+
+user_profil:
+    path: /profil
+    defaults:
+      _controller: ObservationBundle:User:profil
+
+user_change_password:
+    path: /change
+    defaults:
+        _controller: ObservationBundle:User:changePassword

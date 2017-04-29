@@ -1,0 +1,9 @@
+<ul>
+    {% if app.user %}
+        <li><a href="{{ path('user_profil') }}">profil</a></li>
+        <li><a href="{{ path('user_logout') }}">se deconnecter</a></li>
+    {% else %}
+        <li><a href="{{ path('user_login') }}">Se connecter</a></li>
+        <li><a href="{{ path('user_registration') }}">S'enregistrer</a></li>
+    {% endif %}
+</ul>

@@ -1,7 +1,11 @@
+{# Vue de base sur pc qui étend la vue générale #}
 {% extends 'ObservationBundle::layout.html.twig' %}
 
 {% block body %}
-        {% include 'ObservationBundle:Default:navbar.desktop.html.twig' %}
+    {# Incorporation de la bar de navigation desktop et des messages flashs #}
+    {% include 'ObservationBundle:Default:navbar.desktop.html.twig' %}
+    {% include 'ObservationBundle:Default:flash.message.html.twig' %}
+    {# block content qui sera remplit au besion sur chaque page#}
     {% block content %}
     {% endblock %}
 {% endblock %}
