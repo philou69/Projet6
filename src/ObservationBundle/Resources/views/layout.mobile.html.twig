@@ -1,8 +1,11 @@
+{# vue de base sur mobile qui étends la vue générale#}
 {% extends 'ObservationBundle::layout.html.twig' %}
 
 {% block title %}NAO{% endblock %}
 
 {% block body %}
+    {# Affichage des messages flashs puis du block content qui seras remplit sur chaque page et appel de la barre de navigation mobile #}
+    {% include 'ObservationBundle:Default:flash.message.html.twig' %}
     {% block content %}{% endblock %}
     {% include 'ObservationBundle:Default:navbar.mobile.html.twig' %}
 {% endblock %}
