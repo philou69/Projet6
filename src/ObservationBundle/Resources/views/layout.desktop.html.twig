@@ -6,13 +6,17 @@
     {% include 'ObservationBundle:Default:navbar.desktop.html.twig' %}
     {% include 'ObservationBundle:Default:flash.message.html.twig' %}
     {# block content qui sera remplit au besion sur chaque page#}
-    {% block content %}
-    {% endblock %}
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
 {% endblock %}
 
 {% block javascript %}
 {{ parent() }}
     <script>
+        // Script affichant les sous-menus au survole et cache au quite de la navbar
         $(document).on('mouseover', '[data-toggle="tab"]', function () {
             $(this).tab('show');
         });
@@ -20,5 +24,6 @@
             $('.tab-pane').removeClass('active');
             $('.tabs').removeClass('active');
         })
+
     </script>
 {% endblock %}
