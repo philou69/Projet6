@@ -1,0 +1,4 @@
+bird_list:
+    path: /list
+    defaults:
+      _controller: ObservationBundle:Bird:list

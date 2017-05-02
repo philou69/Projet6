@@ -9,3 +9,16 @@
     {% block content %}
     {% endblock %}
 {% endblock %}
+
+{% block javascript %}
+{{ parent() }}
+    <script>
+        $(document).on('mouseover', '[data-toggle="tab"]', function () {
+            $(this).tab('show');
+        });
+        $(document).on('mouseleave', 'nav', function () {
+            $('.tab-pane').removeClass('active');
+            $('.tabs').removeClass('active');
+        })
+    </script>
+{% endblock %}
