@@ -1,9 +1,52 @@
-<ul>
-    {% if app.user %}
-        <li><a href="{{ path('user_profil') }}">profil</a></li>
-        <li><a href="{{ path('user_logout') }}">se deconnecter</a></li>
-        {% else %}
-        <li><a href="{{ path('user_login') }}">Se connecter</a></li>
-        <li><a href="{{ path('user_registration') }}">S'enregistrer</a></li>
-    {% endif %}
-</ul>
+{# Navbar sur pc #}
+<nav class="navbar navbar-light navbar-fixed-top" style="background-color: #e3f2fd;" role="navigation">
+    <div class="container">
+        {#  Block title navbar #}
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ path('observation_homepage') }}">Nos Amis les oiseaux</a>
+        </div>
+        {# Liste des menus principaux #}
+        <div>
+            <ul class="navbar-nav nav pull-right">
+                <li class="tabs"><a href="#bird" data-toggle="tab">Les oiseaux</a></li>
+                <li class="tabs"><a href="#nao" data-toggle="tab">L'association</a></li>
+                <li class="tabs"><a href="#user" data-toggle="tab">Compte</a></li>
+            </ul>
+
+        </div>
+    </div>
+    {# Bloc contenant les sous-menus #}
+    <div class="tab-content container">
+        <div id="bird" class="tab-pane">
+            <ul class=" nav navbar-nav list-inline">
+                <li><a href="{{ path('bird_list') }}">Les oiseaux</a></li>
+                <li><a href="{{ path('observation_list') }}">Les observations</a></li>
+                <li><a href="{{ path('observation_add') }}">Ajouté une observation</a></li>
+            </ul>
+        </div>
+        <div id="nao" class="tab-pane">
+            <ul class=" nav navbar-nav list-inline">
+                <li><a href="{{ path('observation_asso') }}">L'asso</a></li>
+                <li><a href="facebook.com"><img src="{{ asset('bundles/observation/images/icones/facebook.png') }}"
+                                                alt="facebook-logo" class="icon"></a></li>
+                <li><a href="twitter.com"><img src="{{ asset('bundles/observation/images/icones/twitter.png') }}"
+                                               alt="twitter-logo" class="icon"></a></li>
+                <li><a href="instagram.com"><img src="{{ asset('bundles/observation/images/icones/instagram.jpg') }}"
+                                                 alt="instagram-logo" class="icon"></a></li>
+            </ul>
+        </div>
+        <div id="user" class="tab-pane">
+            <ul class=" nav navbar-nav list-inline">
+                {% if app.user %}
+                    <li><a href="{{ path('user_profil') }}"><i class="glyphicon glyphicon-user"></i> Profil</a></li>
+                    <li><a href="{{ path('user_logout') }}"><i class="glyphicon glyphicon-log-out"></i> Se
+                            deconnecter</a></li>
+                {% else %}
+                    <li><a href="{{ path('user_login') }}"><i class="glyphicon glyphicon-log-in"></i> Se connecter</a>
+                    </li>
+                    <li><a href="{{ path('user_registration') }}">S'inscrire</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

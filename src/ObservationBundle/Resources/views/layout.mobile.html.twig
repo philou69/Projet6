@@ -4,8 +4,11 @@
 {% block title %}NAO{% endblock %}
 
 {% block body %}
+    {% include 'ObservationBundle:Default:navbar.mobile.html.twig' %}
     {# Affichage des messages flashs puis du block content qui seras remplit sur chaque page et appel de la barre de navigation mobile #}
     {% include 'ObservationBundle:Default:flash.message.html.twig' %}
-    {% block content %}{% endblock %}
-    {% include 'ObservationBundle:Default:navbar.mobile.html.twig' %}
+    <div class="container-fluid">
+        {% block content %}{% endblock %}
+    </div>
+
 {% endblock %}
