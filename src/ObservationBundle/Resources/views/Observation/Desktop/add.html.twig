@@ -1,0 +1,57 @@
+{% extends 'ObservationBundle::layout.desktop.html.twig' %}
+{% block title %}Observation{% endblock %}
+
+{% block content %}
+    <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="panel-title">
+                    Saisie d'observation
+                </h1>
+            </div>
+            <div class="panel-body">
+                {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                {{ form_errors(form) }}
+                <div class="form-group">
+                    {{ form_label(form, form.vars.label, {'label_attr': {'class': 'col-md-2'}}) }}
+                    {{ form_errors(form.observation) }}
+                    <div class="col-md-10">
+                        {{ form_widget(form.observation) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        {{ form_label(form.postedAt, form.vars.label, {'label_attr': {'class': 'col-md-4'}}) }}
+                        {{ form_errors(form.postedAt) }}
+                        <div class="col-md-8">
+                            {{ form_widget(form.postedAt) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_label(form.seeAt, form.vars.label, {'label_attr': {'class': 'col-md-4'}}) }}
+                        {{ form_errors(form.seeAt) }}
+                        <div class="col-md-8">
+                            {{ form_widget(form.seeAt) }}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div>
+                        {{ form_label(form.location) }}
+                        {{ form_errors(form.location) }}
+                        <div class="col-md-10">
+                            {{ form_widget(form.location) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    {{ form_widget(form.save) }}
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+    {% endblock %}
+
+

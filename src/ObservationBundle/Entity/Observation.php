@@ -74,6 +74,20 @@ class Observation
      */
     private $location;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\User", inversedBy="observations")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $validatedBy;
+
+
+
 
     /**
      * Get id
@@ -292,5 +306,53 @@ class Observation
     public function getLocation()
     {
         return $this->location;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \ObservationBundle\Entity\User $user
+     *
+     * @return Observation
+     */
+    public function setUser(\ObservationBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \ObservationBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set validatedBy
+     *
+     * @param \ObservationBundle\Entity\User $validatedBy
+     *
+     * @return Observation
+     */
+    public function setValidatedBy(\ObservationBundle\Entity\User $validatedBy)
+    {
+        $this->validatedBy = $validatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get validatedBy
+     *
+     * @return \ObservationBundle\Entity\User
+     */
+    public function getValidatedBy()
+    {
+        return $this->validatedBy;
     }
 }

@@ -47,6 +47,12 @@ class Picture
      */
     private $observation;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
 
     /**
      * Get id
@@ -153,5 +159,29 @@ class Picture
     public function getObservation()
     {
         return $this->observation;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \ObservationBundle\Entity\User $user
+     *
+     * @return Picture
+     */
+    public function setUser(\ObservationBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \ObservationBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

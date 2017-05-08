@@ -89,6 +89,21 @@ class User implements AdvancedUserInterface, \Serializable
      */
     protected $dateToken;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Star", inversedBy="users", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    protected $stars;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Observation", mappedBy="user", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    protected $observations;
+
+
+
 
 
     /**
@@ -447,5 +462,73 @@ class User implements AdvancedUserInterface, \Serializable
     public function getDateToken()
     {
         return $this->dateToken;
+    }
+
+    /**
+     * Add star
+     *
+     * @param \ObservationBundle\Entity\Star $star
+     *
+     * @return User
+     */
+    public function addStar(\ObservationBundle\Entity\Star $star)
+    {
+        $this->stars[] = $star;
+
+        return $this;
+    }
+
+    /**
+     * Remove star
+     *
+     * @param \ObservationBundle\Entity\Star $star
+     */
+    public function removeStar(\ObservationBundle\Entity\Star $star)
+    {
+        $this->stars->removeElement($star);
+    }
+
+    /**
+     * Get stars
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStars()
+    {
+        return $this->stars;
+    }
+
+    /**
+     * Add observation
+     *
+     * @param \ObservationBundle\Entity\Observation $observation
+     *
+     * @return User
+     */
+    public function addObservation(\ObservationBundle\Entity\Observation $observation)
+    {
+        $this->observations[] = $observation;
+
+        return $this;
+    }
+
+    /**
+     * Remove observation
+     *
+     * @param \ObservationBundle\Entity\Observation $observation
+     */
+    public function removeObservation(\ObservationBundle\Entity\Observation $observation)
+    {
+        $this->observations->removeElement($observation);
+    }
+
+    /**
+     * Get observations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObservations()
+    {
+        return $this->observations;
     }
 }

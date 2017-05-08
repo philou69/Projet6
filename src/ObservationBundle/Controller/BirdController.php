@@ -10,6 +10,8 @@ class BirdController extends Controller
 {
     public function listAction()
     {
+        return $this->render(
+            'ObservationBundle:Birds:Desktop/list.html.twig');
 
     }
 }
