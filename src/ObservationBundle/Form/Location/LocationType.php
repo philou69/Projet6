@@ -15,7 +15,7 @@ class LocationType extends AbstractType
             ->add('latitude', NumberType::class, array(
                 'label' => 'Latitude',
                 'label_attr' => array(
-                    'class' => 'col-md-2'
+                    'class' => 'col-md-1'
                 ),
 
         ))
@@ -23,7 +23,7 @@ class LocationType extends AbstractType
                 ->add('longitude', NumberType::class, array(
                   'label' => 'Longitude',
                     'label_attr' => array(
-                        'class' => 'col-md-2'
+                        'class' => 'col-md-1'
                     ),
 
                 ))
