@@ -31,3 +31,18 @@ user_change_password:
     path: /change
     defaults:
         _controller: ObservationBundle:User:changePassword
+
+user_connect:
+    path: /connect
+    defaults:
+        _controller: ObservationBundle:User:connect
+
+user_observations:
+    path: /observations
+    defaults:
+        _controller: ObservationBundle:User:login
+
+user_stars:
+    path: /stars
+    defaults:
+        _controller: ObservationBundle:User:login

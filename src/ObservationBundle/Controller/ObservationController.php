@@ -12,17 +12,32 @@ class ObservationController extends Controller
 {
     public function listAction()
     {
-
+        $device = $this->get('mobile_detect.mobile_detector');
+        if($device->isMobile()){
+            return $this->render('@Observation/Observation/Mobile/list.html.twig');
+        }else{
+            return $this->render('@Observation/Observation/Desktop/list.html.twig');
+        }
     }
 
     public function viewAction(Observation $observation)
     {
-
+        $device = $this->get('mobile_detect.mobile_detector');
+        if($device->isMobile()){
+            return $this->render('@Observation/Observation/Mobile/view.html.twig');
+        }else{
+            return $this->render('@Observation/Observation/Desktop/view.html.twig');
+        }
     }
 
     public function addAction()
     {
-
+        $device = $this->get('mobile_detect.mobile_detector');
+        if($device->isMobile()){
+            return $this->render('@Observation/Observation/Mobile/add.html.twig');
+        }else{
+            return $this->render('@Observation/Observation/Desktop/add.html.twig');
+        }
     }
 
     /**
@@ -30,7 +45,7 @@ class ObservationController extends Controller
      */
     public function validateAction(Observation $observation)
     {
-
+        // Action simple de mise à jour de l'entity sans vue renvoyant à la page de l'observation
     }
 
     /**
@@ -38,6 +53,6 @@ class ObservationController extends Controller
      */
     public function unvalideAction(Observation $observation)
     {
-
+        // Action simple de mise à jour de l'entity sans vue renvoyant à la page de l'observation
     }
 }

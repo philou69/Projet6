@@ -3,50 +3,63 @@
     <div class="container">
         {#  Block title navbar #}
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ path('observation_homepage') }}">Nos Amis les oiseaux</a>
+            <a class="navbar-brand" href="{{ path('homepage') }}">Nos Amis les oiseaux</a>
         </div>
-        {# Liste des menus principaux #}
+        {# Liste des menus principaux avec vérification de la route pour activé dynamiquement la navbar à l'aide de app.request.get('_route') #}
         <div>
             <ul class="navbar-nav nav pull-right">
-                <li class="tabs"><a href="#bird" data-toggle="tab">Les oiseaux</a></li>
-                <li class="tabs"><a href="#nao" data-toggle="tab">L'association</a></li>
-                <li class="tabs"><a href="#user" data-toggle="tab">Compte</a></li>
+                <li {% if app.request.attributes.get('_route') == 'homepage' %}class="active"{% endif %}>
+                    <a href="{{ path('homepage') }}">
+                        Accueil
+                    </a>
+                </li>
+                <li {% if app.request.attributes.get('_route') == 'observation_add' %}class="active"{% endif %}>
+                    <a href="{{ path('observation_add') }}">
+                        Observation
+                    </a>
+                </li>
+                {% if app.request.attributes.get('_route') in ['bird_list','bird_description', 'bird_location'] %}
+                    <li class=" tabs active">
+                        <a href="#bird" data-toggle="tab">
+                            Fiches oiseaux
+                        </a>
+                    </li>
+                {% else %}
+                    <li {% if app.request.attributes.get('_route') == 'bird_list' %}class="active"{% endif %}>
+                        <a href="{{ path('bird_list') }}">
+                            Fiches oiseaux
+                        </a>
+                    </li>
+                {% endif %}
+                {% if app.user %}
+                    {% if app.request.attributes.get('_routes') starts with 'user' %}
+                        <li class="tabs {% if app.request.attributes.get('_route')  starts with 'user' %}active{% endif %}">
+                            <a href="#user" data-toggle="tab">
+                                Compte
+                            </a>
+                        </li>
+                    {% else %}
+                        <li><a href="{{ path('user_profil') }}">Compte</a></li>
+                    {% endif %}
+                {% else %}
+                    <li {% if app.request.attributes.get('_route') == 'user_connect' %}class="active"{% endif %}>
+                        <a href="{{ path('user_connect') }}">
+                            Connection/Inscription
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
-
         </div>
     </div>
     {# Bloc contenant les sous-menus #}
     <div class="tab-content container">
-        <div id="bird" class="tab-pane">
-            <ul class=" nav navbar-nav list-inline">
-                <li><a href="{{ path('bird_list') }}">Les oiseaux</a></li>
-                <li><a href="{{ path('observation_list') }}">Les observations</a></li>
-                <li><a href="{{ path('observation_add') }}">Ajouté une observation</a></li>
-            </ul>
-        </div>
-        <div id="nao" class="tab-pane">
-            <ul class=" nav navbar-nav list-inline">
-                <li><a href="{{ path('observation_asso') }}">L'asso</a></li>
-                <li><a href="facebook.com"><img src="{{ asset('bundles/observation/images/icones/facebook.png') }}"
-                                                alt="facebook-logo" class="icon"></a></li>
-                <li><a href="twitter.com"><img src="{{ asset('bundles/observation/images/icones/twitter.png') }}"
-                                               alt="twitter-logo" class="icon"></a></li>
-                <li><a href="instagram.com"><img src="{{ asset('bundles/observation/images/icones/instagram.jpg') }}"
-                                                 alt="instagram-logo" class="icon"></a></li>
-            </ul>
-        </div>
-        <div id="user" class="tab-pane">
-            <ul class=" nav navbar-nav list-inline">
-                {% if app.user %}
-                    <li><a href="{{ path('user_profil') }}"><i class="glyphicon glyphicon-user"></i> Profil</a></li>
-                    <li><a href="{{ path('user_logout') }}"><i class="glyphicon glyphicon-log-out"></i> Se
-                            deconnecter</a></li>
-                {% else %}
-                    <li><a href="{{ path('user_login') }}"><i class="glyphicon glyphicon-log-in"></i> Se connecter</a>
-                    </li>
-                    <li><a href="{{ path('user_registration') }}">S'inscrire</a></li>
-                {% endif %}
-            </ul>
-        </div>
+        {# Inclusion du sous menu d'un oiseau si la variable bird est définie#}
+        {% if bird  is defined %}
+            {% include '@Observation/Default/navbar.desktop.bird.html.twig' with {'bird': bird} %}
+        {% endif %}
+        {# Inclusion du sous-menu user si le visiteur est connecter #}
+        {% if app.user %}
+            {% include '@Observation/Default/navbar.desktop.user.html.twig' %}
+        {% endif %}
     </div>
 </nav>
