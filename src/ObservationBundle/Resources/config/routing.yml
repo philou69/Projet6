@@ -10,11 +10,11 @@ observation:
     prefix: /observation
     resource: 'Routing/observation.yml'
 
-observation_homepage:
+homepage:
     path:     /
     defaults: { _controller: ObservationBundle:Default:index }
 
-observation_asso:
+asso:
     path: /asso
     defaults:
       _controller: ObservationBundle:Default:index

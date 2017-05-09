@@ -16,19 +16,23 @@ class ObservationController extends Controller
 {
     public function listAction()
     {
-        $location = new Location();
-        $form = $this->createForm(LocationType::class, $location);
-        return $this->render(
-            'ObservationBundle:Observation:Desktop/list.html.twig', array(
-            'form' => $form->createView()
-        ));
-
+        $device = $this->get('mobile_detect.mobile_detector');
+        if($device->isMobile()){
+            return $this->render('@Observation/Observation/Mobile/list.html.twig');
+        }else{
+            return $this->render('@Observation/Observation/Desktop/list.html.twig');
+        }
     }
 
     public function viewAction(Observation $observation)
     {
-        return $this->render(
-            'ObservationBundle:Observation:Desktop/view.html.twig');
+
+        $device = $this->get('mobile_detect.mobile_detector');
+        if($device->isMobile()){
+            return $this->render('@Observation/Observation/Mobile/view.html.twig');
+        }else{
+            return $this->render('@Observation/Observation/Desktop/view.html.twig');
+        }
     }
 
     public function addAction(Request $request)
@@ -44,12 +48,16 @@ class ObservationController extends Controller
             echo 'test Reussi';
             return $this->redirectToRoute('observation_list');
         }
-
-        return $this->render(
+        $device = $this->get('mobile_detect.mobile_detector');
+        if($device->isMobile()){
+            return $this->render(
+            'ObservationBundle:Observation:Mobile/add.html.twig', array(
+            'form' => $form->createView()
+        }else{
+            return $this->render(
             'ObservationBundle:Observation:Desktop/add.html.twig', array(
             'form' => $form->createView()
-        ));
-
+        }
     }
 
     /**
@@ -57,8 +65,7 @@ class ObservationController extends Controller
      */
     public function validateAction(Observation $observation)
     {
-        return $this->render(
-            'ObservationBundle:Observation:Desktop/validate.html.twig');
+        // Action simple de mise à jour de l'entity sans vue renvoyant à la page de l'observation
 
     }
 
@@ -67,8 +74,7 @@ class ObservationController extends Controller
      */
     public function unvalideAction(Observation $observation)
     {
-        return $this->render(
-            'ObservationBundle:Observation:Desktop/unvalidate.html.twig');
+        // Action simple de mise à jour de l'entity sans vue renvoyant à la page de l'observation
 
     }
 }

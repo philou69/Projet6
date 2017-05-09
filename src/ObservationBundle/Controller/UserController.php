@@ -18,6 +18,50 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class UserController extends Controller
 {
+    public function connectAction(Request $request)
+    {
+
+        // Création d'un objet User et du form associé
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+
+        // On passe la requete au form et vérifie s'il est soumis et valide
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Hash du mot de passe en clair
+            $password = $this->get('security.password_encoder')->encodePassword($user, $user->getPlainPassword());
+            // Ajout du hash password et du role('ROLE_OBS')
+            $user->setPassword($password);
+            $user->addRoles('ROLE_OBS');
+            // Enregistrement de l'utilisateur en bdd
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            // Création d'un token lié à l'user puis connection de l'user
+            $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
+            $this->get('security.token_storage')->setToken($token);
+            $this->get('session')->set('_security_main', serialize($token));
+
+
+            // Enfin redirection vers la page d'accueil
+            return $this->redirectToRoute('homepage');
+        }
+
+        // Vérification du device et renvoie sur la vue correspondante
+        $device = $this->get('mobile_detect.mobile_detector');
+        if ($device->isMobile()) {
+            return $this->render(
+                '@Observation/User/Mobile/connect.html.twig',
+                array('form' => $form->createView())
+            );
+        } else {
+            return $this->render(
+                '@Observation/User/Desktop/connect.html.twig',
+                array('form' => $form->createView())
+            );
+        }
+    }
     /**
      * Action d'enregistrement d'un visiteur
      *
