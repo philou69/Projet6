@@ -1,0 +1,24 @@
+observation_list:
+    path: /list
+    defaults:
+      _controller:  ObservationBundle:Observation:list
+
+observation_add:
+    path: /add
+    defaults:
+      _controller: ObservationBundle:Observation:add
+
+observation_validate:
+    path: /{id}/validate
+    defaults:
+      _controller:  ObservationBundle:Observation:validate
+
+observation_unvalidate:
+    path: /{id}/unvalidate
+    defaults:
+      _controller: ObservationBundle:Observation:unvalide
+
+observation_view:
+    path: /{id}/view
+    defaults:
+      _controller: ObservationBundle:Observation:view

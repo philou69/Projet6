@@ -1,3 +1,20 @@
-observation_homepage:
+user:
+    prefix: user
+    resource: 'Routing/user.yml'
+
+bird:
+    prefix: /bird
+    resource: 'Routing/birds.yml'
+
+observation:
+    prefix: /observation
+    resource: 'Routing/observation.yml'
+
+homepage:
     path:     /
     defaults: { _controller: ObservationBundle:Default:index }
+
+asso:
+    path: /asso
+    defaults:
+      _controller: ObservationBundle:Default:index

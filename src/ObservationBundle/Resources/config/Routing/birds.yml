@@ -1,0 +1,14 @@
+bird_list:
+    path: /list
+    defaults:
+      _controller: ObservationBundle:Bird:list
+
+bird_description:
+    path: /{id}/description
+    defaults:
+      _controller: ObservationBundle:Bird:descripition
+
+bird_location:
+    path: /{id}/location
+    defaults:
+      _controller: ObservationBundle:Bird:location

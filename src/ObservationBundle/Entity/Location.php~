@@ -42,6 +42,13 @@ class Location
 
     private $birds;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Observation", mappedBy="location")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $observation;
+
+
 
     /**
      * Get id
@@ -101,4 +108,79 @@ class Location
         return $this->longitude;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->birds = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add bird
+     *
+     * @param \ObservationBundle\Entity\Birds $bird
+     *
+     * @return Location
+     */
+    public function addBird(\ObservationBundle\Entity\Birds $bird)
+    {
+        $this->birds[] = $bird;
+
+        return $this;
+    }
+
+    /**
+     * Remove bird
+     *
+     * @param \ObservationBundle\Entity\Birds $bird
+     */
+    public function removeBird(\ObservationBundle\Entity\Birds $bird)
+    {
+        $this->birds->removeElement($bird);
+    }
+
+    /**
+     * Get birds
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBirds()
+    {
+        return $this->birds;
+    }
+
+    /**
+     * Add observation
+     *
+     * @param \ObservationBundle\Entity\Observation $observation
+     *
+     * @return Location
+     */
+    public function addObservation(\ObservationBundle\Entity\Observation $observation)
+    {
+        $this->observation[] = $observation;
+
+        return $this;
+    }
+
+    /**
+     * Remove observation
+     *
+     * @param \ObservationBundle\Entity\Observation $observation
+     */
+    public function removeObservation(\ObservationBundle\Entity\Observation $observation)
+    {
+        $this->observation->removeElement($observation);
+    }
+
+    /**
+     * Get observation
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObservation()
+    {
+        return $this->observation;
+    }
 }

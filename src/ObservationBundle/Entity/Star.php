@@ -49,6 +49,12 @@ class Star
      */
     private $applicable;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\User", inversedBy="stars", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    protected $stars;
+
 
     /**
      * Get id
@@ -155,5 +161,45 @@ class Star
     {
         return $this->applicable;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->stars = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add star
+     *
+     * @param \ObservationBundle\Entity\User $star
+     *
+     * @return Star
+     */
+    public function addStar(\ObservationBundle\Entity\User $star)
+    {
+        $this->stars[] = $star;
+
+        return $this;
+    }
+
+    /**
+     * Remove star
+     *
+     * @param \ObservationBundle\Entity\User $star
+     */
+    public function removeStar(\ObservationBundle\Entity\User $star)
+    {
+        $this->stars->removeElement($star);
+    }
+
+    /**
+     * Get stars
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getStars()
+    {
+        return $this->stars;
+    }
+}

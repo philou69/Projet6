@@ -1,0 +1,63 @@
+{# Navbar sur mobile #}
+<nav class="navbar navbar-light navbar-fixed-bottom" style="background-color: #e3f2fd;" role="navigation">
+    {# contenu des sous-menus #}
+    <div class="tab-content container-fluid">
+        {% if bird is defined %}
+            {% include '@Observation/Default/Navbar/Mobile/bird.sub.navbar.html.twig' with {'bird': bird} %}
+        {% endif %}
+        {% if app.user %}
+            {% include '@Observation/Default/Navbar/Mobile/user.sub.navbar.html.twig' %}
+        {% endif %}
+        {% include '@Observation/Default/Navbar/Mobile/other.sub.navbar.html.twig' %}
+    </div>
+    {# Liste des menus #}
+    <div class="container-fluid">
+        <ul class="navbar-nav nav nav-tabs pull-right">
+            <li {% if app.request.attributes.get('_route') == 'homepage' %}class="active"{% endif %}>
+                <a href="{{ path('homepage') }}">
+                    <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li {% if app.request.attributes.get('_route') == 'observation_add' %} class="active"{% endif %}>
+                <a href="{{ path('observation_add') }}">
+                    <i class="fa fa-binoculars fa-2x" aria-hidden="true"></i>
+                </a>
+            </li>
+            {% if app.request.attributes.get('_route')  in ['bird_description', 'bird_location'] %}
+                <li class="tabs active">
+                    <a href="#bird" data-toggle="tab">
+                        <i class="fa fa-sticky-note-o fa-2x" aria-hidden="true"></i>
+                    </a>
+                </li>
+            {% else %}
+                <li {% if app.request.attributes.get('_route') == 'bird_list' %}class="active" {% endif %}>
+                    <a href="{{ path('bird_list') }}">
+                        <i class="fa fa-sticky-note-o fa-2x" aria-hidden="true"></i>
+                    </a>
+                </li>
+            {% endif %}
+            {% if app.user %}
+                {% if app.request.attributes.get('_route') in ['user_profil', 'user_observations','user_stars'] %}
+                    <li class="tabs active">
+                        <a href="#user" data-toggle="tab">
+                            <i class="fa fa-user-o fa-2x" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('user_profil') }}">
+                            <i class="fa fa-user-o fa-2x" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                {% endif %}
+            {% else %}
+                <li {% if app.request.attributes.get('_route') == 'user_connect' %}class="active"{% endif %}>
+                    <a href="{{ path('user_connect') }}">
+                        <i class="fa fa-sign-in fa-2x"></i>/Inscription
+                    </a>
+                </li>
+            {% endif %}
+            <li class="tabs {% if app.request.attributes.get('_route') == 'asso' %}active{% endif %}"><a href="#other" data-toggle=""tab><i class="fa fa-ellipsis-v fa-2x"></i></a></li>
+        </ul>
+    </div>
+</nav>

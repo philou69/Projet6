@@ -1,0 +1,56 @@
+{# Vue du profil sur mobile #}
+{% extends 'ObservationBundle::layout.mobile.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1>{{ app.user.username }}</h1>
+        </div>
+        <div class="panel-body">
+            <table >
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+                {% for child in form.children if child.vars.name != 'save' and child.vars.name != '_token' %}
+                    <tr class="row">
+                        <td class="col-sm-3">{{ child.vars.label }}</td>
+                        <td class="col-sm-8">
+                            <div id="view_{{ child.vars.id }}" class="views" {% if child.vars.errors.count != 0 %}hidden{% endif %}>
+                                {% if child.vars.name == 'birthDate' %}
+                                    {% if child.vars.value.day is not empty %}
+                                        {{ child.vars.value.day }}/{{ child.vars.value.month }}/{{ child.vars.value.year }}
+                                    {% else %}
+                                        Renseigné votre date de naissance
+                                    {% endif %}
+                                {% else %}
+                                    {{ child.vars.value }}
+                                {% endif %}
+                            </div>
+                            <div id="edit_{{ child.vars.id }}" class="edits" {% if child.vars.errors.count == 0 %}hidden{% endif %}>
+                                {{ form_widget(child) }}
+                                <button type="submit" class="btn btn-xs btn-primary">Enregistrer</button>
+                                <button class="btn btn-xs btn-success cancel">Annulé</button>
+                            </div>
+                        </td>
+                        <td class="col-sm-1"><a href="#" class="edit_button btn btn-xs btn-info" id="{{ child.vars.id }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                    </tr>
+                {% endfor %}
+                {{ form_widget(form._token) }}
+                {{ form_end(form, {'render_rest': false})}}
+
+                <tr class="row">
+                    <td class="col-sm-11" colspan="2">
+                        Mot de passe
+                    </td>
+                    <td class="col-sm-1"><a href="{{ path('user_change_password') }}" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-pencil"></i></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/observation/js/edit.profil.user.js') }}"></script>
+{% endblock %}
