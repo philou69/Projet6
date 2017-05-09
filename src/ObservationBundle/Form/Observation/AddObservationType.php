@@ -20,12 +20,11 @@ class AddObservationType extends AbstractType
             'label' => 'Observation',
             'attr' => array('rows' => '5')
         ))
-                ->add('postedAt', DateTimeType::class, array(
 
-                    'label' => 'Posté le: '
-                ))
                 ->add( 'seeAt', DateTimeType::class, array(
-                    'label' => 'Observé le: '
+                    'label' => 'Observé le: ',
+                    'widget' => 'single_text',
+                    'date_format' => 'yyyy-MM-dd  HH:i'
                 ))
                 ->add('location', LocationType::class, array(
                     'label' => false

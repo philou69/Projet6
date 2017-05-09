@@ -13,19 +13,11 @@ class LocationType extends AbstractType
 
         $builder
             ->add('latitude', NumberType::class, array(
-                'label' => 'Latitude',
-                'label_attr' => array(
-                    'class' => 'col-md-1'
-                ),
-
+                'label' => 'Latitude'
         ))
 
                 ->add('longitude', NumberType::class, array(
-                  'label' => 'Longitude',
-                    'label_attr' => array(
-                        'class' => 'col-md-1'
-                    ),
-
+                  'label' => 'Longitude'
                 ))
         ;
 
