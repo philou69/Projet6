@@ -3,7 +3,7 @@
 
 {% block body %}
     {# Incorporation de la bar de navigation desktop et des messages flashs #}
-    {% include 'ObservationBundle:Default:navbar.desktop.html.twig' %}
+    {% include '@Observation/Default/Navbar/Desktop/navbar.html.twig' %}
     {% include 'ObservationBundle:Default:flash.message.html.twig' %}
     {# block content qui sera remplit au besion sur chaque page#}
     <div class="container">
@@ -20,10 +20,5 @@
         $(document).on('mouseover', '[data-toggle="tab"]', function () {
             $(this).tab('show');
         });
-        $(document).on('mouseleave', 'nav', function () {
-            $('.tab-pane').removeClass('active');
-            $('.tabs').removeClass('active');
-        })
-
     </script>
 {% endblock %}

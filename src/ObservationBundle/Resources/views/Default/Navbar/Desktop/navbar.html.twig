@@ -48,6 +48,9 @@
                         </a>
                     </li>
                 {% endif %}
+                <li class="tabs {% if app.request.attributes.get('_route') == 'asso' %}active{% endif %}">
+                    <a href="#other" data-toggle="tab">Autres</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -55,11 +58,12 @@
     <div class="tab-content container">
         {# Inclusion du sous menu d'un oiseau si la variable bird est définie#}
         {% if bird  is defined %}
-            {% include '@Observation/Default/navbar.desktop.bird.html.twig' with {'bird': bird} %}
+            {% include '@Observation/Default/Navbar/Desktop/bird.sub.navbar.html.twig' with {'bird': bird} %}
         {% endif %}
         {# Inclusion du sous-menu user si le visiteur est connecter #}
         {% if app.user %}
-            {% include '@Observation/Default/navbar.desktop.user.html.twig' %}
+            {% include '@Observation/Default/Navbar/Desktop/user.sub.navbar.html.twig' %}
         {% endif %}
+        {% include '@Observation/Default/Navbar/Desktop/other.sub.navbar.html.twig' %}
     </div>
 </nav>
