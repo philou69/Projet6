@@ -484,5 +484,115 @@ class Birds
     {
         return $this->classe;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->location = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->observation = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->picture = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add location
+     *
+     * @param \ObservationBundle\Entity\Location $location
+     *
+     * @return Birds
+     */
+    public function addLocation(\ObservationBundle\Entity\Location $location)
+    {
+        $this->location[] = $location;
+
+        return $this;
+    }
+
+    /**
+     * Remove location
+     *
+     * @param \ObservationBundle\Entity\Location $location
+     */
+    public function removeLocation(\ObservationBundle\Entity\Location $location)
+    {
+        $this->location->removeElement($location);
+    }
+
+    /**
+     * Get location
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * Add observation
+     *
+     * @param \ObservationBundle\Entity\Observation $observation
+     *
+     * @return Birds
+     */
+    public function addObservation(\ObservationBundle\Entity\Observation $observation)
+    {
+        $this->observation[] = $observation;
+
+        return $this;
+    }
+
+    /**
+     * Remove observation
+     *
+     * @param \ObservationBundle\Entity\Observation $observation
+     */
+    public function removeObservation(\ObservationBundle\Entity\Observation $observation)
+    {
+        $this->observation->removeElement($observation);
+    }
+
+    /**
+     * Get observation
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObservation()
+    {
+        return $this->observation;
+    }
+
+    /**
+     * Add picture
+     *
+     * @param \ObservationBundle\Entity\Picture $picture
+     *
+     * @return Birds
+     */
+    public function addPicture(\ObservationBundle\Entity\Picture $picture)
+    {
+        $this->picture[] = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Remove picture
+     *
+     * @param \ObservationBundle\Entity\Picture $picture
+     */
+    public function removePicture(\ObservationBundle\Entity\Picture $picture)
+    {
+        $this->picture->removeElement($picture);
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+}

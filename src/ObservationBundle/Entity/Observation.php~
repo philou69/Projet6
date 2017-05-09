@@ -63,7 +63,7 @@ class Observation
     private $bird;
 
     /**
-     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="Observation")
+     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="observation")
      * @ORM\JoinColumn(nullable=false)
      */
     private $pictures;
@@ -73,6 +73,20 @@ class Observation
      * @ORM\JoinColumn(nullable=false)
      */
     private $location;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\User", inversedBy="observations")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $validatedBy;
+
+
 
 
     /**
@@ -204,5 +218,93 @@ class Observation
     {
         return $this->validated;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Set bird
+     *
+     * @param \ObservationBundle\Entity\Birds $bird
+     *
+     * @return Observation
+     */
+    public function setBird(\ObservationBundle\Entity\Birds $bird)
+    {
+        $this->bird = $bird;
+
+        return $this;
+    }
+
+    /**
+     * Get bird
+     *
+     * @return \ObservationBundle\Entity\Birds
+     */
+    public function getBird()
+    {
+        return $this->bird;
+    }
+
+    /**
+     * Add picture
+     *
+     * @param \ObservationBundle\Entity\Picture $picture
+     *
+     * @return Observation
+     */
+    public function addPicture(\ObservationBundle\Entity\Picture $picture)
+    {
+        $this->pictures[] = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Remove picture
+     *
+     * @param \ObservationBundle\Entity\Picture $picture
+     */
+    public function removePicture(\ObservationBundle\Entity\Picture $picture)
+    {
+        $this->pictures->removeElement($picture);
+    }
+
+    /**
+     * Get pictures
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
+    }
+
+    /**
+     * Set location
+     *
+     * @param \ObservationBundle\Entity\Location $location
+     *
+     * @return Observation
+     */
+    public function setLocation(\ObservationBundle\Entity\Location $location)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return \ObservationBundle\Entity\Location
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+}

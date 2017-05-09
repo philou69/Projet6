@@ -42,6 +42,13 @@ class Location
 
     private $birds;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Observation", mappedBy="location")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $observation;
+
+
 
     /**
      * Get id
@@ -141,5 +148,39 @@ class Location
     public function getBirds()
     {
         return $this->birds;
+    }
+
+    /**
+     * Add observation
+     *
+     * @param \ObservationBundle\Entity\Observation $observation
+     *
+     * @return Location
+     */
+    public function addObservation(\ObservationBundle\Entity\Observation $observation)
+    {
+        $this->observation[] = $observation;
+
+        return $this;
+    }
+
+    /**
+     * Remove observation
+     *
+     * @param \ObservationBundle\Entity\Observation $observation
+     */
+    public function removeObservation(\ObservationBundle\Entity\Observation $observation)
+    {
+        $this->observation->removeElement($observation);
+    }
+
+    /**
+     * Get observation
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObservation()
+    {
+        return $this->observation;
     }
 }

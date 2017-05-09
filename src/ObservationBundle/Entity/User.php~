@@ -89,6 +89,21 @@ class User implements AdvancedUserInterface, \Serializable
      */
     protected $dateToken;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Star", inversedBy="users", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    protected $stars;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Observation", mappedBy="user", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    protected $observations;
+
+
+
 
 
     /**
@@ -399,5 +414,53 @@ class User implements AdvancedUserInterface, \Serializable
     public function getBirthDate()
     {
         return $this->birthDate;
+    }
+
+    /**
+     * Set token
+     *
+     * @param string $token
+     *
+     * @return User
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * Set dateToken
+     *
+     * @param \DateTime $dateToken
+     *
+     * @return User
+     */
+    public function setDateToken($dateToken)
+    {
+        $this->dateToken = $dateToken;
+
+        return $this;
+    }
+
+    /**
+     * Get dateToken
+     *
+     * @return \DateTime
+     */
+    public function getDateToken()
+    {
+        return $this->dateToken;
     }
 }

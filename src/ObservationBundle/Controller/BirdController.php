@@ -19,6 +19,7 @@ class BirdController extends Controller
         }
     }
 
+
     public function descripitionAction(Birds $bird)
     {
         $device = $this->get('mobile_detect.mobile_detector');
