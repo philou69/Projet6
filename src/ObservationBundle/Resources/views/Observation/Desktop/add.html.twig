@@ -12,46 +12,136 @@
                 {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
                 {{ form_errors(form) }}
                 <div class="form-group">
-                    {{ form_label(form, form.vars.label, {'label_attr': {'class': 'col-md-2'}}) }}
+                    {{ form_label(form, 'Ajouter une observation', {'label_attr': {'class': 'col-md-2'}}) }}
                     {{ form_errors(form.observation) }}
                     <div class="col-md-10">
                         {{ form_widget(form.observation) }}
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-6">
-                        {{ form_label(form.postedAt, form.vars.label, {'label_attr': {'class': 'col-md-4'}}) }}
-                        {{ form_errors(form.postedAt) }}
-                        <div class="col-md-8">
-                            {{ form_widget(form.postedAt) }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        {{ form_label(form.seeAt, form.vars.label, {'label_attr': {'class': 'col-md-4'}}) }}
+                    <div>
+                        {{ form_label(form.seeAt, form.vars.label, {'label_attr': {'class': 'col-md-2'}}) }}
                         {{ form_errors(form.seeAt) }}
-                        <div class="col-md-8">
-                            {{ form_widget(form.seeAt) }}
+                        <div class="col-md-4">
+                            {{ form_widget(form.seeAt, { 'id': 'datetimepicker'}) }}
                         </div>
                     </div>
-
                 </div>
                 <div class="form-group">
                     <div>
                         {{ form_label(form.location) }}
                         {{ form_errors(form.location) }}
-                        <div class="col-md-10">
-                            {{ form_widget(form.location) }}
-                        </div>
+
+                        {{ form_widget(form.location, {'attr':{'class': 'col-md-10 col-md-offset-1'}}) }}
+
+                        <div id="map"></div>
                     </div>
-                </div>
+
+                    </div>
+
                 <div class="text-center">
                     {{ form_widget(form.save) }}
                 </div>
 
                 {{ form_end(form) }}
+
             </div>
         </div>
+    {% block javascript %}
+        {% include 'ObservationBundle:Default:javasrcipt.html.twig' %}
+        {% javascripts '@ObservationBundle/Resources/public/js/*' %}
+        <script src="{{ asset_url }}"></script>
+        <script>
 
+            $(document).ready(function() {
+                $.datetimepicker.setLocale('fr');
+                $('#datetimepicker').datetimepicker();
+            });
+
+                //Initilaisation de la map
+                function initMap()
+                {
+
+                    var myLatlng = {lat: 48.866667, lng: 2.333333};
+                    var map = new google.maps.Map(document.getElementById('map'),
+                        {
+                            center: myLatlng,
+                            zoom: 12
+                        });
+
+
+                    // Géolocalisation du user.
+                    if (navigator.geolocation)
+                    {
+                        navigator.geolocation.getCurrentPosition(function(position)
+                            {
+                                var pos = {
+                                    lat: position.coords.latitude,
+                                    lng: position.coords.longitude
+                                };
+
+                                //Personnalisation du marker de position actuelle
+                                var iconBase = 'https://maps.google.com/mapfiles/kml/paddle/orange-stars.png';
+
+                                //Création du marker
+                                var marker = new google.maps.Marker(
+                                    {
+                                        position: pos,
+                                        map: map,
+                                        zoom: 12,
+                                        icon: iconBase
+                                    });
+
+                                map.setCenter(pos);
+                            },
+                            //gestion des erreurs de geolocalisation
+                            function() {
+                                handleLocationError(true, marker, map.getCenter());
+                            });
+                    }
+                    else
+                    {
+                        // Browser doesn't support Geolocation
+                        handleLocationError(false, marker, map.getCenter());
+                    }
+
+                    //Création d'un marqueur sur la carte lors d'un clic. Remplissage automatique des champs Lat et Long
+                    var marqueur = new google.maps.Marker();
+                    var iconBaseOiseaux = '{{ asset('bundles/observation/images/icones/crow_red.png') }}';
+
+                    google.maps.event.addListener(map, 'click', function (event)
+                    {
+                        marqueur.setMap(map);
+                        marqueur.setIcon(iconBaseOiseaux);
+                        var positionMarqueur = marqueur.setPosition(new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()));
+                        document.getElementById("add_observation_location_latitude").placeholder = event.latLng.lat();
+                        document.getElementById("add_observation_location_longitude").placeholder = event.latLng.lng();
+                    });
+                }
+
+                //Gestion des erreurs de géolocalisation
+                function handleLocationError(browserHasGeolocation, infoWindow, pos)
+                {
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+                }
+            </script>
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?v=3&amp;key=AIzaSyD7E1n7LhYthH6ItYzK3dU-9jDFlL1D_Z4&callback=initMap">
+            </script>
+        {% endjavascripts %}
     {% endblock %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
 
 
