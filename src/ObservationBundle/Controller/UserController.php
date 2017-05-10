@@ -48,17 +48,25 @@ class UserController extends Controller
             return $this->redirectToRoute('homepage');
         }
 
+        // Récuperation du service d'authentification
+        $authenticationUtils = $this->get('security.authentication_utils');
+
+        // Récuperation des erreurs et du dernier pseudo utilisé
+        $error = $authenticationUtils->getLastAuthenticationError();
+
+        $lastUsername = $authenticationUtils->getLastUsername();
+
         // Vérification du device et renvoie sur la vue correspondante
         $device = $this->get('mobile_detect.mobile_detector');
-        if ($device->isMobile()) {
+        if (!$device->isMobile() || $device->isMobile()) {
             return $this->render(
                 '@Observation/User/Mobile/connect.html.twig',
-                array('form' => $form->createView())
+                array('form' => $form->createView(), 'error' => $error, 'lastUsername' => $lastUsername)
             );
         } else {
             return $this->render(
                 '@Observation/User/Desktop/connect.html.twig',
-                array('form' => $form->createView())
+                array('form' => $form->createView(), 'error' => $error, 'lastUsername' => $lastUsername)
             );
         }
     }

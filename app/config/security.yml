@@ -19,7 +19,7 @@ security:
         main:
             anonymous: ~
             form_login:
-              login_path: user_login
+              login_path: user_connect
               check_path: user_login
               remember_me: true
             logout:

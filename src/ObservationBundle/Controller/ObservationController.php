@@ -52,11 +52,11 @@ class ObservationController extends Controller
         if($device->isMobile()){
             return $this->render(
             'ObservationBundle:Observation:Mobile/add.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView()));
         }else{
             return $this->render(
             'ObservationBundle:Observation:Desktop/add.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView()));
         }
     }
 
