@@ -43,6 +43,8 @@ twig:
       timezone: Europe/Paris
     form_themes:
         - 'bootstrap_3_layout.html.twig'
+    globals:
+        api_key: '%api_key%'
 
 # Doctrine Configuration
 doctrine:
@@ -79,3 +81,4 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+

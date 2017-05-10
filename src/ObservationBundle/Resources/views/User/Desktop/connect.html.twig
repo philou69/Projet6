@@ -6,11 +6,46 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1 class="panel-title">
-                Formulaire d'inscription
+                Formulaire de Connection/d'inscription
             </h1>
         </div>
         <div class="panel-body">
-            <div class="col-md-6">
+            <div id="left" class="col-md-6">
+                {# Gestion d'affichage des erreurs de connection #}
+                {% if error %}
+                    <div class="alert alert-danger">
+                        {{ error.messageKey| trans(error.messageData, 'security') }}
+                    </div>
+                {% endif %}
+                <h3 class="text-center">Se connecter</h3>
+                {# Formulaire de connection préremplie du pseudo si dsponible #}
+                <form action="{{ path('user_login') }}" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="username" class="control-label col-sm-3 required">Pseudo ou Email </label>
+                        <div class="col-sm-5">
+                            <input type="text" name="_username" id="username" class="form-control" value="{{ lastUsername }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label col-sm-3 required">Mot de passe </label>
+                        <div class="col-sm-5">
+                            <input type="password" name="_password" id="password" class="form-control">
+                        </div>
+                    </div>
+                    {# Checkbox se souvenir de moi #}
+                    <div class="form-group">
+                        <label for="remember_me" class="control-label col-sm-4"> Se souvenir de moi <input type="checkbox" name="_remember_me" id="remember_me" ></label>
+                    </div>
+                    <div class="form-group">
+                        <a href="{{ path('user_forgot_password') }}" class="col-sm-4 control-label">Mot de passe oublié</a>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-xs btn-primary">Se connecter</button>
+                    </div>
+                </form>
+            </div>
+            <div id="right" class="col-md-6">
+                <h3 class="text-center">S'inscrire</h3>
                 {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
                 {{ form_errors(form) }}
                 {# Boucle sur les champs du form à l'exception du save et _token #}
@@ -20,7 +55,7 @@
                         {% for password in child.children %}
                             <div class="form-group">
                                 {{ form_label(password, password.vars.label, {'label_attr': {'class': 'col-md-3 control-label'}}) }}
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     {{ form_widget(password, {'attr': {'class': 'form-control'}}) }}
                                 </div>
                                 {{ form_errors(password) }}
@@ -29,7 +64,7 @@
                     {% else %}
                         <div class="form-group">
                             {{ form_label(child, child.vars.label, {'label_attr': {'class': 'col-md-3 control-label'}}) }}
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 {# Gestion du champs birthDate #}
                                 {% if child.vars.name == 'birthDate' %}
                                     {{ form_widget(child) }}
@@ -47,40 +82,8 @@
                 </div>
                 {{ form_end(form) }}
             </div>
-            <div class="col-md-6">
-                {# Gestion d'affichage des erreurs de connection #}
-                {% if error %}
-                    <div class="alert alert-danger">
-                        {{ error.messageKey| trans(error.messageData, 'security') }}
-                    </div>
-                {% endif %}
-                {# Formulaire de connection préremplie du pseudo si dsponible #}
-                <form action="{{ path('user_login') }}" method="post" class="form-horizontal">
-                    <div class="form-group">
-                        <label for="username" class="control-label col-sm-3 required">Pseudo ou Email </label>
-                        <div class="col-sm-5">
-                            <input type="text" name="_username" id="username" class="form-control" value="{{ lastUsername }}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password" class="control-label col-sm-3 required">Mot de passe </label>
-                        <div class="col-sm-5">
-                            <input type="password" name="_password" id="password" class="form-control">
-                        </div>
-                    </div>
-                    {# Checkbox se souvenir de moi #}
-                    <div class="form-group">
-                        <label for="remember_me" class="control-label col-sm-3"> Se souvenir de moi <input type="checkbox" name="_remember_me" id="remember_me" ></label>
-                    </div>
-                    <div class="form-group">
-                        <a href="{{ path('user_forgot_password') }}" class="col-sm-3 control-label">Mot de passe oublié</a>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-xs btn-primary">Se connecter</button>
-                    </div>
-                </form>
-            </div>
 
         </div>
     </div>
 {% endblock %}
+

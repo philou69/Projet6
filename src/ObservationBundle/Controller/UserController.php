@@ -58,7 +58,7 @@ class UserController extends Controller
 
         // Vérification du device et renvoie sur la vue correspondante
         $device = $this->get('mobile_detect.mobile_detector');
-        if (!$device->isMobile() || $device->isMobile()) {
+        if ($device->isMobile()) {
             return $this->render(
                 '@Observation/User/Mobile/connect.html.twig',
                 array('form' => $form->createView(), 'error' => $error, 'lastUsername' => $lastUsername)
