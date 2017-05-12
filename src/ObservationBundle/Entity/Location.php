@@ -36,7 +36,7 @@ class Location
     private $longitude;
 
     /**
-     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Birds", mappedBy="location", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Bird", mappedBy="location", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
 
@@ -119,11 +119,11 @@ class Location
     /**
      * Add bird
      *
-     * @param \ObservationBundle\Entity\Birds $bird
+     * @param \ObservationBundle\Entity\Bird $bird
      *
      * @return Location
      */
-    public function addBird(\ObservationBundle\Entity\Birds $bird)
+    public function addBird(\ObservationBundle\Entity\Bird $bird)
     {
         $this->birds[] = $bird;
 
@@ -133,9 +133,9 @@ class Location
     /**
      * Remove bird
      *
-     * @param \ObservationBundle\Entity\Birds $bird
+     * @param \ObservationBundle\Entity\Bird $bird
      */
-    public function removeBird(\ObservationBundle\Entity\Birds $bird)
+    public function removeBird(\ObservationBundle\Entity\Bird $bird)
     {
         $this->birds->removeElement($bird);
     }

@@ -58,6 +58,9 @@
                 </li>
             {% endif %}
             <li class="tabs {% if app.request.attributes.get('_route') == 'asso' %}active{% endif %}"><a href="#other" data-toggle=""tab><i class="fa fa-ellipsis-v fa-2x"></i></a></li>
+            {% if app.user %}
+                <li><a href="{{ path('user_logout') }}"><i class="fa fa-sign-out fa-2x"></i></a></li>
+            {% endif %}
         </ul>
     </div>
 </nav>

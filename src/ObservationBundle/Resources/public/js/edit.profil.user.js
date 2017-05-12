@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // Fonction qui parcours les div views et edits et cache et affiche au besion
+    // Fonction qui parcours les div views et edits ehttp://stackoverflow.com/questions/6409505/document-getelementbyid-is-not-a-functiont cache et affiche au besion
     function refreshForm(id){
         $.each($('.views'), function () {
             // Si l'id correspond, on cache le div sinon on l'affiche
