@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new ObservationBundle\ObservationBundle(),
             new \SunCat\MobileDetectBundle\MobileDetectBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new \HWI\Bundle\OAuthBundle\HWIOAuthBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

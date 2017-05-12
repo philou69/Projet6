@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Birds
  *
- * @ORM\Table(name="birds")
+ * @ORM\Table(name="bird")
  * @ORM\Entity(repositoryClass="ObservationBundle\Repository\BirdsRepository")
  */
-class Birds
+class Bird
 {
     /**
      * @var int

@@ -4,6 +4,7 @@
 {% block title %}Inscription{% endblock %}
 
 {% block content %}
+    <div id="fb-root"></div>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1>
@@ -11,8 +12,55 @@
             </h1>
         </div>
         <div class="panel-body">
-            {{ form(form) }}
+            {# Zone d'identification avec google ou facebook #}
+            <div class="text-center">
+                <h2>S'identifier avec </h2>
+                <div>
+                    <a href="#" onclick="fb_login();" class="btn btn-xs btn-primary"><i class="fa fa-facebook"></i> Facebook</a>
+                    <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-xs btn-danger"><i class="fa fa-google-plus"></i></a>
+                </div>
+            </div>
+            <hr/>
+            <div>
+                {#
+                    Toggle switch permettant de choisir entre inscription ou connection
+                #}
+                <label >Connection </label>
+                <label class="switch" for="choice">
+                    <input type="checkbox"   id="choice">
+                    <div class="slider round"></div>
+                </label><label> Inscription</label>
+            </div>
+            {# Zone de connection #}
+            <div id="login">
+                {% if error %}
+                    <div class="alert alert-danger">
+                        {{ error.messageKey| trans(error.messageData, 'security') }}
+                    </div>
+                {% endif %}
+
+                <form action="{{ path('user_login') }}" method="post">
+                    <label for="username" class="control-label required">Pseudo ou Email </label>
+                    <input type="text" name="_username" id="username" class="form-control">
+                    <label for="password" class="control-label required">Mot de passe </label>
+                    <input type="password" name="_password" id="password" class="form-control">
+                    <label for="remember_me" class="control-label">Se souvenir de moi <input type="checkbox" name="_remember_me" id="remember_me"></label>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-xs btn-primary">Se connecter</button>
+                    </div>
+                </form>
+            </div>
+            {# Zone d'inscription #}
+            <div id="registration" hidden>
+                {{ form(form) }}
+            </div>
         </div>
     </div>
     {{ form(form) }}
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/observation/js/toogle.switch.js') }}"></script>
 {% endblock %}
