@@ -2,8 +2,30 @@
 # http://symfony.com/doc/current/service_container.html
 parameters:
     #parameter_name: value
+    event.dispatcher: \Symfony\Component\EventDispatcher\EventDispatcher
 
 services:
     #service_name:
     #    class: AppBundle\Directory\ClassName
     #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+
+    # Entity User
+    user_entity:
+        class: ObservationBundle\Entity\User
+
+    # User Provider
+    user_provider:
+        class: ObservationBundle\Security\User\UserProvider
+        arguments:
+          -   '@event_dispatcher'
+          -  '@doctrine'
+          -  'ObservationBundle\Entity\User'
+    # Listener charger de hacher les mots de passe
+    user_event_listener:
+        class: ObservationBundle\EventListener\UserListener
+        arguments:
+          - '@security.password_encoder'
+          - '@observation.user.mailer'
+        tags:
+          - { name: kernel.event_listener, event: user.register, method: onCreate }
+

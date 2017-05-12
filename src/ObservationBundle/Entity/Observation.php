@@ -57,7 +57,7 @@ class Observation
     private $validated;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Birds", inversedBy="observation")
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observation")
      * @ORM\JoinColumn(nullable=false)
      */
     private $bird;
@@ -229,11 +229,11 @@ class Observation
     /**
      * Set bird
      *
-     * @param \ObservationBundle\Entity\Birds $bird
+     * @param \ObservationBundle\Entity\Bird $bird
      *
      * @return Observation
      */
-    public function setBird(\ObservationBundle\Entity\Birds $bird)
+    public function setBird(\ObservationBundle\Entity\Bird $bird)
     {
         $this->bird = $bird;
 
@@ -243,7 +243,7 @@ class Observation
     /**
      * Get bird
      *
-     * @return \ObservationBundle\Entity\Birds
+     * @return \ObservationBundle\Entity\Bird
      */
     public function getBird()
     {

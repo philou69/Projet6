@@ -4,6 +4,7 @@
 {% block title %}Inscription{% endblock %}
 
 {% block content %}
+    <div id="fb-root"></div>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h1>
@@ -11,9 +12,18 @@
             </h1>
         </div>
         <div class="panel-body">
+            {# Zone d'identification avec google ou facebook #}
+            <div class="text-center">
+                <h2>S'identifier avec </h2>
+                <div>
+                    <a href="#" onclick="fb_login();" class="btn btn-xs btn-primary"><i class="fa fa-facebook"></i> Facebook</a>
+                    <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-xs btn-danger"><i class="fa fa-google-plus"></i></a>
+                </div>
+            </div>
+            <hr/>
             <div>
                 {#
-                    Toggle switch
+                    Toggle switch permettant de choisir entre inscription ou connection
                 #}
                 <label >Connection </label>
                 <label class="switch" for="choice">
@@ -21,6 +31,7 @@
                     <div class="slider round"></div>
                 </label><label> Inscription</label>
             </div>
+            {# Zone de connection #}
             <div id="login">
                 {% if error %}
                     <div class="alert alert-danger">
@@ -40,6 +51,7 @@
                     </div>
                 </form>
             </div>
+            {# Zone d'inscription #}
             <div id="registration" hidden>
                 {{ form(form) }}
             </div>
@@ -50,19 +62,5 @@
 
 {% block javascript %}
     {{ parent() }}
-    <script>
-        $('#choice').click(function () {
-            console.log($(this).is('checked'));
-            changeState($('#login'));
-            changeState($('#registration'));
-        })
-
-        function changeState(element){
-            if(element.attr('hidden')){
-                element.removeAttr('hidden');
-            }else{
-                element.attr('hidden', true);
-            }
-        }
-    </script>
+    <script src="{{ asset('bundles/observation/js/toogle.switch.js') }}"></script>
 {% endblock %}

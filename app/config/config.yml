@@ -44,7 +44,8 @@ twig:
     form_themes:
         - 'bootstrap_3_layout.html.twig'
     globals:
-        api_key: '%api_key%'
+        facebook_id: '%facebook_id%'
+        google_api_key: '%google_api_key%'
 
 # Doctrine Configuration
 doctrine:
@@ -82,3 +83,27 @@ assetic:
     filters:
         cssrewrite: ~
 
+# Bundle permettant l'OAuth
+hwi_oauth:
+    firewall_names: [main]
+    resource_owners:
+        # Paramettre pour facebook
+        facebook:
+            type:    facebook
+            client_id: '%facebook_id%'
+            client_secret: '%facebook_secret%'
+            scope: "email"
+            infos_url:     "https://graph.facebook.com/me?fields=id,name,email,first_name,last_name"
+            paths:
+                email:     email
+                first_name: first_name
+                last_name: last_name
+            options:
+                display: popup
+                auth_type: rerequest
+        # Parametre pour google
+        google:
+            type: google
+            client_id: '%google_id%'
+            client_secret: '%google_secret%'
+            scope:  "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
