@@ -57,7 +57,7 @@ class Observation
     private $validated;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Birds", inversedBy="observation")
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observation")
      * @ORM\JoinColumn(nullable=false)
      */
     private $bird;
@@ -229,11 +229,11 @@ class Observation
     /**
      * Set bird
      *
-     * @param \ObservationBundle\Entity\Birds $bird
+     * @param \ObservationBundle\Entity\Bird $bird
      *
      * @return Observation
      */
-    public function setBird(\ObservationBundle\Entity\Birds $bird)
+    public function setBird(\ObservationBundle\Entity\Bird $bird)
     {
         $this->bird = $bird;
 
@@ -243,7 +243,7 @@ class Observation
     /**
      * Get bird
      *
-     * @return \ObservationBundle\Entity\Birds
+     * @return \ObservationBundle\Entity\Bird
      */
     public function getBird()
     {
@@ -306,5 +306,53 @@ class Observation
     public function getLocation()
     {
         return $this->location;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \ObservationBundle\Entity\User $user
+     *
+     * @return Observation
+     */
+    public function setUser(\ObservationBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \ObservationBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set validatedBy
+     *
+     * @param \ObservationBundle\Entity\User $validatedBy
+     *
+     * @return Observation
+     */
+    public function setValidatedBy(\ObservationBundle\Entity\User $validatedBy)
+    {
+        $this->validatedBy = $validatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get validatedBy
+     *
+     * @return \ObservationBundle\Entity\User
+     */
+    public function getValidatedBy()
+    {
+        return $this->validatedBy;
     }
 }

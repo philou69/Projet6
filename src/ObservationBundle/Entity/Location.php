@@ -48,6 +48,14 @@ class Location
      */
     private $observation;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieu", type="text")
+     */
+    private $lieu;
+
+
 
 
     /**
@@ -182,5 +190,29 @@ class Location
     public function getObservation()
     {
         return $this->observation;
+    }
+
+    /**
+     * Set lieu
+     *
+     * @param string $lieu
+     *
+     * @return Location
+     */
+    public function setLieu($lieu)
+    {
+        $this->lieu = $lieu;
+
+        return $this;
+    }
+
+    /**
+     * Get lieu
+     *
+     * @return string
+     */
+    public function getLieu()
+    {
+        return $this->lieu;
     }
 }

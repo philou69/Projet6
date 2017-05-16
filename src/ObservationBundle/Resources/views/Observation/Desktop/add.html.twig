@@ -2,43 +2,85 @@
 {% extends 'ObservationBundle::layout.desktop.html.twig' %}
 {% block title %}Observation{% endblock %}
 
+{% form_theme form 'ObservationBundle:Form:locationField.html.twig' %}
+
+
 {% block content %}
+
+
     <div class="panel panel-default">
             <div class="panel-heading">
                 <h1 class="panel-title">
-                    Saisie d'observation
+                    Saisir une Observation
                 </h1>
             </div>
             <div class="panel-body">
                 {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
                 {{ form_errors(form) }}
-                <div class="form-group">
-                    {{ form_label(form, 'Ajouter une observation', {'label_attr': {'class': 'col-md-2'}}) }}
-                    {{ form_errors(form.observation) }}
-                    <div class="col-md-10">
-                        {{ form_widget(form.observation) }}
-                    </div>
-                </div>
+
+            {#Localisation Observation#}
                 <div class="form-group">
                     <div>
-                        {{ form_label(form.seeAt, form.vars.label, {'label_attr': {'class': 'col-md-2'}}) }}
-                        {{ form_errors(form.seeAt) }}
-                        <div class="col-md-4">
+                        {{ form_label(form.location) }}
+                        {{ form_errors(form.location) }}
+                        {{ form_widget(form.location, {'attr':{'class': 'col-md-10 col-md-offset-1'}}) }}
+                        <button type="button" class="btn btn-primary btn-lg col-md-10 col-md-offset-1" id="locationChoice">Selectioner votre position</button>
+                    </div>
+                </div>
+            {#Modale de la map#}
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Lieu de l'observation</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="map"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <span id="infoPosition"></span>
+                                <button type="button" class="btn btn-primary col-md-offset-1" id="currentPosition" data-dismiss="modal">Valider la position</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {#Date de l'observation#}
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            {{ form_label(form.seeAt, form.vars.label) }}
+                            {{ form_errors(form.seeAt) }}
                             {{ form_widget(form.seeAt, { 'id': 'datetimepicker'}) }}
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <div>
-                        {{ form_label(form.location) }}
-                        {{ form_errors(form.location) }}
-
-                        {{ form_widget(form.location, {'attr':{'class': 'col-md-10 col-md-offset-1'}}) }}
-
-                        <div id="map"></div>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            {{ form_label(form, 'Ajouter une observation') }}
+                            {{ form_errors(form.observation) }}
+                            {{ form_widget(form.observation) }}
+                        </div>
                     </div>
-
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            {{ form_label(form.bird, form.vars.label) }}
+                            {{ form_errors(form.bird) }}
+                            {{ form_widget(form.bird) }}
+                        </div>
                     </div>
+                </div>
+
+
+
+
+
+
 
                 <div class="text-center">
                     {{ form_widget(form.save) }}
@@ -50,16 +92,7 @@
         </div>
     {% block javascript %}
     {{ parent() }}
-        <script>
-
-            $(document).ready(function() {
-                $.datetimepicker.setLocale('fr');
-                $('#datetimepicker').datetimepicker();
-            });
-
-            var iconBaseOiseaux = '{{ asset('bundles/observation/images/icones/crow_red.png') }}';
-            </script>
-        <script src="{{ asset('bundles/observation/js/maps.observation.js') }}"></script>
+        <script src="{{ asset('bundles/observation/js/map.js') }}"></script>
             <script async defer
                     src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}&callback=initMap">
             </script>
