@@ -3,19 +3,21 @@
     @media (min-width: 768px) {
         /* Marge du body pour la navbar */
         body {
-            min-height: 98vh;
             padding-top: 110px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        footer {
-            position: absolute;
-            bottom: 0;
-            margin-bottom: 10px;
+        #content{
+            flex: 1;
+        }
+        #margin{
+            with: 85%;
+            margin: auto;
         }
         .social-network{
             margin-left: 5px;
-        }
-        .dropup:hover .dropdown-menu {
-            display: block;
         }
     }
     /* Survole d'un lien */
@@ -106,6 +108,6 @@ uppercase        cursor: pointer;
 
     .capital {
         text-transform: uppercase;
-        font-size: small;
+        font-size: x-small;
     }
 </style>
