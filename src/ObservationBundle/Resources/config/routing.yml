@@ -18,3 +18,13 @@ asso:
     path: /asso
     defaults:
       _controller: ObservationBundle:Default:index
+
+contact:
+    path: /contact
+    defaults:
+        _controller: ObservationBundle:Default:contact
+
+faq:
+    path: /faq
+    defaults:
+        _controller: ObservationBundle:Default:faq
