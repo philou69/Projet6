@@ -1,0 +1,50 @@
+<footer class="row">
+        <div class="col-sm-3">
+            <h2><a href="{{ path('homepage') }}">Nos amis les oiseaux</a></h2>
+        </div>
+        <div class="col-sm-3">
+            <ul class="list-unstyled capital ">
+                <li {% if app.request.attributes.get('_route')  == 'homepage'%}class="active"{% endif %}><a href="{{ path('homepage') }}">Accueil</a></li>
+                <li {% if app.request.attributes.get('_route')  == 'observation_add' %}class="active"{% endif %}><a href="{{ path('observation_add') }}"><i class="fa fa-plus"></i> Observation</a></li>
+                <li {% if app.request.attributes.get('_route')  == 'bird_list' %}class="active"{% endif %}><a href="{{ path('bird_list') }}">Fiches Oiseaux</a></li>
+                {% if app.user %}
+                    <li class="dropup"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon compte <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li {% if app.request.attributes.get('_route')  == 'user_profil' %}class="active"{% endif %}><a href="{{ path('user_profil') }}">Profil</a></li>
+                            <li {% if app.request.attributes.get('_route')  == 'user_observation' %}class="active"{% endif %}><a href="{{ path('user_observations') }}">Mes Observation</a></li>
+                            <li {% if app.request.attributes.get('_route')  == 'user_stars' %}class="active"{% endif %}><a href="{{ path('user_stars') }}">Médailles</a></li>
+                            <li><a href="{{ path('user_logout') }}">Céconnexion</a></li>
+                        </ul></li>
+
+                {% else %}
+                    <li {% if app.request.attributes.get('_route')  == 'user_connect' %}class="active"{% endif %}><a href="{{ path('user_connect') }}">Connection/Inscription</a>
+                    </li>
+                {% endif %}
+                <li class="dropup"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Informations <b class="caret"></b></a>
+                    <ul class="dropdown-menu dropdown-menu-top">
+                        <li ><a href="http://bird.fr">L'assocition</a></li>
+                        <li {% if app.request.attributes.get('_route')  == 'contact' %}class="active"{% endif %}><a href="{{ path('contact') }}">Nous contacter</a></li>
+                        <li {% if app.request.attributes.get('_route')  == 'faq' %}class="active"{% endif %}><a href="{{ path('faq') }}">FAQ</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+        <div class="col-sm-6 row">
+            <div class=" col-md-6 col-sm-8">
+                <label for="newsletter">Recevoir les actualités de l'association</label>
+                <div class="input-group">
+                    <input type="email" name="mail" id="mail" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="submit">s'inscrire</button>
+                    </span>
+                </div>
+            </div>
+            <div class=" col-md-6 col-sm-4">
+                <a href="https://facebook.com" class="social-network"><i class="fa fa-facebook-f fa-2x"></i></a>
+                <a href="https://instagram.com" class="social-network"><i class="fa fa-instagram fa-2x"></i></a>
+                <a href="https://plus.google.com" class="social-network"><i class="fa fa-google-plus fa-2x"></i></a>
+            </div>
+
+        </div>
+</footer>

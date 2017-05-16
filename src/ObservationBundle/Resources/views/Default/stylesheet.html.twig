@@ -3,7 +3,19 @@
     @media (min-width: 768px) {
         /* Marge du body pour la navbar */
         body {
+            min-height: 98vh;
             padding-top: 110px;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            margin-bottom: 10px;
+        }
+        .social-network{
+            margin-left: 5px;
+        }
+        .dropup:hover .dropdown-menu {
+            display: block;
         }
     }
     /* Survole d'un lien */
@@ -42,7 +54,7 @@
     /* Le slider */
     .slider {
         position: absolute;
-        cursor: pointer;
+uppercase        cursor: pointer;
         top: 0;
         left: 0;
         right: 0;
@@ -90,5 +102,10 @@
         border-style: solid;
         border-color: #dddddd ;
         border-width: 0  0 0 2px;
+    }
+
+    .capital {
+        text-transform: uppercase;
+        font-size: small;
     }
 </style>
