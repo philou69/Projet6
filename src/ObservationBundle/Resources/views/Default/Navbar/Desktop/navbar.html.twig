@@ -7,7 +7,7 @@
         </div>
         {# Liste des menus principaux avec vérification de la route pour activé dynamiquement la navbar à l'aide de app.request.get('_route') #}
         <div>
-            <ul class="navbar-nav nav pull-right">
+            <ul class="navbar-nav nav pull-right capital">
                 <li {% if app.request.attributes.get('_route') == 'homepage' %}class="active"{% endif %}>
                     <a href="{{ path('homepage') }}">
                         Accueil
@@ -48,9 +48,15 @@
                         </a>
                     </li>
                 {% endif %}
-                <li class="tabs {% if app.request.attributes.get('_route') == 'asso' %}active{% endif %}">
-                    <a href="#other" data-toggle="tab">Autres</a>
+                <li class="tabs {% if app.request.attributes.get('_route') in ['contact', 'faq'] %}active{% endif %}">
+                    <a href="#other" data-toggle="tab">Information</a>
                 </li>
+                <li>
+                    <a href="https://facebook.com" class="social-network"><i class="fa fa-facebook-f"></i></a></li>
+                <li>
+                    <a href="https://instagram.com" class="social-network"><i class="fa fa-instagram"></i></a></li>
+                <li>
+                    <a href="https://plus.google.com" class="social-network"><i class="fa fa-google-plus"></i></a></li>
                 {% if app.user %}
                     <li><a href="{{ path('user_logout') }}"><i class="fa fa-sign-out "></i></a></li>
                 {% endif %}

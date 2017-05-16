@@ -22,7 +22,7 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
     public function findUsernames($username)
     {
         $queryBuilder = $this->createQueryBuilder('u')
-            ->where('u.username LIKE :username')
+            ->where(new Doctrine\ORM\Query\Ex)
             ->setParameter('username', $username);
 
         return $queryBuilder->getQuery()
