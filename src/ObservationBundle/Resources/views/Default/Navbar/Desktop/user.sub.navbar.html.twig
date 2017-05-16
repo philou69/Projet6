@@ -3,6 +3,5 @@
         <li {% if app.request.attributes.get('_route')  == 'user_profil'%}class="active"{% endif %}><a href="{{ path('user_profil') }}">Profil</a></li>
         <li {% if app.request.attributes.get('_route')  == 'user_observation'%}class="active"{% endif %}><a href="{{ path('user_observations') }}">Mes Observations</a></li>
         <li {% if app.request.attributes.get('_route')  == 'user_stars'%}class="active"{% endif %}><a href="{{ path('user_stars') }}">Recompenses</a></li>
-        <li {% if app.request.attributes.get('_route')  == 'user_logout'%}class="active"{% endif %}><a href="{{ path('user_logout') }}">Se deconnecter</a></li>
     </ul>
 </div>

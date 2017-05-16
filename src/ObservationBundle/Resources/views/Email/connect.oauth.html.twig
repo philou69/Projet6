@@ -1,0 +1,8 @@
+<p>
+    Bonjour {{ user.username }}.<br>
+    Vous venez de créer un compte sur <a href="{{ path('homepage') }}">Nos amis les oiseaux</a> et nous vous en remercions.<br>
+    Pour vous permettre de vous reconnecter ulterieurement sans utilise Facebook ou google, voici vos identifiants et mot de passe : <br>
+    pseudo : {{ user.username }}<br>
+    mot de passe : {{ user.plainPassword }}<br>
+    Pour des raisons de sécurités nous vous conseillons de modifier au plus vite ce mot de passe généré automatiquement.<br>
+</p>
