@@ -58,6 +58,7 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
         if(!$user){
             // On recupere les utilisateurs contenant le même username
             $usersByUsername = $this->getRepository()->findUsernames($response->getNickname());
+            
             // On crée un user avec les données renvoyer
             $user = new User;
             $user->setEmail($response->getEmail())
