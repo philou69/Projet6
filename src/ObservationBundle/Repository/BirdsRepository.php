@@ -10,4 +10,6 @@ namespace ObservationBundle\Repository;
  */
 class BirdsRepository extends \Doctrine\ORM\EntityRepository
 {
+
+
 }

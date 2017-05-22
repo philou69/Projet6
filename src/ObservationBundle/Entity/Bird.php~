@@ -602,28 +602,4 @@ class Bird
     {
         return $this->picture;
     }
-
-    /**
-     * Set regne
-     *
-     * @param string $regne
-     *
-     * @return Bird
-     */
-    public function setRegne($regne)
-    {
-        $this->regne = $regne;
-
-        return $this;
-    }
-
-    /**
-     * Get regne
-     *
-     * @return string
-     */
-    public function getRegne()
-    {
-        return $this->regne;
-    }
 }

@@ -20,7 +20,7 @@ parameters:
     facebook_secret: erer
     google_id: erer
     google_secret: erer
-    google_api_key: er
+    google_api_key: erer
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt

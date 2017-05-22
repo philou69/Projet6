@@ -24,6 +24,13 @@ class Bird
     /**
      * @var string
      *
+     * @ORM\Column(name="regne", type="string", length=255)
+     */
+    private $regne;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="ordre", type="string", length=255)
      */
     private $ordre;
@@ -118,13 +125,6 @@ class Bird
      * @ORM\Column(name="classe", type="string", length=255)
      */
     private $classe;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="regne", type="string", length=255)
-     */
-    private $regne;
 
     /**
      * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Location", inversedBy="birds", cascade={"persist"})
@@ -608,7 +608,7 @@ class Bird
      *
      * @param string $regne
      *
-     * @return Bird
+     * @return Birds
      */
     public function setRegne($regne)
     {

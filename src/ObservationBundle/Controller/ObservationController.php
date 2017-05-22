@@ -38,10 +38,21 @@ class ObservationController extends Controller
     public function addAction(Request $request)
     {
         $observation = new Observation();
+        //On récupère les infos pour chaque visiteurs liés à cette reservation
+        $allBirds = $this->getDoctrine()->getManager()->getRepository('ObservationBundle:Bird')->findAll();
 
-        $form = $this->createForm(AddObservationType::class, $observation);
+        $form = $this->createForm(AddObservationType::class, $observation, array('listBirds' => $allBirds->getNomVern()));
 
         $form->handleRequest($request);
+
+
+
+        foreach ($allBirds as $bird){
+
+            $listBirds [] = $bird->getNomVern();
+
+        }
+
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -56,7 +67,8 @@ class ObservationController extends Controller
         }else{
             return $this->render(
             'ObservationBundle:Observation:Desktop/add.html.twig', array(
-            'form' => $form->createView()));
+            'form' => $form->createView(),
+                'list' => $listBirds));
         }
     }
 
