@@ -3,4 +3,5 @@ $(document).ready(function () {
     $(document).on('mouseover', '[data-toggle="tab"]', function () {
         $(this).tab('show');
     });
+
 })
