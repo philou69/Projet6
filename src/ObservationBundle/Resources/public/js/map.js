@@ -34,7 +34,7 @@ function initMap()
                     map.setCenter(lat_lng);
                     document.getElementById("add_observation_location_latitude").value = event.latLng.lat();
                     document.getElementById("add_observation_location_longitude").value = event.latLng.lng();
-                    var locationField = document.getElementById("locationField");
+                    var locationField = document.getElementById("add_observation_location_lieu");
                     locationField.value = results[0].formatted_address;
                     document.getElementById("infoPosition").textContent = locationField.value;
                     infowindow.setContent(results[0].formatted_address);
@@ -78,7 +78,7 @@ function initMap()
 
                                 document.getElementById("add_observation_location_latitude").value = lat_lng.lat;
                                 document.getElementById("add_observation_location_longitude").value = lat_lng.lng;
-                                document.getElementById("locationField").value = results[0].formatted_address;
+                                document.getElementById("add_observation_location_lieu").value = results[0].formatted_address;
 
                                 infowindow.setContent(results[0].formatted_address);
                                 infowindow.open(map, marqueur);
@@ -126,12 +126,14 @@ function initMap()
 
 }
 
-
 document.getElementById("locationChoice").addEventListener('click', function () {
-    $('#myModal').modal('show').on('shown.bs.modal', function(){
+    $('#myModal').modal('show').on('shown.bs.modal', function () {
         initMap();
     });
 })
+
+
+
 
 
 

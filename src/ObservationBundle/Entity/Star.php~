@@ -53,7 +53,7 @@ class Star
      * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\User", inversedBy="stars", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
-    protected $stars;
+    protected $users;
 
 
     /**
@@ -183,23 +183,5 @@ class Star
         return $this;
     }
 
-    /**
-     * Remove star
-     *
-     * @param \ObservationBundle\Entity\User $star
-     */
-    public function removeStar(\ObservationBundle\Entity\User $star)
-    {
-        $this->stars->removeElement($star);
-    }
 
-    /**
-     * Get stars
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getStars()
-    {
-        return $this->stars;
-    }
 }

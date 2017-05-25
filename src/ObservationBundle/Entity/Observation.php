@@ -3,6 +3,7 @@
 namespace ObservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Observation
@@ -24,7 +25,8 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\Column(name="observation", type="text")
+     * @ORM\Column(name="observation", type="text", nullable=true)
+     *
      */
     private $observation;
 
@@ -45,31 +47,33 @@ class Observation
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="validatedAt", type="datetime")
+     * @ORM\Column(name="validatedAt", type="datetime", nullable=true)
      */
     private $validatedAt;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="validated", type="boolean")
+     * @ORM\Column(name="validated", type="boolean", nullable=true)
      */
     private $validated;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observation")
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observation", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $bird;
 
     /**
+     * @var string
+     *
      * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="observation")
      * @ORM\JoinColumn(nullable=false)
      */
     private $pictures;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Location", inversedBy="observation")
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Location", inversedBy="observation", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $location;
@@ -82,9 +86,24 @@ class Observation
 
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $validatedBy;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numberBird", type="integer")
+     * @Assert\Type("int")
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 20,
+     *      minMessage = "You must be at least {{ limit }}",
+     *      maxMessage = "You cannot be taller than {{ limit }}"
+     * )
+     */
+    private $numberBird;
 
 
 
@@ -250,39 +269,7 @@ class Observation
         return $this->bird;
     }
 
-    /**
-     * Add picture
-     *
-     * @param \ObservationBundle\Entity\Picture $picture
-     *
-     * @return Observation
-     */
-    public function addPicture(\ObservationBundle\Entity\Picture $picture)
-    {
-        $this->pictures[] = $picture;
 
-        return $this;
-    }
-
-    /**
-     * Remove picture
-     *
-     * @param \ObservationBundle\Entity\Picture $picture
-     */
-    public function removePicture(\ObservationBundle\Entity\Picture $picture)
-    {
-        $this->pictures->removeElement($picture);
-    }
-
-    /**
-     * Get pictures
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPictures()
-    {
-        return $this->pictures;
-    }
 
     /**
      * Set location
@@ -354,5 +341,64 @@ class Observation
     public function getValidatedBy()
     {
         return $this->validatedBy;
+    }
+
+
+    /**
+     * Set numberBird
+     *
+     * @param integer $numberBird
+     *
+     * @return Observation
+     */
+    public function setNumberBird($numberBird)
+    {
+        $this->numberBird = $numberBird;
+
+        return $this;
+    }
+
+    /**
+     * Get numberBird
+     *
+     * @return integer
+     */
+    public function getNumberBird()
+    {
+        return $this->numberBird;
+    }
+
+    /**
+     * Add picture
+     *
+     * @param \ObservationBundle\Entity\Picture $picture
+     *
+     * @return Observation
+     */
+    public function addPicture(\ObservationBundle\Entity\Picture $picture)
+    {
+        $this->pictures[] = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Remove picture
+     *
+     * @param \ObservationBundle\Entity\Picture $picture
+     */
+    public function removePicture(\ObservationBundle\Entity\Picture $picture)
+    {
+        $this->pictures->removeElement($picture);
+    }
+
+    /**
+     * Get pictures
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
     }
 }
