@@ -39,14 +39,7 @@ class AddObservationType extends AbstractType
             ))
             ->add('bird', EntityType::class, array(
                 'class' => 'ObservationBundle:Bird',
-                'choice_label' => function ($bird) {
-
-                    if ($bird->getNomVern() == "") {
-                        return $bird->getlbNom();
-                    } else {
-                        return $bird->getNomVern();
-                    }
-                },
+                'choice_label' => 'getAName',
                 'label' => 'Nom de l\'espèce observée',
                 'placeholder' => 'Choisissez ou saisisez le nom d\'un oiseau'
             ))

@@ -4,7 +4,7 @@ user:
 
 bird:
     prefix: /bird
-    resource: 'Routing/birds.yml'
+    resource: 'Routing/bird.yml'
 
 observation:
     prefix: /observation

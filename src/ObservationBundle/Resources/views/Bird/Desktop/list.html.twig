@@ -41,10 +41,7 @@
                     success(code_html)
                 }
             })
-            //Génération d'un scroll infinie
-            var deviceAgent = navigator.userAgent.toLowerCase();
-            var agentId = deviceAgent.match(/iphone/);
-            $('.agent').append(agentId);
+
             // Requte Ajax lors du click sur le bouton add
             $('#addBirds').on('click', function () {
                 prepareRequete(false)
@@ -52,6 +49,7 @@
                     url: getUrl(),
                     dataType: 'html',
                     success: function (code_html, status) {
+                        $('#contentBirds').empty()
                        success(code_html)
                     }
                 })

@@ -36,6 +36,13 @@ class Location
     private $longitude;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="lieu", type="text")
+     */
+    private $lieu;
+
+    /**
      * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Bird", mappedBy="location", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
@@ -46,22 +53,21 @@ class Location
      * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Observation", mappedBy="location")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $observation;
-
+    private $observations;
+    
     /**
-     * @var string
-     *
-     * @ORM\Column(name="lieu", type="text")
+     * Constructor
      */
-    private $lieu;
-
-
-
+    public function __construct()
+    {
+        $this->birds = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->observations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -117,11 +123,27 @@ class Location
     }
 
     /**
-     * Constructor
+     * Set lieu
+     *
+     * @param string $lieu
+     *
+     * @return Location
      */
-    public function __construct()
+    public function setLieu($lieu)
     {
-        $this->birds = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->lieu = $lieu;
+
+        return $this;
+    }
+
+    /**
+     * Get lieu
+     *
+     * @return string
+     */
+    public function getLieu()
+    {
+        return $this->lieu;
     }
 
     /**
@@ -167,7 +189,7 @@ class Location
      */
     public function addObservation(\ObservationBundle\Entity\Observation $observation)
     {
-        $this->observation[] = $observation;
+        $this->observations[] = $observation;
 
         return $this;
     }
@@ -179,40 +201,16 @@ class Location
      */
     public function removeObservation(\ObservationBundle\Entity\Observation $observation)
     {
-        $this->observation->removeElement($observation);
+        $this->observations->removeElement($observation);
     }
 
     /**
-     * Get observation
+     * Get observations
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getObservation()
+    public function getObservations()
     {
-        return $this->observation;
-    }
-
-    /**
-     * Set lieu
-     *
-     * @param string $lieu
-     *
-     * @return Location
-     */
-    public function setLieu($lieu)
-    {
-        $this->lieu = $lieu;
-
-        return $this;
-    }
-
-    /**
-     * Get lieu
-     *
-     * @return string
-     */
-    public function getLieu()
-    {
-        return $this->lieu;
+        return $this->observations;
     }
 }
