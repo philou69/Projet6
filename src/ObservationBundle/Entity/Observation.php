@@ -90,6 +90,11 @@ class Observation
      */
     private $validatedBy;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $quantity = 1;
+
 
     /**
      * @var integer
@@ -342,31 +347,33 @@ class Observation
     {
         return $this->validatedBy;
     }
-
+    
 
     /**
-     * Set numberBird
+     * Set quantity
      *
-     * @param integer $numberBird
+     * @param integer $quantity
      *
      * @return Observation
      */
-    public function setNumberBird($numberBird)
+    public function setQuantity($quantity)
     {
-        $this->numberBird = $numberBird;
+        $this->quantity = $quantity;
 
         return $this;
     }
 
     /**
-     * Get numberBird
+     * Get quantity
      *
      * @return integer
      */
-    public function getNumberBird()
+    public function getQuantity()
     {
-        return $this->numberBird;
+        return $this->quantity;
     }
+
+
 
     /**
      * Add picture

@@ -20,7 +20,7 @@
                 </li>
                 {% if app.request.attributes.get('_route') in ['bird_list','bird_description', 'bird_location'] %}
                     <li class=" tabs active">
-                        <a href="#bird" data-toggle="tab">
+                        <a href="#bird" data-toggle="tab" data-navbar="true">
                             Fiches oiseaux
                         </a>
                     </li>
@@ -32,9 +32,9 @@
                     </li>
                 {% endif %}
                 {% if app.user %}
-                    {% if app.request.attributes.get('_routes') starts with 'user' %}
+                    {% if app.request.attributes.get('_route') starts with 'user' %}
                         <li class="tabs {% if app.request.attributes.get('_route')  starts with 'user' %}active{% endif %}">
-                            <a href="#user" data-toggle="tab">
+                            <a href="#user" data-toggle="tab" data-navbar="true">
                                 Compte
                             </a>
                         </li>
@@ -49,7 +49,7 @@
                     </li>
                 {% endif %}
                 <li class="tabs {% if app.request.attributes.get('_route') in ['contact', 'faq'] %}active{% endif %}">
-                    <a href="#other" data-toggle="tab">Information</a>
+                    <a href="#other" data-toggle="tab" data-navbar="true">Information</a>
                 </li>
                 <li>
                     <a href="https://facebook.com" class="social-network"><i class="fa fa-facebook-f"></i></a></li>

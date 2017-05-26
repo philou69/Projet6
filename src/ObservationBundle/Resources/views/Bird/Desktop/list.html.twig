@@ -1,1 +1,125 @@
 {% extends '@Observation/layout.desktop.html.twig' %}
+
+{% block title %}Liste oiseaux{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>Liste des fiches oiseaux</h1>
+        </div>
+        <div class="col-sm-6 text-right center">
+                <input type="text" id="search" placeholder="Rechercher une fiche &#xf002;" style="font-family:FontAwesome, Arial">
+        </div>
+
+    </div>
+    <div id="listing" >
+        <div id="contentBirds" class="content row"></div>
+
+        <div class="row" id="loaderContent">
+            <div class="col-sm-2 col-sm-offset-5 loader"></div>
+        </div>
+        <div class="text-center">
+            <a href="#" id="addBirds">Voir plus d'oiseaux</a>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            // Création de la variable page
+            var page = 1
+            // Variable contenant la hauteur du scroll
+            var scrollHeight = $(window).scrollTop();
+                // Première requete ajax lors du chargement de la page
+            $.ajax({
+                url: getUrl(),
+                dataType: 'html',
+                success: function (code_html, status) {
+                    success(code_html)
+                }
+            })
+            //Génération d'un scroll infinie
+            var deviceAgent = navigator.userAgent.toLowerCase();
+            var agentId = deviceAgent.match(/iphone/);
+            $('.agent').append(agentId);
+            // Requte Ajax lors du click sur le bouton add
+            $('#addBirds').on('click', function () {
+                prepareRequete(false)
+                $.ajax({
+                    url: getUrl(),
+                    dataType: 'html',
+                    success: function (code_html, status) {
+                       success(code_html)
+                    }
+                })
+            })
+            // Requete ajax lors d'une recherche
+            $('#search').on('keyup', function (event) {
+                prepareRequete(true)
+                $.ajax({
+                    url: getUrl(),
+                    dataType: 'html',
+                    success: function (code_html, status) {
+                        success(code_html)
+                    }
+                })
+            })
+
+            // Fonction générant l'url des requetes ajax
+            function getUrl() {
+                // On vérifie le contenue de l'input search,
+                // S'il n'est pas vide on créer un parametre GET search avec sa valeur
+                var parameter = $('#search').val() == '' ? '' : '?search=' + $('#search').val();
+                var url = '/bird/pagination/' + page + parameter;
+
+                return '/bird/pagination/' + page + parameter;
+            }
+
+            // Fonction préparant la zone d'affichage
+            function prepareRequete(isSearch) {
+                // On affiche le loader
+                $('loader').removeAttr('hidden');
+                // S'il s'agit d'une recherche on vide le contenue de contentBirds et on met page à 1
+                if(isSearch){
+                    $('#contentBirds').empty();
+                    page =1
+                }
+                // On passe la hauteur du scroll à la variable scrollHeigth
+                scrollHeight = $(window).scrollTop();
+            }
+
+            // Fonction utiliser lors du success d'une requete
+            function success(code_html){
+                // On bloque la vue sur la hauteur du scroll
+                $(window).scrollTop(scrollHeight);
+                // on cache le loader
+                $('.loader').attr('hidden', true)
+                // On inserre le resultat dans la zone contentBirds
+                $('#contentBirds').append(code_html)
+                // On récuperer la taille du resultat
+                var numbers = Number($('.length').data('length'));
+                // On comparse celui-ci à 20 et aux nombres d'oiseaux affiché s'ils correspondent celà signifie qu'il n'y a pas d'autres pages
+                if(numbers <= 20 || numbers == $('.birds-list').length ){
+                    // On cache donc le bouton add
+                    $('#addBirds').attr('hidden', true);
+                }else{
+                    // Sinon on l'affiche
+                    $('#addBirds').removeAttr('hidden');
+                }
+                // On supprime le div comptenant la taille du resultat pour évité les doublons
+                $('.length').remove();
+
+                // On incrimente la page pour le prochain add
+                page++;
+            }
+            // listener sur les div des oiseaux pour généreer un ien au click
+            $(document).on('click', '.birds-list', function (event) {
+                console.log($(this))
+                window.document.location = $(this).data('href');
+            })
+        })
+    </script>
+{% endblock %}

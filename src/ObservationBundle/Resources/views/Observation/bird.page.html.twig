@@ -1,0 +1,40 @@
+{% if observations is null %}
+   {% include 'ObservationBundle:Observation:no.observations.html.twig' %}
+{% else %}
+    {% for observation in observations %}
+        <div class="observations" data-href="{{ path('observation_view', {'id': observation.id}) }}">
+            <div ><small>Observateur :</small>{{ observation.user.username }}</div>
+            <div class="row">
+                <div class="text-center col-xs-4 right-border">
+                    <small>
+                        Date d'observation
+                    </small><br>
+                    {{ observation.postedAt | date('d/m/Y') }}
+                </div>
+                <div class="text-center col-xs-4 right-border">
+                    <small>Specimens observés</small><br>
+                    {{ observation.quantity }}
+                </div>
+                <div class="text-center col-xs-4">
+                    <small>Lieu</small><br>
+                    {{ observation.location.lieu }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% if nbPage > 1 %}
+        <div class="text-center">
+            <ul class="list-inline">
+                {% if page > 1 %}
+                    <li><a href="#" class="page-link" data-href="{{ path('observation_bird_page', {'id': bird.id, 'page': page - 1 }) }}"><i class="fa fa-arrow-left"></i></a></li>
+                {% endif %}
+                {% for i in range(1, nbPage) %}
+                    <li><a href="#" class="page-link" data-href="{{ path('observation_bird_page', {'id': bird.id, 'page': i}) }}"><i class="fa fa-{{ page == i ? 'circle' : 'circle-o' }}"></i></a></li>
+                {% endfor %}
+                {% if page < nbPage %}
+                    <li><a href="#" class="page-link" data-href="{{ path('observation_bird_page', {'id': bird.id, 'page': page + 1 }) }}"><i class="fa fa-arrow-right"></i></a></li>
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+{% endif %}

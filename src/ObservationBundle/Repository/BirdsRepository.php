@@ -2,6 +2,8 @@
 
 namespace ObservationBundle\Repository;
 
+use Doctrine\ORM\Tools\Pagination\Paginator;
+
 /**
  * BirdsRepository
  *
@@ -10,6 +12,37 @@ namespace ObservationBundle\Repository;
  */
 class BirdsRepository extends \Doctrine\ORM\EntityRepository
 {
+        public function getPage($page, $numbers, $search = null)
+        {
+            $query = $this->createQueryBuilder('b');
+            if($search !== null){
+                $query->orWhere('REGEXP(b.ordre, :regex) = true')
+                    ->setParameter('regex', $search)
+                    ->orWhere('REGEXP(b.famille, :regex2) = true')
+                    ->setParameter('regex2', $search)
+                    ->orWhere('REGEXP(b.rang, :regex3) = true')
+                    ->setParameter('regex3', $search)
+                    ->orWhere('REGEXP(b.lbNom, :regex4) = true')
+                    ->setParameter('regex4', $search)
+                    ->orWhere('REGEXP(b.lbAuteur, :regex5) = true')
+                    ->setParameter('regex5', $search)
+                    ->orWhere('REGEXP(b.nomComplet, :regex6) = true')
+                    ->setParameter('regex6', $search)
+                    ->orWhere('REGEXP(b.nomValide, :regex7) = true')
+                    ->setParameter('regex7', $search)
+                    ->orWhere('REGEXP(b.nomVern, :regex8) = true')
+                    ->setParameter('regex8', $search)
+                    ->orWhere('REGEXP(b.phylum, :regex9) = true')
+                    ->setParameter('regex9', $search)
+                    ->orWhere('REGEXP(b.classe, :regex10) = true')
+                    ->setParameter('regex10', $search)
+                    ->orWhere('REGEXP(b.regne, :regex11) = true')
+                    ->setParameter('regex11', $search);
+            }
+            $query->orderBy('b.nomVern', 'ASC')
+                ->addOrderBy('b.lbNom', 'ASC')->getQuery();
 
-
+            $query->setFirstResult(($page-1) * $numbers)->setMaxResults($numbers);
+            return new Paginator($query, true);
+        }
 }

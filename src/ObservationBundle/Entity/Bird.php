@@ -143,7 +143,7 @@ class Bird
      * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="bird")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $picture;
+    private $pictures;
 
 
     /**
@@ -578,7 +578,7 @@ class Bird
      */
     public function addPicture(\ObservationBundle\Entity\Picture $picture)
     {
-        $this->picture[] = $picture;
+        $this->pictures[] = $picture;
 
         return $this;
     }
@@ -590,17 +590,17 @@ class Bird
      */
     public function removePicture(\ObservationBundle\Entity\Picture $picture)
     {
-        $this->picture->removeElement($picture);
+        $this->pictures->removeElement($picture);
     }
 
     /**
-     * Get picture
+     * Get pictures
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPicture()
+    public function getPictures()
     {
-        return $this->picture;
+        return $this->pictures;
     }
 
     /**

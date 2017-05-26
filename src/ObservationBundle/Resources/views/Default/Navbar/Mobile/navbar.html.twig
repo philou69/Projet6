@@ -25,7 +25,7 @@
             </li>
             {% if app.request.attributes.get('_route')  in ['bird_description', 'bird_location'] %}
                 <li class="tabs active">
-                    <a href="#bird" data-toggle="tab">
+                    <a href="#bird" data-toggle="tab" data-navbar="true">
                         <i class="fa fa-sticky-note-o fa-2x" aria-hidden="true"></i>
                     </a>
                 </li>
@@ -37,9 +37,9 @@
                 </li>
             {% endif %}
             {% if app.user %}
-                {% if app.request.attributes.get('_route') in ['user_profil', 'user_observations','user_stars'] %}
+                {% if app.request.attributes.get('_route') in ['user_profil', 'user_my_observations', 'user_observations','user_stars'] %}
                     <li class="tabs active">
-                        <a href="#user" data-toggle="tab">
+                        <a href="#user" data-toggle="tab" data-navbar="true">
                             <i class="fa fa-user-o fa-2x" aria-hidden="true"></i>
                         </a>
                     </li>
@@ -57,7 +57,7 @@
                     </a>
                 </li>
             {% endif %}
-            <li class="tabs {% if app.request.attributes.get('_route') in ['contact', 'faq'] %}active{% endif %}"><a href="#other" data-toggle="tab"><i class="fa fa-ellipsis-v fa-2x"></i></a></li>
+            <li class="tabs {% if app.request.attributes.get('_route') in ['contact', 'faq'] %}active{% endif %}"><a href="#other" data-toggle="tab" data-navbar="true"><i class="fa fa-ellipsis-v fa-2x"></i></a></li>
             {% if app.user %}
                 <li><a href="{{ path('user_logout') }}"><i class="fa fa-sign-out fa-2x"></i></a></li>
             {% endif %}

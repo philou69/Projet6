@@ -1,0 +1,50 @@
+{# On commence par vérifié s'il y a des observations à affiché #}
+{% if observations is null %}
+    {% include 'ObservationBundle:Observation:no.observations.html.twig' %}
+{% else %}
+    {# On boucle sur les observations #}
+    {% for observation in observations %}
+        <div class=" observation">
+            <div class="row">
+                <h6 class="col-xs-12"><small>Espèce observé</small> {{ observation.bird.nomVern }}</h6>
+            </div>
+            <div class="row">
+                <div class="text-center col-xs-4 right-border">
+                    <small>
+                        Date d'observation
+                    </small><br>
+                    {{ observation.postedAt | date('d/m/Y') }}
+                </div>
+                <div class="text-center col-xs-4 right-border">
+                    <small>Specimens observéés</small><br>
+                    {{ observation.quantity }}
+                </div>
+                <div class="text-center col-xs-4">
+                    <small>Lieu</small><br>
+                    {{ observation.location.lieu }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {# Si le nombre de page on affiche une pagination #}
+    {% if nbPage != 1 %}
+        <div class="pull-right">
+            <ul class="list-inline">
+                {% if page > 1 %}
+                    <li>
+                        <a href="#" class="pagination" data-href="{{ path('observation_page', {'status': status, 'page': (page - 1), 'all': all == true ? 'true' : 'false' }) }}"><i class="fa fa-arrow-left"></i></a>
+                    </li>
+
+                {% endif %}
+                {% for i in range(1, nbPage) %}
+                    <li><a href="#" class="pagination" data-href="{{ path('observation_page', {'status': status, 'page': i, 'all': all == true ? 'true' : 'false' }) }}"><i class="fa fa-{{ i == page ? 'circle' : 'circle-o' }}"></i></a></li>
+                {% endfor %}
+                {% if page < nbPage %}
+                    <li>
+                        <a href="#" class="pagination" data-href="{{ path('observation_page', {'status': status, 'page': (page + 1), 'all': all == true ? 'true' : 'false' }) }}"><i class="fa fa-arrow-right"></i></a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+{% endif %}

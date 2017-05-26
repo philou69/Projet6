@@ -90,6 +90,11 @@ class Observation
      */
     private $validatedBy;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $quantity = 1;
+
 
     /**
      * @var integer
@@ -341,64 +346,5 @@ class Observation
     public function getValidatedBy()
     {
         return $this->validatedBy;
-    }
-
-
-    /**
-     * Set numberBird
-     *
-     * @param integer $numberBird
-     *
-     * @return Observation
-     */
-    public function setNumberBird($numberBird)
-    {
-        $this->numberBird = $numberBird;
-
-        return $this;
-    }
-
-    /**
-     * Get numberBird
-     *
-     * @return integer
-     */
-    public function getNumberBird()
-    {
-        return $this->numberBird;
-    }
-
-    /**
-     * Add picture
-     *
-     * @param \ObservationBundle\Entity\Picture $picture
-     *
-     * @return Observation
-     */
-    public function addPicture(\ObservationBundle\Entity\Picture $picture)
-    {
-        $this->pictures[] = $picture;
-
-        return $this;
-    }
-
-    /**
-     * Remove picture
-     *
-     * @param \ObservationBundle\Entity\Picture $picture
-     */
-    public function removePicture(\ObservationBundle\Entity\Picture $picture)
-    {
-        $this->pictures->removeElement($picture);
-    }
-
-    /**
-     * Get pictures
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPictures()
-    {
-        return $this->pictures;
     }
 }
