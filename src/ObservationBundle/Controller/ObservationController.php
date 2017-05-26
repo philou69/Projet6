@@ -15,6 +15,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\HttpFoundation\Session\Session;
+
 
 class ObservationController extends Controller
 {
@@ -45,13 +48,14 @@ class ObservationController extends Controller
 
     public function addAction(Request $request)
     {
-
         $user = $this->getUser();
         if($user === null){
             throw new Exception('Vous n\'êtes pas autoriser à venir içi');
         }
 
         $observation = new Observation();
+        $session = new Session();
+        $session->set('getBird', false);
         $em = $this->getDoctrine()->getManager();
 
         $form = $this->createForm(AddObservationType::class, $observation);
