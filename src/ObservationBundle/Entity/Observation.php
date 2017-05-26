@@ -54,7 +54,7 @@ class Observation
     /**
      * @var bool
      *
-     * @ORM\Column(name="validated", type="boolean", nullable=true)
+     * @ORM\Column(name="validated", type="boolean")
      */
     private $validated;
 
@@ -101,6 +101,14 @@ class Observation
      */
     private $quantity = 1;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->postedAt = new \DateTime();
+    }
 
     /**
      * Get id
@@ -230,13 +238,6 @@ class Observation
     public function getValidated()
     {
         return $this->validated;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

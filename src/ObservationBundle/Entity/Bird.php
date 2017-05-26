@@ -5,10 +5,10 @@ namespace ObservationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Birds
+ * Bird
  *
  * @ORM\Table(name="bird")
- * @ORM\Entity(repositoryClass="ObservationBundle\Repository\BirdsRepository")
+ * @ORM\Entity(repositoryClass="ObservationBundle\Repository\BirdRepository")
  */
 class Bird
 {
@@ -131,13 +131,13 @@ class Bird
      * @ORM\JoinColumn(nullable=false)
      */
 
-    private $location;
+    private $locations;
 
     /**
      * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Observation", mappedBy="bird")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $observation;
+    private $observations;
 
     /**
      * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="bird")
@@ -145,6 +145,15 @@ class Bird
      */
     private $pictures;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->locations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->observations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -161,7 +170,7 @@ class Bird
      *
      * @param string $ordre
      *
-     * @return Birds
+     * @return Bird
      */
     public function setOrdre($ordre)
     {
@@ -185,7 +194,7 @@ class Bird
      *
      * @param string $famille
      *
-     * @return Birds
+     * @return Bird
      */
     public function setFamille($famille)
     {
@@ -209,7 +218,7 @@ class Bird
      *
      * @param integer $cdNom
      *
-     * @return Birds
+     * @return Bird
      */
     public function setCdNom($cdNom)
     {
@@ -233,7 +242,7 @@ class Bird
      *
      * @param integer $cdTaxsup
      *
-     * @return Birds
+     * @return Bird
      */
     public function setCdTaxsup($cdTaxsup)
     {
@@ -257,7 +266,7 @@ class Bird
      *
      * @param integer $cdRef
      *
-     * @return Birds
+     * @return Bird
      */
     public function setCdRef($cdRef)
     {
@@ -281,7 +290,7 @@ class Bird
      *
      * @param string $rang
      *
-     * @return Birds
+     * @return Bird
      */
     public function setRang($rang)
     {
@@ -305,7 +314,7 @@ class Bird
      *
      * @param string $lbNom
      *
-     * @return Birds
+     * @return Bird
      */
     public function setLbNom($lbNom)
     {
@@ -329,7 +338,7 @@ class Bird
      *
      * @param string $lbAuteur
      *
-     * @return Birds
+     * @return Bird
      */
     public function setLbAuteur($lbAuteur)
     {
@@ -353,7 +362,7 @@ class Bird
      *
      * @param string $nomComplet
      *
-     * @return Birds
+     * @return Bird
      */
     public function setNomComplet($nomComplet)
     {
@@ -377,7 +386,7 @@ class Bird
      *
      * @param string $nomValide
      *
-     * @return Birds
+     * @return Bird
      */
     public function setNomValide($nomValide)
     {
@@ -401,7 +410,7 @@ class Bird
      *
      * @param string $nomVern
      *
-     * @return Birds
+     * @return Bird
      */
     public function setNomVern($nomVern)
     {
@@ -417,7 +426,7 @@ class Bird
      */
     public function getNomVern()
     {
-        return $this->nomVern;
+        return  str_replace("\"","",$this->nomVern) ;
     }
 
     /**
@@ -425,7 +434,7 @@ class Bird
      *
      * @param string $nomVernEng
      *
-     * @return Birds
+     * @return Bird
      */
     public function setNomVernEng($nomVernEng)
     {
@@ -441,7 +450,6 @@ class Bird
      */
     public function getNomVernEng()
     {
-        return $this->nomVernEng;
     }
 
     /**
@@ -449,7 +457,7 @@ class Bird
      *
      * @param string $phylum
      *
-     * @return Birds
+     * @return Bird
      */
     public function setPhylum($phylum)
     {
@@ -473,7 +481,7 @@ class Bird
      *
      * @param string $classe
      *
-     * @return Birds
+     * @return Bird
      */
     public function setClasse($classe)
     {
@@ -491,26 +499,17 @@ class Bird
     {
         return $this->classe;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->location = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->observation = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->picture = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add location
      *
      * @param \ObservationBundle\Entity\Location $location
      *
-     * @return Birds
+     * @return Bird
      */
     public function addLocation(\ObservationBundle\Entity\Location $location)
     {
-        $this->location[] = $location;
+        $this->locations[] = $location;
 
         return $this;
     }
@@ -522,17 +521,17 @@ class Bird
      */
     public function removeLocation(\ObservationBundle\Entity\Location $location)
     {
-        $this->location->removeElement($location);
+        $this->locations->removeElement($location);
     }
 
     /**
-     * Get location
+     * Get locations
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getLocation()
+    public function getLocations()
     {
-        return $this->location;
+        return $this->locations;
     }
 
     /**
@@ -540,11 +539,11 @@ class Bird
      *
      * @param \ObservationBundle\Entity\Observation $observation
      *
-     * @return Birds
+     * @return Bird
      */
     public function addObservation(\ObservationBundle\Entity\Observation $observation)
     {
-        $this->observation[] = $observation;
+        $this->observations[] = $observation;
 
         return $this;
     }
@@ -556,17 +555,17 @@ class Bird
      */
     public function removeObservation(\ObservationBundle\Entity\Observation $observation)
     {
-        $this->observation->removeElement($observation);
+        $this->observations->removeElement($observation);
     }
 
     /**
-     * Get observation
+     * Get observations
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getObservation()
+    public function getObservations()
     {
-        return $this->observation;
+        return $this->observations;
     }
 
     /**
@@ -574,7 +573,7 @@ class Bird
      *
      * @param \ObservationBundle\Entity\Picture $picture
      *
-     * @return Birds
+     * @return Bird
      */
     public function addPicture(\ObservationBundle\Entity\Picture $picture)
     {
@@ -625,5 +624,10 @@ class Bird
     public function getRegne()
     {
         return $this->regne;
+    }
+
+    public  function getAName()
+    {
+        return $this->nomVern == '' ? $this->lbNom : $this->getNomVern();
     }
 }
