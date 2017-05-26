@@ -3,16 +3,16 @@
 {% block title %}{{ bird.nomVern }}{% endblock %}
 
 {% block content %}
-    <h1>{{ bird.nomVern }} -<small>{{ bird.lbNom }}</small></h1>
+    <div class="row">
+        <h1 class="col-xs-12">{{ bird.nomVern }} <small>-{{ bird.lbNom }}</small></h1>
+    </div>
     <hr>
         <div >
             {# Carte géolocation #}
         </div>
         <div class="container">
             <h2>Les observations</h2>
-            <div id="observations">
-
-            </div>
+            <div id="observations" data-href="{{ path('observation_bird_page', {'id': bird.id, 'page': 1}) }}"></div>
             <div class="col-xs-2 col-xs-offset-4">
                 <div class="loader"></div>
             </div>
@@ -22,30 +22,5 @@
 
 {% block javascript %}
     {{ parent() }}
-    <script>
-        var birdId = '{{ bird.id }}';
-        $(document).ready(function () {
-            $.ajax({
-                url: "/observation/bird_list/" + birdId + '/1',
-                dataType: 'html',
-                success: function (code_html, status) {
-                    $('#observations').html(code_html);
-                    $('.loader').attr('hidden', true);
-                }
-            })
-            $(document).on('click', '.page-link', function () {
-                $('.loader').removeAttr('hidden');
-                $('#observations').empty();
-                $.ajax({
-                    url: $(this).data('href'),
-                    dataType: 'html',
-                    success: function (code_html, status) {
-                        $('#observations').html(code_html);
-                        $('.loader').attr('hidden', true)
-                    }
-                })
-            })
-
-        })
-    </script>
+    <script src="{{ asset('bundles/observation/js/AJAX/bird.location.js') }}"></script>
 {% endblock %}

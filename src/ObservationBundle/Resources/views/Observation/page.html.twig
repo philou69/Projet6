@@ -4,29 +4,31 @@
 {% else %}
          {# On boucle sur chaque observation#}
         {% for observation in observations %}
-                <div class="row observation" data-href="{{ path('observation_view', {'id': observation.id}) }}">
-                    <div class="text-center col-sm-2">
-                        <small>Espèce observé</small><br>
-                        {{ observation.bird.nomVern }}
-                    </div>
-                    <div class="text-center col-sm-2 right-border">
-                        <small>
-                            Date d'observation
-                        </small><br>
-                        {{ observation.postedAt | date('d/m/Y') }}
-                    </div>
-                    <div class="text-center col-sm-2 right-border">
-                        <small>Specimens observés</small><br>
-                        {{ observation.quantity }}
-                    </div>
-                    <div class="text-center col-sm-2 right-border">
-                        <small>Lieu</small><br>
-                        {{ observation.location.lieu }}
-                    </div>
-                    <div class="text-center col-sm-2">
-                        <small>Description libre</small><br>
-                        {{ observation.observation | slice(0,150) }}
-                    </div>
+                <div class="observation" data-href="{{ path('observation_view', {'id': observation.id}) }}">
+                    <ul class="list-inline">
+                        <li class="text-center col-xs-12 col-sm-2 ">
+                            <small>Espèce observé</small>{% if not is_mobile() %}<br>{% endif %}
+                            {{ observation.bird.nomVern }}
+                        </li>
+                        <li class="text-center col-sm-2 col-xs-4 right-border">
+                            <small>
+                                Date d'observation
+                            </small><br>
+                            {{ observation.postedAt | date('d/m/Y') }}
+                        </li>
+                        <li class="text-center col-sm-2 col-xs-4 right-border">
+                            <small>Specimens observés</small><br>
+                            {{ observation.quantity }}
+                        </li>
+                        <li class="text-center col-sm-2 col-xs-4 right-border">
+                            <small>Lieu</small><br>
+                            {{ observation.location.lieu }}
+                        </li>
+                        <li class="text-center col-sm-2 hidden-xs">
+                            <small>Description libre</small><br>
+                            {{ observation.observation | slice(0,150) }}
+                        </li>
+                    </ul>
                 </div>
         {% endfor %}
         {# Si  le nombre de page n'est pas, on affiche une pagination #}
