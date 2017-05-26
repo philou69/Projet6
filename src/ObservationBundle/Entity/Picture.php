@@ -42,7 +42,7 @@ class Picture
     private $bird;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Observation", inversedBy="observation")
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Observation", inversedBy="pictures")
      * @ORM\JoinColumn(nullable=false)
      */
     private $observation;

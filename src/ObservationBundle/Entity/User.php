@@ -90,7 +90,7 @@ class User implements AdvancedUserInterface, \Serializable
     protected $dateToken;
 
     /**
-     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Star", inversedBy="users", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Star", mappedBy="users", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     protected $stars;

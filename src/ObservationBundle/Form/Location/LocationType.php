@@ -28,7 +28,8 @@ class LocationType extends AbstractType
                                   'required' => false)
                 ))
                 ->add('lieu', TextType::class, array(
-                  'label' => 'Lieu de l\'observation'
+                  'label' => 'Lieu de l\'observation',
+                    'required' => false
                 ))
         ;
 

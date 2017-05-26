@@ -2,10 +2,14 @@
 
 namespace ObservationBundle\Form\Observation;
 
+use ObservationBundle\Entity\Bird;
 use ObservationBundle\Form\Bird\BirdType;
 use ObservationBundle\Form\Location\LocationType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -22,19 +26,46 @@ class AddObservationType extends AbstractType
             ->add('observation', TextareaType::class, array(
 
             'label' => 'Description libre',
-            'attr' => array('rows' => '5')
+            'attr' => array('rows' => '5'),
+            'required' => false
         ))
             ->add( 'seeAt', DateTimeType::class, array(
                 'label' => 'Date de l\'observation: ',
                 'widget' => 'single_text',
-                'date_format' => 'yyyy-MM-dd  HH:i'
+                'date_format' => 'yyyy-MM-dd'
             ))
             ->add('location', LocationType::class, array(
                 'label' => false
             ))
-            ->add('bird', BirdType::class, array(
-                'label' => false
+            ->add('bird', EntityType::class, array(
+                'class' => 'ObservationBundle:Bird',
+                'choice_label' => function ($bird) {
+
+                    if ($bird->getNomVern() == "") {
+                        return $bird->getlbNom();
+                    } else {
+                        return $bird->getNomVern();
+                    }
+                },
+                'label' => 'Nom de l\'espèce observée',
+                'placeholder' => 'Choisissez ou saisisez le nom d\'un oiseau'
             ))
+            ->add('numberBird', IntegerType::class, array(
+                'label' => 'Nombre de Spécimens observés',
+                'attr' => array('min' => 1,
+                                'max' => 20,
+                                'value' => 1)
+            ))
+
+            //entitytype. toString. if n
+            ->add('pictures', FileType::class, array(
+                'label' => 'Importer une image',
+                'data_class' => null,
+                'mapped' => false,
+                'required' => false,
+                'multiple' => true
+            ))
+
             ->add( 'save', SubmitType::class, array(
                 'label' => 'Valider la saisie',
                 'attr' => array(

@@ -15,7 +15,7 @@
                 </h1>
             </div>
             <div class="panel-body">
-                {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                {{ form_start(form, {'attr': {'class': 'form-horizontal', 'enctype': 'multipart/form-data'}}) }}
                 {{ form_errors(form) }}
 
             {#Localisation Observation#}
@@ -53,16 +53,7 @@
                         <div class="col-md-10 col-md-offset-1">
                             {{ form_label(form.seeAt, form.vars.label) }}
                             {{ form_errors(form.seeAt) }}
-                            {{ form_widget(form.seeAt, { 'id': 'datetimepicker'}) }}
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                            {{ form_label(form, 'Ajouter une observation') }}
-                            {{ form_errors(form.observation) }}
-                            {{ form_widget(form.observation) }}
+                            {{ form_widget(form.seeAt, { 'id': 'datepicker'}) }}
                         </div>
                     </div>
                 </div>
@@ -75,11 +66,41 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            {{ form_label(form.numberBird, form.vars.label) }}
+                            {{ form_errors(form.numberBird) }}
+                            {{ form_widget(form.numberBird, {'type': 'number'}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            {{ form_label(form.observation) }}
+                            {{ form_errors(form.observation) }}
+                            {{ form_widget(form.observation) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            {{ form_label(form.pictures) }}
+                            {{ form_errors(form.pictures) }}
+                            {{ form_widget(form.pictures) }}<br>
+
+                                <div id="picBird">
+                                    <button type="button" class="close" aria-label="Close" id="closePic">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
 
 
-
-
-
+                        </div>
+                    </div>
+                </div>
 
 
                 <div class="text-center">
@@ -93,6 +114,7 @@
     {% block javascript %}
     {{ parent() }}
         <script src="{{ asset('bundles/observation/js/map.js') }}"></script>
+        <script src="{{ asset('bundles/observation/js/observation.js') }}"></script>
             <script async defer
                     src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}&callback=initMap">
             </script>

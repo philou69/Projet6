@@ -3,4 +3,5 @@ $(document).ready(function () {
     $(document).on('mouseover', '[data-navbar="true"]', function () {
         $(this).tab('show');
     });
+
 })

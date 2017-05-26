@@ -7,16 +7,18 @@ namespace ObservationBundle\Controller;
 use ObservationBundle\Entity\Bird;
 use ObservationBundle\Entity\Location;
 use ObservationBundle\Entity\Observation;
+use ObservationBundle\Entity\User;
+use ObservationBundle\Form\Bird\BirdType;
 use ObservationBundle\Form\Location\LocationType;
 use ObservationBundle\Form\Observation\AddObservationType;
 use Proxies\__CG__\ObservationBundle\Entity\Birds;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\Date;
 
 class ObservationController extends Controller
 {
-
     /**
      *  Action de pagination des observations soit générale soit de l'utilisateur
      * @param $status
@@ -91,26 +93,30 @@ class ObservationController extends Controller
 
     public function addAction(Request $request)
     {
-        $observation = new Observation();
-        //On récupère les infos pour chaque visiteurs liés à cette reservation
-        $allBirds = $this->getDoctrine()->getManager()->getRepository('ObservationBundle:Bird')->findAll();
 
-        $form = $this->createForm(AddObservationType::class, $observation, array('listBirds' => $allBirds->getNomVern()));
+        $user = $this->getUser();
+        if($user === null){
+            throw new Exception('Vous n\'êtes pas autoriser à venir içi');
+        }
+
+        $observation = new Observation();
+        $em = $this->getDoctrine()->getManager();
+
+        $form = $this->createForm(AddObservationType::class, $observation);
 
         $form->handleRequest($request);
 
 
-
-        foreach ($allBirds as $bird){
-
-            $listBirds [] = $bird->getNomVern();
-
-        }
-
-
         if ($form->isSubmitted() && $form->isValid()) {
 
-            echo 'test Reussi';
+            $observation->setPostedAt(new \DateTime('now'));
+
+            $observation->setUser($user);
+
+            $em->persist($observation);
+            $em->flush();
+
+
             return $this->redirectToRoute('observation_list');
         }
         $device = $this->get('mobile_detect.mobile_detector');
@@ -121,8 +127,7 @@ class ObservationController extends Controller
         }else{
             return $this->render(
             'ObservationBundle:Observation:Desktop/add.html.twig', array(
-            'form' => $form->createView(),
-                'list' => $listBirds));
+            'form' => $form->createView()));
         }
     }
 
