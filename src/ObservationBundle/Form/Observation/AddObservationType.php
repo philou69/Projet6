@@ -50,7 +50,7 @@ class AddObservationType extends AbstractType
                 'label' => 'Nom de l\'espèce observée',
                 'placeholder' => 'Choisissez ou saisisez le nom d\'un oiseau'
             ))
-            ->add('numberBird', IntegerType::class, array(
+            ->add('quantity', IntegerType::class, array(
                 'label' => 'Nombre de Spécimens observés',
                 'attr' => array('min' => 1,
                                 'max' => 20,
