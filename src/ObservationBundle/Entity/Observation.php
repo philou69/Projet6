@@ -86,20 +86,11 @@ class Observation
 
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\User")
-     * @ORM\JoinColumn(nullable=true)
      */
     private $validatedBy;
 
     /**
      * @ORM\Column(type="integer")
-     */
-    private $quantity = 1;
-
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="numberBird", type="integer")
      * @Assert\Type("int")
      * @Assert\Range(
      *      min = 1,
@@ -108,9 +99,7 @@ class Observation
      *      maxMessage = "You cannot be taller than {{ limit }}"
      * )
      */
-    private $numberBird;
-
-
+    private $quantity = 1;
 
 
     /**

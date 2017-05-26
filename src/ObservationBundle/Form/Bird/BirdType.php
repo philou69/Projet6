@@ -10,7 +10,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Choice;
 use Doctrine\ORM\EntityManager;
-
+$user = $this->getUser();
+        if($user === null){
+            throw new Exception('Vous n\'êtes pas autoriser à venir içi');
+        }
 class BirdType extends AbstractType
 {
 

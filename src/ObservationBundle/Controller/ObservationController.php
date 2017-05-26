@@ -117,7 +117,7 @@ class ObservationController extends Controller
             $em->flush();
 
 
-            return $this->redirectToRoute('observation_list');
+            return $this->redirectToRoute('bird_location', array('id' => $observation->getBird()->getId() ));
         }
         $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile()){
