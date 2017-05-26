@@ -34,21 +34,16 @@ class ObservationController extends Controller
             }else{
                 $em = $this->getDoctrine()->getManager();
                 // On récupere la liste des observations et on calcul le nombre de pages maximum en fonction de la limite de 10
-                $observations = $em->getRepository('ObservationBundle:Observation')->findObs($validate,$this->getUser(), $page, 1, $all);
-                $nbPage = ceil(count($observations) / 1);
+                $observations = $em->getRepository('ObservationBundle:Observation')->findObs($validate,$this->getUser(), $page, 10, $all);
+                $nbPage = ceil(count($observations) / 10);
                 // Si lapage est surperieur au nombre de page ou que le nombre de page est 0, on passe tout à null
                 if($nbPage < $page || $nbPage == 0){
                     $observations = null;
                     $nbPage = null;
                 }
             }
-
-            $device = $this->get('mobile_detect.mobile_detector');
-            if($device->isMobile()){
-                return $this->render('@Observation/Observation/Mobile/page.html.twig', array('observations' => $observations, 'page' => $page, 'nbPage' => $nbPage, 'status' => $status, 'all' => $all));
-            }else{
-                return $this->render('@Observation/Observation/Desktop/page.html.twig', array('observations' => $observations, 'page' => $page, 'nbPage' => $nbPage, 'status' => $status, 'all' => $all));
-            }
+            // On retourne la même vue quelque soit le device
+            return $this->render('ObservationBundle:Observation:page.html.twig', array('observations' => $observations, 'page' => $page, 'nbPage' => $nbPage, 'status' => $status, 'all' => $all));
         }else{
             throw $this->createAccessDeniedException('Vous ne pouvez pas acceder à cette page !');
         }
@@ -77,6 +72,7 @@ class ObservationController extends Controller
                     $nbPage = null;
                 }
             }
+            // On retourne la même vue quelque soit le device
             return $this->render('@Observation/Observation/bird.page.html.twig', array('observations' => $observations, 'page' => $page, 'nbPage' => $nbPage, 'bird' => $bird));
         }else{
             throw $this->createAccessDeniedException('Vous ne pouvez pas acceder à cette page !');

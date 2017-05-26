@@ -59,7 +59,7 @@ class Observation
     private $validated;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observation", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $bird;
@@ -73,7 +73,7 @@ class Observation
     private $pictures;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Location", inversedBy="observation", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Location", inversedBy="observations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $location;

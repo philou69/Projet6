@@ -1,11 +1,3 @@
-observation_my_page:
-    path: /my_list/{status}/{page}
-    defaults:
-      _controller:  ObservationBundle:Observation:myPagination
-    requirements:
-      -status: true/false
-      -page: \d+
-
 observation_page:
     path: /list/{status}/{page}/{all}
     defaults:

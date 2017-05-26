@@ -3,7 +3,7 @@
     <div class="container">
         {#  Block title navbar #}
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ path('homepage') }}">Nos Amis les oiseaux</a>
+            <a class="navbar-brand" href="{{ path('homepage') }}">NAO</a>
         </div>
         {# Liste des menus principaux avec vérification de la route pour activé dynamiquement la navbar à l'aide de app.request.get('_route') #}
         <div>
@@ -51,11 +51,11 @@
                 <li class="tabs {% if app.request.attributes.get('_route') in ['contact', 'faq'] %}active{% endif %}">
                     <a href="#other" data-toggle="tab" data-navbar="true">Information</a>
                 </li>
-                <li>
+                <li class="logo-sociaux">
                     <a href="https://facebook.com" class="social-network"><i class="fa fa-facebook-f"></i></a></li>
-                <li>
+                <li class="logo-sociaux">
                     <a href="https://instagram.com" class="social-network"><i class="fa fa-instagram"></i></a></li>
-                <li>
+                <li class="logo-sociaux">
                     <a href="https://plus.google.com" class="social-network"><i class="fa fa-google-plus"></i></a></li>
                 {% if app.user %}
                     <li><a href="{{ path('user_logout') }}"><i class="fa fa-sign-out "></i></a></li>

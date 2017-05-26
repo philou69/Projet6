@@ -113,7 +113,7 @@
         </div>
     {% block javascript %}
     {{ parent() }}
-        <script src="{{ asset('bundles/observation/js/map.js') }}"></script>
+        <script src="{{ asset('bundles/observation/js/Maps/observation.add.js') }}"></script>
         <script src="{{ asset('bundles/observation/js/observation.js') }}"></script>
             <script async defer
                     src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}&callback=initMap">

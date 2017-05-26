@@ -2,24 +2,24 @@
    {% include 'ObservationBundle:Observation:no.observations.html.twig' %}
 {% else %}
     {% for observation in observations %}
-        <div class="observations" data-href="{{ path('observation_view', {'id': observation.id}) }}">
-            <div ><small>Observateur :</small>{{ observation.user.username }}</div>
-            <div class="row">
-                <div class="text-center col-xs-4 right-border">
+        <div class="observation" data-href="{{ path('observation_view', {'id': observation.id}) }}">
+            <ul class="list-inline">
+                <li class="col-xs-12"><small>Observateur :</small>{{ observation.user.username }}</li>
+                <li class="text-center col-xs-4 right-border">
                     <small>
                         Date d'observation
                     </small><br>
                     {{ observation.postedAt | date('d/m/Y') }}
-                </div>
-                <div class="text-center col-xs-4 right-border">
+                </li>
+                <li class="text-center col-xs-4 right-border">
                     <small>Specimens observés</small><br>
                     {{ observation.quantity }}
-                </div>
-                <div class="text-center col-xs-4">
-                    <small>Lieu</small><br>
-                    {{ observation.location.lieu }}
-                </div>
-            </div>
+                </li>
+                <li class="text-center col-xs-4">
+                    <small>Specimens observés</small><br>
+                    {{ observation.quantity }}
+                </li>
+            </ul>
         </div>
     {% endfor %}
     {% if nbPage > 1 %}

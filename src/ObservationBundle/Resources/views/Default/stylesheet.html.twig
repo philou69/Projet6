@@ -1,7 +1,7 @@
 <style>
-
+/*------------------ Styel pour les écans de largeur superieur à 768 px -------*/
     @media (min-width: 768px) {
-        /* Marge du body pour la navbar */
+        /* Marge du body pour la navbar et utilisation de flex pour coller le footer en bas de page */
         body {
             padding-top: 110px;
             margin: 0;
@@ -9,120 +9,43 @@
             flex-direction: column;
             min-height: 100vh;
         }
+        /*Contenu de la page pour prendre le plus de place possible*/
         #content{
             flex: 1;
             margin-bottom: 20px;
         }
-        #margin{
-            with: 85%;
-            margin: auto;
+        /*style des liste oiseaux*/
+        .observation, .observation>ul{
+            min-height: 60px;
         }
-        .social-network{
-            margin-left: 5px;
-        }
-
-        .birds-list {
-            height: 100px;
-            width: 47.5%;
-            padding: 0px;
-            background-color: #FEFEE2;
-            margin-bottom: 10px;
-        }
-        .left{
-            margin-right: 2.5%;
-        }
-        .right{
-            margin-left: 2.5%;
-        }
-
-        .observation{
-            margin-top: 20px;
-        }
-        .observation, .observation>div{
-            height: 100px;
-
-        }
-        .observation>div>small{
-            color: #dddddd;
-        }
-        .right-border{
-            border: 0;
-            border-right: 1px solid #dddddd;
-        }
-        /**
-        Réecriture du css bootstrap des nav-tabs au sujet des border
-         */
-        .nav-tabs > li{
-            border: 0;
-            border-bottom: 1px solid skyblue;
-        }
-        .nav-tabs.nav-justified>li>a,.nav-tabs.nav-justified>.active>a, .nav-tabs.nav-justified>.active>a:hover, .nav-tabs.nav-justified>.active>a:focus {
-            border: 0;
-            border-radius: 0;
-        }
-        .nav-tabs.nav-justified>li>a:focus{
-            background-color: white;
-            border: 0;
-            border-bottom: 3px solid skyblue;
+        /* Position du bouton up à 120px du haut*/
+        #up{
+            top: 120px;
         }
     }
-
+/* -------------------------------- Fin style écran petit ----------------------------------------*/
+/* -------------------------------- Ecran de moins de 768 px de large ----------------------------------------*/
     @media (max-width: 767px) {
+        /* Marge speciale pour ne pas affiché sous la navbar */
         body{
             margin-bottom: 70px;
         }
+        /* position du bouton up à 20px du haut */
         #up{
-            z-index: 255;
-            display: none;
-            position: fixed;
             top: 20px;
-            right:20px;
         }
-        /**
-        Réecriture du css bootstrap des nav-tabs au sujet des border
-         */
-        .nav-tabs{
-            border: 0;
-        }
-        .nav-tabs > li{
-            height: 44px;
-            padding: 0;
-            border: 0;
-            border-bottom: 1px solid skyblue;
-        }
-        .nav-tabs>li>a,.nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus {
-            border: 0;
-            border-radius: 0;
-        }
-        .nav-tabs>li>a:focus{
-            background-color: white;
-            border: 0;
-            border-bottom: 3px solid skyblue;
-        }
-        .observation{
-            margin-top: 20px;
-        }
-        .observation, .observation>div{
-            /*height: 50px;*/
 
-        }
-        .observation>div>h6>small, .observation>div>div>small{
-            color: #dddddd;
-        }
-        .right-border{
-            border: 0;
-            border-right: 1px solid #dddddd;
-        }
         .content-loader{
             height: 60vh;
             padding-top: calc((60vh - 120px)/2);
         }
+
+
+        /*.observation, .observation>ul{*/
+            /*min-height: 80px;*/
+        /*}*/
     }
-    /* Survole d'un lien */
-    /*li > a:hover {*/
-        /*background-color: #C82829 !important;*/
-    /*}*/
-    /* 2toilerouge sur les lable obligatoire */
+
     .required:after {
         content: '*';
         color: #C82829;
@@ -131,10 +54,6 @@
     .icon{
         height: 20px;
     }
-    /* Lien des balises avec classes active */
-    /*.active > a{*/
-        /*background-color: #6b9311 !important;*/
-    /*}*/
 
     /* Toggle switch */
     /* Le switch - box autour du slider*/
@@ -154,7 +73,7 @@
     /* Le slider */
     .slider {
         position: absolute;
-uppercase        cursor: pointer;
+        cursor: pointer;
         top: 0;
         left: 0;
         right: 0;
@@ -209,9 +128,6 @@ uppercase        cursor: pointer;
         font-size: small;
     }
 
-    .birds-list > div{
-        padding: 0;
-    }
     #search{
         border: 0;
         border-bottom: 2px solid cornflowerblue;
@@ -219,11 +135,6 @@ uppercase        cursor: pointer;
 
     .center, .center > input, .center> i{
         margin: auto;
-    }
-    .birds-list {
-        height: 100px;
-        background-color: #FEFEE2;
-        margin-bottom: 10px;
     }
 
     .loader {
@@ -240,8 +151,6 @@ uppercase        cursor: pointer;
         100% { transform: rotate(360deg); }
     }
 
-    .observations{
-        margin-top: 20px;
         
     /*style form field*/
     #content > div > div.panel-body > form > div:nth-child(4) > div > div > span:nth-child(3){
@@ -259,4 +168,71 @@ uppercase        cursor: pointer;
         right: 0;
     }
 
+
+    /*
+        Zone sur les div des observations lors des paginations
+        - Affichage d'une main lors du survole
+        - hauteur à 100 px
+        - Hauteur de certains divs à 100px
+        - Affichage d'une bordure à droite sur certain contenue
+    */
+    .observation {
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+    .observation>ul{
+        min-height: 60px;
+    }
+
+    .observation small{
+        color: #dddddd;
+    }
+
+    .right-border{
+        border: 0;
+        border-right: 1px solid #dddddd;
+    }
+    /**
+        Réecriture du css bootstrap des nav-tabs au sujet des border
+         */
+    .nav-tabs, .nav-tabs.nav-justified{
+        /*On efface toutes bordure sauf en bas d'une épaisseur de 1px blue*/
+        border: 0;
+        border-bottom: 1px solid skyblue;
+    }
+    .nav-tabs.nav-justified>li>a{
+        /*On supprime la bordure basse de base*/
+        border: 0;
+        background-color: white;
+    }
+    .nav-tabs.nav-justified>.active>a:hover,.nav-tabs.nav-justified>.active>a,.nav-tabs.nav-justified>.active>a:focus,.nav-tabs>li.active>a:hover,.nav-tabs>li.active>a,.nav-tabs>li.active>a:focus{
+        /* On affiche une bordure de 5px sur le lien séléctionner*/
+        border: 0 ;
+        border-bottom: 5px solid skyblue;
+    }
+
+    #up{
+        z-index: 255;
+        display: none;
+        position: fixed;
+        right:20px;
+    }
+
+
+/** Affichage main pour les div oiseaux **/
+.bird {
+    cursor: pointer;
+    height: 100px;
+    width: 47.5%;
+    padding: 0;
+    background-color: #FEFEE2;
+    margin-bottom: 10px;
+}
+/* Margin special pour les div liste des oiseaux marge soit à gauche soit à droite*/
+.left{
+    margin-right: 2.5%;
+}
+.right{
+    margin-left: 2.5%;
+}
 </style>
