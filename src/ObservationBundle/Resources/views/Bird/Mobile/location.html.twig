@@ -1,1 +1,51 @@
 {% extends '@Observation/layout.mobile.html.twig' %}
+
+{% block title %}{{ bird.nomVern }}{% endblock %}
+
+{% block content %}
+    <h1>{{ bird.nomVern }} -<small>{{ bird.lbNom }}</small></h1>
+    <hr>
+        <div >
+            {# Carte géolocation #}
+        </div>
+        <div class="container">
+            <h2>Les observations</h2>
+            <div id="observations">
+
+            </div>
+            <div class="col-xs-2 col-xs-offset-4">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script>
+        var birdId = '{{ bird.id }}';
+        $(document).ready(function () {
+            $.ajax({
+                url: "/observation/bird_list/" + birdId + '/1',
+                dataType: 'html',
+                success: function (code_html, status) {
+                    $('#observations').html(code_html);
+                    $('.loader').attr('hidden', true);
+                }
+            })
+            $(document).on('click', '.page-link', function () {
+                $('.loader').removeAttr('hidden');
+                $('#observations').empty();
+                $.ajax({
+                    url: $(this).data('href'),
+                    dataType: 'html',
+                    success: function (code_html, status) {
+                        $('#observations').html(code_html);
+                        $('.loader').attr('hidden', true)
+                    }
+                })
+            })
+
+        })
+    </script>
+{% endblock %}

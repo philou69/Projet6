@@ -163,7 +163,7 @@ class User implements AdvancedUserInterface, \Serializable
         $this->isActive = true;
     }
 
-    public function addRoles($role)
+    public function addRole($role)
     {
         $role = strtoupper($role);
         if($role == static::ROLE_DEFAULT){

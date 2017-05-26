@@ -86,6 +86,11 @@ class Observation
      */
     private $validatedBy;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $quantity = 1;
+
 
 
 
@@ -355,4 +360,5 @@ class Observation
     {
         return $this->validatedBy;
     }
+    
 }
