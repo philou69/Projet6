@@ -1,0 +1,69 @@
+{% extends '@Observation/layout.desktop.html.twig' %}
+
+{% block title %}Mes Observation{% endblock %}
+
+{% block content %}
+    <h1>Les dernières observations</h1>
+
+    <div>
+        <ul class="nav nav-tabs nav-justified">
+            <li><a class="link-tab" href="#" data-status="true">Validées</a></li>
+            <li ><a class="link-tab" href="#"  data-status="false">En attente</a></li>
+        </ul>
+    </div>
+    <div >
+        <div id="content-observations"></div>
+        <div class="row">
+            <div id="loader" class="col-sm-2 col-sm-offset-5 loader"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript">
+        var all = '{{ all }}';
+        $(document).ready(function () {
+            // On viens de chargé la page, on affiche les observations validés
+            $.ajax({
+                url: '/observation/list/true/1/' + all,
+                dataType: 'html',
+                success: function (code_html, status) {
+                    $('#content-observations').html(code_html);
+                    $('#loader').attr('hidden', true)
+                }
+            })
+
+            $('.link-tab').on('click', function () {
+                var status = $(this).data('status')
+                $.ajax({
+                    url: getUrl(status),
+                    dataType: 'html',
+                    success: function (code_html, status) {
+                        $('#content-observations').html(code_html);
+                        $('#loader').attr('hidden', true);
+                    }
+                })
+            })
+            $(document).on('click', '.pagination', function (event) {
+                prepareAjax();
+                $.ajax({
+                    url: $(this).data('href'),
+                    dataType: 'html',
+                    success: function (code_html, status) {
+                        $('#content-observations').html(code_html);
+                        $('#loader').attr('hidden', true)
+                    }
+                })
+            })
+
+            function prepareAjax() {
+                $("#content-observations").empty();
+                $('#loader').removeAttr('hidden');
+            }
+            function getUrl(status) {
+                return '/observation/list/' + status + '/1/' + all;
+            }
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% if observations is null %}
+    {# On s'assure si on a des observations a affiché #}
+    {% include 'ObservationBundle:Observation:no.observations.html.twig' %}
+{% else %}
+         {# On boucle sur chaque observation#}
+        {% for observation in observations %}
+                <div class="row observation" data-href="{{ path('observation_view', {'id': observation.id}) }}">
+                    <div class="text-center col-sm-2">
+                        <small>Espèce observé</small><br>
+                        {{ observation.bird.nomVern }}
+                    </div>
+                    <div class="text-center col-sm-2 right-border">
+                        <small>
+                            Date d'observation
+                        </small><br>
+                        {{ observation.postedAt | date('d/m/Y') }}
+                    </div>
+                    <div class="text-center col-sm-2 right-border">
+                        <small>Specimens observés</small><br>
+                        {{ observation.quantity }}
+                    </div>
+                    <div class="text-center col-sm-2 right-border">
+                        <small>Lieu</small><br>
+                        {{ observation.location.lieu }}
+                    </div>
+                    <div class="text-center col-sm-2">
+                        <small>Description libre</small><br>
+                        {{ observation.observation | slice(0,150) }}
+                    </div>
+                </div>
+        {% endfor %}
+        {# Si  le nombre de page n'est pas, on affiche une pagination #}
+        {% if nbPage != 1 %}
+            <div class="text-center">
+                <ul class="list-inline">
+                    {#si la page est superieur à 1, on mets une flèche précedente #}
+                    {% if page > 1 %}
+                        <li>
+                            <a href="#" class="pagination" data-href="{{ path('observation_page', {'status': status, 'page': (page - 1), 'all': all == true ? 'true' : 'false' }) }}"><i class="fa fa-arrow-left"></i></a>
+                        </li>
+
+                    {% endif %}
+                    {# on boucle autant de fois que e nombre de pache#}
+                    {% for i in range(1, nbPage) %}
+                        <li><a href="#" class="pagination" data-href="{{ path('observation_page', {'status': status, 'page': i, 'all': all == true ? 'true' : 'false' }) }}"><i class="fa fa-{{ i == page ? 'circle' : 'circle-o' }}"></i></a></li>
+                    {% endfor %}
+                    {#si la page est inferieur au nombre de pages, on mets une flèche suivante  #}
+                    {% if page < nbPage %}
+                        <li>
+                            <a href="#" class="pagination" data-href="{{ path('observation_page', {'status': status, 'page': (page + 1), 'all': all == true ? 'true' : 'false' }) }}"><i class="fa fa-arrow-right"></i></a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+
+{% endif %}

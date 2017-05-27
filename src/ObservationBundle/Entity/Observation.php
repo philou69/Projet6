@@ -54,12 +54,12 @@ class Observation
     /**
      * @var bool
      *
-     * @ORM\Column(name="validated", type="boolean", nullable=true)
+     * @ORM\Column(name="validated", type="boolean")
      */
     private $validated;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observation", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $bird;
@@ -73,7 +73,7 @@ class Observation
     private $pictures;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Location", inversedBy="observation", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Location", inversedBy="observations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $location;
@@ -86,15 +86,11 @@ class Observation
 
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\User")
-     * @ORM\JoinColumn(nullable=true)
      */
     private $validatedBy;
 
-
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="numberBird", type="integer")
+     * @ORM\Column(type="integer")
      * @Assert\Type("int")
      * @Assert\Range(
      *      min = 1,
@@ -103,10 +99,16 @@ class Observation
      *      maxMessage = "You cannot be taller than {{ limit }}"
      * )
      */
-    private $numberBird;
+    private $quantity = 1;
 
-
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->postedAt = new \DateTime();
+    }
 
     /**
      * Get id
@@ -237,13 +239,6 @@ class Observation
     {
         return $this->validated;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Set bird
@@ -342,31 +337,33 @@ class Observation
     {
         return $this->validatedBy;
     }
-
+    
 
     /**
-     * Set numberBird
+     * Set quantity
      *
-     * @param integer $numberBird
+     * @param integer $quantity
      *
      * @return Observation
      */
-    public function setNumberBird($numberBird)
+    public function setQuantity($quantity)
     {
-        $this->numberBird = $numberBird;
+        $this->quantity = $quantity;
 
         return $this;
     }
 
     /**
-     * Get numberBird
+     * Get quantity
      *
      * @return integer
      */
-    public function getNumberBird()
+    public function getQuantity()
     {
-        return $this->numberBird;
+        return $this->quantity;
     }
+
+
 
     /**
      * Add picture

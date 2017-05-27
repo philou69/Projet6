@@ -11,6 +11,7 @@
         }
         #content{
             flex: 1;
+            margin-bottom: 20px;
         }
         #margin{
             with: 85%;
@@ -19,11 +20,108 @@
         .social-network{
             margin-left: 5px;
         }
+
+        .birds-list {
+            height: 100px;
+            width: 47.5%;
+            padding: 0px;
+            background-color: #FEFEE2;
+            margin-bottom: 10px;
+        }
+        .left{
+            margin-right: 2.5%;
+        }
+        .right{
+            margin-left: 2.5%;
+        }
+
+        .observation{
+            margin-top: 20px;
+        }
+        .observation, .observation>div{
+            height: 100px;
+
+        }
+        .observation>div>small{
+            color: #dddddd;
+        }
+        .right-border{
+            border: 0;
+            border-right: 1px solid #dddddd;
+        }
+        /**
+        Réecriture du css bootstrap des nav-tabs au sujet des border
+         */
+        .nav-tabs > li{
+            border: 0;
+            border-bottom: 1px solid skyblue;
+        }
+        .nav-tabs.nav-justified>li>a,.nav-tabs.nav-justified>.active>a, .nav-tabs.nav-justified>.active>a:hover, .nav-tabs.nav-justified>.active>a:focus {
+            border: 0;
+            border-radius: 0;
+        }
+        .nav-tabs.nav-justified>li>a:focus{
+            background-color: white;
+            border: 0;
+            border-bottom: 3px solid skyblue;
+        }
+    }
+
+    @media (max-width: 767px) {
+        body{
+            margin-bottom: 70px;
+        }
+        #up{
+            z-index: 255;
+            display: none;
+            position: fixed;
+            top: 20px;
+            right:20px;
+        }
+        /**
+        Réecriture du css bootstrap des nav-tabs au sujet des border
+         */
+        .nav-tabs{
+            border: 0;
+        }
+        .nav-tabs > li{
+            height: 44px;
+            padding: 0;
+            border: 0;
+            border-bottom: 1px solid skyblue;
+        }
+        .nav-tabs>li>a,.nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus {
+            border: 0;
+            border-radius: 0;
+        }
+        .nav-tabs>li>a:focus{
+            background-color: white;
+            border: 0;
+            border-bottom: 3px solid skyblue;
+        }
+        .observation{
+            margin-top: 20px;
+        }
+        .observation, .observation>div{
+            /*height: 50px;*/
+
+        }
+        .observation>div>h6>small, .observation>div>div>small{
+            color: #dddddd;
+        }
+        .right-border{
+            border: 0;
+            border-right: 1px solid #dddddd;
+        }
+        .content-loader{
+            height: 60vh;
+            padding-top: calc((60vh - 120px)/2);
+        }
     }
     /* Survole d'un lien */
-    li > a:hover {
-        background-color: #C82829 !important;
-    }
+    /*li > a:hover {*/
+        /*background-color: #C82829 !important;*/
+    /*}*/
     /* 2toilerouge sur les lable obligatoire */
     .required:after {
         content: '*';
@@ -34,9 +132,9 @@
         height: 20px;
     }
     /* Lien des balises avec classes active */
-    .active > a{
-        background-color: #6b9311 !important;
-    }
+    /*.active > a{*/
+        /*background-color: #6b9311 !important;*/
+    /*}*/
 
     /* Toggle switch */
     /* Le switch - box autour du slider*/
@@ -110,6 +208,41 @@ uppercase        cursor: pointer;
         text-transform: uppercase;
         font-size: small;
     }
+
+    .birds-list > div{
+        padding: 0;
+    }
+    #search{
+        border: 0;
+        border-bottom: 2px solid cornflowerblue;
+    }
+
+    .center, .center > input, .center> i{
+        margin: auto;
+    }
+    .birds-list {
+        height: 100px;
+        background-color: #FEFEE2;
+        margin-bottom: 10px;
+    }
+
+    .loader {
+        border: 16px solid #f3f3f3; /* Light grey */
+        border-top: 16px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .observations{
+        margin-top: 20px;
+        
     /*style form field*/
     #content > div > div.panel-body > form > div:nth-child(4) > div > div > span:nth-child(3){
         display: none;

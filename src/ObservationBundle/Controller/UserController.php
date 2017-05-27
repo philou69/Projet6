@@ -11,6 +11,7 @@ use ObservationBundle\Form\User\ResetPasswordType;
 use ObservationBundle\Form\User\UsernameEmailUserType;
 use ObservationBundle\Form\User\UserType;
 use ObservationBundle\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\EventDispatcher\Event;
@@ -240,6 +241,43 @@ class UserController extends Controller
             return $this->render('ObservationBundle:User/Mobile:change.password.html.twig', array('form' => $form->createView()));
         }else{
             return $this->render('ObservationBundle:User/Desktop:change.password.html.twig', array('form' => $form->createView()));
+        }
+    }
+
+    /**
+     * Action affichant la page des observation de l'utilisateur
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     */
+    public function myObservationsAction()
+    {
+        // Comme on est sur les observations de l'utilisateur all vaut false
+        // all est utilisé sur les vues et les action utilisées après
+        $all = 'false';
+        $device = $this->get('mobile_detect.mobile_detector');
+        if($device->isMobile()){
+            return $this->render('@Observation/User/Mobile/list.observation.html.twig', array('all' => $all));
+        }else{
+            return $this->render('@Observation/User/Desktop/list.observation.html.twig', array('all' => $all));
+        }
+    }
+
+    /**
+     * Action affichant la page de toutes les observation
+     * @Security("has_role('ROLE_NATURALISTE')")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function observationsAction()
+    {
+        // Comme on est sur totues les observations, all vaut true
+        // all est utilisé sur les vues et les action utilisées après
+        $all = 'true';
+        $device = $this->get('mobile_detect.mobile_detector');
+        if($device->isMobile()){
+            return $this->render('@Observation/User/Mobile/list.observation.html.twig', array('all' => $all));
+        }else{
+            return $this->render('@Observation/User/Desktop/list.observation.html.twig', array('all' => $all));
         }
     }
 

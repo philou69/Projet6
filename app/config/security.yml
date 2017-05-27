@@ -4,6 +4,11 @@ security:
     encoders:
         ObservationBundle\Entity\User:
             algorithm: bcrypt
+
+    role_hierarchy:
+        ROLE_OBS: ROLE_USER
+        ROLE_NATURALISTE: ROLE_OBS, ROLE_USER
+
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         main:
@@ -41,3 +46,10 @@ security:
 
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
             #form_login: ~
+    access_control:
+        - { path: ^/user/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user, roles: ROLE_USER }
+        - { path: ^/observation, roles: ROLE_USER }
+        - {path: ^/user/observation, roles: ROLE_NATURALISTE }
+        - {path: ^/observation/list, roles: ROLE_USER }

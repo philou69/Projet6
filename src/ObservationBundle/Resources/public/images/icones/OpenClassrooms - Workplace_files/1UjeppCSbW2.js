@@ -1,3 +1,0 @@
-if (self.CavalryLogger) { CavalryLogger.start_js(["XWDv7"]); }
-
-__d('EventHovercard',['Arbiter','DOM'],(function a(b,c,d,e,f,g){function h(){}Object.assign(h,{EVENT_ACTION:'HOVERCARD_EVENT_ACTION',registerEventActions:function i(j,k){var l=k.parentNode;c('Arbiter').subscribe(this.EVENT_ACTION,function(m,n){if(n.eid==j)c('DOM').setContent(l,n.markup);});},informEventAction:function i(j,k){c('Arbiter').inform(this.EVENT_ACTION,{eid:j,markup:k});}});f.exports=h;}),null);
