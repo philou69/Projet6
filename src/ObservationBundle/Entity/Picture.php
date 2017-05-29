@@ -3,12 +3,14 @@
 namespace ObservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Picture
  *
  * @ORM\Table(name="picture")
  * @ORM\Entity(repositoryClass="ObservationBundle\Repository\PictureRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Picture
 {
@@ -48,7 +50,7 @@ class Picture
     private $observation;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\User")
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\User", mappedBy="avatar")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -57,6 +59,10 @@ class Picture
      * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Star", mappedBy="picture")
      */
     protected $star;
+
+    protected $file;
+
+    protected $tempFileName;
 
     /**
      * Get id
@@ -211,5 +217,84 @@ class Picture
     public function getStar()
     {
         return $this->star;
+    }
+
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function setFile(UploadedFile $file)
+    {
+        $this->file = $file;
+        if(null !== $this->url){
+            $this->tempFileName = $this->getUploadRootDir() . '/'. $this->url;
+        }
+        $this->url = null;
+        $this->alt = null;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if($this->file === null){
+            return;
+        }
+
+        $this->url = uniqid() . '.' . $this->file->guessExtension();
+        $this->alt = $this->file->getClientOriginaleName();
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function postUpload()
+    {
+        if($this->file === null){
+            return;
+        }
+
+        if($this->tempFileName !== null){
+            if(file_exists($this->tempFileName)){
+                unlink($this->tempFileName);
+            }
+        }
+        $this->file->move($this->getUploadRootDir(), $this->url);
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function preRemove()
+    {
+        $this->tempFileName = $this->getUploadRootDir() . '/' . $this->url;
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function postRemove()
+    {
+        if(file_exists($this->tempFileName))
+        unlink($this->tempFileName);
+    }
+
+    public function getUploadDir()
+    {
+        return 'Resources/public/images/' . $this->bird === null ? ($this->observation === null ? 'avatar' : 'bird' ): 'bird';
+    }
+
+    public function getUploadRootDir()
+    {
+        return __DIR__ . '/../' . $this->getUploadDir();
+    }
+
+    public function getWebPath()
+    {
+        return $this->getUploadDir() . '/'.  $this->url;
     }
 }
