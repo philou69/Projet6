@@ -1,0 +1,20 @@
+{% extends  '@Observation/layout.desktop.html.twig' %}
+
+{% block title %}Changer d'avatar{% endblock %}
+
+{% block  content %}
+    {{ form(form) }}
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            $(":file").filestyle({
+                input: false,
+                buttonName: 'btn-info',
+                iconName: 'fa fa-inbox'
+            })
+        })
+    </script>
+{% endblock %}
