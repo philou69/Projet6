@@ -50,11 +50,15 @@ class Star
     private $applicable;
 
     /**
-     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\User", inversedBy="stars", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\User", inversedBy="stars")
      * @ORM\JoinColumn(nullable=false)
      */
     protected $users;
 
+    /**
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Picture", inversedBy="star")
+     */
+    protected $picture;
 
     /**
      * Get id
@@ -217,5 +221,29 @@ class Star
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param \ObservationBundle\Entity\Picture $picture
+     *
+     * @return Star
+     */
+    public function setPicture(\ObservationBundle\Entity\Picture $picture = null)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \ObservationBundle\Entity\Picture
+     */
+    public function getPicture()
+    {
+        return $this->picture;
     }
 }
