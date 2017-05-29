@@ -43,7 +43,7 @@ class Location
     private $lieu;
 
     /**
-     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Bird", mappedBy="location", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Bird", mappedBy="locations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
 

@@ -33,6 +33,6 @@ class UserListener
         // Hash du mot de passe puis enregistrement et ajout de ROLE_OBS
         $password = $this->encoder->encodePassword($user, $user->getPlainPassword());
         $user->setPassword($password)
-            ->addRoles('ROLE_OBS');
+            ->addRole('ROLE_OBS');
     }
 }

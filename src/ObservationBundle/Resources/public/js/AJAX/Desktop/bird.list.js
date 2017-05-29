@@ -43,9 +43,9 @@ $(document).ready(function () {
         // On vérifie le contenue de l'input search,
         // S'il n'est pas vide on créer un parametre GET search avec sa valeur
         var parameter = $('#search').val() == '' ? '' : '?search=' + $('#search').val();
-        var url = '/bird/pagination/' + page + parameter;
+        var url = '/NAO/web/app_dev.php/bird/pagination/' + page + parameter;
 
-        return '/bird/pagination/' + page + parameter;
+        return '/NAO/web/app_dev.php/bird/pagination/' + page + parameter;
     }
 
     // Fonction préparant la zone d'affichage
