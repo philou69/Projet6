@@ -39,19 +39,16 @@ class Picture
 
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="picture")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $bird;
 
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Observation", inversedBy="pictures")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $observation;
 
     /**
      * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\User", mappedBy="avatar")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
@@ -245,7 +242,7 @@ class Picture
         }
 
         $this->url = uniqid() . '.' . $this->file->guessExtension();
-        $this->alt = $this->file->getClientOriginaleName();
+        $this->alt = $this->file->getClientOriginalName();
     }
 
     /**
@@ -285,16 +282,18 @@ class Picture
 
     public function getUploadDir()
     {
-        return 'Resources/public/images/' . $this->bird === null ? ($this->observation === null ? 'avatar' : 'bird' ): 'bird';
+        $directory = $this->bird === null ? $this->observation === null ? 'avatar' : 'bird' : 'bird';
+        return 'uploads/images/' . $directory;
     }
 
     public function getUploadRootDir()
     {
-        return __DIR__ . '/../' . $this->getUploadDir();
+        return __DIR__ . '/../../../web/' . $this->getUploadDir();
     }
 
     public function getWebPath()
     {
-        return $this->getUploadDir() . '/'.  $this->url;
+        $directory = $this->bird === null ? $this->observation === null ? 'avatar' : 'bird' : 'bird';
+        return $this->getUploadDir(). '/'.  $this->url;
     }
 }

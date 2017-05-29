@@ -51,3 +51,8 @@ user_stars:
     path: /stars
     defaults:
         _controller: ObservationBundle:User:stars
+
+user_change_avatar:
+    path: /avatar/change
+    defaults:
+      _controller: ObservationBundle:User:changeAvatar

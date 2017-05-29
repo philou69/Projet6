@@ -5,6 +5,7 @@ namespace ObservationBundle\Controller;
 
 
 use ObservationBundle\Entity\User;
+use ObservationBundle\Form\User\ChangeAvartarType;
 use ObservationBundle\Form\User\ChangePasswordType;
 use ObservationBundle\Form\User\EditUserType;
 use ObservationBundle\Form\User\ResetPasswordType;
@@ -182,6 +183,7 @@ class UserController extends Controller
         if($user === null){
             throw new Exception('Vous n\'êtes pas autorisez!');
         }
+
          //Création du formulaire correspondant
         $form = $this->createForm( EditUserType::class, $user);
         $form->handleRequest($request);
@@ -279,7 +281,6 @@ class UserController extends Controller
             return $this->render('@Observation/User/Desktop/list.observation.html.twig', array('all' => $all));
         }
     }
-
     public function starsAction()
     {
         // L'accès n'étant pas autorisé aux naturaliste, on soulève un AccessDenied
@@ -290,5 +291,26 @@ class UserController extends Controller
              return $this->render('@Observation/User/list.stars.html.twig');
 
     }
+    public function changeAvatarAction(Request $request)
+    {
+        $user = $this->getUser();
+        $form = $this->createForm(ChangeAvartarType::class, $user);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
 
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('user_profil');
+        }
+
+        $device = $this->get('mobile_detect.mobile_detector');
+
+        if($device->isMobile()){
+            return $this->render('@Observation/User/Mobile/change.avatar.html.twig', array('form' => $form->createView()));
+        }else{
+            return $this->render('@Observation/User/Desktop/change.avatar.html.twig', array('form' => $form->createView()));
+        }
+    }
 }
