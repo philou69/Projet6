@@ -54,7 +54,7 @@ class Picture
     private $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Star", inversedBy="picture")
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Star", mappedBy="picture")
      */
     protected $star;
 
@@ -89,7 +89,7 @@ class Picture
      */
     public function getUrl()
     {
-        return $this->url;
+        return $this->url === null ? 'No_picture' : $this->url;
     }
 
 
@@ -114,7 +114,7 @@ class Picture
      */
     public function getAlt()
     {
-        return $this->alt;
+        return $this->alt === null ? 'Picture missing' : $this->alt;
     }
 
     /**
@@ -187,5 +187,29 @@ class Picture
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set star
+     *
+     * @param \ObservationBundle\Entity\Star $star
+     *
+     * @return Picture
+     */
+    public function setStar(\ObservationBundle\Entity\Star $star = null)
+    {
+        $this->star = $star;
+
+        return $this;
+    }
+
+    /**
+     * Get star
+     *
+     * @return \ObservationBundle\Entity\Star
+     */
+    public function getStar()
+    {
+        return $this->star;
     }
 }

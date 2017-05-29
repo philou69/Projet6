@@ -1,0 +1,21 @@
+{% if stars | length == 0 %}
+    <p class="text-center">
+        Il n'y a pas de medailles
+    </p>
+    {% else %}
+        {% for star in stars %}
+            <div class="star col-sm-2 col-xs-4">
+                <a href="#star_detail_{{ star.id }}" data-toggle="modal">
+                    {% if star.picture is null %}
+                        <span class="{{ app.user in star.users ? 'obtained' : 'no-obtained' }}">test</span>
+                    {% else %}
+                        <img src="{{ star.picture.url }}" alt="{{ star.picture.alt }}" class="{{ (app.user in stars.users) ? 'obtained' : 'no-obtained' }}">
+                    {% endif %}
+                </a>
+            </div>
+        {% endfor %}
+
+        {% for star in stars %}
+            {% include 'ObservationBundle:Modal:star.detail.html.twig' with{'star': star} %}
+        {% endfor %}
+{% endif %}
