@@ -10,6 +10,10 @@ observation:
     prefix: /observation
     resource: 'Routing/observation.yml'
 
+star:
+    prefix: /star
+    resource: 'Routing/star.yml'
+
 homepage:
     path:     /
     defaults: { _controller: ObservationBundle:Default:index }

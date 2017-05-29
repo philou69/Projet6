@@ -53,6 +53,10 @@ class Picture
      */
     private $user;
 
+    /**
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Star", inversedBy="picture")
+     */
+    protected $star;
 
     /**
      * Get id

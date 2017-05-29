@@ -1,1 +1,25 @@
 {% extends '@Observation/layout.desktop.html.twig' %}
+
+{% block title %}Médailles{% endblock %}
+
+{% block content %}
+    <h1>Médailles</h1>
+    <div id="stars" data-href="{{ path('star_list') }}"></div>
+    <div class="loader"></div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: $("#stars").data('href'),
+                dataType: 'html',
+                success: function (code_html, status) {
+                    $('#stars').html(code_html);
+                    $('.loader').attr('hidden', true);
+                }
+            })
+        })
+    </script>
+{% endblock %}

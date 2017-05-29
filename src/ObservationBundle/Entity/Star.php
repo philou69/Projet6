@@ -55,6 +55,10 @@ class Star
      */
     protected $users;
 
+    /**
+     * @ORM/OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="star")
+     */
+    protected $picture;
 
     /**
      * Get id

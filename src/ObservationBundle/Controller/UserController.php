@@ -99,7 +99,7 @@ class UserController extends Controller
             $now = new \DateTime();
             if($user !== null && ($user->getToken() === null || $now->diff($user->getDateToken())->d > 2)){
                 // création du token qui servira de lien
-                $token = base64_encode(random_bytes(60));
+                $token = str_replace('/','', base64_encode(random_bytes(60))) ;
                 // Ajout du token et de l'heure de création
                 $user->setToken($token)->setDateToken(new \DateTime());
                 // Appel du service mailer et envoie du mail
@@ -282,9 +282,11 @@ class UserController extends Controller
 
     public function starsAction()
     {
+        // L'accès n'étant pas autorisé aux naturaliste, on soulève un AccessDenied
         if($this->getUser()->hasRole('ROLE_NATURALISTE')){
             throw $this->createAccessDeniedException("Vous n'avez pas les droits d'accès!");
         }
+        // Autrement, on renvoie à la vue correspondante au device
         $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile()){
             return $this->render('@Observation/User/Mobile/list.stars.html.twig');
