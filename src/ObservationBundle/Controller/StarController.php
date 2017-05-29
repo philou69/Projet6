@@ -17,11 +17,7 @@ class StarController extends Controller
 
         $stars = $em->getRepository('ObservationBundle:Star')->findAll();
 
-        $device = $this->get('mobile_detect.mobile_detector');
-        if ($device->isMobile()){
-            return $this->render('@Observation/Star/Mobile/list.html.twig', array('stars' => $stars));
-        }else{
-            return $this->render('@Observation/Star/Desktop/list.html.twig', array('stars' => $stars));
-        }
+            return $this->render('@Observation/Star/list.html.twig', array('stars' => $stars));
+
     }
 }

@@ -286,13 +286,8 @@ class UserController extends Controller
         if($this->getUser()->hasRole('ROLE_NATURALISTE')){
             throw $this->createAccessDeniedException("Vous n'avez pas les droits d'accès!");
         }
-        // Autrement, on renvoie à la vue correspondante au device
-        $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile()){
-            return $this->render('@Observation/User/Mobile/list.stars.html.twig');
-        }else{
-            return $this->render('@Observation/User/Desktop/list.stars.html.twig');
-        }
+        // Autrement, on renvoie sans se soucier de l'appareil
+             return $this->render('@Observation/User/list.stars.html.twig');
 
     }
 

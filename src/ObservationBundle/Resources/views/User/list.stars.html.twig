@@ -1,4 +1,4 @@
-{% extends '@Observation/layout.desktop.html.twig' %}
+{% extends  is_mobile() ? '@Observation/layout.mobile.html.twig' : '@Observation/layout.desktop.html.twig' %}
 
 {% block title %}Médailles{% endblock %}
 
@@ -6,6 +6,10 @@
     <h1>Médailles</h1>
     <div id="stars" data-href="{{ path('star_list') }}" class="row"></div>
     <div class="loader"></div>
+    <hr>
+    <p class="text-center">
+        Rmplis les objectifs pour débloquer et remporter des médailles.
+    </p>
 {% endblock %}
 
 {% block javascript %}
