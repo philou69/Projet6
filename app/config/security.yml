@@ -7,7 +7,7 @@ security:
 
     role_hierarchy:
         ROLE_OBS: ROLE_USER
-        ROLE_NATURALISTE: ROLE_OBS, ROLE_USER
+        ROLE_NATURALISTE: ROLE_USER
 
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
@@ -52,4 +52,5 @@ security:
         - { path: ^/user, roles: ROLE_USER }
         - { path: ^/observation, roles: ROLE_USER }
         - {path: ^/user/observation, roles: ROLE_NATURALISTE }
+        - {path: ^/user/stars, roles: ROLE_OBS }
         - {path: ^/observation/list, roles: ROLE_USER }

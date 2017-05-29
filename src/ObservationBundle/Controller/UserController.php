@@ -281,4 +281,18 @@ class UserController extends Controller
         }
     }
 
+    public function starsAction()
+    {
+        if($this->getUser()->hasRole('ROLE_NATURALISTE')){
+            throw $this->createAccessDeniedException("Vous n'avez pas les droits d'accès!");
+        }
+        $device = $this->get('mobile_detect.mobile_detector');
+        if($device->isMobile()){
+            return $this->render('@Observation/User/Mobile/list.stars.html.twig');
+        }else{
+            return $this->render('@Observation/User/Desktop/list.stars.html.twig');
+        }
+
+    }
+
 }

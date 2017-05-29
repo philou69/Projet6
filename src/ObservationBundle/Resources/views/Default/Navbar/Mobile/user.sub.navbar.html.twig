@@ -4,8 +4,11 @@
         <li {% if app.request.attributes.get('_route') == 'user_my_observations' %}class="active"{% endif %}><a href="{{ path('user_my_observations') }}"><i class="fa fa-binoculars"></i></a></li>
         {% if 'ROLE_NATURALISTE' in app.user.roles %}
             <li {% if app.request.attributes.get('_route')  == 'user_observations'%}class="active"{% endif %}><a href="{{ path('user_observations') }}">Validations</a></li>
+        {% else %}
+            <li {% if app.request.attributes.get('_route') == 'user_stars' %}class="active"{% endif %}><a href="{{ path('user_stars') }}"><span class="fa fa-star-o"></span></a></li>
         {% endif %}
-        <li {% if app.request.attributes.get('_route') == 'user_stars' %}class="active"{% endif %}><a href="{{ path('user_stars') }}"><span class="fa fa-star-o"></span></a></li>
-        <li><a href="{{ path('user_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+        {% if app.user %}
+            <li><a href="{{ path('user_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+        {% endif %}
     </ul>
 </div>
