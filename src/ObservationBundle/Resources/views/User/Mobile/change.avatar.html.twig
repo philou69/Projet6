@@ -1,0 +1,32 @@
+{% extends '@Observation/layout.mobile.html.twig' %}
+
+{% block title %}Changer avatar{% endblock %}
+
+{% block content %}
+    <div class="marge-top">
+        <h1>Changer votre photo de profil</h1>
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <label for="{{ form.avatar.file.vars.id }}">{{ form.avatar.vars.name }}</label>
+        {{ form_widget(form.avatar.file) }}
+        {{ form_errors(form.avatar.file) }}
+
+        <div class="text-center">{{ form_widget(form.save) }}</div>
+
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+           $(":file").filestyle({
+               input: false,
+               buttonName: 'btn-info',
+               iconName: 'fa fa-inbox'
+           })
+        })
+    </script>
+{% endblock %}

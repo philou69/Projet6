@@ -630,4 +630,8 @@ class Bird
     {
         return $this->nomVern == '' ? $this->lbNom : $this->getNomVern();
     }
+    function __toString()
+    {
+        return $this->nomVern == '' ? $this->lbNom : $this->getNomVern();
+    }
 }

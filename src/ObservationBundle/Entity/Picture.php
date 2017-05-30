@@ -3,12 +3,14 @@
 namespace ObservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Picture
  *
  * @ORM\Table(name="picture")
  * @ORM\Entity(repositoryClass="ObservationBundle\Repository\PictureRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Picture
 {
@@ -43,7 +45,6 @@ class Picture
 
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Observation", inversedBy="pictures")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $observation;
 
@@ -53,6 +54,14 @@ class Picture
      */
     private $user;
 
+    /**
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Star", mappedBy="picture")
+     */
+    protected $star;
+
+    protected $file;
+
+    protected $tempFileName;
 
     /**
      * Get id
@@ -85,7 +94,7 @@ class Picture
      */
     public function getUrl()
     {
-        return $this->url;
+        return $this->url === null ? 'No_picture' : $this->url;
     }
 
 
@@ -110,7 +119,7 @@ class Picture
      */
     public function getAlt()
     {
-        return $this->alt;
+        return $this->alt === null ? 'Picture missing' : $this->alt;
     }
 
     /**
@@ -183,5 +192,110 @@ class Picture
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set star
+     *
+     * @param \ObservationBundle\Entity\Star $star
+     *
+     * @return Picture
+     */
+    public function setStar(\ObservationBundle\Entity\Star $star = null)
+    {
+        $this->star = $star;
+
+        return $this;
+    }
+
+    /**
+     * Get star
+     *
+     * @return \ObservationBundle\Entity\Star
+     */
+    public function getStar()
+    {
+        return $this->star;
+    }
+
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function setFile(UploadedFile $file)
+    {
+        $this->file = $file;
+        if(null !== $this->url){
+            $this->tempFileName = $this->getUploadRootDir() . '/'. $this->url;
+        }
+        $this->url = null;
+        $this->alt = null;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if($this->file === null){
+            return;
+        }
+
+        $this->url = uniqid() . '.' . $this->file->guessExtension();
+        $this->alt = $this->file->getClientOriginalName();
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function postUpload()
+    {
+        if($this->file === null){
+            return;
+        }
+
+        if($this->tempFileName !== null){
+            if(file_exists($this->tempFileName)){
+                unlink($this->tempFileName);
+            }
+        }
+        $this->file->move($this->getUploadRootDir(), $this->url);
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function preRemove()
+    {
+        $this->tempFileName = $this->getUploadRootDir() . '/' . $this->url;
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function postRemove()
+    {
+        if(file_exists($this->tempFileName))
+        unlink($this->tempFileName);
+    }
+
+    public function getUploadDir()
+    {
+        $directory = $this->bird === null ? $this->observation === null ? 'avatar' : 'bird' : 'bird';
+        return 'uploads/images/' . $directory;
+    }
+
+    public function getUploadRootDir()
+    {
+        return __DIR__ . '/../../../web/' . $this->getUploadDir();
+    }
+
+    public function getWebPath()
+    {
+        $directory = $this->bird === null ? $this->observation === null ? 'avatar' : 'bird' : 'bird';
+        return $this->getUploadDir(). '/'.  $this->url;
     }
 }

@@ -5,6 +5,7 @@ namespace ObservationBundle\Controller;
 
 
 use ObservationBundle\Entity\User;
+use ObservationBundle\Form\User\ChangeAvartarType;
 use ObservationBundle\Form\User\ChangePasswordType;
 use ObservationBundle\Form\User\EditUserType;
 use ObservationBundle\Form\User\ResetPasswordType;
@@ -100,7 +101,7 @@ class UserController extends Controller
             $now = new \DateTime();
             if($user !== null && ($user->getToken() === null || $now->diff($user->getDateToken())->d > 2)){
                 // création du token qui servira de lien
-                $token = base64_encode(random_bytes(60));
+                $token = str_replace('/','', base64_encode(random_bytes(60))) ;
                 // Ajout du token et de l'heure de création
                 $user->setToken($token)->setDateToken(new \DateTime());
                 // Appel du service mailer et envoie du mail
@@ -183,6 +184,7 @@ class UserController extends Controller
         if($user === null){
             throw new Exception('Vous n\'êtes pas autorisez!');
         }
+
          //Création du formulaire correspondant
         $form = $this->createForm( EditUserType::class, $user);
         $form->handleRequest($request);
@@ -280,19 +282,36 @@ class UserController extends Controller
             return $this->render('@Observation/User/Desktop/list.observation.html.twig', array('all' => $all));
         }
     }
-
     public function starsAction()
     {
+        // L'accès n'étant pas autorisé aux naturaliste, on soulève un AccessDenied
         if($this->getUser()->hasRole('ROLE_NATURALISTE')){
             throw $this->createAccessDeniedException("Vous n'avez pas les droits d'accès!");
         }
-        $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile()){
-            return $this->render('@Observation/User/Mobile/list.stars.html.twig');
-        }else{
-            return $this->render('@Observation/User/Desktop/list.stars.html.twig');
-        }
+        // Autrement, on renvoie sans se soucier de l'appareil
+             return $this->render('@Observation/User/list.stars.html.twig');
 
     }
+    public function changeAvatarAction(Request $request)
+    {
+        $user = $this->getUser();
+        $form = $this->createForm(ChangeAvartarType::class, $user);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
 
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('user_profil');
+        }
+
+        $device = $this->get('mobile_detect.mobile_detector');
+
+        if($device->isMobile()){
+            return $this->render('@Observation/User/Mobile/change.avatar.html.twig', array('form' => $form->createView()));
+        }else{
+            return $this->render('@Observation/User/Desktop/change.avatar.html.twig', array('form' => $form->createView()));
+        }
+    }
 }

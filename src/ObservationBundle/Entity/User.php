@@ -90,7 +90,7 @@ class User implements AdvancedUserInterface, \Serializable
     protected $dateToken;
 
     /**
-     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Star", mappedBy="users", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Star", mappedBy="users")
      * @ORM\JoinColumn(nullable=false)
      */
     protected $stars;
@@ -102,6 +102,11 @@ class User implements AdvancedUserInterface, \Serializable
      */
     protected $observations;
 
+
+    /**
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Picture", inversedBy="user", cascade={"persist"})
+     */
+    protected $avatar;
 
 
 
@@ -530,5 +535,29 @@ class User implements AdvancedUserInterface, \Serializable
     public function getObservations()
     {
         return $this->observations;
+    }
+
+    /**
+     * Set avatar
+     *
+     * @param \ObservationBundle\Entity\Picture $avatar
+     *
+     * @return User
+     */
+    public function setAvatar(\ObservationBundle\Entity\Picture $avatar = null)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return \ObservationBundle\Entity\Picture
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
     }
 }

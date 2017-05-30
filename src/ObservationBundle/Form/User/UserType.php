@@ -44,7 +44,7 @@ class UserType extends AbstractType
                 'label' => 'Nom'
             ))
             ->add('birthDate', BirthdayType::class, array(
-                'label' => 'Date de naissance',
+                'label' => 'Né(e) le ',
                 'choice_translation_domain' => true,
                 'format' => 'dd/MM/yyyy',
                 'years' => range(1917, 2016),

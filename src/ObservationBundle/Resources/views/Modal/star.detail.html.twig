@@ -1,0 +1,23 @@
+<div id="star_detail_{{ star.id }}" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content star-modal">
+            <div class="modal-body">
+                <div class="row">
+                    <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                        {% if star.picture is null %}
+                            <span class="{{ app.user in star.users ? 'obtained' : 'no-obtained' }}">test</span>
+                        {% else %}
+                            <img src="{{ star.picture.url }}" alt="{{ star.picture.alt }}" class="{{ (app.user in stars.users) ? 'obtained' : 'no-obtained' }}">
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-7">
+                        {{ star.description }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

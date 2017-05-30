@@ -1,63 +1,61 @@
 <style>
-/*------------------ Styel pour les écans de largeur superieur à 768 px -------*/
+    /*------------------ Styel pour les écans de largeur superieur à 768 px -------*/
     @media (min-width: 768px) {
         /* Marge du body pour la navbar et utilisation de flex pour coller le footer en bas de page */
         body {
-            padding-top: 110px;
+            padding-top: 150px;
             margin: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
+
         /*Contenu de la page pour prendre le plus de place possible*/
-        #content{
+        #content {
             flex: 1;
             margin-bottom: 20px;
         }
+
         /*style des liste oiseaux*/
-        .observation, .observation>ul{
+        .observation, .observation > ul {
             min-height: 60px;
         }
+
         /* Position du bouton up à 120px du haut*/
-        #up{
+        #up {
             top: 120px;
         }
+
+
     }
-/* -------------------------------- Fin style écran petit ----------------------------------------*/
-/* -------------------------------- Ecran de moins de 768 px de large ----------------------------------------*/
+
+    /* -------------------------------- Fin style écran petit ----------------------------------------*/
+    /* -------------------------------- Ecran de moins de 768 px de large ----------------------------------------*/
     @media (max-width: 767px) {
         /* Marge speciale pour ne pas affiché sous la navbar */
-        body{
+        body {
             margin-bottom: 70px;
         }
+
         /* position du bouton up à 20px du haut */
-        #up{
+        #up {
             top: 20px;
         }
-
-        .content-loader{
-            height: 60vh;
-            padding-top: calc((60vh - 120px)/2);
-        }
-
-
-        /*.observation, .observation>ul{*/
-            /*min-height: 80px;*/
-        /*}*/
     }
 
     .required:after {
         content: '*';
         color: #C82829;
     }
+
     /* Taile des images des réseaux sociaux */
-    .icon{
+    .icon {
         height: 20px;
     }
 
-    /* Toggle switch */
+    /*------------ Toggle switch --------------- */
     /* Le switch - box autour du slider*/
-    .switch{
+    .switch {
         position: relative;
         display: inline-block;
         width: 40px;
@@ -66,11 +64,13 @@
         margin-right: 10px;
         margin-bottom: 0;
     }
+
     /* On cache la checkbox HTML */
-    .switch input{
+    .switch input {
         display: none;
     }
-    /* Le slider */
+
+    /*Le slider */
     .slider {
         position: absolute;
         cursor: pointer;
@@ -78,7 +78,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color:#218BC3;
+        background-color: #218BC3;
         -webkit-transition: .4s;
         transition: .4s;
     }
@@ -103,8 +103,8 @@
         box-shadow: 0 0 1px #2196F3;
     }
 
-    input:checked + .slider:before{
-        -webkit-transform:  translateX(15px);
+    input:checked + .slider:before {
+        -webkit-transform: translateX(15px);
         -ms-transform: translateX(15px);
         transform: translateX(15px);
     }
@@ -113,30 +113,37 @@
     .slider.round {
         border-radius: 20px;
     }
+
     .slider.round:before {
         border-radius: 50%;
     }
-    /* Barre de séparation */
+
+    /*----------- Fin du toggle switch */
+
+    /* Barre de séparation page de connection */
     #right {
         border-style: solid;
-        border-color: #dddddd ;
-        border-width: 0  0 0 2px;
+        border-color: #dddddd;
+        border-width: 0 0 0 2px;
     }
 
+    /* Capital sur les lien de navigation dans le footer */
     .capital {
         text-transform: uppercase;
         font-size: small;
     }
 
-    #search{
+    /* Style sur l'input de recherche des liste oiseaux */
+    #search {
         border: 0;
         border-bottom: 2px solid cornflowerblue;
     }
 
-    .center, .center > input, .center> i{
+    .center, .center > input, .center > i {
         margin: auto;
     }
 
+    /*------- Loader -----*/
     .loader {
         border: 16px solid #f3f3f3; /* Light grey */
         border-top: 16px solid #3498db; /* Blue */
@@ -147,27 +154,30 @@
     }
 
     @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
     }
 
-        
+    /*------- Fin du loader ---------*/
+
     /*style form field*/
-    #content > div > div.panel-body > form > div:nth-child(4) > div > div > span:nth-child(3){
+    #content > div > div.panel-body > form > div:nth-child(4) > div > div > span:nth-child(3) {
         display: none;
     }
-
-
 
     .pictures {
         position: relative;
     }
+
     #closeButton {
         position: absolute;
         top: 0;
         right: 0;
     }
-
 
     /*
         Zone sur les div des observations lors des paginations
@@ -180,59 +190,119 @@
         cursor: pointer;
         margin-bottom: 20px;
     }
-    .observation>ul{
+
+    .observation > ul {
         min-height: 60px;
     }
 
-    .observation small{
+    .observation small {
         color: #dddddd;
     }
 
-    .right-border{
+    .right-border {
         border: 0;
         border-right: 1px solid #dddddd;
     }
+
     /**
         Réecriture du css bootstrap des nav-tabs au sujet des border
          */
-    .nav-tabs, .nav-tabs.nav-justified{
+    .nav-tabs, .nav-tabs.nav-justified {
         /*On efface toutes bordure sauf en bas d'une épaisseur de 1px blue*/
         border: 0;
         border-bottom: 1px solid skyblue;
     }
-    .nav-tabs.nav-justified>li>a{
+
+    .nav-tabs.nav-justified > li > a {
         /*On supprime la bordure basse de base*/
         border: 0;
         background-color: white;
     }
-    .nav-tabs.nav-justified>.active>a:hover,.nav-tabs.nav-justified>.active>a,.nav-tabs.nav-justified>.active>a:focus,.nav-tabs>li.active>a:hover,.nav-tabs>li.active>a,.nav-tabs>li.active>a:focus{
+
+    .nav-tabs.nav-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:focus, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus {
         /* On affiche une bordure de 5px sur le lien séléctionner*/
-        border: 0 ;
+        border: 0;
         border-bottom: 5px solid skyblue;
     }
 
-    #up{
+    #up {
         z-index: 255;
         display: none;
         position: fixed;
-        right:20px;
+        right: 20px;
     }
 
+    /** Affichage main pour les div oiseaux **/
+    .bird {
+        cursor: pointer;
+        height: 100px;
+        width: 47.5%;
+        padding: 0;
+        background-color: #FEFEE2;
+        margin-bottom: 10px;
+    }
 
-/** Affichage main pour les div oiseaux **/
-.bird {
-    cursor: pointer;
-    height: 100px;
-    width: 47.5%;
-    padding: 0;
-    background-color: #FEFEE2;
-    margin-bottom: 10px;
-}
-/* Margin special pour les div liste des oiseaux marge soit à gauche soit à droite*/
-.left{
-    margin-right: 2.5%;
-}
-.right{
-    margin-left: 2.5%;
-}
+    /* Margin special pour les div liste des oiseaux marge soit à gauche soit à droite*/
+    .left {
+        margin-right: 2.5%;
+    }
+
+    .right {
+        margin-left: 2.5%;
+    }
+
+    .star-modal{
+        min-height: 50vh;
+    }
+
+    .obtained{
+        border:2px solid #916319;
+    }
+    .no-obtained{
+        border: 2px solid #2f2f2f;
+    }
+    .star{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #content_avatar{
+        width: 200px;
+        height: 200px;
+        margin: auto;
+    }
+
+    .img-responsive{
+        width: 200px;
+        height: 200px;
+    }
+    #edit_avatar{
+        border-radius: 50%;
+        position: relative;
+        bottom: 40px;
+        left: 160px;
+    }
+    /*--- marging ----*/
+    .marge-top{
+        margin-top: 20px;
+    }
+
+    /*---- Couleur Background -----*/
+    .fond-bleu-menu-2{
+        background-color: #dbefed;
+    }
+
+    .fond-bleu-titre{
+        background-color: #a1d0f3;
+    }
+    .count{
+        height: 25vh;
+        color: white;
+    }
+    .count>div{
+        height: calc(25vh / 2);
+        line-height: 20px;
+        padding-top: calc(((25vh / 2) - 20px)/2);
+        text-transform: uppercase;
+    }
 </style>
