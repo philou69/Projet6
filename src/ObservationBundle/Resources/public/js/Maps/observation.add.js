@@ -32,8 +32,10 @@ function initMap()
                     marqueur.setIcon(iconBaseOiseaux);
                     marqueur.setPosition(new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()));
                     map.setCenter(lat_lng);
+                    console.log(event.latLng.lat());
                     document.getElementById("add_observation_location_latitude").value = event.latLng.lat();
                     document.getElementById("add_observation_location_longitude").value = event.latLng.lng();
+                    console.log($('#add_observation_location_latitude').val());
                     var locationField = document.getElementById("add_observation_location_lieu");
                     locationField.value = results[0].formatted_address;
                     document.getElementById("infoPosition").textContent = locationField.value;

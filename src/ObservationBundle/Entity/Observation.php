@@ -56,10 +56,10 @@ class Observation
      *
      * @ORM\Column(name="validated", type="boolean")
      */
-    private $validated;
+    private $validated = false;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observations", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $bird;
@@ -67,7 +67,7 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="observation")
+     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="observation", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $pictures;

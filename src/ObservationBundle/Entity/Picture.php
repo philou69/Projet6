@@ -38,7 +38,7 @@ class Picture
     private $alt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="picture")
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="pictures")
      */
     private $bird;
 
@@ -154,7 +154,7 @@ class Picture
     public function setObservation(\ObservationBundle\Entity\Observation $observation)
     {
         $this->observation = $observation;
-
+        $observation->addPicture($this);
         return $this;
     }
 
@@ -229,6 +229,8 @@ class Picture
         }
         $this->url = null;
         $this->alt = null;
+
+        return $this;
     }
 
     /**
