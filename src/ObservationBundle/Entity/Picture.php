@@ -295,7 +295,6 @@ class Picture
 
     public function getWebPath()
     {
-        $directory = $this->bird === null ? $this->observation === null ? 'avatar' : 'bird' : 'bird';
         return $this->getUploadDir(). '/'.  $this->url;
     }
 }
