@@ -1,7 +1,7 @@
 <div id="bird" class="tab-pane {% if app.request.attributes.get('_route') in ['bird_description','bird_location'] %}active{% endif %}">
     <ul class=" nav navbar-nav">
         <li {% if app.request.attributes.get('_route') == 'bird_description' %}class="active"{% endif %}><a href="{{ path('bird_description', {'id': bird.id}) }}">Fiche descriptive</a></li>
-        <li class="{% if app.request.attributes.get('_route') == 'bird_sound' %}active{% endif %} {{ bird.sound is null ? 'disabled': '' }}"><a href="#sound-bird" >Son</a></li>
+        <li class="{% if app.request.attributes.get('_route') == 'bird_sound' %}active{% endif %} {{ bird.sound is null ? 'disabled': '' }}" id="bird_sound"><a href="#sound-bird" >Son</a></li>
         <li {% if app.request.attributes.get('_route') == 'bird_location' %}class="active"{% endif %}><a href="{{ path('bird_location', {'id': bird.id}) }}">Répartition géographique</a></li>
         <li><a href="{{ path('observation_add') }}">Ajouté une observation</a></li>
     </ul>
