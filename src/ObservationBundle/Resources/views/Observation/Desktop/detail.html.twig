@@ -1,4 +1,45 @@
 {% extends '@Observation/layout.desktop.html.twig' %}
 
+{% block title %}Details de l'observation{% endblock %}
+{% block content %}
+
+    <h1>
+        Details de l'observation
+    </h1>
+
+    <table class="table table-striped">
+        <tbody>
+        <tr>
+            <th scope="row">Observateur</th>
+            <td>{{ observation.user.username }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Date observation</th>
+            <td>{{ observation.seeAt|date('Y-m-d') }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Espéce observée</th>
+            <td>{{ observation.bird.lbNom }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Spécimens observés</th>
+            <td>{{ observation.quantity }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Lieu de l'observation</th>
+            <td>{{ observation.location.lieu }}</td>
+        </tr>
+        {#<tr>#}
+        {#<th scope="row">Photo(s)</th>#}
+        {#<td>{{ observation.pictures.url }}</td>#}
+        {#</tr>#}
+        <tr>
+            <th scope="row">Description</th>
+            <td>{{ observation.observation }}</td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
+
 
 

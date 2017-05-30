@@ -49,11 +49,6 @@ class BirdController extends Controller
     public function observationAction(Bird $bird, Request $request)
     {
 
-        $user = $this->getUser();
-        if($user === null){
-            throw new Exception('Vous n\'êtes pas autoriser à venir içi');
-        }
-
         $birdId = $bird->getId();
         $observation = new Observation();
         $session = new Session();
@@ -73,17 +68,12 @@ class BirdController extends Controller
             $observation->setPostedAt(new \DateTime('now'));
             $observation->setBird($bird);
 
-            $observation->setUser($user);
+            $observation->setUser($this->getUser());
 
             $em->persist($observation);
             $em->flush();
 
-            $device = $this->get('mobile_detect.mobile_detector');
-            if($device->isMobile()){
-                return $this->render('@Observation/Observation/Mobile/view.html.twig', array('id' => $observationId));
-            }else{
-                return $this->render('@Observation/Observation/Mobile/view.html.twig', array('id' => $observationId));
-            }
+            return $this->redirectToRoute('bird_location', array('id' => $observation->getBird()->getId()));
         }
 
         $device = $this->get('mobile_detect.mobile_detector');

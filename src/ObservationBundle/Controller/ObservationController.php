@@ -8,7 +8,6 @@ use ObservationBundle\Entity\Bird;
 use ObservationBundle\Entity\Location;
 use ObservationBundle\Entity\Observation;
 use ObservationBundle\Entity\User;
-use ObservationBundle\Form\Bird\BirdType;
 use ObservationBundle\Form\Location\LocationType;
 use ObservationBundle\Form\Observation\AddObservationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -88,19 +87,31 @@ class ObservationController extends Controller
 
     }
 
-    public function viewAction(Observation $observation)
+
+    /**
+     * Action pour voir une observation sur un oiseau
+     * @param Observation $observation
+     */
+
+
+    public function detailAction(Observation $observation)
     {
+
 
         $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile()){
-            return $this->render('@Observation/Observation/Mobile/view.html.twig');
+            return $this->render('@Observation/Observation/Mobile/detail.html.twig', array(
+                'observation' => $observation
+            ));
         }else{
-            return $this->render('@Observation/Observation/Desktop/view.html.twig');
+            return $this->render('@Observation/Observation/Desktop/detail.html.twig', array(
+                'observation' => $observation
+            ));
         }
     }
 
     /**
-     * Action pour ajouté une observation sur un oiseau
+     * Action pour ajouter une observation sur un oiseau
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
@@ -119,13 +130,18 @@ class ObservationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $observation->setUser($this->getUser());
+            $observation->setValidated(false);
 
             $em->persist($observation);
             $em->flush();
 
-
-            return $this->redirectToRoute('bird_location', array('id' => $observation->getBird()->getId() ));
+            $this->addFlash(
+                'notice',
+                'Votre observation a été envoyé! En attente de validation'
+            );
+            return $this->redirectToRoute('observation_add');
         }
+
         $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile()){
             return $this->render(
