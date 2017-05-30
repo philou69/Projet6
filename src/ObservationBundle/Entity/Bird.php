@@ -146,6 +146,16 @@ class Bird
     private $pictures;
 
     /**
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche")
+     */
+    protected $fiche;
+
+    /**
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Sound")
+     */
+    protected $sound;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -633,5 +643,53 @@ class Bird
     function __toString()
     {
         return $this->nomVern == '' ? $this->lbNom : $this->getNomVern();
+    }
+
+    /**
+     * Set fiche
+     *
+     * @param \ObservationBundle\Entity\Fiche $fiche
+     *
+     * @return Bird
+     */
+    public function setFiche(\ObservationBundle\Entity\Fiche $fiche = null)
+    {
+        $this->fiche = $fiche;
+
+        return $this;
+    }
+
+    /**
+     * Get fiche
+     *
+     * @return \ObservationBundle\Entity\Fiche
+     */
+    public function getFiche()
+    {
+        return $this->fiche;
+    }
+
+    /**
+     * Set sound
+     *
+     * @param \ObservationBundle\Entity\Sound $sound
+     *
+     * @return Bird
+     */
+    public function setSound(\ObservationBundle\Entity\Sound $sound = null)
+    {
+        $this->sound = $sound;
+
+        return $this;
+    }
+
+    /**
+     * Get sound
+     *
+     * @return \ObservationBundle\Entity\Sound
+     */
+    public function getSound()
+    {
+        return $this->sound;
     }
 }

@@ -7,6 +7,7 @@ namespace ObservationBundle\Controller;
 use ObservationBundle\Entity\Bird;
 use ObservationBundle\Entity\Location;
 use ObservationBundle\Entity\Observation;
+use ObservationBundle\Entity\Picture;
 use ObservationBundle\Entity\User;
 use ObservationBundle\Form\Location\LocationType;
 use ObservationBundle\Form\Observation\AddObservationType;
@@ -129,6 +130,14 @@ class ObservationController extends Controller
 
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $files = $form->get('files')->getData();
+            foreach ($files as $file)
+            {
+                $picture = new Picture();
+                $picture->setFile($file)
+                    ->setObservation($observation);
+
+            }
             $observation->setUser($this->getUser());
             $observation->setValidated(false);
 

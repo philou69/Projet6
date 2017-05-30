@@ -49,8 +49,7 @@ class Picture
     private $observation;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\User", mappedBy="avatar")
      */
     private $user;
 
@@ -156,7 +155,7 @@ class Picture
     public function setObservation(\ObservationBundle\Entity\Observation $observation)
     {
         $this->observation = $observation;
-
+        $observation->addPicture($this);
         return $this;
     }
 
@@ -231,6 +230,8 @@ class Picture
         }
         $this->url = null;
         $this->alt = null;
+
+        return $this;
     }
 
     /**
@@ -295,7 +296,6 @@ class Picture
 
     public function getWebPath()
     {
-        $directory = $this->bird === null ? $this->observation === null ? 'avatar' : 'bird' : 'bird';
         return $this->getUploadDir(). '/'.  $this->url;
     }
 }

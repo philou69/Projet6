@@ -75,16 +75,6 @@ class Location
     }
 
     /**
-     * Get latitude
-     *
-     * @return string
-     */
-    public function getLatitude()
-    {
-        return $this->latitude;
-    }
-
-    /**
      * Set latitude
      *
      * @param string $latitude
@@ -99,13 +89,13 @@ class Location
     }
 
     /**
-     * Get longitude
+     * Get latitude
      *
      * @return string
      */
-    public function getLongitude()
+    public function getLatitude()
     {
-        return $this->longitude;
+        return $this->latitude;
     }
 
     /**
@@ -123,13 +113,13 @@ class Location
     }
 
     /**
-     * Get lieu
+     * Get longitude
      *
      * @return string
      */
-    public function getLieu()
+    public function getLongitude()
     {
-        return $this->lieu;
+        return $this->longitude;
     }
 
     /**
@@ -144,6 +134,16 @@ class Location
         $this->lieu = $lieu;
 
         return $this;
+    }
+
+    /**
+     * Get lieu
+     *
+     * @return string
+     */
+    public function getLieu()
+    {
+        return $this->lieu;
     }
 
     /**
