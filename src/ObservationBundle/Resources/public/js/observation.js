@@ -30,7 +30,7 @@ $(document).ready(function () {
 
     //Reset de l'upload des photos
     $( "#closePic" ).click(function() {
-        $('#add_observation_pictures').val("");
+        $('#add_observation_files').val("");
 
         if (img1 && img2){
 
@@ -50,7 +50,7 @@ $(document).ready(function () {
     });
 
     //Recupération de(s )l'image(s)
-    document.getElementById("add_observation_pictures").onchange = function (file) {
+    document.getElementById("add_observation_files").onchange = function (file) {
 
         //On remove les photos existantes
         if (img1 && img2){

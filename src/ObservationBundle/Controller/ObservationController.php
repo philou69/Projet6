@@ -6,6 +6,7 @@ namespace ObservationBundle\Controller;
 
 use ObservationBundle\Entity\Bird;
 use ObservationBundle\Entity\Observation;
+use ObservationBundle\Entity\Picture;
 use ObservationBundle\Form\Observation\AddObservationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -108,6 +109,14 @@ class ObservationController extends Controller
 
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $files = $form->get('files')->getData();
+            foreach ($files as $file)
+            {
+                $picture = new Picture();
+                $picture->setFile($file)
+                    ->setObservation($observation);
+
+            }
             $observation->setUser($this->getUser());
 
             $em->persist($observation);

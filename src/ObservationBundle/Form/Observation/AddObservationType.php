@@ -51,12 +51,15 @@ class AddObservationType extends AbstractType
             ))
 
             //entitytype. toString. if n
-            ->add('pictures', FileType::class, array(
+            ->add('files', FileType::class, array(
                 'label' => 'Importer une image',
                 'data_class' => null,
                 'mapped' => false,
                 'required' => false,
-                'multiple' => true
+                'multiple' => true,
+                'attr' => array(
+                    'accept' => 'image/*'
+                )
             ))
 
             ->add( 'save', SubmitType::class, array(
