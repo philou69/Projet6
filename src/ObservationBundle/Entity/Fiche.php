@@ -12,7 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="fiche")
  * @ORM\Entity(repositoryClass="ObservationBundle\Repository\FicheRepository")
  */
-
 class Fiche
 {
     /**
@@ -54,6 +53,16 @@ class Fiche
     }
 
     /**
+     * Get minQuantity
+     *
+     * @return integer
+     */
+    public function getMinQuantity()
+    {
+        return $this->minQuantity;
+    }
+
+    /**
      * Set minQuantity
      *
      * @param integer $minQuantity
@@ -68,13 +77,13 @@ class Fiche
     }
 
     /**
-     * Get minQuantity
+     * Get maxQuantity
      *
      * @return integer
      */
-    public function getMinQuantity()
+    public function getMaxQuantity()
     {
-        return $this->minQuantity;
+        return $this->maxQuantity;
     }
 
     /**
@@ -92,13 +101,13 @@ class Fiche
     }
 
     /**
-     * Get maxQuantity
+     * Get descritpion
      *
-     * @return integer
+     * @return string
      */
-    public function getMaxQuantity()
+    public function getDescritpion()
     {
-        return $this->maxQuantity;
+        return $this->descritpion;
     }
 
     /**
@@ -116,13 +125,13 @@ class Fiche
     }
 
     /**
-     * Get descritpion
+     * Get status
      *
      * @return string
      */
-    public function getDescritpion()
+    public function getStatus()
     {
-        return $this->descritpion;
+        return $this->status;
     }
 
     /**
@@ -137,15 +146,5 @@ class Fiche
         $this->status = $status;
 
         return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
     }
 }

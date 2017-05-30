@@ -11,6 +11,7 @@ use ObservationBundle\Form\Observation\AddObservationType;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use ObservationBundle\Entity\Picture;
 
 
 class BirdController extends Controller
@@ -62,18 +63,30 @@ class BirdController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $name = $observation->getBird()->getLbNom();
-            $observationId = $observation->getId();
+            $files = $form->get('files')->getData();
+
+            foreach ($files as $file) {
+                $picture = new Picture();
+                $picture->setFile($file)
+                    ->setObservation($observation)
+                    ->setBird($bird);
+
+            }
 
             $observation->setPostedAt(new \DateTime('now'));
-            $observation->setBird($bird);
 
             $observation->setUser($this->getUser());
+            $observation->setBird($bird);
 
             $em->persist($observation);
             $em->flush();
 
-            return $this->redirectToRoute('bird_location', array('id' => $observation->getBird()->getId()));
+            $this->addFlash(
+                'notice',
+                'Votre observation a été envoyé! En attente de validation'
+            );
+
+            return $this->redirectToRoute('bird_observation', array('id' => $birdId));
         }
 
         $device = $this->get('mobile_detect.mobile_detector');
