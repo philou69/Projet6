@@ -131,11 +131,12 @@ class ObservationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $files = $form->get('files')->getData();
-            foreach ($files as $file)
-            {
+
+            foreach ($files as $file) {
                 $picture = new Picture();
                 $picture->setFile($file)
-                    ->setObservation($observation);
+                    ->setObservation($observation)
+                    ->setBird($observation->getBird());
 
             }
             $observation->setUser($this->getUser());
