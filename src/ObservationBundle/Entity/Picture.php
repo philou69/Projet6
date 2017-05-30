@@ -39,6 +39,7 @@ class Picture
 
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="pictures")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $bird;
 

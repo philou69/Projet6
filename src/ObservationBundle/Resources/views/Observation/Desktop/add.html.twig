@@ -6,7 +6,15 @@
 
 {% block content %}
 
-
+    {% if app.session.get('getBird') == true %}
+    <h1>{{ bird.LbNom }}</h1>
+    {% endif %}
+    <div id="flash">{% for flash_message in app.session.flashBag.get('notice') %}
+            <div class="alert alert-success">
+                <strong>{{ flash_message }}</strong>
+            </div>
+        {% endfor %}
+    </div>
     <div class="panel panel-default">
             <div class="panel-heading">
                 <h1 class="panel-title">
@@ -56,6 +64,8 @@
                         </div>
                     </div>
                 </div>
+
+                {% if app.session.get('getBird') == false %}
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
@@ -65,6 +75,15 @@
                         </div>
                     </div>
                 </div>
+                {% endif %}
+                {% if app.session.get('getBird') == true %}
+                    <div style="display: none">
+                        {{ form_label(form.bird, form.vars.label) }}
+                        {{ form_errors(form.bird) }}
+                        {{ form_widget(form.bird) }}
+                    </div>
+                {% endif %}
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-md-10 col-md-offset-1">
@@ -110,16 +129,17 @@
 
             </div>
         </div>
-    {% block javascript %}
+{% endblock %}
+
+{% block javascript %}
     {{ parent() }}
         <script src="{{ asset('bundles/observation/js/Maps/observation.add.js') }}"></script>
         <script src="{{ asset('bundles/observation/js/observation.js') }}"></script>
             <script async defer
                     src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}&callback=initMap">
             </script>
-    {% endblock %}
-
 {% endblock %}
+
 
 
 

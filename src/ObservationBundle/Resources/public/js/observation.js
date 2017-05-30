@@ -1,13 +1,6 @@
 $(document).ready(function () {
 
-    //Pré-remplissage du champ oiseau
-    $('#add_observation_bird').select2({
-        theme: "classic"
-
-
-    });
-
-    $( "select" ).removeClass( "select2-hidden-accessible" )
+     $( "select" ).removeClass( "select2-hidden-accessible" );
 
     //Formatage du datepicker
     $('#datepicker').datepicker({

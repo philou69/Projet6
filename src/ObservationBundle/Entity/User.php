@@ -104,12 +104,28 @@ class User implements AdvancedUserInterface, \Serializable
 
 
     /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Picture", inversedBy="user", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Picture", cascade={"persist"})
      */
     protected $avatar;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->roles = array();
+        $this->isActive = true;
+    }
 
-
+    /**
+     * Get firstname
+     *
+     * @return string
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
 
     /**
      * Set firstname
@@ -126,13 +142,13 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * Get firstname
+     * Get lastname
      *
      * @return string
      */
-    public function getFirstname()
+    public function getLastname()
     {
-        return $this->firstname;
+        return $this->lastname;
     }
 
     /**
@@ -147,25 +163,6 @@ class User implements AdvancedUserInterface, \Serializable
         $this->lastname = $lastname;
 
         return $this;
-    }
-
-    /**
-     * Get lastname
-     *
-     * @return string
-     */
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->roles = array();
-        $this->isActive = true;
     }
 
     public function addRole($role)
@@ -191,6 +188,16 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
      * Set username
      *
      * @param string $username
@@ -205,13 +212,13 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * Get username
+     * Get password
      *
      * @return string
      */
-    public function getUsername()
+    public function getPassword()
     {
-        return $this->username;
+        return $this->password;
     }
 
     /**
@@ -229,13 +236,13 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * Get password
+     * Get email
      *
      * @return string
      */
-    public function getPassword()
+    public function getEmail()
     {
-        return $this->password;
+        return $this->email;
     }
 
     /**
@@ -251,18 +258,6 @@ class User implements AdvancedUserInterface, \Serializable
 
         return $this;
     }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-
 
     public function serialize()
     {
@@ -286,6 +281,11 @@ class User implements AdvancedUserInterface, \Serializable
             ) = unserialize($serialized);
     }
 
+    public function hasRole($role)
+    {
+        return in_array(strtoupper($role), $this->getRoles(), true);
+    }
+
     public function getRoles()
     {
         $roles = $this->roles;
@@ -297,15 +297,25 @@ class User implements AdvancedUserInterface, \Serializable
         return array_unique($roles);
     }
 
-    public function hasRole($role)
+    /**
+     * Set roles
+     *
+     * @param array $roles
+     *
+     * @return User
+     */
+    public function setRoles($roles)
     {
-        return in_array(strtoupper($role), $this->getRoles(), true);
+        $this->roles = $roles;
+
+        return $this;
     }
 
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
     }
+
     public function getSalt()
     {
         return null;
@@ -355,23 +365,15 @@ class User implements AdvancedUserInterface, \Serializable
         return $this;
     }
 
-
     /**
-     * Set roles
+     * Get isActive
      *
-     * @param array $roles
-     *
-     * @return User
+     * @return boolean
      */
-    public function setRoles($roles)
+    public function getIsActive()
     {
-        $this->roles = $roles;
-
-        return $this;
+        return $this->isActive;
     }
-
-    
-
 
     /**
      * Set isActive
@@ -388,13 +390,13 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * Get isActive
+     * Get birthDate
      *
-     * @return boolean
+     * @return \DateTime
      */
-    public function getIsActive()
+    public function getBirthDate()
     {
-        return $this->isActive;
+        return $this->birthDate;
     }
 
     /**
@@ -412,13 +414,13 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * Get birthDate
+     * Get token
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getBirthDate()
+    public function getToken()
     {
-        return $this->birthDate;
+        return $this->token;
     }
 
     /**
@@ -436,13 +438,13 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * Get token
+     * Get dateToken
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getToken()
+    public function getDateToken()
     {
-        return $this->token;
+        return $this->dateToken;
     }
 
     /**
@@ -457,16 +459,6 @@ class User implements AdvancedUserInterface, \Serializable
         $this->dateToken = $dateToken;
 
         return $this;
-    }
-
-    /**
-     * Get dateToken
-     *
-     * @return \DateTime
-     */
-    public function getDateToken()
-    {
-        return $this->dateToken;
     }
 
     /**
@@ -538,6 +530,16 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
+     * Get avatar
+     *
+     * @return \ObservationBundle\Entity\Picture
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
      * Set avatar
      *
      * @param \ObservationBundle\Entity\Picture $avatar
@@ -549,15 +551,5 @@ class User implements AdvancedUserInterface, \Serializable
         $this->avatar = $avatar;
 
         return $this;
-    }
-
-    /**
-     * Get avatar
-     *
-     * @return \ObservationBundle\Entity\Picture
-     */
-    public function getAvatar()
-    {
-        return $this->avatar;
     }
 }

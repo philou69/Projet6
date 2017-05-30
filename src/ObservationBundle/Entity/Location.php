@@ -24,14 +24,14 @@ class Location
     /**
      * @var string
      *
-     * @ORM\Column(name="latitude", type="decimal", precision=10, scale=10)
+     * @ORM\Column(name="latitude", type="integer", precision=10, scale=10)
      */
     private $latitude;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Longitude", type="decimal", precision=10, scale=10)
+     * @ORM\Column(name="Longitude", type="integer", precision=10, scale=10)
      */
     private $longitude;
 
@@ -43,7 +43,7 @@ class Location
     private $lieu;
 
     /**
-     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Bird", mappedBy="locations")
+     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Bird", mappedBy="locations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
 
