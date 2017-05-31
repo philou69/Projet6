@@ -4,7 +4,7 @@ $(document).ready(function () {
         var page = 1
         // Première requete ajax lors du chargement de la page
         $.ajax({
-            url: getUrl(),
+            url: $('#birds').data('href'),
             dataType: 'html',
             success: function (code_html, status) {
                 success(code_html)
@@ -40,9 +40,11 @@ $(document).ready(function () {
                 // On commence par passé à false aaxready
                 $(window).data('ajaxready', false);
                 // On prépare pour la requete
-                prepareRequete(false)
+                prepareRequete(false);
+                var url = $('#birds').data('href').replace('1', page);
+                var parameters =  $('#search').val() === '' ? '' : '?search=' + $('#search').val();
                 $.ajax({
-                    url: getUrl(),
+                    url: url + parameters,
                     dataType: 'html',
                     success: function (code_html, status) {
                         success(code_html)
@@ -56,8 +58,9 @@ $(document).ready(function () {
         // Requete ajax lors d'une recherche
         $('#search').on('keyup', function (event) {
             prepareRequete(true)
+            var url = $(this).data('href') + '?search=' + $(this).val();
             $.ajax({
-                url: getUrl(),
+                url: url,
                 dataType: 'html',
                 success: function (code_html, status) {
                     $('#birds').empty();
@@ -66,15 +69,7 @@ $(document).ready(function () {
             })
         })
 
-        // Fonction générant l'url des requetes ajax
-        function getUrl() {
-            // On vérifie le contenue de l'input search,
-            // S'il n'est pas vide on créer un parametre GET search avec sa valeur
-            var parameter = $('#search').val() == '' ? '' : '?search=' + $('#search').val();
-            var url = '/bird/pagination/' + page + parameter;
 
-            return '/bird/pagination/' + page + parameter;
-        }
 
         // Fonction préparant la zone d'affichage
         function prepareRequete(isSearch) {
@@ -108,6 +103,7 @@ $(document).ready(function () {
 
             // On incrimente la page pour le prochain add
             page++;
+            console.log(page);
         }
 
         // Event sur le bouton up-button qui remets le scroll en  haut de page

@@ -20,16 +20,10 @@ class BirdRepository extends \Doctrine\ORM\EntityRepository
         $query = $this->createQueryBuilder('b');
         if ($search !== null) {
             $query
-                ->orWhere('b.lbNom LIKE :regex4')
-                ->setParameter('regex4', "%$search%")
-                ->orWhere('b.lbAuteur LIKE :regex5')
-                ->setParameter('regex5', "%$search%")
-                ->orWhere('b.nomComplet LIKE :regex6')
-                ->setParameter('regex6', "%$search%")
-                ->orWhere('b.nomValide LIKE :regex7')
-                ->setParameter('regex7', "%$search%")
-                ->orWhere("b.nomVern LIKE :regex8")
-                ->setParameter('regex8', "%$search%");
+                ->orWhere('b.lbNom LIKE :regex')
+                ->setParameter('regex', "%$search%")
+                ->orWhere("b.nomVern LIKE :regex2")
+                ->setParameter('regex2', "%$search%");
         }
         $query->orderBy('b.nomVern', 'ASC')
             ->addOrderBy('b.lbNom', 'ASC')->getQuery();
