@@ -85,8 +85,16 @@ class ObservationController extends Controller
 
     }
 
+
+    /**
+     * Action pour voir une observation sur un oiseau
+     * @param Observation $observation
+     */
+
+
     public function viewAction(Observation $observation)
     {
+
 
         $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile()){
@@ -124,7 +132,8 @@ class ObservationController extends Controller
             foreach ($files as $file) {
                 $picture = new Picture();
                 $picture->setFile($file)
-                    ->setObservation($observation);
+                    ->setObservation($observation)
+                    ->setBird($observation->getBird());
 
             }
             $observation->setUser($this->getUser());
@@ -132,7 +141,6 @@ class ObservationController extends Controller
 
             $em->persist($observation);
             $em->flush();
-
 
             $this->addFlash(
                 'notice',
