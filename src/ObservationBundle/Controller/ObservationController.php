@@ -95,7 +95,7 @@ class ObservationController extends Controller
      */
 
 
-    public function detailAction(Observation $observation)
+    public function viewAction(Observation $observation)
     {
 
 

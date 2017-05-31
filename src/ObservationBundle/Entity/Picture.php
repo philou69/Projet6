@@ -42,7 +42,6 @@ class Picture
     private $alt;
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="pictures")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $bird;
     /**
@@ -50,7 +49,7 @@ class Picture
      */
     private $observation;
     /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\User")
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\User", mappedBy="avatar")
      */
     private $user;
 
