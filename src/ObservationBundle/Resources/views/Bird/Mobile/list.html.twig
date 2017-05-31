@@ -10,13 +10,13 @@
         <h1>Liste des oiseaux </h1>
         <div class="row">
             <div class="pull-right">
-                <input type="text" id="search" placeholder="Rechercher une fiche &#xf002;" style="font-family:FontAwesome, Arial">
+                <input type="text" id="search" placeholder="Rechercher une fiche &#xf002;" style="font-family:FontAwesome, Arial" data-href="{{ path('bird_pagination', {'page': 1}) }}">
             </div>
         </div>
     </div>
 
     <div id="listing">
-        <div id="birds" class="content container"></div>
+        <div id="birds" class="content container" data-href="{{ path('bird_pagination', {'page': 1}) }}"></div>
 
         <div class="row" id="content-loader">
             <div class="col-xs-2 col-xs-offset-5 loader"></div>

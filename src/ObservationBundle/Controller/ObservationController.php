@@ -5,11 +5,8 @@ namespace ObservationBundle\Controller;
 
 
 use ObservationBundle\Entity\Bird;
-use ObservationBundle\Entity\Location;
 use ObservationBundle\Entity\Observation;
 use ObservationBundle\Entity\Picture;
-use ObservationBundle\Entity\User;
-use ObservationBundle\Form\Location\LocationType;
 use ObservationBundle\Form\Observation\AddObservationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -88,16 +85,8 @@ class ObservationController extends Controller
 
     }
 
-
-    /**
-     * Action pour voir une observation sur un oiseau
-     * @param Observation $observation
-     */
-
-
-    public function detailAction(Observation $observation)
+    public function viewAction(Observation $observation)
     {
-
 
         $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile()){
@@ -135,8 +124,7 @@ class ObservationController extends Controller
             foreach ($files as $file) {
                 $picture = new Picture();
                 $picture->setFile($file)
-                    ->setObservation($observation)
-                    ->setBird($observation->getBird());
+                    ->setObservation($observation);
 
             }
             $observation->setUser($this->getUser());
@@ -144,6 +132,7 @@ class ObservationController extends Controller
 
             $em->persist($observation);
             $em->flush();
+
 
             $this->addFlash(
                 'notice',

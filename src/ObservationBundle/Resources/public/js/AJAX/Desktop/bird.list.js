@@ -7,7 +7,7 @@ $(document).ready(function () {
     var scrollHeight = $(window).scrollTop();
     // Première requete ajax lors du chargement de la page
     $.ajax({
-        url: getUrl(),
+        url: $('#birds').data('href'),
         dataType: 'html',
         success: function (code_html, status) {
             success(code_html)
@@ -16,9 +16,11 @@ $(document).ready(function () {
 
     // Requte Ajax lors du click sur le bouton add
     $('#add-birds').on('click', function () {
-        prepareRequete(false)
+        prepareRequete(false);
+        var url = $('#add-birds').data('href').replace("1", page);
+        var parameters = $('#search').val() === '' ? '' : '?search=' + $('#search').val();
         $.ajax({
-            url: getUrl(),
+            url: url + parameters,
             dataType: 'html',
             success: function (code_html, status) {
                 success(code_html)
@@ -27,9 +29,10 @@ $(document).ready(function () {
     })
     // Requete ajax lors d'une recherche
     $('#search').on('keyup', function (event) {
-        prepareRequete(true)
-        $.ajax({
-            url: getUrl(),
+        prepareRequete(true);
+        var url = $(this).data('href') + '?search=' + $(this).val();
+         $.ajax({
+            url: url,
             dataType: 'html',
             success: function (code_html, status) {
                 $('#birds').empty()
@@ -37,16 +40,6 @@ $(document).ready(function () {
             }
         })
     })
-
-    // Fonction générant l'url des requetes ajax
-    function getUrl() {
-        // On vérifie le contenue de l'input search,
-        // S'il n'est pas vide on créer un parametre GET search avec sa valeur
-        var parameter = $('#search').val() == '' ? '' : '?search=' + $('#search').val();
-        var url = '/NAO/web/app_dev.php/bird/pagination/' + page + parameter;
-
-        return '/NAO/web/app_dev.php/bird/pagination/' + page + parameter;
-    }
 
     // Fonction préparant la zone d'affichage
     function prepareRequete(isSearch) {
@@ -88,15 +81,11 @@ $(document).ready(function () {
     }
     // listener sur les div des oiseaux pour généreer un ien au click
     $(document).on('click', '.bird', function (event) {
-        console.log($(this))
         window.document.location = $(this).data('href');
     })
 
 
     $(window).scroll(function () {
-        console.log($(window).height() + 'ecran')
-        console.log($(document).height() + ' document')
-        console.log($(window).scrollTop() + 'scroll')
 
         // On vérifie si le document fait 2 fois la taille de l'ecran et si le haut du scroll est superieur à 2 fois la taille de l'écran
         if(($(window).height() * 2) < $(document).height() && $(window).scrollTop() > ($(window).height() *2) ){
