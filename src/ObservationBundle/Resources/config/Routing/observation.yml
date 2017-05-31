@@ -29,7 +29,7 @@ observation_unvalidate:
     defaults:
       _controller: ObservationBundle:Observation:unvalide
 
-observation_view:
-    path: /{id}/view
+observation_detail:
+    path: /{id}/detail
     defaults:
-      _controller: ObservationBundle:Observation:view
+      _controller: ObservationBundle:Observation:detail

@@ -121,6 +121,16 @@ class Observation
     }
 
     /**
+     * Get observation
+     *
+     * @return string
+     */
+    public function getObservation()
+    {
+        return $this->observation;
+    }
+
+    /**
      * Set observation
      *
      * @param string $observation
@@ -135,13 +145,13 @@ class Observation
     }
 
     /**
-     * Get observation
+     * Get postedAt
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getObservation()
+    public function getPostedAt()
     {
-        return $this->observation;
+        return $this->postedAt;
     }
 
     /**
@@ -159,13 +169,13 @@ class Observation
     }
 
     /**
-     * Get postedAt
+     * Get seeAt
      *
      * @return \DateTime
      */
-    public function getPostedAt()
+    public function getSeeAt()
     {
-        return $this->postedAt;
+        return $this->seeAt;
     }
 
     /**
@@ -183,13 +193,13 @@ class Observation
     }
 
     /**
-     * Get seeAt
+     * Get validatedAt
      *
      * @return \DateTime
      */
-    public function getSeeAt()
+    public function getValidatedAt()
     {
-        return $this->seeAt;
+        return $this->validatedAt;
     }
 
     /**
@@ -207,13 +217,13 @@ class Observation
     }
 
     /**
-     * Get validatedAt
+     * Get validated
      *
-     * @return \DateTime
+     * @return bool
      */
-    public function getValidatedAt()
+    public function getValidated()
     {
-        return $this->validatedAt;
+        return $this->validated;
     }
 
     /**
@@ -231,13 +241,13 @@ class Observation
     }
 
     /**
-     * Get validated
+     * Get bird
      *
-     * @return bool
+     * @return \ObservationBundle\Entity\Bird
      */
-    public function getValidated()
+    public function getBird()
     {
-        return $this->validated;
+        return $this->bird;
     }
 
     /**
@@ -255,16 +265,14 @@ class Observation
     }
 
     /**
-     * Get bird
+     * Get location
      *
-     * @return \ObservationBundle\Entity\Bird
+     * @return \ObservationBundle\Entity\Location
      */
-    public function getBird()
+    public function getLocation()
     {
-        return $this->bird;
+        return $this->location;
     }
-
-
 
     /**
      * Set location
@@ -281,13 +289,13 @@ class Observation
     }
 
     /**
-     * Get location
+     * Get user
      *
-     * @return \ObservationBundle\Entity\Location
+     * @return \ObservationBundle\Entity\User
      */
-    public function getLocation()
+    public function getUser()
     {
-        return $this->location;
+        return $this->user;
     }
 
     /**
@@ -305,13 +313,13 @@ class Observation
     }
 
     /**
-     * Get user
+     * Get validatedBy
      *
      * @return \ObservationBundle\Entity\User
      */
-    public function getUser()
+    public function getValidatedBy()
     {
-        return $this->user;
+        return $this->validatedBy;
     }
 
     /**
@@ -329,15 +337,14 @@ class Observation
     }
 
     /**
-     * Get validatedBy
+     * Get quantity
      *
-     * @return \ObservationBundle\Entity\User
+     * @return integer
      */
-    public function getValidatedBy()
+    public function getQuantity()
     {
-        return $this->validatedBy;
+        return $this->quantity;
     }
-    
 
     /**
      * Set quantity
@@ -352,18 +359,6 @@ class Observation
 
         return $this;
     }
-
-    /**
-     * Get quantity
-     *
-     * @return integer
-     */
-    public function getQuantity()
-    {
-        return $this->quantity;
-    }
-
-
 
     /**
      * Add picture

@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * @ORM\Entity(repositoryClass="ObservationBundle\Repository\SoundRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-
 class Sound
 {
     /**
@@ -44,6 +43,16 @@ class Sound
     }
 
     /**
+     * Get fileName
+     *
+     * @return string
+     */
+    public function getFileName()
+    {
+        return $this->fileName;
+    }
+
+    /**
      * Set fileName
      *
      * @param string $fileName
@@ -55,16 +64,6 @@ class Sound
         $this->fileName = $fileName;
 
         return $this;
-    }
-
-    /**
-     * Get fileName
-     *
-     * @return string
-     */
-    public function getFileName()
-    {
-        return $this->fileName;
     }
 
     /**
@@ -87,11 +86,21 @@ class Sound
     public function setFile(UploadedFile $file)
     {
         $this->file = $file;
-        if($this->fileName !== null){
+        if ($this->fileName !== null) {
             $this->tempFileName = $this->getUploadRootDir() . '/' . $this->fileName;
         }
         $this->fileName = null;
         return $this;
+    }
+
+    public function getUploadRootDir()
+    {
+        return __DIR__ . '/../../../web/' . $this->getUploadDir();
+    }
+
+    public function getUploadDir()
+    {
+        return 'uploads/sound/';
     }
 
     /**
@@ -100,7 +109,7 @@ class Sound
      */
     public function preUpload()
     {
-        if($this->file === null){
+        if ($this->file === null) {
             return;
         }
 
@@ -114,12 +123,12 @@ class Sound
      */
     public function postUpload()
     {
-        if($this->file === null){
+        if ($this->file === null) {
             return;
         }
 
-        if($this->tempFileName !== null){
-            if(file_exists($this->tempFileName)){
+        if ($this->tempFileName !== null) {
+            if (file_exists($this->tempFileName)) {
                 unlink($this->tempFileName);
             }
         }
@@ -139,23 +148,13 @@ class Sound
      */
     public function postRemove()
     {
-        if(file_exists($this->tempFileName))
+        if (file_exists($this->tempFileName))
             unlink($this->tempFileName);
-    }
-
-    public function getUploadDir()
-    {
-        return 'uploads/sound/';
-    }
-
-    public function getUploadRootDir()
-    {
-        return __DIR__ . '/../../../web/' . $this->getUploadDir();
     }
 
     public function getWebPath()
     {
-        return $this->getUploadDir(). '/'.  $this->fileName;
+        return $this->getUploadDir() . '/' . $this->fileName;
     }
 
 }

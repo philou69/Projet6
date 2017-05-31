@@ -6,7 +6,13 @@ namespace ObservationBundle\Controller;
 
 use ObservationBundle\Entity\Bird;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use ObservationBundle\Entity\Observation;
+use ObservationBundle\Form\Observation\AddObservationType;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use ObservationBundle\Entity\Picture;
+
 
 class BirdController extends Controller
 {
@@ -41,6 +47,61 @@ class BirdController extends Controller
         }
     }
 
+    public function observationAction(Bird $bird, Request $request)
+    {
+
+        $birdId = $bird->getId();
+        $observation = new Observation();
+        $session = new Session();
+        $session->set('getBird', true);
+        $em = $this->getDoctrine()->getManager();
+
+        $form = $this->createForm(AddObservationType::class, $observation);
+
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $files = $form->get('files')->getData();
+
+            foreach ($files as $file) {
+                $picture = new Picture();
+                $picture->setFile($file)
+                    ->setObservation($observation)
+                    ->setBird($bird);
+
+            }
+
+            $observation->setPostedAt(new \DateTime('now'));
+
+            $observation->setUser($this->getUser());
+            $observation->setBird($bird);
+
+            $em->persist($observation);
+            $em->flush();
+
+            $this->addFlash(
+                'notice',
+                'Votre observation a été envoyé! En attente de validation'
+            );
+
+            return $this->redirectToRoute('bird_observation', array('id' => $birdId));
+        }
+
+        $device = $this->get('mobile_detect.mobile_detector');
+        if($device->isMobile()){
+            return $this->render('@Observation/Observation/Mobile/add.html.twig', array('id' => $birdId,
+                'bird' => $bird,
+                'form' => $form->createView()));
+        }else{
+            return $this->render('@Observation/Observation/Desktop/add.html.twig', array('id' => $birdId,
+                'bird' => $bird,
+                'form' => $form->createView()));
+        }
+
+    }
+
     /**
      * Action pemrettant de générer une page de liste d'oiseau avec ou sans recherche
      * @param $page
@@ -67,6 +128,7 @@ class BirdController extends Controller
                 $birds = $em->getRepository('ObservationBundle:Bird')->getPage($page, $number, $search);
                 // On calcul le nombre de page max
                 $nbPage = ceil(count($birds)/$number);
+
                 if($nbPage < 1 && $nbPage < $page){
                     // Si le nombre de page est inferieur à 1 ou superieur à la page, on mets tout à null
                     $birds = null;

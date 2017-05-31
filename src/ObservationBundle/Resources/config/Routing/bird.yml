@@ -13,6 +13,12 @@ bird_location:
     defaults:
       _controller: ObservationBundle:Bird:location
 
+
+bird_observation:
+    path: /{id}/observation
+    defaults:
+      _controller: ObservationBundle:Bird:observation
+
 bird_pagination:
     path: /pagination/{page}
     defaults:

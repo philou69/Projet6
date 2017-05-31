@@ -13,6 +13,14 @@ use Doctrine\ORM\Mapping as ORM;
 class Bird
 {
     /**
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche")
+     */
+    protected $fiche;
+    /**
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Sound")
+     */
+    protected $sound;
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -20,140 +28,112 @@ class Bird
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="ordre", type="string", length=255)
      */
     private $ordre;
-
     /**
      * @var string
      *
      * @ORM\Column(name="famille", type="string", length=255)
      */
     private $famille;
-
     /**
      * @var int
      *
      * @ORM\Column(name="cd_nom", type="integer")
      */
     private $cdNom;
-
     /**
      * @var int
      *
      * @ORM\Column(name="cd_taxsup", type="integer")
      */
     private $cdTaxsup;
-
     /**
      * @var int
      *
      * @ORM\Column(name="cd_ref", type="integer")
      */
     private $cdRef;
-
     /**
      * @var string
      *
      * @ORM\Column(name="rang", type="string", length=255)
      */
     private $rang;
-
     /**
      * @var string
      *
      * @ORM\Column(name="lb_nom", type="string", length=255)
      */
     private $lbNom;
-
     /**
      * @var string
      *
      * @ORM\Column(name="lb_auteur", type="string", length=255)
      */
     private $lbAuteur;
-
     /**
      * @var string
      *
      * @ORM\Column(name="nom_complet", type="string", length=255)
      */
     private $nomComplet;
-
     /**
      * @var string
      *
      * @ORM\Column(name="nom_valide", type="string", length=255)
      */
     private $nomValide;
-
     /**
      * @var string
      *
      * @ORM\Column(name="nom_vern", type="string", length=255)
      */
     private $nomVern;
-
     /**
      * @var string
      *
      * @ORM\Column(name="nom_vern_eng", type="string", length=255)
      */
     private $nomVernEng;
-
     /**
      * @var string
      *
      * @ORM\Column(name="phylum", type="string", length=255)
      */
     private $phylum;
-
     /**
      * @var string
      *
      * @ORM\Column(name="classe", type="string", length=255)
      */
     private $classe;
-
     /**
      * @var string
      *
      * @ORM\Column(name="regne", type="string", length=255)
      */
     private $regne;
-
     /**
      * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Location", inversedBy="birds", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
 
     private $locations;
-
     /**
      * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Observation", mappedBy="bird")
      * @ORM\JoinColumn(nullable=false)
      */
     private $observations;
-
     /**
      * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="bird")
      * @ORM\JoinColumn(nullable=false)
      */
     private $pictures;
-
-    /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche")
-     */
-    protected $fiche;
-
-    /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Sound")
-     */
-    protected $sound;
 
     /**
      * Constructor
@@ -176,6 +156,16 @@ class Bird
     }
 
     /**
+     * Get ordre
+     *
+     * @return string
+     */
+    public function getOrdre()
+    {
+        return $this->ordre;
+    }
+
+    /**
      * Set ordre
      *
      * @param string $ordre
@@ -190,13 +180,13 @@ class Bird
     }
 
     /**
-     * Get ordre
+     * Get famille
      *
      * @return string
      */
-    public function getOrdre()
+    public function getFamille()
     {
-        return $this->ordre;
+        return $this->famille;
     }
 
     /**
@@ -214,13 +204,13 @@ class Bird
     }
 
     /**
-     * Get famille
+     * Get cdNom
      *
-     * @return string
+     * @return int
      */
-    public function getFamille()
+    public function getCdNom()
     {
-        return $this->famille;
+        return $this->cdNom;
     }
 
     /**
@@ -238,13 +228,13 @@ class Bird
     }
 
     /**
-     * Get cdNom
+     * Get cdTaxsup
      *
      * @return int
      */
-    public function getCdNom()
+    public function getCdTaxsup()
     {
-        return $this->cdNom;
+        return $this->cdTaxsup;
     }
 
     /**
@@ -262,13 +252,13 @@ class Bird
     }
 
     /**
-     * Get cdTaxsup
+     * Get cdRef
      *
      * @return int
      */
-    public function getCdTaxsup()
+    public function getCdRef()
     {
-        return $this->cdTaxsup;
+        return $this->cdRef;
     }
 
     /**
@@ -286,13 +276,13 @@ class Bird
     }
 
     /**
-     * Get cdRef
+     * Get rang
      *
-     * @return int
+     * @return string
      */
-    public function getCdRef()
+    public function getRang()
     {
-        return $this->cdRef;
+        return $this->rang;
     }
 
     /**
@@ -310,13 +300,13 @@ class Bird
     }
 
     /**
-     * Get rang
+     * Get lbNom
      *
      * @return string
      */
-    public function getRang()
+    public function getLbNom()
     {
-        return $this->rang;
+        return $this->lbNom;
     }
 
     /**
@@ -334,13 +324,13 @@ class Bird
     }
 
     /**
-     * Get lbNom
+     * Get lbAuteur
      *
      * @return string
      */
-    public function getLbNom()
+    public function getLbAuteur()
     {
-        return $this->lbNom;
+        return $this->lbAuteur;
     }
 
     /**
@@ -358,13 +348,13 @@ class Bird
     }
 
     /**
-     * Get lbAuteur
+     * Get nomComplet
      *
      * @return string
      */
-    public function getLbAuteur()
+    public function getNomComplet()
     {
-        return $this->lbAuteur;
+        return $this->nomComplet;
     }
 
     /**
@@ -382,13 +372,13 @@ class Bird
     }
 
     /**
-     * Get nomComplet
+     * Get nomValide
      *
      * @return string
      */
-    public function getNomComplet()
+    public function getNomValide()
     {
-        return $this->nomComplet;
+        return $this->nomValide;
     }
 
     /**
@@ -406,37 +396,12 @@ class Bird
     }
 
     /**
-     * Get nomValide
+     * Get nomVernEng
      *
      * @return string
      */
-    public function getNomValide()
+    public function getNomVernEng()
     {
-        return $this->nomValide;
-    }
-
-    /**
-     * Set nomVern
-     *
-     * @param string $nomVern
-     *
-     * @return Bird
-     */
-    public function setNomVern($nomVern)
-    {
-        $this->nomVern = $nomVern;
-
-        return $this;
-    }
-
-    /**
-     * Get nomVern
-     *
-     * @return string
-     */
-    public function getNomVern()
-    {
-        return  str_replace("\"","",$this->nomVern) ;
     }
 
     /**
@@ -454,12 +419,13 @@ class Bird
     }
 
     /**
-     * Get nomVernEng
+     * Get phylum
      *
      * @return string
      */
-    public function getNomVernEng()
+    public function getPhylum()
     {
+        return $this->phylum;
     }
 
     /**
@@ -477,13 +443,13 @@ class Bird
     }
 
     /**
-     * Get phylum
+     * Get classe
      *
      * @return string
      */
-    public function getPhylum()
+    public function getClasse()
     {
-        return $this->phylum;
+        return $this->classe;
     }
 
     /**
@@ -498,16 +464,6 @@ class Bird
         $this->classe = $classe;
 
         return $this;
-    }
-
-    /**
-     * Get classe
-     *
-     * @return string
-     */
-    public function getClasse()
-    {
-        return $this->classe;
     }
 
     /**
@@ -613,6 +569,16 @@ class Bird
     }
 
     /**
+     * Get regne
+     *
+     * @return string
+     */
+    public function getRegne()
+    {
+        return $this->regne;
+    }
+
+    /**
      * Set regne
      *
      * @param string $regne
@@ -626,23 +592,48 @@ class Bird
         return $this;
     }
 
-    /**
-     * Get regne
-     *
-     * @return string
-     */
-    public function getRegne()
-    {
-        return $this->regne;
-    }
-
     public  function getAName()
     {
         return $this->nomVern == '' ? $this->lbNom : $this->getNomVern();
     }
+
+    /**
+     * Get nomVern
+     *
+     * @return string
+     */
+    public function getNomVern()
+    {
+        return str_replace("\"", "", $this->nomVern);
+    }
+
+    /**
+     * Set nomVern
+     *
+     * @param string $nomVern
+     *
+     * @return Bird
+     */
+    public function setNomVern($nomVern)
+    {
+        $this->nomVern = $nomVern;
+
+        return $this;
+    }
+
     function __toString()
     {
         return $this->nomVern == '' ? $this->lbNom : $this->getNomVern();
+    }
+
+    /**
+     * Get fiche
+     *
+     * @return \ObservationBundle\Entity\Fiche
+     */
+    public function getFiche()
+    {
+        return $this->fiche;
     }
 
     /**
@@ -660,13 +651,13 @@ class Bird
     }
 
     /**
-     * Get fiche
+     * Get sound
      *
-     * @return \ObservationBundle\Entity\Fiche
+     * @return \ObservationBundle\Entity\Sound
      */
-    public function getFiche()
+    public function getSound()
     {
-        return $this->fiche;
+        return $this->sound;
     }
 
     /**
@@ -681,15 +672,5 @@ class Bird
         $this->sound = $sound;
 
         return $this;
-    }
-
-    /**
-     * Get sound
-     *
-     * @return \ObservationBundle\Entity\Sound
-     */
-    public function getSound()
-    {
-        return $this->sound;
     }
 }

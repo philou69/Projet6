@@ -15,6 +15,12 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class Picture
 {
     /**
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Star", mappedBy="picture")
+     */
+    protected $star;
+    protected $file;
+    protected $tempFileName;
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -22,44 +28,31 @@ class Picture
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;
-
     /**
      * @var string
      *
      * @ORM\Column(name="alt", type="string", length=255)
      */
     private $alt;
-
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="pictures")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $bird;
-
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Observation", inversedBy="pictures")
      */
     private $observation;
-
     /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\User", mappedBy="avatar")
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\User")
      */
     private $user;
-
-    /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Star", mappedBy="picture")
-     */
-    protected $star;
-
-    protected $file;
-
-    protected $tempFileName;
 
     /**
      * Get id
@@ -69,6 +62,16 @@ class Picture
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url === null ? 'No_picture' : $this->url;
     }
 
     /**
@@ -86,15 +89,14 @@ class Picture
     }
 
     /**
-     * Get url
+     * Get alt
      *
      * @return string
      */
-    public function getUrl()
+    public function getAlt()
     {
-        return $this->url === null ? 'No_picture' : $this->url;
+        return $this->alt === null ? 'Picture missing' : $this->alt;
     }
-
 
     /**
      * Set alt
@@ -111,13 +113,13 @@ class Picture
     }
 
     /**
-     * Get alt
+     * Get bird
      *
-     * @return string
+     * @return \ObservationBundle\Entity\Bird
      */
-    public function getAlt()
+    public function getBird()
     {
-        return $this->alt === null ? 'Picture missing' : $this->alt;
+        return $this->bird;
     }
 
     /**
@@ -135,13 +137,13 @@ class Picture
     }
 
     /**
-     * Get bird
+     * Get observation
      *
-     * @return \ObservationBundle\Entity\Bird
+     * @return \ObservationBundle\Entity\Observation
      */
-    public function getBird()
+    public function getObservation()
     {
-        return $this->bird;
+        return $this->observation;
     }
 
     /**
@@ -159,13 +161,13 @@ class Picture
     }
 
     /**
-     * Get observation
+     * Get user
      *
-     * @return \ObservationBundle\Entity\Observation
+     * @return \ObservationBundle\Entity\User
      */
-    public function getObservation()
+    public function getUser()
     {
-        return $this->observation;
+        return $this->user;
     }
 
     /**
@@ -183,13 +185,13 @@ class Picture
     }
 
     /**
-     * Get user
+     * Get star
      *
-     * @return \ObservationBundle\Entity\User
+     * @return \ObservationBundle\Entity\Star
      */
-    public function getUser()
+    public function getStar()
     {
-        return $this->user;
+        return $this->star;
     }
 
     /**
@@ -204,16 +206,6 @@ class Picture
         $this->star = $star;
 
         return $this;
-    }
-
-    /**
-     * Get star
-     *
-     * @return \ObservationBundle\Entity\Star
-     */
-    public function getStar()
-    {
-        return $this->star;
     }
 
     public function getFile()
@@ -231,6 +223,17 @@ class Picture
         $this->alt = null;
 
         return $this;
+    }
+
+    public function getUploadRootDir()
+    {
+        return __DIR__ . '/../../../web/' . $this->getUploadDir();
+    }
+
+    public function getUploadDir()
+    {
+        $directory = $this->bird === null ? $this->observation === null ? 'avatar' : 'bird' : 'bird';
+        return 'uploads/images/' . $directory;
     }
 
     /**
@@ -280,17 +283,6 @@ class Picture
     {
         if(file_exists($this->tempFileName))
         unlink($this->tempFileName);
-    }
-
-    public function getUploadDir()
-    {
-        $directory = $this->bird === null ? $this->observation === null ? 'avatar' : 'bird' : 'bird';
-        return 'uploads/images/' . $directory;
-    }
-
-    public function getUploadRootDir()
-    {
-        return __DIR__ . '/../../../web/' . $this->getUploadDir();
     }
 
     public function getWebPath()
