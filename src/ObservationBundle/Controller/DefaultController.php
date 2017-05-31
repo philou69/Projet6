@@ -12,9 +12,9 @@ class DefaultController extends Controller
         $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile()){
 
-            return $this->render('ObservationBundle::layout.mobile.html.twig');
+            return $this->render('@Observation/Home/Mobile/home.html.twig');
         }else{
-            return $this->render('ObservationBundle::layout.desktop.html.twig');
+            return $this->render('@Observation/Home/Desktop/home.html.twig');
         }
     }
 
