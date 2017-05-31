@@ -11,18 +11,18 @@
             <h1>Liste des fiches oiseaux</h1>
         </div>
         <div class="col-sm-6 text-right center">
-                <input type="text" id="search" placeholder="Rechercher une fiche &#xf002;" style="font-family:FontAwesome, Arial">
+                <input type="text" id="search" placeholder="Rechercher une fiche &#xf002;" style="font-family:FontAwesome, Arial" data-href="{{ path('bird_pagination', {'page': 1}) }}">
         </div>
 
     </div>
     <div id="listing" >
-        <div id="birds" class="content row"></div>
+        <div id="birds" class="content row" data-href="{{ path('bird_pagination', {'page': 1}) }}"></div>
 
         <div class="row">
             <div class="col-sm-2 col-sm-offset-5 loader"></div>
         </div>
         <div class="text-center">
-            <a href="#" id="add-birds">Voir plus d'oiseaux</a>
+            <a href="#" id="add-birds" data-href="{{ path('bird_pagination', {'page': 1}) }}">Voir plus d'oiseaux</a>
         </div>
     </div>
 
