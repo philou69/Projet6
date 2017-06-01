@@ -1,0 +1,68 @@
+{% extends 'ObservationBundle::layout.desktop.html.twig' %}
+{% block body %}
+    {# Incorporation de la bar de navigation desktop et des messages flashs #}
+    {% include '@Observation/Default/Navbar/Desktop/navbar.html.twig' %}
+
+
+    {% include 'ObservationBundle:Default:flash.message.html.twig' %}
+
+    <div id="homePicture">
+        <div class="text-center">
+            <a class="btn btn-primary btn-round-lg btn-lg" href="#" role="button">Commencer l'observation</a>
+        </div>
+    </div>
+    {# block content qui sera remplit au besion sur chaque page#}
+    <div id="content" class="container">
+        {% block content %}
+            <div id="bienvenue">
+                <h1>Bienvenue</h1>
+                <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
+                    nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
+                    à l'aide de fiches détaillés sur nos amis les oiseaux</p>
+                <div class="text-center">
+                    <a class="btn btn-primary btn-round-lg btn-lg" href="#" role="button">DECOUVRIR L'ASSOCIATION</a>
+                </div>
+            </div>
+
+
+
+
+
+        {% endblock %}
+    </div>
+    {% block javascript %}
+        {{ parent() }}
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+
+                $(".navbar-fixed-top").css("background-color", "transparent");
+                $('nav a').css("color", "white");
+
+
+                $(document).scroll(function () { // check if scroll event happened
+                    if ($(document).scrollTop() > 50) { // check if user scrolled more than 50 from top of the browser window
+                        $(".navbar-fixed-top").css("background-color", "#f8f8f8");
+                        $('nav a').css("color", "#428bca");
+                        // if yes, then change the color of class "navbar-fixed-top" to white (#f8f8f8)
+                    } else {
+                        $(".navbar-fixed-top").css("background-color", "transparent");
+
+                        $('nav a').css("color", "white");// if not, change it back to transparent
+                    }
+                });
+
+                $("#homePicture").click(function () {
+                    $('html,body').animate({
+                            scrollTop: $("#content").offset().top
+                        },
+                        'slow');
+                });
+
+
+            })
+
+        </script>
+    {% endblock %}
+    {% include 'ObservationBundle:Default:footer.html.twig' %}
+{% endblock %}
