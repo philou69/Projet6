@@ -68,7 +68,6 @@ class Observation
      * @var string
      *
      * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="observation", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
      */
     private $pictures;
 
@@ -329,7 +328,7 @@ class Observation
      *
      * @return Observation
      */
-    public function setValidatedBy(\ObservationBundle\Entity\User $validatedBy)
+    public function setValidatedBy(\ObservationBundle\Entity\User $validatedBy = null)
     {
         $this->validatedBy = $validatedBy;
 
