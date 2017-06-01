@@ -126,6 +126,13 @@ class BirdController extends Controller
 
                 // On effectu la requete doctrine getPage()
                 $birds = $em->getRepository('ObservationBundle:Bird')->getPage($page, $number, $search);
+//                foreach ($birds as $bird){
+//                        var_dump($bird);
+//                        exit;
+//
+//
+//                }
+
                 // On calcul le nombre de page max
                 $nbPage = ceil(count($birds)/$number);
 
