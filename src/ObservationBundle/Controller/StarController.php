@@ -15,9 +15,9 @@ class StarController extends Controller
         }
         $em = $this->getDoctrine()->getManager();
 
-        $stars = $em->getRepository('ObservationBundle:Star')->findAll();
+        $groupsStar = $em->getRepository('ObservationBundle:GroupStar')->findAll();
 
-            return $this->render('@Observation/Star/list.html.twig', array('stars' => $stars));
+            return $this->render('@Observation/Star/list.html.twig', array('groupsStar' => $groupsStar));
 
     }
 }
