@@ -10,4 +10,23 @@ namespace ObservationBundle\Repository;
  */
 class PictureRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function getPictureGallery()
+    {
+
+        $qb = $this->createQueryBuilder('p');
+        $query = $qb
+            ->select('p.url')
+            ->leftJoin('p.observation', 'obs')
+            ->where('obs.validated = 1 ')
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults(4);
+
+        return $query->getQuery()
+            ->getResult();
+    }
+
+
+
+
 }
