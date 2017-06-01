@@ -14,10 +14,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class Picture
 {
-    /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Star", mappedBy="picture")
-     */
-    protected $star;
     protected $file;
     protected $tempFileName;
     /**

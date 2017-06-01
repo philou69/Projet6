@@ -7,7 +7,7 @@
             <div class="col-sm-5 bird {% if loop.index is even %}right{% else %}left{% endif %} row" data-href="{{ path('bird_description', {'id': bird.id}) }}">
                 <div class="col-sm-4">
                     {% if bird.pictures|length > 0 %}
-                        <img src="{{ bird.pictures[0].url }}" class="img-responsive" alt="bird">
+                        <img src="{{ asset(bird.pictures[0].webPath) }}" class="img-responsive" alt="bird">
                     {% else %}
                         Pas de photos
                     {% endif %}
