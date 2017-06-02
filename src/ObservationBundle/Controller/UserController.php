@@ -284,6 +284,14 @@ class UserController extends Controller
     }
     public function starsAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $observations = $em->getRepository('ObservationBundle:Observation')->findForUser($this->getUser());
+        $pictures = $em->getRepository('ObservationBundle:Picture')->findForValidate($this->getUser());
+        $birds = $em->getRepository('ObservationBundle:Bird')->findForValide($this->getUser());
+
+        var_dump(count($observations));
+        var_dump(count($pictures));
+        var_dump(count($birds));
         // L'accès n'étant pas autorisé aux naturaliste, on soulève un AccessDenied
         if($this->getUser()->hasRole('ROLE_NATURALISTE')){
             throw $this->createAccessDeniedException("Vous n'avez pas les droits d'accès!");

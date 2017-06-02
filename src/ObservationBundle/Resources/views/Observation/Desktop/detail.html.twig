@@ -52,10 +52,10 @@
         {% else %}
             {%  include 'ObservationBundle:Modal:valide.observation.html.twig' with {'observation': observation} %}
         {% endif %}
-
-
+        <a href="{{ path('user_observations') }}">Reourner à la liste</a>
+    {% else %}
+        <a href="{{ path('bird_location', {'id': observation.bird.id}) }}"></a>
     {% endif %}
-
 {% endblock %}
 
 

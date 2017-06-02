@@ -10,7 +10,7 @@
                     {% if app.user in groupStar.users %}
                         <img src="{{ asset(groupStar.getHighest(app.user).image) }}" alt="medaille">
                         {% else %}
-                        <img src="{{ asset('bundles/observation/images/icones/medailles_icon.png') }}">
+                        <img src="{{ asset(groupStar.image) }}" class="group-star">
                     {% endif %}
                 </a>
             </div>
