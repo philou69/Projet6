@@ -1,5 +1,5 @@
 {# Navbar sur pc #}
-<nav class="navbar navbar-light navbar-fixed-top" style="background-color: #e3f2fd;" role="navigation">
+<nav class="navbar navbar-light {{ app.request.get('_route') == 'homepage' ? 'navbar-fixed-top' : 'navbar-general'}}"  role="navigation">
     <div class="container">
         {#  Block title navbar #}
         <div class="navbar-header">
