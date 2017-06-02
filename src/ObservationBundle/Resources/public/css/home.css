@@ -1,0 +1,67 @@
+/*
+    Home page
+     */
+
+#homePicture {
+
+    background: url('/bundles/observation/images/hiker-918473_1920.jpg') no-repeat center;
+    -webkit-background-size: cover;
+    /* Hauteur de l'écran */
+    height: 100vh;
+    width: 100%;
+}
+
+
+
+#start{
+    position: relative;
+    top: 90vh;
+    /*margin-top: 58%;*/
+}
+
+.btn-round-lg {
+
+    border-radius: 24px;
+}
+
+/*
+Texte de bienvenue
+*/
+
+#bienvenue, #gallery {
+    height: 400px;
+}
+
+#bienvenue h1 {
+    height: 100px;
+    margin-top: 100px;
+}
+
+#gallery h1 {
+    margin-top: 30px;
+}
+
+#bienvenue p {
+    height: 150px;
+}
+
+#bienvenue div {
+    height: 100px;
+}
+
+/*
+Gallerie de photos
+ */
+#gallery a {
+    padding-top: 40px;
+    text-decoration: underline;
+}
+
+#gallery img {
+
+    margin-right: 10px;
+}
+
+#gallery p {
+    margin-top: 50px;
+}
