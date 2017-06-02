@@ -4,7 +4,9 @@
 namespace ObservationBundle\Controller;
 
 
+use Composer\EventDispatcher\EventDispatcher;
 use ObservationBundle\Entity\User;
+use ObservationBundle\Event\UserEvent;
 use ObservationBundle\Form\User\ChangeAvartarType;
 use ObservationBundle\Form\User\ChangePasswordType;
 use ObservationBundle\Form\User\EditUserType;
@@ -52,6 +54,7 @@ class UserController extends Controller
             $this->get('security.token_storage')->setToken($token);
             $this->get('session')->set('_security_main', serialize($token));
 
+            $this->get('event_dispatcher')->dispatch('user.captured', new UserEvent($user));
 
             // Enfin redirection vers la page d'accueil
             return $this->redirectToRoute('homepage');
@@ -193,6 +196,7 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+            $this->get('event_dispatcher')->dispatch('user.captured', new  UserEvent($user));
 
             $this->addFlash('success', 'Vos données ont bien été modifiés!');
             // On renvoie sur la page profil avec un flash message
@@ -284,14 +288,6 @@ class UserController extends Controller
     }
     public function starsAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $observations = $em->getRepository('ObservationBundle:Observation')->findForUser($this->getUser());
-        $pictures = $em->getRepository('ObservationBundle:Picture')->findForValidate($this->getUser());
-        $birds = $em->getRepository('ObservationBundle:Bird')->findForValide($this->getUser());
-
-        var_dump(count($observations));
-        var_dump(count($pictures));
-        var_dump(count($birds));
         // L'accès n'étant pas autorisé aux naturaliste, on soulève un AccessDenied
         if($this->getUser()->hasRole('ROLE_NATURALISTE')){
             throw $this->createAccessDeniedException("Vous n'avez pas les droits d'accès!");
@@ -310,6 +306,8 @@ class UserController extends Controller
 
             $em->persist($user);
             $em->flush();
+
+            $this->get('event_dispatcher')->get('user.captured', new  UserEvent($user));
 
             return $this->redirectToRoute('user_profil');
         }
