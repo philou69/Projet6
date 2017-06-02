@@ -4,16 +4,14 @@
 namespace ObservationBundle\Controller;
 
 
-use Buzz\Message\Response;
 use ObservationBundle\Entity\Bird;
 use ObservationBundle\Entity\Observation;
 use ObservationBundle\Entity\Picture;
+use ObservationBundle\Event\ObservationEvent;
 use ObservationBundle\Form\Observation\AddObservationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\Constraints\Date;
-use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 
@@ -92,10 +90,8 @@ class ObservationController extends Controller
      * @param Observation $observation
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function viewAction(Observation $observation)
+    public function viewAction(Observation $observation, Request $request)
     {
-
-
         $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile()){
             return $this->render('@Observation/Observation/Mobile/detail.html.twig', array(
@@ -175,6 +171,23 @@ class ObservationController extends Controller
     public function validateAction(Observation $observation)
     {
         // Action simple de mise à jour de l'entity sans vue renvoyant à la page de l'observation
+        // on passe l'observation en validé
+        $observation->setValidated(true)
+            ->setValidatedAt(new \DateTime())
+            ->setValidatedBy($this->getUser());
+        foreach ($observation->getPictures() as $picture)
+        {
+            $picture->setBird($observation->getBird());
+        }
+        $em = $this->getDoctrine()->getManager();
+
+        $em->persist($observation);
+        $em->flush();
+        $this->get('event_dispatcher')->dispatch('observation.captured', new ObservationEvent($observation));
+
+        $this->addFlash('info', "L'observation a bien été enregistrer !");
+
+        return $this->redirectToRoute('observation_view', array('id' => $observation->getId()));
 
     }
 

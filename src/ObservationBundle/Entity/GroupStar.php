@@ -37,7 +37,7 @@ class GroupStar
     protected $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Star", mappedBy="groupMedal")
+     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Star", mappedBy="groupStar")
      * @ORM\OrderBy({"order"="DESC"})
      */
     protected $stars;
@@ -111,7 +111,7 @@ class GroupStar
      */
     public function getImage()
     {
-        return '/bundles/observation/public/images/icones/' . $this->image;
+        return '/bundles/observation/images/icones/' . $this->image;
     }
 
     /**
