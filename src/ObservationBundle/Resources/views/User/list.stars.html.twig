@@ -21,7 +21,12 @@
                 dataType: 'html',
                 success: function (code_html, status) {
                     $('#stars').html(code_html);
-                    $('.loader').attr('hidden', true);
+                    setTimeout(function() {
+                        $('#stars').css('display', 'inline')
+                        $('.loader').attr('hidden', true);
+                    }, 2000);
+
+
                 }
             })
         })

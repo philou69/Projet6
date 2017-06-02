@@ -1,0 +1,35 @@
+/* Mise en fomre de la navbar*/
+.navbar-general>.container{
+    /*Couleur de fond de la premiere ligne */
+    background-color: #99d1c8;
+}
+.navbar-general >.tab-content{
+    /* Couleur de fond de la deuxieme ligne*/
+    background-color: #dbefed;
+}
+.navbar-nav >li >a{
+    /* Couleur des lien premiere ligne*/
+    color: white;
+    line-height: 18px;
+}
+.navbar-nav>li.active>a{
+    /* Couleur des lien premiere ligne quand active*/
+    color: #333333;
+}
+.tab-content .navbar-nav >li >a{
+    /* Couleur des lien premiere ligne*/
+    color: #aaaaaa;
+    line-height: 18px;
+}
+.tab-content .navbar-nav>li.active>a{
+    /* Couleur des lien premiere ligne quand active*/
+    color: #333333;
+}
+.navbar-brand{
+    color: #a1d0f3;
+    font-size: 36px;
+}
+
+.navbar-fixed-top{
+    background-color: transparent;
+}
