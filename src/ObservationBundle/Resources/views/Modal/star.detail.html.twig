@@ -20,7 +20,7 @@
                             {% if app.user in star.users%}
                                 <img src="{{ asset(star.image) }}" alt="{{ star.title }}">
                             {% else %}
-                                <img src="{{ asset(star.image) }}" alt="medaille">
+                                <img src="{{ asset(groupStar.image) }}" alt="medaille">
                             {% endif %}
                         {% endfor %}
 
