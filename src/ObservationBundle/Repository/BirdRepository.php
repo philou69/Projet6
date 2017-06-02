@@ -3,6 +3,7 @@
 namespace ObservationBundle\Repository;
 
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use ObservationBundle\Entity\User;
 
 /**
  * BirdsRepository
@@ -31,5 +32,16 @@ class BirdRepository extends \Doctrine\ORM\EntityRepository
         $query->setFirstResult(($page - 1) * $numbers)->setMaxResults($numbers);
 
         return new Paginator($query, true);
+    }
+
+    public function findForValide(User $user)
+    {
+        $query = $this->createQueryBuilder('b')
+            ->innerJoin('b.observations', 'o')
+            ->where('o.user = :user')
+            ->setParameter('user', $user)
+            ->andWhere('o.validated = true');
+
+        return $query->getQuery()->getResult();
     }
 }

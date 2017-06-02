@@ -4,6 +4,8 @@ namespace ObservationBundle\Repository;
 
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use ObservationBundle\Entity\Bird;
+use ObservationBundle\Entity\User;
+
 /**
  * ObservationRepository
  *
@@ -52,4 +54,13 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
         return new Paginator($query, true);
     }
 
+    public function findForUser(User $user)
+    {
+        $query = $this->createQueryBuilder('o')
+            ->where('o.user = :user')
+            ->setParameter('user', $user)
+            ->andWhere('o.validated = true');
+
+        return $query->getQuery()->getResult();
+    }
 }

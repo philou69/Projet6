@@ -2,6 +2,8 @@
 
 namespace ObservationBundle\Repository;
 
+use ObservationBundle\Entity\User;
+
 /**
  * PictureRepository
  *
@@ -26,7 +28,14 @@ class PictureRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 
+    public function findForValidate(User $user)
+    {
+        $query = $this->createQueryBuilder('p')
+            ->innerJoin('p.observation', 'o')
+            ->where('o.user = :user')
+            ->setParameter('user', $user)
+            ->andWhere('o.validated = true');
 
-
-
+        return $query->getQuery()->getResult();
+    }
 }
