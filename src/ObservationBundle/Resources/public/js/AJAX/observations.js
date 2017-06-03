@@ -30,7 +30,9 @@ $(document).ready(function () {
             }
         })
     })
-
+    $(document).on('click', '.observation', function () {
+        window.document.location = $(this).data('href')
+    })
     function prepareAjax() {
         $("#content-observations").empty();
         $('#loader').removeAttr('hidden');

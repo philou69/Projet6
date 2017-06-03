@@ -13,6 +13,23 @@ use Doctrine\ORM\Mapping as ORM;
 class Star
 {
     /**
+     * @ORM\Column(type="integer")
+     */
+    protected $order;
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $image;
+    /**
+     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\User", inversedBy="stars")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    protected $users;
+    /**
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\GroupStar", inversedBy="stars")
+     */
+    protected $groupStar;
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -20,42 +37,18 @@ class Star
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
-
     /**
      * @var int
      *
      * @ORM\Column(name="quantity", type="integer")
      */
     private $quantity;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    protected $order;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $image;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\User", inversedBy="stars")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    protected $users;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\GroupStar", inversedBy="stars")
-     */
-    protected $groupMedal;
-
 
     /**
      * Constructor
@@ -76,6 +69,16 @@ class Star
     }
 
     /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
      * Set title
      *
      * @param string $title
@@ -90,13 +93,13 @@ class Star
     }
 
     /**
-     * Get title
+     * Get quantity
      *
-     * @return string
+     * @return integer
      */
-    public function getTitle()
+    public function getQuantity()
     {
-        return $this->title;
+        return $this->quantity;
     }
 
     /**
@@ -114,13 +117,13 @@ class Star
     }
 
     /**
-     * Get quantity
+     * Get order
      *
      * @return integer
      */
-    public function getQuantity()
+    public function getOrder()
     {
-        return $this->quantity;
+        return $this->order;
     }
 
     /**
@@ -138,16 +141,6 @@ class Star
     }
 
     /**
-     * Get order
-     *
-     * @return integer
-     */
-    public function getOrder()
-    {
-        return $this->order;
-    }
-
-    /**
      * Add user
      *
      * @param \ObservationBundle\Entity\User $user
@@ -157,7 +150,10 @@ class Star
     public function addUser(\ObservationBundle\Entity\User $user)
     {
         $this->users[] = $user;
-
+        // On regarde si le groupStar contient dejà l'user et on lui le passe si c'est pas le cas
+        if (!$this->groupStar->getUsers()->contains($user)) {
+            $this->groupStar->addUser($user);
+        }
         return $this;
     }
 
@@ -182,27 +178,37 @@ class Star
     }
 
     /**
-     * Set groupMedal
+     * Get groupStar
      *
-     * @param \ObservationBundle\Entity\GroupStar $groupMedal
+     * @return \ObservationBundle\Entity\GroupStar
+     */
+    public function getGroupStar()
+    {
+        return $this->groupStar;
+    }
+
+    /**
+     * Set groupStar
+     *
+     * @param \ObservationBundle\Entity\GroupStar $groupStar
      *
      * @return Star
      */
-    public function setGroupMedal(\ObservationBundle\Entity\GroupStar $groupMedal = null)
+    public function setGroupStar(\ObservationBundle\Entity\GroupStar $groupStar = null)
     {
-        $this->groupMedal = $groupMedal;
+        $this->groupStar = $groupStar;
 
         return $this;
     }
 
     /**
-     * Get groupMedal
+     * Get image
      *
-     * @return \ObservationBundle\Entity\GroupStar
+     * @return string
      */
-    public function getGroupMedal()
+    public function getImage()
     {
-        return $this->groupMedal;
+        return '/bundles/observation/images/icones/' . $this->image;
     }
 
     /**
@@ -217,15 +223,5 @@ class Star
         $this->image = $image;
 
         return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return '/bundles/observation/images/icones/' . $this->image;
     }
 }

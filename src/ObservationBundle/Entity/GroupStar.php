@@ -37,7 +37,7 @@ class GroupStar
     protected $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Star", mappedBy="groupMedal")
+     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Star", mappedBy="groupStar")
      * @ORM\OrderBy({"order"="DESC"})
      */
     protected $stars;
@@ -67,6 +67,16 @@ class GroupStar
     }
 
     /**
+     * Get entity
+     *
+     * @return string
+     */
+    public function getEntity()
+    {
+        return $this->entity;
+    }
+
+    /**
      * Set entity
      *
      * @param string $entity
@@ -81,13 +91,13 @@ class GroupStar
     }
 
     /**
-     * Get entity
+     * Get image
      *
      * @return string
      */
-    public function getEntity()
+    public function getImage()
     {
-        return $this->entity;
+        return '/bundles/observation/images/icones/' . $this->image;
     }
 
     /**
@@ -105,13 +115,13 @@ class GroupStar
     }
 
     /**
-     * Get image
+     * Get description
      *
      * @return string
      */
-    public function getImage()
+    public function getDescription()
     {
-        return '/bundles/observation/public/images/icones/' . $this->image;
+        return $this->description;
     }
 
     /**
@@ -126,16 +136,6 @@ class GroupStar
         $this->description = $description;
 
         return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**

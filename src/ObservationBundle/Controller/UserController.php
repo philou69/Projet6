@@ -4,7 +4,9 @@
 namespace ObservationBundle\Controller;
 
 
+use Composer\EventDispatcher\EventDispatcher;
 use ObservationBundle\Entity\User;
+use ObservationBundle\Event\UserEvent;
 use ObservationBundle\Form\User\ChangeAvartarType;
 use ObservationBundle\Form\User\ChangePasswordType;
 use ObservationBundle\Form\User\EditUserType;
@@ -52,6 +54,7 @@ class UserController extends Controller
             $this->get('security.token_storage')->setToken($token);
             $this->get('session')->set('_security_main', serialize($token));
 
+            $this->get('event_dispatcher')->dispatch('user.captured', new UserEvent($user));
 
             // Enfin redirection vers la page d'accueil
             return $this->redirectToRoute('homepage');
@@ -139,8 +142,7 @@ class UserController extends Controller
         // L'user est récuperer grace au token, si le token n'est pas bon Symfony génere une erreur
         //Vérification de la validité de vie du token, moins de 2 h
         $now = new \DateTime();
-        if($now->diff($user->getDateToken())->d > 2)
-        {
+        if($now->diff($user->getDateToken())->d > 2) {
             throw new \Exception('Le lien n\'est pas valide');
         }
         // Création du formulaire de reset password
@@ -185,7 +187,7 @@ class UserController extends Controller
             throw new Exception('Vous n\'êtes pas autorisez!');
         }
 
-         //Création du formulaire correspondant
+        //Création du formulaire correspondant
         $form = $this->createForm( EditUserType::class, $user);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
@@ -193,6 +195,7 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+            $this->get('event_dispatcher')->dispatch('user.captured', new  UserEvent($user));
 
             $this->addFlash('success', 'Vos données ont bien été modifiés!');
             // On renvoie sur la page profil avec un flash message
@@ -282,6 +285,7 @@ class UserController extends Controller
             return $this->render('@Observation/User/Desktop/list.observation.html.twig', array('all' => $all));
         }
     }
+
     public function starsAction()
     {
         // L'accès n'étant pas autorisé aux naturaliste, on soulève un AccessDenied
@@ -289,9 +293,10 @@ class UserController extends Controller
             throw $this->createAccessDeniedException("Vous n'avez pas les droits d'accès!");
         }
         // Autrement, on renvoie sans se soucier de l'appareil
-             return $this->render('@Observation/User/list.stars.html.twig');
+        return $this->render('@Observation/User/list.stars.html.twig');
 
     }
+
     public function changeAvatarAction(Request $request)
     {
         $user = $this->getUser();
@@ -302,6 +307,8 @@ class UserController extends Controller
 
             $em->persist($user);
             $em->flush();
+
+            $this->get('event_dispatcher')->get('user.captured', new  UserEvent($user));
 
             return $this->redirectToRoute('user_profil');
         }

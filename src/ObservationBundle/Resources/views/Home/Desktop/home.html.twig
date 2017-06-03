@@ -1,28 +1,20 @@
 {% extends 'ObservationBundle::layout.desktop.html.twig' %}
-{% block body %}
-    {# Incorporation de la bar de navigation desktop et des messages flashs #}
-    {% include '@Observation/Default/Navbar/Desktop/navbar.html.twig' %}
+{% block  title %}Accueil{% endblock %}
 
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/home.css') }}">
+{% endblock %}
 
-    {% include 'ObservationBundle:Default:flash.message.html.twig' %}
+{% block content %}
 
-    <div id="homePicture">
-        <div class="text-center">
-            <a class="btn btn-primary btn-round-lg btn-lg" href="#" role="button">Commencer l'observation</a>
-        </div>
-    </div>
     {# block content qui sera remplit au besion sur chaque page#}
-    <div id="content" class="container">
-        {% block content %}
-            <div id="bienvenue">
-                <h1>Bienvenue</h1>
-                <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
-                    nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
-                    à l'aide de fiches détaillés sur nos amis les oiseaux</p>
-                <div class="text-center">
-                    <a class="btn btn-primary btn-round-lg btn-lg" href="#" role="button">DECOUVRIR L'ASSOCIATION</a>
-                </div>
+    <div id="content">
+        <div id="homePicture">
+            <div class="text-center">
+                <a id="start" class="btn btn-primary btn-round-lg btn-lg" href="#" role="button">Commencer l'observation</a>
             </div>
+<<<<<<< HEAD
             <div id="gallery">
                 <div class="row">
                     <h1 class="col-md-10">Les dernières photos</h1>
@@ -34,47 +26,67 @@
                     {% else %}
                         <p>Prochainement les dernières photos</p>
                     {% endfor %}
+=======
+        </div>
+        <div id="bienvenue">
+            <h1>Bienvenue</h1>
+            <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
+                nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
+                à l'aide de fiches détaillés sur nos amis les oiseaux</p>
+            <div class="text-center">
+                <a class="btn btn-primary btn-round-lg btn-lg" href="#" role="button">DECOUVRIR L'ASSOCIATION</a>
+>>>>>>> 76843b0b80742bbaf3db4c19b256b5321cbb71ec
             </div>
+        </div>
+        <div id="gallery">
+            <div class="row">
+                <h1 class="col-md-10">Les dernières photos</h1>
+                <a href="#" class="col-md-2">accéder à la gallerie</a>
+            </div>
+            {% if gallery %}
+                {% for picture in gallery %}
+                    <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" class="img-thumbnail"
+                         style="width: 250px; height: 200px">
 
+                {% endfor %}
+            {% else %}
+                <p>Prochainement les dernières photos</p>
+            {% endif %}
+        </div>
 
-
-
-
-        {% endblock %}
     </div>
-    {% block javascript %}
-        {{ parent() }}
-        <script type="text/javascript">
+{% endblock %}
 
-            $(document).ready(function () {
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript">
 
-                $(".navbar-fixed-top").css("background-color", "transparent");
-                $('nav a').css("color", "white");
+        $(document).ready(function () {
+//                var heightPosition = $(window).height() + $('nav').height();
+//                $('#homePicture div').css('top', heightPosition );
+            $(document).scroll(function () { // check if scroll event happened
+                if ($(document).scrollTop() > $(window).height()) { // check if user scrolled more than height of the window
+                    // Passage des couleur traditionnelles aux élément de la navbar
+                    $(".navbar-fixed-top >.container").css("background-color", "#99d1c8");
+                    $(".navbar-fixed-top >.tab-content").css("background-color", "#dbefed");
+                } else {
+                    // On remet la navbar en transparent et on raffiche le bouton start
+                    $(".navbar-fixed-top >.container").css("background-color", "transparent");
+//                    $('#start').removeAttr('hidden')
+                }
+            });
+
+            $("#start").click(function (event) {
+                event.preventDefault();
+                var height = $(window).height() - $('nav').height()
+
+                $(window).scrollTop(height);
+                // On cache le bouton start
+                $('#start').attr('hidden', true)
+            });
 
 
-                $(document).scroll(function () { // check if scroll event happened
-                    if ($(document).scrollTop() > 50) { // check if user scrolled more than 50 from top of the browser window
-                        $(".navbar-fixed-top").css("background-color", "#f8f8f8");
-                        $('nav a').css("color", "#428bca");
-                        // if yes, then change the color of class "navbar-fixed-top" to white (#f8f8f8)
-                    } else {
-                        $(".navbar-fixed-top").css("background-color", "transparent");
+        })
 
-                        $('nav a').css("color", "white");// if not, change it back to transparent
-                    }
-                });
-
-                $("#homePicture").click(function () {
-                    $('html,body').animate({
-                            scrollTop: $("#gallery").offset().top
-                        },
-                        'slow');
-                });
-
-
-            })
-
-        </script>
-    {% endblock %}
-    {% include 'ObservationBundle:Default:footer.html.twig' %}
+    </script>
 {% endblock %}
