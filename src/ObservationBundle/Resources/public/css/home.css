@@ -28,17 +28,20 @@
 @media (min-width: 992px) {
     #homePicture {
 
-        background: url('/bundles/observation/images/hiker-918473_1920.jpg') no-repeat center;
+        background: url('../images/hiker-918473_1920.jpg') no-repeat center;
         -webkit-background-size: cover;
         /* Hauteur de l'écran */
-        height: 100vh;
+        height: 140vh;
+        margin-top: -200px;
     }
 
 }
 /* Positionnement du bouton sur le bas du div */
 #start{
     position: relative;
-    top: 86vh;
+    top: 125vh;
+    background-color: transparent;
+    color: #dbefed;
 }
 
 /*
