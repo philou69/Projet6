@@ -5,14 +5,19 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/observation/css/home.css') }}">
 {% endblock %}
-
+{% block body %}
+    {# Incorporation de la bar de navigation desktop et des messages flashs #}
+    {% include '@Observation/Default/Navbar/Desktop/navbar.html.twig' %}
+    {% include 'ObservationBundle:Default:flash.message.html.twig' %}
+<div id="homePicture">
+    <div class="text-center">
+        <a id="start" class="btn btn-primary btn-round-lg btn-lg" href="#" role="button">Commencer l'observation</a>
+    </div>
+</div>
+<div id="content" class="container">
 {% block content %}
     {# Block affichant une pĥoto sur toute la fenetre et son bouton permettant de descendre sur le bas de page#}
-        <div id="homePicture">
-            <div class="text-center">
-                <a id="start" class="btn btn-primary btn-round-lg btn-lg" href="#" role="button">Commencer l'observation</a>
-            </div>
-        </div>
+
     {#Zone de présentation du site #}
         <div id="bienvenue">
             <h1>Bienvenue</h1>
@@ -36,7 +41,15 @@
                     <p>Prochainement les dernières photos</p>
                 {% endfor %}
         </div>
+        {#block de saisie obs et newsletter#}
+        <div id="actions">
+
+
+</div>
 {% endblock %}
+{% include 'ObservationBundle:Default:footer.html.twig' %}
+{% endblock %}
+
 
 {% block javascript %}
     {{ parent() }}
@@ -64,8 +77,6 @@
                 // On scroll jusqu'a cette hauteur
                 $(window).scrollTop(height);
             });
-
-
         })
 
     </script>
