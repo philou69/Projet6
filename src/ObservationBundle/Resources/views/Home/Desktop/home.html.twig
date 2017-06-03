@@ -28,15 +28,12 @@
                     <h1 class="col-md-10">Les dernières photos</h1>
                     <a href="#" class="col-md-2">accéder à la gallerie</a>
                 </div>
-                {% if gallery %}
                     {% for picture in gallery %}
                         <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" class="img-thumbnail"
                              style="width: 250px; height: 200px">
-
+                    {% else %}
+                        <p>Prochainement les dernières photos</p>
                     {% endfor %}
-                {% else %}
-                    <p>Prochainement les dernières photos</p>
-                {% endif %}
             </div>
 
 
