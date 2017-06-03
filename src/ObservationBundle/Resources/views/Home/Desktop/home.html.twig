@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('bundles/observation/css/home.css') }}">
 {% endblock %}
 
-{% block content %}
+    {% include 'ObservationBundle:Default:flash.message.html.twig' %}
 
     {# block content qui sera remplit au besion sur chaque page#}
     <div id="content">
