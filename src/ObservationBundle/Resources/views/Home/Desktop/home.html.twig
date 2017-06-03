@@ -12,18 +12,6 @@
             <div class="text-center">
                 <a id="start" class="btn btn-primary btn-round-lg btn-lg" href="#" role="button">Commencer l'observation</a>
             </div>
-
-            <div id="gallery">
-                <div class="row">
-                    <h1 class="col-md-10">Les dernières photos</h1>
-                    <a href="#" class="col-md-2">accéder à la gallerie</a>
-                </div>
-                    {% for picture in gallery %}
-                        <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" class="img-thumbnail"
-                             style="width: 250px; height: 200px">
-                    {% else %}
-                        <p>Prochainement les dernières photos</p>
-                    {% endfor %}
         </div>
     {#Zone de présentation du site #}
         <div id="bienvenue">
