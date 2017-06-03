@@ -1,1 +1,32 @@
-{"version":3,"sources":["../../../../../../../src/ObservationBundle/Resources/public/js/AJAX/observations.js"],"names":["$","document","ready","ajax","url","data","dataType","success","code_html","status","html","attr","on","event","prepareAjax","window","location","empty","removeAttr"],"mappings":";;AAAAA,EAAEC,QAAF,EAAYC,KAAZ,CAAkB,YAAY;AAC1B;AACAF,MAAEG,IAAF,CAAO;AACHC,aAAKJ,EAAE,SAAF,EAAaK,IAAb,CAAkB,MAAlB,CADF;AAEHC,kBAAU,MAFP;AAGHC,iBAAS,iBAAUC,SAAV,EAAqBC,MAArB,EAA6B;AAClCT,cAAE,eAAF,EAAmBU,IAAnB,CAAwBF,SAAxB;AACAR,cAAE,SAAF,EAAaW,IAAb,CAAkB,QAAlB,EAA4B,IAA5B;AACH;AANE,KAAP;;AASAX,MAAE,WAAF,EAAeY,EAAf,CAAkB,OAAlB,EAA2B,YAAY;AACnCZ,UAAEG,IAAF,CAAO;AACHC,iBAAKJ,EAAE,IAAF,EAAQK,IAAR,CAAa,MAAb,CADF;AAEHC,sBAAU,MAFP;AAGHC,qBAAS,iBAAUC,SAAV,EAAqBC,MAArB,EAA6B;AAClCT,kBAAE,eAAF,EAAmBU,IAAnB,CAAwBF,SAAxB;AACAR,kBAAE,SAAF,EAAaW,IAAb,CAAkB,QAAlB,EAA4B,IAA5B;AACH;AANE,SAAP;AAQH,KATD;AAUAX,MAAEC,QAAF,EAAYW,EAAZ,CAAe,OAAf,EAAwB,aAAxB,EAAuC,UAAUC,KAAV,EAAiB;AACpDC;AACAd,UAAEG,IAAF,CAAO;AACHC,iBAAKJ,EAAE,IAAF,EAAQK,IAAR,CAAa,MAAb,CADF;AAEHC,sBAAU,MAFP;AAGHC,qBAAS,iBAAUC,SAAV,EAAqBC,MAArB,EAA6B;AAClCT,kBAAE,eAAF,EAAmBU,IAAnB,CAAwBF,SAAxB;AACAR,kBAAE,SAAF,EAAaW,IAAb,CAAkB,QAAlB,EAA4B,IAA5B;AACH;AANE,SAAP;AAQH,KAVD;AAWAX,MAAEC,QAAF,EAAYW,EAAZ,CAAe,OAAf,EAAwB,cAAxB,EAAwC,YAAY;AAChDG,eAAOd,QAAP,CAAgBe,QAAhB,GAA2BhB,EAAE,IAAF,EAAQK,IAAR,CAAa,MAAb,CAA3B;AACH,KAFD;AAGA,aAASS,WAAT,GAAuB;AACnBd,UAAE,uBAAF,EAA2BiB,KAA3B;AACAjB,UAAE,SAAF,EAAakB,UAAb,CAAwB,QAAxB;AACH;AACJ,CAvCD","file":"observations.js","sourcesContent":["$(document).ready(function () {\n    // On viens de chargé la page, on affiche les observations validés\n    $.ajax({\n        url: $('#valide').data('href'),\n        dataType: 'html',\n        success: function (code_html, status) {\n            $('#observations').html(code_html);\n            $('#loader').attr('hidden', true)\n        }\n    })\n\n    $('.link-tab').on('click', function () {\n        $.ajax({\n            url: $(this).data('href'),\n            dataType: 'html',\n            success: function (code_html, status) {\n                $('#observations').html(code_html);\n                $('#loader').attr('hidden', true);\n            }\n        })\n    })\n    $(document).on('click', '.pagination', function (event) {\n        prepareAjax();\n        $.ajax({\n            url: $(this).data('href'),\n            dataType: 'html',\n            success: function (code_html, status) {\n                $('#observations').html(code_html);\n                $('#loader').attr('hidden', true)\n            }\n        })\n    })\n    $(document).on('click', '.observation', function () {\n        window.document.location = $(this).data('href')\n    })\n    function prepareAjax() {\n        $(\"#content-observations\").empty();\n        $('#loader').removeAttr('hidden');\n    }\n})"]}
+{
+  "version": 3,
+  "sources": [
+    "../../../../../../../src/ObservationBundle/Resources/public/js/AJAX/observations.js"
+  ],
+  "names": [
+    "$",
+    "document",
+    "ready",
+    "ajax",
+    "url",
+    "data",
+    "dataType",
+    "success",
+    "code_html",
+    "status",
+    "html",
+    "attr",
+    "on",
+    "event",
+    "prepareAjax",
+    "window",
+    "location",
+    "empty",
+    "removeAttr"
+  ],
+  "mappings": ";;AAAAA,EAAEC,QAAF,EAAYC,KAAZ,CAAkB,YAAY;AAC1B;AACAF,MAAEG,IAAF,CAAO;AACHC,aAAKJ,EAAE,SAAF,EAAaK,IAAb,CAAkB,MAAlB,CADF;AAEHC,kBAAU,MAFP;AAGHC,iBAAS,iBAAUC,SAAV,EAAqBC,MAArB,EAA6B;AAClCT,cAAE,eAAF,EAAmBU,IAAnB,CAAwBF,SAAxB;AACAR,cAAE,SAAF,EAAaW,IAAb,CAAkB,QAAlB,EAA4B,IAA5B;AACH;AANE,KAAP;;AASAX,MAAE,WAAF,EAAeY,EAAf,CAAkB,OAAlB,EAA2B,YAAY;AACnCZ,UAAEG,IAAF,CAAO;AACHC,iBAAKJ,EAAE,IAAF,EAAQK,IAAR,CAAa,MAAb,CADF;AAEHC,sBAAU,MAFP;AAGHC,qBAAS,iBAAUC,SAAV,EAAqBC,MAArB,EAA6B;AAClCT,kBAAE,eAAF,EAAmBU,IAAnB,CAAwBF,SAAxB;AACAR,kBAAE,SAAF,EAAaW,IAAb,CAAkB,QAAlB,EAA4B,IAA5B;AACH;AANE,SAAP;AAQH,KATD;AAUAX,MAAEC,QAAF,EAAYW,EAAZ,CAAe,OAAf,EAAwB,aAAxB,EAAuC,UAAUC,KAAV,EAAiB;AACpDC;AACAd,UAAEG,IAAF,CAAO;AACHC,iBAAKJ,EAAE,IAAF,EAAQK,IAAR,CAAa,MAAb,CADF;AAEHC,sBAAU,MAFP;AAGHC,qBAAS,iBAAUC,SAAV,EAAqBC,MAArB,EAA6B;AAClCT,kBAAE,eAAF,EAAmBU,IAAnB,CAAwBF,SAAxB;AACAR,kBAAE,SAAF,EAAaW,IAAb,CAAkB,QAAlB,EAA4B,IAA5B;AACH;AANE,SAAP;AAQH,KAVD;AAWAX,MAAEC,QAAF,EAAYW,EAAZ,CAAe,OAAf,EAAwB,cAAxB,EAAwC,YAAU;AAC9CG,eAAOd,QAAP,CAAgBe,QAAhB,GAA2BhB,EAAE,IAAF,EAAQK,IAAR,CAAa,MAAb,CAA3B;AACH,KAFD;AAGA,aAASS,WAAT,GAAuB;AACnBd,UAAE,uBAAF,EAA2BiB,KAA3B;AACAjB,UAAE,SAAF,EAAakB,UAAb,CAAwB,QAAxB;AACH;AACJ,CAvCD",
+  "file": "observations.js",
+  "sourcesContent": [
+    "$(document).ready(function () {\n    // On viens de chargé la page, on affiche les observations validés\n    $.ajax({\n        url: $('#valide').data('href'),\n        dataType: 'html',\n        success: function (code_html, status) {\n            $('#observations').html(code_html);\n            $('#loader').attr('hidden', true)\n        }\n    })\n\n    $('.link-tab').on('click', function () {\n        $.ajax({\n            url: $(this).data('href'),\n            dataType: 'html',\n            success: function (code_html, status) {\n                $('#observations').html(code_html);\n                $('#loader').attr('hidden', true);\n            }\n        })\n    })\n    $(document).on('click', '.pagination', function (event) {\n        prepareAjax();\n        $.ajax({\n            url: $(this).data('href'),\n            dataType: 'html',\n            success: function (code_html, status) {\n                $('#observations').html(code_html);\n                $('#loader').attr('hidden', true)\n            }\n        })\n    })\n    $(document).on('click', '.observation', function(){\n        window.document.location = $(this).data('href')\n    })\n    function prepareAjax() {\n        $(\"#content-observations\").empty();\n        $('#loader').removeAttr('hidden');\n    }\n})"
+  ]
+}
