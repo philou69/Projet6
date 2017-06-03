@@ -14,7 +14,7 @@
             <div class="text-center">
                 <a id="start" class="btn btn-primary btn-round-lg btn-lg" href="#" role="button">Commencer l'observation</a>
             </div>
-<<<<<<< HEAD
+
             <div id="gallery">
                 <div class="row">
                     <h1 class="col-md-10">Les dernières photos</h1>
@@ -26,7 +26,6 @@
                     {% else %}
                         <p>Prochainement les dernières photos</p>
                     {% endfor %}
-=======
         </div>
         <div id="bienvenue">
             <h1>Bienvenue</h1>
@@ -35,25 +34,8 @@
                 à l'aide de fiches détaillés sur nos amis les oiseaux</p>
             <div class="text-center">
                 <a class="btn btn-primary btn-round-lg btn-lg" href="#" role="button">DECOUVRIR L'ASSOCIATION</a>
->>>>>>> 76843b0b80742bbaf3db4c19b256b5321cbb71ec
             </div>
         </div>
-        <div id="gallery">
-            <div class="row">
-                <h1 class="col-md-10">Les dernières photos</h1>
-                <a href="#" class="col-md-2">accéder à la gallerie</a>
-            </div>
-            {% if gallery %}
-                {% for picture in gallery %}
-                    <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" class="img-thumbnail"
-                         style="width: 250px; height: 200px">
-
-                {% endfor %}
-            {% else %}
-                <p>Prochainement les dernières photos</p>
-            {% endif %}
-        </div>
-
     </div>
 {% endblock %}
 

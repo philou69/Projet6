@@ -30,7 +30,7 @@ $(document).ready(function () {
             }
         })
     })
-    $(document).on('click', '.observation', function () {
+    $(document).on('click', '.observation', function(){
         window.document.location = $(this).data('href')
     })
     function prepareAjax() {

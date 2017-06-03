@@ -67,16 +67,6 @@ class GroupStar
     }
 
     /**
-     * Get entity
-     *
-     * @return string
-     */
-    public function getEntity()
-    {
-        return $this->entity;
-    }
-
-    /**
      * Set entity
      *
      * @param string $entity
@@ -91,13 +81,13 @@ class GroupStar
     }
 
     /**
-     * Get image
+     * Get entity
      *
      * @return string
      */
-    public function getImage()
+    public function getEntity()
     {
-        return '/bundles/observation/images/icones/' . $this->image;
+        return $this->entity;
     }
 
     /**
@@ -115,13 +105,13 @@ class GroupStar
     }
 
     /**
-     * Get description
+     * Get image
      *
      * @return string
      */
-    public function getDescription()
+    public function getImage()
     {
-        return $this->description;
+        return '/bundles/observation/images/icones/' . $this->image;
     }
 
     /**
@@ -136,6 +126,16 @@ class GroupStar
         $this->description = $description;
 
         return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**

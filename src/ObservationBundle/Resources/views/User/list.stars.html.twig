@@ -21,7 +21,7 @@
                 dataType: 'html',
                 success: function (code_html, status) {
                     $('#stars').html(code_html);
-                    setTimeout(function () {
+                    setTimeout(function() {
                         $('#stars').css('display', 'inline')
                         $('.loader').attr('hidden', true);
                     }, 2000);

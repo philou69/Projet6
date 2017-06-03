@@ -117,7 +117,7 @@ class ObservationController extends Controller
         $session->set('getBird', false);
         $em = $this->getDoctrine()->getManager();
         // On verifie si le visiteur est un naturaliste
-        if ($this->getUser()->hasRole('ROLE_NATURALISTE')) {
+        if($this->getUser()->hasRole('ROLE_NATURALISTE')){
             // Dans ce cas, l'observation est automatiquement validé par lui-même
             $observation->setValidated(true)
                 ->setValidatedAt(new \DateTime())
@@ -137,7 +137,7 @@ class ObservationController extends Controller
                 $picture->setFile($file)
                     ->setObservation($observation);
                 // Si l'observation est dejà validé, on ajoute l'oiseau à la photo.
-                if ($observation->getValidated() == true) {
+                if($observation->getValidated() == true){
                     $picture->setBird($observation->getBird());
                 }
             }
@@ -175,7 +175,8 @@ class ObservationController extends Controller
         $observation->setValidated(true)
             ->setValidatedAt(new \DateTime())
             ->setValidatedBy($this->getUser());
-        foreach ($observation->getPictures() as $picture) {
+        foreach ($observation->getPictures() as $picture)
+        {
             $picture->setBird($observation->getBird());
         }
         $em = $this->getDoctrine()->getManager();
@@ -201,8 +202,8 @@ class ObservationController extends Controller
             $picture->setBird(null);
         }
         $observation->setValidated(false)
-            ->setValidatedBy(null)
-            ->setValidatedAt(null);
+        ->setValidatedBy(null)
+        ->setValidatedAt(null);
         $em = $this->getDoctrine()->getManager();
 
         $em->persist($observation);

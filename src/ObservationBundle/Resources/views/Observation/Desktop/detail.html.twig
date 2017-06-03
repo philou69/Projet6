@@ -42,17 +42,15 @@
     {% if 'ROLE_NATURALISTE' in app.user.roles %}
         <div class="text-center">
             {% if observation.validated == true %}
-                <a href="#invalide_observation_{{ observation.id }}" class="btn btn-xs btn-info" data-toggle="modal">Unvalidé
-                    l'observation</a>
+                <a href="#invalide_observation_{{ observation.id }}" class="btn btn-xs btn-info" data-toggle="modal">Unvalidé l'observation</a>
             {% else %}
-                <a href="#valide_observation_{{ observation.id }}" class="btn btn-xs btn-info" data-toggle="modal">Validé
-                    l'observation</a>
+                <a href="#valide_observation_{{ observation.id }}" class="btn btn-xs btn-info" data-toggle="modal">Validé l'observation</a>
             {% endif %}
         </div>
         {% if observation.validated == true %}
-            {% include 'ObservationBundle:Modal:unvalide.observation.html.twig' with {'observation': observation} %}
+            {%  include 'ObservationBundle:Modal:unvalide.observation.html.twig' with {'observation': observation} %}
         {% else %}
-            {% include 'ObservationBundle:Modal:valide.observation.html.twig' with {'observation': observation} %}
+            {%  include 'ObservationBundle:Modal:valide.observation.html.twig' with {'observation': observation} %}
         {% endif %}
         <a href="{{ path('user_observations') }}">Reourner à la liste</a>
     {% else %}
