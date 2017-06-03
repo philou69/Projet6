@@ -54,7 +54,7 @@ class Star
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\GroupStar", inversedBy="stars")
      */
-    protected $groupMedal;
+    protected $groupStar;
 
 
     /**
@@ -157,7 +157,10 @@ class Star
     public function addUser(\ObservationBundle\Entity\User $user)
     {
         $this->users[] = $user;
-
+        // On regarde si le groupStar contient dejà l'user et on lui le passe si c'est pas le cas
+        if(!$this->groupStar->getUsers()->contains($user)){
+            $this->groupStar->addUser($user);
+        }
         return $this;
     }
 
@@ -182,27 +185,27 @@ class Star
     }
 
     /**
-     * Set groupMedal
+     * Set groupStar
      *
-     * @param \ObservationBundle\Entity\GroupStar $groupMedal
+     * @param \ObservationBundle\Entity\GroupStar $groupStar
      *
      * @return Star
      */
-    public function setGroupMedal(\ObservationBundle\Entity\GroupStar $groupMedal = null)
+    public function setGroupStar(\ObservationBundle\Entity\GroupStar $groupStar = null)
     {
-        $this->groupMedal = $groupMedal;
+        $this->groupStar = $groupStar;
 
         return $this;
     }
 
     /**
-     * Get groupMedal
+     * Get groupStar
      *
      * @return \ObservationBundle\Entity\GroupStar
      */
-    public function getGroupMedal()
+    public function getGroupStar()
     {
-        return $this->groupMedal;
+        return $this->groupStar;
     }
 
     /**

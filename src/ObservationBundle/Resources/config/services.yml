@@ -5,3 +5,15 @@ services:
     observation.user.mailer:
         class: ObservationBundle\Mailer\UserMailer
         arguments: ['@mailer', '%mailer_user%', '@twig']
+
+    observation.captured.event_subscriber:
+        class: ObservationBundle\EventListener\ObservationSubscriber
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+          - { name: kernel.event_subscriber }
+
+    user.captured.event_subscriber:
+        class: ObservationBundle\EventListener\UserSubscriber
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+          - {name: kernel.event_subscriber }

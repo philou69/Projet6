@@ -124,7 +124,7 @@ class Picture
      *
      * @return Picture
      */
-    public function setBird(\ObservationBundle\Entity\Bird $bird)
+    public function setBird(\ObservationBundle\Entity\Bird $bird = null)
     {
         $this->bird = $bird;
 
@@ -172,33 +172,9 @@ class Picture
      *
      * @return Picture
      */
-    public function setUser(\ObservationBundle\Entity\User $user)
+    public function setUser(\ObservationBundle\Entity\User $user = null)
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get star
-     *
-     * @return \ObservationBundle\Entity\Star
-     */
-    public function getStar()
-    {
-        return $this->star;
-    }
-
-    /**
-     * Set star
-     *
-     * @param \ObservationBundle\Entity\Star $star
-     *
-     * @return Picture
-     */
-    public function setStar(\ObservationBundle\Entity\Star $star = null)
-    {
-        $this->star = $star;
 
         return $this;
     }

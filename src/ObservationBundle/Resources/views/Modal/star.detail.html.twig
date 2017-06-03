@@ -10,14 +10,18 @@
                         <div class="col-sm-12 text-center">
                             {% if app.user in groupStar.users%}
                                 {#{{ dump(groupStar.getHighest(app.user)) }}#}
-                                <img src="{{ asset(groupStar.getHighest(app.user).image) }}" alt="">
+                                <img src="{{ asset(groupStar.getHighest(app.user).image) }}" alt="Medaille">
                             {% else %}
                                 <p>Vous n'avez pas encore déverouillez cette categorie</p>
                             {% endif %}
                         </div>
                         <hr>
-                        {% for star in groupStar.stars %}
-                            <img src="{{ star.image }}" alt="">
+                        {% for star in groupStar.stars | reverse  %}
+                            {% if app.user in star.users%}
+                                <img src="{{ asset(star.image) }}" alt="{{ star.title }}">
+                            {% else %}
+                                <img src="{{ asset(groupStar.image) }}" alt="medaille">
+                            {% endif %}
                         {% endfor %}
 
                     </div>
