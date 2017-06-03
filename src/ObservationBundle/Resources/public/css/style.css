@@ -2,8 +2,8 @@
     height: 400px;
     width: 100%;
 }
-     /*------------------ Styel pour les écans de largeur superieur à 768 px -------*/
-@media (min-width: 768px) {
+     /*------------------ Styel pour les écans de largeur superieur à 992 px -------*/
+@media (min-width: 992px) {
     /* Marge du body pour la navbar et utilisation de flex pour coller le footer en bas de page */
     body {
         margin: 0;
@@ -35,11 +35,11 @@
 }
 
 /* -------------------------------- Fin style écran petit ----------------------------------------*/
-/* -------------------------------- Ecran de moins de 768 px de large ----------------------------------------*/
-@media (max-width: 767px) {
+/* -------------------------------- Ecran de moins de 992 px de large ----------------------------------------*/
+@media (max-width: 992px) {
     /* Marge speciale pour ne pas affiché sous la navbar */
-    body {
-        margin-bottom: 70px;
+    #view {
+        padding-bottom: 70px;
     }
 
     /* position du bouton up à 20px du haut */

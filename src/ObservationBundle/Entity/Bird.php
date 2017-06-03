@@ -184,7 +184,7 @@ class Bird
      *
      * @return string
      */
-    public function getFamille(User $user)
+    public function getFamille()
     {
         return $this->famille;
     }
