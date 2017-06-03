@@ -1,10 +1,19 @@
-<div id="bird" class="tab-pane {% if app.request.attributes.get('_route') in ['bird_description', 'bird_location'] %}active{% endif %}">
-    <ul class="list-inline">
-        <li {% if app.request.attributes.get('_route')== 'bird_description' %}class="active"{% endif %}><a href="{{ path('bird_description', {'id': bird.id}) }}"><i class="fa fa-sticky-note-o" aria-hidden="true"></i></a></li>
-        <li class="{% if app.request.attributes.get('_route') == 'bird_sound' %}active{% endif %} {{ bird.sound is null ? 'disabled': '' }}"
-            id="bird_sound"><a href="#bird_sound"><i class="fa fa-volume-up" aria-hidden="true"></i></a></li>
-        <li {% if app.request.attributes.get('_route') == 'bird_location' %}class="active"{% endif %}><a href="{{ path('bird_location', {'id': bird.id}) }}"><i class="fa fa-globe"></i></a>
-        <li><a href="{{ path('bird_observation', {'id': bird.id}) }}"><i class="fa fa-binoculars"></i></a>
-        </li>
-    </ul>
+<div id="bird" class="tab-pane second row {{  app.request.attributes.get('_route') in ['bird_description', 'bird_location'] ? 'active' : ''}}">
+        <div class="second_line col-xs-3 text-center {{  app.request.attributes.get('_route')== 'bird_description' ? 'active': '' }}">
+            <a href="{{ path('bird_description', {'id': bird.id}) }}" class="text-center">
+                <img src="{{ app.request.attributes.get('_route') == 'bird_description' ? asset('bundles/observation/images/icones/description_icon_hover.png') : asset('bundles/observation/images/icones/description_icon.png') }}" alt="">
+            </a>
+        </div>
+        <div class="second_line col-xs-3 text-center">
+            <a href="#bird_sound" id="bird_sound">
+                <img src="{{ bird.sound is null ? asset('bundles/observation/images/icones/son_icon.png') : asset('bundles/observation/images/icones/son_icon_hover.png') }}" alt=""></a>
+        </div>
+        <div class="second_line col-xs-3 text-center {{  app.request.attributes.get('_route') == 'bird_location' ? 'active' :'' }}">
+            <a href="{{ path('bird_location', {'id': bird.id}) }}" id="bird_repartition">
+                <img src="{{ app.request.attributes.get('_route') == 'bird_location' ? asset('bundles/observation/images/icones/repartition_icon_hover.png') : asset('bundles/observation/images/icones/repartition_icon.png') }}" alt=""></a>
+        </div>
+        <div class="second_line col-xs-3 text-center">
+            <a href="{{ path('bird_observation', {'id': bird.id}) }}" id="bird_add">
+                <img src="{{ asset('bundles/observation/images/icones/ajoutObservation_icon.png') }}" alt=""></a>
+        </div>
 </div>

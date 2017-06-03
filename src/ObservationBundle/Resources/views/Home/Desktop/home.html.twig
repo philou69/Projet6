@@ -7,9 +7,7 @@
 {% endblock %}
 
 {% block content %}
-
-    {# block content qui sera remplit au besion sur chaque page#}
-    <div id="content">
+    {# Block affichant une pĥoto sur toute la fenetre et son bouton permettant de descendre sur le bas de page#}
         <div id="homePicture">
             <div class="text-center">
                 <a id="start" class="btn btn-primary btn-round-lg btn-lg" href="#" role="button">Commencer l'observation</a>
@@ -27,6 +25,7 @@
                         <p>Prochainement les dernières photos</p>
                     {% endfor %}
         </div>
+    {#Zone de présentation du site #}
         <div id="bienvenue">
             <h1>Bienvenue</h1>
             <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
@@ -36,35 +35,46 @@
                 <a class="btn btn-primary btn-round-lg btn-lg" href="#" role="button">DECOUVRIR L'ASSOCIATION</a>
             </div>
         </div>
-    </div>
+    {# Galeery des photos d'oiseaux#}
+        <div id="gallery">
+            <div class="row">
+                <h1 class="col-md-10">Les dernières photos</h1>
+                <a href="#" class="col-md-2">accéder à la gallerie</a>
+            </div>
+                {% for picture in gallery %}
+                    <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" class="img-thumbnail"
+                         style="width: 250px; height: 200px">
+                {% else %}
+                    <p>Prochainement les dernières photos</p>
+                {% endfor %}
+        </div>
 {% endblock %}
 
 {% block javascript %}
     {{ parent() }}
     <script type="text/javascript">
-
         $(document).ready(function () {
-//                var heightPosition = $(window).height() + $('nav').height();
-//                $('#homePicture div').css('top', heightPosition );
             $(document).scroll(function () { // check if scroll event happened
                 if ($(document).scrollTop() > $(window).height()) { // check if user scrolled more than height of the window
                     // Passage des couleur traditionnelles aux élément de la navbar
                     $(".navbar-fixed-top >.container").css("background-color", "#99d1c8");
                     $(".navbar-fixed-top >.tab-content").css("background-color", "#dbefed");
-                } else {
+
+                }else {
                     // On remet la navbar en transparent et on raffiche le bouton start
                     $(".navbar-fixed-top >.container").css("background-color", "transparent");
-//                    $('#start').removeAttr('hidden')
+
                 }
             });
-
+            // Listener sur le bouton start
             $("#start").click(function (event) {
+                // On blque l'effet
                 event.preventDefault();
+                // On calcul la taille de fenetre moins la hauteru de la nav
                 var height = $(window).height() - $('nav').height()
 
+                // On scroll jusqu'a cette hauteur
                 $(window).scrollTop(height);
-                // On cache le bouton start
-                $('#start').attr('hidden', true)
             });
 
 
