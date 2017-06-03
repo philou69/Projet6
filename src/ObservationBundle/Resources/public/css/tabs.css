@@ -1,0 +1,20 @@
+/**
+    Réecriture du css bootstrap des nav-tabs au sujet des border
+     */
+.nav-tabs, .nav-tabs.nav-justified {
+    /*On efface toutes bordure sauf en bas d'une épaisseur de 1px blue*/
+    border: 0;
+    border-bottom: 1px solid skyblue;
+}
+
+.nav-tabs.nav-justified > li > a {
+    /*On supprime la bordure basse de base*/
+    border: 0;
+    background-color: white;
+}
+
+.nav-tabs.nav-justified > .active > a:hover, .nav-tabs.nav-justified > .active > a, .nav-tabs.nav-justified > .active > a:focus, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus {
+    /* On affiche une bordure de 5px sur le lien séléctionner*/
+    border: 0;
+    border-bottom: 5px solid skyblue;
+}

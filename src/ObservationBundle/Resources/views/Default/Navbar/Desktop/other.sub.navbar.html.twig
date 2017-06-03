@@ -1,7 +1,7 @@
 <div id="other" class="tab-pane {% if app.request.attributes.get('_route') == 'asso' %}active{% endif %}">
     <ul class=" nav navbar-nav">
-        <li><a href="https://bird.fr">L'association</a></li>
-        <li {% if app.request.attributes.get('_route')  == 'contact'%}class="active"{% endif %}><a href="{{ path('contact') }}">Nous contacter</a></li>
-        <li {% if app.request.attributes.get('_route')  == 'faq'%}class="active"{% endif %}><a href="{{ path('faq') }}">Faq</a></li>
+        <li class="second_line "><a href="https://bird.fr">L'association</a></li>
+        <li class="second_line {% if app.request.attributes.get('_route')  == 'contact'%}active{% endif %}"><a href="second_line {{ path('contact') }}">Nous contacter</a></li>
+        <li class="second_line {% if app.request.attributes.get('_route')  == 'faq'%}active{% endif %}"><a href="{{ path('faq') }}">Faq</a></li>
     </ul>
 </div>
