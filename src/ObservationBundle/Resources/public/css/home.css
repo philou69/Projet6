@@ -2,6 +2,22 @@
     Home page
      */
 
+@media (max-width: 992px) {
+    #homePicture{
+        background: url('/bundles/observation/images/hiker-918473_1920.jpg') no-repeat center;
+        -webkit-background-size: cover;
+        /* Hauteur de l'écran */
+        height: calc(100vh - 40px);
+    }
+
+    #start{
+        top: calc(100vh - 90px);
+    }
+
+    .images{
+        margin-bottom: 10px;
+    }
+}
 /* Style special pour la navbar */
 .navbar-fixed-top{
     background-color: transparent;
@@ -9,19 +25,25 @@
 /*Style sur le div principal de la page
     Afin d'occupé toute l'hauteur de la fenetre
 */
-#homePicture {
+@media (min-width: 992px) {
+    #homePicture {
 
-    background: url('/web/bundles/observation/images/hiker-918473_1920.jpg') no-repeat center;
-    -webkit-background-size: cover;
-    /* Hauteur de l'écran */
-    height: 100vh;
-    width: 100%;
+        background: url('../images/hiker-918473_1920.jpg') no-repeat center;
+        -webkit-background-size: cover;
+        /* Hauteur de l'écran */
+        height: 140vh;
+        margin-top: -200px;
+    }
+
 }
 /* Positionnement du bouton sur le bas du div */
 #start{
     position: relative;
-    top: 88vh;
+    top: 125vh;
+    background-color: transparent;
+    color: #dbefed;
 }
+
 /*
     Arrondi du bouton
 */
@@ -74,7 +96,7 @@ Gallerie de photos
 
 @media (max-width: 992px) {
     #homePicture{
-        background: url('/web/bundles/observation/images/hiker-918473_1920.jpg') no-repeat center;
+        background: url('/bundles/observation/images/hiker-918473_1920.jpg') no-repeat center;
         -webkit-background-size: cover;
         /* Hauteur de l'écran */
         height: calc(100vh - 40px);
