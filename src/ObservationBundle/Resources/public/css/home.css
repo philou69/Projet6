@@ -1,0 +1,113 @@
+/*
+    Home page
+     */
+
+@media (max-width: 992px) {
+    #homePicture{
+        background: url('/bundles/observation/images/hiker-918473_1920.jpg') no-repeat center;
+        -webkit-background-size: cover;
+        /* Hauteur de l'écran */
+        height: calc(100vh - 40px);
+    }
+
+    #start{
+        top: calc(100vh - 90px);
+    }
+
+    .images{
+        margin-bottom: 10px;
+    }
+}
+/* Style special pour la navbar */
+.navbar-fixed-top{
+    background-color: transparent;
+}
+/*Style sur le div principal de la page
+    Afin d'occupé toute l'hauteur de la fenetre
+*/
+@media (min-width: 992px) {
+    #homePicture {
+
+        background: url('../images/hiker-918473_1920.jpg') no-repeat center;
+        -webkit-background-size: cover;
+        /* Hauteur de l'écran */
+        height: 140vh;
+        margin-top: -200px;
+    }
+
+}
+/* Positionnement du bouton sur le bas du div */
+#start{
+    position: relative;
+    top: 125vh;
+    background-color: transparent;
+    color: #dbefed;
+}
+
+/*
+    Arrondi du bouton
+*/
+.btn-round-lg {
+
+    border-radius: 24px;
+}
+
+/*
+Texte de bienvenue
+*/
+
+#bienvenue, #gallery {
+    height: 400px;
+}
+
+#bienvenue h1 {
+    height: 100px;
+    margin-top: 100px;
+}
+
+#gallery h1 {
+    margin-top: 30px;
+}
+
+#bienvenue p {
+    height: 150px;
+}
+
+#bienvenue div {
+    height: 100px;
+}
+
+/*
+Gallerie de photos
+ */
+#gallery a {
+    padding-top: 40px;
+    text-decoration: underline;
+}
+
+#gallery img {
+
+    margin-right: 10px;
+}
+
+#gallery p {
+    margin-top: 50px;
+}
+
+@media (max-width: 992px) {
+    #homePicture{
+        background: url('/bundles/observation/images/hiker-918473_1920.jpg') no-repeat center;
+        -webkit-background-size: cover;
+        /* Hauteur de l'écran */
+        height: calc(100vh - 40px);
+        width: 100%;
+    }
+
+    #start{
+        top: calc(100vh - 90px);
+    }
+
+    .images{
+        margin-bottom: 10px;
+    }
+}

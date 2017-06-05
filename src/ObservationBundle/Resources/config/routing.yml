@@ -4,11 +4,15 @@ user:
 
 bird:
     prefix: /bird
-    resource: 'Routing/birds.yml'
+    resource: 'Routing/bird.yml'
 
 observation:
     prefix: /observation
     resource: 'Routing/observation.yml'
+
+star:
+    prefix: /star
+    resource: 'Routing/star.yml'
 
 homepage:
     path:     /
@@ -18,3 +22,13 @@ asso:
     path: /asso
     defaults:
       _controller: ObservationBundle:Default:index
+
+contact:
+    path: /contact
+    defaults:
+        _controller: ObservationBundle:Default:contact
+
+faq:
+    path: /faq
+    defaults:
+        _controller: ObservationBundle:Default:faq

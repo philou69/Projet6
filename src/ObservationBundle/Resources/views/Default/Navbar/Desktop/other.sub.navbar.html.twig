@@ -1,8 +1,7 @@
 <div id="other" class="tab-pane {% if app.request.attributes.get('_route') == 'asso' %}active{% endif %}">
     <ul class=" nav navbar-nav">
-        <li {% if app.request.attributes.get('_route')  == 'asso'%}class="active"{% endif %}><a href="{{ path('asso') }}">Qui sommes nous</a></li>
-        <li><a href="https://facebook.com"><i class="fa fa-facebook fa-2x"></i></a></li>
-        <li><a href="https://twitter.com"><i class="fa fa-twitter fa-2x"></i></a></li>
-        <li><a href="https://google.com"><i class="fa fa-google-plus-official fa-2x"></i></a></li>
+        <li class="second_line "><a href="https://bird.fr">L'association</a></li>
+        <li class="second_line {% if app.request.attributes.get('_route')  == 'contact'%}active{% endif %}"><a href="second_line {{ path('contact') }}">Nous contacter</a></li>
+        <li class="second_line {% if app.request.attributes.get('_route')  == 'faq'%}active{% endif %}"><a href="{{ path('faq') }}">Faq</a></li>
     </ul>
 </div>

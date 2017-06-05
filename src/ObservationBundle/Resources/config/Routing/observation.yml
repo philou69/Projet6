@@ -1,7 +1,18 @@
-observation_list:
-    path: /list
+observation_page:
+    path: /list/{status}/{page}/{all}
     defaults:
-      _controller:  ObservationBundle:Observation:list
+      _controller:  ObservationBundle:Observation:pagination
+    requirements:
+      -status: true/false
+      -page: \d+
+      -all:  true|false
+
+observation_bird_page:
+    path: /bird_list/{id}/{page}
+    defaults:
+      _controller: ObservationBundle:Observation:birdPagination
+    requirements:
+      -page: \d+
 
 observation_add:
     path: /add

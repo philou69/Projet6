@@ -29,3 +29,9 @@ services:
         tags:
           - { name: kernel.event_listener, event: user.register, method: onCreate }
 
+    app.form.type.birds:
+        class: ObservationBundle\Form\Bird\BirdType
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+                    - { name: form.type }
+

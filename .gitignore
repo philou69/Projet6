@@ -15,3 +15,7 @@
 /vendor/
 /web/bundles/
 .idea
+/src/ObservationBundle/Entity/*.php~
+/web/uploads/images/bird/*
+/web/uploads/images/avatar/*
+/web/uploads/sound/*

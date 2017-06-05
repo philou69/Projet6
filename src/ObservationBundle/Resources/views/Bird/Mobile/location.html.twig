@@ -1,1 +1,32 @@
 {% extends '@Observation/layout.mobile.html.twig' %}
+
+{% block title %}{{ bird.nomVern }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <h1 class="col-xs-12">{{ bird.nomVern }} <small>-{{ bird.lbNom }}</small></h1>
+    </div>
+    <hr>
+        <div >
+            {# Carte géolocation #}
+        </div>
+        <div class="container">
+            <h2>Les observations</h2>
+            <div id="observations" data-href="{{ path('observation_bird_page', {'id': bird.id, 'page': 1}) }}"></div>
+            <div class="col-xs-2 col-xs-offset-4">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
+    {% if bird.sound is not null %}
+        <div hidden>
+            <audio id="player" src="{{ asset(bird.sound.webPath) }}"></audio>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/observation/js/AJAX/bird.location.js') }}"></script>
+    <script src="{{ asset('bundles/observation/js/play.bird.sound.js') }}"></script>
+{% endblock %}

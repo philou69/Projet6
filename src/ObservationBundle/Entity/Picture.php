@@ -3,15 +3,19 @@
 namespace ObservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Picture
  *
  * @ORM\Table(name="picture")
  * @ORM\Entity(repositoryClass="ObservationBundle\Repository\PictureRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Picture
 {
+    protected $file;
+    protected $tempFileName;
     /**
      * @var int
      *
@@ -20,39 +24,30 @@ class Picture
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;
-
     /**
      * @var string
      *
      * @ORM\Column(name="alt", type="string", length=255)
      */
     private $alt;
-
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="picture")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="pictures")
      */
     private $bird;
-
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Observation", inversedBy="observation")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Observation", inversedBy="pictures")
      */
     private $observation;
-
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\User", mappedBy="avatar")
      */
     private $user;
-
 
     /**
      * Get id
@@ -62,6 +57,16 @@ class Picture
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url === null ? 'No_picture' : $this->url;
     }
 
     /**
@@ -79,15 +84,14 @@ class Picture
     }
 
     /**
-     * Get url
+     * Get alt
      *
      * @return string
      */
-    public function getUrl()
+    public function getAlt()
     {
-        return $this->url;
+        return $this->alt === null ? 'Picture missing' : $this->alt;
     }
-
 
     /**
      * Set alt
@@ -104,30 +108,6 @@ class Picture
     }
 
     /**
-     * Get alt
-     *
-     * @return string
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
-    /**
-     * Set bird
-     *
-     * @param \ObservationBundle\Entity\Bird $bird
-     *
-     * @return Picture
-     */
-    public function setBird(\ObservationBundle\Entity\Bird $bird)
-    {
-        $this->bird = $bird;
-
-        return $this;
-    }
-
-    /**
      * Get bird
      *
      * @return \ObservationBundle\Entity\Bird
@@ -138,15 +118,15 @@ class Picture
     }
 
     /**
-     * Set observation
+     * Set bird
      *
-     * @param \ObservationBundle\Entity\Observation $observation
+     * @param \ObservationBundle\Entity\Bird $bird
      *
      * @return Picture
      */
-    public function setObservation(\ObservationBundle\Entity\Observation $observation)
+    public function setBird(\ObservationBundle\Entity\Bird $bird = null)
     {
-        $this->observation = $observation;
+        $this->bird = $bird;
 
         return $this;
     }
@@ -162,16 +142,16 @@ class Picture
     }
 
     /**
-     * Set user
+     * Set observation
      *
-     * @param \ObservationBundle\Entity\User $user
+     * @param \ObservationBundle\Entity\Observation $observation
      *
      * @return Picture
      */
-    public function setUser(\ObservationBundle\Entity\User $user)
+    public function setObservation(\ObservationBundle\Entity\Observation $observation)
     {
-        $this->user = $user;
-
+        $this->observation = $observation;
+        $observation->addPicture($this);
         return $this;
     }
 
@@ -183,5 +163,101 @@ class Picture
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \ObservationBundle\Entity\User $user
+     *
+     * @return Picture
+     */
+    public function setUser(\ObservationBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function setFile(UploadedFile $file)
+    {
+        $this->file = $file;
+        if(null !== $this->url){
+            $this->tempFileName = $this->getUploadRootDir() . '/'. $this->url;
+        }
+        $this->url = null;
+        $this->alt = null;
+
+        return $this;
+    }
+
+    public function getUploadRootDir()
+    {
+        return __DIR__ . '/../../../web/' . $this->getUploadDir();
+    }
+
+    public function getUploadDir()
+    {
+        $directory = $this->bird === null ? $this->observation === null ? 'avatar' : 'bird' : 'bird';
+        return 'uploads/images/' . $directory;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if($this->file === null){
+            return;
+        }
+
+        $this->url = uniqid() . '.' . $this->file->guessExtension();
+        $this->alt = $this->file->getClientOriginalName();
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function postUpload()
+    {
+        if($this->file === null){
+            return;
+        }
+
+        if($this->tempFileName !== null){
+            if(file_exists($this->tempFileName)){
+                unlink($this->tempFileName);
+            }
+        }
+        $this->file->move($this->getUploadRootDir(), $this->url);
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function preRemove()
+    {
+        $this->tempFileName = $this->getUploadRootDir() . '/' . $this->url;
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function postRemove()
+    {
+        if(file_exists($this->tempFileName))
+        unlink($this->tempFileName);
+    }
+
+    public function getWebPath()
+    {
+        return $this->getUploadDir(). '/'.  $this->url;
     }
 }

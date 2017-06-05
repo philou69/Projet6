@@ -24,42 +24,51 @@ class Star
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255)
      */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text")
-     */
-    private $description;
+    private $title;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="number", type="integer")
+     * @ORM\Column(name="quantity", type="integer")
      */
-    private $number;
+    private $quantity;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="applicable", type="text")
+     * @ORM\Column(type="integer")
      */
-    private $applicable;
+    protected $order;
 
     /**
-     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\User", inversedBy="stars", cascade={"persist"})
+     * @ORM\Column(type="string")
+     */
+    protected $image;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\User", inversedBy="stars")
      * @ORM\JoinColumn(nullable=false)
      */
-    protected $stars;
+    protected $users;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\GroupStar", inversedBy="stars")
+     */
+    protected $groupStar;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -67,139 +76,159 @@ class Star
     }
 
     /**
-     * Set name
+     * Set title
      *
-     * @param string $name
+     * @param string $title
      *
      * @return Star
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get title
      *
      * @return string
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
-     * Set description
+     * Set quantity
      *
-     * @param string $description
+     * @param integer $quantity
      *
      * @return Star
      */
-    public function setDescription($description)
+    public function setQuantity($quantity)
     {
-        $this->description = $description;
+        $this->quantity = $quantity;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get quantity
      *
-     * @return string
+     * @return integer
      */
-    public function getDescription()
+    public function getQuantity()
     {
-        return $this->description;
+        return $this->quantity;
     }
 
     /**
-     * Set number
+     * Set order
      *
-     * @param integer $number
+     * @param integer $order
      *
      * @return Star
      */
-    public function setNumber($number)
+    public function setOrder($order)
     {
-        $this->number = $number;
+        $this->order = $order;
 
         return $this;
     }
 
     /**
-     * Get number
+     * Get order
      *
-     * @return int
+     * @return integer
      */
-    public function getNumber()
+    public function getOrder()
     {
-        return $this->number;
+        return $this->order;
     }
 
     /**
-     * Set applicable
+     * Add user
      *
-     * @param string $applicable
+     * @param \ObservationBundle\Entity\User $user
      *
      * @return Star
      */
-    public function setApplicable($applicable)
+    public function addUser(\ObservationBundle\Entity\User $user)
     {
-        $this->applicable = $applicable;
-
+        $this->users[] = $user;
+        // On regarde si le groupStar contient dejà l'user et on lui le passe si c'est pas le cas
+        if(!$this->groupStar->getUsers()->contains($user)){
+            $this->groupStar->addUser($user);
+        }
         return $this;
     }
 
     /**
-     * Get applicable
+     * Remove user
      *
-     * @return string
+     * @param \ObservationBundle\Entity\User $user
      */
-    public function getApplicable()
+    public function removeUser(\ObservationBundle\Entity\User $user)
     {
-        return $this->applicable;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->stars = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users->removeElement($user);
     }
 
     /**
-     * Add star
-     *
-     * @param \ObservationBundle\Entity\User $star
-     *
-     * @return Star
-     */
-    public function addStar(\ObservationBundle\Entity\User $star)
-    {
-        $this->stars[] = $star;
-
-        return $this;
-    }
-
-    /**
-     * Remove star
-     *
-     * @param \ObservationBundle\Entity\User $star
-     */
-    public function removeStar(\ObservationBundle\Entity\User $star)
-    {
-        $this->stars->removeElement($star);
-    }
-
-    /**
-     * Get stars
+     * Get users
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getStars()
+    public function getUsers()
     {
-        return $this->stars;
+        return $this->users;
+    }
+
+    /**
+     * Set groupStar
+     *
+     * @param \ObservationBundle\Entity\GroupStar $groupStar
+     *
+     * @return Star
+     */
+    public function setGroupStar(\ObservationBundle\Entity\GroupStar $groupStar = null)
+    {
+        $this->groupStar = $groupStar;
+
+        return $this;
+    }
+
+    /**
+     * Get groupStar
+     *
+     * @return \ObservationBundle\Entity\GroupStar
+     */
+    public function getGroupStar()
+    {
+        return $this->groupStar;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Star
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return '/bundles/observation/images/icones/' . $this->image;
     }
 }

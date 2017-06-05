@@ -1,9 +1,29 @@
-<div id="user" class="tab-pane {% if app.request.attributes.get('_route') in ['user_profil', 'user_observations', 'user_stars'] %}active{% endif %}">
-    <ul class="list-inline">
-        <li {% if app.request.attributes.get('_route') == 'user_profil' %}class="active"{% endif %}><a href="{{ path('user_profil') }}"><i class="fa fa-id-card-o " aria-hidden="true"></i></a></li>
-        <li {% if app.request.attributes.get('_route') == 'user_observations' %}class="active"{% endif %}><a
-                    href="{{ path('user_observations') }}"><i class="fa fa-binoculars"></i></a></li>
-        <li {% if app.request.attributes.get('_route') == 'user_stars' %}class="active"{% endif %}><a href="{{ path('user_stars') }}"><span class="fa fa-star-o"></span></a></li>
-        <li><a href="{{ path('user_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
-    </ul>
+<div id="user_tab" class="tab-pane second row  {{  app.request.attributes.get('_route') in ['user_profil', 'user_my_observations', 'user_observations', 'user_stars'] ? 'active' :'' }}">
+        <div class="second_line col-xs-3 text-center {{  app.request.attributes.get('_route') == 'user_profil' ? 'active' :'' }}">
+            <a href="{{ path('user_profil') }}">
+                <img src="{{ app.request.attributes.get('_route') == 'user_profil' ? asset('bundles/observation/images/icones/profil_icon_hover.png') : asset('bundles/observation/images/icones/profil_icon.png') }}" alt="">
+            </a>
+        </div>
+        <div class="second_line col-xs-3 text-center {{  app.request.attributes.get('_route') == 'user_my_observations' ? 'active' : '' }}">
+            <a href="{{ path('user_my_observations') }}">
+                <img src="{{ app.request.attributes.get('_route') == 'user_my_observations' ? asset('bundles/observation/images/icones/observationsProfil_icon_hover.png') : asset('bundles/observation/images/icones/observationsProfil_icon.png') }}" alt="">
+            </a>
+        </div>
+        {% if 'ROLE_NATURALISTE' in app.user.roles %}
+            <div class="second_line col-xs-3 text-center {{  app.request.attributes.get('_route')  == 'user_observations' ? 'active' : ''}}">
+                <a href="{{ path('user_observations') }}">
+                    <img src="{{ app.request.attributes.get('_route') == 'user_observations' ? asset('bundles/observation/images/icones/observationsProfil_icon_hover.png') : asset('bundles/observation/images/icones/observationsProfil_icon.png') }}" alt="">
+                </a>
+            </div>
+        {% else %}
+            <div class="second_line col-xs-3 text-center {{ app.request.attributes.get('_route') == 'user_stars' ? 'active' : ''}}">
+                <a href="{{ path('user_stars') }}">
+                    <img src="{{ app.request.attributes.get('_route') == 'user_stars' ? asset('bundles/observation/images/icones/medailles_icon_hover.png') : asset('bundles/observation/images/icones/medailles_icon.png') }}" alt="">
+                </a></div>
+        {% endif %}
+        <div class="second_line col-xs-3 text-center">
+            <a href="{{ path('user_logout') }}">
+                <img src="{{ asset('bundles/observation/images/icones/deconnexion_icon.png') }}" alt="">
+            </a>
+        </div>
 </div>

@@ -22,8 +22,8 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
     public function findUsernames($username)
     {
         $queryBuilder = $this->createQueryBuilder('u')
-            ->where('u.username LIKE :username')
-            ->setParameter('username', $username);
+            ->where('REGEXP(u.username, :regex) = true')
+            ->setParameter('regex', '^' . $username . '[0-9]*$');
 
         return $queryBuilder->getQuery()
             ->getResult();

@@ -4,19 +4,24 @@
 namespace ObservationBundle\Controller;
 
 
+use Composer\EventDispatcher\EventDispatcher;
 use ObservationBundle\Entity\User;
+use ObservationBundle\Event\UserEvent;
+use ObservationBundle\Form\User\ChangeAvartarType;
 use ObservationBundle\Form\User\ChangePasswordType;
 use ObservationBundle\Form\User\EditUserType;
 use ObservationBundle\Form\User\ResetPasswordType;
 use ObservationBundle\Form\User\UsernameEmailUserType;
 use ObservationBundle\Form\User\UserType;
 use ObservationBundle\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+
 
 class UserController extends Controller
 {
@@ -49,6 +54,7 @@ class UserController extends Controller
             $this->get('security.token_storage')->setToken($token);
             $this->get('session')->set('_security_main', serialize($token));
 
+            $this->get('event_dispatcher')->dispatch('user.captured', new UserEvent($user));
 
             // Enfin redirection vers la page d'accueil
             return $this->redirectToRoute('homepage');
@@ -98,7 +104,7 @@ class UserController extends Controller
             $now = new \DateTime();
             if($user !== null && ($user->getToken() === null || $now->diff($user->getDateToken())->d > 2)){
                 // création du token qui servira de lien
-                $token = base64_encode(random_bytes(60));
+                $token = str_replace('/','', base64_encode(random_bytes(60))) ;
                 // Ajout du token et de l'heure de création
                 $user->setToken($token)->setDateToken(new \DateTime());
                 // Appel du service mailer et envoie du mail
@@ -136,8 +142,7 @@ class UserController extends Controller
         // L'user est récuperer grace au token, si le token n'est pas bon Symfony génere une erreur
         //Vérification de la validité de vie du token, moins de 2 h
         $now = new \DateTime();
-        if($now->diff($user->getDateToken())->d > 2)
-        {
+        if($now->diff($user->getDateToken())->d > 2) {
             throw new \Exception('Le lien n\'est pas valide');
         }
         // Création du formulaire de reset password
@@ -181,7 +186,8 @@ class UserController extends Controller
         if($user === null){
             throw new Exception('Vous n\'êtes pas autorisez!');
         }
-         //Création du formulaire correspondant
+
+        //Création du formulaire correspondant
         $form = $this->createForm( EditUserType::class, $user);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
@@ -189,6 +195,7 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+            $this->get('event_dispatcher')->dispatch('user.captured', new  UserEvent($user));
 
             $this->addFlash('success', 'Vos données ont bien été modifiés!');
             // On renvoie sur la page profil avec un flash message
@@ -242,4 +249,76 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Action affichant la page des observation de l'utilisateur
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     */
+    public function myObservationsAction()
+    {
+        // Comme on est sur les observations de l'utilisateur all vaut false
+        // all est utilisé sur les vues et les action utilisées après
+        $all = 'false';
+        $device = $this->get('mobile_detect.mobile_detector');
+        if($device->isMobile()){
+            return $this->render('@Observation/User/Mobile/list.observation.html.twig', array('all' => $all));
+        }else{
+            return $this->render('@Observation/User/Desktop/list.observation.html.twig', array('all' => $all));
+        }
+    }
+
+    /**
+     * Action affichant la page de toutes les observation
+     * @Security("has_role('ROLE_NATURALISTE')")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function observationsAction()
+    {
+        // Comme on est sur totues les observations, all vaut true
+        // all est utilisé sur les vues et les action utilisées après
+        $all = 'true';
+        $device = $this->get('mobile_detect.mobile_detector');
+        if($device->isMobile()){
+            return $this->render('@Observation/User/Mobile/list.observation.html.twig', array('all' => $all));
+        }else{
+            return $this->render('@Observation/User/Desktop/list.observation.html.twig', array('all' => $all));
+        }
+    }
+
+    public function starsAction()
+    {
+        // L'accès n'étant pas autorisé aux naturaliste, on soulève un AccessDenied
+        if($this->getUser()->hasRole('ROLE_NATURALISTE')){
+            throw $this->createAccessDeniedException("Vous n'avez pas les droits d'accès!");
+        }
+        // Autrement, on renvoie sans se soucier de l'appareil
+        return $this->render('@Observation/User/list.stars.html.twig');
+
+    }
+
+    public function changeAvatarAction(Request $request)
+    {
+        $user = $this->getUser();
+        $form = $this->createForm(ChangeAvartarType::class, $user);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($user);
+            $em->flush();
+
+            $this->get('event_dispatcher')->get('user.captured', new  UserEvent($user));
+
+            return $this->redirectToRoute('user_profil');
+        }
+
+        $device = $this->get('mobile_detect.mobile_detector');
+
+        if($device->isMobile()){
+            return $this->render('@Observation/User/Mobile/change.avatar.html.twig', array('form' => $form->createView()));
+        }else{
+            return $this->render('@Observation/User/Desktop/change.avatar.html.twig', array('form' => $form->createView()));
+        }
+    }
 }

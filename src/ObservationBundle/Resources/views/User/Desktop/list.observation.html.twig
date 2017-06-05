@@ -1,0 +1,29 @@
+{% extends  '@Observation/layout.desktop.html.twig' %}
+
+{% block title %}Mes Observation{% endblock %}
+
+{% block content %}
+    <h1>{{ all == 'true' ? 'Les' : 'Mes' }} dernières observations</h1>
+
+    <div>
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active"><a id="valide" class="link-tab" href="#observation" data-href="{{ path('observation_page', {'all': all, 'page': 1, 'status': 'true'}) }}" data-toggle="tab">Validées</a></li>
+            {# On affiche les observations en attentes que si le visiteur est sur sa page (all = false) et n'est pas naturaliste ou si on est sur la page générale (all = true)#}
+            {% if ('ROLE_NATURALISTE' not  in app.user.roles and all == 'false')   or  all == 'true' %}
+                <li ><a id="wait" class="link-tab" href="#observation" data-href="{{ path('observation_page', {'all': all, 'page': 1, 'status': 'false'}) }}"  data-toggle="tab">En attente</a></li>
+            {% endif %}
+
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div id="observations" class="tab-pane active"></div>
+        <div class="row">
+            <div id="loader" class="col-xs-2 col-xs-offset-5 loader"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/observation/js/AJAX/observations.js') }}"></script>
+{% endblock %}

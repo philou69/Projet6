@@ -1,0 +1,34 @@
+{% extends  is_mobile() ? '@Observation/layout.mobile.html.twig' : '@Observation/layout.desktop.html.twig' %}
+
+{% block title %}Médailles{% endblock %}
+
+{% block content %}
+    <h1>Médailles</h1>
+    <div id="stars" data-href="{{ path('star_list') }}" class="row"></div>
+    <div class="loader"></div>
+    <hr>
+    <p class="text-center">
+        Rmplis les objectifs pour débloquer et remporter des médailles.
+    </p>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: $("#stars").data('href'),
+                dataType: 'html',
+                success: function (code_html, status) {
+                    $('#stars').html(code_html);
+                    setTimeout(function() {
+                        $('#stars').css('display', 'inline')
+                        $('.loader').attr('hidden', true);
+                    }, 2000);
+
+
+                }
+            })
+        })
+    </script>
+{% endblock %}

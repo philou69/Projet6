@@ -24,19 +24,26 @@ class Location
     /**
      * @var string
      *
-     * @ORM\Column(name="latitude", type="decimal", precision=10, scale=10)
+     * @ORM\Column(name="latitude", type="float", precision=10, scale=10, nullable=true)
      */
     private $latitude;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Longitude", type="decimal", precision=10, scale=10)
+     * @ORM\Column(name="Longitude", type="float", precision=10, scale=10, nullable=true)
      */
     private $longitude;
 
     /**
-     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Bird", mappedBy="location", cascade={"persist"})
+     * @var string
+     *
+     * @ORM\Column(name="lieu", type="text", nullable=true)
+     */
+    private $lieu;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Bird", mappedBy="locations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
 
@@ -46,18 +53,35 @@ class Location
      * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Observation", mappedBy="location")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $observation;
-
-
+    private $observations;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->birds = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->observations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get latitude
+     *
+     * @return string
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
     }
 
     /**
@@ -75,13 +99,13 @@ class Location
     }
 
     /**
-     * Get latitude
+     * Get longitude
      *
      * @return string
      */
-    public function getLatitude()
+    public function getLongitude()
     {
-        return $this->latitude;
+        return $this->longitude;
     }
 
     /**
@@ -99,21 +123,27 @@ class Location
     }
 
     /**
-     * Get longitude
+     * Get lieu
      *
      * @return string
      */
-    public function getLongitude()
+    public function getLieu()
     {
-        return $this->longitude;
+        return $this->lieu;
     }
 
     /**
-     * Constructor
+     * Set lieu
+     *
+     * @param string $lieu
+     *
+     * @return Location
      */
-    public function __construct()
+    public function setLieu($lieu)
     {
-        $this->birds = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->lieu = $lieu;
+
+        return $this;
     }
 
     /**
@@ -159,7 +189,7 @@ class Location
      */
     public function addObservation(\ObservationBundle\Entity\Observation $observation)
     {
-        $this->observation[] = $observation;
+        $this->observations[] = $observation;
 
         return $this;
     }
@@ -171,16 +201,16 @@ class Location
      */
     public function removeObservation(\ObservationBundle\Entity\Observation $observation)
     {
-        $this->observation->removeElement($observation);
+        $this->observations->removeElement($observation);
     }
 
     /**
-     * Get observation
+     * Get observations
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getObservation()
+    public function getObservations()
     {
-        return $this->observation;
+        return $this->observations;
     }
 }

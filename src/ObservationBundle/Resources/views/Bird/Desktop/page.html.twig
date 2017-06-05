@@ -1,0 +1,24 @@
+{% if birds is null %}
+    <div>
+        Il n'y a aucun oiseaux.
+    </div>
+{% else %}
+        {% for bird in birds %}
+            <div class="col-sm-5 bird {% if loop.index is even %}right{% else %}left{% endif %} row" data-href="{{ path('bird_description', {'id': bird.id}) }}">
+                <div class="col-sm-4">
+                    {% if bird.pictures|length > 0 %}
+                        <img src="{{ asset(bird.pictures[0].webPath) }}" class="img-responsive" alt="bird">
+                    {% else %}
+                        Pas de photos
+                    {% endif %}
+                </div>
+
+                <div class="col-sm-8">
+                    <h4>{{ bird.nomVern != null ? bird.nomVern : bird.lbNom}}</h4>
+                    <small>{{ bird.lbNom }}</small>
+                </div>
+
+            </div>
+        {% endfor %}
+    <div class="length" data-length="{{ birds| length }}" hidden></div>
+{% endif %}

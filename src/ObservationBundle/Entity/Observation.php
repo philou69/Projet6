@@ -3,6 +3,7 @@
 namespace ObservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Observation
@@ -24,7 +25,8 @@ class Observation
     /**
      * @var string
      *
-     * @ORM\Column(name="observation", type="text")
+     * @ORM\Column(name="observation", type="text", nullable=true)
+     *
      */
     private $observation;
 
@@ -45,7 +47,7 @@ class Observation
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="validatedAt", type="datetime")
+     * @ORM\Column(name="validatedAt", type="datetime", nullable=true)
      */
     private $validatedAt;
 
@@ -54,22 +56,23 @@ class Observation
      *
      * @ORM\Column(name="validated", type="boolean")
      */
-    private $validated;
+    private $validated = false;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observation")
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $bird;
 
     /**
-     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="observation")
-     * @ORM\JoinColumn(nullable=false)
+     * @var string
+     *
+     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="observation", cascade={"persist"})
      */
     private $pictures;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Location", inversedBy="observation")
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Location", inversedBy="observations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $location;
@@ -82,12 +85,29 @@ class Observation
 
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $validatedBy;
 
+    /**
+     * @ORM\Column(type="integer")
+     * @Assert\Type("int")
+     * @Assert\Range(
+     *      min = 1,
+     *      max = 20,
+     *      minMessage = "You must be at least {{ limit }}",
+     *      maxMessage = "You cannot be taller than {{ limit }}"
+     * )
+     */
+    private $quantity = 1;
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->postedAt = new \DateTime();
+    }
 
     /**
      * Get id
@@ -97,6 +117,16 @@ class Observation
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get observation
+     *
+     * @return string
+     */
+    public function getObservation()
+    {
+        return $this->observation;
     }
 
     /**
@@ -114,13 +144,13 @@ class Observation
     }
 
     /**
-     * Get observation
+     * Get postedAt
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getObservation()
+    public function getPostedAt()
     {
-        return $this->observation;
+        return $this->postedAt;
     }
 
     /**
@@ -138,13 +168,13 @@ class Observation
     }
 
     /**
-     * Get postedAt
+     * Get seeAt
      *
      * @return \DateTime
      */
-    public function getPostedAt()
+    public function getSeeAt()
     {
-        return $this->postedAt;
+        return $this->seeAt;
     }
 
     /**
@@ -162,13 +192,13 @@ class Observation
     }
 
     /**
-     * Get seeAt
+     * Get validatedAt
      *
      * @return \DateTime
      */
-    public function getSeeAt()
+    public function getValidatedAt()
     {
-        return $this->seeAt;
+        return $this->validatedAt;
     }
 
     /**
@@ -186,13 +216,13 @@ class Observation
     }
 
     /**
-     * Get validatedAt
+     * Get validated
      *
-     * @return \DateTime
+     * @return bool
      */
-    public function getValidatedAt()
+    public function getValidated()
     {
-        return $this->validatedAt;
+        return $this->validated;
     }
 
     /**
@@ -210,20 +240,13 @@ class Observation
     }
 
     /**
-     * Get validated
+     * Get bird
      *
-     * @return bool
+     * @return \ObservationBundle\Entity\Bird
      */
-    public function getValidated()
+    public function getBird()
     {
-        return $this->validated;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->bird;
     }
 
     /**
@@ -241,13 +264,99 @@ class Observation
     }
 
     /**
-     * Get bird
+     * Get location
      *
-     * @return \ObservationBundle\Entity\Bird
+     * @return \ObservationBundle\Entity\Location
      */
-    public function getBird()
+    public function getLocation()
     {
-        return $this->bird;
+        return $this->location;
+    }
+
+    /**
+     * Set location
+     *
+     * @param \ObservationBundle\Entity\Location $location
+     *
+     * @return Observation
+     */
+    public function setLocation(\ObservationBundle\Entity\Location $location)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \ObservationBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \ObservationBundle\Entity\User $user
+     *
+     * @return Observation
+     */
+    public function setUser(\ObservationBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get validatedBy
+     *
+     * @return \ObservationBundle\Entity\User
+     */
+    public function getValidatedBy()
+    {
+        return $this->validatedBy;
+    }
+
+    /**
+     * Set validatedBy
+     *
+     * @param \ObservationBundle\Entity\User $validatedBy
+     *
+     * @return Observation
+     */
+    public function setValidatedBy(\ObservationBundle\Entity\User $validatedBy = null)
+    {
+        $this->validatedBy = $validatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get quantity
+     *
+     * @return integer
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Set quantity
+     *
+     * @param integer $quantity
+     *
+     * @return Observation
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+
+        return $this;
     }
 
     /**
@@ -282,77 +391,5 @@ class Observation
     public function getPictures()
     {
         return $this->pictures;
-    }
-
-    /**
-     * Set location
-     *
-     * @param \ObservationBundle\Entity\Location $location
-     *
-     * @return Observation
-     */
-    public function setLocation(\ObservationBundle\Entity\Location $location)
-    {
-        $this->location = $location;
-
-        return $this;
-    }
-
-    /**
-     * Get location
-     *
-     * @return \ObservationBundle\Entity\Location
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \ObservationBundle\Entity\User $user
-     *
-     * @return Observation
-     */
-    public function setUser(\ObservationBundle\Entity\User $user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \ObservationBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set validatedBy
-     *
-     * @param \ObservationBundle\Entity\User $validatedBy
-     *
-     * @return Observation
-     */
-    public function setValidatedBy(\ObservationBundle\Entity\User $validatedBy)
-    {
-        $this->validatedBy = $validatedBy;
-
-        return $this;
-    }
-
-    /**
-     * Get validatedBy
-     *
-     * @return \ObservationBundle\Entity\User
-     */
-    public function getValidatedBy()
-    {
-        return $this->validatedBy;
     }
 }
