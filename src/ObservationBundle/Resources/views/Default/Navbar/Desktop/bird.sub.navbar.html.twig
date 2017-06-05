@@ -4,6 +4,6 @@
         <li class="seconde_line{% if app.request.attributes.get('_route') == 'bird_sound' %}active{% endif %} {{ bird.sound is null ? 'disabled': '' }}"
             id="bird_sound"><a href="#sound-bird">Son</a></li>
         <li class="second_line {% if app.request.attributes.get('_route') == 'bird_location' %}active{% endif %}"><a href="{{ path('bird_location', {'id': bird.id}) }}">Répartition géographique</a></li>
-        <li class="second_line><a href="{{ path('bird_observation', {'id': bird.id}) }}">Ajouté une observation</a></li>
+        <li class="second_line"><a href="{{ path('bird_observation', {'id': bird.id}) }}">Ajouté une observation</a></li>
     </ul>
 </div>

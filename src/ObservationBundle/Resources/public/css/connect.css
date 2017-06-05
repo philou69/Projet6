@@ -1,0 +1,52 @@
+#content-connect{
+    width: 80%;
+    margin: auto;
+}
+form{
+    width: 80%;
+    margin: auto;
+    padding: 3%;
+    background-color:#f3f3f3 ;
+}
+.form-control{
+    border-radius: 0;
+    margin-bottom: 10px;
+    /*width: 80%;*/
+    /*margin: auto;*/
+}
+
+.form-group>a{
+    text-decoration: underline;
+}
+#remember_label{
+    font-weight: normal;
+    font-size: small;
+}
+#oauth{
+    margin-bottom: 10px;
+}
+.connect{
+    height: 20px;
+}
+hr{
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+form .btn{
+    border-radius: 0;
+    width: 100%;
+    color: white;
+}
+.btn-nao{
+    background-color: #99d1c8;
+}
+.btn-red{
+    background-color: #d85040;
+}
+.btn-blue{
+    background-color: #415a92;
+}
+#oauth .btn{
+    border-radius: 0;
+    color: white;
+}
