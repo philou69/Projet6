@@ -2,6 +2,25 @@
     height: 400px;
     width: 100%;
 }
+
+/*
+Réglages généraux
+*/
+body {
+    font-family: ‘Roboto’, sans-serif;
+    background-color: rgb(110, 151, 145);
+}
+
+h1 {
+    font-size: 36px;
+    color: #a1d0f3;
+
+}
+
+.btn {
+    background-color: #99d1C8;
+    color: white;
+}
      /*------------------ Styel pour les écans de largeur superieur à 992 px -------*/
 @media (min-width: 992px) {
     /* Marge du body pour la navbar et utilisation de flex pour coller le footer en bas de page */

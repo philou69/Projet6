@@ -2,7 +2,9 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
-                <h2><a href="{{ path('homepage') }}">Nos amis les oiseaux</a></h2>
+                <h2><a href="{{ path('homepage') }}"><img
+                                src="{{ asset ('bundles/observation/images/logo/logo_footer_couleur.png') }}"
+                                alt="logo_footer"></a></h2>
             </div>
             <div class="col-sm-4 row">
                 <div class="col-sm-6">
@@ -15,7 +17,7 @@
                                     <li {% if app.request.attributes.get('_route')  == 'user_profil' %}class="active"{% endif %}><a href="{{ path('user_profil') }}">Profil</a></li>
                                     <li {% if app.request.attributes.get('_route')  == 'user_observation' %}class="active"{% endif %}><a href="{{ path('user_observations') }}">Mes Observation</a></li>
                                     <li {% if app.request.attributes.get('_route')  == 'user_stars' %}class="active"{% endif %}><a href="{{ path('user_stars') }}">Médailles</a></li>
-                                    <li><a href="{{ path('user_logout') }}">Céconnexion</a></li>
+                                    <li><a href="{{ path('user_logout') }}">Déconnexion</a></li>
                                 </ul></li>
 
                         {% else %}
@@ -30,7 +32,7 @@
                         <li {% if app.request.attributes.get('_route')  == 'bird_list' %}class="active"{% endif %}><a href="{{ path('bird_list') }}">Fiches Oiseaux</a></li>
                         <li><a href="#" disabled="true">Informations</a>
                             <ul>
-                                <li ><a href="http://bird.fr">L'assocition</a></li>
+                                <li><a href="http://bird.fr">L'association</a></li>
                                 <li {% if app.request.attributes.get('_route')  == 'contact' %}class="active"{% endif %}><a href="{{ path('contact') }}">Nous contacter</a></li>
                                 <li {% if app.request.attributes.get('_route')  == 'faq' %}class="active"{% endif %}><a href="{{ path('faq') }}">FAQ</a></li>
                             </ul>
