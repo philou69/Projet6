@@ -20,8 +20,12 @@
                     <hr></div>
             </div>
             <div class="row">
-                <a href="#" onclick="fb_login();" class="btn btn-blue">Facebook</a>
-                <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-red">Google</a>
+                <div class="col-sm-2 col-sm-push-4">
+                    <a href="#" onclick="fb_login();" class="btn btn-blue ">Facebook</a>
+                </div>
+                <div class="col-sm-2 col-sm-push-4">
+                    <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-red">Google</a>
+                </div>
             </div>
         </div>
         <div class="row">
