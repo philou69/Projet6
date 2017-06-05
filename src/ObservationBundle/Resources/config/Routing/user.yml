@@ -27,11 +27,6 @@ user_profil:
     defaults:
       _controller: ObservationBundle:User:profil
 
-user_change_password:
-    path: /change
-    defaults:
-        _controller: ObservationBundle:User:changePassword
-
 user_connect:
     path: /connect
     defaults:
@@ -56,3 +51,8 @@ user_change_avatar:
     path: /avatar/change
     defaults:
       _controller: ObservationBundle:User:changeAvatar
+
+user_sleep:
+    path: /sleep
+    defaults:
+      _controller: ObservationBundle:User:sleep
