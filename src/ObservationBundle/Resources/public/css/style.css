@@ -10,12 +10,14 @@
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+        background-color: #5f827e ;
     }
 
     /*Contenu de la page pour prendre le plus de place possible*/
     #content {
         flex: 1;
-        margin-bottom: 20px;
+        padding-top: 60px;
+        background-color: white;
     }
 
     /*style des liste oiseaux*/
@@ -37,9 +39,14 @@
 /* -------------------------------- Fin style écran petit ----------------------------------------*/
 /* -------------------------------- Ecran de moins de 992 px de large ----------------------------------------*/
 @media (max-width: 992px) {
+    body{
+        min-height: 100vh;
+        margin: 0;
+    }
     /* Marge speciale pour ne pas affiché sous la navbar */
     #view {
         padding-bottom: 70px;
+        min-height:100vh;
     }
 
     /* position du bouton up à 20px du haut */
@@ -58,79 +65,7 @@
     height: 20px;
 }
 
-/*------------ Toggle switch --------------- */
-/* Le switch - box autour du slider*/
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 0;
-}
 
-/* On cache la checkbox HTML */
-.switch input {
-    display: none;
-}
-
-/*Le slider */
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #218BC3;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 15px;
-    width: 15px;
-    left: 5px;
-    bottom: 3px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-input:checked + .slider {
-    background-color: #2196F3;
-}
-
-input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-    -webkit-transform: translateX(15px);
-    -ms-transform: translateX(15px);
-    transform: translateX(15px);
-}
-
-/* Forme arroundi du slider */
-.slider.round {
-    border-radius: 20px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
-}
-
-/*----------- Fin du toggle switch */
-
-/* Barre de séparation page de connection */
-#right {
-    border-style: solid;
-    border-color: #dddddd;
-    border-width: 0 0 0 2px;
-}
 
 /* Capital sur les lien de navigation dans le footer */
 .capital {
