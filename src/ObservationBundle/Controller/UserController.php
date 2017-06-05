@@ -142,7 +142,7 @@ class UserController extends Controller
         // L'user est récuperer grace au token, si le token n'est pas bon Symfony génere une erreur
         //Vérification de la validité de vie du token, moins de 2 h
         $now = new \DateTime();
-        if($now->diff($user->getDateToken())->d > 2) {
+        if ($now->diff($user->getDateToken())->d > 2) {
             throw new \Exception('Le lien n\'est pas valide');
         }
         // Création du formulaire de reset password

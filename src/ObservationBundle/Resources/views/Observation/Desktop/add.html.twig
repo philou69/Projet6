@@ -31,7 +31,9 @@
                         {{ form_label(form.location) }}
                         {{ form_errors(form.location) }}
                         {{ form_widget(form.location, {'attr':{'class': 'col-md-10 col-md-offset-1'}}) }}
-                        <button type="button" class="btn btn-primary btn-lg col-md-10 col-md-offset-1" id="locationChoice">Selectioner votre position</button>
+                        <button type="button" class="btn btn-lg col-md-10 col-md-offset-1" id="locationChoice">
+                            Selectioner votre position
+                        </button>
                     </div>
                 </div>
             {#Modale de la map#}
@@ -122,7 +124,7 @@
 
 
                 <div class="text-center">
-                    {{ form_widget(form.save) }}
+                    {{ form_widget(form.save, {'attr':{'class': 'btn'}}) }}
                 </div>
 
                 {{ form_end(form) }}
