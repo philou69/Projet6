@@ -20,6 +20,12 @@ class Bird
      * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Sound")
      */
     protected $sound;
+
+    /**
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\PictureList")
+     */
+    private $pictureList;
+
     /**
      * @var int
      *
@@ -134,6 +140,7 @@ class Bird
      * @ORM\JoinColumn(nullable=false)
      */
     private $pictures;
+
 
     /**
      * Constructor
@@ -670,6 +677,30 @@ class Bird
     public function setSound(\ObservationBundle\Entity\Sound $sound = null)
     {
         $this->sound = $sound;
+
+        return $this;
+    }
+
+    /**
+     * Get pictureList
+     *
+     * @return \ObservationBundle\Entity\PictureList
+     */
+    public function getPictureList()
+    {
+        return $this->pictureList;
+    }
+
+    /**
+     * Set pictureList
+     *
+     * @param \ObservationBundle\Entity\PictureList $pictureList
+     *
+     * @return Bird
+     */
+    public function setPictureList(\ObservationBundle\Entity\PictureList $pictureList = null)
+    {
+        $this->pictureList = $pictureList;
 
         return $this;
     }
