@@ -69,6 +69,7 @@ Page Observation
     }
     .bird{
         width: 47.5%;
+        background-color: rgb(241, 241, 241);
     }
 
 
@@ -195,7 +196,7 @@ Page Observation
     cursor: pointer;
     height: 100px;
     padding: 0;
-    background-color: #FEFEE2;
+    background-color: rgb(241, 241, 241);
     margin-bottom: 10px;
 }
 
@@ -230,8 +231,11 @@ Page Observation
 }
 
 .img-responsive{
-    width: 200px;
-    height: 200px;
+    height: 100px;
+}
+
+#birds .col-sm-4 {
+    padding: 0;
 }
 #edit_avatar{
     border-radius: 50%;
