@@ -21,7 +21,7 @@ document.getElementById("add_observation_location_longitude").required = false;
 if (document.getElementById('getBird')) {
     document.getElementById("add_observation_bird").required = false;
 }
-
+document.get
 
 //Formatage de l'upload de photo
 var imgURL1,

@@ -189,6 +189,8 @@ class UserController extends Controller
 
         //Création du formulaire correspondant
         $form = $this->createForm( EditUserType::class, $user);
+        $formPassword = $this->createForm(ChangePasswordType::class, $user);
+        $formPassword->handleRequest($request);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             // On enregistre les modifications
@@ -204,9 +206,9 @@ class UserController extends Controller
         // Teste du device et renvoie vers la page correspondante
         $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile()){
-            return $this->render('ObservationBundle:User/Mobile:profil.html.twig', array('form' => $form->createView()));
+            return $this->render('ObservationBundle:User/Mobile:profil.html.twig', array('form' => $form->createView(), 'formPassword' => $formPassword->createView()));
         }else{
-            return $this->render('ObservationBundle:User/Desktop:profil.html.twig', array('form' => $form->createView()));
+            return $this->render('ObservationBundle:User/Desktop:profil.html.twig', array('form' => $form->createView(), 'formPassword' => $formPassword->createView()));
         }
     }
 
@@ -308,7 +310,7 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $this->get('event_dispatcher')->get('user.captured', new  UserEvent($user));
+            $this->get('event_dispatcher')->dispatch('user.captured', new  UserEvent($user));
 
             return $this->redirectToRoute('user_profil');
         }

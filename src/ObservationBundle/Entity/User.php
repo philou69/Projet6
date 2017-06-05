@@ -104,7 +104,7 @@ class User implements AdvancedUserInterface, \Serializable
 
 
     /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Picture", inversedBy="user")
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Picture", inversedBy="user", cascade={"persist"})
      */
     protected $avatar;
 

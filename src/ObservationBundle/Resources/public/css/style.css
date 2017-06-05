@@ -2,6 +2,10 @@
     height: 400px;
     width: 100%;
 }
+.center-80{
+    width: 80%;
+    margin: auto;
+}
      /*------------------ Styel pour les écans de largeur superieur à 992 px -------*/
 @media (min-width: 992px) {
     /* Marge du body pour la navbar et utilisation de flex pour coller le footer en bas de page */
@@ -17,6 +21,7 @@
     #content {
         flex: 1;
         padding-top: 60px;
+        padding-bottom: 20px;
         background-color: white;
     }
 
@@ -185,45 +190,12 @@
     margin-bottom: 10px;
 }
 
-#content_avatar{
-    width: 200px;
-    height: 200px;
-    margin: auto;
-}
 
-.img-responsive{
-    width: 200px;
-    height: 200px;
-}
-#edit_avatar{
-    border-radius: 50%;
-    position: relative;
-    bottom: 40px;
-    left: 160px;
-}
 /*--- marging ----*/
 .marge-top{
     margin-top: 20px;
 }
 
-/*---- Couleur Background -----*/
-.fond-bleu-menu-2{
-    background-color: #dbefed;
-}
-
-.fond-bleu-titre{
-    background-color: #a1d0f3;
-}
-.count{
-    height: 25vh;
-    color: white;
-}
-.count>div{
-    height: calc(25vh / 2);
-    line-height: 20px;
-    padding-top: calc(((25vh / 2) - 20px)/2);
-    text-transform: uppercase;
-}
 
 
 
@@ -235,4 +207,15 @@
 }
 #stars{
     display: none;
+}
+/* Les boutons des form sont toutes largeur, sans arrondi et de couleur blanche*/
+form .btn{
+    border-radius: 0;
+    width: 100%;
+    color: white;
+}
+
+/*Couleur verte sur les bouton */
+.btn-nao{
+    background-color: #99d1c8;
 }

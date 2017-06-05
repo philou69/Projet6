@@ -13,7 +13,9 @@ class ChangePasswordType extends ResetPasswordType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('oldPassword', PasswordType::class, array(
-            'label' => 'Ancien mot de passe',
+            'attr' => [
+                'placeholder' => 'Changer mot de passe'
+                ],
             'mapped' => false,
             'constraints' => array(
                 // Contraint ne validant le form qu'avec le bon mot de passe
