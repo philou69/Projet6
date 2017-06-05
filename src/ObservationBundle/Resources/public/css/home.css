@@ -2,9 +2,9 @@
     Home page
      */
 
-#contentHome {
+#contentHome, #content {
 
-    background: url('../images/Visuels/observation_background.jpg') no-repeat center;
+    background: url('/NAO/web/bundles/observation/images/Visuels/observation_background.jpg') no-repeat center;
 }
 
 #saisie {

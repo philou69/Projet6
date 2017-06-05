@@ -40,19 +40,22 @@
     {# Galeery des photos d'oiseaux#}
         <div id="gallery">
             <div class="row">
-                <h1 class="col-md-10">Les dernières photos</h1>
-                <a href="#" class="col-md-2">accéder à la gallerie</a>
+                <h1 class="col-md-10 col-xs-12">Les dernières photos</h1>
+                <a href="#" class="col-md-2 col-xs-12 text-center">accéder à la gallerie</a>
             </div>
+            <div class="col-md-12  col-xs-10 text-center">
                 {% for picture in gallery %}
                     <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" class="img-thumbnail"
-                         style="width: 250px; height: 200px">
+                         style="min-width: 250px; min-height: 200px; width: 250px; height: 200px;">
                 {% else %}
                     <p>Prochainement les dernières photos</p>
                 {% endfor %}
+            </div>
+
         </div>
         {#block de saisie obs et newsletter#}
         <div id="actions" class="row">
-            <div id="saisie" class="text-center col-md-6">
+            <div id="saisie" class="text-center col-xs-12 col-md-6">
                 <a href="{{ path ('observation_add') }}"><img
                             src="{{ asset ('bundles/observation/images/icones/observation_icon.png') }}"
                             alt="observation_icon">
@@ -61,7 +64,7 @@
                     </p>
                 </a>
             </div>
-            <div id="newsletter" class="col-md-6">
+            <div id="newsletter" class="col-xs-12 col-md-6">
                 <input type="text" placeholder="Renseigner votre email" class="form-control text-center">
                 <button type="submit" class="btn btn-primary btn-lg btn-block">RECEVOIR LA NEWSLETTER</button>
             </div>
