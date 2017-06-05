@@ -58,7 +58,7 @@ class UserType extends AbstractType
             ))
             ->add('birthDate', BirthdayType::class, array(
                 'attr' => [
-                    'placeholder' => 'Date de naissance (jj/mm/AAAA)'
+                    'placeholder' => 'Né(é) le : (jj/mm/AAAA)'
                         ],
                 'widget' => 'single_text',
                 'choice_translation_domain' => true,
