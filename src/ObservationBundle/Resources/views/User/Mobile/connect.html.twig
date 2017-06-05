@@ -11,9 +11,13 @@
         {# Zone d'identification avec google ou facebook #}
         <div id="oauth" class="text-center">
             <h4>connectez vous avec :</h4>
-            <div>
-                <a href="#" onclick="fb_login();" class="btn btn-blue">Facebook</a>
-                <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-red">Google</a>
+            <div class="row">
+                <div class="col-xs-4 col-xs-push-2">
+                    <a href="#" onclick="fb_login();" class="btn btn-blue ">Facebook</a>
+                </div>
+                <div class="col-xs-4 col-xs-push-2">
+                    <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-red">Google</a>
+                </div>
             </div>
         </div>
         <div class="text-center">

@@ -30,18 +30,21 @@
                         <small>{{ 'ROLE_NATURALISTE' in app.user.roles ? 'NATURALISTE' : 'PARTICULIER' }}</small>
                     </div>
                     <div class="row marge-top">
-                        <div id="observations-count" class="col-sm-6 text-center fond-bleu-titre count">
+                        <div id="observations-count" class="{{ 'ROLE_NATURALISTE' in app.user.roles ? 'col-sm-12' : 'col-sm-6'  }} text-center fond-bleu-titre count">
                             <h4>Observations </h4>
                             <div>
                                 <img src="{{ asset('/bundles/observation/images/icones/observationsProfil_icon.png') }}"
                                      alt=""> {{ app.user.observations | length }}</div>
                         </div>
-                        <div id="stars-count" class="col-sm-6 text-center fond-bleu-menu-2 count">
-                            <h4>Médailles</h4>
-                            <div><img src="{{ asset('/bundles/observation/images/icones/medailles_icon.png') }}"
-                                      alt=""> {{ app.user.stars |length }}</div>
+                        {% if 'ROLE_NATURALISTE' not in app.user.roles%}
+                            <div id="stars-count" class="col-sm-6 text-center fond-bleu-menu-2 count">
+                                <h4>Médailles</h4>
+                                <div><img src="{{ asset('/bundles/observation/images/icones/medailles_icon.png') }}"
+                                          alt=""> {{ app.user.stars |length }}</div>
 
-                        </div>
+                            </div>
+                        {% endif %}
+
                     </div>
                 </div>
 
