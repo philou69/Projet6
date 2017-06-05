@@ -25,6 +25,10 @@
                         {% endif %}
 
                     </div>
+                    <div class="text-center">
+                        <h2>{{ app.user.firstname }} {{ app.user.lastname }}</h2>
+                        <small>{{ 'ROLE_NATURALISTE' in app.user.roles ? 'NATURALISTE' : 'PARTICULIER' }}</small>
+                    </div>
                     <div class="row marge-top">
                         <div id="observations-count" class="col-sm-6 text-center fond-bleu-titre count">
                             <h4>Observations </h4>
@@ -118,6 +122,10 @@
                 {{ form_widget(form._token) }}
                 {# fermeture du form sans afficher le rest( bouton de validation #}
                 {{ form_end(form) }}
+                <div class="center-60">
+
+                    <a href="#sleep_user" class="btn btn-nao" data-toggle="modal"><img src="{{ asset('bundles/observation/images/icones/supprimer_icon.png') }}" alt=""> Fermé son compte</a>
+                </div>
                 {# ligne pour le mot de passe qui renvoie vers la page de changement de mot de passe #}
 
                 {{ form_start(formPassword, {'attr':{'class' : 'center-80'}}) }}
@@ -134,7 +142,6 @@
                                     class="fa fa-pencil"></i></a>
                     </div>
                 </div>
-                {#{{ dump(form.plainPassword) }}#}
                 <div id="new-passwords" hidden>
                     {% for password in formPassword.plainPassword %}
                         <div class="form-group">
@@ -157,9 +164,12 @@
                 </div>
                 {{ form_rest(form) }}
                 {{ form_end(formPassword) }}
+
+
             </div>
         </div>
     </div>
+    {% include 'ObservationBundle:Modal:sleep.user.html.twig' %}
 
 {% endblock %}
 

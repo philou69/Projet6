@@ -88,3 +88,24 @@ input:disabled::placeholder, input::-webkit-input-placeholder, input::-moz-place
     color: #b5b5b5;
     line-height: normal;
 }
+.padding-top{
+    padding-top: 20px;
+}
+.center-60{
+    width: 60%;
+    margin: auto;
+}
+
+.modal-dialog{
+    height: 70vh;
+    margin: auto;
+}
+.modal-content{
+    height: 100%;
+}
+.modal-body{
+    height: 80%;
+}
+.modal-footer{
+    height: 20%;
+}
