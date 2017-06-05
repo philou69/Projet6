@@ -209,13 +209,19 @@
     display: none;
 }
 /* Les boutons des form sont toutes largeur, sans arrondi et de couleur blanche*/
-form .btn{
+.btn{
     border-radius: 0;
     width: 100%;
     color: white;
 }
-
+.btn-nao>img{
+    height: 20px;
+}
 /*Couleur verte sur les bouton */
 .btn-nao{
     background-color: #99d1c8;
+}
+/*Background gris*/
+.grey{
+    background-color: #fbfbfb;
 }
