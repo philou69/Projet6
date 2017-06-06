@@ -323,4 +323,31 @@ class UserController extends Controller
             return $this->render('@Observation/User/Desktop/change.avatar.html.twig', array('form' => $form->createView()));
         }
     }
+
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function usersAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $users = $em->getRepository('ObservationBundle:User')->findAllOthers($this->getUser()->getId());
+
+        $device = $this->get('mobile_detect.mobile_detector');
+
+        if($device->isMobile() && $device->isTablet()){
+            return $this->render('@Observation/User/Mobile/list.users.html.twig', array('users' => $users));
+        }else{
+            return $this->render('@Observation/User/Desktop/list.users.html.twig', array('users' => $users));
+        }
+    }
+
+    public function reactivateAction(User $user)
+    {
+        $user->setIsActive( $user->getIsActive() == true ? false : true );
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+        $this->get('observation.user.mailer')->sendStatus($user);
+        return $this->redirectToRoute('user_users');
+    }
 }
