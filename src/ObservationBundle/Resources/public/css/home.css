@@ -31,15 +31,14 @@
         background: url('../images/hiker-918473_1920.jpg') no-repeat center;
         -webkit-background-size: cover;
         /* Hauteur de l'écran */
-        height: 140vh;
-        margin-top: -200px;
+        height: 100vh;
     }
 
 }
 /* Positionnement du bouton sur le bas du div */
 #start{
     position: relative;
-    top: 125vh;
+    top: calc(100vh - 50px);
     background-color: transparent;
     color: #dbefed;
 }
