@@ -31,12 +31,37 @@
     font-size: 36px;
 }
 
+
 /* Padding du logo*/
 .navbar-header img {
     margin-top: 15px;
 
 }
 
+
+@media (min-width: 993px) {
+    .navbar{
+        margin-bottom: 0;
+        max-height: 90px;
+        border: 0;
+    }
+    .navbar>#first{
+        height: 50px;
+    }
+    .navbar>.tab-content{
+        max-height: 40px;
+    }
+    .second_line{
+        height: 40px;
+    }
+    .second_line>a{
+        margin: auto;
+    }
+    .tab-pane>.navbar-nav>li>a{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
 
 @media (max-width: 992px) {
     /*bloquage de la hauteur min*/

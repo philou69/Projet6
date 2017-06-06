@@ -34,7 +34,7 @@ class BirdRepository extends \Doctrine\ORM\EntityRepository
         return new Paginator($query, true);
     }
 
-    public function findForValide(User $user)
+    public function findForValidate(User $user)
     {
         $query = $this->createQueryBuilder('b')
             ->innerJoin('b.observations', 'o')

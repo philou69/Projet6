@@ -1,70 +1,168 @@
 {# Vue du profil sur mobile #}
 {% extends 'ObservationBundle::layout.mobile.html.twig' %}
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/profil.css') }}">
+{% endblock %}
 
 {% block title %}Profil{% endblock %}
 
 {% block content %}
-    <div class="row marge-top">
-        <div id="content_avatar">
-            {% if app.user.avatar is not null %}
-                <img src="{{ asset(app.user.avatar.webPath) }}" class="img-responsive img-circle" alt="{{ app.user.avatar.alt }}">
-            {% else %}
-                <p>Coissiser une image</p>
-            {% endif %}
-            <a href="{{ path('user_change_avatar') }}" id="edit_avatar"><i class="fa fa-pencil fa-2x"></i></a>
-        </div>
-        <div class="container">
-            <div class="row marge-top">
-                <div class="col-xs-6 text-center fond-bleu-titre count">
-                    <div>Observations </div>
-                    <div>{{ app.user.observations | length }}</div>
-                </div>
-                <div class="col-xs-6 text-center fond-bleu-menu-2 count">
-                    <div>Médailles</div>
-                    <div>{{ app.user.stars |length }}</div>
-
-                </div>
+    <div class="marge-top">
+        <div class="center-80">
+            <div id="content_avatar">
+                {% if app.user.avatar is not null %}
+                    <img src="{{ asset(app.user.avatar.webPath) }}" class="img-responsive img-circle"
+                         alt="{{ app.user.avatar.alt }}">
+                {% else %}
+                    <p>Coissiser une image</p>
+                {% endif %}
+                <a href="{{ path('user_change_avatar') }}" id="edit_avatar"><i class="fa fa-pencil"></i></a>
+            </div>
+            <div class="text-center">
+                <h2>{{ app.user.firstname }} {{ app.user.lastname }}</h2>
+                <small>{{ 'ROLE_NATURALISTE' in app.user.roles ? 'NATURALISTE' : 'PARTICULIER' }}</small>
             </div>
         </div>
+        <div class="row marge-top">
+            <div id="observations-count"class="{{ 'ROLE_NATURALISTE' in app.user.roles ? 'col-xs-12' : 'col-xs-6' }} text-center count">
+                <h5>Observations</h5>
+                <div><img src="{{ asset('/bundles/observation/images/icones/observationsProfil_icon.png') }}"
+                          alt="">  {{ app.user.observations | length }}</div>
+            </div>
+            {% if 'ROLE_NATURALISTE' not in app.user.roles %}
+                <div id="observations-count" class="col-xs-6 text-center count">
+                    <h5>Médailles</h5>
+                    <div><img src="{{ asset('/bundles/observation/images/icones/medailles_icon.png') }}"
+                              alt=""> {{ app.user.stars |length }}</div>
 
+                </div>
+            {% endif %}
+
+        </div>
     </div>
-    <table class="marge-top">
-        {{ form_start(form) }}
-        {{ form_errors(form) }}
-        {% for child in form.children if child.vars.name != 'save' and child.vars.name != '_token' %}
-            <tr class="row">
-                <td class="col-xs-5">{{ child.vars.label }}</td>
-                <td class="col-xs-6">
-                    <div id="view_{{ child.vars.id }}" class="views" {% if child.vars.errors.count != 0 %}hidden{% endif %}>
-                        {% if child.vars.name == 'birthDate' %}
-                            {% if child.vars.value.day is not empty %}
-                                {{ child.vars.value.day }}/{{ child.vars.value.month }}/{{ child.vars.value.year }}
-                            {% else %}
-                                Aucune date
-                            {% endif %}
-                        {% else %}
-                            {{ child.vars.value }}
-                        {% endif %}
-                    </div>
-                    <div id="edit_{{ child.vars.id }}" class="edits" {% if child.vars.errors.count == 0 %}hidden{% endif %}>
-                        {{ form_widget(child) }}
-                        <button type="submit" class="btn btn-xs btn-primary">Enregistrer</button>
-                        <button class="btn btn-xs btn-success cancel">Annulé</button>
-                    </div>
-                </td>
-                <td class="col-xs-1"><a href="#" class="edit_button btn btn-xs btn-info" id="{{ child.vars.id }}"><i class="glyphicon glyphicon-edit"></i></a></td>
-            </tr>
-        {% endfor %}
-        {{ form_widget(form._token) }}
-        {{ form_end(form, {'render_rest': false})}}
+    <div class="grey">
+        <div class="center-80 padding-top">
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+            <div class="form-group">
+                <div class="col-xs-2">
+                    <img src="{{ asset('/bundles/observation/images/icones/compte_icon_hover.png') }}" alt=""
+                         class="img-profil">
+                </div>
+                <div class="col-xs-8">
+                    {{ form_widget(form.username, {'attr': {'disabled': 'disabled'}}) }}</div>
+                <div class="col-xs-2">
+                    <a href="#" class="edit_button btn btn-grey" data-id="{{ form.username.vars.id }}"><i
+                                class="fa fa-pencil"></i></a>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-2">
+                    <img src="{{ asset('/bundles/observation/images/icones/mailProfil_icon.png') }}" alt=""
+                         class="img-profil">
+                </div>
+                <div class="col-xs-8">
+                    {{ form_widget(form.email, {'attr': {'disabled': 'disabled'}}) }}</div>
+                <div class="col-xs-2">
+                    <a href="#" class="edit_button btn btn-grey" data-id="{{ form.email.vars.id }}"><i
+                                class="fa fa-pencil"></i></a>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-2">
+                    <img src="{{ asset('/bundles/observation/images/icones/profil_icon_hover.png') }}" alt=""
+                         class="img-profil">
+                </div>
+                <div class="col-xs-8">
+                    {{ form_widget(form.firstname, {'attr': {'disabled': 'disabled'}}) }}</div>
+                <div class="col-xs-2">
+                    <a href="#" class="edit_button btn btn-grey" data-id="{{ form.firstname.vars.id }}"><i
+                                class="fa fa-pencil"></i></a>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-2">
+                    <img src="{{ asset('/bundles/observation/images/icones/profil_icon_hover.png') }}" alt=""
+                         class="img-profil">
+                </div>
+                <div class="col-xs-8">
+                    {{ form_widget(form.lastname, {'attr': {'disabled': 'disabled'}}) }}</div>
+                <div class="col-xs-2">
+                    <a href="#" class="edit_button btn btn-grey" data-id="{{ form.lastname.vars.id }}"><i
+                                class="fa fa-pencil"></i></a>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-2">
+                    <img src="{{ asset('/bundles/observation/images/icones/naissanceProfil_icon.png') }}" alt=""
+                         class="img-profil">
+                </div>
+                <div class="col-xs-8">
+                    {{ form_widget(form.birthDate, {'attr': {'disabled': 'disabled'}}) }}</div>
+                <div class="col-xs-2">
+                    <a href="#" class="edit_button btn btn-grey" data-id="{{ form.birthDate.vars.id }}"><i
+                                class="fa fa-pencil"></i></a>
+                </div>
+            </div>
+            <div id="action" class="row" hidden>
+                <div class="col-xs-6">
+                    {{ form_widget(form.save) }}
+                </div>
+                <div class="col-xs-6">
+                    <button type="button" id="cancel-profil"class="btn btn-nao ">Annulé</button>
+                </div>
+            </div>
+            {# insertion du token du form #}
+            {{ form_widget(form._token) }}
+            {# fermeture du form sans afficher le rest( bouton de validation #}
+            {{ form_end(form) }}
+            {# ligne pour le mot de passe qui renvoie vers la page de changement de mot de passe #}
 
-        <tr class="row">
-            <td class="col-xs-11" colspan="2">
-                Mot de passe
-            </td>
-            <td class="col-xs-1"><a href="{{ path('user_change_password') }}" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-pencil"></i></a></td>
-        </tr>
-    </table>
+            {{ form_start(formPassword) }}
+            {{ form_errors(formPassword) }}
+            <div class="form-group">
+                <div class="col-xs-2">
+                    <img src="{{ asset('/bundles/observation/images/icones/passwordProfil_icon.png') }}" alt=""
+                         class="img-profil">
+                </div>
+                <div class="col-xs-8">
+                    {{ form_widget(formPassword.oldPassword, {'attr': {'disabled': 'disabled'}}) }}</div>
+                <div class="col-xs-2">
+                    <a href="#" id="edit_password" class=" btn btn-grey" data-id="{{ formPassword.oldPassword.vars.id }}"><i
+                                class="fa fa-pencil"></i></a>
+                </div>
+            </div>
+            {#{{ dump(form.plainPassword) }}#}
+            <div id="new-passwords" hidden>
+                {% for password in formPassword.plainPassword %}
+                    <div class="form-group">
+                        <div class="col-xs-8 col-xs-offset-2">
+                            {{ form_widget(password) }}
+                            {{ form_errors(formPassword) }}
+                        </div>
+
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div id="action-password" class="row " hidden>
+                <div class="col-xs-6">
+                    {{ form_widget(formPassword.save) }}
+                </div>
+                <div class="col-xs-6">
+                    <button type="button" id="cancel-password" class="btn btn-nao ">Annulé</button>
+                </div>
+            </div>
+            {{ form_rest(form) }}
+            {{ form_end(formPassword) }}
+        </div>
+        <div class="center-60">
+            <a href="#sleep_user" class="btn btn-nao" data-toggle="modal"><img src="{{ asset('bundles/observation/images/icones/supprimer_icon.png') }}" alt=""> Fermé son compte</a>
+        </div>
+    </div>
+
+    {% include 'ObservationBundle:Modal:sleep.user.html.twig' %}
 {% endblock %}
 
 {% block javascript %}

@@ -19,16 +19,20 @@ class ResetPasswordType extends AbstractType
         $builder->add('plainPassword', RepeatedType::class, array(
             'type' => PasswordType::class,
             'first_options' => array(
-                'label' =>  'Nouveau mot de passe'
+                'attr' => [
+                    'placeholder' =>'Nouveau mot de passe'
+                ]
             ),
             'second_options' => array(
-                'label' => 'Confirmation mot de passe'
+                'attr' => [
+                    'placeholder' =>'Confirmez mot de passe'
+                    ]
             )
         ))
             ->add('save', SubmitType::class, array(
                 'label' => 'Enregistrer',
                 'attr' => array(
-                    'class' => 'btn bnt-xs btn-primary'
+                    'class' => 'btn btn-nao'
                 )
             ));
     }

@@ -1,63 +1,72 @@
 {% extends '@Observation/layout.mobile.html.twig' %}
 
-
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/connect.css') }}">
+{% endblock %}
 {% block title %}Inscription{% endblock %}
 
 {% block content %}
-    <div id="fb-root"></div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h1>
-                Inscripiton
-            </h1>
-        </div>
-        <div class="panel-body">
-            {# Zone d'identification avec google ou facebook #}
-            <div class="text-center">
-                <h2>S'identifier avec </h2>
-                <div>
-                    <a href="#" onclick="fb_login();" class="btn btn-xs btn-primary"><i class="fa fa-facebook"></i> Facebook</a>
-                    <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-xs btn-danger"><i class="fa fa-google-plus"></i></a>
+        <div id="fb-root"></div>
+        {# Zone d'identification avec google ou facebook #}
+        <div id="oauth" class="text-center">
+            <h4>connectez vous avec :</h4>
+            <div class="row">
+                <div class="col-xs-4 col-xs-push-2">
+                    <a href="#" onclick="fb_login();" class="btn btn-blue ">Facebook</a>
+                </div>
+                <div class="col-xs-4 col-xs-push-2">
+                    <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-red">Google</a>
                 </div>
             </div>
-            <hr/>
-            <div>
-                {#
-                    Toggle switch permettant de choisir entre inscription ou connection
-                #}
-                <label >Connection </label>
-                <label class="switch" for="choice">
-                    <input type="checkbox"   id="choice">
-                    <div class="slider round"></div>
-                </label><label> Inscription</label>
-            </div>
-            {# Zone de connection #}
-            <div id="login">
-                {% if error %}
-                    <div class="alert alert-danger">
-                        {{ error.messageKey| trans(error.messageData, 'security') }}
-                    </div>
-                {% endif %}
-
-                <form action="{{ path('user_login') }}" method="post">
-                    <label for="username" class="control-label required">Pseudo ou Email </label>
-                    <input type="text" name="_username" id="username" class="form-control">
-                    <label for="password" class="control-label required">Mot de passe </label>
-                    <input type="password" name="_password" id="password" class="form-control">
-                    <label for="remember_me" class="control-label">Se souvenir de moi <input type="checkbox" name="_remember_me" id="remember_me"></label>
-
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-xs btn-primary">Se connecter</button>
-                    </div>
-                </form>
-            </div>
-            {# Zone d'inscription #}
-            <div id="registration" hidden>
-                {{ form(form) }}
-            </div>
         </div>
-    </div>
-    {{ form(form) }}
+        <div class="text-center">
+            {#
+                Toggle switch permettant de choisir entre inscription ou connection
+            #}
+            <label class="switch"><input type="checkbox" id="choice"><div class="slider"> <span class="on">Se connecter</span><span class="off">S'incrire</span></div></label>
+            {#<label>Connection </label>#}
+            {#<label class="switch" for="choice">#}
+            {#<input type="checkbox" id="choice">#}
+            {#<div class="slider"></div>#}
+            {#</label><label> Inscription</label>#}
+        </div>
+        {# Zone de connection #}
+
+        <form id="login" action="{{ path('user_login') }}" method="post">
+            {% if error %}
+                <div class="alert alert-danger">
+                    {{ error.messageKey| trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
+            <input type="text" name="_username" id="username" class="form-control" placeholder="Identifiant ou Email">
+            <input type="password" name="_password" id="password" class="form-control" placeholder="Mot de passe">
+            <a id="forget-link" href="{{ path('user_forgot_password') }}" class="col-md-6">Mot de passe oublié</a>
+            <label id="remember-label" for="remember_me"><input type="checkbox" name="_remember_me" id="remember_me"> Se souvenir de moi</label>
+            <div class="text-center">
+                <button type="submit" class="btn btn-nao">Se connecter</button>
+            </div>
+        </form>
+        {# Zone d'inscription #}
+        {{ form_start(form, {'attr':{'id': 'registration', 'hidden':'hidden'}}) }}
+        {{ form_errors(form) }}
+        {# Boucle sur les champs du form à l'exception du save et _token #}
+        {% for child in form.children if child.vars.name != 'save' and child.vars.name != '_token' %}
+            {# Gestion des champs plainPassword#}
+            {% if child.vars.name == 'plainPassword' %}
+                {% for password in child.children %}
+                    {{ form_widget(password, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(password) }}
+                {% endfor %}
+            {% else %}
+                {{ form_widget(child, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(child) }}
+            {% endif %}
+        {% endfor %}
+        {# Affichage du bouton d'Enregistrement #}
+        {{ form_widget(form.save) }}
+        {{ form_end(form) }}
+
 {% endblock %}
 
 {% block javascript %}

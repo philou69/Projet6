@@ -5,6 +5,7 @@ namespace ObservationBundle\EventListener;
 
 
 use Doctrine\ORM\EntityManager;
+use ObservationBundle\Entity\User;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class UserSubscriber implements EventSubscriberInterface
@@ -25,21 +26,24 @@ class UserSubscriber implements EventSubscriberInterface
             'user.captured' => array(array('hasBirthday'), array('hasAvatar'))
         );
     }
+    public function addStars(User $user, $entityName)
+    {
+        $groupStar = $this->em->getRepository('ObservationBundle:GroupStar')->findOneBy(
+            array('entity' => $entityName)
+        );
+        if (!$groupStar->getUsers()->contains($user)) {
+            $groupStar->getStars()->first()->addUser($user);
+            $this->em->persist($groupStar->getStars()->first());
+            $this->em->flush();
+        }
+    }
 
     public function hasBirthDay($event)
     {
         $user = $event->getUser();
 
         if ($user->getBirthDate() != null) {
-            $groupStar = $this->em->getRepository('ObservationBundle:GroupStar')->findOneBy(
-                array('entity' => self::BIRTH_DATE)
-            );
-            if (!$groupStar->getUsers()->contains($user)) {
-                $groupStar->getStars()->first()->addUser($user);
-                $this->em->persist($groupStar->getStars()->first());
-                $this->em->flush();
-            }
-
+            $this->addStars($user, self::BIRTH_DATE);
         }
     }
 
@@ -48,12 +52,7 @@ class UserSubscriber implements EventSubscriberInterface
         $user = $event->getUser();
 
         if($user->getAvatar() != null){
-            $groupStar = $this->em->getRepository('ObservationBundle:GroupStar')->findOneBy(array('entity' => self::AVATAR));
-            if (!$groupStar->getUsers()->contains($user)) {
-                $groupStar->getStars()->first()->addUser($user);
-                $this->em->persist($groupStar->getStars()->first());
-                $this->em->flush();
-            }
+            $this->addStars($user, self::AVATAR);
         }
     }
 }

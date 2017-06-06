@@ -2,6 +2,8 @@
 
 namespace ObservationBundle\Repository;
 
+use ObservationBundle\Entity\User;
+
 /**
  * LocationRepository
  *
@@ -10,4 +12,14 @@ namespace ObservationBundle\Repository;
  */
 class LocationRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findForValidate(User $user)
+    {
+        $query = $this->createQueryBuilder('l');
+        $query->innerJoin('l.observations', 'o')
+            ->where('o.validated = true')
+            ->andWhere('o.user = :user')
+            ->setParameter('user', $user);
+
+        return $query->getQuery()->getResult();
+    }
 }
