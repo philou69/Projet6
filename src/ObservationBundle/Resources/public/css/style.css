@@ -265,7 +265,7 @@ Star design
 /* Les boutons des form sont toutes largeur, sans arrondi et de couleur blanche*/
 .btn{
     border-radius: 0;
-    width: 100%;
+    /*width: 100%;*/
     color: white;
 }
 .btn-nao>img{
