@@ -33,13 +33,13 @@
                         <div id="observations-count" class="{{ 'ROLE_NATURALISTE' in app.user.roles ? 'col-sm-12' : 'col-sm-6'  }} text-center fond-bleu-titre count">
                             <h4>Observations </h4>
                             <div>
-                                <img src="{{ asset('/bundles/observation/images/icones/observationsProfil_icon.png') }}"
+                                <img src="{{ asset('bundles/observation/images/icones/observationsProfil_icon.png') }}"
                                      alt=""> {{ app.user.observations | length }}</div>
                         </div>
                         {% if 'ROLE_NATURALISTE' not in app.user.roles%}
                             <div id="stars-count" class="col-sm-6 text-center fond-bleu-menu-2 count">
                                 <h4>Médailles</h4>
-                                <div><img src="{{ asset('/bundles/observation/images/icones/medailles_icon.png') }}"
+                                <div><img src="{{ asset('bundles/observation/images/icones/medailles_icon.png') }}"
                                           alt=""> {{ app.user.stars |length }}</div>
 
                             </div>
@@ -55,7 +55,7 @@
                 {{ form_errors(form) }}
                 <div class="form-group">
                     <div class="col-md-2">
-                        <img src="{{ asset('/bundles/observation/images/icones/compte_icon_hover.png') }}" alt=""
+                        <img src="{{ asset('bundles/observation/images/icones/compte_icon_hover.png') }}" alt=""
                              class="img-profil">
                     </div>
                     <div class="col-md-8">
@@ -67,7 +67,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <img src="{{ asset('/bundles/observation/images/icones/mailProfil_icon.png') }}" alt=""
+                        <img src="{{ asset('bundles/observation/images/icones/mailProfil_icon.png') }}" alt=""
                              class="img-profil">
                     </div>
                     <div class="col-md-8">
@@ -79,7 +79,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <img src="{{ asset('/bundles/observation/images/icones/profil_icon_hover.png') }}" alt=""
+                        <img src="{{ asset('bundles/observation/images/icones/profil_icon_hover.png') }}" alt=""
                              class="img-profil">
                     </div>
                     <div class="col-md-8">
@@ -91,7 +91,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <img src="{{ asset('/bundles/observation/images/icones/profil_icon_hover.png') }}" alt=""
+                        <img src="{{ asset('bundles/observation/images/icones/profil_icon_hover.png') }}" alt=""
                              class="img-profil">
                     </div>
                     <div class="col-md-8">
@@ -103,7 +103,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <img src="{{ asset('/bundles/observation/images/icones/naissanceProfil_icon.png') }}" alt=""
+                        <img src="{{ asset('bundles/observation/images/icones/naissanceProfil_icon.png') }}" alt=""
                              class="img-profil">
                     </div>
                     <div class="col-md-8">
@@ -135,7 +135,7 @@
                 {{ form_errors(formPassword) }}
                 <div class="form-group">
                     <div class="col-md-2">
-                        <img src="{{ asset('/bundles/observation/images/icones/passwordProfil_icon.png') }}" alt=""
+                        <img src="{{ asset('bundles/observation/images/icones/passwordProfil_icon.png') }}" alt=""
                              class="img-profil">
                     </div>
                     <div class="col-md-8">
