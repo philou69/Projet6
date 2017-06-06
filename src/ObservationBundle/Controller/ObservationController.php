@@ -147,7 +147,7 @@ class ObservationController extends Controller
             $em->flush();
 
             $this->addFlash(
-                'notice',
+                'alert',
                 'Votre observation a été envoyé! En attente de validation'
             );
             return $this->redirectToRoute('observation_add');

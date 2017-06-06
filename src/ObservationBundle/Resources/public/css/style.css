@@ -1,7 +1,40 @@
+
+
+/*
+Réglages généraux
+*/
+body {
+    font-family: ‘Roboto’, sans-serif;
+    background-color: rgb(110, 151, 145);
+}
+
+h1 {
+    font-size: 36px;
+    color: #a1d0f3;
+
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.btn {
+    background-color: #99d1C8;
+    color: white;
+}
+
+#content {
+    padding-top: 20px;
+}
+
+/*
+Page Observation
+ */
 #map {
     height: 400px;
     width: 100%;
 }
+
 .center-80{
     width: 80%;
     margin: auto;
@@ -30,12 +63,18 @@
         min-height: 60px;
     }
 
+    #listing .row {
+        margin-left: 5px;
+
+    }
+
     /* Position du bouton up à 120px du haut*/
     #up {
         top: 120px;
     }
     .bird{
         width: 47.5%;
+        background-color: rgb(241, 241, 241);
     }
 
 
@@ -162,7 +201,7 @@
     cursor: pointer;
     height: 100px;
     padding: 0;
-    background-color: #FEFEE2;
+    background-color: rgb(241, 241, 241);
     margin-bottom: 10px;
 }
 
@@ -191,15 +230,30 @@
 }
 
 
+
+.img-responsive{
+    height: 100px;
+}
+
+#birds .col-sm-4 {
+    padding: 0;
+}
+#edit_avatar{
+    border-radius: 50%;
+    position: relative;
+    bottom: 40px;
+    left: 160px;
+}
+
 /*--- marging ----*/
 .marge-top{
     margin-top: 20px;
 }
 
 
-
-
-
+/*
+Star design
+*/
 .group-star{
     background-color: #565656;
     border-radius: 50%;
@@ -211,7 +265,7 @@
 /* Les boutons des form sont toutes largeur, sans arrondi et de couleur blanche*/
 .btn{
     border-radius: 0;
-    width: 100%;
+    /*width: 100%;*/
     color: white;
 }
 .btn-nao>img{

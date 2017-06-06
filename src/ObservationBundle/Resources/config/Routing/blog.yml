@@ -1,0 +1,13 @@
+blog_view:
+  path: /{page}
+  defaults:
+    _controller: ObservationBundle:Blog:view
+  requirements:
+    -page: blog
+
+blog_edit:
+  path: /{page}/edit
+  defaults:
+    _controller: ObservationBundle:Blog:edit
+  requirements:
+    -page: blog

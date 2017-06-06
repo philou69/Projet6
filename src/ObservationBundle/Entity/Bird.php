@@ -20,6 +20,8 @@ class Bird
      * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Sound")
      */
     protected $sound;
+
+
     /**
      * @var int
      *
@@ -134,6 +136,7 @@ class Bird
      * @ORM\JoinColumn(nullable=false)
      */
     private $pictures;
+
 
     /**
      * Constructor
@@ -673,4 +676,5 @@ class Bird
 
         return $this;
     }
+
 }

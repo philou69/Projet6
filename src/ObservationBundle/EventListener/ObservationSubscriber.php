@@ -5,13 +5,15 @@ namespace ObservationBundle\EventListener;
 
 
 use Doctrine\ORM\EntityManager;
+use ObservationBundle\Entity\User;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ObservationSubscriber implements EventSubscriberInterface
 {
-    const OBS = 'Observation_valide';
-    const PICTURE = 'Observation_picture';
-    const BIRD = 'Observation_bird';
+    const OBS = 'Observation';
+    const PICTURE = 'Picture';
+    const BIRD = 'Bird';
+    const LOCATION = 'Location';
     protected $em;
 
     /**
@@ -30,58 +32,47 @@ class ObservationSubscriber implements EventSubscriberInterface
         );
     }
 
+    public function countEntities($nameEntity, User $user)
+    {
+        $entities = $this->em->getRepository('ObservationBundle:' . $nameEntity)->findForValidate($user);
+        $groupStar = $this->em->getRepository('ObservationBundle:GroupStar')->findOneBy(array('entity' => $nameEntity));
+        // On boucle sur les stars
+        foreach ($groupStar->getStars() as $star)
+        {
+            // On vérifie si l'user a autant ou plus d'observation que quantity de star et s'il n'est pas déjà present dedans
+            if (count($entities) >= $star->getQuantity() && $star->getUsers()->contains($user) == false){
+                $star->addUser($user);
+            }
+            $this->em->persist($star);
+        }
+        $this->em->flush();
+    }
 
     public function countObservations($event)
     {
         $observation = $event->getObservation();
 
-        $observations = $this->em->getRepository('ObservationBundle:Observation')->findForUser($observation->getUser());
-        $groupStar = $this->em->getRepository('ObservationBundle:GroupStar')->findOneBy(array('entity' => self::OBS));
-        // On boucle sur les stars
-        foreach ($groupStar->getStars() as $star)
-        {
-            // On vérifie si l'user a autant ou plus d'observation que quantity de star et s'il n'est pas déjà present dedans
-            if (count($observations) >= $star->getQuantity() && $star->getUsers()->contains($observation->getUser()) == false){
-                $star->addUser($observation->getUser());
-            }
-            $this->em->persist($star);
-        }
-        $this->em->flush();
+        $this->countEntities(self::OBS, $observation->getUser());
     }
 
     public function countPictures($event)
     {
         $observation = $event->getObservation();
 
-        $pictures = $this->em->getRepository('ObservationBundle:Picture')->findForValidate($observation->getUser());
-        $groupStar = $this->em->getRepository('ObservationBundle:GroupStar')->findOneBy(array('entity' => self::PICTURE));
-        foreach ($groupStar->getStars() as $star)
-        {
-            // On vérifie si l'user a autant ou plus d'observation que quantity de star et s'il n'est pas déjà present dedans
-            if (count($pictures) >= $star->getQuantity() && $star->getUsers()->contains($observation->getUser()) == false){
-                $star->addUser($observation->getUser());
-            }
-            $this->em->persist($star);
-        }
-        $this->em->flush();
-
+        $this->countEntities(self::PICTURE, $observation->getUser());
     }
 
     public function countBirds($event)
     {
         $observation = $event->getObservation();
 
-        $birds = $this->em->getRepository('ObservationBundle:Bird')->findForValide($observation->getUser());
-        $groupStar = $this->em->getRepository('ObservationBundle:GroupStar')->findOneBy(array('entity' => self::PICTURE));
-        foreach ($groupStar->getStars() as $star)
-        {
+        $this->countEntities(self::BIRD, $observation->getUser());
+    }
 
-            // On vérifie si l'user a autant ou plus d'observation que quantity de star et s'il n'est pas déjà present dedans
-            if (count($birds) >= $star->getQuantity() && $star->getUsers()->contains($observation->getUser()) == false){
-                $star->addUser($observation->getUser());
-            }
-            $this->em->persist($star);
-        }
-        $this->em->flush();
+    public function countLocation($event)
+    {
+        $observation = $event->getObservation();
+
+        $this->countEntities(self::LOCATION, $observation->getUser());
     }
 }

@@ -1,0 +1,29 @@
+{% extends '@Observation/layout.mobile.html.twig' %}
+
+{% block title %}L'association{% endblock %}
+{% block stylesheet %}
+    {{ parent() }}
+    <style>
+        #edit{
+            position: fixed;
+            top: 15%;
+            left: 80%;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            text-align: center;
+        }
+        .fa{
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div id="blog" class="center-80">
+        {{ content.content|raw }}
+        {% if 'ROLE_ADMIN' in app.user.roles %}
+            <a href="{{ path('blog_edit', {'page': 'blog'}) }}" class="btn btn-nao " id="edit"><i class="fa fa-pencil"></i></a>
+        {% endif %}
+    </div>
+{% endblock %}

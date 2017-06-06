@@ -7,7 +7,8 @@ security:
 
     role_hierarchy:
         ROLE_OBS: ROLE_USER
-        ROLE_NATURALISTE: ROLE_USER
+        ROLE_NATURALISTE: ROLE_OBS,ROLE_USER
+        ROLE_ADMIN: ROLE_NATURALISTE, ROLE_OBS, ROLE_USER
 
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:

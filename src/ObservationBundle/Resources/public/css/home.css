@@ -2,19 +2,50 @@
     Home page
      */
 
+#contentHome, #content {
+
+    background: url('/NAO/web/bundles/observation/images/Visuels/observation_background.jpg') no-repeat center;
+}
+
+#saisie {
+    background: url('../images/Visuels/photographe.jpg') no-repeat center;
+    -webkit-background-size: cover;
+    height: 200px;
+    padding-top: 70px;
+    opacity: 0.7;
+}
+
+#saisie p {
+    color: white;
+    font-size: large;
+}
+
+#newsletter {
+    background: url('../images/Visuels/newsletter.jpg') no-repeat center;
+    -webkit-background-size: cover;
+    height: 200px;
+    padding-top: 70px;
+    opacity: 0.7;
+}
+
+#newsletter .form-control, #newsletter button {
+
+    border-radius: 0;
+}
+
 @media (max-width: 992px) {
-    #homePicture{
-        background: url('/bundles/observation/images/hiker-918473_1920.jpg') no-repeat center;
+    #homePicture {
+        background: url('../images/hiker-918473_1920.jpg') no-repeat center;
         -webkit-background-size: cover;
         /* Hauteur de l'écran */
         height: calc(100vh - 40px);
     }
 
-    #start{
+    #start {
         top: calc(100vh - 90px);
     }
 
-    .images{
+    .images {
         margin-bottom: 10px;
     }
 }
@@ -31,17 +62,16 @@
         background: url('../images/hiker-918473_1920.jpg') no-repeat center;
         -webkit-background-size: cover;
         /* Hauteur de l'écran */
-        height: 140vh;
-        margin-top: -200px;
+        height: 100vh;
     }
 
 }
 /* Positionnement du bouton sur le bas du div */
 #start{
     position: relative;
-    top: 125vh;
+    top: calc(100vh - 50px);
     background-color: transparent;
-    color: #dbefed;
+    color: white;
 }
 
 /*
@@ -56,13 +86,12 @@
 Texte de bienvenue
 */
 
-#bienvenue, #gallery {
-    height: 400px;
+#bienvenue, #gallery, #actions {
+    height: 300px;
 }
 
 #bienvenue h1 {
     height: 100px;
-    margin-top: 100px;
 }
 
 #gallery h1 {
@@ -92,22 +121,4 @@ Gallerie de photos
 
 #gallery p {
     margin-top: 50px;
-}
-
-@media (max-width: 992px) {
-    #homePicture{
-        background: url('/bundles/observation/images/hiker-918473_1920.jpg') no-repeat center;
-        -webkit-background-size: cover;
-        /* Hauteur de l'écran */
-        height: calc(100vh - 40px);
-        width: 100%;
-    }
-
-    #start{
-        top: calc(100vh - 90px);
-    }
-
-    .images{
-        margin-bottom: 10px;
-    }
 }

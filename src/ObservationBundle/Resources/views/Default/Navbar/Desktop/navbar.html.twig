@@ -3,7 +3,7 @@
     <div id="first" class="container">
         {#  Block title navbar #}
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ path('homepage') }}">NAO</a>
+            <img src="{{ asset ('bundles/observation/images/logo/logo_header_blanc.png') }}" alt="logo_header">
         </div>
         {# Liste des menus principaux avec vérification de la route pour activé dynamiquement la navbar à l'aide de app.request.get('_route') #}
         <div>
@@ -48,7 +48,7 @@
                         </a>
                     </li>
                 {% endif %}
-                <li class="tabs first_line {% if app.request.attributes.get('_route') in ['contact', 'faq'] %}active{% endif %}">
+                <li class="tabs first_line {% if app.request.attributes.get('_route') in ['contact', 'faq', 'blog_view'] %}active{% endif %}">
                     <a href="#other" data-toggle="tab" data-navbar="true">Information</a>
                 </li>
                 <li class="logo-sociaux first_line">
