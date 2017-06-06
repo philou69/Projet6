@@ -1,0 +1,20 @@
+<div class="modal fade" id="deactivate_user_{{ user.id }}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Fermeture du compte de {{ user.username }}</h4>
+            </div>
+            <div class="modal-body">
+                <p>Vous êtes sur le point de fermé le compte de {{ user.username }}.<br>
+                    Un email lui sera envoyer afin de le prevenir de ce changement.
+                </p>
+            </div>
+            <div class="modal-footer">
+                Etes vous sur ?
+                <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
+                <a href="{{ path('user_status', {'id': user.id}) }}" class="btn btn-primary">Oui</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

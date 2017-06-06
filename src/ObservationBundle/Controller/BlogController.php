@@ -41,9 +41,9 @@ class BlogController extends Controller
 
         $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile() || $device->isTablet()){
-            return $this->render('@Observation/Content/Desktop/edit.html.twig', array('form' => $form->createView()));
+            return $this->render('@Observation/Blog/Mobile/edit.html.twig', array('form' => $form->createView()));
         }else{
-            return $this->render('@Observation/Content/Desktop/edit.html.twig', array('form' => $form->createView()));
+            return $this->render('@Observation/Blog/Desktop/edit.html.twig', array('form' => $form->createView()));
         }
     }
 }

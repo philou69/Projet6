@@ -1,0 +1,22 @@
+<div class="modal fade" id="reactivate_user_{{ user.id }}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Réouverture d'un compte</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Vous êtes sur le point de rouvrir le compte de {{ user.username }}.<br>
+                    Un mail sera envoyé au visiteur pour lui signaler la réouverture de son compte.
+                </p>
+            </div>
+            <div class="modal-footer">
+                Etes vous sur ,
+                <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
+                <a href="{{ path('user_status', {'id': user.id}) }}" class="btn btn-primary">Oui</a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

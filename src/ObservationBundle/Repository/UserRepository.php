@@ -5,6 +5,7 @@ namespace ObservationBundle\Repository;
 
 
 use Doctrine\ORM\EntityRepository;
+use ObservationBundle\Entity\User;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 
 class UserRepository extends EntityRepository implements UserLoaderInterface
@@ -27,5 +28,15 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
 
         return $queryBuilder->getQuery()
             ->getResult();
+    }
+
+    public function findAllOthers($id)
+    {
+        $query = $this->createQueryBuilder('u')
+            ->where('u.id != :id')
+            ->setParameter('id', $id)
+            ->orderBy('u.username', 'DESC');
+
+        return $query->getQuery()->getResult();
     }
 }
