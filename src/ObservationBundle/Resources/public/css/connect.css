@@ -96,7 +96,7 @@ form .btn{
     width: 15px;
     left: 5px;
     bottom: 3px;
-    background-color: white;
+    background-color: red;
     -webkit-transition: .4s;
     transition: .4s;
 }

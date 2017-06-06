@@ -52,6 +52,17 @@ user_change_avatar:
     defaults:
       _controller: ObservationBundle:User:changeAvatar
 
+user_users:
+    path: /users
+    defaults:
+      _controller: ObservationBundle:User:users
+
+user_status:
+    path: /{id}/status
+    defaults:
+      _controller: ObservationBundle:User:reactivate
+
+
 user_sleep:
     path: /sleep
     defaults:
