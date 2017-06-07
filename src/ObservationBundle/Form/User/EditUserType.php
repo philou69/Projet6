@@ -5,6 +5,7 @@ namespace ObservationBundle\Form\User;
 
 
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class EditUserType extends UserType
