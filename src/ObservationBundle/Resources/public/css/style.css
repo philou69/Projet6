@@ -5,22 +5,17 @@ Réglages généraux
 */
 body {
     font-family: ‘Roboto’, sans-serif;
-    background-color: rgb(110, 151, 145);
+
 }
 
 h1 {
     font-size: 36px;
-    color: #a1d0f3;
+    color: #8dd4e8;
 
 }
 
 .navbar {
     margin-bottom: 0;
-}
-
-.btn {
-    background-color: #99d1C8;
-    color: white;
 }
 
 #content {
@@ -53,7 +48,6 @@ Page Observation
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-        background-color: #5f827e ;
     }
 
     /*Contenu de la page pour prendre le plus de place possible*/
@@ -280,6 +274,10 @@ Star design
 /*Couleur verte sur les bouton */
 .btn-nao{
     background-color: #99d1c8;
+}
+
+.btn-nao-2 {
+    background-color: #8dd4e8;
 }
 /*Background gris*/
 .grey{

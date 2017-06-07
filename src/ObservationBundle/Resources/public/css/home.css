@@ -4,16 +4,20 @@
 
 #contentHome {
 
-    background: url('/NAO/web/bundles/observation/images/Visuels/observation_background.jpg') no-repeat center;
+    background: url('../images/Visuels/observation_background.jpg') no-repeat center;
     width: 100%;
 }
 
+#bienvenue, #gallery, #actions {
+    margin-top: 50px;
+}
+
 #saisie {
-    background: url('../images/Visuels/photographe.jpg') no-repeat center;
+    background: url('../images/Visuels/encartObservation_background.jpg') no-repeat center;
     -webkit-background-size: cover;
     height: 200px;
     padding-top: 70px;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 #saisie p {
@@ -22,7 +26,7 @@
 }
 
 #newsletter {
-    background: url('../images/Visuels/newsletter.jpg') no-repeat center;
+    background: url('../images/Visuels/encartNewsletter_background.jpg') no-repeat center;
     -webkit-background-size: cover;
     height: 200px;
     padding-top: 70px;
@@ -36,7 +40,7 @@
 
 @media (max-width: 992px) {
     #homePicture {
-        background: url('../images/hiker-918473_1920.jpg') no-repeat center;
+        background: url('../images/Visuels/accueil_background.jpg') no-repeat center;
         -webkit-background-size: cover;
         /* Hauteur de l'écran */
         height: calc(100vh - 40px);
@@ -60,7 +64,7 @@
 @media (min-width: 992px) {
     #homePicture {
 
-        background: url('../images/hiker-918473_1920.jpg') no-repeat center;
+        background: url('../images/Visuels/accueil_background.jpg') no-repeat center;
         -webkit-background-size: cover;
         /* Hauteur de l'écran */
         height: 100vh;
@@ -75,13 +79,6 @@
     color: white;
 }
 
-/*
-    Arrondi du bouton
-*/
-.btn-round-lg {
-
-    border-radius: 24px;
-}
 
 /*
 Texte de bienvenue
@@ -91,13 +88,13 @@ Texte de bienvenue
     height: 300px;
 }
 
-#bienvenue h1 {
-    height: 100px;
-}
+/*#bienvenue h1 {*/
+/*height: 100px;*/
+/*}*/
 
-#gallery h1 {
-    margin-top: 30px;
-}
+/*#gallery h1 {*/
+/*margin-top: 50px;*/
+/*}*/
 
 #bienvenue p {
     height: 150px;
@@ -110,14 +107,21 @@ Texte de bienvenue
 /*
 Gallerie de photos
  */
+
+#gallery {
+    margin-bottom: 20px;
+}
 #gallery a {
     padding-top: 40px;
     text-decoration: underline;
+    color: black;
 }
 
 #gallery img {
 
     margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #gallery p {
