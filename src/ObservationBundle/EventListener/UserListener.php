@@ -35,4 +35,5 @@ class UserListener
         $user->setPassword($password)
             ->addRole('ROLE_OBS');
     }
+
 }
