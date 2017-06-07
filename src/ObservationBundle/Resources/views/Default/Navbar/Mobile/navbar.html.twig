@@ -56,10 +56,6 @@
                     </a>
                 </li>
             {% endif %}
-            <li class="first_line tabs {% if app.request.attributes.get('_route') in ['contact', 'faq', 'blog_view'] %}active{% endif %}">
-                <a href="#other" data-toggle="tab" data-navbar="true" id="hamburger">
-                    <img src="{{ app.request.attributes.get('_route') in ['contact', 'faq'] ? asset('bundles/observation/images/icones/hamburger_icon.png') : asset('bundles/observation/images/icones/hamburger_icon.png') }}" alt="">
-                </a>
-            </li>
+
         </ul>
 </nav>
