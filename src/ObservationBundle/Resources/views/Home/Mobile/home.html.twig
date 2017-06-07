@@ -1,4 +1,4 @@
-{% extends 'ObservationBundle::layout.desktop.html.twig' %}
+{% extends 'ObservationBundle::layout.mobile.html.twig' %}
 {% block  title %}Accueil{% endblock %}
 
 {% block link %}
@@ -9,7 +9,7 @@
 {% block body %}
 
     {# Incorporation de la bar de navigation desktop et des messages flashs #}
-    {% include '@Observation/Default/Navbar/Desktop/navbar.html.twig' %}
+    {% include '@Observation/Default/Navbar/Mobile/navbar.html.twig' %}
     {% include 'ObservationBundle:Default:flash.message.html.twig' %}
     {# block content qui sera remplit au besion sur chaque page#}
 
