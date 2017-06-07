@@ -39,6 +39,12 @@ Page Observation
     width: 80%;
     margin: auto;
 }
+
+.container {
+    width: 100%;
+    max-width: 1600px;
+    margin: auto;
+}
      /*------------------ Styel pour les écans de largeur superieur à 992 px -------*/
 @media (min-width: 992px) {
     /* Marge du body pour la navbar et utilisation de flex pour coller le footer en bas de page */

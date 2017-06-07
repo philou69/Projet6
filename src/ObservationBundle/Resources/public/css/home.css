@@ -2,9 +2,10 @@
     Home page
      */
 
-#contentHome, #content {
+#contentHome {
 
     background: url('/NAO/web/bundles/observation/images/Visuels/observation_background.jpg') no-repeat center;
+    width: 100%;
 }
 
 #saisie {
