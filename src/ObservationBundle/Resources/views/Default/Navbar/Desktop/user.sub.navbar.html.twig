@@ -1,5 +1,5 @@
-<div id="user" class="tab-pane {% if app.request.attributes.get('_route')  in ['user_profil', 'user_my_observations', 'user_observations', 'user_stars', 'user_users']%}active{% endif %}">
-    <ul class=" nav navbar-nav">
+<div id="user" class="tab-pane center-80 {% if app.request.attributes.get('_route')  in ['user_profil', 'user_my_observations', 'user_observations', 'user_stars', 'user_users']%}active{% endif %}">
+    <ul class=" nav navbar-nav pull-right">
         <li class="second_line {% if app.request.attributes.get('_route')  == 'user_profil'%}active{% endif %}"><a href="{{ path('user_profil') }}">Profil</a></li>
         <li class="second_line {% if app.request.attributes.get('_route')  == 'user_my_observations'%}active{% endif %}"><a href="{{ path('user_my_observations') }}">Mes Observations</a></li>
         {% if 'ROLE_NATURALISTE' in app.user.roles %}
