@@ -15,8 +15,9 @@ $(document).ready(function () {
     });
     // Listener sur le bouton start
     $("#start").on('click', function () {
+        console.log($(window).height());
         $('html, body').animate({
-            'scrollTop': $("#bienvenue").offset().top
+            'scrollTop': $(window).height()
         }, 1000);
     });
 });
