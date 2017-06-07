@@ -7,74 +7,85 @@
 {% block title %}S'inscrire{% endblock %}
 {% block content %}
     <div id="content-connect">
-        {# Zone d'identification avec facebook ou google #}
-        <div id="oauth" class="text-center">
-            {#<div id="connect_oauth">#}
-            {#connecter vous ave#}
-            {#</div>#}
-            <div class="row">
-                <div class="col-md-4 connect connect-underline">
-                    <hr></div>
-                <div class="col-md-4 connect text-center" id="connect_oauth">connecter vous avec : </div>
-                <div class="col-md-4 connect connect-underline">
-                    <hr></div>
-            </div>
-            <div class="row">
-                <div class="col-sm-2 col-sm-push-4">
-                    <a href="#" onclick="fb_login();" class="btn btn-blue ">Facebook</a>
-                </div>
-                <div class="col-sm-2 col-sm-push-4">
-                    <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-red">Google</a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            {# Zone de connection #}
-            <div class="col-md-6">
-                {# Gestion d'affichage des erreurs de connection #}
-                {% if error %}
-                    <div class="alert alert-danger">
-                        {{ error.messageKey| trans(error.messageData, 'security') }}
+        <div class="center-80">
+            {# Zone d'identification avec facebook ou google #}
+            <div id="oauth" >
+                {#<div id="connect_oauth">#}
+                {#connecter vous ave#}
+                {#</div>#}
+                <div class="center-80">
+                    <div id="title-oauth" class="row">
+                        <div class="col-md-4 connect connect-underline">
+                            <hr></div>
+                        <div class="col-md-4 connect text-center" id="connect_oauth">connecter vous avec : </div>
+                        <div class="col-md-4 connect connect-underline">
+                            <hr></div>
                     </div>
-                {% endif %}
-                <h3 class="text-center">Se connecter</h3>
-                {# Formulaire de connection préremplie du pseudo si dsponible #}
-                <form action="{{ path('user_login') }}" method="post" class="form-horizontal">
-                        <input type="text" name="_username" id="username" class="form-control" value="{{ lastUsername }}" placeholder="Identifiant ou Email">
+                    <div class="row">
+                        <div class="col-sm-2 col-sm-push-4">
+                            <a href="#" onclick="fb_login();" class="btn btn-blue ">Facebook</a>
+                        </div>
+                        <div class="col-sm-2 col-sm-push-4">
+                            <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-red">Google</a>
+                        </div>
+                    </div>
+                </div>
 
-                        <input type="password" name="_password" id="password" class="form-control" placeholder="Mot de passe">
-                    {# Checkbox se souvenir de moi #}
-                    <div class="form-group">
-                        <a href="{{ path('user_forgot_password') }}" class="col-md-6">Mot de passe oublié</a>
-                        <label id="remember_label" for="remember_me" class="col-md-6"><input type="checkbox" name="_remember_me" id="remember_me" > Se souvenir de moi </label>
-                    </div>
-                        <button type="submit" class="btn btn-nao">Se connecter</button>
-                </form>
             </div>
-            <div class="col-md-6">
-                {# Zone d'inscriiption #}
-                <h3 class="text-center">S'inscrire</h3>
-                {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-                {{ form_errors(form) }}
-                {# Boucle sur les champs du form à l'exception du save et _token #}
-                {% for child in form.children if child.vars.name != 'save' and child.vars.name != '_token' %}
-                    {# Gestion des champs plainPassword#}
-                    {% if child.vars.name == 'plainPassword' %}
-                        {% for password in child.children %}
-                                    {{ form_widget(password, {'attr': {'class': 'form-control'}}) }}
-                                {{ form_errors(password) }}
-                        {% endfor %}
-                    {% else %}
-                            {{ form_widget(child, {'attr': {'class': 'form-control'}}) }}
-                            {{ form_errors(child) }}
+            <div class="row">
+                {# Zone de connection #}
+                <div class="col-md-6">
+                    {# Gestion d'affichage des erreurs de connection #}
+                    {% if error %}
+                        <div class="alert alert-danger">
+                            {{ error.messageKey| trans(error.messageData, 'security') }}
+                        </div>
                     {% endif %}
-                {% endfor %}
-                {# Affichage du bouton d'Enregistrement #}
+                    <h2 class="text-center">Connexion</h2>
+                    {# Formulaire de connection préremplie du pseudo si dsponible #}
+                    <form action="{{ path('user_login') }}" method="post" class="form-horizontal">
+                        <label for="username" class="control-label required">Identifiant ou email</label>
+                        <input type="text" name="_username" id="username" required="required" class="form-control" value="{{ lastUsername }}" placeholder="Identifiant ou Email">
+                        <label for="password" class="control-label required">Mot de passe</label>
+                        <input type="password" name="_password" id="password" required="required" class="form-control" placeholder="Mot de passe">
+                        {# Checkbox se souvenir de moi #}
+                        <div class="form-group">
+                            <a href="{{ path('user_forgot_password') }}" class="col-md-6">Mot de passe oublié</a>
+                            <label id="remember_label" for="remember_me" class="col-md-6"><input type="checkbox" name="_remember_me" id="remember_me" > Se souvenir de moi </label>
+                        </div>
+                        <small> * Champs obligatoire</small>
+                        <button type="submit" class="btn btn-nao">Se connecter</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    {# Zone d'inscriiption #}
+                    <h2 class="text-center">Inscription</h2>
+                    {{ form_start(form, {'attr': {'class': 'center-80'}}) }}
+                    {{ form_errors(form) }}
+                    {# Boucle sur les champs du form à l'exception du save et _token #}
+                    {% for child in form.children if child.vars.name != 'save' and child.vars.name != '_token' %}
+                        <div class="form-group">
+                            {# Gestion des champs plainPassword#}
+                            {% if child.vars.name == 'plainPassword' %}
+                                {% for password in child.children %}
+                                    {{ form_label(password) }}
+                                    {{ form_widget(password, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_errors(password) }}
+                                {% endfor %}
+                            {% else %}
+                                {{ form_label(child) }}
+                                {{ form_widget(child, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(child) }}
+                            {% endif %}
+                        </div>
+
+                    {% endfor %}
+                    {# Affichage du bouton d'Enregistrement #}
+                    <small> * Champs obligatoire</small>
                     {{ form_widget(form.save) }}
-                {{ form_end(form) }}
+                    {{ form_end(form) }}
+                </div>
             </div>
         </div>
-
-
     </div>
 {% endblock %}
