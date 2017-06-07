@@ -28,6 +28,7 @@ class UserType extends AbstractType
             ]
         ))
             ->add('email', EmailType::class,array(
+                'label' => 'Email',
                 'attr' => [
                     'placeholder' => 'Email'
                 ]
@@ -36,27 +37,32 @@ class UserType extends AbstractType
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe ne correspondent pas!',
                 'first_options' => array(
+                    'label' => 'Mot de passe',
                     'attr' => [
                         'placeholder' => 'Mot de passe'
                     ]
                 ),
                 'second_options' => array(
+                    'label' => 'Confirmation du mot de passe',
                     'attr' => [
                         'placeholder' => 'Confirmez votre mot de passe'
                     ]
                 )
             ))
             ->add('firstname', TextType::class, array(
+                'label' => 'Prénom',
                 'attr' => [
                     'placeholder' => 'Prénom'
                 ]
             ))
             ->add('lastname', TextType::class,array(
+                'label' => 'Nom',
                 'attr' => [
                     'placeholder' => 'Nom'
                 ]
             ))
             ->add('birthDate', BirthdayType::class, array(
+                'label' => 'Date de naissance',
                 'attr' => [
                     'placeholder' => 'Né(é) le : (jj/mm/AAAA)'
                         ],
@@ -66,7 +72,7 @@ class UserType extends AbstractType
                 'required' => false,
             ))
             ->add('save', SubmitType::class, array(
-                'label' => 'Enregistrer',
+                'label' => 'Inscription',
                 'attr' => array(
                     'class' => 'btn btn-nao'
                 )

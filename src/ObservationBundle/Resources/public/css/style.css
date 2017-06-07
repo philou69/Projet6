@@ -95,7 +95,7 @@ Page Observation
 }
 
 .required:after {
-    content: '*';
+    content: ' *';
     color: #C82829;
 }
 
