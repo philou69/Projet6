@@ -9,7 +9,7 @@ body {
 
 h1 {
     font-size: 36px;
-    color: #a1d0f3;
+    color: #8dd4e8;
 
 }
 
@@ -17,11 +17,9 @@ h1 {
     margin-bottom: 0;
 }
 
-.btn {
-    background-color: #99d1C8;
-    color: white;
+#content {
+    padding-top: 20px;
 }
-
 
 /*
 Page Observation
@@ -317,6 +315,10 @@ Star design
 /*Couleur verte sur les bouton */
 .btn-nao{
     background-color: #99d1c8;
+}
+
+.btn-nao-2 {
+    background-color: #8dd4e8;
 }
 /*Background gris*/
 .grey{

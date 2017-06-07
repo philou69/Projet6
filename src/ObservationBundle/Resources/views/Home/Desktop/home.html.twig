@@ -17,7 +17,7 @@
 
     <div id="homePicture">
         <div class="text-center">
-            <button id="start" type="button" class="btn ">COMMENCER L'OBSERVATION<br/>
+            <button id="start" type="button" class="btn btn-start-mobile ">COMMENCER L'OBSERVATION<br/>
                 <span class="glyphicon glyphicon-chevron-down
 " aria-hidden="true"></span>
             </button>
@@ -30,25 +30,25 @@
     {% block content %}
 
     {#Zone de présentation du site #}
-        <div id="bienvenue">
+        <div id="bienvenue" class="center-80">
             <h1>Bienvenue</h1>
             <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
                 nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
                 à l'aide de fiches détaillés sur nos amis les oiseaux</p>
             <div class="text-center">
-                <a class="btn btn-lg" href="#" role="button">DECOUVRIR L'ASSOCIATION</a>
+                <a class="btn btn-nao" href="#" role="button">DECOUVRIR L'ASSOCIATION</a>
             </div>
         </div>
     {# Galeery des photos d'oiseaux#}
-        <div id="gallery">
+        <div id="gallery" class="center-80">
             <div class="row">
                 <h1 class="col-md-10 col-xs-12">Les dernières photos</h1>
-                <a href="#" class="col-md-2 col-xs-12 text-center">accéder à la gallerie</a>
+                <a href="#" class="col-md-2 col-xs-12 text-center link-desktop">accéder à la gallerie</a>
             </div>
-            <div class="col-md-12  col-xs-10 text-center">
+            <div class="col-md-12  col-xs-11 text-center">
                 {% for picture in gallery %}
-                    <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" class="img-thumbnail"
-                         style="min-width: 250px; min-height: 200px; width: 250px; height: 200px;">
+                    <img src="{{ asset('uploads/images/bird/' ~picture.url) }}"
+                         style="min-width: 200px; min-height: 150px; width: 200px; height: 150px;">
                 {% else %}
                     <p>Prochainement les dernières photos</p>
                 {% endfor %}
@@ -68,7 +68,7 @@
             </div>
             <div id="newsletter" class="col-xs-12 col-md-6">
                 <input type="text" placeholder="Renseigner votre email" class="form-control text-center">
-                <button type="submit" class="btn btn-primary btn-lg btn-block">RECEVOIR LA NEWSLETTER</button>
+                <button type="submit" class="btn btn-nao-2 btn-lg btn-block">RECEVOIR LA NEWSLETTER</button>
             </div>
         </div>
 
