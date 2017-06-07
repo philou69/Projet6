@@ -1,5 +1,5 @@
 /* Mise en fomre de la navbar*/
-.navbar-general>.container, .navbar-fixed-bottom>.navbar-nav{
+.navbar-general>#first, .navbar-fixed-bottom>.navbar-nav{
     /*Couleur de fond de la premiere ligne */
     background-color: #99d1c8;
 }
@@ -12,6 +12,7 @@
     color: white;
     line-height: 18px;
 }
+
 .first_line.active>a{
     /* Couleur des lien premiere ligne quand active*/
     color: #333333;
@@ -48,6 +49,11 @@
     }
     .second_line>a{
         margin: auto;
+    }
+    .first_line.active>a{
+        height:50px;
+        border: 0;
+        border-bottom: 3px solid #dbefed;
     }
     .tab-pane>.navbar-nav>li>a{
         padding-top: 10px;
