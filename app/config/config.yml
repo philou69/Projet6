@@ -46,6 +46,9 @@ twig:
     globals:
         facebook_id: '%facebook_id%'
         google_api_key: '%google_api_key%'
+        twitter: '%twitter%'
+        facebook: '%facebook%'
+        instagram: '%instagram%'
 
 # Doctrine Configuration
 doctrine:

@@ -40,6 +40,7 @@ Page Observation
     width: 100%;
     max-width: 1600px;
     margin: auto;
+    padding: 0;
 }
      /*------------------ Styel pour les écans de largeur superieur à 992 px -------*/
 @media (min-width: 992px) {
@@ -54,7 +55,6 @@ Page Observation
     /*Contenu de la page pour prendre le plus de place possible*/
     #content {
         flex: 1;
-        padding-bottom: 20px;
     }
 
     /*style des liste oiseaux*/
@@ -75,8 +75,52 @@ Page Observation
         width: 47.5%;
         background-color: rgb(241, 241, 241);
     }
+    /*--------- Style pour footer -------*/
+    footer>.container{
+        background: url("/bundles/observation/images/Visuels/footer_background.jpg") center no-repeat;
 
-
+    }
+    footer>.container>.center-80{
+        padding: 20px 0 ;
+    }
+    footer>.container>.center-80>.row{
+        height: 120px;
+    }
+    footer>.container>.center-80>.row>div{
+        height: 100%;
+        color: white;
+    }
+    footer .border-right{
+        border-right:2px solid #b4c8c6;
+    }
+    .second_list{
+        list-style: none;
+    }
+    footer li>a{
+        color: white;
+    }
+    footer li.active>a{
+        color: #8dd4e8;
+    }
+    .content_newsletter{
+        padding: 20px 30px;
+    }
+    .input-group-btn>.btn{
+        background-color: #8dd4e8;
+        text-transform: uppercase;
+    }
+    .social-network{
+        display: inline-block;
+        height: 28px;
+        margin-top: calc((120px - 28px) /2);
+        margin-left: 20px;
+    }
+    footer>.container>.center-80>.row>.row>div{
+        height: 100%;
+    }
+    .social-network>.fa{
+        color: white;
+    }
 }
 
 /* -------------------------------- Fin style écran petit ----------------------------------------*/
