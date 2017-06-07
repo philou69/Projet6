@@ -107,7 +107,7 @@ Page Observation
         background-color: #8dd4e8;
         text-transform: uppercase;
     }
-    .social-network{
+    footer .social-network{
         display: inline-block;
         height: 28px;
         margin-top: calc((120px - 28px) /2);
@@ -116,7 +116,7 @@ Page Observation
     footer>.container>.center-80>.row>.row>div{
         height: 100%;
     }
-    .social-network>.fa{
+    footer .social-network>.fa{
         color: white;
     }
 }
@@ -169,6 +169,11 @@ Page Observation
 }
 
 /*------- Loader -----*/
+.content-loader{
+    width: 120px;
+    height: 120px;
+    margin: auto;
+}
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
     border-top: 16px solid #3498db; /* Blue */
@@ -237,27 +242,10 @@ Page Observation
     right: 20px;
 }
 
-/** Affichage main pour les div oiseaux **/
-.bird {
-    cursor: pointer;
-    height: 100px;
-    padding: 0;
-    background-color: rgb(241, 241, 241);
-    margin-bottom: 10px;
-}
 
-/* Margin special pour les div liste des oiseaux marge soit à gauche soit à droite*/
-.left {
-    margin-right: 2.5%;
-}
 
-.right {
-    margin-left: 2.5%;
-}
 
-.star-modal{
-    min-height: 50vh;
-}
+
 
 .obtained{
     border:2px solid #916319;
@@ -292,17 +280,7 @@ Page Observation
 }
 
 
-/*
-Star design
-*/
-.group-star{
-    background-color: #565656;
-    border-radius: 50%;
-    border: 1px solid skyblue;
-}
-#stars{
-    display: none;
-}
+
 /* Les boutons des form sont toutes largeur, sans arrondi et de couleur blanche*/
 .btn{
     border-radius: 0;

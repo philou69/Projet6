@@ -1,7 +1,10 @@
 {% extends '@Observation/layout.mobile.html.twig' %}
 
 {% block title %}Liste des oiseaux{% endblock %}
-
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/list.bird.css') }}">
+    {% endblock %}
 {% block content %}
     <div id="up">
         <a href="#" id="up-button"><i class="fa fa-chevron-circle-up fa-3x"></i></a>
