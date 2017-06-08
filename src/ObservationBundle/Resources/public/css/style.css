@@ -90,6 +90,7 @@ Page Observation
     #view {
         padding-bottom: 70px;
         min-height:100vh;
+        padding-top: 40px;
     }
 
     /* position du bouton up à 20px du haut */
