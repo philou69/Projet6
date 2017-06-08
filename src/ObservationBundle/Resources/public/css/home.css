@@ -4,16 +4,20 @@
 
 #contentHome {
 
-    background: url('/NAO/web/bundles/observation/images/Visuels/observation_background.jpg') no-repeat center;
+    background: url('../images/Visuels/observation_background.jpg') no-repeat center;
     width: 100%;
 }
 
+#bienvenue, #gallery, #actions {
+    margin-top: 50px;
+}
+
 #saisie {
-    background: url('../images/Visuels/photographe.jpg') no-repeat center;
+    background: url('../images/Visuels/encartObservation_background.jpg') no-repeat center;
     -webkit-background-size: cover;
     height: 200px;
     padding-top: 70px;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 #saisie p {
@@ -21,8 +25,22 @@
     font-size: large;
 }
 
+#saisie a:hover {
+
+    text-decoration: none;
+}
+
+#saisie p:hover {
+    color: #333333;
+}
+
+.obs-mobile {
+
+    margin-bottom: 15px;
+}
+
 #newsletter {
-    background: url('../images/Visuels/newsletter.jpg') no-repeat center;
+    background: url('../images/Visuels/encartNewsletter_background.jpg') no-repeat center;
     -webkit-background-size: cover;
     height: 200px;
     padding-top: 70px;
@@ -36,7 +54,7 @@
 
 @media (max-width: 992px) {
     #homePicture {
-        background: url('../images/hiker-918473_1920.jpg') no-repeat center;
+        background: url('../images/Visuels/accueil_background.jpg') no-repeat center;
         -webkit-background-size: cover;
         /* Hauteur de l'écran */
         height: calc(100vh - 40px);
@@ -60,7 +78,7 @@
 @media (min-width: 992px) {
     #homePicture {
 
-        background: url('../images/hiker-918473_1920.jpg') no-repeat center;
+        background: url('../images/Visuels/accueil_background.jpg') no-repeat center;
         -webkit-background-size: cover;
         /* Hauteur de l'écran */
         height: 100vh;
@@ -70,56 +88,160 @@
 /* Positionnement du bouton sur le bas du div */
 #start{
     position: relative;
-    top: calc(100vh - 50px);
     background-color: transparent;
     color: white;
 }
 
-/*
-    Arrondi du bouton
-*/
-.btn-round-lg {
-
-    border-radius: 24px;
+.btn-start-mobile {
+    top: calc(100vh - 90px);
 }
+
+.btn-start-desktop {
+    top: calc(100vh - 50px);
+}
+
 
 /*
 Texte de bienvenue
 */
 
-#bienvenue, #gallery, #actions {
-    height: 300px;
-}
+/*#bienvenue, #gallery, #actions {*/
+/*height: 300px;*/
+/*}*/
 
-#bienvenue h1 {
-    height: 100px;
-}
+/*#bienvenue h1 {*/
+/*height: 100px;*/
+/*}*/
 
-#gallery h1 {
-    margin-top: 30px;
-}
+/*#gallery h1 {*/
+/*margin-top: 50px;*/
+/*}*/
 
 #bienvenue p {
-    height: 150px;
-}
-
-#bienvenue div {
-    height: 100px;
+    height: 80px;
+    margin-top: 20px;
 }
 
 /*
 Gallerie de photos
  */
-#gallery a {
+
+#gallery {
+    margin-bottom: 10px;
+}
+
+.link-desktop {
     padding-top: 40px;
     text-decoration: underline;
+    color: black;
+}
+
+.link-mobile {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: underline;
+    color: black;
 }
 
 #gallery img {
-
     margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #gallery p {
     margin-top: 50px;
 }
+
+/*
+Social links
+stylisation des buttons
+ */
+
+#sociallink {
+    margin-bottom: 100px;
+}
+
+#sociallink ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+#sociallink .btn-social-icon {
+    position: relative;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 80px;
+    width: 80px;
+    font-size: 45px;
+    border-radius: 25px;
+}
+
+#sociallink .btn-facebook {
+    color: #fff;
+    background-color: #3b5998;
+    padding-left: 25px;
+    padding-top: 17px;
+    border-color: rgba(0, 0, 0, 0.2)
+}
+
+#sociallink .btn-facebook:hover, #sociallink.btn-facebook:focus, #sociallink .btn-facebook:active {
+    color: #fff;
+    background-color: #30487b;
+    border-color: rgba(0, 0, 0, 0.2)
+}
+
+#sociallink .btn-instagram {
+    background: #f09433;
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+    color: white;
+    border: 5px solid #cc2366;
+}
+
+#sociallink .btn-instagram:hover {
+    background: -moz-linear-gradient(45deg, white 0%, white 25%, white 50%, white 75%, white 100%);
+    background: -webkit-linear-gradient(45deg, white 0%, white 25%, white 50%, white 75%, white 100%);
+    background: linear-gradient(45deg, white 0%, white 25%, white 50%, white 75%, white 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='white', endColorstr='white', GradientType=1);
+    color: #cc2366;
+    border: 5px solid #cc2366;
+}
+
+#sociallink .btn-circle {
+    width: 80px;
+    height: 80px;
+    padding: 3px 1px;
+    font-size: 45px;
+    line-height: 1.33;
+    border-radius: 25px;
+    outline: none;
+    transition: 2s background;
+}
+
+#sociallink .btn-twitter {
+    color: #fff;
+    background-color: #55acee;
+    padding-left: 20px;
+    padding-top: 17px;
+    border-color: rgba(0, 0, 0, 0.2)
+}
+
+#sociallink .btn-twitter:hover, #sociallink .btn-twitter:focus, #sociallink .btn-twitter:active {
+    color: #fff;
+    background-color: #309aea;
+    border-color: rgba(0, 0, 0, 0.2)
+}
+
+
+
+
+
+
+
+

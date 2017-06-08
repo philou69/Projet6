@@ -1,0 +1,16 @@
+/** Affichage main pour les div oiseaux **/
+.bird {
+    cursor: pointer;
+    height: 100px;
+    padding: 0;
+    background-color: rgb(241, 241, 241);
+    margin-bottom: 10px;
+}
+/* Margin special pour les div liste des oiseaux marge soit à gauche soit à droite*/
+.left {
+    margin-right: 2.5%;
+}
+
+.right {
+    margin-left: 2.5%;
+}

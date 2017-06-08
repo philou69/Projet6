@@ -24,6 +24,5 @@ parameters:
     twitter: https://twitter.com/NAOiseaux
     facebook: https://www.facebook.com/NAO-Nos-Amis-les-Oiseaux-1547238661954599
     instagram: https://www.instagram.com/Nos_amis_les_oiseaux/
-
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt

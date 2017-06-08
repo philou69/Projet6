@@ -213,8 +213,8 @@ class GroupStar
 //        exit;
         // Cette fonction permet de retourné la derniere médaile du groupe déverouilllé par le visiteur
         // On s'assure qu'il soit déjà dans le group
-        if (!$this->users->contains($user)) {
-            return null;
+        if ($this->stars->count() == 1) {
+            return $this->stars->first();
         }
         foreach ($this->stars as $star){
             if($star->getUsers()->contains($user)){

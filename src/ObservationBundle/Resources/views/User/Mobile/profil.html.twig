@@ -168,4 +168,7 @@
 {% block javascript %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('bundles/observation/js/edit.profil.user.js') }}"></script>
+    <script>
+        console.log($("#navbar-top-mobile>.navbar-header").index())
+    </script>
 {% endblock %}
