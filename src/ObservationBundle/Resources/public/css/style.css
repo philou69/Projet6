@@ -1,4 +1,8 @@
-
+/* Suppression des marges negatifs sur les classes row de bootstrap*/
+.row{
+    margin-left: 0;
+    margin-right: 0;
+}
 
 /*
 Réglages généraux
@@ -51,7 +55,11 @@ Page Observation
     #content {
         flex: 1;
     }
+    #content>.center-80{
+        min-height: calc(100vh - 140px - 70px);
+        padding-top: 20px;
 
+    }
     /*style des liste oiseaux*/
     .observation, .observation > ul {
         min-height: 60px;
@@ -85,6 +93,9 @@ Page Observation
         padding-bottom: 70px;
         min-height:100vh;
         padding-top: 40px;
+    }
+    #view>.center-80 {
+        padding-top: 20px;
     }
 
     /* position du bouton up à 20px du haut */
