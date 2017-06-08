@@ -72,7 +72,7 @@ Page Observation
     }
     /*--------- Style pour footer -------*/
     footer>.container{
-        background: url("/bundles/observation/images/Visuels/footer_background.jpg") center no-repeat;
+        background: url("../images/Visuels/footer_background.jpg") center no-repeat;
 
     }
     footer>.container>.center-80{
