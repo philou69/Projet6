@@ -1,0 +1,37 @@
+/* Ajout d'un fond et fixation de la hauteur du navbar-header */
+#navbar-top-mobile{
+    background-color: #99d1c8;
+    height: 40px;
+}
+#navbar-top-mobile>.navbar-header{
+    height: 40px;
+}
+#navbar-top-mobile>.navbar-header>.navbar-toggle{
+    height: 100%;
+    width: 40px;
+    padding:10px;
+    margin: 0;
+}
+#navbar-top-mobile>.navbar-header>button>img{
+    height: 20px;
+    width: 20px;
+    margin: 0;
+}
+/*alignement de la liste des reseau sociaux */
+#navbar-top-mobile>.navbar-header>.list-inline{
+    height: 40px;
+    padding: 10px;
+    margin: 0;
+}
+#navbar-top-mobile>.navbar-header>.list-inline>li{
+    height: 100%;
+}
+/* Passage des font awesome en blanc */
+#navbar-top-mobile .fa{
+    color: white;
+}
+#navbar-top-mobile>.navbar-collapse{
+    height: 100vh;
+    width: 100vh;
+    background: url('/bundles/observation/images/Visuels/') ;
+}
