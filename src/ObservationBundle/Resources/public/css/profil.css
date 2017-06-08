@@ -1,12 +1,50 @@
+/** Background parti gauche et parti droite */
+
+#content>.center-80{
+    background-color: #fbfbfb;
+}
+#content>.center-80>.row{
+    height: calc(100vh - 140px - 70px - 20px);
+}
+
+#profil_left{
+    background: url("/bundles/observation/images/Visuels/profil_background.jpg") center no-repeat;
+    height: 100%;
+}
+#profil_right{
+    background-color: #fbfbfb;
+    height: 100%;
+}
+#profil_left>.center-80{
+    height: 100%;
+}
+.up, .down{
+    height: 50%;
+}
+.down>.row{
+    height: 50%;
+    margin: 15% 0 35%;
+}
+#status{
+    color: #aaaaaa;
+    font-size: 20px;
+}
 #content_avatar{
+    min-height: 200px;
     width: 200px;
-    height: 200px;
+    height: 50%;
     margin: auto;
+}
+.up>.text-center{
+    height: 50%;
+    max-height: calc(100% - 200px);
+    margin: auto;
+    padding-top: 20px;
 }
 #content_avatar>p{
     margin: 45% 0;
 }
-.img-responsive{
+.img-circle{
     width: 200px;
     height: 200px;
 }
@@ -52,8 +90,9 @@
 .count>div>img{
     height: 40%;
 }
+
+/*------- Style des forms -------*/
 form{
-    background-color: #fbfbfb;
     padding: 10px;
 }
 .form-group{
@@ -108,4 +147,18 @@ input:disabled::placeholder, input::-webkit-input-placeholder, input::-moz-place
 }
 .modal-footer{
     height: 20%;
+}
+
+@media (max-width: 992px) {
+    #profil_left{
+        padding-top: 10px;
+    }
+    #profil_right{
+        padding-bottom: 10px;
+    }
+    .count>h5{
+        margin: 0;
+        padding-top: 10px;
+        height: 25%;
+    }
 }
