@@ -6,6 +6,7 @@ footer>.container,footer>.container>.center-80,footer>.container>.center-80>.row
     height: 100%;
 }
 footer>.container{
+    /*background: url("../images/Visuels/footer_background.jpg") center no-repeat;*/
     background: url("/bundles/observation/images/Visuels/footer_background.jpg") center no-repeat;
     background-size: auto;
 
@@ -32,7 +33,8 @@ footer li.active>a{
 .content_newsletter{
     padding: 20px 30px;
 }
-.input-group-btn>.btn{
+
+footer .input-group-btn > .btn {
     background-color: #8dd4e8;
     text-transform: uppercase;
 }
