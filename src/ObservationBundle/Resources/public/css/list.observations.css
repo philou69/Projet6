@@ -12,11 +12,11 @@
 .observation>div{
     height: 100%;
     padding-top: 15px;
-    color: white;
 }
 /* Fond vert sur le premier block */
 .observation>.first-bloc{
     background-color: #99d1c8;
+    color: white;
 }
 /* Fond gris sur tout les autres blocs */
 .observation>.second-bloc{
