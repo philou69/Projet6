@@ -131,4 +131,7 @@
    #first .nav>li>a{
         padding: 10px 5px;
     }
+    .navbar-header>img{
+        width: 150px;
+    }
 }
