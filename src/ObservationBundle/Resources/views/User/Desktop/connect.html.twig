@@ -10,15 +10,11 @@
         <div class="center-80">
             {# Zone d'identification avec facebook ou google #}
             <div id="oauth" >
-                {#<div id="connect_oauth">#}
-                {#connecter vous ave#}
-                {#</div>#}
-                <div class="center-80">
                     <div id="title-oauth" class="row">
-                        <div class="col-md-4 connect connect-underline">
+                        <div class="col-md-3 connect connect-underline">
                             <hr></div>
-                        <div class="col-md-4 connect text-center" id="connect_oauth">connecter vous avec : </div>
-                        <div class="col-md-4 connect connect-underline">
+                        <div class="col-md-6 connect text-center" id="connect_oauth">connecter vous avec : </div>
+                        <div class="col-md-3 connect connect-underline">
                             <hr></div>
                     </div>
                     <div class="row">
@@ -29,7 +25,6 @@
                             <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-red">Google</a>
                         </div>
                     </div>
-                </div>
 
             </div>
             <div class="row">
@@ -43,7 +38,7 @@
                     {% endif %}
                     <h2 class="text-center">Connexion</h2>
                     {# Formulaire de connection préremplie du pseudo si dsponible #}
-                    <form action="{{ path('user_login') }}" method="post" class="form-horizontal">
+                    <form action="{{ path('user_connect') }}" method="post" class="form-horizontal">
                         <label for="username" class="control-label required">Identifiant ou email</label>
                         <input type="text" name="_username" id="username" required="required" class="form-control" value="{{ lastUsername }}" placeholder="Identifiant ou Email">
                         <label for="password" class="control-label required">Mot de passe</label>

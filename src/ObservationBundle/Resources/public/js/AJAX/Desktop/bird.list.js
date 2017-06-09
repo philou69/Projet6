@@ -82,8 +82,8 @@ $(document).ready(function () {
 
     $(window).scroll(function () {
 
-        // On vérifie si le document fait 2 fois la taille de l'ecran et si le haut du scroll est superieur à 2 fois la taille de l'écran
-        if(($(window).height() * 2) < $(document).height() && $(window).scrollTop() > ($(window).height() *2) ){
+        // On vérifie si le document fait au moins 2 fois la taille de l'ecran et si le haut du scroll est superieur à la taille de l'écran
+        if(($(window).height() *1.5 ) < $(document).height() && $(window).scrollTop() > $(window).height()){
             // Dans ce cas on affiche le bouton up
             $('#up').css('display', 'inline');
         }else {
