@@ -1,21 +1,28 @@
 {% extends '@Observation/layout.mobile.html.twig' %}
 
 {% block title %}Mes observations{% endblock %}
-
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/user.observations.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/list.observations.css') }}">
+{% endblock %}
 {% block content %}
-    <h2>{{ all == 'true' ? 'Les' : 'Mes' }} dernières observations</h2>
-    <div>
-        <ul class="nav nav-tabs">
-            <li class="col-xs-6 active"><a id="valide" class="link-tab text-center" href="#observations" data-toggle="tab" data-href="{{ path('observation_page', {'all': all, 'page': 1, 'status': 'true'}) }}" data-status="true">Validées</a></li>
-            <li  class="col-xs-6"><a id="wait" class="link-tab text-center" href="#observations" data-toggle="tab" data-href="{{ path('observation_page', {'all': all, 'page': 1, 'status': 'false'}) }}" data-status="false">En attente</a></li>
-        </ul>
-    </div>
-    <div class="container tab-content" >
-        <div id="observations" class="tab-pane active"></div>
-        <div class="row content-loader">
-            <div id="loader" class="col-xs-2 col-xs-offset-4 loader"></div>
+    <div class="center-90">
+        <h2>{{ all == 'true' ? 'Les' : 'Mes' }} dernières observations</h2>
+        <div>
+            <ul class="nav nav-tabs">
+                <li class="col-xs-6 active"><a id="valide" class="link-tab text-center" href="#observations" data-toggle="tab" data-href="{{ path('observation_page', {'all': all, 'page': 1, 'status': 'true'}) }}" data-status="true">Validées</a></li>
+                <li  class="col-xs-6"><a id="wait" class="link-tab text-center" href="#observations" data-toggle="tab" data-href="{{ path('observation_page', {'all': all, 'page': 1, 'status': 'false'}) }}" data-status="false">En attente</a></li>
+            </ul>
+        </div>
+        <div class="tab-content" >
+            <div id="observations" class="tab-pane active"></div>
+            <div class="content-loader">
+                <div class="loader"></div>
+            </div>
         </div>
     </div>
+
 {% endblock %}
 
 {% block javascript %}

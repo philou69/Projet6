@@ -1,19 +1,21 @@
 /** Background parti gauche et parti droite */
 
-#content>.center-80{
+#content{
     background-color: #fbfbfb;
 }
-#content>.center-80>.row{
-    height: calc(100vh - 140px - 70px - 20px);
+#content>.row{
+    height: calc(100vh - 140px - 70px);
 }
 
 #profil_left{
     background: url("/bundles/observation/images/Visuels/profil_background.jpg") center no-repeat;
     height: 100%;
+    padding-top: 20px;
 }
 #profil_right{
     background-color: #fbfbfb;
     height: 100%;
+    padding-top: 20px;
 }
 #profil_left>.center-80{
     height: 100%;
