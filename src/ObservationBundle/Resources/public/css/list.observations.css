@@ -1,0 +1,62 @@
+/*
+    Zone sur les div des observations lors des paginations
+    - Affichage d'une main lors du survole sur le div
+    - hauteur à 100 px
+*/
+.observation {
+    height: 110px;
+    cursor: pointer;
+    margin: 20px 0;
+}
+/*Fixation des hauteurs des sous div avec un padding haut pour l'affhichage du small et mise en couleur blanche */
+.observation>div{
+    height: 100%;
+    padding-top: 15px;
+    color: white;
+}
+/* Fond vert sur le premier block */
+.observation>.first-bloc{
+    background-color: #99d1c8;
+}
+/* Fond gris sur tout les autres blocs */
+.observation>.second-bloc{
+    background-color: #fbfbfb;
+}
+/* Marge sur le haut des small et couleur en grise */
+.observation>div>small{
+    margin-bottom: 30px;
+    color: #aaaaaa;
+}
+/* Création d'une bordure droite */
+.right-border {
+    border: 0;
+    border-right: 2px solid #dddddd;
+}
+/* On passe les éléments de font awxesome en vert foncé*/
+#observations .fa{
+    color: #99d1c8;
+}
+/* Sur les cirles on mets le fond en vert clair et l'image ronde*/
+#observations .fa-circle-o{
+    background-color: #dbefed;
+    border-radius: 50%;
+}
+/*---------- Style spécial sur tablette et smartpĥone */
+@media (max-width: 992px) {
+    /* Fixation de la hauteur des sous div à 50px et mise en taille de la police avec padding haut */
+    .observation>div{
+        height: 50px;
+        padding: 0;
+        padding-top: 2px;
+        font-size: 13px;
+    }
+    /* la deuxiéme ligne fait 60px de haut (110 -50) */
+    .observation>.second-bloc{
+        height: 60px;
+    }
+    /* padding bas sur les small */
+    .observation>div>small{
+        padding-bottom: 5px;
+    }
+
+}

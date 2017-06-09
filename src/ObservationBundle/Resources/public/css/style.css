@@ -61,10 +61,7 @@ Page Observation
         padding-top: 20px;
 
     }
-    /*style des liste oiseaux*/
-    .observation, .observation > ul {
-        min-height: 60px;
-    }
+
 
     #listing .row {
         margin-left: 5px;
@@ -170,30 +167,10 @@ Page Observation
     right: 0;
 }
 
-/*
-    Zone sur les div des observations lors des paginations
-    - Affichage d'une main lors du survole
-    - hauteur à 100 px
-    - Hauteur de certains divs à 100px
-    - Affichage d'une bordure à droite sur certain contenue
-*/
-.observation {
-    cursor: pointer;
-    margin-bottom: 20px;
-}
 
-.observation > ul {
-    min-height: 60px;
-}
 
-.observation small {
-    color: #dddddd;
-}
 
-.right-border {
-    border: 0;
-    border-right: 1px solid #dddddd;
-}
+
 
 
 #up {
