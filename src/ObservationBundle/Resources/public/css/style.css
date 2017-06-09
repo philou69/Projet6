@@ -67,14 +67,6 @@ Page Observation
 
     }
 
-    /* Position du bouton up à 120px du haut*/
-    #up {
-        top: 120px;
-    }
-    .bird{
-        width: 47.5%;
-        background-color: rgb(241, 241, 241);
-    }
 
 }
 
@@ -95,10 +87,7 @@ Page Observation
         padding-top: 20px;
     }
 
-    /* position du bouton up à 20px du haut */
-    #up {
-        top: 20px;
-    }
+
 }
 
 .required:after {
@@ -118,17 +107,9 @@ Page Observation
     text-transform: uppercase;
     font-size: small;
 }
-
-/* Style sur l'input de recherche des liste oiseaux */
-#search {
-    border: 0;
-    border-bottom: 2px solid cornflowerblue;
+#birds{
+    margin-top: 20px;
 }
-
-.center, .center > input, .center > i {
-    margin: auto;
-}
-
 /*------- Loader -----*/
 .content-loader{
     width: 120px;
@@ -176,12 +157,7 @@ Page Observation
 
 
 
-#up {
-    z-index: 255;
-    display: none;
-    position: fixed;
-    right: 20px;
-}
+
 
 
 
@@ -219,7 +195,7 @@ Page Observation
 /* Les boutons des form sont toutes largeur, sans arrondi et de couleur blanche*/
 .btn{
     border-radius: 0;
-    /*width: 100%;*/
+    width: 100%;
     color: white;
 }
 .btn-nao>img{

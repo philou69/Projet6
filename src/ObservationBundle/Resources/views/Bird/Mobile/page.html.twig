@@ -4,16 +4,16 @@
     </div>
 {% else %}
     {% for bird in birds %}
-        <div class="row bird" data-href="{{ path('bird_description', {'id': bird.id}) }}">
-            <div class="col-xs-4">
-                {% if bird.pictures|length > 0 %}
-                    <img src="{{ bird.pictures[0].url }}" class="img-responsive" alt="bird">
+        <div class="bird" data-href="{{ path('bird_description', {'id': bird.id}) }}">
+            <div class="left">
+                {% for picture in bird.pictures if picture.observation is null %}
+                    <img src="{{ picture.webPath }}" class="img-responsive" alt="bird">
                 {% else %}
                     Pas de photos
-                {% endif %}
+                {% endfor %}
             </div>
 
-            <div class="col-xs-8">
+            <div class="right">
                 <h4>{{ bird.nomVern != null ? bird.nomVern : bird.lbNom}}</h4>
                 <small>{{ bird.lbNom }} {{ bird.id }}</small>
             </div>

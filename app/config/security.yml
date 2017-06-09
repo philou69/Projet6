@@ -25,7 +25,7 @@ security:
             anonymous: ~
             form_login:
               login_path: user_connect
-              check_path: user_login
+              check_path: user_connect
               remember_me: true
             logout:
                 path: user_logout
@@ -35,9 +35,9 @@ security:
                 resource_owners:
                     facebook:           "/login/check-facebook"
                     google:             "/login/check-google"
-                login_path:        /login
+                login_path:        user_connect
                 use_forward:       false
-                failure_path:      /login
+                failure_path:      user_connect
                 oauth_user_provider:
                     service: user_provider
             # activate different ways to authenticate
