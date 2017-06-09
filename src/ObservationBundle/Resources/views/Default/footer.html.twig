@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ul class="list-unstyled capital">
-                            <li {% if app.request.attributes.get('_route')  == 'bird_list' %}class="active"{% endif %}>
+                            <li {% if app.request.attributes.get('_route') starts with 'bird' %}class="active"{% endif %}>
                                 <a href="{{ path('bird_list') }}">Fiches Oiseaux</a></li>
                             <li><a href="#" disabled="true">Informations</a>
                                 <ul class="second_list">

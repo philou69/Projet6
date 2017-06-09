@@ -13,7 +13,7 @@ body {
 
 h1 {
     font-size: 36px;
-    color: #8dd4e8;
+    color: #a1d0f3;
 
 }
 
@@ -236,4 +236,9 @@ Page Observation
 /*Background gris*/
 .grey{
     background-color: #fbfbfb;
+}
+
+.center-90{
+    width: 90%;
+    margin: auto;
 }
