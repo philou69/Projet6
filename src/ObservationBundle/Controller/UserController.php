@@ -117,7 +117,7 @@ class UserController extends Controller
             //Création d'un message flash obligatoire
             $this->addFlash('success', "Nous avons pris votre demande en compte. Si votre  réponse correspond à votre profil, un email vous a été envoyer!" );
             // Retour sur la page de connection
-            return $this->redirectToRoute('user_login');
+            return $this->redirectToRoute('user_connect');
 
         }
         // Vérification du device et renvoie vers la page correspondante
