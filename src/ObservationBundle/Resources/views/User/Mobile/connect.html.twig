@@ -3,6 +3,7 @@
 {% block link %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/observation/css/connect.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/toggle.switch.newsletter.css') }}">
 {% endblock %}
 {% block title %}Inscription{% endblock %}
 
@@ -69,6 +70,17 @@
                             {{ form_widget(password, {'attr': {'class': 'form-control'}}) }}
                             {{ form_errors(password) }}
                         {% endfor %}
+                    {% elseif child.vars.name == 'newsletter' %}
+                        <label class="control-label">{{ child.vars.label }}</label>
+                        <div class="checkbox">
+                            <label id="switch_newsletter">
+                                <input type="checkbox" name="{{ child.vars.full_name }}" id="{{ child.vars.id }}" {{ child.vars.checked == true ? 'checked' : '' }}>
+                                <div id="slider_newsletter">
+                                    <span id="on">Oui</span>
+                                    <span id="off">Non</span>
+                                </div>
+                            </label>
+                        </div>
                     {% else %}
                         {{ form_label(child) }}
                         {{ form_widget(child, {'attr': {'class': 'form-control'}}) }}

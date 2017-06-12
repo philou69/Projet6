@@ -3,6 +3,7 @@
 
 namespace ObservationBundle\EventListener;
 
+use ObservationBundle\Mailer\NewsLetter;
 use ObservationBundle\Mailer\UserMailer;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
@@ -11,11 +12,12 @@ class UserListener
 {
     private $encoder;
     private $mailer;
-
-    function __construct(UserPasswordEncoder $encoder,UserMailer $mailer)
+    protected $newsletter;
+    function __construct(UserPasswordEncoder $encoder,UserMailer $mailer, NewsLetter $newsletter)
     {
         $this->encoder = $encoder;
         $this->mailer = $mailer;
+        $this->newsletter = $newsletter;
     }
 
     public function onCreate(GenericEvent $event )
@@ -34,6 +36,9 @@ class UserListener
         $password = $this->encoder->encodePassword($user, $user->getPlainPassword());
         $user->setPassword($password)
             ->addRole('ROLE_OBS');
+        if($user->getNewsletter()){
+            $this->newsletter->addLisntingNewwsLetter($user, null);
+        }
     }
 
 }

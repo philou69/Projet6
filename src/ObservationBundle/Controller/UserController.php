@@ -41,6 +41,8 @@ class UserController extends Controller
         // On passe la requete au form et vérifie s'il est soumis et valide
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            var_dump($user->getNewsletter());
+            exit();
             // Appel d'un event dispatcher chager de hacher le mot de passe
             $this->get('event_dispatcher')->dispatch('user.register',new  GenericEvent($user));
 
@@ -183,13 +185,10 @@ class UserController extends Controller
     {
         // Récuperation de l'user et vérification s'il est connecter
         $user = $this->getUser();
-        if($user === null){
-            throw new Exception('Vous n\'êtes pas autorisez!');
-        }
-
+        $oldUser = clone $user;
         //Création du formulaire correspondant
         $form = $this->createForm( EditUserType::class, $user);
-        $formPassword = $this->createForm(ChangePasswordType::class, $user);
+        $formPassword = $this->createForm(ChangePasswordType::class, $user, array('action' => $this->generateUrl('user_change_password')));
         $formPassword->handleRequest($request);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
@@ -200,6 +199,13 @@ class UserController extends Controller
             $this->get('event_dispatcher')->dispatch('user.captured', new  UserEvent($user));
 
             $this->addFlash('success', 'Vos données ont bien été modifiés!');
+            $mailer = $this->get('observation.user.mailer');
+            // On vérifie si l'utilisateur viens d'activer les newsletters
+            if($user->getNewsletter() && ! $oldUser->getNewsletter()){
+                $mailer->addLisntingNewwsLetter($user);
+            }elseif (!$user->getNewsLetter() && $oldUser->getNewsLetter()){
+                $mailer->removeForListing($user->getEmail());
+            }
             // On renvoie sur la page profil avec un flash message
             return $this->redirectToRoute('user_profil');
         }

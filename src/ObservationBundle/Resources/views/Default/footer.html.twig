@@ -55,10 +55,13 @@
                     <div class=" col-lg-7">
                         <label for="newsletter">Recevoir les actualités de l'étude</label>
                         <div class="input-group">
-                            <input type="email" name="mail" id="mail" class="form-control">
-                            <span class="input-group-btn">
+                            <form action="{{ path('newsletter_subscribed') }}" method="post">
+                                <input type="email" name="email" id="email" class="form-control">
+                                <span class="input-group-btn">
                             <button class="btn btn-nao" type="submit">s'inscrire</button>
                         </span>
+                            </form>
+
                         </div>
                     </div>
                     <div class=" col-lg-5">

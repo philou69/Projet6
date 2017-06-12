@@ -109,6 +109,11 @@ class User implements AdvancedUserInterface, \Serializable
     protected $avatar;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $newsletter = true ;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -551,5 +556,29 @@ class User implements AdvancedUserInterface, \Serializable
         $this->avatar = $avatar;
 
         return $this;
+    }
+
+    /**
+     * Set newsletter
+     *
+     * @param boolean $newsletter
+     *
+     * @return User
+     */
+    public function setNewsletter($newsletter)
+    {
+        $this->newsletter = $newsletter;
+
+        return $this;
+    }
+
+    /**
+     * Get newsletter
+     *
+     * @return boolean
+     */
+    public function getNewsletter()
+    {
+        return $this->newsletter;
     }
 }

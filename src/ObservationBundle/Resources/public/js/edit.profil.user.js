@@ -37,4 +37,11 @@ $(document).ready(function () {
         $('#edit_password').removeAttr('disabled');
         event.preventDefault();
     })
+    // Fonction permettant l'envoie du formulaire
+    $('#edit_user_save').on('click', function (event) {
+        console.log('coucou')
+        $('input').removeAttr('disabled')
+        }
+    )
+
 })
