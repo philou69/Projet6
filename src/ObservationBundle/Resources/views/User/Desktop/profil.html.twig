@@ -4,10 +4,13 @@
 {% block link %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/observation/css/profil.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/toggle.switch.newsletter.css') }}">
 {% endblock %}
 {% block title %}Profil de {{ app.user.username }}{% endblock %}
 
 {% block content %}
+    {#{{ dump(app.user.email) }}#}
+    {#<a href="{{ path('newsletter_unscubscribe', {'email': app.user.email}) }}">unsubscride</a>#}
         <div class="row">
             <div id="profil_left" class="col-md-6">
                 <div class="center-80">
@@ -71,6 +74,7 @@
                         <a href="#" class="edit_button btn btn-grey" data-id="{{ form.username.vars.id }}"><i
                                     class="fa fa-pencil"></i></a>
                     </div>
+                    {{ form_errors(form.username) }}
                 </div>
                 <div class="form-group">
                     <div class="col-md-2">
@@ -83,6 +87,7 @@
                         <a href="#" class="edit_button btn btn-grey" data-id="{{ form.email.vars.id }}"><i
                                     class="fa fa-pencil"></i></a>
                     </div>
+                    {{ form_errors(form.email) }}
                 </div>
                 <div class="form-group">
                     <div class="col-md-2">
@@ -95,6 +100,7 @@
                         <a href="#" class="edit_button btn btn-grey" data-id="{{ form.firstname.vars.id }}"><i
                                     class="fa fa-pencil"></i></a>
                     </div>
+                    {{ form_errors(form.firstname) }}
                 </div>
                 <div class="form-group">
                     <div class="col-md-2">
@@ -107,6 +113,7 @@
                         <a href="#" class="edit_button btn btn-grey" data-id="{{ form.lastname.vars.id }}"><i
                                     class="fa fa-pencil"></i></a>
                     </div>
+                    {{ form_errors(form.lastname) }}
                 </div>
                 <div class="form-group">
                     <div class="col-md-2">
@@ -119,6 +126,23 @@
                         <a href="#" class="edit_button btn btn-grey" data-id="{{ form.birthDate.vars.id }}"><i
                                     class="fa fa-pencil"></i></a>
                     </div>
+                    {{ form_errors(form.birthDate) }}
+                </div>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        {{ form.newsletter.vars.label }}
+                    </div>
+                    <div class="col-md-8">
+                        <label id="switch_newsletter">
+                            <input type="checkbox" name="{{ form.newsletter.vars.full_name }}" id="{{ form.newsletter.vars.id }}" {{ form.newsletter.vars.checked == true ? 'checked' : '' }} disabled>
+                            <div id="slider_newsletter"><span id="on">Oui</span><span id="off">Non</span></div>
+                        </label>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="#" class="edit_button btn btn-grey" data-id="{{ form.newsletter.vars.id }}"><i
+                                    class="fa fa-pencil"></i></a>
+                    </div>
+                    {{ form_errors(form.newsletter) }}
                 </div>
                 <div id="action" class="row" hidden>
                     <div class="col-md-6">
@@ -131,7 +155,7 @@
                 {# insertion du token du form #}
                 {{ form_widget(form._token) }}
                 {# fermeture du form sans afficher le rest( bouton de validation #}
-                {{ form_end(form) }}
+                {{ form_end(form,{'render_rest': false}) }}
                 {# ligne pour le mot de passe qui renvoie vers la page de changement de mot de passe #}
 
                 {{ form_start(formPassword, {'attr':{'class' : 'center-80'}}) }}
@@ -169,7 +193,7 @@
                         <button type="button" id="cancel-password" class="btn btn-nao ">Annulé</button>
                     </div>
                 </div>
-                {{ form_rest(form) }}
+                {{ form_rest(formPassword) }}
                 {{ form_end(formPassword) }}
                 <div class="center-60">
 

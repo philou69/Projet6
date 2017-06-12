@@ -3,6 +3,7 @@
 {% block link %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/observation/css/connect.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/toggle.switch.newsletter.css') }}">
 {% endblock %}
 {% block title %}S'inscrire{% endblock %}
 {% block content %}
@@ -38,7 +39,7 @@
                     {% endif %}
                     <h2 class="text-center">Connexion</h2>
                     {# Formulaire de connection préremplie du pseudo si dsponible #}
-                    <form action="{{ path('user_connect') }}" method="post" class="form-horizontal">
+                    <form action="{{ path('user_login') }}" method="post" class="form-horizontal">
                         <label for="username" class="control-label required">Identifiant ou email</label>
                         <input type="text" name="_username" id="username" required="required" class="form-control" value="{{ lastUsername }}" placeholder="Identifiant ou Email">
                         <label for="password" class="control-label required">Mot de passe</label>
@@ -67,6 +68,17 @@
                                     {{ form_widget(password, {'attr': {'class': 'form-control'}}) }}
                                     {{ form_errors(password) }}
                                 {% endfor %}
+                            {% elseif child.vars.name == 'newsletter' %}
+                                <label class="control-label">{{ child.vars.label }}</label>
+                                <div class="checkbox">
+                                    <label id="switch_newsletter">
+                                        <input type="checkbox" name="{{ child.vars.full_name }}" id="{{ child.vars.id }}" {{ child.vars.checked == true ? 'checked' : '' }}>
+                                        <div id="slider_newsletter">
+                                            <span id="on">Oui</span>
+                                            <span id="off">Non</span>
+                                        </div>
+                                    </label>
+                                </div>
                             {% else %}
                                 {{ form_label(child) }}
                                 {{ form_widget(child, {'attr': {'class': 'form-control'}}) }}
@@ -78,7 +90,8 @@
                     {# Affichage du bouton d'Enregistrement #}
                     <small> * Champs obligatoire</small>
                     {{ form_widget(form.save) }}
-                    {{ form_end(form) }}
+                    {{ form_widget(form._token) }}
+                    {{ form_end(form, {'render_rest': false}) }}
                 </div>
             </div>
         </div>
