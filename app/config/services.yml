@@ -26,6 +26,7 @@ services:
         arguments:
           - '@security.password_encoder'
           - '@observation.user.mailer'
+          - '@observation.newsletter_listing'
         tags:
           - { name: kernel.event_listener, event: user.register, method: onCreate }
 

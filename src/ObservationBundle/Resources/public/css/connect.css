@@ -120,19 +120,21 @@ form .btn{
     top:3px ;
     right:10%;
 }
-input:checked + .slider {
+.switch input:checked + .slider {
     background-color: #99d1c8;
 }
 
-input:focus + .slider {
+.switch input:focus + .slider {
     box-shadow: 0 0 1px #dbefed;
 }
 
-input:checked + .slider:before {
+.switch input:checked + .slider:before {
     -webkit-transform: translateX(320px) translateX(-25px);
     -ms-transform: translateX(320px) translateX(-25px);
     transform: translateX(320px) translateX(-25px);
 }
+
+/*----------- Fin du toggle switch */
 
 
 @media (min-width: 993px) {
@@ -143,5 +145,3 @@ input:checked + .slider:before {
         font-size: 30px;
     }
 }
-
-/*----------- Fin du toggle switch */
