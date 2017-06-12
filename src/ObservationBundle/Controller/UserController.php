@@ -41,8 +41,6 @@ class UserController extends Controller
         // On passe la requete au form et vérifie s'il est soumis et valide
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            var_dump($user->getNewsletter());
-            exit();
             // Appel d'un event dispatcher chager de hacher le mot de passe
             $this->get('event_dispatcher')->dispatch('user.register',new  GenericEvent($user));
 
@@ -199,7 +197,7 @@ class UserController extends Controller
             $this->get('event_dispatcher')->dispatch('user.captured', new  UserEvent($user));
 
             $this->addFlash('success', 'Vos données ont bien été modifiés!');
-            $mailer = $this->get('observation.user.mailer');
+            $mailer = $this->get('observation.newsletter_listing');
             // On vérifie si l'utilisateur viens d'activer les newsletters
             if($user->getNewsletter() && ! $oldUser->getNewsletter()){
                 $mailer->addLisntingNewwsLetter($user);
