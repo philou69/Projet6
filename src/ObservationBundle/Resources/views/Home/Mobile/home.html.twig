@@ -6,14 +6,8 @@
     <link rel="stylesheet" href="{{ asset('bundles/observation/css/home.css') }}">
 {% endblock %}
 
-{% block body %}
-
-    {# Incorporation de la bar de navigation desktop et des messages flashs #}
-    {% include '@Observation/Default/Navbar/Mobile/navbar.html.twig' %}
-    {% include 'ObservationBundle:Default:flash.message.html.twig' %}
-    {# block content qui sera remplit au besion sur chaque page#}
-
-    {# Block affichant une pĥoto sur toute la fenetre et son bouton permettant de descendre sur le bas de page#}
+{% block content %}
+    <div id="contentHome">
     <div id="homePicture">
         <div class="text-center">
             <button id="start" type="button" class="btn btn-start-desktop">COMMENCER L'OBSERVATION<br/>
@@ -22,10 +16,6 @@
             </button>
         </div>
     </div>
-
-    <div id="contentHome" class="container">
-
-    {% block content %}
 
         {#Zone de présentation du site #}
         <div id="bienvenue" class="center-80">
@@ -43,19 +33,21 @@
                 <h1 class="col-md-10 col-xs-12">Les dernières photos</h1>
 
             </div>
-            <div class="col-md-12  col-xs-11 text-center ">
+            <div class="row">
                 {% for picture in gallery %}
-                    <img src="{{ asset('uploads/images/bird/' ~picture.url) }}"
-                         style="min-width: 20px; min-height: 150px; width: 200px; height: 150px;">
+                    <div class="col-xs-6">
+                        <img src="{{ asset('uploads/images/bird/' ~picture.url) }}"></div>
                 {% else %}
                     <p>Prochainement les dernières photos</p>
                 {% endfor %}
+
             </div>
             <a href="#" class="col-md-2 col-xs-12 text-center link-mobile">accéder à la gallerie</a>
 
         </div>
         {#block de saisie obs et newsletter#}
         <div id="actions" class="row">
+            <div class="center-80">
             <div id="saisie" class="text-center col-xs-12 col-md-6 obs-mobile">
                 <a href="{{ path ('observation_add') }}"><img
                             src="{{ asset ('bundles/observation/images/icones/observation_icon.png') }}"
@@ -66,9 +58,13 @@
                 </a>
             </div>
             <div id="newsletter" class="col-xs-12 col-md-6">
-                <input type="text" placeholder="Renseigner votre email" class="form-control text-center">
-                <button type="submit" class="btn btn-nao-2 btn-lg btn-block">RECEVOIR LA NEWSLETTER</button>
+                <div class="col-xs-12 text-center">
+                    <input type="text" placeholder="Renseigner votre email" class="form-control text-center">
+                    <button type="submit" class="btn btn-nao-2 btn-lg btn-block">RECEVOIR LA NEWSLETTER</button>
+                </div>
             </div>
+        </div>
+
         </div>
         <div id="sociallink" class="text-center">
             <h1>SUIVEZ-NOUS</h1>
@@ -84,8 +80,7 @@
                 </li>
             </ul>
         </div>
-        </div>
-    {% endblock %}
+    </div>
 
 {% endblock %}
 

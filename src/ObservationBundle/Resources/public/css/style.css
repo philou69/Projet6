@@ -11,6 +11,17 @@ body {
     font-family: ‘Roboto’, sans-serif;
 }
 
+#contentHome, #contentAdd {
+
+    background: url('../images/Visuels/observation_background.jpg') no-repeat center;
+    width: 100%;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+
 h1 {
     font-size: 36px;
     color: #a1d0f3;
@@ -19,6 +30,19 @@ h1 {
 
 .navbar {
     margin-bottom: 0;
+}
+
+#gallery img, #picBird img {
+    margin: 10px auto;
+    min-height: 200px;
+    height: 200px;
+    width: 100%;
+}
+
+#picBird img {
+
+    width: 250px;
+    margin-right: 10px;
 }
 
 
@@ -41,6 +65,34 @@ Page Observation
     margin: auto;
     padding: 0;
 }
+
+#formObs {
+
+    border: none;
+    background: none;
+}
+
+.modal-header .close {
+    margin-top: -20px;
+}
+
+#myModal {
+    width: 90%;
+    margin: auto;
+}
+
+/*
+Stylisation bouton Import Image
+ */
+
+.group-span-filestyle .btn-default {
+    background-color: #99d1c8;
+    background-image: none;
+    text-shadow: none;
+}
+
+
+
      /*------------------ Styel pour les écans de largeur superieur à 992 px -------*/
 @media (min-width: 992px) {
     /* Marge du body pour la navbar et utilisation de flex pour coller le footer en bas de page */
