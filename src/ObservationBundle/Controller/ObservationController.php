@@ -213,4 +213,26 @@ class ObservationController extends Controller
         return $this->redirectToRoute('observation_view', array('id' => $observation->getId()));
 
     }
+
+    /**
+     * Action pour générer les points de localisation d'un oiseau
+     * @param Bird $bird
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function locationsAction(Bird $bird, Request $request)
+    {
+        // On s'assure d'être en requete AJAX
+        if ($request->isXmlHttpRequest()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $observations = $em->getRepository('ObservationBundle:Observation')->findBirdLocations($bird);
+
+
+            // On retourne la même vue quelque soit le device
+            return $this->render('@Observation/Observation/map.html.twig', array('observations' => $observations, 'bird' => $bird));
+        } else {
+            throw $this->createAccessDeniedException('Vous ne pouvez pas acceder à cette page !');
+        }
+
+    }
 }

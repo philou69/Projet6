@@ -48,7 +48,7 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('bird', $bird)
             ->orderBy('o.postedAt', 'DESC')
             ->getQuery();
-        $query->setFirstResult(($page-1) * $limit)
+        $query->setFirstResult(($page - 1) * $limit)
             ->setMaxResults($limit);
 
         return new Paginator($query, true);
@@ -62,5 +62,16 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
             ->andWhere('o.validated = true');
 
         return $query->getQuery()->getResult();
+    }
+
+    public function findBirdLocations(Bird $bird)
+    {
+        $query = $this->createQueryBuilder('o')
+            ->where('o.bird = :bird')
+            ->setParameter('bird', $bird)
+            ->getQuery()
+            ->getResult();
+
+        return $query;
     }
 }
