@@ -31,7 +31,7 @@ class NewsLetter
     {
         // On crée une instance de mailchimp et on hash l'email
         $MailChimp = new MailChimp($this->mailchimp_key);
-        $subscriber_hash = $MailChimp->subscriberHash($user->getEmail());
+        $subscriber_hash = $MailChimp->subscriberHash($user === null ? $email : $user->getEmail());
         // On verifi quelles données sont en notre pocetions
         if($user !== null){
             // Utilisation de la  fonction put qui soit mets à jour soit crée le contact
