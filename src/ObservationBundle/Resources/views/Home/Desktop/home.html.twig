@@ -1,35 +1,24 @@
 {% extends 'ObservationBundle::layout.desktop.html.twig' %}
-{% block  title %}Accueil{% endblock %}
+{% block  title %}Home Page{% endblock %}
 
 {% block link %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/observation/css/home.css') }}">
 {% endblock %}
 
-{% block body %}
 
-    {# Incorporation de la bar de navigation desktop et des messages flashs #}
-    {% include '@Observation/Default/Navbar/Desktop/navbar.html.twig' %}
-    {% include 'ObservationBundle:Default:flash.message.html.twig' %}
-    {# block content qui sera remplit au besion sur chaque page#}
-
-    {# Block affichant une pĥoto sur toute la fenetre et son bouton permettant de descendre sur le bas de page#}
-
-    <div id="homePicture">
-        <div class="text-center">
-            <button id="start" type="button" class="btn btn-start-mobile ">COMMENCER L'OBSERVATION<br/>
-                <span class="glyphicon glyphicon-chevron-down
-" aria-hidden="true"></span>
-            </button>
+{% block content %}
+    <div id="contentHome">
+        <div id="homePicture">
+            <div class="text-center">
+                <button id="start" type="button" class="btn btn-start-mobile ">COMMENCER L'OBSERVATION<br/>
+                    <span class="glyphicon glyphicon-chevron-down
+    " aria-hidden="true"></span>
+                </button>
+            </div>
         </div>
-    </div>
 
-    <div id="contentHome" class="container">
-
-
-    {% block content %}
-
-    {#Zone de présentation du site #}
+        {#Zone de présentation du site #}
         <div id="bienvenue" class="center-80">
             <h1>Bienvenue</h1>
             <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
@@ -39,16 +28,17 @@
                 <a class="btn btn-nao" href="#" role="button">DECOUVRIR L'ASSOCIATION</a>
             </div>
         </div>
-    {# Galeery des photos d'oiseaux#}
+        {# Galeery des photos d'oiseaux#}
         <div id="gallery" class="center-80">
             <div class="row">
                 <h1 class="col-md-10 col-xs-12">Les dernières photos</h1>
                 <a href="#" class="col-md-2 col-xs-12 text-center link-desktop">accéder à la gallerie</a>
             </div>
-            <div class="col-md-12  col-xs-11 text-center">
+            <div class="row">
                 {% for picture in gallery %}
-                    <img src="{{ asset('uploads/images/bird/' ~picture.url) }}"
-                         style="min-width: 200px; min-height: 150px; width: 200px; height: 150px;">
+                    <div class="col-md-3 col-xs-6">
+                        <img src="{{ asset('uploads/images/bird/' ~picture.url) }}">
+                    </div>
                 {% else %}
                     <p>Prochainement les dernières photos</p>
                 {% endfor %}
@@ -72,11 +62,10 @@
             </div>
         </div>
 
-        </div>
-    {% endblock %}
-    {% include 'ObservationBundle:Default:footer.html.twig' %}
-{% endblock %}
+    </div>
 
+
+{% endblock %}
 
 {% block javascript %}
     {{ parent() }}

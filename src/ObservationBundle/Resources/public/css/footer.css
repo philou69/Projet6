@@ -1,13 +1,13 @@
 /*--------- Style pour footer -------*/
-footer{
+footer {
     height: 180px;
 }
-footer>.container,footer>.container>.center-80,footer>.container>.center-80>.row{
+
+footer > .container, footer > .container > .center-80, footer > .container > .center-80 > .row {
     height: 100%;
 }
 footer>.container{
-    /*background: url("../images/Visuels/footer_background.jpg") center no-repeat;*/
-    background: url("/bundles/observation/images/Visuels/footer_background.jpg") center no-repeat;
+    background: url("../images/Visuels/footer_background.jpg") center no-repeat;
     background-size: auto;
 
 }
@@ -38,16 +38,18 @@ footer .input-group-btn > .btn {
     background-color: #8dd4e8;
     text-transform: uppercase;
 }
-footer>.container>.center-80>.row>.row>div{
+
+footer > .container > .center-80 > .row > .row > div {
     height: 50%;
 }
-footer>.container>.center-80>.row>.row>div.col-lg-7{
+
+footer > .container > .center-80 > .row > .row > div.col-lg-7 {
     padding-left: 25px;
 }
 footer .social-network{
     display: inline-block;
     height: 28px;
-    margin-top: calc((70px - 28px) /2);
+    margin-top: calc((70px - 28px) / 2);
     margin-left: 5px;
 }
 footer .social-network>.fa{

@@ -2,16 +2,18 @@
     Home page
      */
 
-#contentHome {
-
-    background: url('../images/Visuels/observation_background.jpg') no-repeat center;
-    width: 100%;
-}
 
 #bienvenue, #gallery, #actions {
     margin-top: 50px;
 }
 
+/*
+Partie observation et newsletter
+ */
+
+#actions {
+    margin-bottom: 60px;
+}
 #saisie {
     background: url('../images/Visuels/encartObservation_background.jpg') no-repeat center;
     -webkit-background-size: cover;
@@ -100,22 +102,9 @@
     top: calc(100vh - 50px);
 }
 
-
 /*
-Texte de bienvenue
-*/
-
-/*#bienvenue, #gallery, #actions {*/
-/*height: 300px;*/
-/*}*/
-
-/*#bienvenue h1 {*/
-/*height: 100px;*/
-/*}*/
-
-/*#gallery h1 {*/
-/*margin-top: 50px;*/
-/*}*/
+Partie Bienvenue
+ */
 
 #bienvenue p {
     height: 80px;
@@ -143,14 +132,13 @@ Gallerie de photos
     color: black;
 }
 
-#gallery img {
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
 
 #gallery p {
     margin-top: 50px;
+}
+
+#carousel {
+
 }
 
 /*
