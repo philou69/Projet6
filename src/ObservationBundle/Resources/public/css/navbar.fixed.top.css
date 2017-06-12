@@ -62,13 +62,6 @@
 #navbar-top-mobile>.navbar-collapse>#social{
     height: 20vh;
 }
-/* Effets de transition du menu collapse */
-#navbar-top-mobile>.collapse.width{
-    -webkit-transition: width 0.1s;
-    -moz-transition: width 0.1s;
-    -o-transition: width 0.1s;
-    transition: width 0.1s;
-}
 
 /* Affichage d'une bordure blanche sous les lis*/
 #navbar-top-mobile>.navbar-collapse>#links>ul>li{
@@ -88,4 +81,3 @@
     color: white;
     content: '-';
 }
-
