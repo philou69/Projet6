@@ -1,0 +1,72 @@
+<nav id="navbar-top-mobile" class="navbar navbar-light navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <button type="button" id="collapse-mobile" class="navbar-toggle pull-left" data-toggle="collapse"
+                data-target=".navbar-collapse">
+            <img src="{{ asset('bundles/observation/images/icones/hamburger_icon.png') }}" alt="menu-hamburger"
+                 class="img-responsive">
+        </button>
+        <ul class="list-inline pull-right">
+            <li><a href="{{ facebook }}"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="{{ instagram }}"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="{{ twitter }}"><i class="fa fa-twitter"></i></a></li>
+        </ul>
+    </div>
+    <div class="navbar-collapse collapse animated slideInLeft">
+        <button type="button" id="collapse-inside" class="navbar-toggle pull-right" data-toggle="collapse"
+                data-target=".navbar-collapse">
+            <i class="fa fa-times"></i>
+        </button>
+        <h1><img src="{{ asset('bundles/observation/images/logo/logo_header_blanc.png') }}" alt="logo"></h1>
+        <div id="links">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="{{ path('homepage') }}">ACUEIL</a>
+                </li>
+                <li>
+                    <a href="{{ path('observation_add') }}">OBSERVATION</a>
+                </li>
+                <li>
+                    <a href="{{ path('bird_list') }}">FICHES OISEAUX</a>
+                </li>
+                {% if app.user %}
+                    <li>
+                        <a href="{{ path('user_profil') }}">COMPTE</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('user_connect') }}">CONNEXION/INSCRIPTION</a>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="#" class="disabled">INFORMATION</a>
+                    <ul>
+                        <li>
+                            <a href="{{ path('asso') }}">L'ASSOCIATION</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contact') }}">NOUS CONTACTER</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('faq') }}">AIDE</a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </div>
+        <div id="form">
+            <label for="newsletter">recevoir les actualités de l'associtaiton</label>
+            <input type="text" placeholder="Renseigner votre email" name="newsletter" id="newsletter" class="form-control text-center">
+            <button type="submit" class="btn btn-nao-2  btn-block">S'INSCRIRE</button>
+        </div>
+        <div id="social">
+            <h5 class="text-center">SUIVEZ NOUS</h5>
+            <ul class="list-inline text-center">
+                <li><a href="{{ facebook }}"><i class="fa fa-facebook fa-2x"></i></a></li>
+                <li><a href="{{ twitter }}"><i class="fa fa-twitter fa-2x"></i></a></li>
+                <li><a href="{{ instagram }}"><i class="fa fa-instagram fa-2x"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+</nav>

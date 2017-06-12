@@ -2,11 +2,11 @@
 {% extends 'ObservationBundle::layout.html.twig' %}
 
 {% block body %}
-    {# Incorporation de la bar de navigation desktop et des messages flashs #}
-    {% include '@Observation/Default/Navbar/Desktop/navbar.html.twig' %}
-    {% include 'ObservationBundle:Default:flash.message.html.twig' %}
-    {# block content qui sera remplit au besion sur chaque page#}
     <div id="content" class="container">
+        {# Incorporation de la bar de navigation desktop et des messages flashs #}
+        {% include '@Observation/Default/Navbar/Desktop/navbar.html.twig' %}
+        {% include 'ObservationBundle:Default:flash.message.html.twig' %}
+        {# block content qui sera remplit au besion sur chaque page#}
             {% block content %}
             {% endblock %}
 

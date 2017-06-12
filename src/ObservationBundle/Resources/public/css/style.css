@@ -1,4 +1,272 @@
+/* Suppression des marges negatifs sur les classes row de bootstrap*/
+.row{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/*
+Réglages généraux
+*/
+body {
+    font-family: ‘Roboto’, sans-serif;
+}
+
+#contentHome, #contentAdd {
+
+    background: url('../images/Visuels/observation_background.jpg') no-repeat center;
+    width: 100%;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+
+h1 {
+    font-size: 36px;
+    color: #a1d0f3;
+
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+#gallery img, #picBird img {
+    margin: 10px auto;
+    min-height: 200px;
+    height: 200px;
+    width: 100%;
+}
+
+#picBird img {
+
+    width: 250px;
+    margin-right: 10px;
+}
+
+
+/*
+Page Observation
+ */
 #map {
     height: 400px;
     width: 100%;
+}
+
+.center-80{
+    width: 80%;
+    margin: auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 1600px;
+    margin: auto;
+    padding: 0;
+}
+
+#formObs {
+
+    border: none;
+    background: none;
+}
+
+.modal-header .close {
+    margin-top: -20px;
+}
+
+#myModal {
+    width: 90%;
+    margin: auto;
+}
+
+/*
+Stylisation bouton Import Image
+ */
+
+.group-span-filestyle .btn-default {
+    background-color: #99d1c8;
+    background-image: none;
+    text-shadow: none;
+}
+
+
+
+     /*------------------ Styel pour les écans de largeur superieur à 992 px -------*/
+@media (min-width: 992px) {
+    /* Marge du body pour la navbar et utilisation de flex pour coller le footer en bas de page */
+    body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    /*Contenu de la page pour prendre le plus de place possible*/
+    #content {
+        flex: 1;
+    }
+    #content>.center-80{
+        min-height: calc(100vh - 140px - 70px);
+        padding-top: 20px;
+
+    }
+
+
+    #listing .row {
+        margin-left: 5px;
+
+    }
+
+
+}
+
+/* -------------------------------- Fin style écran petit ----------------------------------------*/
+/* -------------------------------- Ecran de moins de 992 px de large ----------------------------------------*/
+@media (max-width: 992px) {
+    body{
+        min-height: 100vh;
+        margin: 0;
+    }
+    /* Marge speciale pour ne pas affiché sous la navbar */
+    #view {
+        padding-bottom: 70px;
+        min-height:100vh;
+        padding-top: 40px;
+    }
+    #view>.center-80 {
+        padding-top: 20px;
+    }
+
+
+}
+
+.required:after {
+    content: ' *';
+    color: #C82829;
+}
+
+/* Taile des images des réseaux sociaux */
+.icon {
+    height: 20px;
+}
+
+
+
+/* Capital sur les lien de navigation dans le footer */
+.capital {
+    text-transform: uppercase;
+    font-size: small;
+}
+#birds{
+    margin-top: 20px;
+}
+/*------- Loader -----*/
+.content-loader{
+    width: 120px;
+    height: 120px;
+    margin: auto;
+}
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*------- Fin du loader ---------*/
+
+/*style form field*/
+#content > div > div.panel-body > form > div:nth-child(4) > div > div > span:nth-child(3) {
+    display: none;
+}
+
+.pictures {
+    position: relative;
+}
+
+#closeButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.obtained{
+    border:2px solid #916319;
+}
+.no-obtained{
+    border: 2px solid #2f2f2f;
+}
+.star{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#birds .col-sm-4 {
+    padding: 0;
+}
+#edit_avatar{
+    border-radius: 50%;
+    position: relative;
+    bottom: 40px;
+    left: 160px;
+}
+
+/*--- marging ----*/
+.marge-top{
+    margin-top: 20px;
+}
+
+
+
+/* Les boutons des form sont toutes largeur, sans arrondi et de couleur blanche*/
+.btn{
+    border-radius: 0;
+    width: 100%;
+    color: white;
+}
+.btn-nao>img{
+    height: 20px;
+}
+/*Couleur verte sur les bouton */
+.btn-nao{
+    background-color: #99d1c8;
+}
+
+.btn-nao-2 {
+    background-color: #8dd4e8;
+}
+/*Background gris*/
+.grey{
+    background-color: #fbfbfb;
+}
+
+.center-90{
+    width: 90%;
+    margin: auto;
 }

@@ -1,0 +1,85 @@
+/* Style pour la zone titre et input search ---------*/
+.center-80 h1, .center-80 input{
+    height: 39px;
+    margin: 0;
+}
+
+/* Style sur l'input de recherche des liste oiseaux */
+#search {
+    border: 0;
+    border-bottom: 1px solid #90d3e3;
+    width: 100%;
+}
+
+.center, .center > input, .center > i {
+    margin: auto;
+}
+
+/* fin style pour la zone titre et input search ---------*/
+
+
+/** Affichage main pour les div oiseaux **/
+#bird{
+    margin-top: 20px;
+}
+.bird {
+    display: inline-block;
+    cursor: pointer;
+    height: 100px;
+    padding: 0;
+    background-color: #fbfbfb;
+    margin-bottom: 10px;
+    width: 48%;
+}
+.bird:nth-last-child(even){
+    margin-right: 2%;
+}
+.bird>.left{
+    display: inline-block;
+    width: 33%;
+    height: 100%;
+    vertical-align: top;
+}
+.bird>p.left{
+    margin: 0;
+}
+
+.bird>.right{
+    display: inline-block;
+    width: 65%;
+    height:100%;
+    padding: 0 10px;
+}
+.bird>.right>h4{
+    height: 29%;
+    margin: 20px  0;
+
+}
+.bird>.right>small{
+    height: 19%;
+}
+
+/* Position du bouton up à 120px du haut*/
+#up {
+    z-index: 255;
+    display: none;
+    position: fixed;
+    right: 10%;
+    top: 5%;
+}
+#up>.fa{
+    color: #99d1c8;
+}
+a.grey{
+    color: #949494;
+}
+@media (max-width: 992px){
+    /* Sur écrans de moins de 992px, on mets les div bird en toute largeure*/
+    .bird{
+        width: 100%;
+    }
+    /* position du bouton up à 20px du haut */
+    #up {
+        top: 60px;
+    }
+}

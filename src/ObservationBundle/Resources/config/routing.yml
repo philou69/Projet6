@@ -14,6 +14,10 @@ star:
     prefix: /star
     resource: 'Routing/star.yml'
 
+blog:
+    prefix: /blog
+    resource: 'Routing/blog.yml'
+
 homepage:
     path:     /
     defaults: { _controller: ObservationBundle:Default:index }

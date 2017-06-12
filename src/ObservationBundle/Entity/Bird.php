@@ -20,6 +20,8 @@ class Bird
      * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Sound")
      */
     protected $sound;
+
+
     /**
      * @var int
      *
@@ -135,6 +137,7 @@ class Bird
      */
     private $pictures;
 
+
     /**
      * Constructor
      */
@@ -184,7 +187,7 @@ class Bird
      *
      * @return string
      */
-    public function getFamille(User $user)
+    public function getFamille()
     {
         return $this->famille;
     }
@@ -673,4 +676,5 @@ class Bird
 
         return $this;
     }
+
 }

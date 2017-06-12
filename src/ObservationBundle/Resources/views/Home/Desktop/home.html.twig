@@ -1,83 +1,74 @@
 {% extends 'ObservationBundle::layout.desktop.html.twig' %}
-{% block body %}
-    {# Incorporation de la bar de navigation desktop et des messages flashs #}
-    {% include '@Observation/Default/Navbar/Desktop/navbar.html.twig' %}
+{% block  title %}Home Page{% endblock %}
+
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/home.css') }}">
+{% endblock %}
 
 
-    {% include 'ObservationBundle:Default:flash.message.html.twig' %}
-
-    <div id="homePicture">
-        <div class="text-center">
-            <a class="btn btn-primary btn-round-lg btn-lg" href="#" role="button">Commencer l'observation</a>
-        </div>
-    </div>
-    {# block content qui sera remplit au besion sur chaque page#}
-    <div id="content" class="container">
-        {% block content %}
-            <div id="bienvenue">
-                <h1>Bienvenue</h1>
-                <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
-                    nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
-                    à l'aide de fiches détaillés sur nos amis les oiseaux</p>
-                <div class="text-center">
-                    <a class="btn btn-primary btn-round-lg btn-lg" href="#" role="button">DECOUVRIR L'ASSOCIATION</a>
-                </div>
+{% block content %}
+    <div id="contentHome">
+        <div id="homePicture">
+            <div class="text-center">
+                <button id="start" type="button" class="btn btn-start-mobile ">COMMENCER L'OBSERVATION<br/>
+                    <span class="glyphicon glyphicon-chevron-down
+    " aria-hidden="true"></span>
+                </button>
             </div>
-            <div id="gallery">
-                <div class="row">
-                    <h1 class="col-md-10">Les dernières photos</h1>
-                    <a href="#" class="col-md-2">accéder à la gallerie</a>
-                </div>
-                {% if gallery %}
-                    {% for picture in gallery %}
-                        <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" class="img-thumbnail"
-                             style="width: 250px; height: 200px">
+        </div>
 
-                    {% endfor %}
+        {#Zone de présentation du site #}
+        <div id="bienvenue" class="center-80">
+            <h1>Bienvenue</h1>
+            <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
+                nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
+                à l'aide de fiches détaillés sur nos amis les oiseaux</p>
+            <div class="text-center">
+                <a class="btn btn-nao" href="#" role="button">DECOUVRIR L'ASSOCIATION</a>
+            </div>
+        </div>
+        {# Galeery des photos d'oiseaux#}
+        <div id="gallery" class="center-80">
+            <div class="row">
+                <h1 class="col-md-10 col-xs-12">Les dernières photos</h1>
+                <a href="#" class="col-md-2 col-xs-12 text-center link-desktop">accéder à la gallerie</a>
+            </div>
+            <div class="row">
+                {% for picture in gallery %}
+                    <div class="col-md-3 col-xs-6">
+                        <img src="{{ asset('uploads/images/bird/' ~picture.url) }}">
+                    </div>
                 {% else %}
                     <p>Prochainement les dernières photos</p>
-                {% endif %}
+                {% endfor %}
             </div>
 
+        </div>
+        {#block de saisie obs et newsletter#}
+        <div id="actions" class="row">
+            <div id="saisie" class="text-center col-xs-12 col-md-6">
+                <a href="{{ path ('observation_add') }}"><img
+                            src="{{ asset ('bundles/observation/images/icones/observation_icon.png') }}"
+                            alt="observation_icon">
+                    <p>
+                        SAISIR UNE OBSERVATION
+                    </p>
+                </a>
+            </div>
+            <div id="newsletter" class="col-xs-12 col-md-6">
+                <input type="text" placeholder="Renseigner votre email" class="form-control text-center">
+                <button type="submit" class="btn btn-nao-2 btn-lg btn-block">RECEVOIR LA NEWSLETTER</button>
+            </div>
+        </div>
 
-
-
-
-        {% endblock %}
     </div>
-    {% block javascript %}
-        {{ parent() }}
-        <script type="text/javascript">
-
-            $(document).ready(function () {
-
-                $(".navbar-fixed-top").css("background-color", "transparent");
-                $('nav a').css("color", "white");
 
 
-                $(document).scroll(function () { // check if scroll event happened
-                    if ($(document).scrollTop() > 50) { // check if user scrolled more than 50 from top of the browser window
-                        $(".navbar-fixed-top").css("background-color", "#f8f8f8");
-                        $('nav a').css("color", "#428bca");
-                        // if yes, then change the color of class "navbar-fixed-top" to white (#f8f8f8)
-                    } else {
-                        $(".navbar-fixed-top").css("background-color", "transparent");
+{% endblock %}
 
-                        $('nav a').css("color", "white");// if not, change it back to transparent
-                    }
-                });
+{% block javascript %}
+    {{ parent() }}
 
-                $("#homePicture").click(function () {
-                    $('html,body').animate({
-                            scrollTop: $("#gallery").offset().top
-                        },
-                        'slow');
-                });
-
-
-            })
-
-        </script>
-    {% endblock %}
-    {% include 'ObservationBundle:Default:footer.html.twig' %}
+    <script type="text/javascript" src="{{ asset('bundles/observation/js/home.js') }}"></script>
 {% endblock %}

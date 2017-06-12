@@ -4,7 +4,9 @@
 namespace ObservationBundle\Controller;
 
 
+use Composer\EventDispatcher\EventDispatcher;
 use ObservationBundle\Entity\User;
+use ObservationBundle\Event\UserEvent;
 use ObservationBundle\Form\User\ChangeAvartarType;
 use ObservationBundle\Form\User\ChangePasswordType;
 use ObservationBundle\Form\User\EditUserType;
@@ -52,6 +54,7 @@ class UserController extends Controller
             $this->get('security.token_storage')->setToken($token);
             $this->get('session')->set('_security_main', serialize($token));
 
+            $this->get('event_dispatcher')->dispatch('user.captured', new UserEvent($user));
 
             // Enfin redirection vers la page d'accueil
             return $this->redirectToRoute('homepage');
@@ -114,7 +117,7 @@ class UserController extends Controller
             //Création d'un message flash obligatoire
             $this->addFlash('success', "Nous avons pris votre demande en compte. Si votre  réponse correspond à votre profil, un email vous a été envoyer!" );
             // Retour sur la page de connection
-            return $this->redirectToRoute('user_login');
+            return $this->redirectToRoute('user_connect');
 
         }
         // Vérification du device et renvoie vers la page correspondante
@@ -139,8 +142,7 @@ class UserController extends Controller
         // L'user est récuperer grace au token, si le token n'est pas bon Symfony génere une erreur
         //Vérification de la validité de vie du token, moins de 2 h
         $now = new \DateTime();
-        if($now->diff($user->getDateToken())->d > 2)
-        {
+        if ($now->diff($user->getDateToken())->d > 2) {
             throw new \Exception('Le lien n\'est pas valide');
         }
         // Création du formulaire de reset password
@@ -185,14 +187,17 @@ class UserController extends Controller
             throw new Exception('Vous n\'êtes pas autorisez!');
         }
 
-         //Création du formulaire correspondant
+        //Création du formulaire correspondant
         $form = $this->createForm( EditUserType::class, $user);
+        $formPassword = $this->createForm(ChangePasswordType::class, $user);
+        $formPassword->handleRequest($request);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             // On enregistre les modifications
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+            $this->get('event_dispatcher')->dispatch('user.captured', new  UserEvent($user));
 
             $this->addFlash('success', 'Vos données ont bien été modifiés!');
             // On renvoie sur la page profil avec un flash message
@@ -201,9 +206,9 @@ class UserController extends Controller
         // Teste du device et renvoie vers la page correspondante
         $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile()){
-            return $this->render('ObservationBundle:User/Mobile:profil.html.twig', array('form' => $form->createView()));
+            return $this->render('ObservationBundle:User/Mobile:profil.html.twig', array('form' => $form->createView(), 'formPassword' => $formPassword->createView()));
         }else{
-            return $this->render('ObservationBundle:User/Desktop:profil.html.twig', array('form' => $form->createView()));
+            return $this->render('ObservationBundle:User/Desktop:profil.html.twig', array('form' => $form->createView(), 'formPassword' => $formPassword->createView()));
         }
     }
 
@@ -282,24 +287,18 @@ class UserController extends Controller
             return $this->render('@Observation/User/Desktop/list.observation.html.twig', array('all' => $all));
         }
     }
+
     public function starsAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $observations = $em->getRepository('ObservationBundle:Observation')->findForUser($this->getUser());
-        $pictures = $em->getRepository('ObservationBundle:Picture')->findForValidate($this->getUser());
-        $birds = $em->getRepository('ObservationBundle:Bird')->findForValide($this->getUser());
-
-        var_dump(count($observations));
-        var_dump(count($pictures));
-        var_dump(count($birds));
         // L'accès n'étant pas autorisé aux naturaliste, on soulève un AccessDenied
         if($this->getUser()->hasRole('ROLE_NATURALISTE')){
             throw $this->createAccessDeniedException("Vous n'avez pas les droits d'accès!");
         }
         // Autrement, on renvoie sans se soucier de l'appareil
-             return $this->render('@Observation/User/list.stars.html.twig');
+        return $this->render('@Observation/User/list.stars.html.twig');
 
     }
+
     public function changeAvatarAction(Request $request)
     {
         $user = $this->getUser();
@@ -311,6 +310,8 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
 
+            $this->get('event_dispatcher')->dispatch('user.captured', new  UserEvent($user));
+
             return $this->redirectToRoute('user_profil');
         }
 
@@ -321,5 +322,32 @@ class UserController extends Controller
         }else{
             return $this->render('@Observation/User/Desktop/change.avatar.html.twig', array('form' => $form->createView()));
         }
+    }
+
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function usersAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $users = $em->getRepository('ObservationBundle:User')->findAllOthers($this->getUser()->getId());
+
+        $device = $this->get('mobile_detect.mobile_detector');
+
+        if($device->isMobile() && $device->isTablet()){
+            return $this->render('@Observation/User/Mobile/list.users.html.twig', array('users' => $users));
+        }else{
+            return $this->render('@Observation/User/Desktop/list.users.html.twig', array('users' => $users));
+        }
+    }
+
+    public function reactivateAction(User $user)
+    {
+        $user->setIsActive( $user->getIsActive() == true ? false : true );
+        $em = $this->getDoctrine()->getManager();
+        $em->flush();
+        $this->get('observation.user.mailer')->sendStatus($user);
+        return $this->redirectToRoute('user_users');
     }
 }

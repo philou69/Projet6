@@ -58,7 +58,11 @@ class AddObservationType extends AbstractType
                 'required' => false,
                 'multiple' => true,
                 'attr' => array(
-                    'accept' => 'image/*'
+                    'accept' => 'image/*',
+                    'class' => 'filestyle',
+                    'data-input' => 'false',
+                    'data-buttonText' => 'Importer Photo(s)',
+                    'data-badge' => 'false'
                 )
             ))
 

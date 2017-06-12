@@ -2,21 +2,20 @@
     <p class="text-center">
         Il n'y a pas de catégories de medailles
     </p>
-    {% else %}
-        {% for groupStar in groupsStar %}
-            {#{{ groupStar.getHighest(app.user) }}#}
-            <div class="star col-sm-2 col-xs-4">
-                <a href="#star_detail_{{ groupStar.id }}" data-toggle="modal">
-                    {% if app.user in groupStar.users %}
-                        <img src="{{ asset(groupStar.getHighest(app.user).image) }}" alt="medaille">
-                        {% else %}
-                        <img src="{{ asset(groupStar.image) }}" class="group-star">
-                    {% endif %}
-                </a>
-            </div>
-        {% endfor %}
+{% else %}
+    {% for groupStar in groupsStar %}
+        <div class="star col-sm-2 col-xs-4">
+            <a href="#star_detail_{{ groupStar.id }}" data-toggle="modal">
+                {% if app.user in groupStar.users %}
+                    <img src="{{ asset(groupStar.getHighest(app.user).image) }}" class=" img-star" alt="{{ groupStar.getHighest(app.user).title }}">
+                {% else %}
+                    <img src="{{ asset(groupStar.image) }}" alt="medaille" class="group-star">
+                {% endif %}
+            </a>
+        </div>
+    {% endfor %}
 
-        {% for groupStar in groupsStar %}
-            {% include 'ObservationBundle:Modal:star.detail.html.twig' with{'groupStar': groupStar} %}
-        {% endfor %}
+    {% for groupStar in groupsStar %}
+        {% include 'ObservationBundle:Modal:star.detail.html.twig' with{'groupStar': groupStar} %}
+    {% endfor %}
 {% endif %}

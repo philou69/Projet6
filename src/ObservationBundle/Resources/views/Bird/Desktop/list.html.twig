@@ -2,29 +2,32 @@
 
 {% block title %}Liste oiseaux{% endblock %}
 
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/list.bird.css') }}">
+{% endblock %}
 {% block content %}
-    <div id="up">
-        <a href="#" id="up-button"><i class="fa fa-chevron-circle-up fa-3x"></i></a>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <h1>Liste des fiches oiseaux</h1>
-        </div>
-        <div class="col-sm-6 text-right center">
-                <input type="text" id="search" placeholder="Rechercher une fiche &#xf002;" style="font-family:FontAwesome, Arial" data-href="{{ path('bird_pagination', {'page': 1}) }}">
-        </div>
-
-    </div>
-    <div id="listing" >
-        <div id="birds" class="content row" data-href="{{ path('bird_pagination', {'page': 1}) }}"></div>
-
+    <div class="center-80">
+            <a href="#" id="up"><i class="fa fa-chevron-circle-up fa-2x"></i></a>
         <div class="row">
-            <div class="col-sm-2 col-sm-offset-5 loader"></div>
+            <div class="col-md-8">
+                <h1>Liste des fiches oiseaux</h1>
+            </div>
+            <div class="col-md-4 text-right center">
+                <input type="text" id="search" placeholder="Rechercher une fiche &#xf002;" style="font-family:FontAwesome, Arial" data-href="{{ path('bird_pagination', {'page': 1}) }}">
+            </div>
+
         </div>
-        <div class="text-center">
-            <a href="#" id="add-birds" data-href="{{ path('bird_pagination', {'page': 1}) }}">Voir plus d'oiseaux</a>
-        </div>
+            <div id="birds" data-href="{{ path('bird_pagination', {'page': 1}) }}"></div>
+
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-5 loader"></div>
+            </div>
+
     </div>
+    <a href="#" id="add-birds" class="btn grey text-center" data-href="{{ path('bird_pagination', {'page': 1}) }}"><i class="fa fa-long-arrow-down"></i> Voir plus d'oiseaux</a>
+
+
 
 {% endblock %}
 

@@ -1,0 +1,166 @@
+/** Background parti gauche et parti droite */
+
+#content{
+    background-color: #fbfbfb;
+}
+#content>.row{
+    height: calc(100vh - 140px - 70px);
+}
+
+#profil_left{
+    background: url("/bundles/observation/images/Visuels/profil_background.jpg") center no-repeat;
+    height: 100%;
+    padding-top: 20px;
+}
+#profil_right{
+    background-color: #fbfbfb;
+    height: 100%;
+    padding-top: 20px;
+}
+#profil_left>.center-80{
+    height: 100%;
+}
+.up, .down{
+    height: 50%;
+}
+.down>.row{
+    height: 50%;
+    margin: 15% 0 35%;
+}
+#status{
+    color: #aaaaaa;
+    font-size: 20px;
+}
+#content_avatar{
+    min-height: 200px;
+    width: 200px;
+    height: 50%;
+    margin: auto;
+}
+.up>.text-center{
+    height: 50%;
+    max-height: calc(100% - 200px);
+    margin: auto;
+    padding-top: 20px;
+}
+#content_avatar>p{
+    margin: 45% 0;
+}
+.img-circle{
+    width: 200px;
+    height: 200px;
+}
+#edit_avatar{
+    display: block;
+    position: relative;
+    bottom: 40px;
+    left: 160px;
+    background-color: #e7e7e9;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+
+}
+#edit_avatar>i{
+    height: 10px;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+
+/*---- Couleur Background -----*/
+#observations-count{
+    background-color: #8dd4e8;
+}
+
+#stars-count{
+    background-color: #dbefed;
+}
+.count{
+    height: 15vh;
+    color: white;
+}
+.count>h4{
+    text-transform: uppercase;
+    height: 25%;
+    line-height: normal;
+}
+.count>div{
+    height: 75%;
+    font-size: xx-large;
+    text-transform: uppercase;
+}
+.count>div>img{
+    height: 40%;
+}
+
+/*------- Style des forms -------*/
+form{
+    padding: 10px;
+}
+.form-group{
+    height: 40px;
+}
+.form-group img, .form-group input, .form-group a{
+    height: 30px;
+    margin-top: 5px;
+}
+.form-control{
+    border-radius: 0;
+}
+.form-control:disabled{
+    background-color: #ffffff;
+}
+.form-group .btn{
+    width: 30px;
+    padding: 0;
+}
+.btn-grey{
+    background-color: #fbfbfb;
+    border: 1px solid gray;
+    border-radius: 0;
+}
+.fa-pencil{
+    color: gray;
+    margin-top: calc((30px - 13px) /2);
+}
+
+
+input:disabled::placeholder, input::-webkit-input-placeholder, input::-moz-placeholder, input:-ms-input-placeholder, input:-moz-placeholder {
+    color: #b5b5b5;
+    line-height: normal;
+}
+.padding-top{
+    padding-top: 20px;
+}
+.center-60{
+    width: 60%;
+    margin: auto;
+}
+
+.modal-dialog{
+    height: 70vh;
+    margin: auto;
+}
+.modal-content{
+    height: 100%;
+}
+.modal-body{
+    height: 80%;
+}
+.modal-footer{
+    height: 20%;
+}
+
+@media (max-width: 992px) {
+    #profil_left{
+        padding-top: 10px;
+    }
+    #profil_right{
+        padding-bottom: 10px;
+    }
+    .count>h5{
+        margin: 0;
+        padding-top: 10px;
+        height: 25%;
+    }
+}

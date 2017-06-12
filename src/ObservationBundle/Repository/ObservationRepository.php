@@ -54,7 +54,7 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
         return new Paginator($query, true);
     }
 
-    public function findForUser(User $user)
+    public function findForValidate(User $user)
     {
         $query = $this->createQueryBuilder('o')
             ->where('o.user = :user')

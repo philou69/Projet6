@@ -2,26 +2,30 @@
     <div class="modal-dialog">
         <div class="modal-content star-modal">
             <div class="modal-body">
-                <div class="row">
-                    <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
-                </div>
-                <div class="row">
-                    <div class="col-sm-5 row">
-                        <div class="col-sm-12 text-center">
+                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+                <div class="center-80">
+                    <div class="left ">
+                        <div class="up">
                             {% if app.user in groupStar.users%}
                                 {#{{ dump(groupStar.getHighest(app.user)) }}#}
-                                <img src="{{ asset(groupStar.getHighest(app.user).image) }}" alt="">
+                                <img src="{{ asset(groupStar.getHighest(app.user).image) }}" alt="Medaille">
                             {% else %}
                                 <p>Vous n'avez pas encore déverouillez cette categorie</p>
                             {% endif %}
                         </div>
-                        <hr>
-                        {% for star in groupStar.stars %}
-                            <img src="{{ star.image }}" alt="">
-                        {% endfor %}
+                        <div class="down">
+                            {% for star in groupStar.stars | reverse  %}
+                                {% if app.user in star.users%}
+                                    <img src="{{ asset(star.image) }}" alt="{{ star.title }}">
+                                {% else %}
+                                    <img src="{{ asset(groupStar.image) }}" alt="medaille">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+
 
                     </div>
-                    <div class="col-sm-7">
+                    <div class="right">
                         {% if app.user in groupStar.users %}
                             <h5>{{ groupStar.getHighest(app.user).title }}</h5>
                         {% endif %}

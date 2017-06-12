@@ -3,8 +3,6 @@
 $(document).ready(function () {
     // Création de la variable page
     var page = 1
-    // Variable contenant la hauteur du scroll
-    var scrollHeight = $(window).scrollTop();
     // Première requete ajax lors du chargement de la page
     $.ajax({
         url: $('#birds').data('href'),
@@ -15,7 +13,8 @@ $(document).ready(function () {
     })
 
     // Requte Ajax lors du click sur le bouton add
-    $('#add-birds').on('click', function () {
+    $('#add-birds').on('click', function (event) {
+        event.preventDefault();
         prepareRequete(false);
         var url = $('#add-birds').data('href').replace("1", page);
         var parameters = $('#search').val() === '' ? '' : '?search=' + $('#search').val();
@@ -51,14 +50,10 @@ $(document).ready(function () {
             $('#birds').empty();
             page =1
         }
-        // On passe la hauteur du scroll à la variable scrollHeigth
-        scrollHeight = $(window).scrollTop();
     }
 
     // Fonction utiliser lors du success d'une requete
     function success(code_html){
-        // On bloque la vue sur la hauteur du scroll
-        $(window).scrollTop(scrollHeight);
         // on cache le loader
         $('.loader').attr('hidden', true)
         // On inserre le resultat dans la zone contentBirds
@@ -87,8 +82,8 @@ $(document).ready(function () {
 
     $(window).scroll(function () {
 
-        // On vérifie si le document fait 2 fois la taille de l'ecran et si le haut du scroll est superieur à 2 fois la taille de l'écran
-        if(($(window).height() * 2) < $(document).height() && $(window).scrollTop() > ($(window).height() *2) ){
+        // On vérifie si le document fait au moins 2 fois la taille de l'ecran et si le haut du scroll est superieur à la taille de l'écran
+        if(($(window).height() *1.5 ) < $(document).height() && $(window).scrollTop() > $(window).height()){
             // Dans ce cas on affiche le bouton up
             $('#up').css('display', 'inline');
         }else {

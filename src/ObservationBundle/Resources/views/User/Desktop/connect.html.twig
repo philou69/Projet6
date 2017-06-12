@@ -1,102 +1,86 @@
 {% extends '@Observation/layout.desktop.html.twig' %}
-{% block title %}S'inscrire{% endblock %}
 
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/connect.css') }}">
+{% endblock %}
+{% block title %}S'inscrire{% endblock %}
 {% block content %}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h1 class="panel-title">
-                Formulaire de Connection/d'inscription
-            </h1>
-        </div>
-        <div class="panel-body">
+    <div id="content-connect">
+        <div class="center-80">
             {# Zone d'identification avec facebook ou google #}
-            <div class="text-center">
-                <h2>S'identifier avec </h2>
-                <div>
-                    <a href="#" onclick="fb_login();" class="btn btn-xs btn-primary"><i class="fa fa-facebook"></i> Facebook</a>
-                    <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-xs btn-danger"><i class="fa fa-google-plus"></i></a>
-                </div>
+            <div id="oauth" >
+                    <div id="title-oauth" class="row">
+                        <div class="col-md-3 connect connect-underline">
+                            <hr></div>
+                        <div class="col-md-6 connect text-center" id="connect_oauth">connecter vous avec : </div>
+                        <div class="col-md-3 connect connect-underline">
+                            <hr></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 col-sm-push-4">
+                            <a href="#" onclick="fb_login();" class="btn btn-blue ">Facebook</a>
+                        </div>
+                        <div class="col-sm-2 col-sm-push-4">
+                            <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-red">Google</a>
+                        </div>
+                    </div>
+
             </div>
-            <hr/>
             <div class="row">
                 {# Zone de connection #}
-                <div id="left" class="col-md-6">
+                <div class="col-md-6">
                     {# Gestion d'affichage des erreurs de connection #}
                     {% if error %}
                         <div class="alert alert-danger">
                             {{ error.messageKey| trans(error.messageData, 'security') }}
                         </div>
                     {% endif %}
-                    <h3 class="text-center">Se connecter</h3>
+                    <h2 class="text-center">Connexion</h2>
                     {# Formulaire de connection préremplie du pseudo si dsponible #}
-                    <form action="{{ path('user_login') }}" method="post" class="form-horizontal">
-                        <div class="form-group">
-                            <label for="username" class="control-label col-sm-3 required">Pseudo ou Email </label>
-                            <div class="col-sm-5">
-                                <input type="text" name="_username" id="username" class="form-control" value="{{ lastUsername }}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="control-label col-sm-3 required">Mot de passe </label>
-                            <div class="col-sm-5">
-                                <input type="password" name="_password" id="password" class="form-control">
-                            </div>
-                        </div>
+                    <form action="{{ path('user_connect') }}" method="post" class="form-horizontal">
+                        <label for="username" class="control-label required">Identifiant ou email</label>
+                        <input type="text" name="_username" id="username" required="required" class="form-control" value="{{ lastUsername }}" placeholder="Identifiant ou Email">
+                        <label for="password" class="control-label required">Mot de passe</label>
+                        <input type="password" name="_password" id="password" required="required" class="form-control" placeholder="Mot de passe">
                         {# Checkbox se souvenir de moi #}
                         <div class="form-group">
-                            <label for="remember_me" class="control-label col-sm-4"> Se souvenir de moi <input type="checkbox" name="_remember_me" id="remember_me" ></label>
+                            <a href="{{ path('user_forgot_password') }}" class="col-md-6">Mot de passe oublié</a>
+                            <label id="remember_label" for="remember_me" class="col-md-6"><input type="checkbox" name="_remember_me" id="remember_me" > Se souvenir de moi </label>
                         </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-xs btn-primary">Se connecter</button>
-                        </div>
-                        <br>
-                        <div class="text-center">
-                            <a href="{{ path('user_forgot_password') }}">Mot de passe oublié</a>
-                        </div>
+                        <small> * Champs obligatoire</small>
+                        <button type="submit" class="btn btn-nao">Se connecter</button>
                     </form>
                 </div>
-                <div id="right" class="col-md-6">
+                <div class="col-md-6">
                     {# Zone d'inscriiption #}
-                    <h3 class="text-center">S'inscrire</h3>
-                    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                    <h2 class="text-center">Inscription</h2>
+                    {{ form_start(form, {'attr': {'class': 'center-80'}}) }}
                     {{ form_errors(form) }}
                     {# Boucle sur les champs du form à l'exception du save et _token #}
                     {% for child in form.children if child.vars.name != 'save' and child.vars.name != '_token' %}
-                        {# Gestion des champs plainPassword#}
-                        {% if child.vars.name == 'plainPassword' %}
-                            {% for password in child.children %}
-                                <div class="form-group">
-                                    {{ form_label(password, password.vars.label, {'label_attr': {'class': 'col-md-3 control-label'}}) }}
-                                    <div class="col-md-6">
-                                        {{ form_widget(password, {'attr': {'class': 'form-control'}}) }}
-                                    </div>
+                        <div class="form-group">
+                            {# Gestion des champs plainPassword#}
+                            {% if child.vars.name == 'plainPassword' %}
+                                {% for password in child.children %}
+                                    {{ form_label(password) }}
+                                    {{ form_widget(password, {'attr': {'class': 'form-control'}}) }}
                                     {{ form_errors(password) }}
-                                </div>
-                            {% endfor %}
-                        {% else %}
-                            <div class="form-group">
-                                {{ form_label(child, child.vars.label, {'label_attr': {'class': 'col-md-3 control-label'}}) }}
-                                <div class="col-md-6">
-                                    {# Gestion du champs birthDate #}
-                                    {% if child.vars.name == 'birthDate' %}
-                                        {{ form_widget(child) }}
-                                    {% else %}
-                                        {{ form_widget(child, {'attr': {'class': 'form-control'}}) }}
-                                    {% endif %}
-                                </div>
+                                {% endfor %}
+                            {% else %}
+                                {{ form_label(child) }}
+                                {{ form_widget(child, {'attr': {'class': 'form-control'}}) }}
                                 {{ form_errors(child) }}
-                            </div>
-                        {% endif %}
+                            {% endif %}
+                        </div>
+
                     {% endfor %}
                     {# Affichage du bouton d'Enregistrement #}
-                    <div class="text-center">
-                        {{ form_widget(form.save) }}
-                    </div>
+                    <small> * Champs obligatoire</small>
+                    {{ form_widget(form.save) }}
                     {{ form_end(form) }}
                 </div>
             </div>
-
-
         </div>
     </div>
 {% endblock %}

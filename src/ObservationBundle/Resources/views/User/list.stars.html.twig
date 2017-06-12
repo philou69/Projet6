@@ -1,15 +1,23 @@
 {% extends  is_mobile() ? '@Observation/layout.mobile.html.twig' : '@Observation/layout.desktop.html.twig' %}
 
 {% block title %}Médailles{% endblock %}
-
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/stars.css') }}">
+{% endblock %}
 {% block content %}
-    <h1>Médailles</h1>
-    <div id="stars" data-href="{{ path('star_list') }}" class="row"></div>
-    <div class="loader"></div>
-    <hr>
-    <p class="text-center">
-        Rmplis les objectifs pour débloquer et remporter des médailles.
-    </p>
+    <div class="center-80">
+        <h1>Médailles</h1>
+        <div id="stars" data-href="{{ path('star_list') }}" class="row"></div>
+        <div class="content-loader">
+            <div class="loader"></div>
+        </div>
+        <hr>
+        <p class="text-center">
+            Remplir les objectifs pour débloquer et remporter des médailles.
+        </p>
+    </div>
+
 {% endblock %}
 
 {% block javascript %}
@@ -21,7 +29,13 @@
                 dataType: 'html',
                 success: function (code_html, status) {
                     $('#stars').html(code_html);
-                    $('.loader').attr('hidden', true);
+                    $('#stars').imagesLoaded(function () {
+                        console.log('coucou');
+                        $('#stars').css('display', 'inline')
+                        $('.content-loader').attr('hidden', true);
+                    })
+//                    setTimeout(function() {
+//                    }, 2000);
                 }
             })
         })
