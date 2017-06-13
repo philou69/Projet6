@@ -60,6 +60,10 @@ user_status:
     defaults:
       _controller: ObservationBundle:User:reactivate
 
+user_roles:
+    path: /{id}/roles
+    defaults:
+      _controller: ObservationBundle:User:roles
 
 user_sleep:
     path: /sleep
