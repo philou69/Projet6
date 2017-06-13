@@ -7,7 +7,9 @@ namespace ObservationBundle\Security\User;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;
+use ObservationBundle\Entity\RequestOpen;
 use Symfony\Bridge\Doctrine\Security\User\EntityUserProvider;
+use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -48,6 +50,36 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
     function supportsClass($class)
     {
         return $class === 'AppBundle\Entity\User';
+    }
+
+    public function loadUserByUsername($username)
+    {
+        $repository = $this->getRepository();
+        if (null !== $this->property) {
+            $user = $repository->findOneBy(array($this->property => $username));
+        } else {
+            if (!$repository instanceof UserLoaderInterface) {
+                throw new \InvalidArgumentException(sprintf('You must either make the "%s" entity Doctrine Repository ("%s") implement "Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface" or set the "property" option in the corresponding entity provider configuration.', $this->classOrAlias, get_class($repository)));
+            }
+
+            $user = $repository->loadUserByUsername($username);
+        }
+
+        if (null === $user) {
+            throw new UsernameNotFoundException(sprintf('User "%s" not found.', $username));
+        }
+        if($user->getSleeping() && $user->getRequestOpen() === null ){
+            $requestOpen = new RequestOpen();
+            $requestOpen->setToken(str_replace(['/', '+', '*','-'], '', base64_encode(random_bytes(60))))->setAdresseIP($_SERVER['REMOTE_ADDR']);
+            $user->setRequestOpen($requestOpen);
+            $this->getObjectManager()->persist($user);
+            $this->getObjectManager()->flush();
+            $this->eventDispatcherInterface->dispatch('user.reopen', new GenericEvent($user));
+            $user->setIsActive(false);
+        }elseif ($user->getSleeping() && $user->getRequestOpen() !== null){
+            $user->setIsActive(false);
+        }
+        return $user;
     }
 
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)

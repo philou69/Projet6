@@ -4,10 +4,6 @@
     background-color: #fbfbfb;
 }
 
-#content > .row {
-    height: calc(100vh - 140px - 70px);
-}
-
 #profil_left {
     background: url("/bundles/observation/images/Visuels/profil_background.jpg") center no-repeat;
     height: 100%;

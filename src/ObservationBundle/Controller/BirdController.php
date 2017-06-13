@@ -19,7 +19,7 @@ class BirdController extends Controller
     public function listAction(Request $request)
     {
         $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile()){
+        if($device->isMobile() || $device->isTablet()){
             return $this->render('@Observation/Bird/Mobile/list.html.twig');
         }else{
             return $this->render('@Observation/Bird/Desktop/list.html.twig');
@@ -30,7 +30,7 @@ class BirdController extends Controller
     public function descripitionAction(Bird $bird)
     {
         $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile()){
+        if($device->isMobile() || $device->isTablet()){
             return $this->render('@Observation/Bird/Mobile/description.html.twig', array('bird' => $bird));
         }else{
             return $this->render('@Observation/Bird/Desktop/description.html.twig', array('bird' => $bird));
@@ -40,7 +40,7 @@ class BirdController extends Controller
     public function locationAction(Bird $bird)
     {
         $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile()){
+        if($device->isMobile() || $device->isTablet()){
             return $this->render('@Observation/Bird/Mobile/location.html.twig', array('bird' => $bird));
         }else{
             return $this->render('@Observation/Bird/Desktop/location.html.twig', array('bird' => $bird));
@@ -90,7 +90,7 @@ class BirdController extends Controller
         }
 
         $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile()){
+        if($device->isMobile() || $device->isTablet()){
             return $this->render('@Observation/Observation/Mobile/add.html.twig', array('id' => $birdId,
                 'bird' => $bird,
                 'form' => $form->createView()));
@@ -147,7 +147,7 @@ class BirdController extends Controller
                 $nbPage = null;
             }
             $device = $this->get('mobile_detect.mobile_detector');
-            if($device->isMobile()){
+            if($device->isMobile() || $device->isTablet()){
                 return $this->render('@Observation/Bird/Mobile/page.html.twig', array('birds' => $birds, 'nbPage' => $nbPage, 'page' => $page, 'number' => $number));
             }else{
                 return $this->render('@Observation/Bird/Desktop/page.html.twig', array('birds' => $birds, 'nbPage' => $nbPage, 'page' => $page, 'number' => $number));

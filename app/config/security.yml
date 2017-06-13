@@ -26,6 +26,7 @@ security:
             form_login:
               login_path: user_connect
               check_path: user_login
+              failure_path: user_connect
               remember_me: true
             logout:
                 path: user_logout
@@ -51,6 +52,7 @@ security:
         - { path: ^/user/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/reset, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/unsleep, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user, roles: ROLE_USER }
         - { path: ^/observation, roles: ROLE_USER }
         - { path: ^/user/profil, roles: ROLE_USER }
