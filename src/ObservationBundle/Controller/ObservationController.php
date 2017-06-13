@@ -131,7 +131,7 @@ class ObservationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Recuperation des photos uploader
-            $files = $form->get('files')->getData();
+            $files = $form->get('pictures')->getData();
             // On boucle sur les photos pour les ajoutés à l'observation
             foreach ($files as $file) {
                 $picture = new Picture();
@@ -148,8 +148,8 @@ class ObservationController extends Controller
             $em->flush();
 
             $this->addFlash(
-                'alert',
-                'Votre observation a été envoyé! En attente de validation'
+                'success',
+                'Votre observation a été envoyée! En attente de validation'
             );
             return $this->redirectToRoute('observation_add');
         }
@@ -186,7 +186,7 @@ class ObservationController extends Controller
         $em->flush();
         $this->get('event_dispatcher')->dispatch('observation.captured', new ObservationEvent($observation));
 
-        $this->addFlash('info', "L'observation a bien été enregistrer !");
+        $this->addFlash('info', "L'observation a bien été enregistrée !");
 
         return $this->redirectToRoute('observation_view', array('id' => $observation->getId()));
 
@@ -210,7 +210,7 @@ class ObservationController extends Controller
         $em->persist($observation);
         $em->flush();
 
-        $this->addFlash('success', 'Lobservation a bien été invalidé');
+        $this->addFlash('success', 'L\'observation a bien été invalidée');
         return $this->redirectToRoute('observation_view', array('id' => $observation->getId()));
 
     }
