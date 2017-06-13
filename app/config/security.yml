@@ -51,6 +51,7 @@ security:
         - { path: ^/user/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/reset, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/unsleep, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user, roles: ROLE_USER }
         - { path: ^/observation, roles: ROLE_USER }
         - { path: ^/user/profil, roles: ROLE_USER }
