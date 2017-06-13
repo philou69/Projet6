@@ -36,3 +36,7 @@ faq:
     path: /faq
     defaults:
         _controller: ObservationBundle:Default:faq
+
+newsletter:
+    prefix: /newsletter
+    resource: Routing/newsletter.yml

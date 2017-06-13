@@ -25,11 +25,11 @@ security:
             anonymous: ~
             form_login:
               login_path: user_connect
-              check_path: user_connect
+              check_path: user_login
               remember_me: true
             logout:
                 path: user_logout
-                target: /
+                target: homepage
             # connection avec google et facebook
             oauth:
                 resource_owners:
@@ -53,6 +53,7 @@ security:
         - { path: ^/user/reset, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user, roles: ROLE_USER }
         - { path: ^/observation, roles: ROLE_USER }
+        - { path: ^/user/profil, roles: ROLE_USER }
         - {path: ^/user/observation, roles: ROLE_NATURALISTE }
         - {path: ^/user/stars, roles: ROLE_OBS }
         - {path: ^/observation/list, roles: ROLE_USER }

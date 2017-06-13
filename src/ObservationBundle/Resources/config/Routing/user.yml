@@ -1,3 +1,6 @@
+user_login:
+    path: /login
+
 user_logout:
     path: /logout
 
@@ -11,6 +14,11 @@ user_link_forgot:
     defaults:
       _controller: ObservationBundle:User:resetPassword
       token: \.+
+
+user_change_password:
+    path: /change_password
+    defaults:
+      _controller: ObservationBundle:User:changePassword
 
 user_profil:
     path: /profil

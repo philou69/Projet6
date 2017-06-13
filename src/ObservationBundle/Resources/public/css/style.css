@@ -258,3 +258,9 @@ Stylisation bouton Import Image
     width: 90%;
     margin: auto;
 }
+
+/* Style bloquer la largeur des boutons */
+.center-button{
+    width: 120px;
+    margin: auto;
+}
