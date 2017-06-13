@@ -4,7 +4,7 @@
 {% block stylesheet %}
     {{ parent() }}
     <style>
-        .note-editor .btn{
+        .note-editor .btn {
             width: auto;
             color: black;
         }
@@ -14,7 +14,7 @@
 {% block content %}
     <h1>Contenue de la page blog de l'association</h1>
     {{ form_start(form,{'attr': {'class': 'center-80'}}) }}
-    {{ form_errors(form)}}
+    {{ form_errors(form) }}
 
     <div class="form-group">
         {{ form_widget(form.content) }}

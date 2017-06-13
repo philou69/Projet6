@@ -3,21 +3,23 @@
 {% else %}
     {% for observation in observations %}
         <div class="observation" data-href="{{ path('observation_view', {'id': observation.id}) }}">
-                <div class="col-xs-12 first-bloc"><small>Observateur :</small>{{ observation.user.username }}</div>
-                <div class="text-center col-xs-4 second-bloc right-border">
+            <div class="col-xs-12 first-bloc">
+                <small>Observateur :</small>{{ observation.user.username }}</div>
+            <div class="text-center col-xs-4 second-bloc right-border">
                     <small>
                         Date d'observation
                     </small><br>
                     {{ observation.postedAt | date('d/m/Y') }}
-                </div>
-                <div class="text-center col-xs-4 second-bloc right-border">
+            </div>
+            <div class="text-center col-xs-4 second-bloc right-border">
                     <small>Specimens observés</small><br>
                     {{ observation.quantity }}
-                </div>
-                <div class="text-center col-xs-4 second-bloc">
-                    <small>Specimens observés</small><br>
-                    {{ observation.quantity }}
-                </div>
+            </div>
+            <div class="text-center col-xs-4 second-bloc">
+                <small>Lieu</small>
+                <br>
+                {{ observation.location.lieu }}
+            </div>
         </div>
     {% endfor %}
     {% if nbPage > 1 %}

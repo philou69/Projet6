@@ -10,22 +10,24 @@
     <div id="content-connect">
         <div class="center-80">
             {# Zone d'identification avec facebook ou google #}
-            <div id="oauth" >
-                    <div id="title-oauth" class="row">
-                        <div class="col-md-3 connect connect-underline">
-                            <hr></div>
-                        <div class="col-md-6 connect text-center" id="connect_oauth">connecter vous avec : </div>
-                        <div class="col-md-3 connect connect-underline">
-                            <hr></div>
+            <div id="oauth">
+                <div id="title-oauth" class="row">
+                    <div class="col-md-3 connect connect-underline">
+                        <hr>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-2 col-sm-push-4">
-                            <a href="#" onclick="fb_login();" class="btn btn-blue ">Facebook</a>
-                        </div>
-                        <div class="col-sm-2 col-sm-push-4">
-                            <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-red">Google</a>
-                        </div>
+                    <div class="col-md-6 connect text-center" id="connect_oauth">connecter vous avec :</div>
+                    <div class="col-md-3 connect connect-underline">
+                        <hr>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 col-sm-push-4">
+                        <a href="#" onclick="fb_login();" class="btn btn-blue ">Facebook</a>
+                    </div>
+                    <div class="col-sm-2 col-sm-push-4">
+                        <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-red">Google</a>
+                    </div>
+                </div>
 
             </div>
             <div class="row">
@@ -41,13 +43,18 @@
                     {# Formulaire de connection préremplie du pseudo si dsponible #}
                     <form action="{{ path('user_login') }}" method="post" class="form-horizontal">
                         <label for="username" class="control-label required">Identifiant ou email</label>
-                        <input type="text" name="_username" id="username" required="required" class="form-control" value="{{ lastUsername }}" placeholder="Identifiant ou Email">
+                        <input type="text" name="_username" id="username" required="required" class="form-control"
+                               value="{{ lastUsername }}" placeholder="Identifiant ou Email">
                         <label for="password" class="control-label required">Mot de passe</label>
-                        <input type="password" name="_password" id="password" required="required" class="form-control" placeholder="Mot de passe">
+                        <input type="password" name="_password" id="password" required="required" class="form-control"
+                               placeholder="Mot de passe">
                         {# Checkbox se souvenir de moi #}
                         <div class="form-group">
                             <a href="{{ path('user_forgot_password') }}" class="col-md-6">Mot de passe oublié</a>
-                            <label id="remember_label" for="remember_me" class="col-md-6"><input type="checkbox" name="_remember_me" id="remember_me" > Se souvenir de moi </label>
+                            <label id="remember_label" for="remember_me" class="col-md-6"><input type="checkbox"
+                                                                                                 name="_remember_me"
+                                                                                                 id="remember_me"> Se
+                                souvenir de moi </label>
                         </div>
                         <small> * Champs obligatoire</small>
                         <button type="submit" class="btn btn-nao">Se connecter</button>

@@ -63,7 +63,7 @@ class UserType extends AbstractType
                 'label' => 'Date de naissance',
                 'attr' => [
                     'placeholder' => 'Né(é) le : (jj/mm/AAAA)'
-                        ],
+                ],
                 'widget' => 'single_text',
                 'choice_translation_domain' => true,
                 'format' => 'dd/MM/yyyy',

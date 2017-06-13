@@ -9,11 +9,14 @@
 {% block content %}
     <div class="center-90">
         <div class="row">
-            <h1 class="col-xs-12">{{ bird.nomVern }} <small>-{{ bird.lbNom }}</small></h1>
+            <h1 class="col-xs-12">{{ bird.nomVern }}
+                <small>-{{ bird.lbNom }}</small>
+            </h1>
         </div>
         <hr>
-        <div >
-            {# Carte géolocation #}
+        <div>
+            <h2>Répartition géographique</h2>
+            <div id="mapLocation" data-href="{{ path('observation_locations', {'id': bird.id}) }}"></div>
         </div>
         <div>
             <h2>Les observations</h2>
@@ -22,7 +25,6 @@
                 <div class="loader"></div>
             </div>
         </div>
-    </div>
     </div>
 
     {% if bird.sound is not null %}
@@ -36,4 +38,8 @@
     {{ parent() }}
     <script src="{{ asset('bundles/observation/js/AJAX/bird.location.js') }}"></script>
     <script src="{{ asset('bundles/observation/js/play.bird.sound.js') }}"></script>
+    <script src="{{ asset('bundles/observation/js/Maps/location.js') }}"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}">
+    </script>
 {% endblock %}

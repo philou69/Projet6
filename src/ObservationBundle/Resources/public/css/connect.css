@@ -1,67 +1,79 @@
-#content-connect{
+#content-connect {
     background: url("/bundles/observation/images/Visuels/connexionInscription_background.jpg") center no-repeat;
     padding-bottom: 10px;
 }
-form{
+
+form {
     padding: 3%;
-    background-color: rgba(243, 243, 243, 0.5 ) ;
+    background-color: rgba(243, 243, 243, 0.5);
 }
-.form-control{
+
+.form-control {
     border-radius: 0;
     margin-bottom: 10px;
     /*width: 80%;*/
     /*margin: auto;*/
 }
 
-#forget-link{
+#forget-link {
     text-decoration: underline;
 }
-#remember-label{
+
+#remember-label {
     font-weight: normal;
     font-size: small;
 }
-#oauth{
+
+#oauth {
     padding-top: 50px;
     margin-bottom: 10px;
 }
-.connect{
+
+.connect {
     height: 30px;
 }
-hr{
-    margin-top:20px;
+
+hr {
+    margin-top: 20px;
     border-top: 2px solid black;
 }
-form .btn{
+
+form .btn {
     border-radius: 0;
     width: 100%;
     color: white;
 }
-.btn-red{
+
+.btn-red {
     background-color: #d85040;
 }
-.btn-blue{
+
+.btn-blue {
     background-color: #415a92;
 }
-#oauth .btn{
+
+#oauth .btn {
     border-radius: 0;
     color: white;
 }
 
-
-@media (max-width: 992px){
-    #view{
+@media (max-width: 992px) {
+    #view {
         background: url("/bundles/observation/images/Visuels/connexionInscription_background_mobile.jpg") center no-repeat;
         background-size: auto 100%;
     }
-    h1{
+
+    h1 {
         color: black;
         font-size: 30px;
     }
-    .center-90{
+
+    .center-90 {
         width: 90%;
         margin: auto;
     }
 }
+
 /*------------ Toggle switch --------------- */
 /* Le switch - box autour du slider*/
 .switch {
@@ -101,6 +113,7 @@ form .btn{
     -webkit-transition: .4s;
     transition: .4s;
 }
+
 .on, .off {
     color: white;
     /*position: absolute;*/
@@ -110,16 +123,19 @@ form .btn{
     font-size: 10px;
     font-family: Verdana, sans-serif;
 }
-.on{
+
+.on {
     position: absolute;
     top: 3px;
-    left:10%;
+    left: 10%;
 }
-.off{
+
+.off {
     position: absolute;
-    top:3px ;
-    right:10%;
+    top: 3px;
+    right: 10%;
 }
+
 .switch input:checked + .slider {
     background-color: #99d1c8;
 }
@@ -138,10 +154,11 @@ form .btn{
 
 
 @media (min-width: 993px) {
-    #title-oauth{
+    #title-oauth {
         margin-bottom: 20px;
     }
-    .connect.text-center{
+
+    .connect.text-center {
         font-size: 30px;
     }
 }

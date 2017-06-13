@@ -64,14 +64,4 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
         return $query->getQuery()->getResult();
     }
 
-    public function findBirdLocations(Bird $bird)
-    {
-        $query = $this->createQueryBuilder('o')
-            ->where('o.bird = :bird')
-            ->setParameter('bird', $bird)
-            ->getQuery()
-            ->getResult();
-
-        return $query;
-    }
 }

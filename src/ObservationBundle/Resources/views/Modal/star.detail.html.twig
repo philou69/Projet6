@@ -14,8 +14,8 @@
                             {% endif %}
                         </div>
                         <div class="down">
-                            {% for star in groupStar.stars | reverse  %}
-                                {% if app.user in star.users%}
+                            {% for star in groupStar.stars | reverse %}
+                                {% if app.user in star.users %}
                                     <img src="{{ asset(star.image) }}" alt="{{ star.title }}">
                                 {% else %}
                                     <img src="{{ asset(groupStar.image) }}" alt="medaille">

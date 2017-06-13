@@ -11,6 +11,7 @@ use ObservationBundle\Event\ObservationEvent;
 use ObservationBundle\Form\Observation\AddObservationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -225,14 +226,20 @@ class ObservationController extends Controller
         if ($request->isXmlHttpRequest()) {
 
             $em = $this->getDoctrine()->getManager();
-            $observations = $em->getRepository('ObservationBundle:Observation')->findBirdLocations($bird);
+            $locations = $em->getRepository('ObservationBundle:Location')->findBirdLocations($bird);
+
+            $response = new JsonResponse($locations);
 
 
-            // On retourne la même vue quelque soit le device
-            return $this->render('@Observation/Observation/map.html.twig', array('observations' => $observations, 'bird' => $bird));
-        } else {
-            throw $this->createAccessDeniedException('Vous ne pouvez pas acceder à cette page !');
+            return $response;
         }
+
+//
+//            // On retourne la même vue quelque soit le device
+//        return $this->render('@Observation/Observation/map.html.twig', array('observations' => $observations, 'bird' => $bird));
+//    } else {
+//throw $this->createAccessDeniedException('Vous ne pouvez pas acceder à cette page !');
+//}
 
     }
 }

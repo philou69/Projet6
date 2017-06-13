@@ -1,18 +1,19 @@
 
-.user{
+.user {
     background-color: #dbefed;
-    margin: 10px auto ;
+    margin: 10px auto;
     width: 80%;
     height: 100px;
 }
-.user>div{
-    height: calc(100px *0.9);
+
+.user > div {
+    height: calc(100px * 0.9);
     margin-top: calc(100px * 0.05);
     border: 0;
     border-right: 1px solid #fbfbfb;
     text-align: center;
 }
 
-small{
+small {
     color: white;
 }
