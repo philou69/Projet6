@@ -9,8 +9,8 @@ function initMap()
             zoom: 12
         }),
         marqueur = new google.maps.Marker(),
-        geocoder = new google.maps.Geocoder,
-        infowindow = new google.maps.InfoWindow,
+        geocoder = new google.maps.Geocoder(),
+        infowindow = new google.maps.InfoWindow(),
         iconBaseOiseaux = 'http://localhost/NAO/web/bundles/observation/images/icones/crow_red.png';
     var lat_lng;
 

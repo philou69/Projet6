@@ -1,38 +1,45 @@
 /* Ajout d'un fond et fixation de la hauteur du navbar-header */
-#navbar-top-mobile{
+#navbar-top-mobile {
     background-color: #99d1c8;
     height: 40px;
 }
-#navbar-top-mobile>.navbar-header{
+
+#navbar-top-mobile > .navbar-header {
     height: 40px;
 }
-#navbar-top-mobile>.navbar-header>.navbar-toggle{
+
+#navbar-top-mobile > .navbar-header > .navbar-toggle {
     height: 100%;
     width: 40px;
-    padding:10px;
+    padding: 10px;
     margin: 0;
 }
+
 /* Style pour le bouton hamburger */
-#navbar-top-mobile>.navbar-header>button>img{
+#navbar-top-mobile > .navbar-header > button > img {
     height: 20px;
     width: 20px;
     margin: 0;
 }
+
 /*alignement de la liste des reseau sociaux */
-#navbar-top-mobile>.navbar-header>.list-inline{
+#navbar-top-mobile > .navbar-header > .list-inline {
     height: 40px;
     padding: 10px;
     margin: 0;
 }
-#navbar-top-mobile>.navbar-header>.list-inline>li{
+
+#navbar-top-mobile > .navbar-header > .list-inline > li {
     height: 100%;
 }
+
 /* Passage des font awesome en blanc */
-#navbar-top-mobile .fa{
+#navbar-top-mobile .fa {
     color: white;
 }
+
 /* Stylisation du menu collapse */
-#navbar-top-mobile>.navbar-collapse{
+#navbar-top-mobile > .navbar-collapse {
     position: fixed;
     top: 0;
     left: 0;
@@ -44,40 +51,48 @@
     background: url('/bundles/observation/images/Visuels/footer_background.jpg') center no-repeat;
     color: white;
 }
+
 /* Liens en blanc */
-#navbar-top-mobile>.navbar-collapse a {
+#navbar-top-mobile > .navbar-collapse a {
     color: white;
 }
+
 /* Mise en hauteru du titre et des 3 zones*/
-#navbar-top-mobile>.navbar-collapse>h1{
+#navbar-top-mobile > .navbar-collapse > h1 {
     height: 10vh;
-    margin:0;
+    margin: 0;
 }
-#navbar-top-mobile>.navbar-collapse>#links{
+
+#navbar-top-mobile > .navbar-collapse > #links {
     height: 50vh;
 }
-#navbar-top-mobile>.navbar-collapse>#form{
+
+#navbar-top-mobile > .navbar-collapse > #form {
     height: 20vh;
 }
-#navbar-top-mobile>.navbar-collapse>#social{
+
+#navbar-top-mobile > .navbar-collapse > #social {
     height: 20vh;
 }
 
 /* Affichage d'une bordure blanche sous les lis*/
-#navbar-top-mobile>.navbar-collapse>#links>ul>li{
+#navbar-top-mobile > .navbar-collapse > #links > ul > li {
     border: 0;
     border-bottom: 1px solid white;
 }
+
 /*Retrait de la bordure sur la derniere li*/
-#navbar-top-mobile>.navbar-collapse>#links>ul>li:nth-last-child(1){
+#navbar-top-mobile > .navbar-collapse > #links > ul > li:nth-last-child(1) {
     border: 0;
 }
+
 /* Retrait des puces sur la liste imbrique*/
-#navbar-top-mobile>.navbar-collapse>#links>ul>li:nth-last-child(1)>ul>li{
+#navbar-top-mobile > .navbar-collapse > #links > ul > li:nth-last-child(1) > ul > li {
     list-style: none;
 }
+
 /* Ajout d'un tiret devatn chaque li de la liste imbriqué */
-#navbar-top-mobile>.navbar-collapse>#links>ul>li:nth-last-child(1)>ul>li:before{
+#navbar-top-mobile > .navbar-collapse > #links > ul > li:nth-last-child(1) > ul > li:before {
     color: white;
     content: '-';
 }

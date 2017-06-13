@@ -2,7 +2,6 @@
     Home page
      */
 
-
 #bienvenue, #gallery, #actions {
     margin-top: 50px;
 }
@@ -14,6 +13,7 @@ Partie observation et newsletter
 #actions {
     margin-bottom: 60px;
 }
+
 #saisie {
     background: url('../images/Visuels/encartObservation_background.jpg') no-repeat center;
     -webkit-background-size: cover;
@@ -70,10 +70,12 @@ Partie observation et newsletter
         margin-bottom: 10px;
     }
 }
+
 /* Style special pour la navbar */
-.navbar-fixed-top{
+.navbar-fixed-top {
     background-color: transparent;
 }
+
 /*Style sur le div principal de la page
     Afin d'occupé toute l'hauteur de la fenetre
 */
@@ -87,8 +89,9 @@ Partie observation et newsletter
     }
 
 }
+
 /* Positionnement du bouton sur le bas du div */
-#start{
+#start {
     position: relative;
     background-color: transparent;
     color: white;
@@ -131,7 +134,6 @@ Gallerie de photos
     text-decoration: underline;
     color: black;
 }
-
 
 #gallery p {
     margin-top: 50px;

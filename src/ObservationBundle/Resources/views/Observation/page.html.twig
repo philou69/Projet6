@@ -5,29 +5,29 @@
          {# On boucle sur chaque observation#}
     {#Reprendre li avec 100% /5 et 100%#}
         {% for observation in observations %}
-                <div class="observation row" data-href="{{ path('observation_view', {'id': observation.id}) }}">
-                        <div class="text-center col-xs-12 col-md-2 first-bloc">
+            <div class="observation row" data-href="{{ path('observation_view', {'id': observation.id}) }}">
+                <div class="text-center col-xs-12 col-md-2 first-bloc">
                             <small>Espèce observé</small>{% if not is_mobile() %}<br>{% endif %}
                             {{ observation.bird.nomVern }}
-                        </div>
-                        <div class="text-center col-md-2 col-xs-4 right-border second-bloc">
+                </div>
+                <div class="text-center col-md-2 col-xs-4 right-border second-bloc">
                             <small>
                                 Date d'observation
                             </small><br>
                             {{ observation.postedAt | date('d/m/Y') }}
-                        </div>
-                        <div class="text-center col-md-2 col-xs-4 right-border second-bloc">
+                </div>
+                <div class="text-center col-md-2 col-xs-4 right-border second-bloc">
                             <small>Specimens observés</small><br>
                             {{ observation.quantity }}
-                        </div>
-                        <div class="text-center col-md-3 col-xs-4 second-bloc {%  if  is_mobile() != true  and is_tablet() != true %}right-border{% endif %}">
+                </div>
+                <div class="text-center col-md-3 col-xs-4 second-bloc {% if  is_mobile() != true  and is_tablet() != true %}right-border{% endif %}">
                             <small>Lieu</small><br>
-                            {{ is_mobile() == true ? observation.location.lieu | slice(0,15) :  observation.location.lieu }}
-                        </div>
-                        <div class="text-center col-md-3 hidden-xs second-bloc">
+                    {{ is_mobile() == true ? observation.location.lieu | slice(0,15) :  observation.location.lieu }}
+                </div>
+                <div class="text-center col-md-3 hidden-xs second-bloc">
                             <small>Description libre</small><br>
                             {{ observation.observation | slice(0,150) }}
-                        </div>
+                </div>
                 </div>
         {% endfor %}
         {# Si  le nombre de page n'est pas, on affiche une pagination #}

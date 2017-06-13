@@ -16,9 +16,9 @@ class BlogController extends Controller
     public function viewAction(Content $content)
     {
         $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile() || $device->isTablet()){
+        if ($device->isMobile() || $device->isTablet()) {
             return $this->render('ObservationBundle:Blog/Mobile:view.html.twig', array('content' => $content));
-        }else{
+        } else {
             return $this->render('@Observation/Blog/Desktop/view.html.twig', array('content' => $content));
         }
     }
@@ -40,9 +40,9 @@ class BlogController extends Controller
         }
 
         $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile() || $device->isTablet()){
+        if ($device->isMobile() || $device->isTablet()) {
             return $this->render('@Observation/Blog/Mobile/edit.html.twig', array('form' => $form->createView()));
-        }else{
+        } else {
             return $this->render('@Observation/Blog/Desktop/edit.html.twig', array('form' => $form->createView()));
         }
     }

@@ -1,1 +1,20 @@
-{"version":3,"sources":["../../../../../web/bundles/observation/js/main.js"],"names":["$","document","ready","on","tab","attr","removeAttr"],"mappings":";;AAAAA,EAAEC,QAAF,EAAYC,KAAZ,CAAkB,YAAY;AAC1B;AACAF,MAAEC,QAAF,EAAYE,EAAZ,CAAe,WAAf,EAA4B,sBAA5B,EAAoD,YAAY;AAC5DH,UAAE,IAAF,EAAQI,GAAR,CAAY,MAAZ;AACH,KAFD;AAGA;AACAJ,MAAE,kBAAF,EAAsBG,EAAtB,CAAyB,OAAzB,EAAkC,YAAY;AAC1C;AACAH,UAAE,iBAAF,EAAqBK,IAArB,CAA0B,QAA1B,EAAoC,IAApC;AACH,KAHD;AAIAL,MAAE,kBAAF,EAAsBG,EAAtB,CAAyB,OAAzB,EAAkC,YAAY;AAC1C;AACAH,UAAE,iBAAF,EAAqBM,UAArB,CAAgC,QAAhC;AACH,KAHD;AAIH,CAdD","file":"main.js","sourcesContent":["$(document).ready(function () {\n    // Script affichant les sous-menus au survole et cache au quite de la navbar\n    $(document).on('mouseover', '[data-navbar=\"true\"]', function () {\n        $(this).tab('show');\n    })\n    /* Evnets pour le menu hamburger sur mobile */\n    $('#collapse-mobile').on('click', function () {\n        // Quand on affiche le menu collapse, on cache la navbar basse pour qu'elle n'empiete pas dessus\n        $('.navbar-general').attr('hidden', true)\n    })\n    $('#collapse-inside').on('click', function () {\n        // Qunad on le ferme, on affiche la navbar basse\n        $('.navbar-general').removeAttr('hidden');\n    })\n})\n"]}
+{
+  "version": 3,
+  "sources": [
+    "../../../../../web/bundles/observation/js/main.js"
+  ],
+  "names": [
+    "$",
+    "document",
+    "ready",
+    "on",
+    "tab",
+    "attr",
+    "removeAttr"
+  ],
+  "mappings": ";;AAAAA,EAAEC,QAAF,EAAYC,KAAZ,CAAkB,YAAY;AAC1B;AACAF,MAAEC,QAAF,EAAYE,EAAZ,CAAe,WAAf,EAA4B,sBAA5B,EAAoD,YAAY;AAC5DH,UAAE,IAAF,EAAQI,GAAR,CAAY,MAAZ;AACH,KAFD;AAGA;AACAJ,MAAE,kBAAF,EAAsBG,EAAtB,CAAyB,OAAzB,EAAkC,YAAY;AAC1C;AACAH,UAAE,iBAAF,EAAqBK,IAArB,CAA0B,QAA1B,EAAoC,IAApC;AACH,KAHD;AAIAL,MAAE,kBAAF,EAAsBG,EAAtB,CAAyB,OAAzB,EAAkC,YAAY;AAC1C;AACAH,UAAE,iBAAF,EAAqBM,UAArB,CAAgC,QAAhC;AACH,KAHD;AAIH,CAdD",
+  "file": "main.js",
+  "sourcesContent": [
+    "$(document).ready(function () {\n    // Script affichant les sous-menus au survole et cache au quite de la navbar\n    $(document).on('mouseover', '[data-navbar=\"true\"]', function () {\n        $(this).tab('show');\n    })\n    /* Evnets pour le menu hamburger sur mobile */\n    $('#collapse-mobile').on('click', function () {\n        // Quand on affiche le menu collapse, on cache la navbar basse pour qu'elle n'empiete pas dessus\n        $('.navbar-general').attr('hidden', true)\n    })\n    $('#collapse-inside').on('click', function () {\n        // Qunad on le ferme, on affiche la navbar basse\n        $('.navbar-general').removeAttr('hidden');\n    })\n})\n"
+  ]
+}

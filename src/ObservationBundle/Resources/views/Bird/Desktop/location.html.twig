@@ -16,12 +16,12 @@
         <hr>
         <div class="row">
             <div class="col-md-6 left ">
-                <div id="location" data-href="{{ path('observation_locations', {'id': bird.id}) }}"></div>
+                <h2>Répartition géographique</h2>
+                <div id="mapLocation" data-href="{{ path('observation_locations', {'id': bird.id}) }}"></div>
             </div>
             <div class="col-md-6 right">
                 <h2>Dernières observations</h2>
-                <div id="observations" data-href="{{ path('observation_bird_page', {'id': bird.id, 'page': 1}) }}"
-                     class="row">
+                <div id="observations" data-href="{{ path('observation_bird_page', {'id': bird.id, 'page': 1}) }}">
 
                 </div>
                 <div class="content-loader">

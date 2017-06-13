@@ -4,7 +4,7 @@
 {% block stylesheet %}
     {{ parent() }}
     <style>
-        #edit{
+        #edit {
             position: fixed;
             top: 15%;
             left: 80%;
@@ -13,7 +13,8 @@
             border-radius: 50%;
             text-align: center;
         }
-        .fa{
+
+        .fa {
         }
     </style>
 {% endblock %}
@@ -23,7 +24,8 @@
     <div id="blog" class="center-80">
         {{ content.content|raw }}
         {% if 'ROLE_ADMIN' in app.user.roles %}
-            <a href="{{ path('blog_edit', {'page': 'blog'}) }}" class="btn btn-nao " id="edit"><i class="fa fa-pencil"></i></a>
+            <a href="{{ path('blog_edit', {'page': 'blog'}) }}" class="btn btn-nao " id="edit"><i
+                        class="fa fa-pencil"></i></a>
         {% endif %}
     </div>
 {% endblock %}

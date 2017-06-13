@@ -1,37 +1,41 @@
 /* Mise en fomre de la navbar*/
-.navbar-general>#first, .navbar-fixed-bottom>.navbar-nav{
+.navbar-general > #first, .navbar-fixed-bottom > .navbar-nav {
     /*Couleur de fond de la premiere ligne */
     background-color: #99d1c8;
 }
-.navbar-general >.tab-content{
+
+.navbar-general > .tab-content {
     /* Couleur de fond de la deuxieme ligne*/
     background-color: #dbefed;
 }
-.first_line>a{
+
+.first_line > a {
     /* Couleur des lien premiere ligne*/
     color: white;
     line-height: 18px;
 }
 
-.first_line.active>a{
+.first_line.active > a {
     /* Couleur des lien premiere ligne quand active*/
     color: #333333;
 }
-.second_line>a{
+
+.second_line > a {
     /* Couleur des lien secondes ligne*/
     color: #aaaaaa;
     line-height: 18px;
 }
-.second_line.active>a{
+
+.second_line.active > a {
     /* Couleur des lien secondes ligne quand active*/
     color: #333333;
 }
+
 /*Sytle sur le titre de la nav bar*/
-.navbar-brand{
+.navbar-brand {
     color: #a1d0f3;
     font-size: 36px;
 }
-
 
 /* Padding du logo*/
 .navbar-header img {
@@ -39,31 +43,36 @@
 
 }
 
-
 @media (min-width: 993px) {
-    .navbar{
+    .navbar {
         margin-bottom: 0;
         max-height: 90px;
         border: 0;
     }
-    .navbar>#first{
+
+    .navbar > #first {
         height: 50px;
     }
-    .navbar>.tab-content{
+
+    .navbar > .tab-content {
         max-height: 40px;
     }
-    .second_line{
+
+    .second_line {
         height: 40px;
     }
-    .second_line>a{
+
+    .second_line > a {
         margin: auto;
     }
-    .first_line.active>a{
-        height:50px;
+
+    .first_line.active > a {
+        height: 50px;
         border: 0;
         border-bottom: 3px solid #dbefed;
     }
-    .tab-pane>.navbar-nav>li>a{
+
+    .tab-pane > .navbar-nav > li > a {
         padding-top: 10px;
         padding-bottom: 10px;
     }
@@ -71,55 +80,59 @@
 
 @media (max-width: 992px) {
     /*bloquage de la hauteur min*/
-    .navbar{
+    .navbar {
         border: 0;
         min-height: 40px;
     }
 
     /* Création de la hauteur de la liste principale ainsi que de largeur*/
-    .navbar-nav{
+    .navbar-nav {
         height: 40px;
         width: 100%;
         margin: 0;
         padding: 0;
         border: 0;
     }
-    .navbar>.nav-tabs{
+
+    .navbar > .nav-tabs {
         border-bottom: 0;
     }
-    .first_line, .first_line.active{
+
+    .first_line, .first_line.active {
         width: 25%;
         height: 40px;
         margin: 0;
         padding: 0;
     }
-    .first_line.active{
+
+    .first_line.active {
         background-color: #dbefed;
     }
-    .nav-tabs>li.active>a{
+
+    .nav-tabs > li.active > a {
         background-color: transparent;
-        border:0;
+        border: 0;
     }
-    .first_line>a, .first_line.active>a{
+
+    .first_line > a, .first_line.active > a {
         margin: 0;
         border: 0;
         height: 40px;
 
     }
-    .first_line>a>img{
+
+    .first_line > a > img {
         height: 20px;
     }
 
-
-/*Sous navbar */
-    .second{
+    /*Sous navbar */
+    .second {
         margin: 0;
         padding: 0;
         height: 30px;
     }
 
-
-    .second_line>a>img{
+    .second_line > a > img {
         height: 20px;
         margin-top: 5px;
         margin-left: auto;
@@ -128,10 +141,11 @@
 }
 
 @media (min-width: 993px) and ( max-width: 1220px) {
-   #first .nav>li>a{
+    #first .nav > li > a {
         padding: 10px 5px;
     }
-    .navbar-header>img{
+
+    .navbar-header > img {
         width: 150px;
     }
 }

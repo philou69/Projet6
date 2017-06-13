@@ -55,14 +55,14 @@ class UserMailer
     public function sendStatus(User $user)
     {
         $message = \Swift_Message::newInstance()
-            ->setSubject( $user->isEnabled() == true ? 'Reouverture de votre compte' : 'Fermeture de votre compte' )
+            ->setSubject($user->isEnabled() == true ? 'Reouverture de votre compte' : 'Fermeture de votre compte')
             ->setFrom($this->sender, 'Nos Amis les Oiseaux')
             ->setTo($user->getEmail())
             ->setBody($this->twig->render('@Observation/Email/changing.status.user.html.twig', array('user' => $user)), 'text/html');
 
-        if (! $this->mailer->send($message)) {
-        // Il y a eu un problème donc on traite l'erreur
-        throw new Exception('Le mail n\'a pas pu être envoyé');
-    }
+        if (!$this->mailer->send($message)) {
+            // Il y a eu un problème donc on traite l'erreur
+            throw new Exception('Le mail n\'a pas pu être envoyé');
+        }
     }
 }

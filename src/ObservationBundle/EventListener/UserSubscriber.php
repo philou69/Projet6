@@ -26,6 +26,16 @@ class UserSubscriber implements EventSubscriberInterface
             'user.captured' => array(array('hasBirthday'), array('hasAvatar'))
         );
     }
+
+    public function hasBirthDay($event)
+    {
+        $user = $event->getUser();
+
+        if ($user->getBirthDate() != null) {
+            $this->addStars($user, self::BIRTH_DATE);
+        }
+    }
+
     public function addStars(User $user, $entityName)
     {
         $groupStar = $this->em->getRepository('ObservationBundle:GroupStar')->findOneBy(
@@ -38,20 +48,11 @@ class UserSubscriber implements EventSubscriberInterface
         }
     }
 
-    public function hasBirthDay($event)
-    {
-        $user = $event->getUser();
-
-        if ($user->getBirthDate() != null) {
-            $this->addStars($user, self::BIRTH_DATE);
-        }
-    }
-
     public function hasAvatar($event)
     {
         $user = $event->getUser();
 
-        if($user->getAvatar() != null){
+        if ($user->getAvatar() != null) {
             $this->addStars($user, self::AVATAR);
         }
     }

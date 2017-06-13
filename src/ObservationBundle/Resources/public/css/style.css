@@ -1,5 +1,5 @@
 /* Suppression des marges negatifs sur les classes row de bootstrap*/
-.row{
+.row {
     margin-left: 0;
     margin-right: 0;
 }
@@ -20,7 +20,6 @@ body {
 .form-control {
     border-radius: 0;
 }
-
 
 h1 {
     font-size: 36px;
@@ -45,7 +44,6 @@ h1 {
     margin-right: 10px;
 }
 
-
 /*
 Page Observation
  */
@@ -54,7 +52,7 @@ Page Observation
     width: 100%;
 }
 
-.center-80{
+.center-80 {
     width: 80%;
     margin: auto;
 }
@@ -91,9 +89,7 @@ Stylisation bouton Import Image
     text-shadow: none;
 }
 
-
-
-     /*------------------ Styel pour les écans de largeur superieur à 992 px -------*/
+/*------------------ Styel pour les écans de largeur superieur à 992 px -------*/
 @media (min-width: 992px) {
     /* Marge du body pour la navbar et utilisation de flex pour coller le footer en bas de page */
     body {
@@ -107,38 +103,38 @@ Stylisation bouton Import Image
     #content {
         flex: 1;
     }
-    #content>.center-80{
+
+    #content > .center-80 {
         min-height: calc(100vh - 140px - 70px);
         padding-top: 20px;
 
     }
-
 
     #listing .row {
         margin-left: 5px;
 
     }
 
-
 }
 
 /* -------------------------------- Fin style écran petit ----------------------------------------*/
 /* -------------------------------- Ecran de moins de 992 px de large ----------------------------------------*/
 @media (max-width: 992px) {
-    body{
+    body {
         min-height: 100vh;
         margin: 0;
     }
+
     /* Marge speciale pour ne pas affiché sous la navbar */
     #view {
         padding-bottom: 70px;
-        min-height:100vh;
+        min-height: 100vh;
         padding-top: 40px;
     }
-    #view>.center-80 {
+
+    #view > .center-80 {
         padding-top: 20px;
     }
-
 
 }
 
@@ -152,22 +148,23 @@ Stylisation bouton Import Image
     height: 20px;
 }
 
-
-
 /* Capital sur les lien de navigation dans le footer */
 .capital {
     text-transform: uppercase;
     font-size: small;
 }
-#birds{
+
+#birds {
     margin-top: 20px;
 }
+
 /*------- Loader -----*/
-.content-loader{
+.content-loader {
     width: 120px;
     height: 120px;
     margin: auto;
 }
+
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
     border-top: 16px solid #3498db; /* Blue */
@@ -203,26 +200,15 @@ Stylisation bouton Import Image
     right: 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-.obtained{
-    border:2px solid #916319;
+.obtained {
+    border: 2px solid #916319;
 }
-.no-obtained{
+
+.no-obtained {
     border: 2px solid #2f2f2f;
 }
-.star{
+
+.star {
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -230,7 +216,8 @@ Stylisation bouton Import Image
 #birds .col-sm-4 {
     padding: 0;
 }
-#edit_avatar{
+
+#edit_avatar {
     border-radius: 50%;
     position: relative;
     bottom: 40px;
@@ -238,35 +225,36 @@ Stylisation bouton Import Image
 }
 
 /*--- marging ----*/
-.marge-top{
+.marge-top {
     margin-top: 20px;
 }
 
-
-
 /* Les boutons des form sont toutes largeur, sans arrondi et de couleur blanche*/
-.btn{
+.btn {
     border-radius: 0;
     width: 100%;
     color: white;
 }
-.btn-nao>img{
+
+.btn-nao > img {
     height: 20px;
 }
+
 /*Couleur verte sur les bouton */
-.btn-nao{
+.btn-nao {
     background-color: #99d1c8;
 }
 
 .btn-nao-2 {
     background-color: #8dd4e8;
 }
+
 /*Background gris*/
-.grey{
+.grey {
     background-color: #fbfbfb;
 }
 
-.center-90{
+.center-90 {
     width: 90%;
     margin: auto;
 }

@@ -1,7 +1,11 @@
-<div id="other" class="tab-pane center-80 {% if app.request.attributes.get('_route') in ['blog_view', 'contact', 'faq'] %}active{% endif %}">
+<div id="other"
+     class="tab-pane center-80 {% if app.request.attributes.get('_route') in ['blog_view', 'contact', 'faq'] %}active{% endif %}">
     <ul class=" nav navbar-nav pull-right">
-        <li class="second_line {% if app.request.attributes.get('_route')  == 'blog_view'%}active{% endif %}"><a href="{{ path('blog_view', {'page': 'blog'}) }}">L'association</a></li>
-        <li class="second_line {% if app.request.attributes.get('_route')  == 'contact'%}active{% endif %}"><a href="second_line {{ path('contact') }}">Nous contacter</a></li>
-        <li class="second_line {% if app.request.attributes.get('_route')  == 'faq'%}active{% endif %}"><a href="{{ path('faq') }}">Faq</a></li>
+        <li class="second_line {% if app.request.attributes.get('_route')  == 'blog_view' %}active{% endif %}"><a
+                    href="{{ path('blog_view', {'page': 'blog'}) }}">L'association</a></li>
+        <li class="second_line {% if app.request.attributes.get('_route')  == 'contact' %}active{% endif %}"><a
+                    href="second_line {{ path('contact') }}">Nous contacter</a></li>
+        <li class="second_line {% if app.request.attributes.get('_route')  == 'faq' %}active{% endif %}"><a
+                    href="{{ path('faq') }}">Faq</a></li>
     </ul>
 </div>
