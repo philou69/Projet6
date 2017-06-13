@@ -3,6 +3,7 @@
 namespace ObservationBundle\Repository;
 
 use ObservationBundle\Entity\User;
+use ObservationBundle\Entity\Bird;
 
 /**
  * LocationRepository
@@ -22,4 +23,18 @@ class LocationRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getQuery()->getResult();
     }
+
+    public function findBirdLocations(Bird $bird)
+    {
+        $query = $this->createQueryBuilder('l')
+            ->innerJoin('l.observations', 'o')
+            ->addSelect('o')
+            ->where('o.bird = :bird')
+            ->setParameter('bird', $bird)
+            ->getQuery()
+            ->getArrayResult();
+
+        return $query;
+    }
+
 }

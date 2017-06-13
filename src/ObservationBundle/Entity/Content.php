@@ -42,6 +42,16 @@ class Content
     }
 
     /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
      * Set content
      *
      * @param string $content
@@ -56,13 +66,13 @@ class Content
     }
 
     /**
-     * Get content
+     * Get page
      *
      * @return string
      */
-    public function getContent()
+    public function getPage()
     {
-        return $this->content;
+        return $this->page;
     }
 
     /**
@@ -77,15 +87,5 @@ class Content
         $this->page = $page;
 
         return $this;
-    }
-
-    /**
-     * Get page
-     *
-     * @return string
-     */
-    public function getPage()
-    {
-        return $this->page;
     }
 }

@@ -339,16 +339,16 @@ class UserController extends Controller
 
         $device = $this->get('mobile_detect.mobile_detector');
 
-        if($device->isMobile() && $device->isTablet()){
+        if ($device->isMobile() && $device->isTablet()) {
             return $this->render('@Observation/User/Mobile/list.users.html.twig', array('users' => $users));
-        }else{
+        } else {
             return $this->render('@Observation/User/Desktop/list.users.html.twig', array('users' => $users));
         }
     }
 
     public function reactivateAction(User $user)
     {
-        $user->setIsActive( $user->getIsActive() == true ? false : true );
+        $user->setIsActive($user->getIsActive() == true ? false : true);
         $em = $this->getDoctrine()->getManager();
         $em->flush();
         $this->get('observation.user.mailer')->sendStatus($user);

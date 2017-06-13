@@ -11,27 +11,31 @@
         {% include '@Observation/Default/Navbar/Mobile/other.sub.navbar.html.twig' %}
     </div>
     {# Liste des menus #}
-        <ul class="navbar-nav nav nav-tabs">
-            <li class="first_line text-center {{  app.request.attributes.get('_route') == 'homepage' ? 'active' :'' }}">
+    <ul class="navbar-nav nav nav-tabs">
+        <li class="first_line text-center {{ app.request.attributes.get('_route') == 'homepage' ? 'active' :'' }}">
                 <a href="{{ path('homepage') }}">
-                    <img src="{{ app.request.attributes.get('_route') == 'homepage' ? asset('bundles/observation/images/icones/home_icon_hover.png') : asset('bundles/observation/images/icones/home_icon.png') }}" alt="">
+                    <img src="{{ app.request.attributes.get('_route') == 'homepage' ? asset('bundles/observation/images/icones/home_icon_hover.png') : asset('bundles/observation/images/icones/home_icon.png') }}"
+                         alt="">
                 </a>
             </li>
-            <li class="first_line text-center {{  app.request.attributes.get('_route') == 'observation_add' ? 'active' :'' }}">
-                <a href="{{ path('observation_add') }}" id="add_observation">
-                    <img src="{{ app.request.attributes.get('_route') == 'observation_add' ? asset('bundles/observation/images/icones/ajoutObservation_icon_hover.png') : asset('bundles/observation/images/icones/ajoutObservation_icon.png') }}" alt="">
+        <li class="first_line text-center {{ app.request.attributes.get('_route') == 'observation_add' ? 'active' :'' }}">
+            <a href="{{ path('observation_add') }}" id="add_observation">
+                <img src="{{ app.request.attributes.get('_route') == 'observation_add' ? asset('bundles/observation/images/icones/ajoutObservation_icon_hover.png') : asset('bundles/observation/images/icones/ajoutObservation_icon.png') }}"
+                     alt="">
                 </a>
             </li>
             {% if app.request.attributes.get('_route')  in ['bird_description', 'bird_location'] %}
                 <li class="first_line tabs active text-center">
                     <a href="#fiche_bird" data-toggle="tab" data-navbar="true" id="fiche_bird">
-                        <img src="{{ app.request.attributes.get('route') starts with 'bird' ? asset('bundles/observation/images/icones/fiches_icon_hover.png'): asset('bundles/observation/images/icones/fiches_icon.png') }}" alt="">
+                        <img src="{{ app.request.attributes.get('route') starts with 'bird' ? asset('bundles/observation/images/icones/fiches_icon_hover.png'): asset('bundles/observation/images/icones/fiches_icon.png') }}"
+                             alt="">
                     </a>
                 </li>
             {% else %}
-                <li class="first_line text-center {{  app.request.attributes.get('_route') == 'bird_list' ? 'active' :'' }}">
+                <li class="first_line text-center {{ app.request.attributes.get('_route') == 'bird_list' ? 'active' :'' }}">
                     <a href="{{ path('bird_list') }}" id="fiche_bird">
-                        <img src="{{ app.request.attributes.get('_routes') == 'bird_list' ? asset('bundles/observation/images/icones/fiches_icon_hover.png') : asset('bundles/observation/images/icones/fiches_icon.png') }}" alt="">
+                        <img src="{{ app.request.attributes.get('_routes') == 'bird_list' ? asset('bundles/observation/images/icones/fiches_icon_hover.png') : asset('bundles/observation/images/icones/fiches_icon.png') }}"
+                             alt="">
                     </a>
                 </li>
             {% endif %}
@@ -39,7 +43,8 @@
                 {% if app.request.attributes.get('_route') in ['user_profil', 'user_my_observations', 'user_observations','user_stars'] %}
                     <li class="first_line tabs active text-center">
                         <a href="#user_tab" data-toggle="tab" data-navbar="true" id="user">
-                            <img src="{{ app.request.attributes.get('_route') starts with 'user_' ? asset('bundles/observation/images/icones/compte_icon_hover.png') : asset('bundles/observation/images/icones/compte_icon.png') }}" alt="">
+                            <img src="{{ app.request.attributes.get('_route') starts with 'user_' ? asset('bundles/observation/images/icones/compte_icon_hover.png') : asset('bundles/observation/images/icones/compte_icon.png') }}"
+                                 alt="">
                         </a>
                     </li>
                 {% else %}
@@ -57,5 +62,5 @@
                 </li>
             {% endif %}
 
-        </ul>
+    </ul>
 </nav>

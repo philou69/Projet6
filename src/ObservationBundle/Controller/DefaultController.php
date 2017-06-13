@@ -16,7 +16,7 @@ class DefaultController extends Controller
         $gallery = $em->getRepository('ObservationBundle:Picture')->getPictureGallery();
 
         $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile() || $device->isTablet()){
+        if ($device->isMobile() || $device->isTablet()) {
 
             return $this->render('@Observation/Home/Mobile/home.html.twig', array('gallery' => $gallery));
         }else{

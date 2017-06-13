@@ -1,59 +1,71 @@
 /*
 Star design
 */
-.star>a{
+.star > a {
     display: inline-block;
     width: 50px;
     min-height: 50px;
 }
-.group-star{
+
+.group-star {
     background-color: #cccccc;
     border-radius: 50%;
 }
-#stars{
+
+#stars {
     display: none;
 }
-.star>a>img{
+
+.star > a > img {
     width: 50px;
     margin: auto;
 }
 
 /* -------- Modal style ------ */
 
-.modal-content{
+.modal-content {
     min-height: 50vh;
 }
-.modal-body, .modal-body>.center-80{
+
+.modal-body, .modal-body > .center-80 {
     min-height: inherit;
     max-height: inherit;
 }
-.modal-body{
+
+.modal-body {
     width: 100%;
 }
-.modal-body>.center-80{
+
+.modal-body > .center-80 {
     display: flex;
 }
-.modal-body .left, .modal-body .right{
+
+.modal-body .left, .modal-body .right {
     min-height: inherit;
     max-height: inherit;
     width: 45%;
 }
-.modal-body .left{
+
+.modal-body .left {
     margin-left: 5%;
 }
-.modal-body .right{
+
+.modal-body .right {
     margin-right: 5%;
     text-align: center;
 }
-.up, .down{
+
+.up, .down {
     height: 50%;
     text-align: center;
-    padding: calc((100% - 24px) /2) 0;
+    padding: calc((100% - 24px) / 2) 0;
 }
-.up{
+
+.up {
     border: 0;
     border-bottom: 2px solid black;
 }
-.up>img{
+
+.up > img {
     vertical-align: middle;
 }

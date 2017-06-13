@@ -1,15 +1,16 @@
-<div id="other" class="tab-pane second row  {{  app.request.attributes.get('_route') in ['blog_view', 'faq', 'contact'] ? 'active' :'' }}">
-        <div class="second_line col-xs-3 text-center {{ app.request.attributes.get('_route') == 'blog_view' ? 'active' : '' }}">
-            <a href="{{ path('blog_view', {'page': 'blog'}) }}">
-                <img src="{{ asset('bundles/observation/images/logo/logo_footer_couleur.png') }}" alt="">
-            </a>
-        </div>
-        <div class="second_line col-xs-3 text-center{{  app.request.attributes.get('_route')  == 'contact' ? 'active' :'' }}">
-            <a href="{{ path('contact') }}">
-                <img src="{{ app.request.attributes.get('_route') == 'contact' ? asset('bundles/observation/images/icones/son_icon.png') : asset('bundles/observation/images/icones/son_icon_hover.png') }}">
-            </a>
-        </div>
-        <div class="second_line col-xs-3 text-center {{  app.request.attributes.get('_route')  == 'faq' ? 'active' : '' }}">
-            <a href="{{ path('faq') }}">Faq</a>
-        </div>
+<div id="other"
+     class="tab-pane second row  {{ app.request.attributes.get('_route') in ['blog_view', 'faq', 'contact'] ? 'active' :'' }}">
+    <div class="second_line col-xs-3 text-center {{ app.request.attributes.get('_route') == 'blog_view' ? 'active' : '' }}">
+        <a href="{{ path('blog_view', {'page': 'blog'}) }}">
+            <img src="{{ asset('bundles/observation/images/logo/logo_footer_couleur.png') }}" alt="">
+        </a>
+    </div>
+    <div class="second_line col-xs-3 text-center{{ app.request.attributes.get('_route')  == 'contact' ? 'active' :'' }}">
+        <a href="{{ path('contact') }}">
+            <img src="{{ app.request.attributes.get('_route') == 'contact' ? asset('bundles/observation/images/icones/son_icon.png') : asset('bundles/observation/images/icones/son_icon_hover.png') }}">
+        </a>
+    </div>
+    <div class="second_line col-xs-3 text-center {{ app.request.attributes.get('_route')  == 'faq' ? 'active' : '' }}">
+        <a href="{{ path('faq') }}">Faq</a>
+    </div>
 </div>
