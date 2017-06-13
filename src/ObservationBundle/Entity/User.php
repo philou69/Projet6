@@ -181,6 +181,11 @@ class User implements AdvancedUserInterface, \Serializable
             return $this;
         }
         if(!in_array($role, $this->roles, true)){
+            // On s'assure que les admins, on aussi le role naturaliste
+            if($role === 'ROLE_ADMIN' && !in_array('ROLE_NATURALISTE', $this->roles, true))
+            {
+                $this->roles[] = 'ROLE_NATURALISTE';
+            }
             $this->roles[] = $role;
         }
         return $this;

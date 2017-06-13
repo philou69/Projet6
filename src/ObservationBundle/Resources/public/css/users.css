@@ -17,3 +17,14 @@
 small {
     color: white;
 }
+
+@media (max-width: 993px){
+    .user{
+        width: auto;
+        height: auto;
+    }
+    .user>div{
+        height: auto;
+        height: auto;
+    }
+}
