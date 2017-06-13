@@ -6,15 +6,22 @@ $(document).ready(function () {
     $('#add_observation_bird').hide();
 
     //Formatage du datepicker
-    $('#datepicker').datepicker({
-        format: 'dd-mm-yyyy',
+
+    $("#datepicker").datepicker({
+        altField: "#datepicker",
+        closeText: 'Fermer',
+        firstDay: 1,
+        dateFormat: 'yyyy-mm-dd',
         minDate: 0
     });
-    $('#datepicker').datepicker("setDate", new Date());
-    $('#datepicker').datepicker().on('changeDate', function () {
-        $('#datepicker').datepicker('hide');
-    });
+    $.datepicker.setDefaults($.datepicker.regional["fr"]); // texte en french marche pas
 });
+$('#datepicker').datepicker().on('changeDate', function () {
+    $('#datepicker').datepicker('hide');
+});
+
+//$('#datepicker').datepicker("setDate", new Date());
+
 
 document.getElementById("add_observation_location_latitude").required = false;
 document.getElementById("add_observation_location_longitude").required = false;

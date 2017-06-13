@@ -6,8 +6,8 @@
 
 {% block content %}
     <div id="contentAdd">
-        <div id="flash">{% for flash_message in app.session.flashBag.get('notice') %}
-                <div class="alert alert-success">
+        <div id="flash">{% for flash_message in app.session.flashBag.get('success') %}
+                <div class="alert alert-{{ type }}" id="flashMobile">
                     <strong>{{ flash_message }}</strong>
                 </div>
             {% endfor %}
@@ -26,13 +26,15 @@
 
                 {#Localisation Observation#}
                 <div class="form-group">
-                    <div>
-                        {{ form_label(form.location) }}
-                        {{ form_errors(form.location) }}
-                        {{ form_widget(form.location, {'attr':{'class': 'col-xs-10 col-xs-offset-1'}}) }}
-                        <button type="button" class="btn btn-nao col-xs-10 col-xs-offset-1" id="locationChoice">
-                            Selectioner votre position
-                        </button>
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            {{ form_label(form.location) }}
+                            {{ form_errors(form.location) }}
+                            {{ form_widget(form.location, {'attr':{'class': 'col-xs-12'}}) }}
+                            <button type="button" class="btn btn-nao" id="locationChoice">
+                                Selectioner votre position
+                            </button>
+                        </div>
                     </div>
                 </div>
                 {#Modale de la map#}
@@ -99,9 +101,17 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-xs-10 col-xs-offset-1">
-                            {{ form_label(form.files) }}
-                            {{ form_errors(form.files) }}
-                            {{ form_widget(form.files) }}<br>
+                            <div class="col-xs-12">
+                                {{ form_label(form.pictures) }}
+                                {{ form_errors(form.pictures) }}
+                            </div>
+                            <div class="col-xs-4">
+                                {{ form_widget(form.pictures.first, {'attr': {'data-buttonText': 'Choisir Photo(s)'}}) }}
+                            </div>
+                            <div class="col-xs-4">
+                                {{ form_widget(form.pictures.second, {'attr': {'data-buttonText': 'Prendre Photo(s)', 'capture': 'true'}}) }}
+                            </div>
+                            <br>
 
                             <div id="picBird" class="col-xs-12">
                                 <button type="button" class="close" aria-label="Close" id="closePic" hidden>
@@ -124,8 +134,10 @@
                     <p class="col-xs-offset-1">* Champs Obligatoires</p>
                 </div>
 
-                <div class="text-center">
-                    {{ form_widget(form.save, {'attr':{'class': 'btn-nao'}}) }}
+                <div class="form-group text-center">
+                    <div class="col-xs-10 col-xs-offset-1">
+                        {{ form_widget(form.save, {'attr':{'class': 'btn-nao'}}) }}
+                    </div>
                 </div>
 
                 {{ form_end(form) }}

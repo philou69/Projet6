@@ -79,14 +79,26 @@ Page Observation
     margin: auto;
 }
 
+#flashMobile {
+    margin-top: 40px;
+}
+
 /*
 Stylisation bouton Import Image
  */
 
 .group-span-filestyle .btn-default {
-    background-color: #99d1c8;
-    background-image: none;
+    /*background-color: #99d1c8;*/
+    /*background-image: none;*/
+    background: url('../images/logo/photo_icon.png') no-repeat center;
     text-shadow: none;
+    height: 100px;
+    margin-top: 10px;
+}
+
+.group-span-filestyle .buttonText {
+
+    color: grey;
 }
 
 /*------------------ Styel pour les écans de largeur superieur à 992 px -------*/
