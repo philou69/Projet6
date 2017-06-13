@@ -115,7 +115,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * @ORM\Column(type="boolean")
      */
-    protected $sleeping;
+    protected $sleeping = false;
 
     /**
      * Constructor

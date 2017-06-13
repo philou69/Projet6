@@ -99,7 +99,6 @@ class UserController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            var_dump($request->getClientIp());
             $em = $this->getDoctrine()->getManager();
             // Récuperation de l'user dont le pseudo ou l'email corresponde au form
             $user = $em->getRepository('ObservationBundle:User')->loadUserByUsername($form->getData()['username']);
@@ -111,9 +110,9 @@ class UserController extends Controller
                 // Appel du service mailer
                 $mailer = $this->get('observation.user.mailer');
                 // Le visiteur a dèjà fait une demande de renouvellement de mot de passe et il y a plus de 2 heures
-                if ($user->getRequestPassword() !== null && $now->diff($user->getRequestPassword()->setWhenToken($now)->d) > 2) {
+                if ($user->getRequestPassword() !== null && $now->diff($user->getRequestPassword()->getWhenToken())->h >= 2) {
                     // le visiteur à fait une demande il y a plus de deux heures
-                    $user->getRequestPassword()->setToken($token)->setWhen($now)->setAddressIP($request->getClientIp());
+                    $user->getRequestPassword()->setToken($token)->setWhenToken($now)->setAddressIP($request->getClientIp());
                     $mailer->sendLinkPassword($user);
                 } elseif ($user->getRequestPassword() === null) {
                     // Le visiteur n'a jamais fait de demande
@@ -124,6 +123,7 @@ class UserController extends Controller
                     $user->setRequestPassword($requestPassword);
                     $mailer->sendLinkPassword($user);
                 };
+
                 // Enregistrement des modifications en bdd
                 $em->flush();
 
@@ -161,12 +161,13 @@ class UserController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function resetPasswordAction(Request $request, User $user)
+    public function resetPasswordAction(Request $request, RequestPassword $requestPassword)
     {
         // L'user est récuperer grace au token, si le token n'est pas bon Symfony génere une erreur
         //Vérification de la validité de vie du token, moins de 2 h, que l'adresse ip corresponde et que le token n'a pas été utilisé depuis
         $now = new \DateTime();
-        if ($now->diff($user->getRequestPassword()->getWhenToken())->d > 2 || $user->getRequestPassword()->getAddressIP() != $request->getClientIp() || $user->getRequestPassword()->isUsed()) {
+        $user = $requestPassword->getUser();
+        if ($now->diff($user->getRequestPassword()->getWhenToken())->h >= 2 || $user->getRequestPassword()->getAddressIP() != $request->getClientIp() || $user->getRequestPassword()->isUsed()) {
             throw new \Exception('Le lien n\'est pas valide');
         }
         // Création du formulaire de reset password
@@ -185,7 +186,7 @@ class UserController extends Controller
 
             $this->addFlash('success', 'Le mot de passe a bien été réinitialisé');
 
-            return $this->redirectToRoute('user_login');
+            return $this->redirectToRoute('user_connect');
         }
         // Retourne la vue lié au device
         $device = $this->get('mobile_detect.mobile_detector');
