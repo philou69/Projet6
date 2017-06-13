@@ -80,15 +80,9 @@ class User implements AdvancedUserInterface, \Serializable
     protected $roles;
 
     /**
-     * @ORM\Column(name="token", type="string", nullable=true)
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\RequestPassword", inversedBy="user", cascade={"persist"})
      */
-    protected $token;
-
-    /**
-     * @ORM\Column(name="token_date", type="datetime", nullable=true)
-     */
-    protected $dateToken;
-
+    protected $requestPassword;
     /**
      * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Star", mappedBy="users")
      * @ORM\JoinColumn(nullable=false)
@@ -112,6 +106,16 @@ class User implements AdvancedUserInterface, \Serializable
      * @ORM\Column(type="boolean", nullable=true)
      */
     protected $newsletter = true ;
+
+    /**
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\RequestOpen", inversedBy="user", cascade={"persist"})
+     */
+    protected $requestOpen;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $sleeping;
 
     /**
      * Constructor
@@ -418,53 +422,6 @@ class User implements AdvancedUserInterface, \Serializable
         return $this;
     }
 
-    /**
-     * Get token
-     *
-     * @return string
-     */
-    public function getToken()
-    {
-        return $this->token;
-    }
-
-    /**
-     * Set token
-     *
-     * @param string $token
-     *
-     * @return User
-     */
-    public function setToken($token)
-    {
-        $this->token = $token;
-
-        return $this;
-    }
-
-    /**
-     * Get dateToken
-     *
-     * @return \DateTime
-     */
-    public function getDateToken()
-    {
-        return $this->dateToken;
-    }
-
-    /**
-     * Set dateToken
-     *
-     * @param \DateTime $dateToken
-     *
-     * @return User
-     */
-    public function setDateToken($dateToken)
-    {
-        $this->dateToken = $dateToken;
-
-        return $this;
-    }
 
     /**
      * Add star
@@ -580,5 +537,77 @@ class User implements AdvancedUserInterface, \Serializable
     public function getNewsletter()
     {
         return $this->newsletter;
+    }
+
+    /**
+     * Set requestPassword
+     *
+     * @param \ObservationBundle\Entity\RequestPassword $requestPassword
+     *
+     * @return User
+     */
+    public function setRequestPassword(\ObservationBundle\Entity\RequestPassword $requestPassword = null)
+    {
+        $this->requestPassword = $requestPassword;
+
+        return $this;
+    }
+
+    /**
+     * Get requestPassword
+     *
+     * @return \ObservationBundle\Entity\RequestPassword
+     */
+    public function getRequestPassword()
+    {
+        return $this->requestPassword;
+    }
+
+    /**
+     * Set requestOpen
+     *
+     * @param \ObservationBundle\Entity\RequestOpen $requestOpen
+     *
+     * @return User
+     */
+    public function setRequestOpen(\ObservationBundle\Entity\RequestOpen $requestOpen = null)
+    {
+        $this->requestOpen = $requestOpen;
+
+        return $this;
+    }
+
+    /**
+     * Get requestOpen
+     *
+     * @return \ObservationBundle\Entity\RequestOpen
+     */
+    public function getRequestOpen()
+    {
+        return $this->requestOpen;
+    }
+
+    /**
+     * Set sleeping
+     *
+     * @param boolean $sleeping
+     *
+     * @return User
+     */
+    public function setSleeping($sleeping)
+    {
+        $this->sleeping = $sleeping;
+
+        return $this;
+    }
+
+    /**
+     * Get sleeping
+     *
+     * @return boolean
+     */
+    public function getSleeping()
+    {
+        return $this->sleeping;
     }
 }

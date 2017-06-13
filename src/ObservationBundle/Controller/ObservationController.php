@@ -94,7 +94,7 @@ class ObservationController extends Controller
     public function viewAction(Observation $observation, Request $request)
     {
         $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile()){
+        if($device->isMobile() || $device->isTablet()){
             return $this->render('@Observation/Observation/Mobile/detail.html.twig', array(
                 'observation' => $observation
             ));
@@ -155,7 +155,7 @@ class ObservationController extends Controller
         }
 
         $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile()){
+        if($device->isMobile() || $device->isTablet()){
             return $this->render(
             'ObservationBundle:Observation:Mobile/add.html.twig', array(
             'form' => $form->createView()));
@@ -233,13 +233,5 @@ class ObservationController extends Controller
 
             return $response;
         }
-
-//
-//            // On retourne la même vue quelque soit le device
-//        return $this->render('@Observation/Observation/map.html.twig', array('observations' => $observations, 'bird' => $bird));
-//    } else {
-//throw $this->createAccessDeniedException('Vous ne pouvez pas acceder à cette page !');
-//}
-
     }
 }

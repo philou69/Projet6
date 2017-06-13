@@ -40,5 +40,10 @@ class UserListener
             $this->newsletter->addLisntingNewwsLetter($user, null);
         }
     }
+    public function reOpen(GenericEvent $event)
+    {
+        $user = $event->getSubject();
+        $this->mailer->sendReopen($user);
+    }
 
 }
