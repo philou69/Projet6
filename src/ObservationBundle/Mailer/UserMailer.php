@@ -83,4 +83,15 @@ class UserMailer
         }
     }
 
+    public function sendReopen(User $user)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Demande de réouverture de compte')
+            ->setFrom($this->sender)
+            ->setTo($user->getEmail())
+            ->setBody("<p> Une demande de réactivation de votre compte viens d'être faite</p>", 'text/html');
+
+        $this->mailer->send($message);
+    }
+
 }

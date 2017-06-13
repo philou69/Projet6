@@ -65,3 +65,10 @@ user_sleep:
     path: /sleep
     defaults:
       _controller: ObservationBundle:User:sleep
+
+user_unsleep:
+    path: /unsleep/{token}
+    defaults:
+      _controller: ObservationBundle:User:unsleep
+    requirements:
+      -token: \.+

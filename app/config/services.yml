@@ -20,6 +20,7 @@ services:
           -   '@event_dispatcher'
           -  '@doctrine'
           -  'ObservationBundle\Entity\User'
+
     # Listener charger de hacher les mots de passe
     user_event_listener:
         class: ObservationBundle\EventListener\UserListener
@@ -29,6 +30,7 @@ services:
           - '@observation.newsletter_listing'
         tags:
           - { name: kernel.event_listener, event: user.register, method: onCreate }
+          - { name: kernel.event_listener, event: user.reopen, method: reOpen }
 
     app.form.type.birds:
         class: ObservationBundle\Form\Bird\BirdType
