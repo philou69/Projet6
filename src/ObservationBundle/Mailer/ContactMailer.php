@@ -50,7 +50,7 @@ class ContactMailer
                 'from_name' => 'Nos Amis les Oiseaux',
                 'to' => [
                     [
-                        'email' => 'admin@nao.site-projet.fr',
+                        'email' => 'site.projet.oc@gmail.com',
                         'name' => 'Administrateur'
                     ]
                 ],
@@ -83,7 +83,7 @@ class ContactMailer
                     ],
                     [
                         'name' => 'path',
-                        'content' => $this->router->generate('user_contacts',array(null), UrlGeneratorInterface::ABSOLUTE_URL)
+                        'content' => $this->router->generate('user_contacts',array(null), UrlGeneratorInterface::ABSOLUTE_URL) . '#' . $message->getSlugTitle()
                     ]
                 ]
             );

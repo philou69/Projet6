@@ -455,4 +455,11 @@ class UserController extends Controller
             return $this->render('@Observation/User/Desktop/managed.roles.html.twig', array('form' => $form->createView()));
         }
     }
+
+    public function contactsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $messages = $em->getRepository('ObservationBundle:Message')->findAllOrdering();
+        return $this->render('ObservationBundle:User/Desktop:list.contacts.html.twig', array('messages' => $messages));
+    }
 }
