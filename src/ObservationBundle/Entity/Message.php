@@ -43,17 +43,12 @@ class Message
     /**
      * @ORM\Column(type="boolean")
      */
-    protected $recieved = false;
+    protected $received = false;
 
     /**
      * @ORM\Column(type="boolean")
      */
     protected $answered = false;
-
-    public function __construct()
-    {
-        $this->postedAt = new \DateTime();
-    }
 
     /**
      * Get id
@@ -162,27 +157,27 @@ class Message
     }
 
     /**
-     * Set recieved
+     * Set received
      *
-     * @param boolean $recieved
+     * @param boolean $received
      *
      * @return Message
      */
-    public function setRecieved($recieved)
+    public function setReceived($received)
     {
-        $this->recieved = $recieved;
+        $this->received = $received;
 
         return $this;
     }
 
     /**
-     * Get recieved
+     * Get received
      *
      * @return boolean
      */
-    public function getRecieved()
+    public function getReceived()
     {
-        return $this->recieved;
+        return $this->received;
     }
 
     /**
@@ -207,5 +202,14 @@ class Message
     public function getAnswered()
     {
         return $this->answered;
+    }
+
+    public function getSlugTitle()
+    {
+        return strtr(
+            $this->getTitle(),
+            '@ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
+            'aAAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy'
+        );
     }
 }

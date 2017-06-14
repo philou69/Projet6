@@ -1,0 +1,24 @@
+.message{
+    width: 100%;
+    background-color: #99d1c8;
+    min-height: 200px;
+    margin-bottom: 20px;
+}
+.up{
+    height: 50px;
+    background-color: #dbefed;
+}
+.down{
+    min-height: 150px;
+    padding: 20px;
+}
+.left, .right{
+    display: inline-block;
+    height:100%;
+    width: 49%;
+    margin: 0;
+    padding-left: 10px;
+}
+.left>h5{
+    margin-bottom: 5px;
+}
