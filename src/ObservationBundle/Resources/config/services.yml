@@ -6,6 +6,10 @@ services:
         class: ObservationBundle\Mailer\UserMailer
         arguments: ['%mandrill_api_key%', '@router']
 
+    observation.contact.mailer:
+        class: ObservationBundle\Mailer\ContactMailer
+        arguments: ['%mandrill_api_key%', '@router']
+
     observation.newsletter_listing:
         class: ObservationBundle\Mailer\NewsLetter
         arguments: ['%mailchimp_api_key%', '%mailchimp_list_id%']
