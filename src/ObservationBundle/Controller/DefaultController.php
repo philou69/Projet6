@@ -29,6 +29,7 @@ class DefaultController extends Controller
     public function contactAction(Request $request)
     {
         $message = new Message();
+        $message->setPostedAt(new \DateTime());
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
