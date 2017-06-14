@@ -4,7 +4,7 @@
         <li class="second_line {% if app.request.attributes.get('_route')  == 'blog_view' %}active{% endif %}"><a
                     href="{{ path('blog_view', {'page': 'blog'}) }}">L'association</a></li>
         <li class="second_line {% if app.request.attributes.get('_route')  == 'contact' %}active{% endif %}"><a
-                    href="second_line {{ path('contact') }}">Nous contacter</a></li>
+                    href="{{ path('contact') }}">Nous contacter</a></li>
         <li class="second_line {% if app.request.attributes.get('_route')  == 'faq' %}active{% endif %}"><a
                     href="{{ path('faq') }}">Faq</a></li>
     </ul>

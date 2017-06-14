@@ -77,3 +77,8 @@ user_unsleep:
       _controller: ObservationBundle:User:unsleep
     requirements:
       -token: \.+
+
+user_contacts:
+    path: /contacts
+    defaults:
+      _controller: ObservationBundle:User:contacts
