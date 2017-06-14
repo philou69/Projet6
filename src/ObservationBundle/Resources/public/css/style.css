@@ -17,9 +17,6 @@ body {
     width: 100%;
 }
 
-.form-control {
-    border-radius: 0;
-}
 
 h1 {
     font-size: 36px;
@@ -27,9 +24,6 @@ h1 {
 
 }
 
-.navbar {
-    margin-bottom: 0;
-}
 
 #gallery img, #picBird img {
     margin: 10px auto;
