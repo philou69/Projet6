@@ -145,7 +145,7 @@ Stylisation bouton Import Image
     }
 
     #view > .center-80 {
-        padding-top: 20px;
+        padding-top: 40px;
     }
 
 }
@@ -260,7 +260,9 @@ Stylisation bouton Import Image
 .btn-nao-2 {
     background-color: #8dd4e8;
 }
-
+.btn-form{
+    max-width: 100px;
+}
 /*Background gris*/
 .grey {
     background-color: #fbfbfb;
