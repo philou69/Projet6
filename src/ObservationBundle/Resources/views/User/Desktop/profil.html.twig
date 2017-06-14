@@ -56,7 +56,7 @@
             </div>
         </div>
         <div id="profil_right" class="col-md-6">
-            {{ form_start(form, {'attr':{'class': 'center-80'}}) }}
+            {{ form_start(form) }}
             {{ form_errors(form) }}
 
             <div class="form-group">
@@ -129,7 +129,7 @@
                     {{ form.newsletter.vars.label }}
                 </div>
                 <div class="col-md-8">
-                    <label id="switch_newsletter">
+                    <label id="switch_newsletter" class="on-profil">
                         <input type="checkbox" name="{{ form.newsletter.vars.full_name }}"
                                id="{{ form.newsletter.vars.id }}" {{ form.newsletter.vars.checked == true ? 'checked' : '' }}
                                disabled>
@@ -157,7 +157,7 @@
 
             {# ligne pour le mot de passe qui renvoie vers la page de changement de mot de passe #}
 
-            {{ form_start(formPassword, {'attr':{'class' : 'center-80'}}) }}
+            {{ form_start(formPassword) }}
             {{ form_errors(formPassword) }}
             <div class="form-group">
                 <div class="col-md-2">

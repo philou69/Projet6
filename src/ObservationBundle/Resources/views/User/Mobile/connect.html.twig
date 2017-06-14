@@ -32,7 +32,7 @@
         </div>
         <div id="login">
             <h1>Connexion</h1>
-            <form action="{{ path('user_connect') }}" method="post">
+            <form action="{{ path('user_login') }}" method="post">
                 {% if error %}
                     <div class="alert alert-danger">
                         {{ error.messageKey| trans(error.messageData, 'security') }}
@@ -90,6 +90,7 @@
             <small>* Champs obligatoire</small>
             {# Affichage du bouton d'Enregistrement #}
             {{ form_widget(form.save) }}
+
             {{ form_end(form) }}
 
         </div>
