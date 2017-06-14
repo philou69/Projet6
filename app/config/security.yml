@@ -49,7 +49,8 @@ security:
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
             #form_login: ~
     access_control:
-        - { path: ^/user/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/observation/bird_list, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/reset, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/unsleep, role: IS_AUTHENTICATED_ANONYMOUSLY }
