@@ -88,7 +88,7 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
         $user = $this->getRepository()->findOneBy(array('email' => $response->getEmail()));
 
         // On vérifie si le compte a été mis en sommeil
-        if($user !== null && $user->getSleeping() == true){
+        if($user !== null && $user->getSleeping() == true && $user->getIsActive() === true){
             // création du token qui servira de lien
             $token = str_replace(['/', '+', '*','-'], '', base64_encode(random_bytes(60)));
             // On crée une requete d'ouverture de compte qu'on assigne au compte

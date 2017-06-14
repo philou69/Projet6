@@ -33,20 +33,11 @@
             <a href="{{ path('bird_list') }}" class="col-sm-12 text-center">Retour à la liste</a>
         </div>
     </div>
-
-
-
-    {% if bird.sound is not null %}
-        <div hidden>
-            <audio id="player" src="{{ asset(bird.sound.webPath) }}"></audio>
-        </div>
-    {% endif %}
 {% endblock %}
 
 {% block javascript %}
     {{ parent() }}
     <script src="{{ asset('bundles/observation/js/AJAX/bird.location.js') }}"></script>
-    <script src="{{ asset('bundles/observation/js/play.bird.sound.js') }}"></script>
     <script src="{{ asset('bundles/observation/js/Maps/location.js') }}"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}">
