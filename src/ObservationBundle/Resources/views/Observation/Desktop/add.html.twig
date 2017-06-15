@@ -68,7 +68,7 @@
                         </div>
                     </div>
                 </div>
-
+                {#Choix de l'oiseau#}
                 {% if app.session.get('getBird') == false %}
                     <div class="form-group col-xs-8">
                     <div class="row">
@@ -87,7 +87,7 @@
                         {{ form_widget(form.bird) }}
                     </div>
                 {% endif %}
-
+                {#Nombre de spécimens observés#}
                 <div class="form-group col-xs-8">
                     <div class="row">
                         <div class="col-xs-12">
@@ -97,7 +97,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group col-xs-8">
+                {#Ajout de Photos#}
+                <div class="form-group col-xs-10">
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="col-xs-12">
@@ -119,6 +120,7 @@
                         </div>
                     </div>
                 </div>
+                {#AJout d'une observation#}
                 <div class="form-group col-xs-8">
                     <div class="row">
                         <div class="col-xs-12">
@@ -129,8 +131,7 @@
                 </div>
                     <p>* Champs Obligatoires</p>
                 </div>
-
-
+                {#Soumission du formulaire#}
                 <div class="form-group text-center col-xs-8">
                     <div class="row">
                         <div class="col-xs-12">
@@ -138,13 +139,10 @@
                         </div>
                     </div>
                 </div>
-
                 {{ form_end(form) }}
-
             </div>
         </div>
     </div>
-
 {% endblock %}
 
 {% block javascript %}
@@ -152,7 +150,7 @@
         <script src="{{ asset('bundles/observation/js/Maps/observation.add.js') }}"></script>
         <script src="{{ asset('bundles/observation/js/observation.js') }}"></script>
             <script async defer
-                    src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}&callback=initMap">
+                    src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}&callback=initMap&libraries=places">
             </script>
 {% endblock %}
 

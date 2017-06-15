@@ -26,6 +26,11 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div id="retour" class="text-center">
+            <a href="{{ path('bird_list') }}" class="col-xs-12"><span class="fa fa-arrow-left"></span> Retour à la liste</a>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascript %}
@@ -33,6 +38,6 @@
     <script src="{{ asset('bundles/observation/js/AJAX/bird.location.js') }}"></script>
     <script src="{{ asset('bundles/observation/js/Maps/location.js') }}"></script>
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}">
+            src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}&libraries=places">
     </script>
 {% endblock %}

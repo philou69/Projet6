@@ -29,8 +29,11 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <a href="{{ path('bird_list') }}" class="col-sm-12 text-center">Retour à la liste</a>
+    </div>
+    <div class="row">
+        <div id="retour">
+            <a href="{{ path('bird_list') }}" class="col-xs-12 text-center"><span class="fa fa-arrow-left"></span>
+                Retour à la liste</a>
         </div>
     </div>
 {% endblock %}
@@ -40,7 +43,7 @@
     <script src="{{ asset('bundles/observation/js/AJAX/bird.location.js') }}"></script>
     <script src="{{ asset('bundles/observation/js/Maps/location.js') }}"></script>
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}">
+            src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}&libraries=places">
     </script>
 
 {% endblock %}

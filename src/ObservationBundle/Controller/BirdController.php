@@ -5,6 +5,7 @@ namespace ObservationBundle\Controller;
 
 
 use ObservationBundle\Entity\Bird;
+use ObservationBundle\Entity\Fiche;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ObservationBundle\Entity\Observation;
 use ObservationBundle\Form\Observation\AddObservationType;
@@ -12,6 +13,7 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use ObservationBundle\Entity\Picture;
+use ObservationBundle\Form\Fiche\FicheType;
 
 
 class BirdController extends Controller
@@ -29,6 +31,8 @@ class BirdController extends Controller
 
     public function descripitionAction(Bird $bird)
     {
+//        $fiche = new Fiche();
+
         $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile() || $device->isTablet()){
             return $this->render('@Observation/Bird/Mobile/description.html.twig', array('bird' => $bird));
@@ -156,4 +160,54 @@ class BirdController extends Controller
             throw $this->createAccessDeniedException('Vous n\'avez pas le droit d\'être içi !');
         }
     }
+
+    /*
+     * Edition par l'admin de la fiche de l'oiseau
+     */
+    public function editAction(Bird $bird, Request $request)
+    {
+        $fiche = new Fiche();
+        $em = $em = $this->getDoctrine()->getManager();
+        $description = $bird->getFiche();
+
+        //Premiere edition de la fiche
+        if ($description === null) {
+            $form = $this->createForm(FicheType::class, $fiche, array(
+                'minVal' => 1,
+                'maxVal' => 1
+            ));
+        } //Si la fiche existe deja on la modifie
+        else {
+            $currentFiche = $em->getRepository('ObservationBundle:Fiche')->find($description);
+            $form = $this->createForm(FicheType::class, $currentFiche, array(
+                'attr' => array(
+                    'minVal' => $description->getMinQuantity(),
+                    'maxVal' => $description->getMaxQuantity()
+                )
+
+            ));
+            $fiche = $currentFiche;
+        }
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $bird->setFiche($fiche);
+            $em->persist($bird);
+            $em->flush();
+
+            return $this->redirectToRoute('bird_description', array(
+                'id' => $bird->getId()
+            ));
+        }
+
+        return $this->render('@Observation/Fiche/Desktop/editFiche.html.twig', array('bird' => $bird,
+            'form' => $form->createView()));
+
+    }
 }
+/**
+ * @Security("has_role('ROLE_NATURALISTE')")
+ */
+

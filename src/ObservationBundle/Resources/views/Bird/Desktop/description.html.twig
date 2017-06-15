@@ -1,36 +1,67 @@
 {% extends '@Observation/layout.desktop.html.twig' %}
 
-{% block title %}Descritpion {{ bird.aName }}{% endblock %}
+{% block title %}Description {{ bird.aName }}{% endblock %}
+
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/bird.description.css') }}">
+{% endblock %}
 
 {% block content %}
-    {{ bird.getFamille(app.user) }}
-    <div class="row">
-        {% if bird.fiche is not null %}
-            <div class="col-md-4">
-                {% if bird.pictures | length > 1 %}
-                    <img src="{{ asset(bird.pictures[0].webPath) }}" alt="bird.pictures[0].alt">
-                {% else %}
-                    <p>Pas de photo</p>
-                {% endif %}
-                <div>
-                    Estimation : {{ bird.fiche.minQuantity }} - {{ bird.fiche.maxQuantity }} couples
-                </div>
-                <div>
-                    Status de conservation UICN:
-                    {{ bird.fiche.status }}
-                </div>
+    <div class="center-80" id="description">
+        <h1>{{ bird.nomVern }}
+            <small>-{{ bird.lbNom }}</small>
+        </h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-6 left ">
+                <h2>Fiche descriptive</h2>
             </div>
-            <div class="col-md-8">
-                <p>
-                    {{ bird.fiche.descritpion }}
+        </div>
+        <div class="row">
+            {% if bird.fiche is not null %}
+                <div class="col-xs-4">
+                    {% for picture in  bird.pictures if picture.observation is null %}
+                        <img src="{{ asset(picture.webPath) }}" class="left img-responsive" alt="bird">
+                    {% else %}
+                        <p class="left text-center">Pas de photos</p>
+                    {% endfor %}
+                    <div>
+                        <strong>Estimation :</strong> {{ bird.fiche.minQuantity }} - {{ bird.fiche.maxQuantity }}
+                        couples
+                    </div>
+                    <hr>
+                    <div>
+                        <strong>Status de conservation UICN:</strong>
+                        {{ bird.fiche.status }}
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <p class="text-justify">
+                        {{ bird.fiche.description }}
+                    </p>
+                    {#{% if is_granted('ROLE_ADMIN') %}#}
+                    <div class="row text-right">
+                        <a href="{{ path('bird_edit', {'id': bird.id}) }}">Editer cette Fiche</a>
+                    </div>
+                    {#{% endif %}#}
+                </div>
+
+
+            {% else %}
+                <p class="text-center">Cet oiseau n'a pas encore de fiche descritpif. <a
+                            href="{{ path('bird_edit', {'id': bird.id}) }}" class="text-right">Editer cette Fiche</a>
                 </p>
-            </div>
-        {% else %}
-            <p class="text-center">Cet oiseau n'a pas encore de fiche descritpif</p>
-        {% endif %}
+            {% endif %}
+        </div>
     </div>
-    <div class="row">
-        <a href="{{ path('bird_list') }}" class="col-sm-12 text-center">Retour à la liste</a>
+        <div id="retour">
+            <a href="{{ path('bird_list') }}" class="col-xs-12 text-center"><span class="fa fa-arrow-left"></span>
+                Retour à la liste</a>
+        </div>
     </div>
+
 {% endblock %}
+
+
 

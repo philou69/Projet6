@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    //Selecteur avec champ de saisie
     $('#add_observation_bird').select2().hide;
     $('#add_observation_bird').hide();
 
@@ -39,201 +40,120 @@ $(document).ready(function () {
 
     });
 
-
     //$('#datepicker').datepicker("setDate", new Date());
 
 
-
+//resuired a false pour element caché pour validation formulaire
 document.getElementById("add_observation_location_latitude").required = false;
 document.getElementById("add_observation_location_longitude").required = false;
 
-if (document.getElementById('getBird')) {
-    document.getElementById("add_observation_bird").required = false;
-}
-    let idPicture,
-        idPicturesOne,
-        idPicturesTwo;
-
-
-
-//Formatage de l'upload de photo
 let imgURL1,
     img1,
     imgURL2,
-    img2;
+    img2,
+    idPicture;
 
 let div = document.getElementById("picBird");
 
-
 //Reset de l'upload des photos
-$(".close").click(function () {
+    $(".close").click(function () {
     $('#closePic').attr('hidden', true);
     $('#add_observation_pictures_first').val("");
     $('#add_observation_pictures_second').val("");
 
-    if (img1 && img2) {
-
-        img1.remove();
-        img2.remove();
-
-    } else {
-        if (img1) {
-
-            img1.remove();
-
-        } else if (img2) {
-
-            img2.remove();
-        }
-    }
+        removePicture();
 });
 
 //Recupération de(s )l'image(s)
-    document.getElementById("add_observation_pictures_first").onchange = function () {
-        idPicture = 'add_observation_pictures_first';
-    }
+    $('.filestyle').click(function () {
+        //On verifie quel bouton est cliqué
+        if ($(this).attr('id') === 'add_observation_pictures_first') {
+            idPicture = 'add_observation_pictures_first';
+        }
+        else if ($(this).attr('id') === 'add_observation_pictures_second') {
 
-    document.getElementById("add_observation_pictures_first").onchange = function (file) {
-        console.log('test');
-        //On remove les photos existantes
+            idPicture = 'add_observation_pictures_second';
+        }
+
+        //resuired a false pour element caché pour validation formulaire
+        if (document.getElementById('getBird')) {
+            document.getElementById("idPicture").required = false;
+        }
+
+        document.getElementById(idPicture).onchange = function (file) {
+            //On remove les photos existantes
+            removePicture();
+
+            //On insére les nouvelles photos
+            //Pour 2 photos choisies
+            if ((file.target.files[0]) && (file.target.files[1])) {
+
+                imgURL1 = URL.createObjectURL(file.target.files[0])
+                img1 = document.createElement('img');
+                img1.id = "testImg1";
+                img1.src = imgURL1;
+
+                imgURL2 = URL.createObjectURL(file.target.files[1])
+                img2 = document.createElement('img');
+                img2.id = "testImg2";
+                img2.src = imgURL2;
+
+                div.appendChild(img1)
+                div.appendChild(img2)
+
+            }
+            //Pour une photo choisie
+            else {
+                if (file.target.files[0]) {
+
+                    imgURL1 = URL.createObjectURL(file.target.files[0]);
+                    img1 = document.createElement('img');
+                    img1.id = "testImg1";
+                    // img1.className = "img-thumbnail";
+                    // img1.style.width = '200px';
+                    // img1.style.marginRight = '10px';
+                    img1.src = imgURL1;
+
+                    div.appendChild(img1)
+
+                }
+                else if (file.target.files[1]) {
+
+                    imgURL2 = URL.createObjectURL(file.target.files[1]);
+                    img2 = document.createElement('img');
+                    img2.id = "testImg2";
+                    // img2.className = "img-thumbnail";
+                    // img2.style.width = '200px';
+                    // img2.style.marginRight = '10px';
+                    img2.src = imgURL2;
+
+                    div.appendChild(img2)
+                }
+            }
+
+            $('#closePic').attr('hidden', false);
+        }
+
+
+    })
+
+    //Effacer les images
+    function removePicture() {
         if (img1 && img2) {
 
             img1.remove();
             img2.remove();
 
-        } else {
+        }
+        else {
             if (img1) {
 
                 img1.remove();
 
-            } else if (img2) {
+            }
+            else if (img2) {
                 img2.remove();
             }
         }
-
-        //On insére les nouvelles photos
-        if ((file.target.files[0]) && (file.target.files[1])) {
-
-            imgURL1 = URL.createObjectURL(file.target.files[0])
-            img1 = document.createElement('img');
-            img1.id = "testImg1";
-            // img1.className = "img-thumbnail";
-            // img1.style.width = '200px';
-            // img1.style.marginRight = '10px'
-            img1.src = imgURL1;
-
-            imgURL2 = URL.createObjectURL(file.target.files[1])
-            img2 = document.createElement('img');
-            img2.id = "testImg2";
-            // img2.className = "img-thumbnail";
-            // img2.style.width = '200px';
-            // img2.style.marginRight = '10px';
-            img2.src = imgURL2;
-
-            div.appendChild(img1)
-            div.appendChild(img2)
-
-        } else {
-
-            if (file.target.files[0]) {
-
-                imgURL1 = URL.createObjectURL(file.target.files[0]);
-                img1 = document.createElement('img');
-                img1.id = "testImg1";
-                // img1.className = "img-thumbnail";
-                // img1.style.width = '200px';
-                // img1.style.marginRight = '10px';
-                img1.src = imgURL1;
-
-                div.appendChild(img1)
-
-            } else if (file.target.files[1]) {
-
-                imgURL2 = URL.createObjectURL(file.target.files[1]);
-                img2 = document.createElement('img');
-                img2.id = "testImg2";
-                // img2.className = "img-thumbnail";
-                // img2.style.width = '200px';
-                // img2.style.marginRight = '10px';
-                img2.src = imgURL2;
-
-                div.appendChild(img2)
-            }
-        }
-
-        $('#closePic').attr('hidden', false);
-
-    }
-
-    document.getElementById("add_observation_pictures_second").onchange = function (file) {
-        console.log('test');
-        //On remove les photos existantes
-        if (img1 && img2) {
-
-            img1.remove();
-            img2.remove();
-
-        } else {
-            if (img1) {
-
-                img1.remove();
-
-            } else if (img2) {
-                img2.remove();
-            }
-        }
-
-        //On insére les nouvelles photos
-        if ((file.target.files[0]) && (file.target.files[1])) {
-
-            imgURL1 = URL.createObjectURL(file.target.files[0])
-            img1 = document.createElement('img');
-            img1.id = "testImg1";
-            // img1.className = "img-thumbnail";
-            // img1.style.width = '200px';
-            // img1.style.marginRight = '10px'
-            img1.src = imgURL1;
-
-            imgURL2 = URL.createObjectURL(file.target.files[1])
-            img2 = document.createElement('img');
-            img2.id = "testImg2";
-            // img2.className = "img-thumbnail";
-            // img2.style.width = '200px';
-            // img2.style.marginRight = '10px';
-            img2.src = imgURL2;
-
-            div.appendChild(img1)
-            div.appendChild(img2)
-
-        } else {
-
-            if (file.target.files[0]) {
-
-                imgURL1 = URL.createObjectURL(file.target.files[0]);
-                img1 = document.createElement('img');
-                img1.id = "testImg1";
-                // img1.className = "img-thumbnail";
-                // img1.style.width = '200px';
-                // img1.style.marginRight = '10px';
-                img1.src = imgURL1;
-
-                div.appendChild(img1)
-
-            } else if (file.target.files[1]) {
-
-                imgURL2 = URL.createObjectURL(file.target.files[1]);
-                img2 = document.createElement('img');
-                img2.id = "testImg2";
-                // img2.className = "img-thumbnail";
-                // img2.style.width = '200px';
-                // img2.style.marginRight = '10px';
-                img2.src = imgURL2;
-
-                div.appendChild(img2)
-            }
-        }
-
-        $('#closePic').attr('hidden', false);
-
     }
 });
