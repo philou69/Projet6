@@ -26,12 +26,11 @@
             </div>
         </div>
     </div>
-
-    {% if bird.sound is not null %}
-        <div hidden>
-            <audio id="player" src="{{ asset(bird.sound.webPath) }}"></audio>
+    <div class="row">
+        <div id="retour" class="text-center">
+            <a href="{{ path('bird_list') }}" class="col-xs-12"><span class="fa fa-arrow-left"></span> Retour à la liste</a>
         </div>
-    {% endif %}
+    </div>
 {% endblock %}
 
 {% block javascript %}

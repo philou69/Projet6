@@ -11,7 +11,7 @@ body {
     font-family: ‘Roboto’, sans-serif;
 }
 
-#contentHome, #contentAdd {
+#contentHome, #contentAdd, #contentEdit {
 
     background: url('../images/Visuels/observation_background.jpg') no-repeat center;
     width: 100%;
@@ -64,7 +64,7 @@ Page Observation
     padding: 0;
 }
 
-#formObs {
+#formObs, #formEdit {
 
     border: none;
     background: none;
@@ -99,6 +99,20 @@ Stylisation bouton Import Image
 .group-span-filestyle .buttonText {
 
     color: grey;
+}
+
+/*
+Retour bas de page
+ */
+#retour {
+    height: 30px;
+    background-color: rgb(243, 243, 243);
+}
+
+#retour a {
+    margin-top: 5px;
+    text-decoration: none;
+    color: #99d1c8;
 }
 
 /*------------------ Styel pour les écans de largeur superieur à 992 px -------*/

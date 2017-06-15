@@ -161,11 +161,33 @@ class BirdController extends Controller
         }
     }
 
+    /*
+     * Edition par l'admin de la fiche de l'oiseau
+     */
     public function editAction(Bird $bird, Request $request)
     {
         $fiche = new Fiche();
         $em = $em = $this->getDoctrine()->getManager();
-        $form = $this->createForm(FicheType::class, $fiche);
+        $description = $bird->getFiche();
+
+        //Premiere edition de la fiche
+        if ($description === null) {
+            $form = $this->createForm(FicheType::class, $fiche, array(
+                'minVal' => 1,
+                'maxVal' => 1
+            ));
+        } //Si la fiche existe deja on la modifie
+        else {
+            $currentFiche = $em->getRepository('ObservationBundle:Fiche')->find($description);
+            $form = $this->createForm(FicheType::class, $currentFiche, array(
+                'attr' => array(
+                    'minVal' => $description->getMinQuantity(),
+                    'maxVal' => $description->getMaxQuantity()
+                )
+
+            ));
+            $fiche = $currentFiche;
+        }
 
         $form->handleRequest($request);
 
@@ -175,19 +197,17 @@ class BirdController extends Controller
             $em->persist($bird);
             $em->flush();
 
-            return $this->render('@Observation/Bird/Desktop/description.html.twig', array(
-                'bird' => $bird
+            return $this->redirectToRoute('bird_description', array(
+                'id' => $bird->getId()
             ));
-
         }
 
         return $this->render('@Observation/Fiche/Desktop/editFiche.html.twig', array('bird' => $bird,
             'form' => $form->createView()));
-
 
     }
 }
 /**
  * @Security("has_role('ROLE_NATURALISTE')")
  */
-//        if($
+

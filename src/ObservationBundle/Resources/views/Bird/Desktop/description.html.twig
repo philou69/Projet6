@@ -14,29 +14,37 @@
         </h1>
         <hr>
         <div class="row">
+            <div class="col-md-6 left ">
+                <h2>Fiche descriptive</h2>
+            </div>
+        </div>
+        <div class="row">
             {% if bird.fiche is not null %}
                 <div class="col-xs-4">
-                    {% if bird.pictures | length > 1 %}
-                        <img src="{{ asset(bird.pictures[0].webPath) }}" alt="bird.pictures[0].alt">
+                    {% for picture in  bird.pictures if picture.observation is null %}
+                        <img src="{{ asset(picture.webPath) }}" class="left img-responsive" alt="bird">
                     {% else %}
-                        <p>Pas de photo</p>
-                    {% endif %}
+                        <p class="left text-center">Pas de photos</p>
+                    {% endfor %}
                     <div>
                         <strong>Estimation :</strong> {{ bird.fiche.minQuantity }} - {{ bird.fiche.maxQuantity }}
                         couples
                     </div>
+                    <hr>
                     <div>
                         <strong>Status de conservation UICN:</strong>
                         {{ bird.fiche.status }}
                     </div>
                 </div>
                 <div class="col-xs-8">
-                    <p>
+                    <p class="text-justify">
                         {{ bird.fiche.description }}
                     </p>
+                    {#{% if is_granted('ROLE_ADMIN') %}#}
                     <div class="row text-right">
                         <a href="{{ path('bird_edit', {'id': bird.id}) }}">Editer cette Fiche</a>
                     </div>
+                    {#{% endif %}#}
                 </div>
 
 
@@ -46,13 +54,15 @@
                 </p>
             {% endif %}
         </div>
-        <div class="row">
-            <a href="{{ path('bird_list') }}" class="col-sm-12 text-center">Retour à la liste</a>
+    </div>
+    <div class="row">
+        <div id="retour">
+            <a href="{{ path('bird_list') }}" class="col-xs-12 text-center"><span class="fa fa-arrow-left"></span>
+                Retour à la liste</a>
         </div>
     </div>
 
 {% endblock %}
 
-{#{% if is_granted('ROLE_ADMIN') %} ... {% endif %}#}
 
 

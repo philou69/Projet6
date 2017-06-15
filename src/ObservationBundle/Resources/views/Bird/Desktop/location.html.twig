@@ -29,18 +29,13 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <a href="{{ path('bird_list') }}" class="col-sm-12 text-center">Retour à la liste</a>
+    </div>
+    <div class="row">
+        <div id="retour">
+            <a href="{{ path('bird_list') }}" class="col-xs-12 text-center"><span class="fa fa-arrow-left"></span>
+                Retour à la liste</a>
         </div>
     </div>
-
-
-
-    {% if bird.sound is not null %}
-        <div hidden>
-            <audio id="player" src="{{ asset(bird.sound.webPath) }}"></audio>
-        </div>
-    {% endif %}
 {% endblock %}
 
 {% block javascript %}
