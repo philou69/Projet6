@@ -17,9 +17,6 @@ body {
     width: 100%;
 }
 
-.form-control {
-    border-radius: 0;
-}
 
 h1 {
     font-size: 36px;
@@ -27,9 +24,6 @@ h1 {
 
 }
 
-.navbar {
-    margin-bottom: 0;
-}
 
 #gallery img, #picBird img {
     margin: 10px auto;
@@ -159,7 +153,7 @@ Retour bas de page
     }
 
     #view > .center-80 {
-        padding-top: 20px;
+        padding-top: 40px;
     }
 
 }
@@ -274,7 +268,9 @@ Retour bas de page
 .btn-nao-2 {
     background-color: #8dd4e8;
 }
-
+.btn-form{
+    max-width: 100px;
+}
 /*Background gris*/
 .grey {
     background-color: #fbfbfb;

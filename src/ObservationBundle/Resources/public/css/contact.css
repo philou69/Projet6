@@ -1,0 +1,5 @@
+@media (min-width:  993px){
+    input[type="text"].form-control, input[type="email"].form-control{
+        width: 300px ;
+    }
+}

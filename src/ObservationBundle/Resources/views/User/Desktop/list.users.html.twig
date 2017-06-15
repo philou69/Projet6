@@ -27,13 +27,14 @@
                 <div class="col-sm-3">
                     <small>Status</small>
                     <br>
-                    {{ 'ROLE_ADMIN' in user.roles ? 'Administratuer' : ('ROLE_NATURALISTE' in user.roles ? 'Naturaliste' : 'Particulier') }}
+                    {{ 'ROLE_ADMIN' in user.roles ? 'Administrateur' : ('ROLE_NATURALISTE' in user.roles ? 'Naturaliste' : 'Particulier') }}
                     <br>
                     {% if user.isEnabled %}
                         <a href="#deactivate_user_{{ user.id }}" class="btn btn-nao" data-toggle="modal">Fermé</a>
                     {% else %}
                         <a href="#reactivate_user_{{ user.id }}" class="btn btn-nao" data-toggle="modal">Ouvrir</a>
                     {% endif %}
+                    <a href="{{ path('user_roles', {'id': user.id}) }}">roles</a>
 
                 </div>
             </div>

@@ -21,7 +21,6 @@ class Bird
      */
     protected $sound;
 
-
     /**
      * @var int
      *
@@ -137,6 +136,10 @@ class Bird
      */
     private $pictures;
 
+    /**
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche")
+     */
+    protected $fiche;
 
     /**
      * Constructor
@@ -649,30 +652,6 @@ class Bird
     public function setFiche(\ObservationBundle\Entity\Fiche $fiche = null)
     {
         $this->fiche = $fiche;
-
-        return $this;
-    }
-
-    /**
-     * Get sound
-     *
-     * @return \ObservationBundle\Entity\Sound
-     */
-    public function getSound()
-    {
-        return $this->sound;
-    }
-
-    /**
-     * Set sound
-     *
-     * @param \ObservationBundle\Entity\Sound $sound
-     *
-     * @return Bird
-     */
-    public function setSound(\ObservationBundle\Entity\Sound $sound = null)
-    {
-        $this->sound = $sound;
 
         return $this;
     }

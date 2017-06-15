@@ -25,18 +25,14 @@
         {#
             Toggle switch permettant de choisir entre inscription ou connection
         #}
-        <label class="switch"><input type="checkbox" id="choice">
-            <div class="slider"><span class="on">Se connecter</span><span class="off">S'incrire</span></div>
-        </label>
-        {#<label>Connection </label>#}
-        {#<label class="switch" for="choice">#}
-        {#<input type="checkbox" id="choice">#}
-        {#<div class="slider"></div>#}
-        {#</label><label> Inscription</label>#}
-        {# Zone de connection #}
+        <div id="content-switch">
+            <label class="switch"><input type="checkbox" id="choice">
+                <div class="slider"><span class="on">Se connecter</span><span class="off">S'incrire</span></div>
+            </label>
+        </div>
         <div id="login">
             <h1>Connexion</h1>
-            <form action="{{ path('user_connect') }}" method="post">
+            <form action="{{ path('user_login') }}" method="post">
                 {% if error %}
                     <div class="alert alert-danger">
                         {{ error.messageKey| trans(error.messageData, 'security') }}
@@ -94,6 +90,7 @@
             <small>* Champs obligatoire</small>
             {# Affichage du bouton d'Enregistrement #}
             {{ form_widget(form.save) }}
+
             {{ form_end(form) }}
 
         </div>

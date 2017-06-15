@@ -17,7 +17,9 @@ star:
 blog:
     prefix: /blog
     resource: 'Routing/blog.yml'
-
+contact:
+    prefix: /contact
+    resource: Routing/contact.yml
 homepage:
     path:     /
     defaults: { _controller: ObservationBundle:Default:index }
@@ -27,10 +29,6 @@ asso:
     defaults:
       _controller: ObservationBundle:Default:index
 
-contact:
-    path: /contact
-    defaults:
-        _controller: ObservationBundle:Default:contact
 
 faq:
     path: /faq

@@ -4,7 +4,11 @@ services:
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
     observation.user.mailer:
         class: ObservationBundle\Mailer\UserMailer
-        arguments: ['@mailer', '%mailer_user%', '@twig', '%mailchimp_api_key%', '%mailchimp_list_id%', '@session']
+        arguments: ['%mandrill_api_key%', '@router']
+
+    observation.contact.mailer:
+        class: ObservationBundle\Mailer\ContactMailer
+        arguments: ['%mandrill_api_key%', '@router']
 
     observation.newsletter_listing:
         class: ObservationBundle\Mailer\NewsLetter
