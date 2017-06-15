@@ -1,11 +1,16 @@
 /*------------ Toggle switch newsletter--------------- */
+/* On centre le switch*/
+.checkbox{
+    text-align: center;
+    margin-top: 0;
+}
 /* Le switch - box autour du slider*/
 #switch_newsletter {
     position: relative;
     display: inline-block;
-    width: 300px;
+    width: 260px;
     height: 30px;
-    margin: 5px auto;
+    margin: auto;
 }
 
 /* On cache la checkbox HTML */
@@ -39,10 +44,6 @@
 }
 #slider_newsletter #on, #slider_newsletter #off {
     color: white;
-    /*position: absolute;*/
-    /*transform: translate(-50%, -50%);*/
-    /*top: 50%;*/
-    /*left: 50%;*/
     font-size: 20px;
     font-family: Verdana, sans-serif;
 }
@@ -65,8 +66,25 @@
 }
 
 #switch_newsletter input:not(:checked) + #slider_newsletter:before {
-    -webkit-transform: translateX(290px) translateX(-35px);
-    -ms-transform: translateX(290px) translateX(-35px);
-    transform: translateX(290px) translateX(-35px);
+    -webkit-transform: translateX(260px) translateX(-33px);
+    -ms-transform: translateX(260px) translateX(-33px);
+    transform: translateX(260px) translateX(-33px);
+}
+@media (max-width: 992px){
+    .on-profil #switch_newsletter {
+        width: 170px;
+    }
+    .on-profil>#switch_newsletter>#slider_newsletter>#on{
+        left: 20%;
+    }
+    .on-profil>#switch_newsletter>#slider_newsletter>#off{
+        right: 20%;
+    }
+
+    .on-profil>#switch_newsletter input:not(:checked) + #slider_newsletter:before {
+        -webkit-transform: translateX(170px) translateX(-33px);
+        -ms-transform: translateX(170px) translateX(-33px);
+        transform: translateX(170px) translateX(-33px);
+    }
 }
 /*----------- Fin du toggle switch */

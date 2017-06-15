@@ -36,7 +36,6 @@
 {% block javascript %}
     {{ parent() }}
     <script src="{{ asset('bundles/observation/js/AJAX/bird.location.js') }}"></script>
-    <script src="{{ asset('bundles/observation/js/play.bird.sound.js') }}"></script>
     <script src="{{ asset('bundles/observation/js/Maps/location.js') }}"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}&libraries=places">

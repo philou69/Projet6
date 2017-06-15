@@ -4,26 +4,28 @@
 namespace ObservationBundle\Mailer;
 
 
-use DrewM\MailChimp\MailChimp;
 use ObservationBundle\Entity\User;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\Router;
 
 class UserMailer
 {
-    private $mailer;
-    private $twig;
+    const MAIL = 'nao@nao.site-projet.fr';
+    const NAME = 'Nos Amis les Oiseaux';
+    const TEMPLATE_OAUTH = "connection-oauth";
+    const TEMPLATE_RESET_PASSWORD = "link-reset-password";
+    const TEMPLATE_FERMETURE_COMPTE = "fermeture-de-compte";
+    const TEMPLATE_OUVERTURE_COMPTE = "r-ouverture-de-compte";
+    const TEMPLATE_UNSLEEPING = "unsleeping-compte";
+    protected $mandrill_api_key;
+    protected $router;
+    protected $result = false;
 
-    function __construct(\Swift_Mailer $mailer, $sender, \Twig_Environment $twig, $mailchimp_key, $list_id, Session $session)
+    function __construct($mandrill_api_key, Router $router)
     {
-        // Recuperation de Swit_mailer, de l'addresse mail de NAO, et de l'envirnoment de twig
-        $this->mailer = $mailer;
-        $this->sender = $sender;
-        $this->twig = $twig;
-        $this->mailchimp_key= $mailchimp_key;
-        $this->list_id = $list_id;
-        $this->session = $session;
+        // Recuperation de la clé mandrill et du router
+       $this->mandrill_api_key = $mandrill_api_key;
+        $this->router = $router;
     }
 
     /**
@@ -32,17 +34,30 @@ class UserMailer
      */
     public function sendLinkPassword(User $user)
     {
-        // Création du mail avec le sujet, l'expediteur et son nom, le destinataire et enfin le corps du mail qui contient la vue
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Modification de votre mot de passe')
-            ->setFrom($this->sender, 'Nos amis les oiseaux')
-            ->setTo($user->getEmail())
-            ->setBody(
-                $this->twig->render('ObservationBundle:Email:link.password.html.twig', array('user' => $user)),
-                'text/html'
-            );
-        // Envoie du message avec Swif_Mailer
-        $this->mailer->send($message);
+        $templateName = self::TEMPLATE_RESET_PASSWORD;
+        $templateContent = [
+            [
+                'username' => $user->getUsername(),
+                'path' => $this->router->generate('user_link_forgot', array('token' => $user->getRequestPassword()->getToken()), true )
+            ]
+        ];
+        $sendTo = [
+            [
+                'email' => $user->getEmail(),
+                'name' => $user->getUsername()
+            ]
+        ];
+        $globalsMerge = [
+            [
+                'name'=> 'username',
+                'content' => $user->getUsername()
+            ],
+            [
+                'name' => 'path',
+                'content' => $this->router->generate('user_link_forgot', array('token' => $user->getRequestPassword()->getToken()), UrlGeneratorInterface::ABSOLUTE_URL)
+            ]
+        ];
+        $this->sendMail($templateName, 'Demande de nouveau mot de passe ',$templateContent, $sendTo, $globalsMerge);
 
     }
 
@@ -53,45 +68,126 @@ class UserMailer
      */
     public function connectOAuth(User $user)
     {
-        // Création du message
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Création d\'un compte')
-            ->setFrom($this->sender, 'Nos Amis les Oiseaux')
-            ->setTo($user->getEmail())
-            ->setBody(
-                $this->twig->render('@Observation/Email/connect.oauth.html.twig', array('user' => $user)),
-                'text/html'
-            );
-        // Envoie du message
-        $this->mailer->send($message);
+
+        $templateName = self::TEMPLATE_OAUTH;
+        $templateContent = [
+            [
+                'username' => $user->getUsername(),
+                'plainPassword' => $user->getPlainPassword()
+            ]
+        ];
+        $sendTo = [
+            [
+                'email' => $user->getEmail(),
+                'name' => $user->getUsername()
+            ]
+        ];
+        $globalsMerge = [
+            [
+                'name'=> 'username',
+                'content' => $user->getUsername()
+            ],
+            [
+                'name' => 'plainPassword',
+                'content' => $user->getPlainPassword()
+            ]
+        ];
+        $this->sendMail($templateName, 'Bienvenue chez NAO', $templateContent, $sendTo, $globalsMerge);
     }
 
     public function sendStatus(User $user)
     {
-        $message = \Swift_Message::newInstance()
-            ->setSubject($user->isEnabled() == true ? 'Reouverture de votre compte' : 'Fermeture de votre compte')
-            ->setFrom($this->sender, 'Nos Amis les Oiseaux')
-            ->setTo($user->getEmail())
-            ->setBody(
-                $this->twig->render('@Observation/Email/changing.status.user.html.twig', array('user' => $user)),
-                'text/html'
-            );
-
-        if (!$this->mailer->send($message)) {
-            // Il y a eu un problème donc on traite l'erreur
-            throw new Exception('Le mail n\'a pas pu être envoyé');
-        }
+        $templateName = $user->isEnabled() === true ? self::TEMPLATE_OUVERTURE_COMPTE : self::TEMPLATE_FERMETURE_COMPTE;
+        $templateContent = [
+            [
+                'username' => $user->getUsername()
+            ]
+        ];
+        $sendTo = [
+            [
+                'email' => $user->getEmail(),
+                'name' => $user->getUsername()
+            ]
+        ];
+        $globalsMerge = [
+            [
+                'name'=> 'username',
+                'content' => $user->getUsername()
+            ]
+        ];
+        $this->sendMail($templateName,$user->isEnabled() === true ? 'Réouverture de votre compte' : 'Fermeture de votre compte', $templateContent, $sendTo, $globalsMerge);
     }
 
     public function sendReopen(User $user)
     {
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Demande de réouverture de compte')
-            ->setFrom($this->sender)
-            ->setTo($user->getEmail())
-            ->setBody("<p> Une demande de réactivation de votre compte viens d'être faite</p>", 'text/html');
-
-        $this->mailer->send($message);
+        $templateName = self::TEMPLATE_UNSLEEPING;
+        $templateContent = [
+            [
+                'username' => $user->getUsername(),
+                'path' => $this->router->generate('user_unsleep', array('token' => $user->getRequestOpen()->getToken()), UrlGeneratorInterface::ABSOLUTE_URL )
+            ]
+        ];
+        $sendTo = [
+            [
+                'email' => $user->getEmail(),
+                'name' => $user->getUsername()
+            ]
+        ];
+        $globalsMerge = [
+            [
+                'name'=> 'username',
+                'content' => $user->getUsername()
+            ],
+            [
+                'name' => 'path',
+                'content' => $this->router->generate('user_unsleep', array('token' => $user->getRequestOpen()->getToken()), UrlGeneratorInterface::ABSOLUTE_URL)
+            ]
+        ];
+        $this->sendMail($templateName,'Demande de réactivation de votre compte', $templateContent, $sendTo, $globalsMerge);
     }
 
+    public function getResult()
+    {
+        return $this->result;
+    }
+    public function sendMail($templateName,$subject, $templateContent, $sendTo, $globalsMerge)
+    {
+
+        try{
+            $mandrill = new \Mandrill($this->mandrill_api_key);
+            $template_name = $templateName;
+            $template_content =
+                $templateContent
+            ;
+
+            $message = array(
+                'subject' => $subject,
+                'from_mail' => 'nao@nao.site-projet.fr',
+                'from_name' => 'Nos Amis les Oiseaux',
+                'to' => $sendTo,
+                'important' => true,
+                'track_opens' => null,
+                'track_clicks' => null,
+                'auto_text' => null,
+                'auto_html' => null,
+                'inline_css' => null,
+                'url_strip_qs' => null,
+                'preserve_recipients' => null,
+                'view_content_link' => null,
+                'tracking_domain' => null,
+                'signing_domain' => null,
+                'return_path_domain' => null,
+                'merge' => true,
+                'merge_language' => 'handlebars',
+                'global_merge_vars' => $globalsMerge
+            );
+            $result = $mandrill->messages->sendTemplate($template_name, $template_content, $message);
+            $this->result = $result;
+        } catch(\Mandrill_Error $e) {
+            // Mandrill errors are thrown as exceptions
+            echo 'A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage();
+            // A mandrill error occurred: Mandrill_Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+            throw $e;
+        }
+    }
 }

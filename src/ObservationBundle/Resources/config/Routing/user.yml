@@ -1,6 +1,7 @@
 user_login:
     path: /login
-
+    defaults:
+      _controller: ObservationBundle:User:login
 user_logout:
     path: /logout
 
@@ -60,6 +61,10 @@ user_status:
     defaults:
       _controller: ObservationBundle:User:reactivate
 
+user_roles:
+    path: /{id}/roles
+    defaults:
+      _controller: ObservationBundle:User:roles
 
 user_sleep:
     path: /sleep
@@ -72,3 +77,8 @@ user_unsleep:
       _controller: ObservationBundle:User:unsleep
     requirements:
       -token: \.+
+
+user_contacts:
+    path: /contacts
+    defaults:
+      _controller: ObservationBundle:User:contacts

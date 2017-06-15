@@ -5,8 +5,8 @@
             <img src="{{ asset('bundles/observation/images/logo/logo_footer_couleur.png') }}" alt="">
         </a>
     </div>
-    <div class="second_line col-xs-3 text-center{{ app.request.attributes.get('_route')  == 'contact' ? 'active' :'' }}">
-        <a href="{{ path('contact') }}">
+    <div class="second_line col-xs-3 text-center{{ app.request.attributes.get('_route')  == 'contact_message' ? 'active' :'' }}">
+        <a href="{{ path('contact_message') }}">
             <img src="{{ app.request.attributes.get('_route') == 'contact' ? asset('bundles/observation/images/icones/son_icon.png') : asset('bundles/observation/images/icones/son_icon_hover.png') }}">
         </a>
     </div>

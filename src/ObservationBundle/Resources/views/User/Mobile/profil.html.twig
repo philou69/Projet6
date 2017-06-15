@@ -42,7 +42,7 @@
 
     </div>
     <div id="profil_right">
-        <div class="center-80 padding-top">
+        <div class="center-90 padding-top">
             {{ form_start(form) }}
             {{ form_errors(form) }}
             <div class="form-group">
@@ -109,7 +109,7 @@
                 <div class="col-xs-2">
                     {{ form.newsletter.vars.label }}
                 </div>
-                <div class="col-xs-8">
+                <div class="col-xs-8 on-profil">
                     <label id="switch_newsletter">
                         <input type="checkbox" name="{{ form.newsletter.vars.full_name }}" id="{{ form.newsletter.vars.id }}" {{ form.newsletter.vars.checked == true ? 'checked' : '' }}>
                         <div id="slider_newsletter"><span id="on">Oui</span><span id="off">Non</span></div>
@@ -131,7 +131,7 @@
             {# insertion du token du form #}
             {{ form_widget(form._token) }}
             {# fermeture du form sans afficher le rest( bouton de validation #}
-            {{ form_end(form) }}
+            {{ form_end(form, {'render_rest': false}) }}
             {# ligne pour le mot de passe qui renvoie vers la page de changement de mot de passe #}
 
             {{ form_start(formPassword) }}
