@@ -23,3 +23,8 @@ bird_pagination:
     path: /pagination/{page}
     defaults:
         _controller: ObservationBundle:Bird:pagination
+
+bird_edit:
+    path: /{id}/edit
+    defaults:
+      _controller: ObservationBundle:Bird:edit

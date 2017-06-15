@@ -5,6 +5,7 @@ namespace ObservationBundle\Controller;
 
 
 use ObservationBundle\Entity\Bird;
+use ObservationBundle\Entity\Fiche;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ObservationBundle\Entity\Observation;
 use ObservationBundle\Form\Observation\AddObservationType;
@@ -12,6 +13,7 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use ObservationBundle\Entity\Picture;
+use ObservationBundle\Form\Fiche\FicheType;
 
 
 class BirdController extends Controller
@@ -29,6 +31,8 @@ class BirdController extends Controller
 
     public function descripitionAction(Bird $bird)
     {
+//        $fiche = new Fiche();
+
         $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile() || $device->isTablet()){
             return $this->render('@Observation/Bird/Mobile/description.html.twig', array('bird' => $bird));
@@ -156,4 +160,34 @@ class BirdController extends Controller
             throw $this->createAccessDeniedException('Vous n\'avez pas le droit d\'être içi !');
         }
     }
+
+    public function editAction(Bird $bird, Request $request)
+    {
+        $fiche = new Fiche();
+        $em = $em = $this->getDoctrine()->getManager();
+        $form = $this->createForm(FicheType::class, $fiche);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $bird->setFiche($fiche);
+            $em->persist($bird);
+            $em->flush();
+
+            return $this->render('@Observation/Bird/Desktop/description.html.twig', array(
+                'bird' => $bird
+            ));
+
+        }
+
+        return $this->render('@Observation/Fiche/Desktop/editFiche.html.twig', array('bird' => $bird,
+            'form' => $form->createView()));
+
+
+    }
 }
+/**
+ * @Security("has_role('ROLE_NATURALISTE')")
+ */
+//        if($
