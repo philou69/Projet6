@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Bird
 {
     /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche")
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche", cascade={"persist"})
      */
     protected $fiche;
     /**

@@ -45,6 +45,17 @@ class RequestPassword
      * @ORM\Column(type="boolean")
      */
     protected $used = false;
+
+    /**
+     * Get token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
     /**
      * Set token
      *
@@ -57,16 +68,6 @@ class RequestPassword
         $this->token = $token;
 
         return $this;
-    }
-
-    /**
-     * Get token
-     *
-     * @return string
-     */
-    public function getToken()
-    {
-        return $this->token;
     }
 
     /**
@@ -94,6 +95,16 @@ class RequestPassword
     }
 
     /**
+     * Get user
+     *
+     * @return \ObservationBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
      * Set user
      *
      * @param \ObservationBundle\Entity\User $user
@@ -108,16 +119,6 @@ class RequestPassword
     }
 
     /**
-     * Get user
-     *
-     * @return \ObservationBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
      * Get id
      *
      * @return integer
@@ -125,6 +126,16 @@ class RequestPassword
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get addressIP
+     *
+     * @return integer
+     */
+    public function getAddressIP()
+    {
+        return $this->addressIP;
     }
 
     /**
@@ -142,13 +153,13 @@ class RequestPassword
     }
 
     /**
-     * Get addressIP
+     * Get whenToken
      *
-     * @return integer
+     * @return \DateTime
      */
-    public function getAddressIP()
+    public function getWhenToken()
     {
-        return $this->addressIP;
+        return $this->whenToken;
     }
 
     /**
@@ -165,14 +176,19 @@ class RequestPassword
         return $this;
     }
 
-    /**
-     * Get whenToken
-     *
-     * @return \DateTime
-     */
-    public function getWhenToken()
+    public function isUsed()
     {
-        return $this->whenToken;
+        return $this->used;
+    }
+
+    /**
+     * Get used
+     *
+     * @return boolean
+     */
+    public function getUsed()
+    {
+        return $this->used;
     }
 
     public function setUsed(bool $used)
@@ -181,10 +197,4 @@ class RequestPassword
 
         return $this;
     }
-
-    public function isUsed()
-    {
-        return $this->used;
-    }
-
 }

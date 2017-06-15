@@ -40,3 +40,4 @@ faq:
 newsletter:
     prefix: /newsletter
     resource: Routing/newsletter.yml
+

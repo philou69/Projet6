@@ -34,7 +34,7 @@ class Fiche
     /**
      * @ORM\Column(type="text")
      */
-    protected $descritpion;
+    protected $description;
 
     /**
      * @ORM\Column(type="text")
@@ -101,30 +101,6 @@ class Fiche
     }
 
     /**
-     * Get descritpion
-     *
-     * @return string
-     */
-    public function getDescritpion()
-    {
-        return $this->descritpion;
-    }
-
-    /**
-     * Set descritpion
-     *
-     * @param string $descritpion
-     *
-     * @return Fiche
-     */
-    public function setDescritpion($descritpion)
-    {
-        $this->descritpion = $descritpion;
-
-        return $this;
-    }
-
-    /**
      * Get status
      *
      * @return string
@@ -144,6 +120,30 @@ class Fiche
     public function setStatus($status)
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Fiche
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
 
         return $this;
     }
