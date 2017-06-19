@@ -3,6 +3,7 @@
 {% block title %}Liste des visiteurs{% endblock %}
 {% block link %}
     {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/modal.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/observation/css/users.css') }}">
 {% endblock %}
 {% block content %}
