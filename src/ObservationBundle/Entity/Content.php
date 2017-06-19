@@ -27,9 +27,19 @@ class Content
     protected $content;
 
     /**
-     * @ORM\Column(type="string", nullable=false, unique=true)
+     * @ORM\Column(type="string", nullable=false)
      */
     protected $page;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $postedAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $updateAt;
 
     /**
      * Get id
@@ -87,5 +97,53 @@ class Content
         $this->page = $page;
 
         return $this;
+    }
+
+    /**
+     * Set postedAt
+     *
+     * @param \DateTime $postedAt
+     *
+     * @return Content
+     */
+    public function setPostedAt($postedAt)
+    {
+        $this->postedAt = $postedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get postedAt
+     *
+     * @return \DateTime
+     */
+    public function getPostedAt()
+    {
+        return $this->postedAt;
+    }
+
+    /**
+     * Set updateAt
+     *
+     * @param \DateTime $updateAt
+     *
+     * @return Content
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updateAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
     }
 }
