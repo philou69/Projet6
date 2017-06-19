@@ -1,0 +1,18 @@
+.center-80{
+    position: relative;
+}
+
+#edit{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: flex;           /* establish flex container */
+    flex-direction: column;  /* make main axis vertical */
+    justify-content: center; /* center items vertically, in this case */
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
