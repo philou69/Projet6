@@ -93,16 +93,9 @@ class ObservationController extends Controller
      */
     public function viewAction(Observation $observation, Request $request)
     {
-        $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile() || $device->isTablet()){
-            return $this->render('@Observation/Observation/Mobile/detail.html.twig', array(
+            return $this->render('@Observation/Observation/detail.html.twig', array(
                 'observation' => $observation
             ));
-        }else{
-            return $this->render('@Observation/Observation/Desktop/detail.html.twig', array(
-                'observation' => $observation
-            ));
-        }
     }
 
     /**
