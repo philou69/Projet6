@@ -1,7 +1,7 @@
 <div id="other"
      class="tab-pane second row  {{ app.request.attributes.get('_route') in ['blog_view', 'faq', 'contact'] ? 'active' :'' }}">
     <div class="second_line col-xs-3 text-center {{ app.request.attributes.get('_route') == 'blog_view' ? 'active' : '' }}">
-        <a href="{{ path('blog_view', {'page': 'blog'}) }}">
+        <a href="{{ path('blog_view') }}">
             <img src="{{ asset('bundles/observation/images/logo/logo_footer_couleur.png') }}" alt="">
         </a>
     </div>
