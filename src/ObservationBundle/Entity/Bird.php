@@ -13,6 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Bird
 {
     /**
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche")
+     */
+    protected $fiche;
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -132,14 +136,12 @@ class Bird
      * @ORM\Column(name="bec", type="string", length=255)
      */
     private $bec;
-
     /**
      * @var string
      *
      * @ORM\Column(name="plumage", type="string", length=255)
      */
     private $plumage;
-
     /**
      * @var string
      *
