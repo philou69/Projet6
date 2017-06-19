@@ -1,6 +1,6 @@
 /*------------ Toggle switch newsletter--------------- */
 /* On centre le switch*/
-.checkbox{
+.checkbox {
     text-align: center;
     margin-top: 0;
 }
@@ -70,18 +70,21 @@
     -ms-transform: translateX(260px) translateX(-33px);
     transform: translateX(260px) translateX(-33px);
 }
-@media (max-width: 992px){
+
+@media (max-width: 992px) {
     .on-profil #switch_newsletter {
         width: 170px;
     }
-    .on-profil>#switch_newsletter>#slider_newsletter>#on{
+
+    .on-profil > #switch_newsletter > #slider_newsletter > #on {
         left: 20%;
     }
-    .on-profil>#switch_newsletter>#slider_newsletter>#off{
+
+    .on-profil > #switch_newsletter > #slider_newsletter > #off {
         right: 20%;
     }
 
-    .on-profil>#switch_newsletter input:not(:checked) + #slider_newsletter:before {
+    .on-profil > #switch_newsletter input:not(:checked) + #slider_newsletter:before {
         -webkit-transform: translateX(170px) translateX(-33px);
         -ms-transform: translateX(170px) translateX(-33px);
         transform: translateX(170px) translateX(-33px);

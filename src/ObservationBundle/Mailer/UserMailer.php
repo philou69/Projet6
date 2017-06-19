@@ -24,7 +24,7 @@ class UserMailer
     function __construct($mandrill_api_key, Router $router)
     {
         // Recuperation de la clé mandrill et du router
-       $this->mandrill_api_key = $mandrill_api_key;
+        $this->mandrill_api_key = $mandrill_api_key;
         $this->router = $router;
     }
 
@@ -38,7 +38,7 @@ class UserMailer
         $templateContent = [
             [
                 'username' => $user->getUsername(),
-                'path' => $this->router->generate('user_link_forgot', array('token' => $user->getRequestPassword()->getToken()), true )
+                'path' => $this->router->generate('user_link_forgot', array('token' => $user->getRequestPassword()->getToken()), true)
             ]
         ];
         $sendTo = [
@@ -49,7 +49,7 @@ class UserMailer
         ];
         $globalsMerge = [
             [
-                'name'=> 'username',
+                'name' => 'username',
                 'content' => $user->getUsername()
             ],
             [
@@ -57,8 +57,48 @@ class UserMailer
                 'content' => $this->router->generate('user_link_forgot', array('token' => $user->getRequestPassword()->getToken()), UrlGeneratorInterface::ABSOLUTE_URL)
             ]
         ];
-        $this->sendMail($templateName, 'Demande de nouveau mot de passe ',$templateContent, $sendTo, $globalsMerge);
+        $this->sendMail($templateName, 'Demande de nouveau mot de passe ', $templateContent, $sendTo, $globalsMerge);
 
+    }
+
+    public function sendMail($templateName, $subject, $templateContent, $sendTo, $globalsMerge)
+    {
+
+        try {
+            $mandrill = new \Mandrill($this->mandrill_api_key);
+            $template_name = $templateName;
+            $template_content =
+                $templateContent;
+
+            $message = array(
+                'subject' => $subject,
+                'from_mail' => 'nao@nao.site-projet.fr',
+                'from_name' => 'Nos Amis les Oiseaux',
+                'to' => $sendTo,
+                'important' => true,
+                'track_opens' => null,
+                'track_clicks' => null,
+                'auto_text' => null,
+                'auto_html' => null,
+                'inline_css' => null,
+                'url_strip_qs' => null,
+                'preserve_recipients' => null,
+                'view_content_link' => null,
+                'tracking_domain' => null,
+                'signing_domain' => null,
+                'return_path_domain' => null,
+                'merge' => true,
+                'merge_language' => 'handlebars',
+                'global_merge_vars' => $globalsMerge
+            );
+            $result = $mandrill->messages->sendTemplate($template_name, $template_content, $message);
+            $this->result = $result;
+        } catch (\Mandrill_Error $e) {
+            // Mandrill errors are thrown as exceptions
+            echo 'A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage();
+            // A mandrill error occurred: Mandrill_Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+            throw $e;
+        }
     }
 
     /**
@@ -84,7 +124,7 @@ class UserMailer
         ];
         $globalsMerge = [
             [
-                'name'=> 'username',
+                'name' => 'username',
                 'content' => $user->getUsername()
             ],
             [
@@ -111,11 +151,11 @@ class UserMailer
         ];
         $globalsMerge = [
             [
-                'name'=> 'username',
+                'name' => 'username',
                 'content' => $user->getUsername()
             ]
         ];
-        $this->sendMail($templateName,$user->isEnabled() === true ? 'Réouverture de votre compte' : 'Fermeture de votre compte', $templateContent, $sendTo, $globalsMerge);
+        $this->sendMail($templateName, $user->isEnabled() === true ? 'Réouverture de votre compte' : 'Fermeture de votre compte', $templateContent, $sendTo, $globalsMerge);
     }
 
     public function sendReopen(User $user)
@@ -124,7 +164,7 @@ class UserMailer
         $templateContent = [
             [
                 'username' => $user->getUsername(),
-                'path' => $this->router->generate('user_unsleep', array('token' => $user->getRequestOpen()->getToken()), UrlGeneratorInterface::ABSOLUTE_URL )
+                'path' => $this->router->generate('user_unsleep', array('token' => $user->getRequestOpen()->getToken()), UrlGeneratorInterface::ABSOLUTE_URL)
             ]
         ];
         $sendTo = [
@@ -135,7 +175,7 @@ class UserMailer
         ];
         $globalsMerge = [
             [
-                'name'=> 'username',
+                'name' => 'username',
                 'content' => $user->getUsername()
             ],
             [
@@ -143,51 +183,11 @@ class UserMailer
                 'content' => $this->router->generate('user_unsleep', array('token' => $user->getRequestOpen()->getToken()), UrlGeneratorInterface::ABSOLUTE_URL)
             ]
         ];
-        $this->sendMail($templateName,'Demande de réactivation de votre compte', $templateContent, $sendTo, $globalsMerge);
+        $this->sendMail($templateName, 'Demande de réactivation de votre compte', $templateContent, $sendTo, $globalsMerge);
     }
 
     public function getResult()
     {
         return $this->result;
-    }
-    public function sendMail($templateName,$subject, $templateContent, $sendTo, $globalsMerge)
-    {
-
-        try{
-            $mandrill = new \Mandrill($this->mandrill_api_key);
-            $template_name = $templateName;
-            $template_content =
-                $templateContent
-            ;
-
-            $message = array(
-                'subject' => $subject,
-                'from_mail' => 'nao@nao.site-projet.fr',
-                'from_name' => 'Nos Amis les Oiseaux',
-                'to' => $sendTo,
-                'important' => true,
-                'track_opens' => null,
-                'track_clicks' => null,
-                'auto_text' => null,
-                'auto_html' => null,
-                'inline_css' => null,
-                'url_strip_qs' => null,
-                'preserve_recipients' => null,
-                'view_content_link' => null,
-                'tracking_domain' => null,
-                'signing_domain' => null,
-                'return_path_domain' => null,
-                'merge' => true,
-                'merge_language' => 'handlebars',
-                'global_merge_vars' => $globalsMerge
-            );
-            $result = $mandrill->messages->sendTemplate($template_name, $template_content, $message);
-            $this->result = $result;
-        } catch(\Mandrill_Error $e) {
-            // Mandrill errors are thrown as exceptions
-            echo 'A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage();
-            // A mandrill error occurred: Mandrill_Unknown_Subaccount - No subaccount exists with the id 'customer-123'
-            throw $e;
-        }
     }
 }

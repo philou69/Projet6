@@ -20,14 +20,14 @@ class MessageType extends AbstractType
             'label' => 'Mail de contact'
         ))
             ->add('title', TextType::class, array(
-            'label' => 'Titre de votre message'
-        ))
+                'label' => 'Titre de votre message'
+            ))
             ->add('message', TextareaType::class, array(
                 'label' => 'Votre message',
-                 'attr' => array(
-                     'cols' => 250,
-                     'rows' => 10
-                 )
+                'attr' => array(
+                    'cols' => 250,
+                    'rows' => 10
+                )
             ))
             ->add('save', SubmitType::class, array(
                 'label' => 'Envoyer',

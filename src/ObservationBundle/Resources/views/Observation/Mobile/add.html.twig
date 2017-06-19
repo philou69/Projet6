@@ -5,22 +5,20 @@
 
 
 {% block content %}
-    <div id="contentAdd">
+    <div id="contentAdd" class="center-90">
         <div id="flash">{% for flash_message in app.session.flashBag.get('success') %}
                 <div class="alert alert-{{ type }}" id="flashMobile">
                     <strong>{{ flash_message }}</strong>
                 </div>
             {% endfor %}
         </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
+        <div>
                 {% if app.session.get('getBird') == true %}
                     <h1>{{ bird.LbNom }}</h1>
                 {% else %}
                     <h1>Saisir une observation</h1>
                 {% endif %}
-            </div>
-            <div class="panel-body">
+            <div>
                 {{ form_start(form, {'attr': {'class': 'form-horizontal', 'enctype': 'multipart/form-data'}}) }}
                 {{ form_errors(form) }}
 

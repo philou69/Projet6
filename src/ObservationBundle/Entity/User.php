@@ -182,8 +182,7 @@ class User implements AdvancedUserInterface, \Serializable
         }
         if(!in_array($role, $this->roles, true)){
             // On s'assure que les admins, on aussi le role naturaliste
-            if($role === 'ROLE_ADMIN' && !in_array('ROLE_NATURALISTE', $this->roles, true))
-            {
+            if ($role === 'ROLE_ADMIN' && !in_array('ROLE_NATURALISTE', $this->roles, true)) {
                 $this->roles[] = 'ROLE_NATURALISTE';
             }
             $this->roles[] = $role;
@@ -521,6 +520,16 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
+     * Get newsletter
+     *
+     * @return boolean
+     */
+    public function getNewsletter()
+    {
+        return $this->newsletter;
+    }
+
+    /**
      * Set newsletter
      *
      * @param boolean $newsletter
@@ -535,13 +544,13 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * Get newsletter
+     * Get requestPassword
      *
-     * @return boolean
+     * @return \ObservationBundle\Entity\RequestPassword
      */
-    public function getNewsletter()
+    public function getRequestPassword()
     {
-        return $this->newsletter;
+        return $this->requestPassword;
     }
 
     /**
@@ -559,13 +568,13 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * Get requestPassword
+     * Get requestOpen
      *
-     * @return \ObservationBundle\Entity\RequestPassword
+     * @return \ObservationBundle\Entity\RequestOpen
      */
-    public function getRequestPassword()
+    public function getRequestOpen()
     {
-        return $this->requestPassword;
+        return $this->requestOpen;
     }
 
     /**
@@ -583,13 +592,13 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * Get requestOpen
+     * Get sleeping
      *
-     * @return \ObservationBundle\Entity\RequestOpen
+     * @return boolean
      */
-    public function getRequestOpen()
+    public function getSleeping()
     {
-        return $this->requestOpen;
+        return $this->sleeping;
     }
 
     /**
@@ -604,15 +613,5 @@ class User implements AdvancedUserInterface, \Serializable
         $this->sleeping = $sleeping;
 
         return $this;
-    }
-
-    /**
-     * Get sleeping
-     *
-     * @return boolean
-     */
-    public function getSleeping()
-    {
-        return $this->sleeping;
     }
 }

@@ -173,8 +173,10 @@ class BirdController extends Controller
         //Premiere edition de la fiche
         if ($description === null) {
             $form = $this->createForm(FicheType::class, $fiche, array(
-                'minVal' => 1,
-                'maxVal' => 1
+                'attr' => array(
+                    'minVal' => 1,
+                    'maxVal' => 1
+                )
             ));
         } //Si la fiche existe deja on la modifie
         else {

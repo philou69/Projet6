@@ -3,7 +3,9 @@
         <div class="up">
             <div class="left">
                 <h5>{{ message.title }}</h5>
-                <small>Posté le : {{ message.postedAt | date('d/m/Y H:m') }}, {{ message.received == true ? 'Reçu' : 'En attente' }}, {{ message.answered ==  true ? 'Répondu' : ' répondre'}}</small>
+                <small>Posté le : {{ message.postedAt | date('d/m/Y H:m') }}
+                    , {{ message.received == true ? 'Reçu' : 'En attente' }}
+                    , {{ message.answered ==  true ? 'Répondu' : ' répondre' }}</small>
             </div>
             <div class="right">
                 {% if message.received != true %}
