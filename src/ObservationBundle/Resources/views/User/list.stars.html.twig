@@ -1,8 +1,9 @@
-{% extends  is_mobile() ? '@Observation/layout.mobile.html.twig' : '@Observation/layout.desktop.html.twig' %}
+{% extends  is_mobile() ? '@Observation/layout.mobile.html.twig' : is_tablet() ? '@Observation/layout.mobile.html.twig': '@Observation/layout.desktop.html.twig' %}
 
 {% block title %}Médailles{% endblock %}
 {% block link %}
     {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/modal.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/observation/css/stars.css') }}">
 {% endblock %}
 {% block content %}

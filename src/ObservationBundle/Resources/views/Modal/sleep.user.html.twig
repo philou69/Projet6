@@ -1,34 +1,19 @@
-<div id="sleep_user" class="modal">
+<div id="sleep_user" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
-                <div class="row">
-                    <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
-                </div>
-                <div class="pull-right">
-                    <h1>Mettre en sommeil votre compte</h1>
-                    <p>
-                        Vous êtes sur le point de mettre votre compte en sommeil. <br>
-                        <small>Vos données ne seront pas éffacées et vous pourrez réctivé votre compte à tous moments.
-                        </small>
-                    </p>
-
-                </div>
-            </div>
-            <div class="modal-footer">
-                <div class="row">
-                    <h6 class="col-xs-4">Etes vous sur ?</h6>
-                    <div class="col-xs-8 row">
-                        <div class="col-xs-6">
-                            <a href="{{ path('user_sleep') }}" class="btn btn-xs btn-danger col-xs-6">OUI</a>
-                        </div>
-                        <div class="col-xs-6">
-                            <a class="btn btn-xs btn-nao col-xs-6" data-dismiss="modal">NON</a>
-                        </div>
-                    </div>
-                </div>
-
-
+                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+                <h4 class="text-center">Mettre en sommeil votre compte</h4>
+                <p class="explain">
+                    Vous êtes sur le point de mettre votre compte en sommeil. <br>
+                    <small>Vos données ne seront pas éffacées et vous pourrez réctivé votre compte à tous moments.
+                    </small>
+                </p>
+                <p class="confirm text-center">
+                    Etes vous sur ?
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
+                    <a href="{{ path('user_sleep') }}" class="btn btn-primary">Oui</a>
+                </p>
             </div>
         </div>
     </div>

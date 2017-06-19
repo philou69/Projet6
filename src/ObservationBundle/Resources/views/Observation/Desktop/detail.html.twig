@@ -1,6 +1,10 @@
 {% extends '@Observation/layout.desktop.html.twig' %}
 
 {% block title %}Details de l'observation{% endblock %}
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/modal.css') }}">
+{% endblock %}
 {% block content %}
 
     <h1>
