@@ -2,8 +2,10 @@
 
 namespace ObservationBundle\Controller;
 
+use ObservationBundle\Entity\Content;
 use ObservationBundle\Entity\Message;
 use ObservationBundle\Entity\Picture;
+use ObservationBundle\Form\Content\ContentType;
 use ObservationBundle\Form\Message\MessageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,11 +53,32 @@ class DefaultController extends Controller
 
     public function faqAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $content = $em->getRepository('ObservationBundle:Content')->findOneBy(array('page' => 'faq'));
         $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile() || $device->isTablet()){
-            return $this->render('@Observation/Association/Mobile/faq.html.twig');
+            return $this->render('@Observation/Association/Mobile/faq.html.twig', array('content' => $content));
         }else{
-            return $this->render('@Observation/Association/Desktop/faq.html.twig');
+            return $this->render('@Observation/Association/Desktop/faq.html.twig', array('content' => $content));
         }
     }
+
+    public function editFaqAction(Content $content, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->createForm(ContentType::class, $content);
+        $form->handleRequest($request);
+        if($form->isValid()){
+            $em->persist($content);
+            $em->flush();
+            return $this->redirectToRoute('faq');
+        }
+        $device = $this->get('mobile_detect.mobile_detector');
+        if($device->isMobile() || $device->isTablet()){
+            return $this->render('@Observation/Association/Mobile/faq.edit.html.twig', array('form' => $form->createView()));
+        }else{
+            return $this->render('@Observation/Association/Desktop/faq.edit.html.twig', array('form' => $form->createView()));
+        }
+    }
+
 }

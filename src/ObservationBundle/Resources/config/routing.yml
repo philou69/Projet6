@@ -25,11 +25,15 @@ homepage:
     path:     /
     defaults: { _controller: ObservationBundle:Default:index }
 
-
+faq_edit:
+    path: /faq/edit/{page}
+    defaults:
+        _controller: ObservationBundle:Default:editFaq
 faq:
     path: /faq
     defaults:
         _controller: ObservationBundle:Default:faq
+
 
 newsletter:
     prefix: /newsletter
