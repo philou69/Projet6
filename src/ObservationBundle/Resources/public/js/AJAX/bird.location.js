@@ -19,6 +19,10 @@ $(document).ready(function () {
             }
         })
     })
+    $(document).on('click', '.observation', function () {
+        var href = $(this).data('href');
+        window.document.location = $(this).data('href');
+    })
 
     function success(code_html) {
 

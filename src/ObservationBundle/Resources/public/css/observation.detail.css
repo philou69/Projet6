@@ -1,0 +1,46 @@
+a.grey{
+    color: #949494;
+}
+table{
+    margin-bottom: 10px !important;
+}
+table>tbody>tr>th{
+    width: 33%;
+}
+
+table>tbody>tr>td{
+    width: 66%;
+}
+
+table #content-pictures,table #pictures{
+    height: 210px;
+}
+table .paging{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+table img{
+    width: 100%;
+    margin: auto;
+}
+table button{
+    background: #99d1c8;
+    color: #dbefed;
+    border: 0;
+}
+table button:disabled{
+    background: #f3f3f3;
+}
+@media (max-width: 767px) {
+    table .paging{
+        height: 30px;
+    }
+    table .picture{
+        height: calc(100% - 60px);
+        padding: 20px;
+    }
+}
