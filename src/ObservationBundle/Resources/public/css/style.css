@@ -64,15 +64,6 @@ Page Observation
     background: none;
 }
 
-.modal-header .close {
-    margin-top: -20px;
-}
-
-#myModal {
-    width: 90%;
-    margin: auto;
-}
-
 #flashMobile {
     margin-top: 40px;
 }

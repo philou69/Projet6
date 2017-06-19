@@ -157,23 +157,6 @@ input:disabled::placeholder, input::-webkit-input-placeholder, input::-moz-place
     margin: auto;
 }
 
-.modal-dialog {
-    height: 70vh;
-    margin: auto;
-}
-
-.modal-content {
-    height: 100%;
-}
-
-.modal-body {
-    height: 80%;
-}
-
-.modal-footer {
-    height: 20%;
-}
-
 @media (max-width: 992px) {
     #profil_left {
         padding-top: 10px;
