@@ -1,5 +1,5 @@
 <div id="user_tab"
-     class="tab-pane second row  {{ app.request.attributes.get('_route') in ['user_profil', 'user_my_observations', 'user_observations', 'user_stars'] ? 'active' :'' }}">
+     class="tab-pane second row  {{ app.request.attributes.get('_route') in ['user_profil', 'user_my_observations', 'user_observations', 'user_stars', 'user_roles'] ? 'active' :'' }}">
     <div class="second_line col-xs-3 text-center {{ app.request.attributes.get('_route') == 'user_profil' ? 'active' :'' }}">
         <a href="{{ path('user_profil') }}">
             <img src="{{ app.request.attributes.get('_route') == 'user_profil' ? asset('bundles/observation/images/icones/profil_icon_hover.png') : asset('bundles/observation/images/icones/profil_icon.png') }}"

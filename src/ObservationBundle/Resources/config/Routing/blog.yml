@@ -1,13 +1,21 @@
-blog_view:
-  path: /{page}
-  defaults:
-    _controller: ObservationBundle:Blog:view
-  requirements:
-    -page: blog
 
-blog_edit:
-  path: /{page}/edit
+
+billet_create:
+  path: /billet/create
+  defaults:
+    _controller: ObservationBundle:Blog:create
+
+
+billet_edit:
+  path: /billet/{id}/edit
   defaults:
     _controller: ObservationBundle:Blog:edit
   requirements:
     -page: blog
+
+blog_view:
+   path: /
+   defaults:
+     _controller: ObservationBundle:Blog:view
+   requirements:
+     -page: blog
