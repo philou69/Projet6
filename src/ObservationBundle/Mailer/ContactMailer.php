@@ -14,7 +14,7 @@ class ContactMailer
     protected $router;
     protected $result;
 
-    function __construct($mandrillKey,Router $router)
+    function __construct($mandrillKey, Router $router)
     {
         $this->mandrillKey = $mandrillKey;
         $this->router = $router;
@@ -22,7 +22,7 @@ class ContactMailer
 
     public function sendMessage(Message $message)
     {
-        try{
+        try {
             $mandrill = new \Mandrill($this->mandrillKey);
             $template_name = 'vous-avez-un-message';
             $template_content = [
@@ -40,7 +40,7 @@ class ContactMailer
                 ],
                 [
                     'name' => 'path',
-                    'content' => $this->router->generate('user_contacts',array(null), UrlGeneratorInterface::ABSOLUTE_URL)
+                    'content' => $this->router->generate('user_contacts', array(null), UrlGeneratorInterface::ABSOLUTE_URL)
                 ]
             ];
 
@@ -83,13 +83,13 @@ class ContactMailer
                     ],
                     [
                         'name' => 'path',
-                        'content' => $this->router->generate('user_contacts',array(null), UrlGeneratorInterface::ABSOLUTE_URL) . '#' . $message->getSlugTitle()
+                        'content' => $this->router->generate('user_contacts', array(null), UrlGeneratorInterface::ABSOLUTE_URL) . '#' . $message->getSlugTitle()
                     ]
                 ]
             );
             $result = $mandrill->messages->sendTemplate($template_name, $template_content, $message);
             $this->result = $result;
-        } catch(\Mandrill_Error $e) {
+        } catch (\Mandrill_Error $e) {
             // Mandrill errors are thrown as exceptions
             echo 'A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage();
             // A mandrill error occurred: Mandrill_Unknown_Subaccount - No subaccount exists with the id 'customer-123'

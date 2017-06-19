@@ -61,27 +61,13 @@ class Message
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Message
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
+     * Get message
      *
      * @return string
      */
-    public function getTitle()
+    public function getMessage()
     {
-        return $this->title;
+        return $this->message;
     }
 
     /**
@@ -99,13 +85,13 @@ class Message
     }
 
     /**
-     * Get message
+     * Get email
      *
      * @return string
      */
-    public function getMessage()
+    public function getEmail()
     {
-        return $this->message;
+        return $this->email;
     }
 
     /**
@@ -123,13 +109,13 @@ class Message
     }
 
     /**
-     * Get email
+     * Get postedAt
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getEmail()
+    public function getPostedAt()
     {
-        return $this->email;
+        return $this->postedAt;
     }
 
     /**
@@ -147,13 +133,13 @@ class Message
     }
 
     /**
-     * Get postedAt
+     * Get received
      *
-     * @return \DateTime
+     * @return boolean
      */
-    public function getPostedAt()
+    public function getReceived()
     {
-        return $this->postedAt;
+        return $this->received;
     }
 
     /**
@@ -171,13 +157,13 @@ class Message
     }
 
     /**
-     * Get received
+     * Get answered
      *
      * @return boolean
      */
-    public function getReceived()
+    public function getAnswered()
     {
-        return $this->received;
+        return $this->answered;
     }
 
     /**
@@ -194,16 +180,6 @@ class Message
         return $this;
     }
 
-    /**
-     * Get answered
-     *
-     * @return boolean
-     */
-    public function getAnswered()
-    {
-        return $this->answered;
-    }
-
     public function getSlugTitle()
     {
         return strtr(
@@ -211,5 +187,29 @@ class Message
             '@ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
             'aAAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy'
         );
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Message
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
     }
 }

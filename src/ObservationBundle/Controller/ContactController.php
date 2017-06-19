@@ -14,9 +14,9 @@ class ContactController extends Controller
     public function resendAction(Message $message, Request $request)
     {
         // On verife être en requete AJAX
-        if($request->isXmlHttpRequest()){
+        if ($request->isXmlHttpRequest()) {
             // On vérifie si le message n'a pas été recu
-            if($message->getReceived() == false){
+            if ($message->getReceived() == false) {
                 // on le renvoye et on fais un message flash
                 $this->get('observation.contact.mailer')->sendMessage($message);
             }
@@ -26,7 +26,7 @@ class ContactController extends Controller
 
     public function receivedAction(Message $message, Request $request)
     {
-        if($request->isXmlHttpRequest()){
+        if ($request->isXmlHttpRequest()) {
             $em = $this->getDoctrine()->getManager();
             $message->setReceived(true);
             $em->persist($message);
@@ -37,7 +37,7 @@ class ContactController extends Controller
 
     public function answeredAction(Message $message, Request $request)
     {
-        if($request->isXmlHttpRequest()){
+        if ($request->isXmlHttpRequest()) {
             $em = $this->getDoctrine()->getManager();
             $message->setAnswered(true)
                 ->setReceived(true);

@@ -128,11 +128,26 @@ class Bird
      * @ORM\JoinColumn(nullable=false)
      */
     private $pictures;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bec", type="string", length=255)
+     */
+    private $bec;
 
     /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche")
+     * @var string
+     *
+     * @ORM\Column(name="plumage", type="string", length=255)
      */
-    protected $fiche;
+    private $plumage;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="couleur", type="string", length=255)
+     */
+    private $couleur;
 
     /**
      * Constructor
@@ -649,4 +664,75 @@ class Bird
         return $this;
     }
 
+    /**
+     * Get bec
+     *
+     * @return string
+     */
+    public function getBec()
+    {
+        return $this->bec;
+    }
+
+    /**
+     * Set bec
+     *
+     * @param string $bec
+     *
+     * @return Bird
+     */
+    public function setBec($bec)
+    {
+        $this->bec = $bec;
+
+        return $this;
+    }
+
+    /**
+     * Get plumage
+     *
+     * @return string
+     */
+    public function getPlumage()
+    {
+        return $this->plumage;
+    }
+
+    /**
+     * Set plumage
+     *
+     * @param string $plumage
+     *
+     * @return Bird
+     */
+    public function setPlumage($plumage)
+    {
+        $this->plumage = $plumage;
+
+        return $this;
+    }
+
+    /**
+     * Get couleur
+     *
+     * @return string
+     */
+    public function getCouleur()
+    {
+        return $this->couleur;
+    }
+
+    /**
+     * Set couleur
+     *
+     * @param string $couleur
+     *
+     * @return Bird
+     */
+    public function setCouleur($couleur)
+    {
+        $this->couleur = $couleur;
+
+        return $this;
+    }
 }

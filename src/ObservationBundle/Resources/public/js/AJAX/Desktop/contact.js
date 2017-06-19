@@ -28,18 +28,18 @@ $(document).ready(function () {
         $.ajax({
             url: $(this).data('href'),
             dataType: 'json',
-            success: function (code_json){
-            $("#success-message").append(code_json.status);
-            refresh();
-        }
+            success: function (code_json) {
+                $("#success-message").append(code_json.status);
+                refresh();
+            }
         })
     })
 
-    function refresh(){
+    function refresh() {
         $.ajax({
             url: $("#messages").data('href'),
             dataType: 'html',
-            success: function(code_html){
+            success: function (code_html) {
                 $('#messages').html(code_html);
             }
         })

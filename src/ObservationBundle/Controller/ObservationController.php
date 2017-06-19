@@ -141,8 +141,10 @@ class ObservationController extends Controller
                 if($observation->getValidated() == true){
                     $picture->setBird($observation->getBird());
                 }
+
             }
             $observation->setUser($this->getUser());
+
 
             $em->persist($observation);
             $em->flush();
