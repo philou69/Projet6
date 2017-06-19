@@ -4,6 +4,8 @@
 namespace ObservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class Fiche
@@ -41,6 +43,18 @@ class Fiche
      */
     protected $status;
 
+    /**
+     * var array
+     * @ORM\Column(name="bird", type="array")
+     * @Assert\Valid()
+     */
+    protected $bird;
+
+
+    public function __construct()
+    {
+        $this->bird = new ArrayCollection();;
+    }
 
     /**
      * Get id
@@ -144,6 +158,30 @@ class Fiche
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get bird
+     *
+     * @return array
+     */
+    public function getBird()
+    {
+        return $this->bird;
+    }
+
+    /**
+     * Set bird
+     *
+     * @param array $bird
+     *
+     * @return Fiche
+     */
+    public function setBird($bird)
+    {
+        $this->bird = $bird;
 
         return $this;
     }

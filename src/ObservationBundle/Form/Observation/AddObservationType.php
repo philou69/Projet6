@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -53,24 +54,6 @@ class AddObservationType extends AbstractType
                                 'max' => 20,
                                 'value' => 1)
             ))
-
-            //entitytype. toString. if n
-//            ->add('files', FileType::class, array(
-//                'label' => 'Importer une image',
-//                'data_class' => null,
-//                'mapped' => false,
-//                'required' => false,
-//                'multiple' => true,
-//                'attr' => array(
-//                    'accept' => 'image/*',
-//                    'class' => 'filestyle',
-//                    'data-input' => 'false',
-//                    'data-buttonText' => 'Choisir Photo(s)',
-//                    'data-badge' => 'false',
-//                    'data-icon' => 'false'
-//                )
-//            ))
-
             ->add('pictures', RepeatedType::class, array(
                 'type' => FileType::class,
                 'label' => 'Importer une image',
