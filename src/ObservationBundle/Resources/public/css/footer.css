@@ -65,3 +65,11 @@ footer .social-network {
 footer .social-network > .fa {
     color: white;
 }
+
+footer button {
+    margin-top: 10px;
+}
+
+footer > div > div > div > div:nth-child(3) > div.col-lg-5 {
+    margin-top: 20px;
+}

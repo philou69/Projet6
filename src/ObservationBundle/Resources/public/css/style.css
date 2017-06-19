@@ -78,6 +78,13 @@ Page Observation
 }
 
 /*
+Formatage input
+ */
+.form-control, #formObs > div > form > div:nth-child(4) > div > div > span > span.selection > span, #contentAdd > div:nth-child(2) > div > form > div:nth-child(4) > div > div > span > span.selection > span {
+    border-radius: 0;
+}
+
+/*
 Stylisation bouton Import Image
  */
 
@@ -154,6 +161,11 @@ Retour bas de page
 
     #view > .center-80 {
         padding-top: 40px;
+    }
+
+    #contentAdd {
+        background: none;
+        width: 90%;
     }
 
 }
@@ -268,7 +280,8 @@ Retour bas de page
 .btn-nao-2 {
     background-color: #8dd4e8;
 }
-.btn-form{
+
+.btn-form {
     max-width: 100px;
 }
 /*Background gris*/

@@ -18,12 +18,13 @@ small {
     color: white;
 }
 
-@media (max-width: 993px){
-    .user{
+@media (max-width: 993px) {
+    .user {
         width: auto;
         height: auto;
     }
-    .user>div{
+
+    .user > div {
         height: auto;
         height: auto;
     }

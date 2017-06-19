@@ -75,9 +75,10 @@ form .btn {
 
     /*------------ Toggle switch --------------- */
     /* On centre le toggle */
-    #content-switch{
+    #content-switch {
         text-align: center;
     }
+
     /* Le switch - box autour du slider*/
     .switch {
         position: relative;

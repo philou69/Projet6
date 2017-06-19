@@ -394,7 +394,7 @@ class UserController extends Controller
 
         $device = $this->get('mobile_detect.mobile_detector');
 
-        if ($device->isMobile() ||  $device->isTablet()) {
+        if ($device->isMobile() || $device->isTablet()) {
             return $this->render('@Observation/User/Mobile/list.users.html.twig', array('users' => $users));
         } else {
             return $this->render('@Observation/User/Desktop/list.users.html.twig', array('users' => $users));
@@ -441,17 +441,17 @@ class UserController extends Controller
     {
         $form = $this->createForm(RolesType::class, $user);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            $this->addFlash('success', 'Les roles de du visiteur ont été modifier avec succès!' );
+            $this->addFlash('success', 'Les roles de du visiteur ont été modifier avec succès!');
             return $this->redirectToRoute('user_users');
         }
         $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile() ||$device->isTablet()){
+        if ($device->isMobile() || $device->isTablet()) {
             return $this->render('@Observation/User/Mobile/managed.roles.html.twig', array('form' => $form->createView()));
-        }else{
+        } else {
             return $this->render('@Observation/User/Desktop/managed.roles.html.twig', array('form' => $form->createView()));
         }
     }

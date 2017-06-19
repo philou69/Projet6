@@ -82,15 +82,25 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
         return $user;
     }
 
+    private function getRepository()
+    {
+        return $this->getObjectManager()->getRepository($this->classOrAlias);
+    }
+
+    private function getObjectManager()
+    {
+        return $this->registry->getManager($this->managerName);
+    }
+
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
         // On vérifi si l'utilisateur existe
         $user = $this->getRepository()->findOneBy(array('email' => $response->getEmail()));
 
         // On vérifie si le compte a été mis en sommeil
-        if($user !== null && $user->getSleeping() == true && $user->getIsActive() === true){
+        if ($user !== null && $user->getSleeping() == true && $user->getIsActive() === true) {
             // création du token qui servira de lien
-            $token = str_replace(['/', '+', '*','-'], '', base64_encode(random_bytes(60)));
+            $token = str_replace(['/', '+', '*', '-'], '', base64_encode(random_bytes(60)));
             // On crée une requete d'ouverture de compte qu'on assigne au compte
             $requestOpen = new RequestOpen();
             $requestOpen->setAdresseIP($_SERVER['REMOTE_ADDR'])->setToken($token)->setUser($user);
@@ -107,7 +117,7 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
         if(!$user){
             // On recupere les utilisateurs contenant le même username
             $usersByUsername = $this->getRepository()->findUsernames($response->getNickname());
-            
+
             // On crée un user avec les données renvoyer
             $user = new User;
             $user->setEmail($response->getEmail())
@@ -128,17 +138,6 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
         }
         // On retourne le user
         return $user;
-    }
-
-
-    private function getObjectManager()
-    {
-        return $this->registry->getManager($this->managerName);
-    }
-
-    private function getRepository()
-    {
-        return $this->getObjectManager()->getRepository($this->classOrAlias);
     }
 
 }
