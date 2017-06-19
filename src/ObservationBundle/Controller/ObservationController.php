@@ -117,6 +117,7 @@ class ObservationController extends Controller
         $session = new Session();
         $session->set('getBird', false);
         $em = $this->getDoctrine()->getManager();
+
         // On verifie si le visiteur est un naturaliste
         if($this->getUser()->hasRole('ROLE_NATURALISTE')){
             // Dans ce cas, l'observation est automatiquement validé par lui-même
