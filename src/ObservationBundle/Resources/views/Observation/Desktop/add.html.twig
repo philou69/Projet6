@@ -61,9 +61,12 @@
                             {{ form_label(form.bird, form.vars.label) }}
                             {{ form_errors(form.bird) }}
                             {{ form_widget(form.bird) }}
+                            <a href="{{ path('bird_list') }}">Vous avez un doute sur le spécimen observé? Cliquez
+                                ici!</a>
                         </div>
                     </div>
-                </div>
+
+                    </div>
                 {% endif %}
                 {% if app.session.get('getBird') == true %}
                     <div style="display: none" id="getBird">

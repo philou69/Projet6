@@ -82,10 +82,14 @@ Stylisation bouton Import Image
 .group-span-filestyle .btn-default {
     /*background-color: #99d1c8;*/
     /*background-image: none;*/
-    background: url('../images/logo/photo_icon.png') no-repeat center;
+    background: url('../images/icones/importPhoto_icon.png') no-repeat center;
     text-shadow: none;
     height: 100px;
     margin-top: 10px;
+}
+
+#contentAdd > div:nth-child(2) > div > form > div:nth-child(6) > div > div > div.row > div:nth-child(2) > div > span > label {
+    background: url('../images/icones/photo_icon.png') no-repeat center;
 }
 
 .group-span-filestyle .buttonText {
