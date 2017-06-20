@@ -1,8 +1,7 @@
-<div id="other"
-     class="tab-pane center-80 {% if app.request.attributes.get('_route') in ['blog_view', 'contact', 'faq'] %}active{% endif %}">
+<div id="other" class="tab-pane center-80 {% if app.request.attributes.get('_route') in ['blog_view', 'contact_message', 'faq'] %}active{% endif %}">
     <ul class=" nav navbar-nav pull-right">
         <li class="second_line {% if app.request.attributes.get('_route')  == 'blog_view' %}active{% endif %}"><a
-                    href="{{ path('blog_view', {'page': 'blog'}) }}">L'association</a></li>
+                    href="{{ path('blog_view') }}">L'association</a></li>
         <li class="second_line {% if app.request.attributes.get('_route')  == 'contact_message' %}active{% endif %}"><a
                     href="{{ path('contact_message') }}">Nous contacter</a></li>
         <li class="second_line {% if app.request.attributes.get('_route')  == 'faq' %}active{% endif %}"><a
