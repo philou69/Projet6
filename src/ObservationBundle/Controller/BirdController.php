@@ -112,7 +112,7 @@ class BirdController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function paginationAction($page, Request $request)
+    public function paginationAction($page, Request $request, $type)
     {
         // On vérifie s'il s'agit d'une reuqete ajax
         if ($request->isXmlHttpRequest()){
@@ -123,13 +123,15 @@ class BirdController extends Controller
                 $number = 20;
                 $em= $this->getDoctrine()->getManager();
 
+
                 // On calcule la taille de search,
                 // Si c'est 0, search est null,
                 // Sinon on lui passe la valeur sécurisé
                 $search = strlen(htmlspecialchars($request->query->get('search'))) == 0 ? null :  htmlspecialchars($request->query->get('search'));
+                var_dump($search);
 
                 // On effectu la requete doctrine getPage()
-                $birds = $em->getRepository('ObservationBundle:Bird')->getPage($page, $number, $search);
+                $birds = $em->getRepository('ObservationBundle:Bird')->getPage($page, $number, $search, $type);
 //                foreach ($birds as $bird){
 //                        var_dump($bird);
 //                        exit;

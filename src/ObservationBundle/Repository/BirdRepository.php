@@ -16,15 +16,27 @@ class BirdRepository extends \Doctrine\ORM\EntityRepository
     /**
      * Fonction pour paginer la liste d'oiseaux
      */
-    public function getPage($page, $numbers, $search = null)
+    public function getPage($page, $numbers, $search = null, $type)
     {
         $query = $this->createQueryBuilder('b');
         if ($search !== null) {
-            $query
-                ->orWhere('b.lbNom LIKE :regex')
-                ->setParameter('regex', "%$search%")
-                ->orWhere("b.nomVern LIKE :regex2")
-                ->setParameter('regex2', "%$search%");
+
+            if ($type == 'bec') {
+                $query
+                    ->orWhere("b.bec LIKE :regex3")
+                    ->setParameter('regex3', "%$search%");
+            } else {
+                $query
+                    ->orWhere('b.lbNom LIKE :regex')
+                    ->setParameter('regex', "%$search%")
+                    ->orWhere("b.nomVern LIKE :regex2")
+                    ->setParameter('regex2', "%$search%")
+                    ->orWhere("b.plumage LIKE :regex4")
+                    ->setParameter('regex4', "%$search%")
+                    ->orWhere("b.couleur LIKE :regex5")
+                    ->setParameter('regex5', "%$search%");
+            }
+
         }
         $query->orderBy('b.nomVern', 'ASC')
             ->addOrderBy('b.lbNom', 'ASC')->getQuery();
