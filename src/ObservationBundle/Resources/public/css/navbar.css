@@ -56,7 +56,15 @@
     .navbar > #first {
         height: 50px;
     }
-
+    .navbar>#first>.center-80, .navbar>#first>.center-80>div, .navbar>#first>.center-80>div>.navbar-nav,.navbar>#first>.center-80>div>.navbar-nav>li,.navbar>#first>.center-80>div>.navbar-nav>li>a{
+        height: 100%;
+    }
+    .navbar>#first>.center-80>div>.navbar-nav>li>a{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
     .navbar > .tab-content {
         max-height: 40px;
     }
