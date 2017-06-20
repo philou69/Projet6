@@ -22,6 +22,7 @@ security:
             security: false
 
         main:
+            pattern: ^/
             anonymous: ~
             form_login:
               login_path: user_connect
@@ -49,14 +50,12 @@ security:
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
             #form_login: ~
     access_control:
-        - { path: ^/observation/bird_list, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/observation/list, role: ROLE_OBS }
+        - { path: ^/observation/add, role: ROLE_OBS }
+        - { path: ^/user/profil, role: ROLE_OBS }
+        - { path: ^/user/observation, role: ROLE_NATURALISTE }
+        - { path: ^/user/my_observations, role: ROLE_NATURALISTE }
+        - { path: ^/user/stars, role: ROLE_OBS }
+        - { path: ^/billet, role: ROLE_ADMIN }
+        - { path: ^/faq/edit, role: ROLE_ADMIN }
         - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/user/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/user/reset, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/user/unsleep, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/user, roles: ROLE_USER }
-        - { path: ^/observation, roles: ROLE_USER }
-        - { path: ^/user/profil, roles: ROLE_USER }
-        - {path: ^/user/observation, roles: ROLE_NATURALISTE }
-        - {path: ^/user/stars, roles: ROLE_OBS }
-        - {path: ^/observation/list, roles: ROLE_USER }

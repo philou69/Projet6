@@ -66,7 +66,7 @@
             </tr>
             </tbody>
         </table>
-        {% if 'ROLE_NATURALISTE' in app.user.roles %}
+        {% if app.user and 'ROLE_NATURALISTE' in app.user.roles %}
         <div class="row">
             <div class="col-md-3 col-md-push-4">
                 {% if observation.validated == true %}
@@ -79,7 +79,7 @@
         </div>
         {% endif %}
     </div>
-    {% if 'ROLE_NATURALISTE' in app.user.roles %}
+    {% if app.user and 'ROLE_NATURALISTE' in app.user.roles %}
         {% if observation.validated == true %}
             {%  include 'ObservationBundle:Modal:unvalide.observation.html.twig' with {'observation': observation} %}
         {% else %}

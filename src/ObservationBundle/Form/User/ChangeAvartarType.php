@@ -18,7 +18,7 @@ class ChangeAvartarType extends AbstractType
             ->add('save', SubmitType::class, array(
                 'label' => 'Enregistrer',
                 'attr' => array(
-                    'class' => 'btn btn-xs btn-info'
+                    'class' => 'btn'
                 )
             ));
     }

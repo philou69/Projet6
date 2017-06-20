@@ -22,7 +22,7 @@ class UsernameEmailUserType extends AbstractType
             ->add('save', SubmitType::class, array(
                 'label' => 'Envoyer',
                 'attr' => array(
-                    'class' => 'bnt btn-xs btn-primary'
+                    'class' => 'bnt'
                 )
             ));
     }
