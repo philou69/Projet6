@@ -9,7 +9,7 @@
 
 {% block content %}
     <div class="center-80">
-        {% if 'ROLE_ADMIN' in app.user.roles %}
+        {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
             <a href="{{ path('faq_edit', {'page': 'faq'}) }}" class="btn btn-nao" id="edit"><i class="fa fa-pencil"></i></a>
         {% endif %}
         <h1>Foire aux questions</h1>

@@ -5,7 +5,14 @@
 #bienvenue, #gallery, #actions {
     margin-top: 50px;
 }
-
+/* Le contenue suivant la photo d'acceuil fait au minimum 80% de l'écran pour assuere le scroll*/
+#second-part{
+    min-height: 80vh;
+}
+/* On ajoute un padding top à bienvenue pour empeche la navbar de caché le texte */
+#bienvenue{
+    padding-top: 90px;
+}
 /*
 Partie observation et newsletter
  */

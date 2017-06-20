@@ -1,1 +1,21 @@
-{% extends '@Observation/@Observation/layout.mobile.html.twig' %}
+{% extends '@Observation/layout.mobile.html.twig' %}
+
+{% block title %}Foire Aux Questions{% endblock %}
+
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/faq.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="center-80">
+        {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
+            <a href="{{ path('faq_edit', {'page': 'faq'}) }}" class="btn btn-nao" id="edit"><i class="fa fa-pencil"></i></a>
+        {% endif %}
+        <h1>Foire aux questions</h1>
+        <small>Mis à jour le : {{ content.updateAt == null ? content.postedAt| date('d/m/Y') : content.updateAt | date('d/m/Y') }}</small>
+        <p>
+            {{ content.content | raw }}
+        </p>
+    </div>
+{% endblock %}
