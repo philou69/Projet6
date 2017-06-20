@@ -12,6 +12,9 @@
     color: white;
     line-height: 18px;
 }
+.nav>li>a{
+    padding: 10px;
+}
 
 .first_line.active>a{
     /* Couleur des lien premiere ligne quand active*/
