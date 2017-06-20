@@ -38,9 +38,10 @@ $(document).ready(function () {
         prepareRequete(true);
 
         var option = $('#type').val();
-        var urlType = $('#search').attr('data-href').replace('bec', option);
+        var urlType = $('#search').attr('data-href').replace('lbNom', option);
 
         var url = urlType + '?search=' + $(this).val();
+
         // var url = $(this).data('href') + '?search=' + $(this).val();
         $.ajax({
             url: url,

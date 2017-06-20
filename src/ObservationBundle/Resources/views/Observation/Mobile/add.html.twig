@@ -60,6 +60,8 @@
                                 {{ form_label(form.bird, form.vars.label) }}
                                 {{ form_errors(form.bird) }}
                                 {{ form_widget(form.bird) }}
+                                <a href="{{ path('bird_list') }}">Vous avez un doute sur le spécimen observé? Cliquez
+                                    ici!</a>
                             </div>
                         </div>
                     </div>
@@ -89,13 +91,14 @@
                                 {{ form_label(form.pictures) }}
                                 {{ form_errors(form.pictures) }}
                             </div>
-                            <div class="col-xs-4">
-                                {{ form_widget(form.pictures.first, {'attr': {'data-buttonText': 'Choisir Photo(s)'}}) }}
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    {{ form_widget(form.pictures.first, {'attr': {'data-buttonText': 'Choisir Photo(s)'}}) }}
+                                </div>
+                                <div class="col-xs-4">
+                                    {{ form_widget(form.pictures.second, {'attr': {'data-buttonText': 'Prendre Photo(s)', 'capture': 'true'}}) }}
+                                </div>
                             </div>
-                            <div class="col-xs-4">
-                                {{ form_widget(form.pictures.second, {'attr': {'data-buttonText': 'Prendre Photo(s)', 'capture': 'true'}}) }}
-                            </div>
-                            <br>
                             <div id="picBird" class="col-xs-12">
                                 <button type="button" class="close" aria-label="Close" id="closePic" hidden>
                                     <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
