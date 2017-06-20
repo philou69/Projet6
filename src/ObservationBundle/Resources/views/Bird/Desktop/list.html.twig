@@ -13,21 +13,23 @@
             <div class="col-md-8">
                 <h1>Liste des fiches oiseaux</h1>
             </div>
-            <div class="col-md-4 text-right center">
-                <select name="type" id="type">
-                    <option value="lbNom">Par Nom</option>
-                    <option value="nomVern">Par Nom Vernaculaire</option>
-                    <option value="bec">Par Type de Bec</option>
-                    <option value="plumage">Par Type de Plumage</option>
-                    <option value="couleur">Par Type de Couleur</option>
-                </select>
+            <div class="col-md-4 center">
+                <div class="form-group">
+                    <label for="type">Filtrer par: </label>
+                    <select name="type" id="type" class="form-control">
+                        <option value="lbNom">Nom</option>
+                        <option value="nomVern">Nom Vernaculaire</option>
+                        <option value="bec">Type de Bec</option>
+                        <option value="plumage">Type de Plumage</option>
+                        <option value="couleur">Type de Couleur</option>
+                    </select>
+                </div>
                 <input type="text" id="search" placeholder="Rechercher une fiche &#xf002;"
-                       style="font-family:FontAwesome, Arial"
-                       data-href="{{ path('bird_pagination', {'page': 1, 'type': 'bec'}) }}"/>
+                       style="font-family:FontAwesome, Arial; text-align: right"
+                       data-href="{{ path('bird_pagination', {'page': 1, 'type': 'lbNom'}) }}"/>
 
 
             </div>
-
         </div>
         <div id="birds" data-href="{{ path('bird_pagination', {'page': 1,'type': 'bec'}) }}"></div>
 

@@ -128,7 +128,6 @@ class BirdController extends Controller
                 // Si c'est 0, search est null,
                 // Sinon on lui passe la valeur sécurisé
                 $search = strlen(htmlspecialchars($request->query->get('search'))) == 0 ? null :  htmlspecialchars($request->query->get('search'));
-                var_dump($search);
 
                 // On effectu la requete doctrine getPage()
                 $birds = $em->getRepository('ObservationBundle:Bird')->getPage($page, $number, $search, $type);

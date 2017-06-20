@@ -4,6 +4,10 @@
 // Appeller dans la vue Bird/Desktop/list.html.twig
 $(document).ready(function () {
 
+    $('#type').change(function () {
+        $('#search').val('');
+    });
+
     // Création de la variable page
     var page = 1;
     // Première requete ajax lors du chargement de la page
@@ -33,7 +37,11 @@ $(document).ready(function () {
     $('#search').on('keyup', function (event) {
         prepareRequete(true);
 
-        var url = $(this).data('href') + '?search=' + $(this).val();
+        var option = $('#type').val();
+        var urlType = $('#search').attr('data-href').replace('lbNom', option);
+
+        var url = urlType + '?search=' + $(this).val();
+
         // var url = $(this).data('href') + '?search=' + $(this).val();
         $.ajax({
             url: url,
