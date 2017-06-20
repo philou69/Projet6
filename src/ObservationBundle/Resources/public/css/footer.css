@@ -1,14 +1,75 @@
+/*--------- Style pour footer -------*/
 footer {
-    background-color: rgb(110, 151, 145);
-    padding-top: 10px;
+    height: 180px;
+}
+
+footer > .container, footer > .container > .center-80, footer > .container > .center-80 > .row {
+    height: 100%;
+}
+
+footer > .container {
+    background: url("../images/Visuels/footer_background.jpg") center no-repeat;
+    background-size: auto;
 
 }
 
-footer a {
+footer > .container > .center-80 {
+    padding: 20px 0;
+}
+
+footer > .container > .center-80 > .row > div {
+    height: 100%;
     color: white;
 }
 
-footer a:hover {
-    text-decoration: none;
+footer .border-right {
+    border-right: 2px solid #b4c8c6;
+}
+
+.second_list {
+    list-style: none;
+}
+
+footer li > a {
+    color: white;
+}
+
+footer li.active > a {
     color: #a1d0f3;
+}
+
+.content_newsletter {
+    padding: 20px 30px;
+}
+
+footer .input-group-btn > .btn {
+    background-color: #8dd4e8;
+    text-transform: uppercase;
+}
+
+footer > .container > .center-80 > .row > .row > div {
+    height: 50%;
+}
+
+footer > .container > .center-80 > .row > .row > div.col-lg-7 {
+    padding-left: 25px;
+}
+
+footer .social-network {
+    display: inline-block;
+    height: 28px;
+    margin-top: calc((70px - 28px) / 2);
+    margin-left: 5px;
+}
+
+footer .social-network > .fa {
+    color: white;
+}
+
+footer button {
+    margin-top: 10px;
+}
+
+footer > div > div > div > div:nth-child(3) > div.col-lg-5 {
+    margin-top: 20px;
 }

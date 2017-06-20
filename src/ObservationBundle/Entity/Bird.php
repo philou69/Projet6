@@ -12,16 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Bird
 {
+
     /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche")
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche", cascade={"persist"})
      */
     protected $fiche;
-    /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Sound")
-     */
-    protected $sound;
-
-
     /**
      * @var int
      *
@@ -136,7 +131,24 @@ class Bird
      * @ORM\JoinColumn(nullable=false)
      */
     private $pictures;
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bec", type="string", length=255)
+     */
+    private $bec;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="plumage", type="string", length=255)
+     */
+    private $plumage;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="couleur", type="string", length=255)
+     */
+    private $couleur;
 
     /**
      * Constructor
@@ -654,27 +666,74 @@ class Bird
     }
 
     /**
-     * Get sound
+     * Get bec
      *
-     * @return \ObservationBundle\Entity\Sound
+     * @return string
      */
-    public function getSound()
+    public function getBec()
     {
-        return $this->sound;
+        return $this->bec;
     }
 
     /**
-     * Set sound
+     * Set bec
      *
-     * @param \ObservationBundle\Entity\Sound $sound
+     * @param string $bec
      *
      * @return Bird
      */
-    public function setSound(\ObservationBundle\Entity\Sound $sound = null)
+    public function setBec($bec)
     {
-        $this->sound = $sound;
+        $this->bec = $bec;
 
         return $this;
     }
 
+    /**
+     * Get plumage
+     *
+     * @return string
+     */
+    public function getPlumage()
+    {
+        return $this->plumage;
+    }
+
+    /**
+     * Set plumage
+     *
+     * @param string $plumage
+     *
+     * @return Bird
+     */
+    public function setPlumage($plumage)
+    {
+        $this->plumage = $plumage;
+
+        return $this;
+    }
+
+    /**
+     * Get couleur
+     *
+     * @return string
+     */
+    public function getCouleur()
+    {
+        return $this->couleur;
+    }
+
+    /**
+     * Set couleur
+     *
+     * @param string $couleur
+     *
+     * @return Bird
+     */
+    public function setCouleur($couleur)
+    {
+        $this->couleur = $couleur;
+
+        return $this;
+    }
 }

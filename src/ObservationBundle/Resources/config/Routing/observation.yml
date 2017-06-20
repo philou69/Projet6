@@ -33,3 +33,8 @@ observation_view:
     path: /{id}/view
     defaults:
       _controller: ObservationBundle:Observation:view
+
+observation_locations:
+    path: /{id}/locations
+    defaults:
+      _controller: ObservationBundle:Observation:locations

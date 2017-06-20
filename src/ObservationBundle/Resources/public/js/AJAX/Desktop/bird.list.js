@@ -1,6 +1,13 @@
 // Requetes AJAX sur la pagination et recherche des oiseaux
 // Appeller dans la vue Bird/Desktop/list.html.twig
 $(document).ready(function () {
+
+
+    $('#type').change(function () {
+        $('#search').val('');
+
+    });
+
     // Création de la variable page
     var page = 1
     // Première requete ajax lors du chargement de la page
@@ -29,7 +36,13 @@ $(document).ready(function () {
     // Requete ajax lors d'une recherche
     $('#search').on('keyup', function (event) {
         prepareRequete(true);
-        var url = $(this).data('href') + '?search=' + $(this).val();
+
+        let option = $('#type').val();
+        let urlType = $('#search').attr('data-href').replace('lbNom', option);
+
+        let url = urlType + '?search=' + $(this).val();
+
+        // var url = $(this).data('href') + '?search=' + $(this).val();
          $.ajax({
             url: url,
             dataType: 'html',
@@ -82,8 +95,8 @@ $(document).ready(function () {
 
     $(window).scroll(function () {
 
-        // On vérifie si le document fait 2 fois la taille de l'ecran et si le haut du scroll est superieur à 2 fois la taille de l'écran
-        if(($(window).height() * 2) < $(document).height() && $(window).scrollTop() > ($(window).height() *2) ){
+        // On vérifie si le document fait au moins 2 fois la taille de l'ecran et si le haut du scroll est superieur à la taille de l'écran
+        if (($(window).height() * 1.5 ) < $(document).height() && $(window).scrollTop() > $(window).height()) {
             // Dans ce cas on affiche le bouton up
             $('#up').css('display', 'inline');
         }else {

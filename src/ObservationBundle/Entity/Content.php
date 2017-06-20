@@ -27,9 +27,19 @@ class Content
     protected $content;
 
     /**
-     * @ORM\Column(type="string", nullable=false, unique=true)
+     * @ORM\Column(type="string", nullable=false)
      */
     protected $page;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $postedAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $updateAt;
 
     /**
      * Get id
@@ -39,6 +49,16 @@ class Content
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
     }
 
     /**
@@ -56,13 +76,13 @@ class Content
     }
 
     /**
-     * Get content
+     * Get page
      *
      * @return string
      */
-    public function getContent()
+    public function getPage()
     {
-        return $this->content;
+        return $this->page;
     }
 
     /**
@@ -80,12 +100,50 @@ class Content
     }
 
     /**
-     * Get page
+     * Set postedAt
      *
-     * @return string
+     * @param \DateTime $postedAt
+     *
+     * @return Content
      */
-    public function getPage()
+    public function setPostedAt($postedAt)
     {
-        return $this->page;
+        $this->postedAt = $postedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get postedAt
+     *
+     * @return \DateTime
+     */
+    public function getPostedAt()
+    {
+        return $this->postedAt;
+    }
+
+    /**
+     * Set updateAt
+     *
+     * @param \DateTime $updateAt
+     *
+     * @return Content
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updateAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
     }
 }

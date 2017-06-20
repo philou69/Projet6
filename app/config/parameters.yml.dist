@@ -21,6 +21,11 @@ parameters:
     google_id: erer
     google_secret: erer
     google_api_key: erer
-
+    twitter: https://twitter.com/NAOiseaux
+    facebook: https://www.facebook.com/NAO-Nos-Amis-les-Oiseaux-1547238661954599
+    instagram: https://www.instagram.com/Nos_amis_les_oiseaux/
+    mailchimp_api_key: 226cb5e9b317e3f0abd32f29131aa295-us16
+    mailchimp_list_id: 318cefd73c
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+    mandrill_api_key: erer

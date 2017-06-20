@@ -1,0 +1,93 @@
+/*------------ Toggle switch newsletter--------------- */
+/* On centre le switch*/
+.checkbox {
+    text-align: center;
+    margin-top: 0;
+}
+/* Le switch - box autour du slider*/
+#switch_newsletter {
+    position: relative;
+    display: inline-block;
+    width: 260px;
+    height: 30px;
+    margin: auto;
+}
+
+/* On cache la checkbox HTML */
+#switch_newsletter input {
+    display: none;
+}
+
+/*Le slider */
+#slider_newsletter {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #99d1c8;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+#slider_newsletter:before {
+    position: absolute;
+    content: "";
+    height: 25px;
+    width: 25px;
+    left: 5px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+#slider_newsletter #on, #slider_newsletter #off {
+    color: white;
+    font-size: 20px;
+    font-family: Verdana, sans-serif;
+}
+#slider_newsletter #on{
+    position: absolute;
+    top: 1px;
+    left:15%;
+}
+#slider_newsletter #off{
+    position: absolute;
+    top:1px ;
+    right:15%;
+}
+#switch_newsletter input:checked + #slider_newsletter {
+    background-color: #99d1c8;
+}
+
+#switch_newsletter input:focus + #slider_newsletter {
+    box-shadow: 0 0 1px #dbefed;
+}
+
+#switch_newsletter input:not(:checked) + #slider_newsletter:before {
+    -webkit-transform: translateX(260px) translateX(-33px);
+    -ms-transform: translateX(260px) translateX(-33px);
+    transform: translateX(260px) translateX(-33px);
+}
+
+@media (max-width: 992px) {
+    .on-profil #switch_newsletter {
+        width: 170px;
+    }
+
+    .on-profil > #switch_newsletter > #slider_newsletter > #on {
+        left: 20%;
+    }
+
+    .on-profil > #switch_newsletter > #slider_newsletter > #off {
+        right: 20%;
+    }
+
+    .on-profil > #switch_newsletter input:not(:checked) + #slider_newsletter:before {
+        -webkit-transform: translateX(170px) translateX(-33px);
+        -ms-transform: translateX(170px) translateX(-33px);
+        transform: translateX(170px) translateX(-33px);
+    }
+}
+/*----------- Fin du toggle switch */

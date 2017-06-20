@@ -3,16 +3,20 @@
 {% block title %}Changer avatar{% endblock %}
 
 {% block content %}
-    <div class="marge-top">
-        <h1>Changer votre photo de profil</h1>
-        {{ form_start(form) }}
+    <div class="marge-top center-90">
+        <h3>Changer votre photo de profil</h3>
+        {{ form_start(form, {'attr': {'class': 'form-horizontal center-80'}}) }}
         {{ form_errors(form) }}
-        <label for="{{ form.avatar.file.vars.id }}">{{ form.avatar.vars.name }}</label>
-        {{ form_widget(form.avatar.file) }}
-        {{ form_errors(form.avatar.file) }}
-
-        <div class="text-center">{{ form_widget(form.save) }}</div>
-
+        <div class="form-group">
+            {{ form_label(form.avatar) }}
+            {{ form_widget(form.avatar.file) }}
+            {{ form_errors(form.avatar.file) }}
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-xs-push-3">
+                {{ form_widget(form.save) }}
+            </div>
+        </div>
         {{ form_end(form) }}
     </div>
 

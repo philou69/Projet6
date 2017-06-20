@@ -20,13 +20,13 @@ class ResetPasswordType extends AbstractType
             'type' => PasswordType::class,
             'first_options' => array(
                 'attr' => [
-                    'placeholder' =>'Nouveau mot de passe'
+                    'placeholder' => 'Nouveau mot de passe'
                 ]
             ),
             'second_options' => array(
                 'attr' => [
-                    'placeholder' =>'Confirmez mot de passe'
-                    ]
+                    'placeholder' => 'Confirmez mot de passe'
+                ]
             )
         ))
             ->add('save', SubmitType::class, array(

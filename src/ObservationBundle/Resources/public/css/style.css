@@ -1,12 +1,22 @@
-
+/* Suppression des marges negatifs sur les classes row de bootstrap*/
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
 
 /*
 Réglages généraux
 */
 body {
     font-family: ‘Roboto’, sans-serif;
-    background-color: rgb(110, 151, 145);
 }
+
+#contentHome, #contentAdd, #contentEdit {
+
+    background: url('../images/Visuels/observation_background.jpg') no-repeat center;
+    width: 100%;
+}
+
 
 h1 {
     font-size: 36px;
@@ -14,17 +24,18 @@ h1 {
 
 }
 
-.navbar {
-    margin-bottom: 0;
+
+#gallery img, #picBird img {
+    margin: 10px auto;
+    min-height: 200px;
+    height: 200px;
+    width: 100%;
 }
 
-.btn {
-    background-color: #99d1C8;
-    color: white;
-}
+#picBird img {
 
-#content {
-    padding-top: 20px;
+    width: 240px;
+    margin-right: 10px;
 }
 
 /*
@@ -35,11 +46,72 @@ Page Observation
     width: 100%;
 }
 
-.center-80{
+.center-80 {
     width: 80%;
     margin: auto;
 }
-     /*------------------ Styel pour les écans de largeur superieur à 992 px -------*/
+
+.container {
+    width: 100%;
+    max-width: 1600px;
+    margin: auto;
+    padding: 0;
+}
+
+#formObs, #formEdit {
+
+    border: none;
+    background: none;
+}
+
+#flashMobile {
+    margin-top: 40px;
+}
+
+/*
+Formatage input
+ */
+.form-control, #formObs > div > form > div:nth-child(4) > div > div > span > span.selection > span, #contentAdd > div:nth-child(2) > div > form > div:nth-child(4) > div > div > span > span.selection > span {
+    border-radius: 0;
+}
+
+/*
+Stylisation bouton Import Image
+ */
+
+.group-span-filestyle .btn-default {
+    /*background-color: #99d1c8;*/
+    /*background-image: none;*/
+    background: url('../images/icones/importPhoto_icon.png') no-repeat center;
+    text-shadow: none;
+    height: 100px;
+    margin-top: 10px;
+}
+
+#contentAdd > div:nth-child(2) > div > form > div:nth-child(6) > div > div > div.row > div:nth-child(2) > div > span > label {
+    background: url('../images/icones/photo_icon.png') no-repeat center;
+}
+
+.group-span-filestyle .buttonText {
+
+    color: grey;
+}
+
+/*
+Retour bas de page
+ */
+#retour {
+    height: 30px;
+    background-color: rgb(243, 243, 243);
+}
+
+#retour a {
+    margin-top: 5px;
+    text-decoration: none;
+    color: #99d1c8;
+}
+
+/*------------------ Styel pour les écans de largeur superieur à 992 px -------*/
 @media (min-width: 992px) {
     /* Marge du body pour la navbar et utilisation de flex pour coller le footer en bas de page */
     body {
@@ -47,20 +119,17 @@ Page Observation
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-        background-color: #5f827e ;
     }
 
     /*Contenu de la page pour prendre le plus de place possible*/
     #content {
         flex: 1;
-        padding-top: 60px;
-        padding-bottom: 20px;
-        background-color: white;
     }
 
-    /*style des liste oiseaux*/
-    .observation, .observation > ul {
-        min-height: 60px;
+    #content > .center-80 {
+        min-height: calc(100vh - 140px - 70px);
+        padding-top: 20px;
+
     }
 
     #listing .row {
@@ -68,39 +137,36 @@ Page Observation
 
     }
 
-    /* Position du bouton up à 120px du haut*/
-    #up {
-        top: 120px;
-    }
-    .bird{
-        width: 47.5%;
-        background-color: rgb(241, 241, 241);
-    }
-
-
 }
 
 /* -------------------------------- Fin style écran petit ----------------------------------------*/
 /* -------------------------------- Ecran de moins de 992 px de large ----------------------------------------*/
 @media (max-width: 992px) {
-    body{
+    body {
         min-height: 100vh;
         margin: 0;
     }
+
     /* Marge speciale pour ne pas affiché sous la navbar */
     #view {
         padding-bottom: 70px;
-        min-height:100vh;
+        min-height: 100vh;
+        padding-top: 40px;
     }
 
-    /* position du bouton up à 20px du haut */
-    #up {
-        top: 20px;
+    #view > .center-80 {
+        padding-top: 40px;
     }
+
+    #contentAdd {
+        background: none;
+        width: 90%;
+    }
+
 }
 
 .required:after {
-    content: '*';
+    content: ' *';
     color: #C82829;
 }
 
@@ -109,25 +175,23 @@ Page Observation
     height: 20px;
 }
 
-
-
 /* Capital sur les lien de navigation dans le footer */
 .capital {
     text-transform: uppercase;
     font-size: small;
 }
 
-/* Style sur l'input de recherche des liste oiseaux */
-#search {
-    border: 0;
-    border-bottom: 2px solid cornflowerblue;
-}
-
-.center, .center > input, .center > i {
-    margin: auto;
+#birds {
+    margin-top: 20px;
 }
 
 /*------- Loader -----*/
+.content-loader {
+    width: 120px;
+    height: 120px;
+    margin: auto;
+}
+
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
     border-top: 16px solid #3498db; /* Blue */
@@ -163,82 +227,24 @@ Page Observation
     right: 0;
 }
 
-/*
-    Zone sur les div des observations lors des paginations
-    - Affichage d'une main lors du survole
-    - hauteur à 100 px
-    - Hauteur de certains divs à 100px
-    - Affichage d'une bordure à droite sur certain contenue
-*/
-.observation {
-    cursor: pointer;
-    margin-bottom: 20px;
+.obtained {
+    border: 2px solid #916319;
 }
 
-.observation > ul {
-    min-height: 60px;
-}
-
-.observation small {
-    color: #dddddd;
-}
-
-.right-border {
-    border: 0;
-    border-right: 1px solid #dddddd;
-}
-
-
-#up {
-    z-index: 255;
-    display: none;
-    position: fixed;
-    right: 20px;
-}
-
-/** Affichage main pour les div oiseaux **/
-.bird {
-    cursor: pointer;
-    height: 100px;
-    padding: 0;
-    background-color: rgb(241, 241, 241);
-    margin-bottom: 10px;
-}
-
-/* Margin special pour les div liste des oiseaux marge soit à gauche soit à droite*/
-.left {
-    margin-right: 2.5%;
-}
-
-.right {
-    margin-left: 2.5%;
-}
-
-.star-modal{
-    min-height: 50vh;
-}
-
-.obtained{
-    border:2px solid #916319;
-}
-.no-obtained{
+.no-obtained {
     border: 2px solid #2f2f2f;
 }
-.star{
+
+.star {
     margin-top: 10px;
     margin-bottom: 10px;
-}
-
-
-
-.img-responsive{
-    height: 100px;
 }
 
 #birds .col-sm-4 {
     padding: 0;
 }
-#edit_avatar{
+
+#edit_avatar {
     border-radius: 50%;
     position: relative;
     bottom: 40px;
@@ -246,36 +252,53 @@ Page Observation
 }
 
 /*--- marging ----*/
-.marge-top{
+.marge-top {
     margin-top: 20px;
 }
 
-
-/*
-Star design
-*/
-.group-star{
-    background-color: #565656;
-    border-radius: 50%;
-    border: 1px solid skyblue;
-}
-#stars{
-    display: none;
-}
 /* Les boutons des form sont toutes largeur, sans arrondi et de couleur blanche*/
-.btn{
+.btn {
     border-radius: 0;
-    /*width: 100%;*/
+    width: 100%;
     color: white;
 }
-.btn-nao>img{
+
+/*
+Boutons text editor
+ */
+
+.note-btn {
+    color: black;
+    width: 40px;
+}
+.btn-nao > img {
     height: 20px;
 }
+
 /*Couleur verte sur les bouton */
-.btn-nao{
+.btn-nao {
     background-color: #99d1c8;
 }
+
+.btn-nao-2 {
+    background-color: #8dd4e8;
+}
+
+.btn-form {
+    max-width: 100px;
+}
 /*Background gris*/
-.grey{
+.grey {
     background-color: #fbfbfb;
+}
+
+.center-90 {
+    width: 90%;
+    margin: auto;
+}
+
+/* Style bloquer la largeur des boutons */
+.center-button{
+    width: 120px;
+    margin: auto;
 }

@@ -1,0 +1,26 @@
+{% for message in messages %}
+    <div class="message" id="{{ message.slugTitle }}">
+        <div class="up">
+            <div class="left">
+                <h5>{{ message.title }}</h5>
+                <small>Posté le : {{ message.postedAt | date('d/m/Y H:i') }}, {{ message.received == true ? 'Reçu' : 'En attente' }}, {{ message.answered ==  true ? 'Répondu' : ' répondre'}}</small>
+            </div>
+            <div class="right">
+                {% if message.received != true %}
+                    <a class="contact-resend" href="#" data-href="{{ path('contact_resend', {'id' : message.id}) }}">Renvoyer</a>
+                    <a href="#" class="contact-received" data-href="{{ path('contact_received', {'id': message.id}) }}">Recu</a>
+                {% endif %}
+                {% if message.answered != true %}
+                    <a href="#" class="contact-answered" data-href="{{ path('contact_answered',{'id': message.id}) }}">Répondu</a>
+                    <a href="mailto:{{ message.email }}">Répondre</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="down">
+            <p>
+                {{ message.message }}
+            </p>
+        </div>
+
+    </div>
+{% endfor %}

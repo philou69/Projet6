@@ -1,0 +1,29 @@
+/*------- Style pour la liste de l'observation ---------*/
+h2 {
+    color: #a1d0f3;
+}
+
+.observation > .first-bloc {
+    height: 50px;
+}
+
+.observation > .second-bloc {
+    height: 60px;
+}
+
+hr {
+    border-top: 1px solid black;
+    width: 20%;
+    margin-left: 10px;
+}
+
+/*
+Map
+*/
+
+#mapLocation {
+    height: 400px;
+    margin-top: 20px;
+}
+
+/*------- fin de style pour la liste de l'observation ---------*/

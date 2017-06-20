@@ -3,14 +3,21 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 <!-- Cdn dataTables -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+<!-- Cdn Jquery UI -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
 <!-- Cdn font awesome -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
-
+{# librairie animated.css#}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 <link rel="stylesheet" href="{{ asset('bundles/observation/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('bundles/observation/css/navbar.css') }}">
+{% if is_mobile() or is_tablet() %}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/navbar.fixed.top.css') }}">
+{% endif %}
+<link rel="stylesheet" href="{{ asset('bundles/observation/css/footer.css') }}">
 {#{% stylesheets '@ObservationBundle/Resources/public/css/*' filter='cssrewrite' %}#}
 {#<link rel="stylesheet" href="{{ asset_url }}" />#}
 {#{% endstylesheets %}#}

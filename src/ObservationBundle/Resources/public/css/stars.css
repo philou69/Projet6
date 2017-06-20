@@ -1,0 +1,77 @@
+/*
+Star design
+*/
+.star > a {
+    display: inline-block;
+    width: 70px;
+    min-height: 70px;
+}
+
+.group-star {
+    background-color: #cccccc;
+    border-radius: 50%;
+}
+
+#stars {
+    display: none;
+}
+
+.star > a > img {
+    width: 70px;
+    margin: auto;
+}
+
+/* -------- Modal style ------ */
+.modal-body{
+    display: flex;
+}
+ .modal-body > div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+.modal-body .left, .modal-body .right {
+    display: inline-block;
+    height: 100%;
+    width: 50%;
+    padding: 10px;
+    white-space: normal;
+}
+
+.modal-body .right {
+    display: flex;           /* establish flex container */
+    flex-direction: column;  /* make main axis vertical */
+    justify-content: center; /* center items vertically, in this case */
+    align-items: center;
+}
+
+.up, .down {
+    display: flex;           /* establish flex container */
+    flex-direction: row;  /* make main axis vertical */
+    justify-content: center; /* center items vertically, in this case */
+    align-items: center;
+    height: 50%;
+}
+
+.up {
+    border: 0;
+    border-bottom: 1px solid black;
+}
+.modal-body img{
+    margin: 5px;
+}
+
+@media ( max-width:  992px) {
+    .modal-body{
+        display: block;
+    }
+    .modal-dialog{
+        width: 80vw;
+        height: 80vh;
+        margin: 10vh 10vw;
+    }
+    .modal-body .left, .modal-body .right{
+        height: 50%;
+        width: 100%;
+    }
+}

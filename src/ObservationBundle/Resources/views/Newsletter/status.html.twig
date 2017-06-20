@@ -1,0 +1,14 @@
+{% extends is_mobile() ? '@Observation/layout.mobile.html.twig' :'@Observation/layout.desktop.html.twig' %}
+
+{% block title %}Status de votre email{% endblock %}
+
+{% block content %}
+    <h1>Status de l'adresse {{ email }}</h1>
+    {{ dump(status) }}
+    {% if status == true  %}
+        Vous avez été retirer de nos listes de newsletter.
+        {% else %}
+            Suite à un problème technique, vous n'avez pas pu être retirer de notre liste. <br>
+            Vous pouvez <a href="{{ path('newsletter_unscubscribe', {'email': email}) }}">recommencer</a>
+    {% endif %}
+{% endblock %}

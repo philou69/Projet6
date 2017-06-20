@@ -80,15 +80,9 @@ class User implements AdvancedUserInterface, \Serializable
     protected $roles;
 
     /**
-     * @ORM\Column(name="token", type="string", nullable=true)
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\RequestPassword", inversedBy="user", cascade={"persist"})
      */
-    protected $token;
-
-    /**
-     * @ORM\Column(name="token_date", type="datetime", nullable=true)
-     */
-    protected $dateToken;
-
+    protected $requestPassword;
     /**
      * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Star", mappedBy="users")
      * @ORM\JoinColumn(nullable=false)
@@ -107,6 +101,21 @@ class User implements AdvancedUserInterface, \Serializable
      * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Picture", inversedBy="user", cascade={"persist"})
      */
     protected $avatar;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    protected $newsletter = true ;
+
+    /**
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\RequestOpen", inversedBy="user", cascade={"persist"})
+     */
+    protected $requestOpen;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $sleeping = false;
 
     /**
      * Constructor
@@ -172,6 +181,10 @@ class User implements AdvancedUserInterface, \Serializable
             return $this;
         }
         if(!in_array($role, $this->roles, true)){
+            // On s'assure que les admins, on aussi le role naturaliste
+            if ($role === 'ROLE_ADMIN' && !in_array('ROLE_NATURALISTE', $this->roles, true)) {
+                $this->roles[] = 'ROLE_NATURALISTE';
+            }
             $this->roles[] = $role;
         }
         return $this;
@@ -413,53 +426,6 @@ class User implements AdvancedUserInterface, \Serializable
         return $this;
     }
 
-    /**
-     * Get token
-     *
-     * @return string
-     */
-    public function getToken()
-    {
-        return $this->token;
-    }
-
-    /**
-     * Set token
-     *
-     * @param string $token
-     *
-     * @return User
-     */
-    public function setToken($token)
-    {
-        $this->token = $token;
-
-        return $this;
-    }
-
-    /**
-     * Get dateToken
-     *
-     * @return \DateTime
-     */
-    public function getDateToken()
-    {
-        return $this->dateToken;
-    }
-
-    /**
-     * Set dateToken
-     *
-     * @param \DateTime $dateToken
-     *
-     * @return User
-     */
-    public function setDateToken($dateToken)
-    {
-        $this->dateToken = $dateToken;
-
-        return $this;
-    }
 
     /**
      * Add star
@@ -549,6 +515,102 @@ class User implements AdvancedUserInterface, \Serializable
     public function setAvatar(\ObservationBundle\Entity\Picture $avatar = null)
     {
         $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get newsletter
+     *
+     * @return boolean
+     */
+    public function getNewsletter()
+    {
+        return $this->newsletter;
+    }
+
+    /**
+     * Set newsletter
+     *
+     * @param boolean $newsletter
+     *
+     * @return User
+     */
+    public function setNewsletter($newsletter)
+    {
+        $this->newsletter = $newsletter;
+
+        return $this;
+    }
+
+    /**
+     * Get requestPassword
+     *
+     * @return \ObservationBundle\Entity\RequestPassword
+     */
+    public function getRequestPassword()
+    {
+        return $this->requestPassword;
+    }
+
+    /**
+     * Set requestPassword
+     *
+     * @param \ObservationBundle\Entity\RequestPassword $requestPassword
+     *
+     * @return User
+     */
+    public function setRequestPassword(\ObservationBundle\Entity\RequestPassword $requestPassword = null)
+    {
+        $this->requestPassword = $requestPassword;
+
+        return $this;
+    }
+
+    /**
+     * Get requestOpen
+     *
+     * @return \ObservationBundle\Entity\RequestOpen
+     */
+    public function getRequestOpen()
+    {
+        return $this->requestOpen;
+    }
+
+    /**
+     * Set requestOpen
+     *
+     * @param \ObservationBundle\Entity\RequestOpen $requestOpen
+     *
+     * @return User
+     */
+    public function setRequestOpen(\ObservationBundle\Entity\RequestOpen $requestOpen = null)
+    {
+        $this->requestOpen = $requestOpen;
+
+        return $this;
+    }
+
+    /**
+     * Get sleeping
+     *
+     * @return boolean
+     */
+    public function getSleeping()
+    {
+        return $this->sleeping;
+    }
+
+    /**
+     * Set sleeping
+     *
+     * @param boolean $sleeping
+     *
+     * @return User
+     */
+    public function setSleeping($sleeping)
+    {
+        $this->sleeping = $sleeping;
 
         return $this;
     }

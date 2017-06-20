@@ -1,64 +1,79 @@
-<footer >
+<footer>
     <div class="container">
-        <div class="row">
-            <div class="col-sm-3">
-                <h2><a href="{{ path('homepage') }}"><img
-                                src="{{ asset ('bundles/observation/images/logo/logo_footer_couleur.png') }}"
-                                alt="logo_footer"></a></h2>
-            </div>
-            <div class="col-sm-4 row">
-                <div class="col-sm-6">
-                    <ul class="list-unstyled capital ">
-                        <li {% if app.request.attributes.get('_route')  == 'homepage'%}class="active"{% endif %}><a href="{{ path('homepage') }}">Accueil</a></li>
-                        <li {% if app.request.attributes.get('_route')  == 'observation_add' %}class="active"{% endif %}><a href="{{ path('observation_add') }}"><i class="fa fa-plus"></i> Observation</a></li>
-                        {% if app.user %}
-                            <li><a href="#" disabled="true">Mon compte</a>
-                                <ul>
-                                    <li {% if app.request.attributes.get('_route')  == 'user_profil' %}class="active"{% endif %}><a href="{{ path('user_profil') }}">Profil</a></li>
-                                    <li {% if app.request.attributes.get('_route')  == 'user_observation' %}class="active"{% endif %}><a href="{{ path('user_observations') }}">Mes Observation</a></li>
-                                    <li {% if app.request.attributes.get('_route')  == 'user_stars' %}class="active"{% endif %}><a href="{{ path('user_stars') }}">Médailles</a></li>
-                                    <li><a href="{{ path('user_logout') }}">Déconnexion</a></li>
-                                </ul></li>
+        <div class="center-80">
+            <div class="row">
+                <div class="col-sm-2 border-right">
+                    <a href="{{ path('homepage') }}">
+                        <img src="{{ asset ('bundles/observation/images/logo/logo_footer_couleur.png') }}"
+                             class="img-responsive" alt="logo_footer">
+                    </a>
+                </div>
+                <div class="col-sm-5 row border-right">
+                    <div class="col-sm-6">
+                        <ul class="list-unstyled capital ">
+                            <li {% if app.request.attributes.get('_route')  == 'homepage' %}class="active"{% endif %}><a
+                                        href="{{ path('homepage') }}">Accueil</a></li>
+                            <li {% if app.request.attributes.get('_route')  == 'observation_add' %}class="active"{% endif %}>
+                                <a href="{{ path('observation_add') }}"><i class="fa fa-plus"></i> Observation</a></li>
+                            {% if app.user %}
+                                <li><a href="#" disabled="true">Mon compte</a>
+                                    <ul class="second_list">
+                                        <li {% if app.request.attributes.get('_route')  == 'user_profil' %}class="active"{% endif %}>
+                                            <a href="{{ path('user_profil') }}">Profil</a></li>
+                                        <li {% if app.request.attributes.get('_route')  == 'user_observation' %}class="active"{% endif %}>
+                                            <a href="{{ path('user_observations') }}">Mes Observation</a></li>
+                                        <li {% if app.request.attributes.get('_route')  == 'user_stars' %}class="active"{% endif %}>
+                                            <a href="{{ path('user_stars') }}">Médailles</a></li>
+                                        <li><a href="{{ path('user_logout') }}">Déconnexion</a></li>
+                                    </ul>
+                                </li>
 
-                        {% else %}
-                            <li {% if app.request.attributes.get('_route')  == 'user_connect' %}class="active"{% endif %}><a href="{{ path('user_connect') }}">Connection/Inscription</a>
+                            {% else %}
+                                <li {% if app.request.attributes.get('_route')  == 'user_connect' %}class="active"{% endif %}>
+                                    <a href="{{ path('user_connect') }}">Connection/Inscription</a>
+                                </li>
+                            {% endif %}
+
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <ul class="list-unstyled capital">
+                            <li {% if app.request.attributes.get('_route') starts with 'bird' %}class="active"{% endif %}>
+                                <a href="{{ path('bird_list') }}">Fiches Oiseaux</a></li>
+                            <li><a href="#" disabled="true">Informations</a>
+                                <ul class="second_list">
+                                    <li><a href="http://bird.fr">L'association</a></li>
+                                    <li {% if app.request.attributes.get('_route')  == 'contact_message' %}class="active"{% endif %}>
+                                        <a href="{{ path('contact_message') }}">Nous contacter</a></li>
+                                    <li {% if app.request.attributes.get('_route')  == 'faq' %}class="active"{% endif %}>
+                                        <a href="{{ path('faq') }}">FAQ</a></li>
+                                </ul>
                             </li>
-                        {% endif %}
-
-                    </ul>
-                </div>
-                <div class="col-sm-6">
-                    <ul class="list-unstyled capital">
-                        <li {% if app.request.attributes.get('_route')  == 'bird_list' %}class="active"{% endif %}><a href="{{ path('bird_list') }}">Fiches Oiseaux</a></li>
-                        <li><a href="#" disabled="true">Informations</a>
-                            <ul>
-                                <li><a href="http://bird.fr">L'association</a></li>
-                                <li {% if app.request.attributes.get('_route')  == 'contact' %}class="active"{% endif %}><a href="{{ path('contact') }}">Nous contacter</a></li>
-                                <li {% if app.request.attributes.get('_route')  == 'faq' %}class="active"{% endif %}><a href="{{ path('faq') }}">FAQ</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-5 row">
-                <div class=" col-md-6 col-sm-8">
-                    <label for="newsletter">Recevoir les actualités de l'étude</label>
-                    <div class="input-group">
-                        <input type="email" name="mail" id="mail" class="form-control">
-                        <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="submit">s'inscrire</button>
-                    </span>
+                        </ul>
                     </div>
                 </div>
-                <div class=" col-md-6 col-sm-4">
-                    <a href="https://facebook.com" class="social-network"><i class="fa fa-facebook-f fa-2x"></i></a>
-                    <a href="https://instagram.com" class="social-network"><i class="fa fa-instagram fa-2x"></i></a>
-                    <a href="https://plus.google.com" class="social-network"><i class="fa fa-google-plus fa-2x"></i></a>
+                <div class="col-sm-5 row">
+                    <div class=" col-lg-7">
+                        <label for="newsletter">Recevoir les actualités de l'étude</label>
+                        <div class="input-group">
+                            <form action="{{ path('newsletter_subscribed') }}" method="post">
+                                <input type="email" name="email" id="email" class="form-control">
+                                <span class="input-group-btn">
+                            <button class="btn btn-nao" type="submit">s'inscrire</button>
+                        </span>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class=" col-lg-5">
+                        <a href="{{ facebook }}" class="social-network"><i class="fa fa-facebook-f fa-2x"></i></a>
+                        <a href="{{ instagram }}" class="social-network"><i class="fa fa-instagram fa-2x"></i></a>
+                        <a href="{{ twitter }}" class="social-network"><i class="fa fa-twitter fa-2x"></i></a>
+                    </div>
                 </div>
-
             </div>
+
         </div>
-
     </div>
-
+    </div>
 </footer>

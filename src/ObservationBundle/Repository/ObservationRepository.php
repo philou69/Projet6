@@ -48,7 +48,7 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('bird', $bird)
             ->orderBy('o.postedAt', 'DESC')
             ->getQuery();
-        $query->setFirstResult(($page-1) * $limit)
+        $query->setFirstResult(($page - 1) * $limit)
             ->setMaxResults($limit);
 
         return new Paginator($query, true);
@@ -63,4 +63,5 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getQuery()->getResult();
     }
+
 }

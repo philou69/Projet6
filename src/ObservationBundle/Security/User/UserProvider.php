@@ -7,7 +7,9 @@ namespace ObservationBundle\Security\User;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;
+use ObservationBundle\Entity\RequestOpen;
 use Symfony\Bridge\Doctrine\Security\User\EntityUserProvider;
+use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -50,15 +52,72 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
         return $class === 'AppBundle\Entity\User';
     }
 
+    public function loadUserByUsername($username)
+    {
+        $repository = $this->getRepository();
+        if (null !== $this->property) {
+            $user = $repository->findOneBy(array($this->property => $username));
+        } else {
+            if (!$repository instanceof UserLoaderInterface) {
+                throw new \InvalidArgumentException(sprintf('You must either make the "%s" entity Doctrine Repository ("%s") implement "Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface" or set the "property" option in the corresponding entity provider configuration.', $this->classOrAlias, get_class($repository)));
+            }
+
+            $user = $repository->loadUserByUsername($username);
+        }
+
+        if (null === $user) {
+            throw new UsernameNotFoundException(sprintf('User "%s" not found.', $username));
+        }
+        if($user->getSleeping() && $user->getRequestOpen() === null ){
+            $requestOpen = new RequestOpen();
+            $requestOpen->setToken(str_replace(['/', '+', '*','-'], '', base64_encode(random_bytes(60))))->setAdresseIP($_SERVER['REMOTE_ADDR']);
+            $user->setRequestOpen($requestOpen);
+            $this->getObjectManager()->persist($user);
+            $this->getObjectManager()->flush();
+            $this->eventDispatcherInterface->dispatch('user.reopen', new GenericEvent($user));
+            $user->setIsActive(false);
+        }elseif ($user->getSleeping() && $user->getRequestOpen() !== null){
+            $user->setIsActive(false);
+        }
+        return $user;
+    }
+
+    private function getRepository()
+    {
+        return $this->getObjectManager()->getRepository($this->classOrAlias);
+    }
+
+    private function getObjectManager()
+    {
+        return $this->registry->getManager($this->managerName);
+    }
+
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
         // On vérifi si l'utilisateur existe
         $user = $this->getRepository()->findOneBy(array('email' => $response->getEmail()));
 
+        // On vérifie si le compte a été mis en sommeil
+        if ($user !== null && $user->getSleeping() == true && $user->getIsActive() === true) {
+            // création du token qui servira de lien
+            $token = str_replace(['/', '+', '*', '-'], '', base64_encode(random_bytes(60)));
+            // On crée une requete d'ouverture de compte qu'on assigne au compte
+            $requestOpen = new RequestOpen();
+            $requestOpen->setAdresseIP($_SERVER['REMOTE_ADDR'])->setToken($token)->setUser($user);
+            $user->setRequestOpen($requestOpen);
+            // On enregistre la demansde
+            $this->getObjectManager()->persist($requestOpen);
+            $this->getObjectManager()->flush();
+            // On envoie le mail de réouverture
+            $this->eventDispatcherInterface->dispatch('user.reopen', new GenericEvent($user));
+            // On passe le visiteur comme bloqué
+            $user->setIsActive(false);
+        }
+
         if(!$user){
             // On recupere les utilisateurs contenant le même username
             $usersByUsername = $this->getRepository()->findUsernames($response->getNickname());
-            
+
             // On crée un user avec les données renvoyer
             $user = new User;
             $user->setEmail($response->getEmail())
@@ -79,17 +138,6 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
         }
         // On retourne le user
         return $user;
-    }
-
-
-    private function getObjectManager()
-    {
-        return $this->registry->getManager($this->managerName);
-    }
-
-    private function getRepository()
-    {
-        return $this->getObjectManager()->getRepository($this->classOrAlias);
     }
 
 }

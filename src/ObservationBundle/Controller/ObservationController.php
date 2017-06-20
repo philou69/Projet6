@@ -11,6 +11,7 @@ use ObservationBundle\Event\ObservationEvent;
 use ObservationBundle\Form\Observation\AddObservationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -92,16 +93,9 @@ class ObservationController extends Controller
      */
     public function viewAction(Observation $observation, Request $request)
     {
-        $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile()){
-            return $this->render('@Observation/Observation/Mobile/detail.html.twig', array(
+            return $this->render('@Observation/Observation/detail.html.twig', array(
                 'observation' => $observation
             ));
-        }else{
-            return $this->render('@Observation/Observation/Desktop/detail.html.twig', array(
-                'observation' => $observation
-            ));
-        }
     }
 
     /**
@@ -116,6 +110,7 @@ class ObservationController extends Controller
         $session = new Session();
         $session->set('getBird', false);
         $em = $this->getDoctrine()->getManager();
+
         // On verifie si le visiteur est un naturaliste
         if($this->getUser()->hasRole('ROLE_NATURALISTE')){
             // Dans ce cas, l'observation est automatiquement validé par lui-même
@@ -130,7 +125,7 @@ class ObservationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Recuperation des photos uploader
-            $files = $form->get('files')->getData();
+            $files = $form->get('pictures')->getData();
             // On boucle sur les photos pour les ajoutés à l'observation
             foreach ($files as $file) {
                 $picture = new Picture();
@@ -140,21 +135,23 @@ class ObservationController extends Controller
                 if($observation->getValidated() == true){
                     $picture->setBird($observation->getBird());
                 }
+
             }
             $observation->setUser($this->getUser());
+
 
             $em->persist($observation);
             $em->flush();
 
             $this->addFlash(
-                'alert',
-                'Votre observation a été envoyé! En attente de validation'
+                'success',
+                'Votre observation a été envoyée! En attente de validation'
             );
             return $this->redirectToRoute('observation_add');
         }
 
         $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile()){
+        if($device->isMobile() || $device->isTablet()){
             return $this->render(
             'ObservationBundle:Observation:Mobile/add.html.twig', array(
             'form' => $form->createView()));
@@ -185,7 +182,7 @@ class ObservationController extends Controller
         $em->flush();
         $this->get('event_dispatcher')->dispatch('observation.captured', new ObservationEvent($observation));
 
-        $this->addFlash('info', "L'observation a bien été enregistrer !");
+        $this->addFlash('info', "L'observation a bien été enregistrée !");
 
         return $this->redirectToRoute('observation_view', array('id' => $observation->getId()));
 
@@ -209,8 +206,28 @@ class ObservationController extends Controller
         $em->persist($observation);
         $em->flush();
 
-        $this->addFlash('success', 'Lobservation a bien été invalidé');
+        $this->addFlash('success', 'L\'observation a bien été invalidée');
         return $this->redirectToRoute('observation_view', array('id' => $observation->getId()));
 
+    }
+
+    /**
+     * Action pour générer les points de localisation d'un oiseau
+     * @param Bird $bird
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function locationsAction(Bird $bird, Request $request)
+    {
+        // On s'assure d'être en requete AJAX
+        if ($request->isXmlHttpRequest()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $locations = $em->getRepository('ObservationBundle:Location')->findBirdLocations($bird);
+
+            $response = new JsonResponse($locations);
+
+
+            return $response;
+        }
     }
 }

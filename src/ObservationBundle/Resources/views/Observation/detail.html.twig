@@ -1,0 +1,102 @@
+{% extends is_mobile() ?'@Observation/layout.mobile.html.twig' : is_tablet() ? '@Observation/layout.mobile.html.twig' : '@Observation/layout.desktop.html.twig' %}
+
+{% block title %}Details de l'observation{% endblock %}
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/modal.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/observation.detail.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="{{ is_mobile() ? 'center-90' : 'center-80' }}">
+        <h1>
+            Details de l'observation
+        </h1>
+
+        <table class="table table-striped {{ is_mobile() ? '' : 'center-80' }}">
+            <tbody>
+            <tr>
+                <th scope="row">Observateur</th>
+                <td>{{ observation.user.username }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Date observation</th>
+                <td>{{ observation.seeAt|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Espèce observée</th>
+                <td>{{ observation.bird.lbNom }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Spécimens observés</th>
+                <td>{{ observation.quantity }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Lieu de l'observation</th>
+                <td>{{ observation.location.lieu }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Description</th>
+                <td>{{ observation.observation }}</td>
+            </tr>
+            <tr id="content-pictures">
+                <th scope="row">Photo(s)</th>
+                <td class="row" id="pictures">
+                    {% for picture in observation.pictures %}
+                        {% if loop.first %}
+                            <div class="col-sm-2 paging">
+                                <button href="#" id="previous" data-id="0" disabled="disabled">
+                                    <i class="fa fa-chevron-left"></i>
+                                </button>
+                            </div>
+                        {% endif %}
+                        <div class="picture col-sm-8" {{ loop.index > 1 ? 'hidden' }} id="{{ loop.index }}">
+                            <img src="{{ asset(picture.webPath) }}" alt="{{ picture.alt }}" >
+                        </div>
+                        {% if loop.last %}
+                            <div class="col-sm-2 paging">
+                                <button href="#" id="next" data-id="2">
+                                    <i class="fa fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        {% endif %}
+                        {% else %}
+                        Aucunes photos
+                    {% endfor %}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        {% if app.user and 'ROLE_NATURALISTE' in app.user.roles %}
+        <div class="row">
+            <div class="col-md-3 col-md-push-4">
+                {% if observation.validated == true %}
+                    <a href="#invalide_observation_{{ observation.id }}" class="btn  btn-nao" data-toggle="modal">Unvalidé l'observation</a>
+                {% else %}
+                    <a href="#valide_observation_{{ observation.id }}" class="btn btn-nao" data-toggle="modal">Validé l'observation</a>
+                {% endif %}
+            </div>
+
+        </div>
+        {% endif %}
+    </div>
+    {% if app.user and 'ROLE_NATURALISTE' in app.user.roles %}
+        {% if observation.validated == true %}
+            {%  include 'ObservationBundle:Modal:unvalide.observation.html.twig' with {'observation': observation} %}
+        {% else %}
+            {%  include 'ObservationBundle:Modal:valide.observation.html.twig' with {'observation': observation} %}
+        {% endif %}
+        <a href="{{ path('user_observations') }}" class="btn grey">Reourner à la liste</a>
+    {% else %}
+        <a href="{{ path('bird_location', {'id': observation.bird.id}) }}" class="btn grey"></a>
+    {% endif %}
+
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/observation/js/slider.pictures.obs.js') }}"></script>
+{% endblock %}
+
+
+
+
+

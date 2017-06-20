@@ -1,1 +1,28 @@
 {% extends '@Observation/layout.desktop.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/contact.css') }}">
+{% endblock %}
+{% block content %}
+    {{ dump(app.request.attributes) }}
+    <div class="center-80">
+        <h1>Laissez nous un message</h1>
+        <p>
+            Vous avez renctontrez un problème, vous avez une question. <br>
+            Laissez nous un message et nous vous répondrons dans les plus bref délai.
+        </p>
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.message) }}
+        <div class="text-center">
+            {{ form_widget(form.save) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

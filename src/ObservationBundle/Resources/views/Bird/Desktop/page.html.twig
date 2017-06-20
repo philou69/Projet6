@@ -4,17 +4,14 @@
     </div>
 {% else %}
         {% for bird in birds %}
-            <div class="col-sm-5 bird {% if loop.index is even %}right{% else %}left{% endif %} row" data-href="{{ path('bird_description', {'id': bird.id}) }}">
-                <div class="col-sm-4">
-                    {% for picture in  bird.pictures if picture.observation is null %}
-                        <img src="{{ asset(picture.webPath) }}" class="img-responsive" alt="bird">
+            <div class="bird " data-href="{{ path('bird_description', {'id': bird.id}) }}">
+                {% for picture in  bird.pictures if picture.observation is null %}
+                    <img src="{{ asset(picture.webPath) }}" class="left img-responsive" alt="bird">
                     {% else %}
-                        Pas de photos
-                    {% endfor %}
-                </div>
+                        <p class="left text-center">Pas de photos</p>
+                {% endfor %}
 
-                <div class="col-sm-8">
-                    {{ bird.rang }}
+                <div class="right">
                     <h4>{{ bird.nomVern != null ? bird.nomVern : bird.lbNom}}</h4>
                     <small>{{ bird.lbNom }}</small>
                 </div>

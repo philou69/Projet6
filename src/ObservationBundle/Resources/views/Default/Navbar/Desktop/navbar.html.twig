@@ -1,67 +1,73 @@
 {# Navbar sur pc #}
-<nav class="navbar navbar-light {{ app.request.get('_route') == 'homepage' ? 'navbar-fixed-top' : 'navbar-general'}}"  role="navigation">
-    <div id="first" class="container">
-        {#  Block title navbar #}
-        <div class="navbar-header">
-            <img src="{{ asset ('bundles/observation/images/logo/logo_header_blanc.png') }}" alt="logo_header">
-        </div>
-        {# Liste des menus principaux avec vérification de la route pour activé dynamiquement la navbar à l'aide de app.request.get('_route') #}
-        <div>
-            <ul class="navbar-nav nav pull-right capital">
-                <li class="{% if app.request.attributes.get('_route') == 'homepage' %}active{% endif %} first_line">
-                    <a href="{{ path('homepage') }}">
-                        Accueil
-                    </a>
-                </li>
-                <li class="{% if app.request.attributes.get('_route') == 'observation_add' %}active{% endif %} first_line" >
-                    <a href="{{ path('observation_add') }}">
-                        Observation
-                    </a>
-                </li>
-                {% if app.request.attributes.get('_route') in ['bird_list','bird_description', 'bird_location'] %}
-                    <li class=" tabs active first_line">
-                        <a href="#bird" data-toggle="tab" data-navbar="true">
-                            Fiches oiseaux
+<nav class="navbar navbar-light {{ app.request.get('_route') == 'homepage' ? 'navbar-fixed-top' : 'navbar-general' }}"
+     role="navigation">
+    <div id="first">
+        <div class="center-80">
+            {#  Block title navbar #}
+            <div class="navbar-header">
+                <img src="{{ asset ('bundles/observation/images/logo/logo_header_blanc.png') }}" alt="logo_header">
+            </div>
+            {# Liste des menus principaux avec vérification de la route pour activé dynamiquement la navbar à l'aide de app.request.get('_route') #}
+            <div>
+                <ul class="navbar-nav nav pull-right capital">
+                    <li class="{% if app.request.attributes.get('_route') == 'homepage' %}active{% endif %} first_line">
+                        <a href="{{ path('homepage') }}">
+                            Accueil
                         </a>
                     </li>
-                {% else %}
-                    <li class="{% if app.request.attributes.get('_route') == 'bird_list' %}active{% endif %} first_line">
-                        <a href="{{ path('bird_list') }}">
-                            Fiches oiseaux
+                    <li class="{% if app.request.attributes.get('_route') == 'observation_add' %}active{% endif %} first_line">
+                        <a href="{{ path('observation_add') }}">
+                            Observation
                         </a>
                     </li>
-                {% endif %}
-                {% if app.user %}
-                    {% if app.request.attributes.get('_route') starts with 'user' %}
-                        <li class="tabs first_line {% if app.request.attributes.get('_route')  starts with 'user' %}active{% endif %}">
-                            <a href="#user" data-toggle="tab" data-navbar="true">
-                                Compte
+                    {% if app.request.attributes.get('_route') in ['bird_list','bird_description', 'bird_location'] %}
+                        <li class=" tabs active first_line">
+                            <a href="#bird" data-toggle="tab" data-navbar="true">
+                                Fiches oiseaux
                             </a>
                         </li>
                     {% else %}
-                        <li class="first_line"><a href="{{ path('user_profil') }}">Compte</a></li>
+                        <li class="{% if app.request.attributes.get('_route') == 'bird_list' %}active{% endif %} first_line">
+                            <a href="{{ path('bird_list') }}">
+                                Fiches oiseaux
+                            </a>
+                        </li>
                     {% endif %}
-                {% else %}
-                    <li class="first_line {% if app.request.attributes.get('_route') == 'user_connect' %}active{% endif %}">
-                        <a href="{{ path('user_connect') }}">
-                            Connection/Inscription
-                        </a>
+                    {% if app.user %}
+                        {% if app.request.attributes.get('_route') starts with 'user' %}
+                            <li class="tabs first_line {% if app.request.attributes.get('_route')  starts with 'user' %}active{% endif %}">
+                                <a href="#user" data-toggle="tab" data-navbar="true">
+                                    Compte
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="first_line"><a href="{{ path('user_profil') }}">Compte</a></li>
+                        {% endif %}
+                    {% else %}
+                        <li class="first_line {% if app.request.attributes.get('_route') == 'user_connect' %}active{% endif %}">
+                            <a href="{{ path('user_connect') }}">
+                                Connexion/Inscription
+                            </a>
+                        </li>
+                    {% endif %}
+                    <li class="tabs first_line {% if app.request.attributes.get('_route') in ['contact_message', 'faq', 'blog_view'] %}active{% endif %}">
+                        <a href="#other" data-toggle="tab" data-navbar="true">Information</a>
                     </li>
-                {% endif %}
-                <li class="tabs first_line {% if app.request.attributes.get('_route') in ['contact', 'faq', 'blog_view'] %}active{% endif %}">
-                    <a href="#other" data-toggle="tab" data-navbar="true">Information</a>
-                </li>
-                <li class="logo-sociaux first_line">
-                    <a href="https://facebook.com" class="social-network"><i class="fa fa-facebook-f"></i></a></li>
-                <li class="logo-sociaux first_line">
-                    <a href="https://instagram.com" class="social-network"><i class="fa fa-instagram"></i></a></li>
-                <li class="logo-sociaux first_line">
-                    <a href="https://plus.google.com" class="social-network"><i class="fa fa-google-plus"></i></a></li>
-                {% if app.user %}
-                    <li class="first_line"><a href="{{ path('user_logout') }}"><i class="fa fa-sign-out "></i></a></li>
-                {% endif %}
-            </ul>
+                    <li class="logo-sociaux first_line">
+                        <a href="https://facebook.com" class="social-network"><i class="fa fa-facebook-f"></i></a></li>
+                    <li class="logo-sociaux first_line">
+                        <a href="https://instagram.com" class="social-network"><i class="fa fa-instagram"></i></a></li>
+                    <li class="logo-sociaux first_line">
+                        <a href="https://plus.google.com" class="social-network"><i class="fa fa-google-plus"></i></a>
+                    </li>
+                    {% if app.user %}
+                        <li class="first_line"><a href="{{ path('user_logout') }}"><i class="fa fa-sign-out "></i></a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
+
     </div>
     {# Bloc contenant les sous-menus #}
     <div class="tab-content container">

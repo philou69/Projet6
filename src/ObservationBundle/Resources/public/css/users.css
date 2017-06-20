@@ -1,0 +1,34 @@
+
+.user {
+    background-color: #dbefed;
+    margin: 10px auto;
+    width: 80%;
+    height: 100px;
+}
+
+.user > div {
+    height: calc(100px * 0.9);
+    margin-top: calc(100px * 0.05);
+    border: 0;
+    border-right: 1px solid #fbfbfb;
+    text-align: center;
+}
+
+small {
+    color: white;
+}
+
+@media (max-width: 993px) {
+    .user {
+        width: auto;
+        height: auto;
+    }
+
+    .user > div {
+        height: auto;
+        height: auto;
+    }
+}
+
+/*--- Style modal ----*/
+

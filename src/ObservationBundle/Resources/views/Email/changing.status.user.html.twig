@@ -1,0 +1,12 @@
+<h2>{{ user.isEnabled == true ? 'Reouverture' : 'Fermeture' }} de votre compte chez Nos amis les oiseaux</h2>
+<p>
+    {% if user.isEnabled %}
+        Votre chez Nos Amis les Oiseaux vient d'être réouvert.<br>
+        Après une étude de votre cas, la décision de réouverture de cotre compte a été prise. <br>
+        Nous vous presentons toutes nos excuses par la genes occasionné.
+    {% else %}
+        Suite à votre comportement, la décision de fermer votre compte chez Nos Amis les Oiseaux a été prise. <br>
+        S'il s'agit d'une erreur, vous pouvez nous <a
+            href="{{ url('contact') }}">contacter</a> à tous moments afin de demander l'études de votre dossier.
+    {% endif %}
+</p>

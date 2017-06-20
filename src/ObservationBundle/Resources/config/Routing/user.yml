@@ -1,13 +1,7 @@
-user_registration:
-    path: /registration
-    defaults:
-      _controller: ObservationBundle:User:registration
-
 user_login:
     path: /login
     defaults:
       _controller: ObservationBundle:User:login
-
 user_logout:
     path: /logout
 
@@ -21,6 +15,11 @@ user_link_forgot:
     defaults:
       _controller: ObservationBundle:User:resetPassword
       token: \.+
+
+user_change_password:
+    path: /change_password
+    defaults:
+      _controller: ObservationBundle:User:changePassword
 
 user_profil:
     path: /profil
@@ -52,7 +51,34 @@ user_change_avatar:
     defaults:
       _controller: ObservationBundle:User:changeAvatar
 
+user_users:
+    path: /users
+    defaults:
+      _controller: ObservationBundle:User:users
+
+user_status:
+    path: /{id}/status
+    defaults:
+      _controller: ObservationBundle:User:reactivate
+
+user_roles:
+    path: /{id}/roles
+    defaults:
+      _controller: ObservationBundle:User:roles
+
 user_sleep:
     path: /sleep
     defaults:
       _controller: ObservationBundle:User:sleep
+
+user_unsleep:
+    path: /unsleep/{token}
+    defaults:
+      _controller: ObservationBundle:User:unsleep
+    requirements:
+      -token: \.+
+
+user_contacts:
+    path: /contacts
+    defaults:
+      _controller: ObservationBundle:User:contacts

@@ -22,22 +22,24 @@ security:
             security: false
 
         main:
+            pattern: ^/
             anonymous: ~
             form_login:
               login_path: user_connect
               check_path: user_login
+              failure_path: user_connect
               remember_me: true
             logout:
                 path: user_logout
-                target: /
+                target: homepage
             # connection avec google et facebook
             oauth:
                 resource_owners:
                     facebook:           "/login/check-facebook"
                     google:             "/login/check-google"
-                login_path:        /login
+                login_path:        user_connect
                 use_forward:       false
-                failure_path:      /login
+                failure_path:      user_connect
                 oauth_user_provider:
                     service: user_provider
             # activate different ways to authenticate
@@ -48,11 +50,12 @@ security:
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
             #form_login: ~
     access_control:
-        - { path: ^/user/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/user/connect, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/user/reset, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/user, roles: ROLE_USER }
-        - { path: ^/observation, roles: ROLE_USER }
-        - {path: ^/user/observation, roles: ROLE_NATURALISTE }
-        - {path: ^/user/stars, roles: ROLE_OBS }
-        - {path: ^/observation/list, roles: ROLE_USER }
+        - { path: ^/observation/list, role: ROLE_OBS }
+        - { path: ^/observation/add, role: ROLE_OBS }
+        - { path: ^/user/profil, role: ROLE_OBS }
+        - { path: ^/user/observation, role: ROLE_NATURALISTE }
+        - { path: ^/user/my_observations, role: ROLE_NATURALISTE }
+        - { path: ^/user/stars, role: ROLE_OBS }
+        - { path: ^/billet, role: ROLE_ADMIN }
+        - { path: ^/faq/edit, role: ROLE_ADMIN }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }

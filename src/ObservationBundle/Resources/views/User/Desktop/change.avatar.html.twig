@@ -2,8 +2,29 @@
 
 {% block title %}Changer d'avatar{% endblock %}
 
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/change.avatar.css') }}">
+    {% endblock %}
 {% block  content %}
-    {{ form(form) }}
+    <div class="center-80" id="content-avatar">
+        <h1 class="text-center">Choisisez un avatar</h1>
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+        {{ form_errors(form) }}
+        <div class="row">
+            {{ form_label(form.avatar, form.avatar.vars.label, {'label_attr': {'class': 'col-sm-2'}}) }}
+            <div class="col-sm-4">
+                {{ form_widget(form.avatar.children.file) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-sm-push-5">
+                {{ form_widget(form.save) }}
+            </div>
+        </div>
+        {{ form_widget(form._token) }}
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
 
 {% block javascript %}

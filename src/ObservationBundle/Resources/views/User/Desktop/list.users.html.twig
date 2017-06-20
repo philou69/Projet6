@@ -1,0 +1,50 @@
+{% extends '@Observation/layout.desktop.html.twig' %}
+
+{% block title %}Liste des visiteurs{% endblock %}
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/modal.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/users.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="center-80">
+        {% for user in users %}
+            <div class="user row">
+                <div class="col-sm-3">
+                    <small>Pseudo</small>
+                    <br>
+                    {{ user.username }}
+                </div>
+                <div class="col-sm-3">
+                    <small>Prénom</small>
+                    <br>
+                    {{ user.firstname }}
+                </div>
+                <div class="col-sm-3">
+                    <small>Nom</small>
+                    <br>
+                    {{ user.lastname }}
+                </div>
+                <div class="col-sm-3">
+                    <small>Status</small>
+                    <br>
+                    {{ 'ROLE_ADMIN' in user.roles ? 'Administrateur' : ('ROLE_NATURALISTE' in user.roles ? 'Naturaliste' : 'Particulier') }}
+                    <br>
+                    {% if user.isEnabled %}
+                        <a href="#deactivate_user_{{ user.id }}" class="btn btn-nao" data-toggle="modal">Fermé</a>
+                    {% else %}
+                        <a href="#reactivate_user_{{ user.id }}" class="btn btn-nao" data-toggle="modal">Ouvrir</a>
+                    {% endif %}
+                    <a href="{{ path('user_roles', {'id': user.id}) }}">roles</a>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+
+    {% for user in users %}
+        {% include user.isEnabled == true ? '@Observation/Modal/deactivate.user.html.twig' : '@Observation/Modal/reactivate.user.html.twig' with {'user': user} %}
+    {% endfor %}
+
+{% endblock %}

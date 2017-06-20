@@ -13,13 +13,13 @@
     "height",
     "css",
     "on",
-    "animate",
-    "offset",
-    "top"
+    "console",
+    "log",
+    "animate"
   ],
-  "mappings": ";;AAAAA,EAAEC,QAAF,EAAYC,KAAZ,CAAkB,YAAY;AAC1BF,MAAEC,QAAF,EAAYE,MAAZ,CAAmB,YAAY;AAAE;AAC7B,YAAIH,EAAEC,QAAF,EAAYG,SAAZ,KAA0BJ,EAAEK,MAAF,EAAUC,MAAV,EAA9B,EAAkD;AAAE;AAChD;AACAN,cAAE,+BAAF,EAAmCO,GAAnC,CAAuC,kBAAvC,EAA2D,SAA3D;AACAP,cAAE,iCAAF,EAAqCO,GAArC,CAAyC,kBAAzC,EAA6D,SAA7D;AAEH,SALD,MAKO;AACH;AACAP,cAAE,+BAAF,EAAmCO,GAAnC,CAAuC,kBAAvC,EAA2D,aAA3D;AAEH;AACJ,KAXD;AAYA;AACAP,MAAE,QAAF,EAAYQ,EAAZ,CAAe,OAAf,EAAwB,YAAY;AAChCR,UAAE,YAAF,EAAgBS,OAAhB,CAAwB;AACpB,yBAAaT,EAAE,YAAF,EAAgBU,MAAhB,GAAyBC;AADlB,SAAxB,EAEG,IAFH;AAGH,KAJD;AAMH,CApBD",
+  "mappings": ";;AAAAA,EAAEC,QAAF,EAAYC,KAAZ,CAAkB,YAAY;AAC1BF,MAAEC,QAAF,EAAYE,MAAZ,CAAmB,YAAY;AAAE;AAC7B,YAAIH,EAAEC,QAAF,EAAYG,SAAZ,KAA0BJ,EAAEK,MAAF,EAAUC,MAAV,EAA9B,EAAkD;AAAE;AAChD;AACAN,cAAE,+BAAF,EAAmCO,GAAnC,CAAuC,kBAAvC,EAA2D,SAA3D;AACAP,cAAE,iCAAF,EAAqCO,GAArC,CAAyC,kBAAzC,EAA6D,SAA7D;AAEH,SALD,MAKO;AACH;AACAP,cAAE,+BAAF,EAAmCO,GAAnC,CAAuC,kBAAvC,EAA2D,aAA3D;AAEH;AACJ,KAXD;AAYA;AACAP,MAAE,QAAF,EAAYQ,EAAZ,CAAe,OAAf,EAAwB,YAAY;AAChCC,gBAAQC,GAAR,CAAYV,EAAEK,MAAF,EAAUC,MAAV,EAAZ;AACAN,UAAE,YAAF,EAAgBW,OAAhB,CAAwB;AACpB,yBAAaX,EAAEK,MAAF,EAAUC,MAAV,KAAqBN,EAAEK,MAAF,EAAUD,SAAV;AADd,SAAxB,EAEG,IAFH;AAGH,KALD;AAOH,CArBD",
   "file": "home.js",
   "sourcesContent": [
-    "$(document).ready(function () {\n    $(document).scroll(function () { // check if scroll event happened\n        if ($(document).scrollTop() > $(window).height()) { // check if user scrolled more than height of the window\n            // Passage des couleur traditionnelles aux élément de la navbar\n            $(\".navbar-fixed-top >.container\").css(\"background-color\", \"#99d1c8\");\n            $(\".navbar-fixed-top >.tab-content\").css(\"background-color\", \"#dbefed\");\n\n        } else {\n            // On remet la navbar en transparent et on raffiche le bouton start\n            $(\".navbar-fixed-top >.container\").css(\"background-color\", \"transparent\");\n\n        }\n    });\n    // Listener sur le bouton start\n    $(\"#start\").on('click', function () {\n        $('html, body').animate({\n            'scrollTop': $(\"#bienvenue\").offset().top\n        }, 1000);\n    });\n\n})"
+    "$(document).ready(function () {\n    $(document).scroll(function () { // check if scroll event happened\n        if ($(document).scrollTop() > $(window).height()) { // check if user scrolled more than height of the window\n            // Passage des couleur traditionnelles aux élément de la navbar\n            $(\".navbar-fixed-top >.container\").css(\"background-color\", \"#99d1c8\");\n            $(\".navbar-fixed-top >.tab-content\").css(\"background-color\", \"#dbefed\");\n\n        } else {\n            // On remet la navbar en transparent et on raffiche le bouton start\n            $(\".navbar-fixed-top >.container\").css(\"background-color\", \"transparent\");\n\n        }\n    });\n    // Listener sur le bouton start\n    $(\"#start\").on('click', function () {\n        console.log($(window).height());\n        $('html, body').animate({\n            'scrollTop': $(window).height() - $(window).scrollTop()\n        }, 1000);\n    });\n\n})"
   ]
 }

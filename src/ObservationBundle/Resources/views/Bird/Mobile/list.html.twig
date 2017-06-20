@@ -1,27 +1,43 @@
 {% extends '@Observation/layout.mobile.html.twig' %}
 
 {% block title %}Liste des oiseaux{% endblock %}
-
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/list.bird.css') }}">
+{% endblock %}
 {% block content %}
-    <div id="up">
-        <a href="#" id="up-button"><i class="fa fa-chevron-circle-up fa-3x"></i></a>
-    </div>
-    <div>
-        <h1>Liste des oiseaux </h1>
-        <div class="row">
-            <div class="pull-right">
-                <input type="text" id="search" placeholder="Rechercher une fiche &#xf002;" style="font-family:FontAwesome, Arial" data-href="{{ path('bird_pagination', {'page': 1}) }}">
+    <div class="center-90">
+        {#<div id="up">#}
+        <a href="#" id="up"><i class="fa fa-chevron-circle-up fa-2x"></i></a>
+        {#</div>#}
+        <div>
+            <h1>Liste des oiseaux </h1>
+            <div class="form-group">
+                <label for="type">Filtrer par: </label>
+                <select name="type" id="type" class="form-control">
+                    <option value="lbNom">Nom</option>
+                    <option value="nomVern">Nom Vernaculaire</option>
+                    <option value="bec">Type de Bec</option>
+                    <option value="plumage">Type de Plumage</option>
+                    <option value="couleur">Type de Couleur</option>
+                </select>
+            </div>
+            <input type="text" id="search" placeholder="Rechercher une fiche &#xf002;"
+                   style="font-family:FontAwesome, Arial"
+                   data-href="{{ path('bird_pagination', {'page': 1, 'type': 'lbNom'}) }}">
+        </div>
+
+        <div id="listing">
+            <div id="birds" class="content container"
+                 data-href="{{ path('bird_pagination', {'page': 1, 'type': 'lbNom'}) }}"></div>
+
+
+            <div class="row" id="content-loader">
+                <div class="col-xs-2 col-xs-offset-5 loader"></div>
             </div>
         </div>
     </div>
 
-    <div id="listing">
-        <div id="birds" class="content container" data-href="{{ path('bird_pagination', {'page': 1}) }}"></div>
-
-        <div class="row" id="content-loader">
-            <div class="col-xs-2 col-xs-offset-5 loader"></div>
-        </div>
-    </div>
 {% endblock %}
 
 {% block javascript %}
