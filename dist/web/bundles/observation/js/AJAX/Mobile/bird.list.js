@@ -59,7 +59,10 @@ $(document).ready(function () {
         // Requete ajax lors d'une recherche
         $('#search').on('keyup', function (event) {
             prepareRequete(true);
-            var url = $(this).data('href') + '?search=' + $(this).val();
+            var option = $('#type').val();
+            var urlType = $('#search').attr('data-href').replace('lbNom', option);
+
+            var url = urlType + '?search=' + $(this).val();
             $.ajax({
                 url: url,
                 dataType: 'html',
@@ -102,7 +105,6 @@ $(document).ready(function () {
 
             // On incrimente la page pour le prochain add
             page++;
-            console.log(page);
         }
 
         // Event sur le bouton up-button qui remets le scroll en  haut de page
