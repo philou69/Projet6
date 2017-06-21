@@ -16,54 +16,31 @@ class BirdRepository extends \Doctrine\ORM\EntityRepository
     /**
      * Fonction pour paginer la liste d'oiseaux
      */
-    public function getPage($page, $numbers, $search = null, $type, $plumage)
+    public function getPage($page, $numbers, $search = null, $couleurBec = null, $couleurPatte = null, $couleurPlumage = null)
     {
         $query = $this->createQueryBuilder('b');
+        // On regarde s'il s'agit d'une recherche
         if ($search !== null) {
-
-
-//             $query
-//                        ->orWhere('b.lbNom LIKE :regex')
-//                        ->setParameter('regex', "%$search%");
-//            }
-//
-//            if ($plumage !== null)
-//            {
-//                $query
-//                        ->andWhere("b.plumage LIKE :regex4")
-//                        ->setParameter('regex4', $plumage);
-//            }
-//            var_dump($plumage);
-//
-
-            switch ($type) {
-                case 'lbNom':
-                    $query
-                        ->orWhere('b.lbNom LIKE :regex')
-                        ->setParameter('regex', "%$search%");
-                    break;
-                case 'nomVern':
-                    $query
-                        ->orWhere("b.nomVern LIKE :regex2")
-                        ->setParameter('regex2', "%$search%");
-                    break;
-                case 'bec':
-                    $query
-                        ->orWhere("b.bec LIKE :regex3")
-                        ->setParameter('regex3', "%$search%");
-                    break;
-                case 'plumage':
-                    $query
-                        ->orWhere("b.plumage LIKE :regex4")
-                        ->setParameter('regex4', "%$search%");
-                    break;
-                default:
-                    $query
-                        ->orWhere("b.couleur LIKE :regex5")
-                        ->setParameter('regex5', "%$search%");
-                    break;
-            }
+            $query
+                ->orWhere('b.lbNom LIKE :regex')
+                ->setParameter('regex', "%$search%")
+                ->orWhere("b.nomVern LIKE :regex2")
+                ->setParameter('regex2', "%$search%");
         }
+        // On va vérifie les filtres sur bec pattes et bec
+        if($couleurBec !== null){
+            $query->andWhere('b.bec = :couleurBec')
+                ->setParameter('couleurBec', $couleurBec);
+        }
+        if($couleurPatte !== null){
+            $query->andWhere('b.patte = :couleurPatte')
+                ->setParameter('couleurPatte', $couleurPatte);
+        }
+        if($couleurPlumage !== null){
+            $query->andWhere('b.plumage = :couleurPlumage')
+                ->setParameter('couleurPlumage', $couleurPlumage);
+        }
+
         $query->orderBy('b.nomVern', 'ASC')
             ->addOrderBy('b.lbNom', 'ASC')->getQuery();
 
