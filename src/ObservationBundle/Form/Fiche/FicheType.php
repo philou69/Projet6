@@ -6,6 +6,7 @@ use ObservationBundle\Form\Bird\BirdType;
 use function Sodium\add;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -38,7 +39,19 @@ class FicheType extends AbstractType
                 'label' => 'Description de l\'oiseau',
                 'attr' => array('rows' => '10')
             ))
-            ->add('status', TextType::class)
+            ->add('status', ChoiceType::class, array(
+                'choices' => [
+                    'éteint' => 'eteint',
+                    'éteint à l\'état sauvage' => 'éteint à l\'état sauvage',
+                    'en danger critique' =>'en danger critique',
+                    'en danger' =>'en danger',
+                    'vulnérable' =>'vulnérable',
+                    'quasi menacé' =>'quasi menacé',
+                    'préoccupation mineure' =>'préoccupation mineure',
+                    'données insuffisante' =>'données insuffisante',
+                    'non évalué' =>'non évalué',
+                ]
+            ))
             ->add('bird', BirdType::class, array(
                 'label' => false
             ))
