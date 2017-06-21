@@ -19,19 +19,19 @@ class BirdType extends AbstractType
                     'hidden' => 'true'
                 ),
                 'choices' => array(
-                    'blanc' => 'blanc',
-                    'bleu' => 'bleu',
-                    'gris' => 'gris',
-                    'jaune' => 'jaune',
-                    'marron' => 'marron',
-                    'noir' => 'noir',
-                    'rose' => 'rose',
-                    'rouge/orange' => 'rouge/orange',
-                    'vert' => 'vert',
+                    'canard' => 'Canard',
+                    'courbé' => 'Courbé',
+                    'crochu' => 'Crochu',
+                    'droit et long' => 'Droit et long',
+                    'fin et court' => 'Fin et court',
+                    'mouette' => 'Mouette',
+                    'épais et court' => 'Épais et court',
+                    'autres becs droits' => 'Autres becs droits',
+                    'autre' => 'Autre',
                 )
             ))
             ->add('plumage', ChoiceType::class, array(
-                'label' => 'Type de plumage',
+                'label' => 'Couleur principale du plumage',
                 'attr' => array(
                     'hidden' => 'true'
                 ),
@@ -48,7 +48,7 @@ class BirdType extends AbstractType
                 )
             ))
             ->add('patte', ChoiceType::class, array(
-                'label' => 'Couleur',
+                'label' => 'Couleur des pattes',
                 'attr' => array(
                     'hidden' => 'true'
                 ),
