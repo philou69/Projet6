@@ -126,6 +126,7 @@ class ObservationController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             // Recuperation des photos uploader
             $files = $form->get('pictures')->getData();
+
             // On boucle sur les photos pour les ajoutés à l'observation
             foreach ($files as $file) {
                 $picture = new Picture();
@@ -135,7 +136,7 @@ class ObservationController extends Controller
                 if($observation->getValidated() == true){
                     $picture->setBird($observation->getBird());
                 }
-
+                $em->persist($picture);
             }
             $observation->setUser($this->getUser());
 

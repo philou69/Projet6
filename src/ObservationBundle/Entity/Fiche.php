@@ -44,17 +44,12 @@ class Fiche
     protected $status;
 
     /**
-     * var array
-     * @ORM\Column(name="bird", type="array")
-     * @Assert\Valid()
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Bird", mappedBy="fiche", cascade={"persist"})
+     * @ORM\JoinColumn(name="bird", referencedColumnName="id")
      */
     protected $bird;
 
 
-    public function __construct()
-    {
-        $this->bird = new ArrayCollection();;
-    }
 
     /**
      * Get id
@@ -165,7 +160,7 @@ class Fiche
     /**
      * Get bird
      *
-     * @return array
+     * @return \ObservationBundle\Entity\Bird
      */
     public function getBird()
     {
@@ -175,11 +170,11 @@ class Fiche
     /**
      * Set bird
      *
-     * @param array $bird
+     * @param \ObservationBundle\Entity\Bird $bird
      *
      * @return Fiche
      */
-    public function setBird($bird)
+    public function setBird(\ObservationBundle\Entity\Bird $bird = null)
     {
         $this->bird = $bird;
 

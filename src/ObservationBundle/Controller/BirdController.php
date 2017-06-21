@@ -196,10 +196,9 @@ class BirdController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $fiche->setBird($bird);
             $bird->setFiche($fiche);
-            $bird->setBec($fiche->getBird()['bec']);
-            $bird->setPlumage($fiche->getBird()['plumage']);
-            $bird->setCouleur($fiche->getBird()['couleur']);
+
 
             $em->persist($bird);
             $em->flush();
