@@ -41,15 +41,15 @@ class FicheType extends AbstractType
             ))
             ->add('status', ChoiceType::class, array(
                 'choices' => [
-                    'éteint' => 'eteint',
-                    'éteint à l\'état sauvage' => 'éteint à l\'état sauvage',
-                    'en danger critique' =>'en danger critique',
-                    'en danger' =>'en danger',
-                    'vulnérable' =>'vulnérable',
-                    'quasi menacé' =>'quasi menacé',
-                    'préoccupation mineure' =>'préoccupation mineure',
-                    'données insuffisante' =>'données insuffisante',
-                    'non évalué' =>'non évalué',
+                    'éteint (EX)' => 'eteint (EX)',
+                    'éteint à l\'état sauvage(EW)' => 'éteint à l\'état sauvage(EW)',
+                    'en danger critique(CR)' =>'en danger critique(CR)',
+                    'en danger(EN)' =>'en danger(EN)',
+                    'vulnérable(VU)' =>'vulnérable(VU)',
+                    'quasi menacé(NT)' =>'quasi menacé(NT)',
+                    'préoccupation mineure(LC)' =>'préoccupation mineure(LC)',
+                    'données insuffisante(DD)' =>'données insuffisante(DD)',
+                    'non évalué(NE)' =>'non évalué(NE)',
                 ]
             ))
             ->add('bird', BirdType::class, array(
