@@ -13,35 +13,52 @@
             <div class="col-md-8">
                 <h1>Liste des fiches oiseaux</h1>
             </div>
-            <div class="col-md-4 center">
-                <div class="form-group">
-
-                    <label for="plumage">Couleur du plumage</label>
-                    <select name="plumage" id="plumage">
-                        <option selected="selected">Couleur</option>
-                        <option value="blanc">Blanc</option>
-                        <option value="bleu">Bleu</option>
-                        <option value="brun">Brun</option>
-                        <option value="gris">Gris</option>
-                    </select>
-                    <label for="type">Filtrer par: </label>
-                    <select name="type" id="type" class="form-control">
-                        <option value="lbNom">Nom</option>
-                        <option value="nomVern">Nom Vernaculaire</option>
-                        <option value="bec">Type de Bec</option>
-                        <option value="plumage">Type de Plumage</option>
-                        <option value="couleur">Type de Couleur</option>
-                    </select>
+            <div id="filter" class="col-md-4 center">
+                <div class="row">
+                    <label for="color-plumage" class="control-label col-sm-4">plumage</label>
+                    <div class="col-sm-8">
+                        <select name="color-plumage" id="color-plumage" class="form-control">
+                            <option value="" selected>Couleur</option>
+                            <option value="blanc">Blanc</option>
+                            <option value="bleu">Bleu</option>
+                            <option value="brun">Brun</option>
+                            <option value="gris">Gris</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="color-patte" class="control-label col-sm-4">pattes</label>
+                    <div class="col-sm-8">
+                        <select name="color-patte" id="color-patte" class="form-control">
+                            <option value="" selected>Couleur</option>
+                            <option value="blanc">Blanc</option>
+                            <option value="bleu">Bleu</option>
+                            <option value="brun">Brun</option>
+                            <option value="gris">Gris</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="color-bec" class="control-label col-sm-4">bec</label>
+                    <div class="col-sm-8">
+                        <select name="color-bec" id="color-bec" class="form-control">
+                            <option value="" selected>Couleur</option>
+                            <option value="blanc">Blanc</option>
+                            <option value="bleu">Bleu</option>
+                            <option value="brun">Brun</option>
+                            <option value="gris">Gris</option>
+                        </select>
+                    </div>
                 </div>
                 <input type="text" id="search" placeholder="Rechercher une fiche &#xf002;"
                        style="font-family:FontAwesome, Arial; text-align: right"
-                       data-href="{{ path('bird_pagination', {'page': 1, 'type': 'lbNom', 'plumage': 'plumage'}) }}"/>
+                       data-href="{{ path('bird_pagination', {'page': 1}) }}"/>
 
 
             </div>
         </div>
         <div id="birds"
-             data-href="{{ path('bird_pagination', {'page': 1,'type': 'bec', 'plumage': 'plumage'}) }}"></div>
+             data-href="{{ path('bird_pagination', {'page': 1}) }}"></div>
 
         <div class="row">
             <div class="col-sm-2 col-sm-offset-5 loader"></div>
@@ -49,7 +66,7 @@
 
     </div>
     <a href="#" id="add-birds" class="btn grey text-center"
-       data-href="{{ path('bird_pagination', {'page': 1, 'type': 'bec', 'plumage': 'plumage'}) }}"><i
+       data-href="{{ path('bird_pagination', {'page': 1}) }}"><i
                 class="fa fa-long-arrow-down"></i> Voir plus d'oiseaux</a>
 
 
@@ -59,4 +76,5 @@
 {% block javascript %}
     {{ parent() }}
     <script src="{{ asset('bundles/observation/js/AJAX/Desktop/bird.list.js') }}"></script>
+    <script src="{{ asset('bundles/observation/js/scroll.desktop.js') }}"></script>
 {% endblock %}

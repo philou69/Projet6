@@ -112,7 +112,7 @@ class BirdController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function paginationAction($page, Request $request, $type, $plumage)
+    public function paginationAction($page, Request $request)
     {
         // On vérifie s'il s'agit d'une reuqete ajax
         if ($request->isXmlHttpRequest()){
@@ -128,9 +128,15 @@ class BirdController extends Controller
                 // Si c'est 0, search est null,
                 // Sinon on lui passe la valeur sécurisé
                 $search = strlen(htmlspecialchars($request->query->get('search'))) == 0 ? null :  htmlspecialchars($request->query->get('search'));
-
+                $couleurBec = strlen(htmlspecialchars($request->query->get('bec'))) == 0 ? null : htmlspecialchars($request->query->get('bec'));
+                $couleurPlumage = strlen(htmlspecialchars($request->query->get('plumage'))) == 0 ? null : htmlspecialchars($request->query->get('plumage'));
+                $couleurPatte = strlen(htmlspecialchars($request->query->get('patte'))) == 0 ? null : htmlspecialchars($request->query->get('patte'));
                 // On effectu la requete doctrine getPage()
-                $birds = $em->getRepository('ObservationBundle:Bird')->getPage($page, $number, $search, $type, $plumage);
+//                var_dump($couleurBec);
+//                var_dump($couleurPlumage);
+//                var_dump($couleurPatte);
+//                exit;
+                $birds = $em->getRepository('ObservationBundle:Bird')->getPage($page, $number, $search, $couleurBec, $couleurPatte, $couleurPlumage);
 
                 // On calcul le nombre de page max
                 $nbPage = ceil(count($birds)/$number);

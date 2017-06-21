@@ -14,7 +14,9 @@
 .center, .center > input, .center > i {
     margin: auto;
 }
-
+#filter>.row{
+    margin-top: 5px;
+}
 /* fin style pour la zone titre et input search ---------*/
 
 /** Affichage main pour les div oiseaux **/

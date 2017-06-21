@@ -147,9 +147,9 @@ class Bird
     /**
      * @var string
      *
-     * @ORM\Column(name="couleur", type="string", length=255)
+     * @ORM\Column(name="patte", type="string", length=255)
      */
-    private $couleur;
+    private $patte;
 
     /**
      * Constructor
@@ -715,25 +715,25 @@ class Bird
     }
 
     /**
-     * Get couleur
+     * Get patte
      *
      * @return string
      */
-    public function getCouleur()
+    public function getPatte()
     {
-        return $this->couleur;
+        return $this->patte;
     }
 
     /**
-     * Set couleur
+     * Set patte
      *
-     * @param string $couleur
+     * @param string $patte
      *
      * @return Bird
      */
-    public function setCouleur($couleur)
+    public function setPatte($patte)
     {
-        $this->couleur = $couleur;
+        $this->patte = $patte;
 
         return $this;
     }
