@@ -14,7 +14,7 @@ class Bird
 {
 
     /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche", inversedBy="bird", cascade={"persist"})
      */
     protected $fiche;
     /**
