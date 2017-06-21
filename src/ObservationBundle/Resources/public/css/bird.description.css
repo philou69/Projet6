@@ -1,0 +1,31 @@
+#description strong, h2 {
+    color: #a1d0f3;
+}
+
+#description img {
+    height: 200px;
+}
+
+#description > div:nth-child(4) > div.col-xs-4 > hr {
+    border-top: 1px solid #a1d0f3;
+}
+
+#description > div:nth-child(4) > div.col-xs-8 > div > a {
+    color: #a1d0f3;
+}
+
+#description .text-justify {
+    padding-top: 10px;
+}
+
+.text-right {
+    margin-bottom: 10px;
+}
+
+hr {
+    border-top: 1px solid black;
+    width: 20%;
+    margin-left: 10px;
+}
+
+
