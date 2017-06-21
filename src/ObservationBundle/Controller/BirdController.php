@@ -112,7 +112,7 @@ class BirdController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function paginationAction($page, Request $request, $type)
+    public function paginationAction($page, Request $request, $type, $plumage)
     {
         // On vérifie s'il s'agit d'une reuqete ajax
         if ($request->isXmlHttpRequest()){
@@ -130,7 +130,7 @@ class BirdController extends Controller
                 $search = strlen(htmlspecialchars($request->query->get('search'))) == 0 ? null :  htmlspecialchars($request->query->get('search'));
 
                 // On effectu la requete doctrine getPage()
-                $birds = $em->getRepository('ObservationBundle:Bird')->getPage($page, $number, $search, $type);
+                $birds = $em->getRepository('ObservationBundle:Bird')->getPage($page, $number, $search, $type, $plumage);
 
                 // On calcul le nombre de page max
                 $nbPage = ceil(count($birds)/$number);

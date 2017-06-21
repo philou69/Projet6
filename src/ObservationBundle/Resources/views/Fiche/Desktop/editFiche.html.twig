@@ -1,0 +1,101 @@
+{% extends 'ObservationBundle::layout.desktop.html.twig' %}
+
+{% block title %}Edition Fiche {{ bird.aName }}{% endblock %}
+
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/bird.description.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div id="contentEdit">
+        <div class="center-80">
+            <h1>{{ bird.nomVern }}
+                <small>-{{ bird.lbNom }}</small>
+            </h1>
+            <hr>
+            <div class="row">
+                <div class="col-xs-6 left">
+                    <h2>
+                        Edition de la fiche Description
+                    </h2>
+                </div>
+            </div>
+            <div class="panel panel-default center-80" id="formEdit">
+                <div class="panel-body">
+                    {{ form_start(form) }}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            {{ form_label(form.minQuantity, form.vars.label) }}
+                            {{ form_errors(form.minQuantity) }}
+                            {{ form_widget(form.minQuantity) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            {{ form_label(form.maxQuantity, form.vars.label) }}
+                            {{ form_errors(form.maxQuantity) }}
+                            {{ form_widget(form.maxQuantity) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            {{ form_label(form.description, form.vars.label) }}
+                            {{ form_errors(form.description) }}
+                            {{ form_widget(form.description) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            {{ form_label(form.status, form.vars.label) }}
+                            {{ form_errors(form.status) }}
+                            {{ form_widget(form.status) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            {{ form_label(form.bird, form.vars.label) }}
+                            {{ form_widget(form.bird) }}
+                        </div>
+                    </div>
+                    {#{{ form_widget(form.bird, {'attr':{'hidden': 'true'}}) }}#}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            {{ form_widget(form.save, {'attr':{'class': 'btn-nao'}}) }}
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="retour">
+            <a href="{{ path('bird_description', {'id': bird.id}) }}" class="col-xs-12 text-center"><span
+                        class="fa fa-arrow-left"></span>
+                Retour à la description</a>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+
+    <script>
+        $(document).ready(function () {
+            $('#observationbundle_fiche_description').summernote({
+                height: 300,
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']]
+                ]
+            });
+
+        })
+    </script>
+
+{% endblock %}

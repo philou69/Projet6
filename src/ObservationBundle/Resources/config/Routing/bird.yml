@@ -20,7 +20,7 @@ bird_observation:
       _controller: ObservationBundle:Bird:observation
 
 bird_pagination:
-    path: /pagination/{page}/{type}
+    path: /pagination/{page}/{type}/{plumage}
     defaults:
         _controller: ObservationBundle:Bird:pagination
 
