@@ -37,9 +37,10 @@ $(document).ready(function () {
     $('#search').on('keyup', function (event) {
         prepareRequete(true);
 
+        //Test pour filtre multicritère avec insertion de parametre de route
         let option = $('#type').val();
-        let urlType = $('#search').attr('data-href').replace('lbNom', option);
-
+        let optionColor = $('#plumage').val();
+        let urlType = $('#search').attr('data-href').replace('lbNom', option).replace('plumage', optionColor);
         let url = urlType + '?search=' + $(this).val();
 
         // var url = $(this).data('href') + '?search=' + $(this).val();
