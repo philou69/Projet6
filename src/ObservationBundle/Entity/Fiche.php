@@ -6,6 +6,7 @@ namespace ObservationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use ObservationBundle\Validator\Constraints as ObsAssert;
 
 /**
  * Class Fiche
@@ -13,6 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="fiche")
  * @ORM\Entity(repositoryClass="ObservationBundle\Repository\FicheRepository")
+ * @ObsAssert\Fiche
  */
 class Fiche
 {
