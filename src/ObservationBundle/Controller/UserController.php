@@ -462,4 +462,9 @@ class UserController extends Controller
         $messages = $em->getRepository('ObservationBundle:Message')->findAllOrdering();
         return $this->render('ObservationBundle:User/Desktop:list.contacts.html.twig', array('messages' => $messages));
     }
+
+    public function loginAction()
+    {
+
+    }
 }
