@@ -4,6 +4,7 @@ namespace ObservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Picture
@@ -14,6 +15,10 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class Picture
 {
+    /**
+     * @var
+     * @Assert\Image()
+     */
     protected $file;
     protected $tempFileName;
     /**
@@ -28,6 +33,7 @@ class Picture
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
+     * @Assert\Image()
      */
     private $url;
     /**
