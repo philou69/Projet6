@@ -119,7 +119,6 @@ class Bird
      * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Location", inversedBy="birds", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
-
     private $locations;
     /**
      * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Observation", mappedBy="bird")
