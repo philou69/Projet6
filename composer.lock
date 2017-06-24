@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "09af6837dc72059e588483342b67f742",
+    "content-hash": "a7bed73142eb8b045078956c263b4e1a",
     "packages": [
         {
             "name": "beberlei/DoctrineExtensions",
@@ -894,6 +894,174 @@
                 "orm"
             ],
             "time": "2016-12-18T15:42:34+00:00"
+        },
+        {
+            "name": "dominium/google-analytics",
+            "version": "1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dominium/google-analytics.git",
+                "reference": "9e86c1872656e5cbc301ef0876b03c1326c9be57"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dominium/google-analytics/zipball/9e86c1872656e5cbc301ef0876b03c1326c9be57",
+                "reference": "9e86c1872656e5cbc301ef0876b03c1326c9be57",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "widop/http-adapter": "1.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Widop\\GoogleAnalytics": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                },
+                {
+                    "name": "Widop",
+                    "email": "contact@widop.com"
+                }
+            ],
+            "description": "Google certificate-based authentication in server-to-server interactions with google analytics",
+            "keywords": [
+                "analytics",
+                "google",
+                "server"
+            ],
+            "time": "2016-02-29T10:57:27+00:00"
+        },
+        {
+            "name": "dominium/google-analytics-bundle",
+            "version": "1.3",
+            "target-dir": "Widop/GoogleAnalyticsBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dominium/WidopGoogleAnalyticsBundle.git",
+                "reference": "f911e74e74765ae94278dae04ab34ce37876b20d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dominium/WidopGoogleAnalyticsBundle/zipball/f911e74e74765ae94278dae04ab34ce37876b20d",
+                "reference": "f911e74e74765ae94278dae04ab34ce37876b20d",
+                "shasum": ""
+            },
+            "require": {
+                "dominium/google-analytics": "1.3",
+                "dominium/http-adapter-bundle": "1.3",
+                "symfony/framework-bundle": "3.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Widop\\GoogleAnalyticsBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                },
+                {
+                    "name": "Widop",
+                    "email": "contact@widop.com"
+                }
+            ],
+            "description": "Google certificate-based authentication in server-to-server interactions with google analytics",
+            "keywords": [
+                "analytics",
+                "google",
+                "server"
+            ],
+            "time": "2016-02-29T11:21:36+00:00"
+        },
+        {
+            "name": "dominium/http-adapter-bundle",
+            "version": "1.3",
+            "target-dir": "Widop/HttpAdapterBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dominium/WidopHttpAdapterBundle.git",
+                "reference": "0a4872a3d1ac13e6a3a135bca18a6bdcdd4e7bb8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dominium/WidopHttpAdapterBundle/zipball/0a4872a3d1ac13e6a3a135bca18a6bdcdd4e7bb8",
+                "reference": "0a4872a3d1ac13e6a3a135bca18a6bdcdd4e7bb8",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/framework-bundle": "3.*",
+                "widop/http-adapter": "1.1.*"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "guzzle/guzzle": "*",
+                "kriswallsmith/buzz": "*",
+                "phpunit/phpunit": "3.7.*",
+                "zendframework/zend-http": "*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Widop\\HttpAdapterBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                },
+                {
+                    "name": "Widop",
+                    "email": "contact@widop.com"
+                }
+            ],
+            "description": "Issue HTTP request.",
+            "keywords": [
+                "http",
+                "request"
+            ],
+            "time": "2016-02-29T11:00:07+00:00"
         },
         {
             "name": "drewm/mailchimp-api",
@@ -2644,6 +2812,68 @@
                 "templating"
             ],
             "time": "2017-06-07T18:45:17+00:00"
+        },
+        {
+            "name": "widop/http-adapter",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/widop/http-adapter.git",
+                "reference": "9f21040064d290cc70db4affe3191828f419f5af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/widop/http-adapter/zipball/9f21040064d290cc70db4affe3191828f419f5af",
+                "reference": "9f21040064d290cc70db4affe3191828f419f5af",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "guzzle/guzzle": "*",
+                "kriswallsmith/buzz": "*",
+                "phpunit/phpunit": "3.7.*",
+                "zendframework/zend-http": "*"
+            },
+            "suggest": {
+                "ext-curl": "Allows you to use cURL adapter",
+                "guzzle/guzzle": "Allows you to use Guzzle adapter",
+                "kriswallsmith/buzz": "Allows you to use Buzz adapter",
+                "zendframework/zend-http": "Allows you to use Zend adapter"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Widop\\HttpAdapter": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eric GELOEN",
+                    "email": "geloen.eric@gmail.com"
+                },
+                {
+                    "name": "Widop",
+                    "email": "contact@widop.com"
+                }
+            ],
+            "description": "Issue HTTP request.",
+            "keywords": [
+                "http",
+                "request"
+            ],
+            "time": "2014-07-20T18:29:58+00:00"
         }
     ],
     "packages-dev": [
