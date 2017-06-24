@@ -14,7 +14,7 @@ class Bird
 {
 
     /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche", inversedBy="bird", cascade={"persist"})
      */
     protected $fiche;
     /**
@@ -119,7 +119,6 @@ class Bird
      * @ORM\ManyToMany(targetEntity="ObservationBundle\Entity\Location", inversedBy="birds", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
-
     private $locations;
     /**
      * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Observation", mappedBy="bird")
@@ -146,9 +145,9 @@ class Bird
     /**
      * @var string
      *
-     * @ORM\Column(name="couleur", type="string", length=255)
+     * @ORM\Column(name="patte", type="string", length=255)
      */
-    private $couleur;
+    private $patte;
 
     /**
      * Constructor
@@ -714,25 +713,25 @@ class Bird
     }
 
     /**
-     * Get couleur
+     * Get patte
      *
      * @return string
      */
-    public function getCouleur()
+    public function getPatte()
     {
-        return $this->couleur;
+        return $this->patte;
     }
 
     /**
-     * Set couleur
+     * Set patte
      *
-     * @param string $couleur
+     * @param string $patte
      *
      * @return Bird
      */
-    public function setCouleur($couleur)
+    public function setPatte($patte)
     {
-        $this->couleur = $couleur;
+        $this->patte = $patte;
 
         return $this;
     }

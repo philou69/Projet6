@@ -12,24 +12,74 @@
         {#</div>#}
         <div>
             <h1>Liste des oiseaux </h1>
-            <div class="form-group">
-                <label for="type">Filtrer par: </label>
-                <select name="type" id="type" class="form-control">
-                    <option value="lbNom">Nom</option>
-                    <option value="nomVern">Nom Vernaculaire</option>
-                    <option value="bec">Type de Bec</option>
-                    <option value="plumage">Type de Plumage</option>
-                    <option value="couleur">Type de Couleur</option>
-                </select>
+            <div>
+                <a id="action-filter" data-id="filter" class="btn btn-nao">Filter Rechercher <span class="caret"></span></a>
             </div>
-            <input type="text" id="search" placeholder="Rechercher une fiche &#xf002;"
-                   style="font-family:FontAwesome, Arial"
-                   data-href="{{ path('bird_pagination', {'page': 1, 'type': 'lbNom'}) }}">
+            <div id="filter" class="tab-pane" hidden>
+                <div class="row">
+                    <label for="color-plumage" class="control-label col-sm-4">plumage</label>
+                    <div class="col-sm-8">
+                        <select name="color-plumage" id="color-plumage" class="form-control">
+                            <option value="" selected>Couleur</option>
+                            <option value="blanc">Blanc</option>
+                            <option value="bleu">Bleu</option>
+                            <option value="gris">Gris</option>
+                            <option value="jaune">Jaune</option>
+                            <option value="marron">marron</option>
+                            <option value="noir">Noir</option>
+                            <option value="rose">Rose</option>
+                            <option value="rouge/orange">Rouge/orange</option>
+                            <option value="vert">Vert</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="color-patte" class="control-label col-sm-4">pattes</label>
+                    <div class="col-sm-8">
+                        <select name="color-patte" id="color-patte" class="form-control">
+                            <option value="" selected>Couleur</option>
+                            <option value="blanc">Blanc</option>
+                            <option value="bleu">Bleu</option>
+                            <option value="gris">Gris</option>
+                            <option value="jaune">Jaune</option>
+                            <option value="marron">marron</option>
+                            <option value="noir">Noir</option>
+                            <option value="rose">Rose</option>
+                            <option value="rouge/orange">Rouge/orange</option>
+                            <option value="vert">Vert</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <label for="color-bec" class="control-label col-sm-4">bec</label>
+                    <div class="col-sm-8">
+                        <select name="color-bec" id="color-bec" class="form-control">
+                            <option value="" selected>Type</option>
+                            <option value="canard">Canard</option>
+                            <option value="courbé">Courbé</option>
+                            <option value="crochu">Crochu</option>
+                            <option value="droit et long">Droit et long</option>
+                            <option value="fin et court">Fin et court</option>
+                            <option value="mouette">Mouette</option>
+                            <option value="épais et court">Épais et court</option>
+                            <option value="autres becs droits">Autres becs droits</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <input type="text" id="search" placeholder="Rechercher une fiche &#xf002;"
+                               style="font-family:FontAwesome, Arial; text-align: right;"
+                               data-href="{{ path('bird_pagination', {'page': 1}) }}"/>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="listing">
             <div id="birds" class="content container"
-                 data-href="{{ path('bird_pagination', {'page': 1, 'type': 'lbNom'}) }}"></div>
+                 data-href="{{ path('bird_pagination', {'page': 1}) }}"></div>
 
 
             <div class="row" id="content-loader">

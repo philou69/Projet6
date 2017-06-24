@@ -112,7 +112,7 @@ class BirdController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function paginationAction($page, Request $request, $type)
+    public function paginationAction($page, Request $request)
     {
         // On vérifie s'il s'agit d'une reuqete ajax
         if ($request->isXmlHttpRequest()){
@@ -128,9 +128,15 @@ class BirdController extends Controller
                 // Si c'est 0, search est null,
                 // Sinon on lui passe la valeur sécurisé
                 $search = strlen(htmlspecialchars($request->query->get('search'))) == 0 ? null :  htmlspecialchars($request->query->get('search'));
-
+                $couleurBec = strlen(htmlspecialchars($request->query->get('bec'))) == 0 ? null : htmlspecialchars($request->query->get('bec'));
+                $couleurPlumage = strlen(htmlspecialchars($request->query->get('plumage'))) == 0 ? null : htmlspecialchars($request->query->get('plumage'));
+                $couleurPatte = strlen(htmlspecialchars($request->query->get('patte'))) == 0 ? null : htmlspecialchars($request->query->get('patte'));
                 // On effectu la requete doctrine getPage()
-                $birds = $em->getRepository('ObservationBundle:Bird')->getPage($page, $number, $search, $type);
+//                var_dump($couleurBec);
+//                var_dump($couleurPlumage);
+//                var_dump($couleurPatte);
+//                exit;
+                $birds = $em->getRepository('ObservationBundle:Bird')->getPage($page, $number, $search, $couleurBec, $couleurPatte, $couleurPlumage);
 
                 // On calcul le nombre de page max
                 $nbPage = ceil(count($birds)/$number);
@@ -161,12 +167,15 @@ class BirdController extends Controller
      */
     public function editAction(Bird $bird, Request $request)
     {
-        $fiche = new Fiche();
         $em = $em = $this->getDoctrine()->getManager();
-        $description = $bird->getFiche();
 
-        //Premiere edition de la fiche
-        if ($description === null) {
+        //On verifie si bird a une fiche
+        //ce n'est pas le cas, premiere edition de la fiche
+        if ($bird->getFiche() === null) {
+            // Creation fiche et passage à l'oiseaux
+            $fiche = new Fiche();
+            $bird->setFiche($fiche);
+            $fiche->setBird($bird);
             $form = $this->createForm(FicheType::class, $fiche, array(
                 'attr' => array(
                     'minVal' => 1,
@@ -175,29 +184,22 @@ class BirdController extends Controller
             ));
         } //Si la fiche existe deja on la modifie
         else {
-            $currentFiche = $em->getRepository('ObservationBundle:Fiche')->find($description);
-            $form = $this->createForm(FicheType::class, $currentFiche, array(
+            $form = $this->createForm(FicheType::class, $bird->getFiche(), array(
                 'attr' => array(
-                    'minVal' => $description->getMinQuantity(),
-                    'maxVal' => $description->getMaxQuantity()
+                    'minVal' => $bird->getFiche()->getMinQuantity(),
+                    'maxVal' => $bird->getFiche()->getMaxQuantity()
                 )
 
             ));
-            $fiche = $currentFiche;
         }
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $bird->setFiche($fiche);
-            $bird->setBec($fiche->getBird()['bec']);
-            $bird->setPlumage($fiche->getBird()['plumage']);
-            $bird->setCouleur($fiche->getBird()['couleur']);
-
+            // On persist l'oiseaux et on enregistre le tous en bdd
             $em->persist($bird);
             $em->flush();
-
+            // Retour à la description de l'oiseau
             return $this->redirectToRoute('bird_description', array(
                 'id' => $bird->getId()
             ));
@@ -208,7 +210,4 @@ class BirdController extends Controller
 
     }
 }
-/**
- * @Security("has_role('ROLE_NATURALISTE')")
- */
 
