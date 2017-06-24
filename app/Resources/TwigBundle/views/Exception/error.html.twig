@@ -1,11 +1,6 @@
 {%  extends is_mobile() ? '@Observation/layout.mobile.html.twig' : is_tablet() ? '@Observation/layout.mobile.html.twig': '@Observation/layout.desktop.html.twig' %}
 
 {% block content %}
-    {{ dump(status_code) }}
-    {{ dump(status_text) }}
-    {{ dump(exception) }}
-    {{ dump(logger) }}
-    {{ dump(currentContent) }}
 
     <div class="center-80">
         <h1>Une erreur est survenue</h1>
