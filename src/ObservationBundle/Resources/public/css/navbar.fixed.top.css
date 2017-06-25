@@ -1,3 +1,4 @@
+
 /* Ajout d'un fond et fixation de la hauteur du navbar-header */
 #navbar-top-mobile {
     background-color: #99d1c8;
@@ -21,7 +22,6 @@
     width: 20px;
     margin: 0;
 }
-
 /*alignement de la liste des reseau sociaux */
 #navbar-top-mobile > .navbar-header > .list-inline {
     height: 40px;
@@ -32,12 +32,10 @@
 #navbar-top-mobile > .navbar-header > .list-inline > li {
     height: 100%;
 }
-
 /* Passage des font awesome en blanc */
 #navbar-top-mobile .fa {
     color: white;
 }
-
 /* Stylisation du menu collapse */
 #navbar-top-mobile > .navbar-collapse {
     position: fixed;
@@ -95,4 +93,38 @@
 #navbar-top-mobile > .navbar-collapse > #links > ul > li:nth-last-child(1) > ul > li:before {
     color: white;
     content: '-';
+}
+@media (max-width: 767px ){
+
+
+
+
+
+
+}
+
+/* --- Mlodification collapse on tablette ---*/
+@media (min-width: 768px){
+    /* Affichage du bouton collapse */
+    .navbar-toggle{
+        display: block;
+    }
+
+    /* Masque du menu au chargement */
+    .navbar-collapse.collapse{
+        display: none!important;
+    }
+    .collapse.in{
+         display:block !important;
+     }
+    #navbar-top-mobile>.collapse.in>h1, .collapse.in>#collapse-inside{
+
+        margin-top: 60px;
+    }
+    .navbar-header{
+        float: none;
+    }
+    #navbar-top-mobile>.navbar-collapse>#links>ul>li{
+        display: table;
+    }
 }
