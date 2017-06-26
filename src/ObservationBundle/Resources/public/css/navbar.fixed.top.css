@@ -47,6 +47,7 @@
     padding-right: 30px;
     width: 100vw;
     background: url('/bundles/observation/images/Visuels/footer_background.jpg') center no-repeat;
+    background-size: auto 100%;
     color: white;
 }
 
@@ -118,11 +119,4 @@
     .collapse.in{
          display:block !important;
      }
-    #navbar-top-mobile>.collapse.in>h1, .collapse.in>#collapse-inside{
-
-        margin-top: 60px;
-    }
-    .navbar-header{
-        float: none;
-    }
 }

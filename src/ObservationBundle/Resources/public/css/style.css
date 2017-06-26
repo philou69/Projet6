@@ -15,6 +15,8 @@ body {
 
     background: url('../images/Visuels/observation_background.jpg') no-repeat center;
     width: 100%;
+    /* Qtyle pour que la photo s'adape à la hauteur du div*/
+    background-size: auto 100%;
 }
 
 
@@ -149,7 +151,7 @@ Retour bas de page
 
     /* Marge speciale pour ne pas affiché sous la navbar */
     #view {
-        padding-bottom: 70px;
+        padding-bottom: 40px;
         min-height: 100vh;
         padding-top: 40px;
     }

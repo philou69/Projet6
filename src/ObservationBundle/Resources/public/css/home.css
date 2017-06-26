@@ -105,6 +105,7 @@ stylisation des buttons
     }
     .logo-sociaux, .logo-sociaux>a{
         height: 100%;
+        padding: 0;
     }
     .logo-sociaux>a{
         width: 100px;
@@ -186,6 +187,12 @@ Gallerie de photos
 
 #carousel {
 
+}
+#contentHome{
+    height:100%;
+}
+#contentHome>#second-part{
+    height: calc(100% - 100vh);
 }
 
 
