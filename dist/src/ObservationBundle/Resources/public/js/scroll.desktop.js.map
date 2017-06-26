@@ -1,0 +1,22 @@
+{
+  "version": 3,
+  "sources": [
+    "../../../../../../src/ObservationBundle/Resources/public/js/scroll.desktop.js"
+  ],
+  "names": [
+    "$",
+    "document",
+    "ready",
+    "window",
+    "scroll",
+    "height",
+    "scrollTop",
+    "css",
+    "on"
+  ],
+  "mappings": ";;AAAAA,EAAEC,QAAF,EAAYC,KAAZ,CAAkB,YAAY;AAC1BF,MAAEG,MAAF,EAAUC,MAAV,CAAiB,YAAY;AACzB;AACA,YAAKJ,EAAEG,MAAF,EAAUE,MAAV,KAAqB,GAAtB,GAA8BL,EAAEC,QAAF,EAAYI,MAAZ,EAA9B,IAAsDL,EAAEG,MAAF,EAAUG,SAAV,KAAwBN,EAAEG,MAAF,EAAUE,MAAV,EAAlF,EAAsG;AAClG;AACAL,cAAE,KAAF,EAASO,GAAT,CAAa,SAAb,EAAwB,QAAxB;AACH,SAHD,MAGM;AACF;AACAP,cAAE,KAAF,EAASO,GAAT,CAAa,SAAb,EAAwB,MAAxB;AACH;AACJ,KATD;AAUAP,MAAE,YAAF,EAAgBQ,EAAhB,CAAmB,OAAnB,EAA4B,YAAU;AAClC;AACAR,UAAEG,MAAF,EAAUG,SAAV,CAAoB,CAApB;AACH,KAHD;AAIH,CAfD",
+  "file": "scroll.desktop.js",
+  "sourcesContent": [
+    "$(document).ready(function () {\n    $(window).scroll(function () {\n        // On vérifie si le document fait au moins 1.5 fois la taille de l'ecran et si le haut du scroll est superieur à la taille de l'écran\n        if (($(window).height() * 1.5 ) < $(document).height() && $(window).scrollTop() > $(window).height()) {\n            // Dans ce cas on affiche le bouton up\n            $('#up').css('display', 'inline');\n        }else {\n            // Sinon on le cache\n            $('#up').css('display', 'none');\n        }\n    })\n    $('#up-button').on('click', function(){\n        // Si on clique sur le bouton up, on reviens tout en haut du document\n        $(window).scrollTop(0);\n    })\n})\n"
+  ]
+}

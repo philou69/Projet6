@@ -1,0 +1,22 @@
+{
+  "version": 3,
+  "sources": [
+    "../../../../../../src/ObservationBundle/Resources/public/js/home.js"
+  ],
+  "names": [
+    "$",
+    "document",
+    "ready",
+    "scroll",
+    "scrollTop",
+    "window",
+    "height",
+    "css",
+    "on"
+  ],
+  "mappings": "AAAA;;AAEAA,EAAEC,QAAF,EAAYC,KAAZ,CAAkB,YAAY;AAC1BF,MAAEC,QAAF,EAAYE,MAAZ,CAAmB,YAAY;AAC3B;AACA,YAAIH,EAAEC,QAAF,EAAYG,SAAZ,KAA0BJ,EAAEK,MAAF,EAAUC,MAAV,EAA9B,EAAkD;AAC9C;AACA;AACAN,cAAE,2BAAF,EAA+BO,GAA/B,CAAmC,kBAAnC,EAAuD,SAAvD;AACAP,cAAE,iCAAF,EAAqCO,GAArC,CAAyC,kBAAzC,EAA6D,SAA7D;AACH,SALD,MAKO;AACH;AACAP,cAAE,2BAAF,EAA+BO,GAA/B,CAAmC,kBAAnC,EAAuD,aAAvD;AACAP,cAAE,iCAAF,EAAqCO,GAArC,CAAyC,kBAAzC,EAA6D,aAA7D;AACH;AACJ,KAZD;AAaA;AACAP,MAAE,QAAF,EAAYQ,EAAZ,CAAe,OAAf,EAAwB,YAAY;AAChC;AACAR,UAAE,2BAAF,EAA+BO,GAA/B,CAAmC,kBAAnC,EAAuD,SAAvD;AACAP,UAAE,iCAAF,EAAqCO,GAArC,CAAyC,kBAAzC,EAA6D,SAA7D;AACH,KAJD;AAKH,CApBD;AAqBA",
+  "file": "home.js",
+  "sourcesContent": [
+    "\"use strict\";\n\n$(document).ready(function () {\n    $(document).scroll(function () {\n        // check if scroll event happened\n        if ($(document).scrollTop() > $(window).height()) {\n            // check if user scrolled more than height of the window\n            // Passage des couleur traditionnelles aux élément de la navbar\n            $(\".navbar-fixed-top >#first\").css(\"background-color\", \"#99d1c8\");\n            $(\".navbar-fixed-top >.tab-content\").css(\"background-color\", \"#dbefed\");\n        } else {\n            // On remet la navbar en transparent et on raffiche le bouton start\n            $(\".navbar-fixed-top >#first\").css(\"background-color\", \"transparent\");\n            $(\".navbar-fixed-top >.tab-content\").css(\"background-color\", \"transparent\");\n        }\n    });\n    // Listener sur le bouton start\n    $(\"#start\").on('click', function () {\n        // Passage des couleur traditionnelles aux élément de la navbar\n        $(\".navbar-fixed-top >#first\").css(\"background-color\", \"#99d1c8\");\n        $(\".navbar-fixed-top >.tab-content\").css(\"background-color\", \"#dbefed\");\n    });\n});\n//# sourceMappingURL=home.js.map"
+  ]
+}

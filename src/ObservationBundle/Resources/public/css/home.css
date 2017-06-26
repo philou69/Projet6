@@ -131,6 +131,14 @@ stylisation des buttons
     #bienvenue a{
         width: auto;
     }
+
+    #sociallinks {
+        margin-bottom: 80px;
+    }
+
+    #sociallinks a {
+        width: 100px;
+    }
 }
 
 /* Positionnement du bouton sur le bas du div */

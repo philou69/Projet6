@@ -1,0 +1,37 @@
+{
+  "version": 3,
+  "sources": [
+    "../jquery.ui.datepicker-fr.js"
+  ],
+  "names": [
+    "jQuery",
+    "$",
+    "datepicker",
+    "regional",
+    "closeText",
+    "prevText",
+    "nextText",
+    "currentText",
+    "monthNames",
+    "monthNamesShort",
+    "dayNames",
+    "dayNamesShort",
+    "dayNamesMin",
+    "weekHeader",
+    "dateFormat",
+    "firstDay",
+    "isRTL",
+    "showMonthAfterYear",
+    "yearSuffix",
+    "minDate",
+    "maxDate",
+    "numberOfMonths",
+    "showButtonPanel",
+    "setDefaults"
+  ],
+  "mappings": "AAAA;;AAEA;AACA;;AACAA,OAAO,UAAUC,CAAV,EAAa;AAChBA,MAAEC,UAAF,CAAaC,QAAb,CAAsB,IAAtB,IAA8B;AAC1BC,mBAAW,QADe;AAE1BC,kBAAU,YAFgB;AAG1BC,kBAAU,YAHgB;AAI1BC,qBAAa,cAJa;AAK1BC,oBAAY,CAAC,SAAD,EAAY,SAAZ,EAAuB,MAAvB,EAA+B,OAA/B,EAAwC,KAAxC,EAA+C,MAA/C,EAAuD,SAAvD,EAAkE,MAAlE,EAA0E,WAA1E,EAAuF,SAAvF,EAAkG,UAAlG,EAA8G,UAA9G,CALc;AAM1BC,yBAAiB,CAAC,KAAD,EAAQ,KAAR,EAAe,KAAf,EAAsB,KAAtB,EAA6B,KAA7B,EAAoC,KAApC,EAA2C,KAA3C,EAAkD,KAAlD,EAAyD,KAAzD,EAAgE,KAAhE,EAAuE,KAAvE,EAA8E,KAA9E,CANS;AAO1BC,kBAAU,CAAC,UAAD,EAAa,OAAb,EAAsB,OAAtB,EAA+B,UAA/B,EAA2C,OAA3C,EAAoD,UAApD,EAAgE,QAAhE,CAPgB;AAQ1BC,uBAAe,CAAC,KAAD,EAAQ,KAAR,EAAe,KAAf,EAAsB,KAAtB,EAA6B,KAA7B,EAAoC,KAApC,EAA2C,KAA3C,CARW;AAS1BC,qBAAa,CAAC,IAAD,EAAO,IAAP,EAAa,IAAb,EAAmB,IAAnB,EAAyB,IAAzB,EAA+B,IAA/B,EAAqC,IAArC,CATa;AAU1BC,oBAAY,IAVc;AAW1BC,oBAAY,UAXc;AAY1BC,kBAAU,CAZgB;AAa1BC,eAAO,KAbmB;AAc1BC,4BAAoB,KAdM;AAe1BC,oBAAY,EAfc;AAgB1BC,iBAAS,CAhBiB;AAiB1BC,iBAAS,UAjBiB;AAkB1BC,wBAAgB,CAlBU;AAmB1BC,yBAAiB;AAnBS,KAA9B;AAqBArB,MAAEC,UAAF,CAAaqB,WAAb,CAAyBtB,EAAEC,UAAF,CAAaC,QAAb,CAAsB,IAAtB,CAAzB;AACH,CAvBD;AAwBA",
+  "file": "jquery.ui.datepicker-fr.js",
+  "sourcesContent": [
+    "'use strict';\n\n/* French initialisation for the jQuery UI date picker plugin. */\n/* Written by Keith Wood (kbwood{at}iinet.com.au) and Stéphane Nahmani (sholby@sholby.net). */\njQuery(function ($) {\n    $.datepicker.regional['fr'] = {\n        closeText: 'Fermer',\n        prevText: '&#x3c;Préc',\n        nextText: 'Suiv&#x3e;',\n        currentText: 'Aujourd\\'hui',\n        monthNames: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],\n        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'],\n        dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],\n        dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],\n        dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],\n        weekHeader: 'Sm',\n        dateFormat: 'dd-mm-yy',\n        firstDay: 1,\n        isRTL: false,\n        showMonthAfterYear: false,\n        yearSuffix: '',\n        minDate: 0,\n        maxDate: '+12M +0D',\n        numberOfMonths: 2,\n        showButtonPanel: true\n    };\n    $.datepicker.setDefaults($.datepicker.regional['fr']);\n});\n//# sourceMappingURL=jquery.ui.datepicker-fr.js.map"
+  ]
+}
