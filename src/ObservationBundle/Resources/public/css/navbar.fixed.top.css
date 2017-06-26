@@ -77,6 +77,7 @@
 #navbar-top-mobile > .navbar-collapse > #links > ul > li {
     border: 0;
     border-bottom: 1px solid white;
+    display: table;
 }
 
 /*Retrait de la bordure sur la derniere li*/
@@ -123,8 +124,5 @@
     }
     .navbar-header{
         float: none;
-    }
-    #navbar-top-mobile>.navbar-collapse>#links>ul>li{
-        display: table;
     }
 }

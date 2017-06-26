@@ -8,6 +8,9 @@
         {% if app.user %}
             {% include '@Observation/Default/Navbar/Mobile/user.sub.navbar.html.twig' %}
         {% endif %}
+        {% if app.request.attributes.get('_route') in ['blog_view', 'contact_message', 'faq'] %}
+            {% include '@Observation/Default/Navbar/Mobile/other.sub.navbar.html.twig' %}
+        {% endif %}
     </div>
     {# Liste des menus #}
     <ul class="navbar-nav nav nav-tabs">

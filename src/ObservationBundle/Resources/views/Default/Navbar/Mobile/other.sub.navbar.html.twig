@@ -1,0 +1,18 @@
+<div id="other"
+     class="tab-pane second row {{ app.request.attributes.get('_route') in ['blog_view', 'contact_message', 'faq'] ? 'active' : '' }}">
+    <div class="second_line col-xs-4 text-center {{ app.request.attributes.get('_route')== 'blog_view' ? 'active': '' }}">
+        <a href="{{ path('blog_view') }}" class="text-center">
+            <img src="{{ app.request.attributes.get('_route') == 'blog_view' ? asset('bundles/observation/images/icones/association_icon_hover.png') : asset('bundles/observation/images/icones/association_icon.png') }}"
+                 alt="blog asssociation">
+        </a>
+    </div>
+    <div class="second_line col-xs-4 text-center {{ app.request.attributes.get('_route') == 'contact_message' ? 'active' :'' }}">
+        <a href="{{ path('contact_message') }}" id="bird_repartition">
+            <img src="{{ app.request.attributes.get('_route') == 'contact_message' ? asset('bundles/observation/images/icones/contact_icon_hover.png') : asset('bundles/observation/images/icones/contact_icon.png') }}"
+                 alt="contact association"></a>
+    </div>
+    <div class="second_line col-xs-4 text-center {{ app.request.attributes.get('_route') == 'faq' ? 'active' : '' }}">
+        <a href="{{ path('faq') }}" id="bird_add">
+            <img src="{{ app.request.attributes.get('_route') == 'faq' ? asset('bundles/observation/images/icones/faq_icon_hover.png') : asset('bundles/observation/images/icones/faq_icon.png') }}" alt="faq association"></a>
+    </div>
+</div>
