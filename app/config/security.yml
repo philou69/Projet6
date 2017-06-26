@@ -54,7 +54,7 @@ security:
         - { path: ^/observation/add, role: ROLE_OBS }
         - { path: ^/user/profil, role: ROLE_OBS }
         - { path: ^/user/observation, role: ROLE_NATURALISTE }
-        - { path: ^/user/my_observations, role: ROLE_NATURALISTE }
+        - { path: ^/user/my_observations, role: ROLE_OBS }
         - { path: ^/user/stars, role: ROLE_OBS }
         - { path: ^/billet, role: ROLE_ADMIN }
         - { path: ^/faq/edit, role: ROLE_ADMIN }

@@ -1,0 +1,12 @@
+{%  extends is_mobile() ? '@Observation/layout.mobile.html.twig' : is_tablet() ? '@Observation/layout.mobile.html.twig': '@Observation/layout.desktop.html.twig' %}
+
+{% block content %}
+    <div class="center-80">
+        <h1>Une erreur est survenue</h1>
+        <p>
+
+            Le serveur viens de retourné l'erreur 403.<br>
+            Vous n'avez pas le droit d'être ici.
+        </p>
+    </div>
+{% endblock %}

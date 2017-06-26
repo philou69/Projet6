@@ -26,7 +26,8 @@ class ChangeAvartarType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ObservationBundle\Entity\User'
+            'data_class' => 'ObservationBundle\Entity\User',
+            'cascade_validation' => true
         ));
     }
 }
