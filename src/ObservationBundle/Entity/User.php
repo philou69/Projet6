@@ -17,6 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="ObservationBundle\Repository\UserRepository")
  * @UniqueEntity(fields="email", message="L'email est déjà utilisé")
  * @UniqueEntity(fields="username", message="Le pseudo est déjà utilisé")
+ * @ORM\HasLifecycleCallbacks()
  */
 
 class User implements AdvancedUserInterface, \Serializable
@@ -183,7 +184,11 @@ class User implements AdvancedUserInterface, \Serializable
         if(!in_array($role, $this->roles, true)){
             // On s'assure que les admins, on aussi le role naturaliste
             if ($role === 'ROLE_ADMIN' && !in_array('ROLE_NATURALISTE', $this->roles, true)) {
-                $this->roles[] = 'ROLE_NATURALISTE';
+                $this->addRole('ROLE_NATURALISTE');
+            }
+            // On s'assure que les naturaliste, on aussi le role obs
+            if ($role === 'ROLE_NATURALISTE' && !in_array('ROLE_OBS', $this->roles, true)) {
+                $this->addRole('ROLE_OBS');
             }
             $this->roles[] = $role;
         }
@@ -613,5 +618,19 @@ class User implements AdvancedUserInterface, \Serializable
         $this->sleeping = $sleeping;
 
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function sortRoles()
+    {
+        if(in_array('ROLE_ADMIN', $this->roles) and !in_array('ROLE_NATURALISTE', $this->roles)){
+            $this->addRole('ROLE_NATURALISTE');
+        }
+        if(in_array('ROLE_NATURALISTE', $this->roles) and !in_array('ROLE_OBS', $this->roles)){
+            $this->addRole('ROLE_OBS');
+        }
     }
 }

@@ -302,3 +302,10 @@ Boutons text editor
     width: 120px;
     margin: auto;
 }
+
+/* Style for flash message */
+.alert{
+    border-radius: 0;
+    width: 64%;
+    margin: 10px auto;
+}

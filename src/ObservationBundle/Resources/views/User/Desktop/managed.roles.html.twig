@@ -26,20 +26,5 @@
 
 {% block javascript %}
     {{ parent() }}
-    <script>
-        $(document).ready(function () {
-            var $admin = $("input[value='ROLE_ADMIN']");
-            var $naturaliste = $("input[value='ROLE_NATURALISTE']");
-            $admin.on('click', function () {
-                if($admin.prop('checked') == true && $naturaliste.prop('checked') == false ){
-                    $naturaliste.prop('checked', 'checked');
-                    console.log('coucou')
-                }else{
-                    console.log('perdu')
-                }
-                console.log($naturaliste.attr('checked') )
-                console.log($admin.prop('checked') )
-            })
-        })
-    </script>
+    <script src="{{ asset('bundles/observation/js/role.user.js') }}"></script>
 {% endblock %}
