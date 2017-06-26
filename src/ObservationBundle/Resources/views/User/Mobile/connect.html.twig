@@ -8,6 +8,7 @@
 {% block title %}Inscription{% endblock %}
 
 {% block content %}
+    {{ dump(form.vars.errors.count) }}
     <div id="fb-root"></div>
     {# Zone d'identification avec google ou facebook #}
     <div id="oauth" class="text-center">
@@ -26,11 +27,11 @@
             Toggle switch permettant de choisir entre inscription ou connection
         #}
         <div id="content-switch">
-            <label class="switch"><input type="checkbox" id="choice">
+            <label class="switch"><input type="checkbox" id="choice" {{ form.vars.valid ? '' : 'checked' }}>
                 <div class="slider"><span class="on">Se connecter</span><span class="off">S'incrire</span></div>
             </label>
         </div>
-        <div id="login">
+        <div id="login" {{ form.vars.valid ? '' : "hidden='hidden'" }}>
             <h1>Connexion</h1>
             <form action="{{ path('user_login') }}" method="post">
                 {% if error %}
@@ -53,7 +54,7 @@
                 </div>
             </form>
         </div>
-        <div id="registration" hidden="hidden">
+        <div id="registration" {{ form.vars.valid ? "hidden='hidden'" : ''  }}>
             <h1>Inscription</h1>
             {# Zone d'inscription #}
             {{ form_start(form) }}
