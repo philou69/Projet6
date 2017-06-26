@@ -3,3 +3,8 @@
         width: 300px;
     }
 }
+@media (max-width: 992px ) {
+    button#message_save{
+        margin-bottom: 10px;
+    }
+}
