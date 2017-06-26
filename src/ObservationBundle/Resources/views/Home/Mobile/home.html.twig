@@ -16,77 +16,80 @@
                 </a>
             </div>
         </div>
-
-        {#Zone de présentation du site #}
-        <div id="bienvenue" class="center-80">
-            <h1>Bienvenue</h1>
-            <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
-                nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
-                à l'aide de fiches détaillés sur nos amis les oiseaux</p>
-            <div class="text-center">
-                <a id="show-blog" class="btn btn-nao" href="{{ path('blog_view') }}" role="button">DECOUVRIR L'ASSOCIATION</a>
-            </div>
-        </div>
-        {# Galeery des photos d'oiseaux#}
-        <div id="gallery" class="center-80">
-            <div class="row">
-                <h1 class="col-md-10 col-xs-12">Les dernières photos</h1>
-
-            </div>
-            <div class="row">
-                {% for picture in gallery %}
-                    <div class="col-xs-6">
-                        <img src="{{ asset('uploads/images/bird/' ~picture.url) }}"></div>
-                {% else %}
-                    <p>Prochainement les dernières photos</p>
-                {% endfor %}
-
-            </div>
-            <a href="#" class="col-md-12 col-xs-12 text-center link-mobile">accéder à la gallerie</a>
-
-        </div>
-        {#block de saisie obs et newsletter#}
-        <div id="actions" class="row">
-            <div class="center-80">
-                <div id="saisie" class="text-center col-xs-12 col-md-12 obs-mobile">
-                    <a href="{{ path ('observation_add') }}"><img
-                                src="{{ asset ('bundles/observation/images/icones/observation_icon.png') }}"
-                                alt="observation_icon">
-                        <p>
-                            SAISIR UNE OBSERVATION
-                        </p>
-                    </a>
+        <div id="seconde-part">
+            {#Zone de présentation du site #}
+            <div id="bienvenue" class="center-80">
+                <h1>Bienvenue</h1>
+                <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
+                    nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
+                    à l'aide de fiches détaillés sur nos amis les oiseaux</p>
+                <div class="text-center">
+                    <a id="show-blog" class="btn btn-nao" href="{{ path('blog_view') }}" role="button">DECOUVRIR L'ASSOCIATION</a>
                 </div>
-                <div id="newsletter" class="col-xs-12 col-md-12">
-                    <div class="col-xs-12 text-center">
-                        <input type="text" placeholder="Renseigner votre email" class="form-control text-center">
-                        <button type="submit" class="btn btn-nao-2 btn-block">RECEVOIR LA NEWSLETTER</button>
+            </div>
+            {# Galeery des photos d'oiseaux#}
+            <div id="gallery" class="center-80">
+                <div class="row">
+                    <h1 class="col-md-10 col-xs-12">Les dernières photos</h1>
+
+                </div>
+                <div class="row">
+                    {% for picture in gallery %}
+                        <div class="col-xs-6">
+                            <img src="{{ asset('uploads/images/bird/' ~picture.url) }}"></div>
+                    {% else %}
+                        <p>Prochainement les dernières photos</p>
+                    {% endfor %}
+
+                </div>
+                <a href="#" class="col-md-12 col-xs-12 text-center link-mobile">accéder à la gallerie</a>
+
+            </div>
+            {#block de saisie obs et newsletter#}
+            <div id="actions" class="row">
+                <div class="center-80">
+                    <div id="saisie" class="text-center col-xs-12 col-md-12 obs-mobile">
+                        <a href="{{ path ('observation_add') }}"><img
+                                    src="{{ asset ('bundles/observation/images/icones/observation_icon.png') }}"
+                                    alt="observation_icon">
+                            <p>
+                                SAISIR UNE OBSERVATION
+                            </p>
+                        </a>
+                    </div>
+                    <div id="newsletter" class="col-xs-12 col-md-12">
+                        <div class="col-xs-12 text-center">
+                            <input type="text" placeholder="Renseigner votre email" class="form-control text-center">
+                            <button type="submit" class="btn btn-nao-2 btn-block">RECEVOIR LA NEWSLETTER</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-        <div id="sociallink" class="text-center">
-            <h1>SUIVEZ-NOUS</h1>
-            <div class="row" id="sociallinks">
-                <div class="logo-sociaux col-md-4">
-                    <a href="https://facebook.com" class="btn btn-social-icon ">
-                        <img src="{{ asset('bundles/observation/images/icones/facebook.png') }}" class="img-responsive" alt="facebook">
-                    </a>
-                </div>
-                <div class="logo-sociaux col-md-4">
-                    <a href="https://instagram.com" class="btn">
-                        <img src="{{ asset('bundles/observation/images/icones/instagram.jpg') }}" class="img-responsive" alt="instagram">
-                    </a>
-                </div>
-                <div class="logo-sociaux col-md-4">
-                    <a href="https://twitter.com" class="btn btn-social-icon">
-                        <img src="{{ asset('bundles/observation/images/icones/twitter.png') }}" class="img-responsive" alt="twitter">
-                    </a>
-                </div>
             </div>
+            <div id="sociallink" class="text-center">
+                <h1>SUIVEZ-NOUS</h1>
+                <div class="row" id="sociallinks">
+                    <div class="logo-sociaux col-md-4">
+                        <a href="https://facebook.com" class="btn btn-social-icon ">
+                            <img src="{{ asset('bundles/observation/images/icones/facebook.png') }}" class="img-responsive" alt="facebook">
+                        </a>
+                    </div>
+                    <div class="logo-sociaux col-md-4">
+                        <a href="https://instagram.com" class="btn">
+                            <img src="{{ asset('bundles/observation/images/icones/instagram.jpg') }}" class="img-responsive" alt="instagram">
+                        </a>
+                    </div>
+                    <div class="logo-sociaux col-md-4">
+                        <a href="https://twitter.com" class="btn btn-social-icon">
+                            <img src="{{ asset('bundles/observation/images/icones/twitter.png') }}" class="img-responsive" alt="twitter">
+                        </a>
+                    </div>
+                </div>
 
+            </div>
         </div>
+
+
     </div>
 
 {% endblock %}
