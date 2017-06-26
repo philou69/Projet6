@@ -10,10 +10,10 @@
     <div id="contentHome">
         <div id="homePicture">
             <div class="text-center">
-                <button id="start" type="button" class="btn btn-start-desktop">COMMENCER L'OBSERVATION<br/>
+                <a href="#bienvenue" id="start" class="btn btn-start-desktop">COMMENCER L'OBSERVATION<br/>
                     <span class="glyphicon glyphicon-chevron-down
 " aria-hidden="true"></span>
-                </button>
+                </a>
             </div>
         </div>
 
@@ -24,7 +24,7 @@
                 nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
                 à l'aide de fiches détaillés sur nos amis les oiseaux</p>
             <div class="text-center">
-                <a class="btn btn-nao" href="#" role="button">DECOUVRIR L'ASSOCIATION</a>
+                <a id="show-blog" class="btn btn-nao" href="{{ path('blog_view') }}" role="button">DECOUVRIR L'ASSOCIATION</a>
             </div>
         </div>
         {# Galeery des photos d'oiseaux#}
@@ -60,7 +60,7 @@
                 <div id="newsletter" class="col-xs-12 col-md-6">
                     <div class="col-xs-12 text-center">
                         <input type="text" placeholder="Renseigner votre email" class="form-control text-center">
-                        <button type="submit" class="btn btn-nao-2 btn-lg btn-block">RECEVOIR LA NEWSLETTER</button>
+                        <button type="submit" class="btn btn-nao-2 btn-block">RECEVOIR LA NEWSLETTER</button>
                     </div>
                 </div>
             </div>
@@ -68,17 +68,24 @@
         </div>
         <div id="sociallink" class="text-center">
             <h1>SUIVEZ-NOUS</h1>
-            <ul>
-                <li class="logo-sociaux first_line">
-                    <a href="https://facebook.com" class="btn btn-social-icon btn-facebook"><i
-                                class="fa fa-facebook-f"></i></a></li>
-                <li class="logo-sociaux first_line">
-                    <a href="https://instagram.com" class="btn btn-instagram btn-circle"><i class="fa fa-instagram"></i></a>
-                </li>
-                <li class="logo-sociaux first_line">
-                    <a href="https://twitter.com" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
-                </li>
-            </ul>
+            <div>
+                <div class="logo-sociaux">
+                    <a href="https://facebook.com" class="btn btn-social-icon ">
+                        <img src="{{ asset('bundles/observation/images/icones/facebook.png') }}" class="img-responsive" alt="facebook">
+                    </a>
+                </div>
+                <div class="logo-sociaux">
+                    <a href="https://instagram.com" class="btn">
+                        <img src="{{ asset('bundles/observation/images/icones/instagram.jpg') }}" class="img-responsive" alt="instagram">
+                    </a>
+                </div>
+                <div class="logo-sociaux">
+                    <a href="https://twitter.com" class="btn btn-social-icon">
+                        <img src="{{ asset('bundles/observation/images/icones/twitter.png') }}" class="img-responsive" alt="twitter">
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
 
