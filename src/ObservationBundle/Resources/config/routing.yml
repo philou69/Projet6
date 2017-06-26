@@ -17,9 +17,10 @@ star:
 blog:
     prefix: /asso
     resource: 'Routing/blog.yml'
+
 contact:
     prefix: /contact
-    resource: Routing/contact.yml
+    resource: 'Routing/contact.yml'
 
 homepage:
     path:     /
@@ -37,5 +38,5 @@ faq:
 
 newsletter:
     prefix: /newsletter
-    resource: Routing/newsletter.yml
+    resource: 'Routing/newsletter.yml'
 

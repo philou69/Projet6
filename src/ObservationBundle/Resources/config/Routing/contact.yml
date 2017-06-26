@@ -17,6 +17,7 @@ contact_refresh:
   path: /refresh
   defaults:
     _controller: ObservationBundle:Contact:refresh
+
 contact_message:
     path: /contact
     defaults:
