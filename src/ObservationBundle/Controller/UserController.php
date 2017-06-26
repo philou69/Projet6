@@ -445,7 +445,7 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            $this->addFlash('success', 'Les roles de du visiteur ont été modifier avec succès!');
+            $this->addFlash('success', 'Les roles du visiteur ont été modifier avec succès!');
             return $this->redirectToRoute('user_users');
         }
         $device = $this->get('mobile_detect.mobile_detector');
