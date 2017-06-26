@@ -16,6 +16,5 @@
 /web/bundles/
 .idea
 /src/ObservationBundle/Entity/*.php~
-web/uploads/images/avatar/*
-web/uploads/images/bird/*
-web/uploads/sound/*
+/web/uploads/images/bird/*
+/web/uploads/images/avatar/*

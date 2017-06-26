@@ -13,9 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Bird
 {
 
-
     /**
-     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche")
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Fiche", inversedBy="bird", cascade={"persist"})
      */
     protected $fiche;
     /**

@@ -16,11 +16,12 @@
         <hr>
         <div class="row">
             <div class="col-md-6 left ">
-                {# Carte géolocation #}
+                <h2>Répartition géographique</h2>
+                <div id="mapLocation" data-href="{{ path('observation_locations', {'id': bird.id}) }}"></div>
             </div>
             <div class="col-md-6 right">
                 <h2>Dernières observations</h2>
-                <div id="observations" data-href="{{ path('observation_bird_page', {'id': bird.id, 'page': 1}) }}" class="row">
+                <div id="observations" data-href="{{ path('observation_bird_page', {'id': bird.id, 'page': 1}) }}">
 
                 </div>
                 <div class="content-loader">
@@ -28,22 +29,21 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <a href="{{ path('bird_list') }}" class="col-sm-12 text-center">Retour à la liste</a>
+    </div>
+    <div class="row">
+        <div id="retour">
+            <a href="{{ path('bird_list') }}" class="col-xs-12 text-center"><span class="fa fa-arrow-left"></span>
+                Retour à la liste</a>
         </div>
     </div>
-
-
-    {% if bird.sound is not null %}
-        <div hidden>
-            <audio id="player" src="{{ asset(bird.sound.webPath) }}"></audio>
-        </div>
-    {% endif %}
 {% endblock %}
 
 {% block javascript %}
     {{ parent() }}
     <script src="{{ asset('bundles/observation/js/AJAX/bird.location.js') }}"></script>
-    <script src="{{ asset('bundles/observation/js/play.bird.sound.js') }}"></script>
+    <script src="{{ asset('bundles/observation/js/Maps/location.js') }}"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}&libraries=places">
+    </script>
 
 {% endblock %}

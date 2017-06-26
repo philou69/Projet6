@@ -1,147 +1,167 @@
-#content-connect{
+#content-connect {
     background: url("/bundles/observation/images/Visuels/connexionInscription_background.jpg") center no-repeat;
     padding-bottom: 10px;
 }
-form{
+
+form {
     padding: 3%;
-    background-color: rgba(243, 243, 243, 0.5 ) ;
+    background-color: rgba(243, 243, 243, 0.5);
 }
-.form-control{
+
+.form-control {
     border-radius: 0;
     margin-bottom: 10px;
     /*width: 80%;*/
     /*margin: auto;*/
 }
 
-#forget-link{
+#forget-link {
     text-decoration: underline;
 }
-#remember-label{
+
+#remember-label {
     font-weight: normal;
     font-size: small;
 }
-#oauth{
+
+#oauth {
     padding-top: 50px;
     margin-bottom: 10px;
 }
-.connect{
+
+.connect {
     height: 30px;
 }
-hr{
-    margin-top:20px;
+
+hr {
+    margin-top: 20px;
     border-top: 2px solid black;
 }
-form .btn{
+
+form .btn {
     border-radius: 0;
     width: 100%;
     color: white;
 }
-.btn-red{
+
+.btn-red {
     background-color: #d85040;
 }
-.btn-blue{
+
+.btn-blue {
     background-color: #415a92;
 }
-#oauth .btn{
+
+#oauth .btn {
     border-radius: 0;
     color: white;
 }
 
-
-@media (max-width: 992px){
-    #view{
+@media (max-width: 992px) {
+    #view {
         background: url("/bundles/observation/images/Visuels/connexionInscription_background_mobile.jpg") center no-repeat;
         background-size: auto 100%;
     }
-    h1{
+
+    h1 {
         color: black;
         font-size: 30px;
     }
-    .center-90{
+
+    .center-90 {
         width: 90%;
         margin: auto;
     }
-}
-/*------------ Toggle switch --------------- */
-/* Le switch - box autour du slider*/
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 320px;
-    height: 20px;
-    margin: 5px auto;
+
+    /*------------ Toggle switch --------------- */
+    /* On centre le toggle */
+    #content-switch {
+        text-align: center;
+    }
+
+    /* Le switch - box autour du slider*/
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 300px;
+        height: 20px;
+        margin: 5px auto;
+    }
+
+    /* On cache la checkbox HTML */
+    .switch input {
+        display: none;
+    }
+
+    /*Le slider */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #99d1c8;
+        -webkit-transition: .8s;
+        transition: .8s;
+    }
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 15px;
+        width: 15px;
+        left: 5px;
+        bottom: 3px;
+        background-color: white;
+        -webkit-transition: .8s;
+        transition: .8s;
+    }
+
+    .on, .off {
+        color: white;
+        font-size: 10px;
+        font-family: Verdana, sans-serif;
+    }
+
+    .on {
+        position: absolute;
+        top: 3px;
+        left: 10%;
+    }
+
+    .off {
+        position: absolute;
+        top: 3px;
+        right: 10%;
+    }
+
+    .switch input:checked + .slider {
+        background-color: #99d1c8;
+    }
+
+    .switch input:focus + .slider {
+        box-shadow: 0 0 1px #dbefed;
+    }
+
+    .switch input:checked + .slider:before {
+        -webkit-transform: translateX(300px) translateX(-25px);
+        -ms-transform: translateX(300px) translateX(-25px);
+        transform: translateX(300px) translateX(-25px);
+    }
+
+    /*----------- Fin du toggle switch */
+
 }
 
-/* On cache la checkbox HTML */
-.switch input {
-    display: none;
-}
-
-/*Le slider */
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #99d1c8;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 15px;
-    width: 15px;
-    left: 5px;
-    bottom: 3px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-.on, .off {
-    color: white;
-    /*position: absolute;*/
-    /*transform: translate(-50%, -50%);*/
-    /*top: 50%;*/
-    /*left: 50%;*/
-    font-size: 10px;
-    font-family: Verdana, sans-serif;
-}
-.on{
-    position: absolute;
-    top: 3px;
-    left:10%;
-}
-.off{
-    position: absolute;
-    top:3px ;
-    right:10%;
-}
-.switch input:checked + .slider {
-    background-color: #99d1c8;
-}
-
-.switch input:focus + .slider {
-    box-shadow: 0 0 1px #dbefed;
-}
-
-.switch input:checked + .slider:before {
-    -webkit-transform: translateX(320px) translateX(-25px);
-    -ms-transform: translateX(320px) translateX(-25px);
-    transform: translateX(320px) translateX(-25px);
-}
-
-/*----------- Fin du toggle switch */
 
 
 @media (min-width: 993px) {
-    #title-oauth{
+    #title-oauth {
         margin-bottom: 20px;
     }
-    .connect.text-center{
+
+    .connect.text-center {
         font-size: 30px;
     }
 }

@@ -27,6 +27,7 @@ security:
             form_login:
               login_path: user_connect
               check_path: user_login
+              failure_path: user_connect
               remember_me: true
             logout:
                 path: user_logout

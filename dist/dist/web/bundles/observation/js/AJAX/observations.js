@@ -7,7 +7,7 @@ $(document).ready(function () {
         dataType: 'html',
         success: function success(code_html, status) {
             $('#observations').html(code_html);
-            $('.loader').attr('hidden', true);
+            $('#loader').attr('hidden', true);
         }
     });
 
@@ -17,7 +17,7 @@ $(document).ready(function () {
             dataType: 'html',
             success: function success(code_html, status) {
                 $('#observations').html(code_html);
-                $('.loader').attr('hidden', true);
+                $('#loader').attr('hidden', true);
             }
         });
     });
@@ -28,7 +28,7 @@ $(document).ready(function () {
             dataType: 'html',
             success: function success(code_html, status) {
                 $('#observations').html(code_html);
-                $('.loader').attr('hidden', true);
+                $('#loader').attr('hidden', true);
             }
         });
     });
@@ -37,7 +37,7 @@ $(document).ready(function () {
     });
     function prepareAjax() {
         $("#content-observations").empty();
-        $('.loader').removeAttr('hidden');
+        $('#loader').removeAttr('hidden');
     }
 });
 //# sourceMappingURL=observations.js.map
