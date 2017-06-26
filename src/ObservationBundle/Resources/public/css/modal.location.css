@@ -3,3 +3,10 @@
     height: 80vh;
     margin: 10vh 10vw;
 }
+
+.confirm>button{
+    width: auto !important;
+}
+.confirm{
+    height: 70px!important;
+}

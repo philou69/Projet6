@@ -90,7 +90,7 @@
             <small>* Champs obligatoire</small>
             {# Affichage du bouton d'Enregistrement #}
             {{ form_widget(form.save) }}
-
+            {{ form_widget(form._token) }}
             {{ form_end(form, {'render_rest': false}) }}
 
         </div>
