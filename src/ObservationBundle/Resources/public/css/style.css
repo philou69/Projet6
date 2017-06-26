@@ -112,7 +112,7 @@ Retour bas de page
 }
 
 /*------------------ Styel pour les écans de largeur superieur à 992 px -------*/
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
     /* Marge du body pour la navbar et utilisation de flex pour coller le footer en bas de page */
     body {
         margin: 0;
@@ -141,7 +141,7 @@ Retour bas de page
 
 /* -------------------------------- Fin style écran petit ----------------------------------------*/
 /* -------------------------------- Ecran de moins de 992 px de large ----------------------------------------*/
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
     body {
         min-height: 100vh;
         margin: 0;
