@@ -34,7 +34,8 @@ class BlogController extends Controller
     {
         $content = new Content();
         $content->setPage('blog')
-            ->setPostedAt(new \DateTime());
+            ->setPostedAt(new \DateTime())
+            ->setUpdateAt(new \DateTime());
         $form = $this->createForm(ContentType::class, $content);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
