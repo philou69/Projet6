@@ -5,7 +5,7 @@
 }
 
 #profil_left {
-    background: url("/bundles/observation/images/Visuels/profil_background.jpg") center no-repeat;
+    background: url("../images/Visuels/profil_background.jpg") center no-repeat;
     height: 100%;
     padding-top: 20px;
 }
