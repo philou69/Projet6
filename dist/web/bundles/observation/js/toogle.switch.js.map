@@ -1,0 +1,21 @@
+{
+  "version": 3,
+  "sources": [
+    "../../../../../web/bundles/observation/js/toogle.switch.js"
+  ],
+  "names": [
+    "$",
+    "document",
+    "ready",
+    "click",
+    "changeState",
+    "element",
+    "attr",
+    "removeAttr"
+  ],
+  "mappings": ";;AACAA,EAAEC,QAAF,EAAYC,KAAZ,CAAkB,YAAY;AAC1B;AACAF,MAAE,SAAF,EAAaG,KAAb,CAAmB,YAAY;AAC3B;AACAC,oBAAYJ,EAAE,QAAF,CAAZ;AACAI,oBAAYJ,EAAE,eAAF,CAAZ;AACH,KAJD;;AAMA,aAASI,WAAT,CAAqBC,OAArB,EAA6B;AACzB;AACA,YAAGA,QAAQC,IAAR,CAAa,QAAb,CAAH,EAA0B;AACtBD,oBAAQE,UAAR,CAAmB,QAAnB;AACH,SAFD,MAEK;AACDF,oBAAQC,IAAR,CAAa,QAAb,EAAuB,IAAvB;AACH;AAEJ;AACJ,CAjBD",
+  "file": "toogle.switch.js",
+  "sourcesContent": [
+    "\n$(document).ready(function () {\n    // On surveille le toogle switch\n    $('#choice').click(function () {\n        // On applique la fonction changeState à login et registration\n        changeState($('#login'));\n        changeState($('#registration'));\n    })\n\n    function changeState(element){\n        // On regarde si l'element est visible ou non et on luis passe l'effet inverse\n        if(element.attr('hidden')){\n            element.removeAttr('hidden');\n        }else{\n            element.attr('hidden', true);\n        }\n\n    }\n})"
+  ]
+}
