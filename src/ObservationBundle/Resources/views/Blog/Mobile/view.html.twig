@@ -11,14 +11,14 @@
     <div id="billets" class="center-80">
         {% for content in contents %}
            <div class="billet">
-               {% if 'ROLE_ADMIN' in app.user.roles %}
+               {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
                    <a href="{{ path('billet_edit', {'id': content.id }) }}" class="btn btn-nao edit "><i
                                class="fa fa-pencil"></i></a>
                {% endif %}
                {{ content.content|raw }}
            </div>
         {% endfor %}
-        {% if 'ROLE_ADMIN' in app.user.roles %}
+        {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
             <a href="{{ path('billet_create') }}" class="btn btn-nao">Ajouté un billet</a>
         {% endif %}
     </div>

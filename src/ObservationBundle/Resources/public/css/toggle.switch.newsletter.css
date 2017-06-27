@@ -61,6 +61,9 @@
     background-color: #99d1c8;
 }
 
+#switch_newsletter input:disabled + #slider_newsletter{
+    cursor: not-allowed;
+}
 #switch_newsletter input:focus + #slider_newsletter {
     box-shadow: 0 0 1px #dbefed;
 }

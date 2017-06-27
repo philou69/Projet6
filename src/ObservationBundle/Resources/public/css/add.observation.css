@@ -1,0 +1,6 @@
+@media ( max-width: 767px){
+    #picture-input>.col-xs-6{
+        margin: 0;
+        padding: 0;
+    }
+}

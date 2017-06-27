@@ -1,0 +1,32 @@
+{
+  "version": 3,
+  "sources": [
+    "../../../../../../../../src/ObservationBundle/Resources/public/js/AJAX/Desktop/contact.js"
+  ],
+  "names": [
+    "$",
+    "document",
+    "ready",
+    "on",
+    "event",
+    "preventDefault",
+    "ajax",
+    "url",
+    "data",
+    "dataType",
+    "success",
+    "code_json",
+    "append",
+    "status",
+    "console",
+    "log",
+    "refresh",
+    "code_html",
+    "html"
+  ],
+  "mappings": "AAAA;;AAEAA,EAAEC,QAAF,EAAYC,KAAZ,CAAkB,YAAY;AAC1BF,MAAEC,QAAF,EAAYE,EAAZ,CAAe,OAAf,EAAwB,iBAAxB,EAA2C,UAAUC,KAAV,EAAiB;AACxDA,cAAMC,cAAN;AACAL,UAAEM,IAAF,CAAO;AACHC,iBAAKP,EAAE,IAAF,EAAQQ,IAAR,CAAa,MAAb,CADF;AAEHC,sBAAU,MAFP;AAGHC,qBAAS,SAASA,OAAT,CAAiBC,SAAjB,EAA4B;AACjCX,kBAAE,kBAAF,EAAsBY,MAAtB,CAA6BD,UAAUE,MAAvC;AACH;AALE,SAAP;AAOH,KATD;;AAWAb,MAAEC,QAAF,EAAYE,EAAZ,CAAe,OAAf,EAAwB,mBAAxB,EAA6C,UAAUC,KAAV,EAAiB;AAC1DA,cAAMC,cAAN;AACAS,gBAAQC,GAAR,CAAY,QAAZ;AACAf,UAAEM,IAAF,CAAO;AACHC,iBAAKP,EAAE,IAAF,EAAQQ,IAAR,CAAa,MAAb,CADF;AAEHC,sBAAU,MAFP;AAGHC,qBAAS,SAASA,OAAT,CAAiBC,SAAjB,EAA4B;AACjCX,kBAAE,kBAAF,EAAsBY,MAAtB,CAA6BD,UAAUE,MAAvC;AACAG;AACH;AANE,SAAP;AAQH,KAXD;;AAaAhB,MAAEC,QAAF,EAAYE,EAAZ,CAAe,OAAf,EAAwB,mBAAxB,EAA6C,UAAUC,KAAV,EAAiB;AAC1DA,cAAMC,cAAN;AACAL,UAAEM,IAAF,CAAO;AACHC,iBAAKP,EAAE,IAAF,EAAQQ,IAAR,CAAa,MAAb,CADF;AAEHC,sBAAU,MAFP;AAGHC,qBAAS,SAASA,OAAT,CAAiBC,SAAjB,EAA4B;AACjCX,kBAAE,kBAAF,EAAsBY,MAAtB,CAA6BD,UAAUE,MAAvC;AACAG;AACH;AANE,SAAP;AAQH,KAVD;;AAYA,aAASA,OAAT,GAAmB;AACfhB,UAAEM,IAAF,CAAO;AACHC,iBAAKP,EAAE,WAAF,EAAeQ,IAAf,CAAoB,MAApB,CADF;AAEHC,sBAAU,MAFP;AAGHC,qBAAS,SAASA,OAAT,CAAiBO,SAAjB,EAA4B;AACjCjB,kBAAE,WAAF,EAAekB,IAAf,CAAoBD,SAApB;AACH;AALE,SAAP;AAOH;AACJ,CA9CD;AA+CA",
+  "file": "contact.js",
+  "sourcesContent": [
+    "'use strict';\n\n$(document).ready(function () {\n    $(document).on('click', '.contact-resend', function (event) {\n        event.preventDefault();\n        $.ajax({\n            url: $(this).data('href'),\n            dataType: 'json',\n            success: function success(code_json) {\n                $(\"#success-message\").append(code_json.status);\n            }\n        });\n    });\n\n    $(document).on('click', '.contact-received', function (event) {\n        event.preventDefault();\n        console.log('coucou');\n        $.ajax({\n            url: $(this).data('href'),\n            dataType: 'json',\n            success: function success(code_json) {\n                $(\"#success-message\").append(code_json.status);\n                refresh();\n            }\n        });\n    });\n\n    $(document).on('click', '.contact-answered', function (event) {\n        event.preventDefault();\n        $.ajax({\n            url: $(this).data('href'),\n            dataType: 'json',\n            success: function success(code_json) {\n                $(\"#success-message\").append(code_json.status);\n                refresh();\n            }\n        });\n    });\n\n    function refresh() {\n        $.ajax({\n            url: $(\"#messages\").data('href'),\n            dataType: 'html',\n            success: function success(code_html) {\n                $('#messages').html(code_html);\n            }\n        });\n    }\n});\n//# sourceMappingURL=contact.js.map"
+  ]
+}

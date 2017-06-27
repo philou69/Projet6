@@ -46,7 +46,7 @@
 
 }
 
-@media (min-width: 993px) {
+@media (min-width: 1024px) {
     .navbar {
         margin-bottom: 0;
         max-height: 90px;
@@ -89,7 +89,7 @@
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
     /*bloquage de la hauteur min*/
     .navbar {
         border: 0;
@@ -164,7 +164,7 @@
 
 }
 
-@media (min-width: 993px) and ( max-width: 1220px) {
+@media (min-width: 1024px) and ( max-width: 1220px) {
     #first .nav > li > a {
         padding: 10px 5px;
     }
