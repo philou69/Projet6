@@ -1,6 +1,8 @@
 .billet{
     position: relative;
     margin-top: 20px;
+    display: inline-block;
+    width: 100%;
 }
 .edit{
     width: 30px;
