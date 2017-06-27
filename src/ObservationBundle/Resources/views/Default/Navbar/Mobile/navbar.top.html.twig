@@ -37,7 +37,7 @@
                         <a href="{{ path('user_connect') }}">CONNEXION/INSCRIPTION</a>
                     </li>
                 {% endif %}
-                <li>
+                <li class="sub-li">
                     <a href="#" class="disabled">INFORMATION</a>
                     <ul>
                         <li>
@@ -50,8 +50,27 @@
                             <a href="{{ path('faq') }}">AIDE</a>
                         </li>
                     </ul>
-
                 </li>
+                {% if 'ROLE_ADMIN' in app.user.roles or 'ROLE_NATURALISTE' in app.user.roles %}
+                    <li class="sub-li">
+                        <a href="#" class="disabled">ADMINISTRATION</a>
+                        <ul>
+                            {% if 'ROLE_ADMIN' in app.user.roles %}
+                                <li>
+                                    <a href="{{ path('user_users') }}">Les visiteurs</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('user_contacts') }}">Liste des messages</a>
+                                </li>
+                            {% endif %}
+                            {% if 'ROLE_NATURALISTE' in app.user.roles %}
+                                <li>
+                                    <a href="{{ path('user_observations') }}">Les observations</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                {% endif %}
             </ul>
         </div>
         <div id="form">

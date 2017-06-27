@@ -82,29 +82,24 @@
 }
 
 /*Retrait de la bordure sur la derniere li*/
-#navbar-top-mobile > .navbar-collapse > #links > ul > li:nth-last-child(1) {
+#navbar-top-mobile > .navbar-collapse > #links > ul > li.sub-li {
     border: 0;
 }
 
 /* Retrait des puces sur la liste imbrique*/
-#navbar-top-mobile > .navbar-collapse > #links > ul > li:nth-last-child(1) > ul > li {
+#navbar-top-mobile > .navbar-collapse > #links > ul > li.sub-li > ul > li {
     list-style: none;
 }
 
 /* Ajout d'un tiret devatn chaque li de la liste imbriqué */
-#navbar-top-mobile > .navbar-collapse > #links > ul > li:nth-last-child(1) > ul > li:before {
+#navbar-top-mobile > .navbar-collapse > #links > ul > li.sub-li > ul > li:before {
     color: white;
     content: '-';
 }
-@media (max-width: 767px ){
-
-
-
-
-
-
+/* Capital des liens*/
+#navbar-top-mobile > .navbar-collapse a{
+    text-transform: uppercase;
 }
-
 /* --- Mlodification collapse on tablette ---*/
 @media (min-width: 768px){
     /* Affichage du bouton collapse */
