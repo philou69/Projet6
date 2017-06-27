@@ -37,7 +37,7 @@ class Content
     protected $postedAt;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime")
      */
     protected $updateAt;
 
