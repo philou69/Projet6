@@ -29,13 +29,13 @@
         <div id="observations-count"
              class="{{ 'ROLE_NATURALISTE' in app.user.roles ? 'col-xs-12' : 'col-xs-6' }} text-center count">
             <h5>Observations</h5>
-            <div><img src="{{ asset('/bundles/observation/images/icones/observationsProfil_icon.png') }}"
+            <div><img src="{{ asset('bundles/observation/images/icones/observationsProfil_icon.png') }}"
                       alt=""> {{ app.user.observations | length }}</div>
         </div>
         {% if 'ROLE_NATURALISTE' not in app.user.roles %}
             <div id="stars-count" class="col-xs-6 text-center count">
                 <h5>Médailles</h5>
-                <div><img src="{{ asset('/bundles/observation/images/icones/medailles_icon.png') }}"
+                <div><img src="{{ asset('bundles/observation/images/icones/medailles_icon.png') }}"
                           alt=""> {{ app.user.stars |length }}</div>
 
             </div>
@@ -48,7 +48,7 @@
             {{ form_errors(form) }}
             <div class="form-group">
                 <div class="col-xs-2">
-                    <img src="{{ asset('/bundles/observation/images/icones/compte_icon_hover.png') }}" alt=""
+                    <img src="{{ asset('bundles/observation/images/icones/compte_icon_hover.png') }}" alt=""
                          class="img-profil">
                 </div>
                 <div class="col-xs-8">
@@ -60,7 +60,7 @@
             </div>
             <div class="form-group">
                 <div class="col-xs-2">
-                    <img src="{{ asset('/bundles/observation/images/icones/mailProfil_icon.png') }}" alt=""
+                    <img src="{{ asset('bundles/observation/images/icones/mailProfil_icon.png') }}" alt=""
                          class="img-profil">
                 </div>
                 <div class="col-xs-8">
@@ -72,7 +72,7 @@
             </div>
             <div class="form-group">
                 <div class="col-xs-2">
-                    <img src="{{ asset('/bundles/observation/images/icones/profil_icon_hover.png') }}" alt=""
+                    <img src="{{ asset('bundles/observation/images/icones/profil_icon_hover.png') }}" alt=""
                          class="img-profil">
                 </div>
                 <div class="col-xs-8">
@@ -84,7 +84,7 @@
             </div>
             <div class="form-group">
                 <div class="col-xs-2">
-                    <img src="{{ asset('/bundles/observation/images/icones/profil_icon_hover.png') }}" alt=""
+                    <img src="{{ asset('bundles/observation/images/icones/profil_icon_hover.png') }}" alt=""
                          class="img-profil">
                 </div>
                 <div class="col-xs-8">
@@ -96,7 +96,7 @@
             </div>
             <div class="form-group">
                 <div class="col-xs-2">
-                    <img src="{{ asset('/bundles/observation/images/icones/naissanceProfil_icon.png') }}" alt=""
+                    <img src="{{ asset('bundles/observation/images/icones/naissanceProfil_icon.png') }}" alt=""
                          class="img-profil">
                 </div>
                 <div class="col-xs-8">
@@ -141,7 +141,7 @@
             {{ form_errors(formPassword) }}
             <div class="form-group">
                 <div class="col-xs-2">
-                    <img src="{{ asset('/bundles/observation/images/icones/passwordProfil_icon.png') }}" alt=""
+                    <img src="{{ asset('bundles/observation/images/icones/passwordProfil_icon.png') }}" alt=""
                          class="img-profil">
                 </div>
                 <div class="col-xs-8">
@@ -180,7 +180,6 @@
                         src="{{ asset('bundles/observation/images/icones/supprimer_icon.png') }}" alt=""> Fermé son
                 compte</a>
         </div>
-    </div>
     </div>
 
     {% include 'ObservationBundle:Modal:sleep.user.html.twig' %}
