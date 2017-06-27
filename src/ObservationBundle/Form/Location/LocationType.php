@@ -19,18 +19,18 @@ class LocationType extends AbstractType
                     'label' => 'Latitude',
                     'label_attr' => array('class' => 'hidden'),
                     'attr' => array('class' => 'hidden',
-                                    'required' => false)
+                                    'required' => true)
                 ))
 
                 ->add('longitude', NumberType::class, array(
                   'label' => 'Longitude',
                   'label_attr' => array('class' => 'hidden'),
                   'attr' => array('class' => 'hidden',
-                                  'required' => false)
+                                  'required' => true)
                 ))
                 ->add('lieu', TextType::class, array(
                   'label' => 'Lieu de l\'observation',
-                    'required' => false
+                    'required' => true
                 ))
         ;
 
