@@ -42,14 +42,14 @@
                 </li>
             {% endif %}
             {% if app.user %}
-                    <li class="first_line tabs {{ app.request.attributes.get('_route') starts with 'user' ? 'active' : '' }}  text-center">
+                    <li class="first_line  text-center tabs {{ app.request.attributes.get('_route') starts with 'user' ? 'active' : '' }}">
                         <a href="#user_tab" data-toggle="tab" data-navbar="true" id="user">
                             <img src="{{ app.request.attributes.get('_route') starts with 'user_' ? asset('bundles/observation/images/icones/compte_icon_hover.png') : asset('bundles/observation/images/icones/compte_icon.png') }}"
                                  alt="">
                         </a>
                     </li>
             {% else %}
-                <li class="first_line {% if app.request.attributes.get('_route') == 'user_connect' %}active{% endif %}">
+                <li class="first_line text-center {% if app.request.attributes.get('_route') == 'user_connect' %}active{% endif %}">
                     <a href="{{ path('user_connect') }}" id="user">
                         <img src="{{ asset('bundles/observation/images/icones/compte_icon.png') }}" alt="">
                     </a>
