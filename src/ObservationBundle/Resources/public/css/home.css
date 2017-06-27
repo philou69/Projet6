@@ -65,6 +65,10 @@ Partie observation et newsletter
     position: relative;
 }
 @media (max-width: 992px) {
+    /* On reduit le padding bottom pour collé à la navbar*/
+    #view{
+        padding-bottom: 40px;
+    }
     #homePicture {
         background: url('../images/Visuels/accueil_background.jpg') no-repeat center;
         -webkit-background-size: cover;

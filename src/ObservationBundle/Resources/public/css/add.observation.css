@@ -4,3 +4,11 @@
         padding: 0;
     }
 }
+
+@media (max-width: 992px) {
+
+    /* On reduit le padding bottom pour collé à la navbar*/
+    #view{
+        padding-bottom: 40px;
+    }
+}
