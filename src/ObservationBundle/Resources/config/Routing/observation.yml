@@ -6,6 +6,7 @@ observation_page:
       -status: true/false
       -page: \d+
       -all:  true|false
+      _method: GET
 
 observation_bird_page:
     path: /bird_list/{id}/{page}
@@ -13,28 +14,39 @@ observation_bird_page:
       _controller: ObservationBundle:Observation:birdPagination
     requirements:
       -page: \d+
+      _method: GET
 
 observation_add:
     path: /add
     defaults:
       _controller: ObservationBundle:Observation:add
+    requirements:
+      _method:  GET|POST
 
 observation_validate:
     path: /{id}/validate
     defaults:
       _controller:  ObservationBundle:Observation:validate
+    requirements:
+      _method:  GET
 
 observation_unvalidate:
     path: /{id}/unvalidate
     defaults:
       _controller: ObservationBundle:Observation:unvalide
+    requirements:
+      _method:  GET
 
 observation_view:
     path: /{id}/view
     defaults:
       _controller: ObservationBundle:Observation:view
+    requirements:
+      _method:  GET
 
 observation_locations:
     path: /{id}/locations
     defaults:
       _controller: ObservationBundle:Observation:locations
+    requirements:
+      _method:  GET

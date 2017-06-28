@@ -40,8 +40,8 @@
                                 </a>
                             </li>
                     {% else %}
-                        <li class="first_line {% if app.request.attributes.get('_route') == 'user_connect' %}active{% endif %}">
-                            <a href="{{ path('user_connect') }}">
+                        <li id="ident-li" class="first_line {% if app.request.attributes.get('_route') == 'user_connect' %}active{% endif %}">
+                            <a id="ident-a" href="{{ path('user_connect') }}">
                                 Connexion/Inscription
                             </a>
                         </li>

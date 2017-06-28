@@ -175,10 +175,10 @@
         width: calc(100% - 160px);
     }
     #first li{
-        width: 125px;
+        width: 120px;
     }
     #first a{
-        width: 125px;
+        width: 120px;
         padding:10px 5px;
     }
     #first li.logo-sociaux, #first a.social-network, #first li:last-child, #first li:last-child>a{
@@ -187,5 +187,7 @@
     #first a.social-network, #first li:last-child>a{
         padding: 10px 2px;
     }
-
+    #ident-li, #ident-a{
+        width: 180px !important;
+    }
 }

@@ -2,29 +2,41 @@ bird_list:
     path: /list
     defaults:
       _controller: ObservationBundle:Bird:list
+    requirements:
+      _method:  GET
 
 bird_description:
     path: /{id}/description
     defaults:
       _controller: ObservationBundle:Bird:descripition
+    requirements:
+      _method:  GET
 
 bird_location:
     path: /{id}/location
     defaults:
       _controller: ObservationBundle:Bird:location
+    requirements:
+      _method:  GET
 
 
 bird_observation:
     path: /{id}/observation
     defaults:
       _controller: ObservationBundle:Bird:observation
+    requirements:
+      _method:  GET
 
 bird_pagination:
     path: /pagination/{page}
     defaults:
         _controller: ObservationBundle:Bird:pagination
+    requirements:
+      _method:  GET|POST
 
 bird_edit:
     path: /{id}/edit
     defaults:
       _controller: ObservationBundle:Bird:edit
+    requirements:
+      _method:  GET|POST
