@@ -51,7 +51,7 @@
                         </li>
                     </ul>
                 </li>
-                {% if 'ROLE_ADMIN' in app.user.roles or 'ROLE_NATURALISTE' in app.user.roles %}
+                {% if app.user and ( 'ROLE_ADMIN' in app.user.roles or 'ROLE_NATURALISTE' in app.user.roles )%}
                     <li class="sub-li">
                         <a href="#" class="disabled">ADMINISTRATION</a>
                         <ul>
