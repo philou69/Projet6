@@ -27,13 +27,6 @@ h1 {
 }
 
 
-#gallery img, #picBird img {
-    margin: 10px auto;
-    min-height: 200px;
-    height: 200px;
-    width: 100%;
-}
-
 #picBird img {
 
     width: 240px;
