@@ -26,13 +26,13 @@ observation_validate:
     path: /{id}/validate
     defaults:
       _controller:  ObservationBundle:Observation:validate
-    methods:  [GET]
+    methods:  [GET, POST]
 
 observation_unvalidate:
     path: /{id}/unvalidate
     defaults:
       _controller: ObservationBundle:Observation:unvalide
-    methods:  [GET]
+    methods:  [GET, POST]
 
 observation_view:
     path: /{id}/view

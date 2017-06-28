@@ -10,5 +10,5 @@ newsletter_unscubscribe:
     _controller: ObservationBundle:Newsletter:unsubscribe
   requirements:
     -email: "[a-zA-Z0-9._%+-]+@[a-zA-z.-]+.[a-z]{2,4}"
-  methods: [GET, POST]
+  methods: [GET]
 

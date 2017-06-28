@@ -2,7 +2,7 @@ user_login:
     path: /login
     defaults:
       _controller: ObservationBundle:User:login
-    methods:  [GET, POST]
+    methods:  [GET]
 user_logout:
     path: /logout
     methods:  [GET]
@@ -99,4 +99,4 @@ user_contacts:
     path: /contacts
     defaults:
       _controller: ObservationBundle:User:contacts
-    methods:  [GET, POST]
+    methods:  [GET]

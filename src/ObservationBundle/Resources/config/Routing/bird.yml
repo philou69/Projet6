@@ -21,13 +21,13 @@ bird_observation:
     path: /{id}/observation
     defaults:
       _controller: ObservationBundle:Bird:observation
-    methods:  [GET]
+    methods:  [GET, POST]
 
 bird_pagination:
     path: /pagination/{page}
     defaults:
         _controller: ObservationBundle:Bird:pagination
-    methods:  [GET, POST]
+    methods:  [GET]
 
 bird_edit:
     path: /{id}/edit

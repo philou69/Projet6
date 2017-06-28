@@ -20,7 +20,7 @@ contact_refresh:
   path: /refresh
   defaults:
     _controller: ObservationBundle:Contact:refresh
-  methods:  [GET, POST]
+  methods:  [GET]
 
 contact_message:
     path: /contact
