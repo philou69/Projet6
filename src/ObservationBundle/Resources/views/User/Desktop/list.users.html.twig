@@ -26,16 +26,25 @@
                     {{ user.lastname }}
                 </div>
                 <div class="col-sm-3">
-                    <small>Status</small>
-                    <br>
-                    {{ 'ROLE_ADMIN' in user.roles ? 'Administrateur' : ('ROLE_NATURALISTE' in user.roles ? 'Naturaliste' : 'Particulier') }}
-                    <br>
-                    {% if user.isEnabled %}
-                        <a href="#deactivate_user_{{ user.id }}" class="btn btn-nao" data-toggle="modal">Fermé</a>
-                    {% else %}
-                        <a href="#reactivate_user_{{ user.id }}" class="btn btn-nao" data-toggle="modal">Ouvrir</a>
-                    {% endif %}
-                    <a href="{{ path('user_roles', {'id': user.id}) }}">roles</a>
+                    <div>
+                        <small>Status : </small>
+                        {{ 'ROLE_ADMIN' in user.roles ? 'Administrateur' : ('ROLE_NATURALISTE' in user.roles ? 'Naturaliste' : 'Particulier') }}
+                        <br>
+                    </div>
+
+                    <div class="row">
+                       <div class="col-md-6">
+                           {% if user.isEnabled %}
+                               <a href="#deactivate_user_{{ user.id }}" class="btn btn-nao" data-toggle="modal">Bloqué</a>
+                           {% else %}
+                               <a href="#reactivate_user_{{ user.id }}" class="btn btn-nao" data-toggle="modal">Autorisé</a>
+                           {% endif %}
+                       </div>
+                       <div class="col-md-6">
+                           <a href="{{ path('user_roles', {'id': user.id}) }}" class="btn btn-nao">Rôles</a>
+                       </div>
+                    </div>
+
 
                 </div>
             </div>
