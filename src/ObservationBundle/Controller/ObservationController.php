@@ -133,11 +133,14 @@ class ObservationController extends Controller
                 $picture->setFile($file)
                     ->setObservation($observation);
                 // Si l'observation est dejà validé, on ajoute l'oiseau à la photo.
-                if($observation->getValidated() == true){
+                if ($observation->getValidated() == true) {
                     $picture->setBird($observation->getBird());
                 }
                 $em->persist($picture);
             }
+
+
+
             $observation->setUser($this->getUser());
 
 

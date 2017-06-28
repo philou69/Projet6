@@ -69,7 +69,8 @@
                     </div>
                 {% endif %}
                 {% if app.session.get('getBird') == true %}
-                    <div style="display: none" id="getBird">
+                    <div id="getBird" hidden>
+                        {#style="display: none"#}
                         {{ form_label(form.bird, form.vars.label) }}
                         {{ form_errors(form.bird) }}
                         {{ form_widget(form.bird) }}

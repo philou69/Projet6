@@ -74,9 +74,13 @@ $(document).ready(function () {
         }
 
         //resuired a false pour element caché pour validation formulaire
-        if (document.getElementById('getBird')) {
-            document.getElementById("idPicture").required = false;
-        }
+
+
+        // if ($('#getBird').style('display', 'none')) {
+        //     console.log('getbird est faux')
+        //       document.getElementById("add_observation_bird").required = false;
+        //
+        // };
 
         document.getElementById(idPicture).onchange = function (file) {
             //On remove les photos existantes

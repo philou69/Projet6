@@ -63,6 +63,12 @@ $(document).ready(function () {
         removePicture();
     });
 
+    if ($('#getBird').attr('hidden') == 'hidden') {
+
+        document.getElementById("add_observation_bird").required = false;
+    }
+    ;
+
     //Recupération de(s )l'image(s)
     $('.filestyle').click(function () {
         //On verifie quel bouton est cliqué
@@ -74,9 +80,7 @@ $(document).ready(function () {
         }
 
         //resuired a false pour element caché pour validation formulaire
-        if (document.getElementById('getBird')) {
-            document.getElementById("idPicture").required = false;
-        }
+
 
         document.getElementById(idPicture).onchange = function (file) {
             //On remove les photos existantes
