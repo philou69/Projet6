@@ -21,6 +21,17 @@ Partie observation et newsletter
     margin-bottom: 60px;
 }
 
+#link-gallery>#img-gallery{
+    height: 40px;
+}
+
+
+#gallery #list-gallery img, #picBird img {
+    margin: 10px auto;
+    min-height: 200px;
+    height: 200px;
+    width: 100%;
+}
 #saisie {
     background: url('../images/Visuels/encartObservation_background.jpg') no-repeat center;
     -webkit-background-size: cover;
@@ -124,7 +135,7 @@ stylisation des buttons
 /*Style sur le div principal de la page
     Afin d'occupé toute l'hauteur de la fenetre
 */
-@media (min-width: 992px) {
+@media (min-width: 993px) {
     #homePicture {
 
         background: url('../images/Visuels/accueil_background.jpg') no-repeat center;
@@ -143,6 +154,14 @@ stylisation des buttons
 
     #sociallinks a {
         width: 100px;
+    }
+
+    #center-decouvrir{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 }
 
