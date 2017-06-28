@@ -403,7 +403,7 @@ class UserController extends Controller
 
     public function reactivateAction(User $user)
     {
-        $user->setIsActive($user->getIsActive() == true ? false : true);
+        $user->setActive($user->getActive() === true ? false : true);
         $em = $this->getDoctrine()->getManager();
         $em->flush();
         $this->get('observation.user.mailer')->sendStatus($user);

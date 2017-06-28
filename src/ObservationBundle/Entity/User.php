@@ -331,7 +331,6 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
     }
 
     public function getSalt()
@@ -388,7 +387,7 @@ class User implements AdvancedUserInterface, \Serializable
      *
      * @return boolean
      */
-    public function getIsActive()
+    public function getActive()
     {
         return $this->isActive;
     }
@@ -400,7 +399,7 @@ class User implements AdvancedUserInterface, \Serializable
      *
      * @return User
      */
-    public function setIsActive($isActive)
+    public function setActive($isActive)
     {
         $this->isActive = $isActive;
 
@@ -626,10 +625,10 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function sortRoles()
     {
-        if(in_array('ROLE_ADMIN', $this->roles) and !in_array('ROLE_NATURALISTE', $this->roles)){
+        if(in_array('ROLE_ADMIN', $this->roles) && !in_array('ROLE_NATURALISTE', $this->roles)){
             $this->addRole('ROLE_NATURALISTE');
         }
-        if(in_array('ROLE_NATURALISTE', $this->roles) and !in_array('ROLE_OBS', $this->roles)){
+        if(in_array('ROLE_NATURALISTE', $this->roles) && !in_array('ROLE_OBS', $this->roles)){
             $this->addRole('ROLE_OBS');
         }
     }

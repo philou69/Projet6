@@ -18,6 +18,7 @@ services:
         class: ObservationBundle\Security\User\UserProvider
         arguments:
           -   '@event_dispatcher'
+          -  '@service_container'
           -  '@doctrine'
           -  'ObservationBundle\Entity\User'
 

@@ -24,7 +24,7 @@ class NewsletterController extends Controller
         }
         else{
             $mailler = $this->get('observation.newsletter_listing');
-            $mailler->addLisntingNewwsLetter( $this->getUser() == true ? $this->getUser(): null, $this->getUser() == true ? null : $email);
+            $mailler->addLisntingNewwsLetter( $this->getUser() === true ? $this->getUser(): null, $this->getUser() === true ? null : $email);
 
             if($this->getUser() && $mailler->isSuccess()){
                 $em = $this->getDoctrine()->getManager();
@@ -33,8 +33,8 @@ class NewsletterController extends Controller
                 $em->flush();
             }
             $this->addFlash(
-                $mailler->isSuccess() == true ? 'success' : 'warning',
-                $mailler->isSuccess() == true ? 'Votre email a bien été ajouté' : 'Votre email n\'a pas pu être ajouté!'
+                $mailler->isSuccess() === true ? 'success' : 'warning',
+                $mailler->isSuccess() === true ? 'Votre email a bien été ajouté' : 'Votre email n\'a pas pu être ajouté!'
             );
         }
         return $this->redirectToRoute('homepage');

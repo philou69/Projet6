@@ -14,7 +14,7 @@ class ContactMailer
     protected $router;
     protected $result;
 
-    function __construct($mandrillKey, Router $router)
+    public function __construct($mandrillKey, Router $router)
     {
         $this->mandrillKey = $mandrillKey;
         $this->router = $router;

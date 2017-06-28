@@ -21,7 +21,7 @@ class UserMailer
     protected $router;
     protected $result = false;
 
-    function __construct($mandrill_api_key, Router $router)
+    public function __construct($mandrill_api_key, Router $router)
     {
         // Recuperation de la clé mandrill et du router
         $this->mandrill_api_key = $mandrill_api_key;
