@@ -24,15 +24,18 @@ contact:
 homepage:
     path:     /
     defaults: { _controller: ObservationBundle:Default:index }
+    method: [GET]
 
 faq_edit:
     path: /faq/edit/{page}
     defaults:
         _controller: ObservationBundle:Default:editFaq
+    method: [GET, POST]
 faq:
     path: /faq
     defaults:
         _controller: ObservationBundle:Default:faq
+    method: [GET]
 
 
 newsletter:
