@@ -4,9 +4,8 @@ namespace ObservationBundle\Controller;
 
 use ObservationBundle\Entity\Content;
 use ObservationBundle\Entity\Message;
-use ObservationBundle\Entity\Picture;
-use ObservationBundle\Form\Content\ContentType;
-use ObservationBundle\Form\Message\MessageType;
+use ObservationBundle\Form\Type\Content\ContentType;
+use ObservationBundle\Form\Type\Message\MessageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 

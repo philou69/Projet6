@@ -34,7 +34,7 @@ services:
           - { name: kernel.event_listener, event: user.reopen, method: reOpen }
 
     app.form.type.birds:
-        class: ObservationBundle\Form\Bird\BirdType
+        class: ObservationBundle\Form\Type\Bird\BirdType
         arguments: ['@doctrine.orm.entity_manager']
         tags:
                     - { name: form.type }

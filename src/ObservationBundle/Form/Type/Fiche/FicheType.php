@@ -1,19 +1,16 @@
 <?php
 
-namespace ObservationBundle\Form\Fiche;
+namespace ObservationBundle\Form\Type\Fiche;
 
-use ObservationBundle\Form\Bird\BirdType;
+use ObservationBundle\Form\Type\Bird\BirdType;
 use function Sodium\add;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use ObservationBundle\Form\Observation\AddObservationType;
 
 class FicheType extends AbstractType
 {

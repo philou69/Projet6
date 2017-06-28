@@ -2,28 +2,28 @@ contact_resend:
   path: /{id}/resend
   defaults:
     _controller: ObservationBundle:Contact:resend
-  method:  [GET, POST]
+  methods:  [GET, POST]
 
 contact_received:
   path: /{id}/received
   defaults:
     _controller: ObservationBundle:Contact:received
-  method:  [GET, POST]
+  methods:  [GET, POST]
 
 contact_answered:
   path: /{id}/answered
   defaults:
     _controller: ObservationBundle:Contact:answered
-  method:  [GET, POST]
+  methods:  [GET, POST]
 
 contact_refresh:
   path: /refresh
   defaults:
     _controller: ObservationBundle:Contact:refresh
-  method:  [GET, POST]
+  methods:  [GET, POST]
 
 contact_message:
     path: /contact
     defaults:
         _controller: ObservationBundle:Default:contact
-    method:  [GET, POST]
+    methods:  [GET, POST]

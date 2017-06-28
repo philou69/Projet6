@@ -4,8 +4,7 @@
 namespace ObservationBundle\Controller;
 
 
-use ObservationBundle\Entity\User;
-use ObservationBundle\Form\Newsletter\UnscubscribeType;
+use ObservationBundle\Form\Type\Newsletter\UnscubscribeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
