@@ -94,3 +94,18 @@ a.grey {
         top: 60px;
     }
 }
+
+@media (min-width: 993px){
+    #filter{
+        background: #f3f3f3;
+    }
+    #filter>.row{
+        margin:0;
+    }
+    #filter>.row.row{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+}
