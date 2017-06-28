@@ -18,10 +18,10 @@ services:
         class: ObservationBundle\Security\User\UserProvider
         arguments:
           -   '@event_dispatcher'
-          -  '@service_container'
           -  '@doctrine'
           -  'ObservationBundle\Entity\User'
-
+        calls:
+          - [setContainer, ['@service_container']]
     # Listener charger de hacher les mots de passe
     user_event_listener:
         class: ObservationBundle\EventListener\UserListener
