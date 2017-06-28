@@ -15,8 +15,6 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $pictures = new Picture();
-
         $gallery = $em->getRepository('ObservationBundle:Picture')->getPictureGallery();
 
         $device = $this->get('mobile_detect.mobile_detector');

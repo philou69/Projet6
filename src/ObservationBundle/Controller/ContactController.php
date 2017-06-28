@@ -16,7 +16,7 @@ class ContactController extends Controller
         // On verife être en requete AJAX
         if ($request->isXmlHttpRequest()) {
             // On vérifie si le message n'a pas été recu
-            if ($message->getReceived() == false) {
+            if ($message->getReceived() === false) {
                 // on le renvoye et on fais un message flash
                 $this->get('observation.contact.mailer')->sendMessage($message);
             }

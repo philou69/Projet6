@@ -635,7 +635,7 @@ class Bird
         return $this;
     }
 
-    function __toString()
+    public function __toString()
     {
         return $this->nomVern == '' ? $this->lbNom : $this->getNomVern();
     }
