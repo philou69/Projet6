@@ -10,21 +10,23 @@ use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;
 use ObservationBundle\Entity\RequestOpen;
 use Symfony\Bridge\Doctrine\Security\User\EntityUserProvider;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use ObservationBundle\Entity\User;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
-class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderInterface
+class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderInterface, ContainerAwareInterface
 {
+    use ContainerAwareTrait;
+
     private $registry;
     private $managerName;
     private $classOrAlias;
     private $class;
     private $property;
-    protected $container;
     /**
      * @var EventDispatcher
      */
@@ -34,14 +36,13 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
      */
     private $eventDispatcherInterface;
 
-    public function __construct(EventDispatcherInterface $eventDispatcherInterface, ContainerInterface $container, ManagerRegistry $registry, $classOrAlias, $property = null, $managerName = null)
+    public function __construct(EventDispatcherInterface $eventDispatcherInterface, ManagerRegistry $registry, $classOrAlias, $property = null, $managerName = null)
     {
 
         $this->registry = $registry;
         $this->managerName = $managerName;
         $this->classOrAlias = $classOrAlias;
         $this->property = $property;
-        $this->container = $container;
         parent::__construct($registry, $classOrAlias, $property, $managerName);
         $this->eventDispatcherInterface = $eventDispatcherInterface;
     }
@@ -68,14 +69,14 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
         }
         if($user->getSleeping() && $user->getRequestOpen() === null ){
             $requestOpen = new RequestOpen();
-            $requestOpen->setToken(str_replace(['/', '+', '*','-'], '', base64_encode(random_bytes(60))))->setAdresseIP($this->container->get('request')->getClientIp());
+            $requestOpen->setToken(str_replace(['/', '+', '*','-'], '', base64_encode(random_bytes(60))))->setAdresseIP($this->getIp());
             $user->setRequestOpen($requestOpen);
             $this->getObjectManager()->persist($user);
             $this->getObjectManager()->flush();
             $this->eventDispatcherInterface->dispatch('user.reopen', new GenericEvent($user));
-            $user->setIsActive(false);
+            $user->setActive(false);
         }elseif ($user->getSleeping() && $user->getRequestOpen() !== null){
-            $user->setIsActive(false);
+            $user->seActive(false);
         }
         return $user;
     }
@@ -101,7 +102,7 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
             $token = str_replace(['/', '+', '*', '-'], '', base64_encode(random_bytes(60)));
             // On crée une requete d'ouverture de compte qu'on assigne au compte
             $requestOpen = new RequestOpen();
-            $requestOpen->setAdresseIP($this->container->get('request')->getClientIp())->setToken($token)->setUser($user);
+            $requestOpen->setAdresseIP($this->getIp())->setToken($token)->setUser($user);
             $user->setRequestOpen($requestOpen);
             // On enregistre la demansde
             $this->getObjectManager()->persist($requestOpen);
@@ -109,7 +110,7 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
             // On envoie le mail de réouverture
             $this->eventDispatcherInterface->dispatch('user.reopen', new GenericEvent($user));
             // On passe le visiteur comme bloqué
-            $user->setIsActive(false);
+            $user->setActive(false);
         }
 
         if(!$user){
@@ -136,6 +137,11 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
         }
         // On retourne le user
         return $user;
+    }
+
+    private function getIp()
+    {
+        return $this->container->get('request_stack')->getCurrentRequest()->getClientIp();
     }
 
 }
