@@ -2,7 +2,7 @@ billet_create:
   path: /billet/create
   defaults:
     _controller: ObservationBundle:Blog:create
-    method:  [GET, POST]
+    methods:  [GET, POST]
 
 
 billet_edit:
@@ -11,7 +11,7 @@ billet_edit:
     _controller: ObservationBundle:Blog:edit
   requirements:
     -page: blog
-  method: [GET, POST]
+  methods: [GET, POST]
 
 blog_view:
    path: /
@@ -19,4 +19,4 @@ blog_view:
      _controller: ObservationBundle:Blog:view
    requirements:
      -page: blog
-    method: [GET, POST]
+   methods: [GET, POST]

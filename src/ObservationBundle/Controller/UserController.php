@@ -4,23 +4,20 @@
 namespace ObservationBundle\Controller;
 
 
-use Composer\EventDispatcher\EventDispatcher;
 use ObservationBundle\Entity\RequestOpen;
 use ObservationBundle\Entity\RequestPassword;
 use ObservationBundle\Entity\User;
 use ObservationBundle\Event\UserEvent;
-use ObservationBundle\Form\User\ChangeAvartarType;
-use ObservationBundle\Form\User\ChangePasswordType;
-use ObservationBundle\Form\User\EditUserType;
-use ObservationBundle\Form\User\ResetPasswordType;
-use ObservationBundle\Form\User\RolesType;
-use ObservationBundle\Form\User\UsernameEmailUserType;
-use ObservationBundle\Form\User\UserType;
-use ObservationBundle\Repository\UserRepository;
+use ObservationBundle\Form\Type\User\ChangeAvartarType;
+use ObservationBundle\Form\Type\User\ChangePasswordType;
+use ObservationBundle\Form\Type\User\EditUserType;
+use ObservationBundle\Form\Type\User\ResetPasswordType;
+use ObservationBundle\Form\Type\User\RolesType;
+use ObservationBundle\Form\Type\User\UsernameEmailUserType;
+use ObservationBundle\Form\Type\User\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Config\Definition\Exception\Exception;
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;

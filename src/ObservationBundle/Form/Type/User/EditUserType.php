@@ -1,10 +1,9 @@
 <?php
 
 
-namespace ObservationBundle\Form\User;
+namespace ObservationBundle\Form\Type\User;
 
 
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 

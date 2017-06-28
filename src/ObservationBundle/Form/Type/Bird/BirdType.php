@@ -1,11 +1,10 @@
 <?php
 
-namespace ObservationBundle\Form\Bird;
+namespace ObservationBundle\Form\Type\Bird;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class BirdType extends AbstractType

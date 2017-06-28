@@ -1,33 +1,36 @@
 <?php
 
 
-namespace ObservationBundle\Form\User;
+namespace ObservationBundle\Form\Type\Content;
 
 
-use ObservationBundle\Form\Picture\PictureType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ChangeAvartarType extends AbstractType
+class ContentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('avatar', PictureType::class)
+        $builder->add('content', TextareaType::class, array(
+            'attr' => [
+                'placeholder' => 'Constituer ici le contenue de la page'
+            ]
+        ))
             ->add('save', SubmitType::class, array(
                 'label' => 'Enregistrer',
-                'attr' => array(
-                    'class' => 'btn'
-                )
+                'attr' => [
+                    'class' => 'btn btn-nao'
+                ]
             ));
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ObservationBundle\Entity\User',
-            'cascade_validation' => true
+            'data_class' => 'ObservationBundle\Entity\Content'
         ));
     }
 }
