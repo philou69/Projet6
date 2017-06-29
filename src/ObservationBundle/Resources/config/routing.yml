@@ -21,6 +21,10 @@ contact:
     prefix: /contact
     resource: Routing/contact.yml
 
+association:
+    prefix: /association
+    resource: Routing/association.yml
+
 homepage:
     path:     /
     defaults: { _controller: ObservationBundle:Default:index }
