@@ -6,6 +6,7 @@ use ObservationBundle\Entity\Content;
 use ObservationBundle\Entity\Message;
 use ObservationBundle\Form\Type\Content\ContentType;
 use ObservationBundle\Form\Type\Message\MessageType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -110,6 +111,12 @@ class DefaultController extends Controller
         }
     }
 
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     * @param Content $content
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function editMentionAction(Content $content, Request $request)
     {
         $form = $this->createForm(ContentType::class, $content);
