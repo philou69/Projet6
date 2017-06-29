@@ -15,7 +15,7 @@
         <h1>Foire aux questions</h1>
         <small>Mis à jour le : {{ content.updateAt == null ? content.postedAt| date('d/m/Y') : content.updateAt | date('d/m/Y') }}</small>
         <p>
-            {{ content.content | raw }}
+            {{ content.content | rawdescr }}
         </p>
     </div>
 {% endblock %}

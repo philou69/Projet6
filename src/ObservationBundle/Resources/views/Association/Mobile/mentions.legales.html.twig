@@ -11,6 +11,6 @@
     <div class="center-90">
         <a href="{{ path('asso_mention_legal_edit', {'page': 'mentions-legales'}) }}" id="edit-mention" class="btn btn-nao"><i class="fa fa-pencil"></i></a>
         <h1>Les mentions légales</h1>
-        {{ content.content | raw }}
+        {{ content.content | rawdescr }}
     </div>
 {% endblock %}
