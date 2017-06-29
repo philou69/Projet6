@@ -27,5 +27,5 @@ parameters:
     mailchimp_api_key: 226cb5e9b317e3f0abd32f29131aa295-us16
     mailchimp_list_id: 318cefd73c
     # A secret key that's used to generate certain security-related tokens
-    secret: ThisTokenIsNotSoSecretChangeIt
+    secret: 8caa9be4b7f986b31551z5a80457eff79daefc5
     mandrill_api_key: erer

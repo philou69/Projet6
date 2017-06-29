@@ -12,3 +12,12 @@ newsletter_unscubscribe:
     -email: "[a-zA-Z0-9._%+-]+@[a-zA-z.-]+.[a-z]{2,4}"
   methods: [GET, POST]
 
+newsletter_status:
+  path: /{email}/status
+  defaults:
+    _controller: ObservationBundle:Newsletter:status
+  requirements:
+    -email: "[a-zA-Z0-9._%+-]+@[a-zA-z.-]+.[a-z]{2,4}"
+  methods: [GET]
+
+
