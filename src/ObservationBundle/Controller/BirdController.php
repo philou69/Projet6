@@ -8,12 +8,12 @@ use ObservationBundle\Entity\Bird;
 use ObservationBundle\Entity\Fiche;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ObservationBundle\Entity\Observation;
-use ObservationBundle\Form\Observation\AddObservationType;
+use ObservationBundle\Form\Type\Observation\AddObservationType;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use ObservationBundle\Entity\Picture;
-use ObservationBundle\Form\Fiche\FicheType;
+use ObservationBundle\Form\Type\Fiche\FicheType;
 
 
 class BirdController extends Controller
@@ -31,8 +31,6 @@ class BirdController extends Controller
 
     public function descripitionAction(Bird $bird)
     {
-//        $fiche = new Fiche();
-
         $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile() || $device->isTablet()){
             return $this->render('@Observation/Bird/Mobile/description.html.twig', array('bird' => $bird));
@@ -132,10 +130,6 @@ class BirdController extends Controller
                 $couleurPlumage = strlen(htmlspecialchars($request->query->get('plumage'))) == 0 ? null : htmlspecialchars($request->query->get('plumage'));
                 $couleurPatte = strlen(htmlspecialchars($request->query->get('patte'))) == 0 ? null : htmlspecialchars($request->query->get('patte'));
                 // On effectu la requete doctrine getPage()
-//                var_dump($couleurBec);
-//                var_dump($couleurPlumage);
-//                var_dump($couleurPatte);
-//                exit;
                 $birds = $em->getRepository('ObservationBundle:Bird')->getPage($page, $number, $search, $couleurBec, $couleurPatte, $couleurPlumage);
 
                 // On calcul le nombre de page max

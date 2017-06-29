@@ -46,7 +46,7 @@
 
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 993px) {
     .navbar {
         margin-bottom: 0;
         max-height: 90px;
@@ -164,12 +164,30 @@
 
 }
 
-@media (min-width: 1024px) and ( max-width: 1220px) {
-    #first .nav > li > a {
-        padding: 10px 5px;
+@media (min-width: 993px) and ( max-width: 1220px) {
+    #first>.center-80{
+        width: 90%;
     }
-
-    .navbar-header > img {
-        width: 150px;
+    .navbar-header>img{
+        width: 160px;
+    }
+    #first>.center-80>div>ul{
+        width: calc(100% - 160px);
+    }
+    #first li{
+        width: 120px;
+    }
+    #first a{
+        width: 120px;
+        padding:10px 5px;
+    }
+    #first li.logo-sociaux, #first a.social-network, #first li:last-child, #first li:last-child>a{
+        width: 20px;
+    }
+    #first a.social-network, #first li:last-child>a{
+        padding: 10px 2px;
+    }
+    #ident-li, #ident-a{
+        width: 180px !important;
     }
 }

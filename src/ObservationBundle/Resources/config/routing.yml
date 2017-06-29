@@ -21,18 +21,25 @@ contact:
     prefix: /contact
     resource: Routing/contact.yml
 
+association:
+    prefix: /association
+    resource: Routing/association.yml
+
 homepage:
     path:     /
     defaults: { _controller: ObservationBundle:Default:index }
+    methods: [GET]
 
 faq_edit:
     path: /faq/edit/{page}
     defaults:
         _controller: ObservationBundle:Default:editFaq
+    methods: [GET, POST]
 faq:
     path: /faq
     defaults:
         _controller: ObservationBundle:Default:faq
+    methods: [GET]
 
 
 newsletter:

@@ -20,12 +20,14 @@
         </div>
         <div id="second-part">
             {#Zone de présentation du site #}
-            <div id="bienvenue" class="center-80">
-                <h1>Bienvenue</h1>
-                <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
-                    nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
-                    à l'aide de fiches détaillés sur nos amis les oiseaux</p>
-                <div class="text-center">
+            <div id="bienvenue" class="row center-80">
+                <div class="col-md-8">
+                    <h1>Bienvenue</h1>
+                    <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
+                        nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
+                        à l'aide de fiches détaillés sur nos amis les oiseaux</p>
+                </div>
+                <div class="col-md-4" id="center-decouvrir">
                     <a class="btn btn-nao" href="#" role="button">DECOUVRIR L'ASSOCIATION</a>
                 </div>
             </div>
@@ -33,9 +35,11 @@
             <div id="gallery" class="center-80">
                 <div class="row">
                     <h1 class="col-md-9 col-xs-12">Les dernières photos</h1>
-                    <a href="#" class="col-md-3 col-xs-12 text-center link-desktop">accéder à la gallerie</a>
+                    <a id="link-gallery" href="#" class="col-md-3 col-xs-12 text-center link-desktop">
+                        <img id="img-gallery" src="{{ asset('bundles/observation/images/icones/importPhoto_icon.png') }}" alt="gallerie" class="img-responsive">
+                    </a>
                 </div>
-                <div class="row">
+                <div id="list-gallery" class="row">
                     {% for picture in gallery %}
                         <div class="col-md-3 col-xs-6">
                             <img src="{{ asset('uploads/images/bird/' ~picture.url) }}">
@@ -63,6 +67,26 @@
                         <button type="submit" class="btn btn-nao-2 btn-block">RECEVOIR LA NEWSLETTER</button>
                     </form>
                 </div>
+            </div><div id="sociallink" class="text-center">
+                <h1>SUIVEZ-NOUS</h1>
+                <div class="row" id="sociallinks">
+                    <div class="logo-sociaux col-md-4">
+                        <a href="https://facebook.com" class="btn btn-social-icon ">
+                            <img src="{{ asset('bundles/observation/images/icones/facebook.png') }}" class="img-responsive" alt="facebook">
+                        </a>
+                    </div>
+                    <div class="logo-sociaux col-md-4">
+                        <a href="https://instagram.com" class="btn">
+                            <img src="{{ asset('bundles/observation/images/icones/instagram.jpg') }}" class="img-responsive" alt="instagram">
+                        </a>
+                    </div>
+                    <div class="logo-sociaux col-md-4">
+                        <a href="https://twitter.com" class="btn btn-social-icon">
+                            <img src="{{ asset('bundles/observation/images/icones/twitter.png') }}" class="img-responsive" alt="twitter">
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

@@ -1,0 +1,25 @@
+{% extends '@Observation/layout.desktop.html.twig' %}
+
+{% block title %}Edition mention légale{% endblock %}
+
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/mention.legal.edit.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h1>Edition des mentions légales</h1>
+    <div class="center-80">
+        {{ form(form) }}
+    </div>
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            $('#content_content').summernote({
+                height: 400,
+            });
+        })
+    </script>
+{% endblock %}

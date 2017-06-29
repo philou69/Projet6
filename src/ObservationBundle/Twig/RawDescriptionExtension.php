@@ -1,0 +1,21 @@
+<?php
+
+
+namespace ObservationBundle\Twig;
+
+
+class RawDescriptionExtension extends \Twig_Extension
+{
+    public function getFilters()
+    {
+        return array(
+            new \Twig_SimpleFilter('rawdescr', array($this, 'rawdescrFilter'), array('is_safe' => array('html'))),
+        );
+    }
+
+    public function rawdescrFilter($descr)
+    {
+        return $descr;
+    }
+
+}

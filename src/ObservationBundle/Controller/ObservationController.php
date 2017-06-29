@@ -8,7 +8,7 @@ use ObservationBundle\Entity\Bird;
 use ObservationBundle\Entity\Observation;
 use ObservationBundle\Entity\Picture;
 use ObservationBundle\Event\ObservationEvent;
-use ObservationBundle\Form\Observation\AddObservationType;
+use ObservationBundle\Form\Type\Observation\AddObservationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -133,7 +133,7 @@ class ObservationController extends Controller
                 $picture->setFile($file)
                     ->setObservation($observation);
                 // Si l'observation est dejà validé, on ajoute l'oiseau à la photo.
-                if($observation->getValidated() == true){
+                if($observation->getValidated() === true){
                     $picture->setBird($observation->getBird());
                 }
                 $em->persist($picture);

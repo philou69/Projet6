@@ -15,7 +15,7 @@
                 <a href="{{ path('billet_edit', {'id': content.id}) }}" class="btn btn-nao edit"><i
                 class="fa fa-pencil"></i></a>
                 {% endif %}
-                {{ content.content|raw }}
+                {{ content.content|rawdescr }}
             </div>
         {% endfor %}
     </div>

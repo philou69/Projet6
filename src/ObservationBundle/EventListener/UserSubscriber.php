@@ -31,7 +31,7 @@ class UserSubscriber implements EventSubscriberInterface
     {
         $user = $event->getUser();
 
-        if ($user->getBirthDate() != null) {
+        if ($user->getBirthDate() !== null) {
             $this->addStars($user, self::BIRTH_DATE);
         }
     }
@@ -52,7 +52,7 @@ class UserSubscriber implements EventSubscriberInterface
     {
         $user = $event->getUser();
 
-        if ($user->getAvatar() != null) {
+        if ($user->getAvatar() !== null) {
             $this->addStars($user, self::AVATAR);
         }
     }

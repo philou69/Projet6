@@ -14,7 +14,7 @@ class NewsLetter
     protected $list_id;
     protected $status;
 
-    function __construct($mailchimp_key, $list_id)
+    public function __construct($mailchimp_key, $list_id)
     {
         // Recuperation de l'api key de MailChimp et de la list_id
 
@@ -74,7 +74,6 @@ class NewsLetter
             $this->status = true;
         }else{
             echo $MailChimp->getLastError();
-            exit;
             $this->status = false;
         }
     }

@@ -47,7 +47,7 @@ class ObservationSubscriber implements EventSubscriberInterface
         foreach ($groupStar->getStars() as $star)
         {
             // On vérifie si l'user a autant ou plus d'observation que quantity de star et s'il n'est pas déjà present dedans
-            if (count($entities) >= $star->getQuantity() && $star->getUsers()->contains($user) == false) {
+            if (count($entities) >= $star->getQuantity() && $star->getUsers()->contains($user) === false) {
                 $star->addUser($user);
             }
             $this->em->persist($star);

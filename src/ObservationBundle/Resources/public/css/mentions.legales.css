@@ -1,0 +1,16 @@
+#content, #view{
+    position: relative;
+}
+#content>.center-80>a.btn, #view>.center-90>a.btn{
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    height: 30px;
+    width: 30px;
+    margin: auto;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

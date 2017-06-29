@@ -51,7 +51,7 @@
                         </li>
                     </ul>
                 </li>
-                {% if 'ROLE_ADMIN' in app.user.roles or 'ROLE_NATURALISTE' in app.user.roles %}
+                {% if app.user and ( 'ROLE_ADMIN' in app.user.roles or 'ROLE_NATURALISTE' in app.user.roles )%}
                     <li class="sub-li">
                         <a href="#" class="disabled">ADMINISTRATION</a>
                         <ul>
@@ -71,6 +71,7 @@
                         </ul>
                     </li>
                 {% endif %}
+                <li><a href="{{ path('asso_mention_legal', {'page': 'mentions-legales'}) }}">Mentions légales</a></li>
             </ul>
         </div>
         <div id="form">

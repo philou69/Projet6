@@ -20,7 +20,8 @@ services:
           -   '@event_dispatcher'
           -  '@doctrine'
           -  'ObservationBundle\Entity\User'
-
+        calls:
+          - [setContainer, ['@service_container']]
     # Listener charger de hacher les mots de passe
     user_event_listener:
         class: ObservationBundle\EventListener\UserListener
@@ -33,8 +34,13 @@ services:
           - { name: kernel.event_listener, event: user.reopen, method: reOpen }
 
     app.form.type.birds:
-        class: ObservationBundle\Form\Bird\BirdType
+        class: ObservationBundle\Form\Type\Bird\BirdType
         arguments: ['@doctrine.orm.entity_manager']
         tags:
                     - { name: form.type }
 
+    app.twig_extension:
+        class: ObservationBundle\Twig\RawDescriptionExtension
+        public: false
+        tags:
+            - { name: twig.extension }

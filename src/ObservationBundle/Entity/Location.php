@@ -24,21 +24,21 @@ class Location
     /**
      * @var string
      *
-     * @ORM\Column(name="latitude", type="float", precision=10, scale=10, nullable=true)
+     * @ORM\Column(name="latitude", type="float", precision=10, scale=10)
      */
     private $latitude;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Longitude", type="float", precision=10, scale=10, nullable=true)
+     * @ORM\Column(name="Longitude", type="float", precision=10, scale=10)
      */
     private $longitude;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lieu", type="text", nullable=true)
+     * @ORM\Column(name="lieu", type="text")
      */
     private $lieu;
 
