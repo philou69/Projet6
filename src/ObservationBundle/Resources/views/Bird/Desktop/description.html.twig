@@ -38,7 +38,7 @@
                 </div>
                 <div class="col-xs-8">
                     <p class="text-justify">
-                        {{ bird.fiche.description | raw }}
+                        {{ bird.fiche.description | rawdescr }}
                     </p>
                     {% if is_granted('ROLE_ADMIN') %}
                     <div class="row text-right">

@@ -39,3 +39,8 @@ services:
         tags:
                     - { name: form.type }
 
+    app.twig_extension:
+        class: ObservationBundle\Twig\RawDescriptionExtension
+        public: false
+        tags:
+            - { name: twig.extension }
