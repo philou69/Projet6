@@ -20,7 +20,7 @@ class DefaultController extends Controller
         if ($device->isMobile() || $device->isTablet()) {
 
             return $this->render('@Observation/Home/Mobile/home.html.twig', array('gallery' => $gallery));
-        }else{
+        } else {
             return $this->render('@Observation/Home/Desktop/home.html.twig', array('gallery' => $gallery));
         }
     }
@@ -31,20 +31,27 @@ class DefaultController extends Controller
         $message->setPostedAt(new \DateTime());
         $form = $this->createForm(MessageType::class, $message);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($message);
             $em->flush();
             $this->get('observation.contact.mailer')->sendMessage($message);
             $this->addFlash('success', 'Votre message à bien été envoyer!');
+
             return $this->redirectToRoute('contact');
         }
 
         $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile() || $device->isTablet()){
-            return $this->render('@Observation/Association/Mobile/contact.html.twig', array('form' => $form->createView()));
-        }else{
-            return $this->render('@Observation/Association/Desktop/contact.html.twig', array('form' => $form->createView()));
+        if ($device->isMobile() || $device->isTablet()) {
+            return $this->render(
+                '@Observation/Association/Mobile/contact.html.twig',
+                array('form' => $form->createView())
+            );
+        } else {
+            return $this->render(
+                '@Observation/Association/Desktop/contact.html.twig',
+                array('form' => $form->createView())
+            );
         }
     }
 
@@ -53,9 +60,9 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $content = $em->getRepository('ObservationBundle:Content')->findOneBy(array('page' => 'faq'));
         $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile() || $device->isTablet()){
+        if ($device->isMobile() || $device->isTablet()) {
             return $this->render('@Observation/Association/Mobile/faq.html.twig', array('content' => $content));
-        }else{
+        } else {
             return $this->render('@Observation/Association/Desktop/faq.html.twig', array('content' => $content));
         }
     }
@@ -65,17 +72,69 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(ContentType::class, $content);
         $form->handleRequest($request);
-        if($form->isValid()){
+        if ($form->isValid()) {
             $em->persist($content);
             $em->flush();
+
             return $this->redirectToRoute('faq');
         }
         $device = $this->get('mobile_detect.mobile_detector');
-        if($device->isMobile() || $device->isTablet()){
-            return $this->render('@Observation/Association/Mobile/faq.edit.html.twig', array('form' => $form->createView()));
-        }else{
-            return $this->render('@Observation/Association/Desktop/faq.edit.html.twig', array('form' => $form->createView()));
+        if ($device->isMobile() || $device->isTablet()) {
+            return $this->render(
+                '@Observation/Association/Mobile/faq.edit.html.twig',
+                array('form' => $form->createView())
+            );
+        } else {
+            return $this->render(
+                '@Observation/Association/Desktop/faq.edit.html.twig',
+                array('form' => $form->createView())
+            );
         }
     }
 
+    public function mentionAction(Content $content)
+    {
+        $device = $this->get('mobile_detect.mobile_detector');
+        if ($device->isMobile() || $device->isTablet()) {
+            return $this->render(
+                '@Observation/Association/Mobile/mentions.legales.html.twig',
+                array('content' => $content)
+            );
+
+        } else {
+            return $this->render(
+                '@Observation/Association/Desktop/mentions.legales.html.twig',
+                array('content' => $content)
+            );
+
+        }
+    }
+
+    public function editMentionAction(Content $content, Request $request)
+    {
+        $form = $this->createForm(ContentType::class, $content);
+        $form->handleRequest($request);
+        if($form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($content);
+            $em->flush();
+            $this->addFlash('success', 'Vos modifications ont bien été enregistrer!');
+            return $this->redirectToRoute('asso_mention_legal', array('page'=> 'mentions-legales'));
+        }
+
+        $device = $this->get('mobile_detect.mobile_detector');
+        if ($device->isMobile() || $device->isTablet()) {
+            return $this->render(
+                '@Observation/Association/Mobile/mentions.legales.edit.html.twig',
+                array('form' => $form->createView())
+            );
+
+        } else {
+            return $this->render(
+                '@Observation/Association/Desktop/mentions.legales.edit.html.twig',
+                array('form' => $form->createView())
+            );
+
+        }
+    }
 }

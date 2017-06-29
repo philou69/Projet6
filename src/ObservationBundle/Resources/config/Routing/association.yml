@@ -1,0 +1,15 @@
+asso_mention_legal_edit:
+    path: /{page}/edit
+    defaults:
+        _controller: ObservationBundle:Default:editMention
+    requirements:
+        -page: mentions-legales
+
+asso_mention_legal:
+    path: /{page}
+    defaults:
+        _controller: ObservationBundle:Default:mention
+    requirements:
+        -page: mentions-legales
+
+
