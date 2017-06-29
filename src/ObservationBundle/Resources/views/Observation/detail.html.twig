@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('bundles/observation/css/observation.detail.css') }}">
 {% endblock %}
 {% block content %}
-    <div class="{{ is_mobile() ? 'center-90' : 'center-80' }}">
+    <div class="{{ is_mobile() ? 'center-90' : is_tablet() ? 'center-90' : 'center-80' }}">
         <h1>
             Details de l'observation
         </h1>
@@ -78,17 +78,17 @@
 
         </div>
         {% endif %}
-    </div>
-    {% if app.user and 'ROLE_NATURALISTE' in app.user.roles %}
-        {% if observation.validated == true %}
-            {%  include 'ObservationBundle:Modal:unvalide.observation.html.twig' with {'observation': observation} %}
+        {% if app.user and 'ROLE_NATURALISTE' in app.user.roles %}
+            {% if observation.validated == true %}
+                {%  include 'ObservationBundle:Modal:unvalide.observation.html.twig' with {'observation': observation} %}
+            {% else %}
+                {%  include 'ObservationBundle:Modal:valide.observation.html.twig' with {'observation': observation} %}
+            {% endif %}
+            <a id="retour" href="{{ path('user_observations') }}" class="btn grey">Reourner à la liste</a>
         {% else %}
-            {%  include 'ObservationBundle:Modal:valide.observation.html.twig' with {'observation': observation} %}
+            <a id="retour" href="{{ path('bird_location', {'id': observation.bird.id}) }}" class="btn grey"></a>
         {% endif %}
-        <a href="{{ path('user_observations') }}" class="btn grey">Reourner à la liste</a>
-    {% else %}
-        <a href="{{ path('bird_location', {'id': observation.bird.id}) }}" class="btn grey"></a>
-    {% endif %}
+    </div>
 
 {% endblock %}
 {% block javascript %}

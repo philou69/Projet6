@@ -191,3 +191,8 @@
         width: 180px !important;
     }
 }
+@media (max-width: 992px) {
+    .navbar{
+        margin: 0;
+    }
+}
