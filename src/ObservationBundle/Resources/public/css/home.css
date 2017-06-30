@@ -183,6 +183,9 @@ stylisation des buttons
     #sociallinks a {
         width: 100px;
     }
+    .navbar-transparent .second_line>a{
+        color: white;
+    }
 }
 
 /* Positionnement du bouton sur le bas du div */
