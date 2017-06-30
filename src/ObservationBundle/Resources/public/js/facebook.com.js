@@ -22,7 +22,6 @@ function fb_login() {
     FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
             // connected
-            alert('Already connected, redirect to login page to create token.');
             document.location = url;
         } else {
             // not_authorized
