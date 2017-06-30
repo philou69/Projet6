@@ -9,13 +9,12 @@
 
 {% block content %}
     <div class="center-90">
-        <div id="fb-root"></div>
         {# Zone d'identification avec google ou facebook #}
         <div id="oauth" class="text-center">
             <h4>connectez vous avec :</h4>
             <div class="row">
                 <div class="col-xs-4 col-xs-push-2">
-                    <a href="#" onclick="fb_login();" class="btn btn-blue ">Facebook</a>
+                    <a href="{{ url('hwi_oauth_service_redirect', {service: 'facebook'}) }}" class="btn btn-blue ">Facebook</a>
                 </div>
                 <div class="col-xs-4 col-xs-push-2">
                     <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google'}) }}" class="btn btn-red">Google</a>
@@ -102,5 +101,12 @@
 
 {% block javascript %}
     {{ parent() }}
+    <!-- Appelel de facebook connect -->
+    <script type="text/javascript">
+        var id = '{{ facebook_id }}';
+        var home = '{{ path('homepage') }}';
+        var url = "{{ url('hwi_oauth_service_redirect', {service: 'facebook'}) }}"
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/observation/js/facebook.com.js') }}"></script>
     <script src="{{ asset('bundles/observation/js/toogle.switch.js') }}"></script>
 {% endblock %}
