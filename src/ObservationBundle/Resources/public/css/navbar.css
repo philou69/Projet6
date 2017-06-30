@@ -168,7 +168,7 @@
     #first>.center-80{
         width: 90%;
     }
-    .navbar-header>img{
+    .navbar-header img{
         width: 160px;
     }
     #first>.center-80>div>ul{
@@ -177,7 +177,7 @@
     #first li{
         width: 120px;
     }
-    #first a{
+    #first ul a{
         width: 120px;
         padding:10px 5px;
     }
