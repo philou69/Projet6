@@ -13,13 +13,13 @@ footer > .container {
 
 }
 
-footer > .container > .center-80 {
-    padding: 20px 0;
-}
 
 footer > .container > .center-80 > .row > div {
     height: 100%;
     color: white;
+    padding: 0;
+    padding-top: 10px;
+    padding-left: 10px;
 }
 
 footer .border-right {
@@ -47,14 +47,6 @@ footer .input-group-btn > .btn {
     text-transform: uppercase;
 }
 
-footer > .container > .center-80 > .row > .row > div {
-    height: 50%;
-}
-
-footer > .container > .center-80 > .row > .row > div.col-lg-7 {
-    padding-left: 25px;
-}
-
 footer .social-network {
     display: inline-block;
     height: 28px;
@@ -66,10 +58,20 @@ footer .social-network > .fa {
     color: white;
 }
 
-footer button {
-    margin-top: 10px;
-}
 
 footer > div > div > div > div:nth-child(3) > div.col-lg-5 {
     margin-top: 20px;
+}
+#footer-actions>div{
+    display: inline-block;
+    white-space: normal;
+}
+#footer-actions{
+    white-space: nowrap;
+}
+#footer-newsletter{
+    width: 70%;
+}
+#footer-social{
+    width: 30%;
 }
