@@ -52,15 +52,18 @@
             </div>
             {#block de saisie obs et newsletter#}
             <div id="actions" class="row">
-                <div id="saisie" class="text-center col-md-6">
-                    <a href="{{ path ('observation_add') }}"><img
-                                src="{{ asset ('bundles/observation/images/icones/observation_icon.png') }}"
-                                alt="observation_icon">
-                        <p>
-                            SAISIR UNE OBSERVATION
-                        </p>
-                    </a>
+                <div id="saisies">
+                    <div id="saisie" class="text-center col-md-6"></div>
+                        <div>
+                            <a href="{{ path ('observation_add') }}"><img
+                                        src="{{ asset ('bundles/observation/images/icones/observation_icon.png') }}"
+                                        alt="observation_icon"><br>
+                            <p>SAISIR UNE OBSERVATION</p>
+                            </a>
+                        </div>
+
                 </div>
+
                 <div id="newsletter" class="col-md-6">
                     <form action="{{ path('newsletter_subscribed') }}" method="post">
                         <input type="email" name="email" placeholder="Renseigner votre email" class="form-control text-center">

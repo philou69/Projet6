@@ -10,16 +10,12 @@ use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;
 use ObservationBundle\Entity\RequestOpen;
 use Symfony\Bridge\Doctrine\Security\User\EntityUserProvider;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
-use Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
 use ObservationBundle\Entity\User;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
-use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 
 class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderInterface
 {
@@ -28,6 +24,7 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
     private $classOrAlias;
     private $class;
     private $property;
+    protected $container;
     /**
      * @var EventDispatcher
      */
@@ -37,17 +34,18 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
      */
     private $eventDispatcherInterface;
 
-    public function __construct(EventDispatcherInterface $eventDispatcherInterface, ManagerRegistry $registry, $classOrAlias, $property = null, $managerName = null)
+    public function __construct(EventDispatcherInterface $eventDispatcherInterface, ContainerInterface $container, ManagerRegistry $registry, $classOrAlias, $property = null, $managerName = null)
     {
 
         $this->registry = $registry;
         $this->managerName = $managerName;
         $this->classOrAlias = $classOrAlias;
         $this->property = $property;
+        $this->container = $container;
         parent::__construct($registry, $classOrAlias, $property, $managerName);
         $this->eventDispatcherInterface = $eventDispatcherInterface;
     }
-    function supportsClass($class)
+    public function supportsClass($class)
     {
         return $class === 'AppBundle\Entity\User';
     }
@@ -70,7 +68,7 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
         }
         if($user->getSleeping() && $user->getRequestOpen() === null ){
             $requestOpen = new RequestOpen();
-            $requestOpen->setToken(str_replace(['/', '+', '*','-'], '', base64_encode(random_bytes(60))))->setAdresseIP($_SERVER['REMOTE_ADDR']);
+            $requestOpen->setToken(str_replace(['/', '+', '*','-'], '', base64_encode(random_bytes(60))))->setAdresseIP($this->container->get('request')->getClientIp());
             $user->setRequestOpen($requestOpen);
             $this->getObjectManager()->persist($user);
             $this->getObjectManager()->flush();
@@ -98,12 +96,12 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
         $user = $this->getRepository()->findOneBy(array('email' => $response->getEmail()));
 
         // On vérifie si le compte a été mis en sommeil
-        if ($user !== null && $user->getSleeping() == true && $user->getIsActive() === true) {
+        if ($user !== null && $user->getSleeping() === true && $user->getActive() === true) {
             // création du token qui servira de lien
             $token = str_replace(['/', '+', '*', '-'], '', base64_encode(random_bytes(60)));
             // On crée une requete d'ouverture de compte qu'on assigne au compte
             $requestOpen = new RequestOpen();
-            $requestOpen->setAdresseIP($_SERVER['REMOTE_ADDR'])->setToken($token)->setUser($user);
+            $requestOpen->setAdresseIP($this->container->get('request')->getClientIp())->setToken($token)->setUser($user);
             $user->setRequestOpen($requestOpen);
             // On enregistre la demansde
             $this->getObjectManager()->persist($requestOpen);
