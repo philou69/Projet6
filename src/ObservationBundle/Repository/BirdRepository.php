@@ -16,7 +16,7 @@ class BirdRepository extends \Doctrine\ORM\EntityRepository
     /**
      * Fonction pour paginer la liste d'oiseaux
      */
-    public function getPage($page, $numbers, $search = null, $couleurBec = null, $couleurPatte = null, $couleurPlumage = null)
+    public function getPage($page, $numbers, $search = null, $couleurBec = null, $couleurPatte = null, $couleurPlumage = null, $typeBec = null)
     {
         $query = $this->createQueryBuilder('b');
         // On regarde s'il s'agit d'une recherche
@@ -39,6 +39,10 @@ class BirdRepository extends \Doctrine\ORM\EntityRepository
         if($couleurPlumage !== null){
             $query->andWhere('b.plumage = :couleurPlumage')
                 ->setParameter('couleurPlumage', $couleurPlumage);
+        }
+        if($typeBec !== null){
+            $query->andWhere('b.typeBec = :typeBec')
+                ->setParameter('typeBec', $typeBec);
         }
 
         $query->orderBy('b.nomVern', 'ASC')
