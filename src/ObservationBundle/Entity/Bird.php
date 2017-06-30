@@ -133,9 +133,14 @@ class Bird
     /**
      * @var string
      *
-     * @ORM\Column(name="bec", type="string", length=255)
+     * @ORM\Column(type="string", length=255)
      */
-    private $bec;
+    private $typeBec;
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $bec;
+
     /**
      * @var string
      *
@@ -734,5 +739,29 @@ class Bird
         $this->patte = $patte;
 
         return $this;
+    }
+
+    /**
+     * Set typeBec
+     *
+     * @param string $typeBec
+     *
+     * @return Bird
+     */
+    public function setTypeBec($typeBec)
+    {
+        $this->typeBec = $typeBec;
+
+        return $this;
+    }
+
+    /**
+     * Get typeBec
+     *
+     * @return string
+     */
+    public function getTypeBec()
+    {
+        return $this->typeBec;
     }
 }
