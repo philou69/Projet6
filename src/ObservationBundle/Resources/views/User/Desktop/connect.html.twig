@@ -104,3 +104,13 @@
         </div>
     </div>
 {% endblock %}
+{% block javascript %}
+    {{ parent() }}
+    <!-- Appelel de facebook connect -->
+    <script type="text/javascript">
+        var id = '{{ facebook_id }}';
+        var home = '{{ path('homepage') }}';
+        var url = "{{ url('hwi_oauth_service_redirect', {service: 'facebook'}) }}"
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/observation/js/facebook.com.js') }}"></script>
+{% endblock %}
