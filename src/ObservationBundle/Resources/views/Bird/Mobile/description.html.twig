@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="center-80" id="description">
+    <div class="center-90" id="description">
         <h1>{{ bird.nomVern }}
             <small>-{{ bird.lbNom }}</small>
         </h1>
@@ -45,9 +45,9 @@
                         {{ bird.fiche.description | rawdescr }}
                     </p>
                     {% if is_granted('ROLE_ADMIN') %}
-                    <div class="row text-right">
-                        <a href="{{ path('bird_edit', {'id': bird.id}) }}">Editer cette Fiche</a>
-                    </div>
+                        <div class="row text-right">
+                            <a href="{{ path('bird_edit', {'id': bird.id}) }}">Editer cette Fiche</a>
+                        </div>
                     {% endif %}
                 </div>
 
@@ -58,12 +58,9 @@
                 </p>
             {% endif %}
         </div>
-    </div>
-    <div class="row">
-        <div id="retour">
-            <a href="{{ path('bird_list') }}" class="col-xs-12 text-center"><span class="fa fa-arrow-left"></span>
-                Retour à la liste</a>
-        </div>
+        <a id="retour" href="{{ path('bird_list') }}" class="btn grey"><span
+                    class="fa fa-arrow-left"></span>
+            Retour à la liste</a>
     </div>
 
 {% endblock %}
