@@ -33,6 +33,9 @@ class UserController extends Controller
      */
     public function connectAction(Request $request)
     {
+        if($this->getUser()){
+            return $this->redirectToRoute('user_profil');
+        }
         // Création d'un objet User et du form associé
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
