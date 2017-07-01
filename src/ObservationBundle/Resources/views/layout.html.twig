@@ -6,6 +6,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block metadat %}
+    {% endblock %}
     {# Création des block title, link(liens cdn de fichier css), stylesheets( contenant les balises style) #}
     <title>{% block title %}Nos amis les oiseaux{% endblock %}</title>
     {% block link %}{% include 'ObservationBundle:Default:link.html.twig' %}{% endblock %}

@@ -33,14 +33,14 @@
                     <h1 class="col-md-11">Les dernières photos</h1>
                     <a id="link-gallery" href="#" class="col-md-1 text-center link-desktop">
                         <img id="img-gallery"
-                             src="{{ asset('bundles/observation/images/icones/importPhoto_icon.png') }}" alt="gallerie"
+                             src="{{ asset('bundles/observation/images/icones/importPhoto_icon.png') }}" alt="galerie"
                              class="img-responsive">
                     </a>
                 </div>
                 <div id="list-gallery" class="row">
                     {% for picture in gallery %}
                         <div class="col-md-3 col-xs-6">
-                            <img src="{{ asset('uploads/images/bird/' ~picture.url) }}">
+                            <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" alt="image issue de la gallerie">
                         </div>
                     {% else %}
                         <p>Prochainement les dernières photos</p>

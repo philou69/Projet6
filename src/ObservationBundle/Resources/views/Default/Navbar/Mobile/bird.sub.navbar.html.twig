@@ -3,16 +3,16 @@
     <div class="second_line col-xs-4 text-center {{ app.request.attributes.get('_route')== 'bird_description' ? 'active': '' }}">
         <a href="{{ path('bird_description', {'id': bird.id}) }}" class="text-center">
             <img src="{{ app.request.attributes.get('_route') == 'bird_description' ? asset('bundles/observation/images/icones/description_icon_hover.png') : asset('bundles/observation/images/icones/description_icon.png') }}"
-                 alt="">
+                 alt="lien description oiseau">
         </a>
     </div>
     <div class="second_line col-xs-4 text-center {{ app.request.attributes.get('_route') == 'bird_location' ? 'active' :'' }}">
         <a href="{{ path('bird_location', {'id': bird.id}) }}" id="bird_repartition">
             <img src="{{ app.request.attributes.get('_route') == 'bird_location' ? asset('bundles/observation/images/icones/repartition_icon_hover.png') : asset('bundles/observation/images/icones/repartition_icon.png') }}"
-                 alt=""></a>
+                 alt="lien localisation oiseau"></a>
     </div>
     <div class="second_line col-xs-4 text-center">
         <a href="{{ path('bird_observation', {'id': bird.id}) }}" id="bird_add">
-            <img src="{{ asset('bundles/observation/images/icones/ajoutObservation_icon.png') }}" alt=""></a>
+            <img src="{{ asset('bundles/observation/images/icones/ajoutObservation_icon.png') }}" alt="lien pour ajouté une observation"></a>
     </div>
 </div>
