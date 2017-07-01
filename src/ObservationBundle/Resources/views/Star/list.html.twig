@@ -7,10 +7,10 @@
         <div class="star col-sm-2 col-xs-4">
             <a href="#star_detail_{{ groupStar.id }}" data-toggle="modal">
                 {% if app.user in groupStar.users %}
-                    <img src="{{ asset(groupStar.getHighest(app.user).image) }}" class=" img-star"
+                    <img src="{{ asset(groupStar.getHighest(app.user).image) }}" class=" dernière médaile"
                          alt="{{ groupStar.getHighest(app.user).title }}">
                 {% else %}
-                    <img src="{{ asset(groupStar.image) }}" alt="medaille" class="group-star">
+                    <img src="{{ asset(groupStar.image) }}" alt="medaille" class="médaile bloqué">
                 {% endif %}
             </a>
         </div>

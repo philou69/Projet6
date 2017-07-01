@@ -37,7 +37,7 @@
                 <div class="row">
                     {% for picture in gallery %}
                         <div class="col-xs-6">
-                            <img src="{{ asset('uploads/images/bird/' ~picture.url) }}"></div>
+                            <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" alt="image de la galerie"></div>
                     {% else %}
                         <p>Prochainement les dernières photos</p>
                     {% endfor %}
