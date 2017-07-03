@@ -175,26 +175,6 @@ class User implements AdvancedUserInterface, \Serializable
         return $this;
     }
 
-    public function addRole($role)
-    {
-        $role = strtoupper($role);
-        if($role == static::ROLE_DEFAULT){
-            return $this;
-        }
-        if(!in_array($role, $this->roles, true)){
-            // On s'assure que les admins, on aussi le role naturaliste
-            if ($role === 'ROLE_ADMIN' && !in_array('ROLE_NATURALISTE', $this->roles, true)) {
-                $this->addRole('ROLE_NATURALISTE');
-            }
-            // On s'assure que les naturaliste, on aussi le role obs
-            if ($role === 'ROLE_NATURALISTE' && !in_array('ROLE_OBS', $this->roles, true)) {
-                $this->addRole('ROLE_OBS');
-            }
-            $this->roles[] = $role;
-        }
-        return $this;
-    }
-
     /**
      * Get id
      *
@@ -430,7 +410,6 @@ class User implements AdvancedUserInterface, \Serializable
         return $this;
     }
 
-
     /**
      * Add star
      *
@@ -625,11 +604,31 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function sortRoles()
     {
-        if(in_array('ROLE_ADMIN', $this->roles) && !in_array('ROLE_NATURALISTE', $this->roles)){
+        if (in_array('ROLE_ADMIN', $this->roles) && !in_array('ROLE_NATURALISTE', $this->roles)) {
             $this->addRole('ROLE_NATURALISTE');
         }
-        if(in_array('ROLE_NATURALISTE', $this->roles) && !in_array('ROLE_OBS', $this->roles)){
+        if (in_array('ROLE_NATURALISTE', $this->roles) && !in_array('ROLE_OBS', $this->roles)) {
             $this->addRole('ROLE_OBS');
         }
+    }
+
+    public function addRole($role)
+    {
+        $role = strtoupper($role);
+        if ($role == static::ROLE_DEFAULT) {
+            return $this;
+        }
+        if (!in_array($role, $this->roles, true)) {
+            // On s'assure que les admins, on aussi le role naturaliste
+            if ($role === 'ROLE_ADMIN' && !in_array('ROLE_NATURALISTE', $this->roles, true)) {
+                $this->addRole('ROLE_NATURALISTE');
+            }
+            // On s'assure que les naturaliste, on aussi le role obs
+            if ($role === 'ROLE_NATURALISTE' && !in_array('ROLE_OBS', $this->roles, true)) {
+                $this->addRole('ROLE_OBS');
+            }
+            $this->roles[] = $role;
+        }
+        return $this;
     }
 }

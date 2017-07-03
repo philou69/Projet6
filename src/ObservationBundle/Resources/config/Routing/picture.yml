@@ -1,0 +1,4 @@
+gallerie:
+    path: /gallerie
+    defaults:
+      _controller: ObservationBundle:Picture:gallerie

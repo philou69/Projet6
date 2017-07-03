@@ -3,7 +3,9 @@
 namespace ObservationBundle\Form\Type\Observation;
 
 use ObservationBundle\Form\Type\Location\LocationType;
+use ObservationBundle\Form\Type\Picture\PictureType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -47,23 +49,44 @@ class AddObservationType extends AbstractType
                                 'max' => 20,
                                 'value' => 1)
             ))
-            ->add('pictures', RepeatedType::class, array(
-                'type' => FileType::class,
-                'label' => 'Importer une image',
+//            ->add('pictures', FileType::class, [
+//                'data_class' => null,
+//                'mapped' => false,
+//                'multiple' => true,
+//                'attr' => [
+//                    'accept' => 'image/*',
+//                        'class' => 'filestyle',
+//                        'data-input' => 'false',
+//                        'data-badge' => 'false',
+//                        'data-icon' => 'false'
+//                ]
+//            ])
+
+            ->add('pictures', CollectionType::class, [
+                'entry_type' => PictureType::class,
+                'allow_add' => true,
                 'required' => false,
-                'options' => array(
-                    'data_class' => null,
-                    'mapped' => false,
-                    'multiple' => true,
-                    'attr' => array(
-                        'accept' => 'image/*',
-                        'class' => 'filestyle',
-                        'data-input' => 'false',
-                        'data-badge' => 'false',
-                        'data-icon' => 'false'
-                    )
-                )
-            ))
+                'entry_options' => [
+                    'label' => false
+                ]
+            ])
+//            ->add('pictures', RepeatedType::class, array(
+//                'type' => FileType::class,
+//                'label' => 'Importer une image',
+//                'required' => false,
+//                'options' => array(
+//                    'data_class' => null,
+//                    'mapped' => false,
+//                    'multiple' => true,
+//                    'attr' => array(
+//                        'accept' => 'image/*',
+//                        'class' => 'filestyle',
+//                        'data-input' => 'false',
+//                        'data-badge' => 'false',
+//                        'data-icon' => 'false'
+//                    )
+//                )
+//            ))
 
             ->add( 'save', SubmitType::class, array(
                 'label' => 'Valider la saisie',

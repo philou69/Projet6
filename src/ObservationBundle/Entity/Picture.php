@@ -16,7 +16,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Picture
 {
     /**
-     * @var
      * @Assert\Image()
      */
     protected $file;

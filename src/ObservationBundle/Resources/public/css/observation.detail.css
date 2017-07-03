@@ -44,6 +44,7 @@ table button:disabled{
         padding: 20px;
     }
 }
+
 @media (min-width: 993px) {
 
     #content > .center-80 {
@@ -53,6 +54,7 @@ table button:disabled{
 
     }
 }
+
 @media (max-width: 992px) {
 
     /* Marge speciale pour ne pas affiché sous la navbar */
