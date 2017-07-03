@@ -20,7 +20,7 @@
                     <div id="content_avatar">
                         {% if app.user.avatar is not null %}
                             <img src="{{ asset(app.user.avatar.webPath) }}" class="img-circle"
-                                 alt="{{ app.user.avatar.alt }}">
+                                 alt="{{ app.user.username }}">
                             <a href="{{ path('user_change_avatar') }}" id="edit_avatar"><i class="fa fa-pencil"></i></a>
                         {% else %}
                             <p>
