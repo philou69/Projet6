@@ -50,7 +50,7 @@
                             </div>
                         {% endif %}
                         <div class="picture col-sm-8" {{ loop.index > 1 ? 'hidden' }} id="{{ loop.index }}">
-                            <img src="{{ asset(picture.webPath) }}" alt="{{ picture.alt }}"  alt="image de l'observation">
+                            <img src="{{ asset(picture.webPath) }}" alt="{{ picture.alt }}"  alt="{{ picture.bird }}">
                         </div>
                         {% if loop.last %}
                             <div class="col-sm-2 paging">
