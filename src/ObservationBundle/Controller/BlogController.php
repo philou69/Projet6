@@ -5,7 +5,7 @@ namespace ObservationBundle\Controller;
 
 
 use ObservationBundle\Entity\Content;
-use ObservationBundle\Form\Content\ContentType;
+use ObservationBundle\Form\Type\Content\ContentType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;

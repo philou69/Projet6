@@ -1,6 +1,6 @@
 <?php
 
-namespace ObservationBundle\Form\Location;
+namespace ObservationBundle\Form\Type\Location;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;

@@ -2,3 +2,4 @@ star_list:
   path: /list
   defaults:
     _controller: ObservationBundle:Star:list
+  methods:  [GET]

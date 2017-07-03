@@ -20,8 +20,9 @@
 /* fin style pour la zone titre et input search ---------*/
 
 /** Affichage main pour les div oiseaux **/
-#bird {
+#birds {
     margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 .bird {
@@ -96,6 +97,12 @@ a.grey {
 }
 
 @media (min-width: 993px){
+    #content > .center-80 {
+        /* Hauteur minimum = hautreur fenetre - hauteur footer - hauteur navbar déplier*/
+        min-height: calc(100vh - 180px - 50px);
+        padding-top: 20px;
+
+    }
     #filter{
         background: #f3f3f3;
     }

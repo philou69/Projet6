@@ -1,36 +1,40 @@
 <?php
 
 
-namespace ObservationBundle\Form\Content;
+namespace ObservationBundle\Form\Type\User;
 
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ContentType extends AbstractType
+class RolesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('content', TextareaType::class, array(
-            'attr' => [
-                'placeholder' => 'Constituer ici le contenue de la page'
-            ]
+        $builder->add('roles', ChoiceType::class, array(
+            'label' => 'Séléctionné les roles du visiteur ',
+            'choices' => array(
+                'Naturaliste' => 'ROLE_NATURALISTE',
+                'Administrateur' => 'ROLE_ADMIN'
+            ),
+            'multiple' => true,
+            'expanded' => true
         ))
             ->add('save', SubmitType::class, array(
                 'label' => 'Enregistrer',
-                'attr' => [
+                'attr' => array(
                     'class' => 'btn btn-nao'
-                ]
+                )
             ));
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ObservationBundle\Entity\Content'
+            'data_class' => 'ObservationBundle\Entity\User'
         ));
     }
 }

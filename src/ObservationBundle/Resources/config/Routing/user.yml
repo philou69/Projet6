@@ -2,74 +2,90 @@ user_login:
     path: /login
     defaults:
       _controller: ObservationBundle:User:login
+    methods:  [GET, POST]
 user_logout:
     path: /logout
+    methods:  [GET]
 
 user_forgot_password:
     path: /reset
     defaults:
       _controller: ObservationBundle:User:reset
+    methods:  [GET, POST]
 
 user_link_forgot:
     path: /reset/{token}
     defaults:
       _controller: ObservationBundle:User:resetPassword
-      token: \.+
+    requirements:
+      -token: \.+
+    methods:  [GET, POST]
 
 user_change_password:
     path: /change_password
     defaults:
       _controller: ObservationBundle:User:changePassword
+    methods:  [GET, POST]
 
 user_profil:
     path: /profil
     defaults:
       _controller: ObservationBundle:User:profil
+    methods:  [GET, POST]
 
 user_connect:
     path: /connect
     defaults:
         _controller: ObservationBundle:User:connect
+    methods:  [GET, POST]
 
 user_my_observations:
     path: /my_observations
     defaults:
         _controller: ObservationBundle:User:myObservations
+    methods:  [GET]
 
 user_observations:
     path: /observations
     defaults:
         _controller: ObservationBundle:User:observations
+    methods:  [GET]
 
 user_stars:
     path: /stars
     defaults:
         _controller: ObservationBundle:User:stars
+    methods:  [GET]
 
 user_change_avatar:
     path: /avatar/change
     defaults:
       _controller: ObservationBundle:User:changeAvatar
+    methods:  [GET, POST]
 
 user_users:
     path: /users
     defaults:
       _controller: ObservationBundle:User:users
+    methods:  [GET]
 
 user_status:
     path: /{id}/status
     defaults:
       _controller: ObservationBundle:User:reactivate
+    methods:  [GET, POST]
 
 user_roles:
     path: /{id}/roles
     defaults:
       _controller: ObservationBundle:User:roles
+    methods:  [GET, POST]
 
 user_sleep:
     path: /sleep
     defaults:
       _controller: ObservationBundle:User:sleep
+    methods:  [GET, POST]
 
 user_unsleep:
     path: /unsleep/{token}
@@ -77,8 +93,10 @@ user_unsleep:
       _controller: ObservationBundle:User:unsleep
     requirements:
       -token: \.+
+    methods: [GET, POST]
 
 user_contacts:
     path: /contacts
     defaults:
       _controller: ObservationBundle:User:contacts
+    methods:  [GET]

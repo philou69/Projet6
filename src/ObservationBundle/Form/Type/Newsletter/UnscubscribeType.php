@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ObservationBundle\Form\Newsletter;
+namespace ObservationBundle\Form\Type\Newsletter;
 
 
 use Symfony\Component\Form\AbstractType;

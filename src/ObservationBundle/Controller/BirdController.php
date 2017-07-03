@@ -8,12 +8,12 @@ use ObservationBundle\Entity\Bird;
 use ObservationBundle\Entity\Fiche;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ObservationBundle\Entity\Observation;
-use ObservationBundle\Form\Observation\AddObservationType;
+use ObservationBundle\Form\Type\Observation\AddObservationType;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use ObservationBundle\Entity\Picture;
-use ObservationBundle\Form\Fiche\FicheType;
+use ObservationBundle\Form\Type\Fiche\FicheType;
 
 
 class BirdController extends Controller

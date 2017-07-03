@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ObservationBundle\Form\Picture;
+namespace ObservationBundle\Form\Type\Picture;
 
 
 use Symfony\Component\Form\AbstractType;

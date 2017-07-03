@@ -26,6 +26,7 @@ framework:
     trusted_hosts: ~
     trusted_proxies: ~
     session:
+        name: NAOID
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id:  session.handler.native_file
         save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
@@ -53,6 +54,7 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
+        server_version: 5.7
         driver: pdo_mysql
         host: '%database_host%'
         port: '%database_port%'

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ObservationBundle\Form\User;
+namespace ObservationBundle\Form\Type\User;
 
 
 use ObservationBundle\Entity\User;

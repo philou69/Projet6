@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ObservationBundle\Form\Message;
+namespace ObservationBundle\Form\Type\Message;
 
 
 use Symfony\Component\Form\AbstractType;
