@@ -126,7 +126,7 @@ class Bird
      */
     private $observations;
     /**
-     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="bird")
+     * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="bird", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $pictures;
@@ -153,6 +153,10 @@ class Bird
      * @ORM\Column(name="patte", type="string", length=255)
      */
     private $patte;
+    /**
+     * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Picture", cascade={"persist"})
+     */
+    private $avatar;
 
     /**
      * Constructor
@@ -763,5 +767,29 @@ class Bird
     public function getTypeBec()
     {
         return $this->typeBec;
+    }
+
+    /**
+     * Set avatar
+     *
+     * @param \ObservationBundle\Entity\Picture $avatar
+     *
+     * @return Bird
+     */
+    public function setAvatar(\ObservationBundle\Entity\Picture $avatar = null)
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * Get avatar
+     *
+     * @return \ObservationBundle\Entity\Picture
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
     }
 }
