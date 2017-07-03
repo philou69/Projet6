@@ -22,7 +22,7 @@
             {% if bird.fiche is not null %}
                 <div class="col-xs-4">
                     {% if bird.avatar is not null %}
-                        <img src="{{ asset(bird.avatar.webPath) }}" class="left img-responsive" alt="bird">
+                        <img src="{{ asset(bird.avatar.webPath) }}" class="left img-responsive" alt="{{ bird }}">
                     {% else %}
                         <p class="left text-center">Pas de photos</p>
                     {% endif %}
