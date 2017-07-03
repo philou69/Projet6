@@ -2,7 +2,7 @@
 {# Definition des variables pour le referencement#}
 {% set metadescription = "NAO l'application web d'observation des oiseaux, contribuez à la préservation de la biodiversité. Protection des oiseaux, photographie naturaliste, ornithologie" %}
 {% set ogtitle = "Accueil" %}
-{% set ogurl= url('homepage') %}
+{% set ogurl= 'https://nao.site-projet.fr' %}
 
 {% block  title %}Accueil{% endblock %}
 
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('bundles/observation/css/home.css') }}">
 {% endblock %}
 
-
+{{ dump(app.request) }}
 {% block content %}
     <div id="contentHome">
         <div id="homePicture">
