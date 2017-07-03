@@ -1,4 +1,10 @@
 {% extends 'ObservationBundle::layout.mobile.html.twig' %}
+
+{# Definition des variables pour le referencement#}
+{% set metadescription = "NAO l'application web d'observation des oiseaux, contribuez à la préservation de la biodiversité. Protection des oiseaux, photographie naturaliste, ornithologie" %}
+{% set ogtitle = "Accueil" %}
+{% set ogurl= 'https://nao.site-projet.fr' %}
+
 {% block  title %}Accueil{% endblock %}
 
 {% block link %}
@@ -16,19 +22,20 @@
                 </a>
             </div>
         </div>
-        <div id="seconde-part">
+        <div id="seconde-part" class="center-90">
             {#Zone de présentation du site #}
-            <div id="bienvenue" class="center-80">
+            <div id="bienvenue">
                 <h1>Bienvenue</h1>
                 <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
                     nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
                     à l'aide de fiches détaillés sur nos amis les oiseaux</p>
                 <div class="text-center">
-                    <a id="show-blog" class="btn btn-nao" href="{{ path('blog_view') }}" role="button">DECOUVRIR L'ASSOCIATION</a>
+                    <a id="show-blog" class="btn btn-nao" href="{{ path('blog_view') }}" role="button">DECOUVRIR
+                        L'ASSOCIATION</a>
                 </div>
             </div>
             {# Galeery des photos d'oiseaux#}
-            <div id="gallery" class="center-80">
+            <div id="gallery">
                 <div class="row">
                     <h1 class="col-md-10 col-xs-12">Les dernières photos</h1>
 
@@ -36,7 +43,7 @@
                 <div class="row">
                     {% for picture in gallery %}
                         <div class="col-xs-6">
-                            <img src="{{ asset('uploads/images/bird/' ~picture.url) }}"></div>
+                            <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" alt="image de la galerie"></div>
                     {% else %}
                         <p>Prochainement les dernières photos</p>
                     {% endfor %}
@@ -47,41 +54,41 @@
             </div>
             {#block de saisie obs et newsletter#}
             <div id="actions" class="row">
-                <div class="center-80">
-                    <div id="saisie" class="text-center col-xs-12 col-md-12 obs-mobile">
-                        <a href="{{ path ('observation_add') }}"><img
-                                    src="{{ asset ('bundles/observation/images/icones/observation_icon.png') }}"
-                                    alt="observation_icon">
-                            <p>
-                                SAISIR UNE OBSERVATION
-                            </p>
-                        </a>
-                    </div>
-                    <div id="newsletter" class="col-xs-12 col-md-12">
-                        <div class="col-xs-12 text-center">
-                            <input type="text" placeholder="Renseigner votre email" class="form-control text-center">
-                            <button type="submit" class="btn btn-nao-2 btn-block">RECEVOIR LA NEWSLETTER</button>
-                        </div>
-                    </div>
+                <div id="saisie" class="text-center col-xs-12 obs-mobile">
+                    <a class="content-action " href="{{ path ('observation_add') }}"><img
+                                src="{{ asset ('bundles/observation/images/icones/observation_icon.png') }}"
+                                alt="observation_icon">
+                        <p>
+                            SAISIR UNE OBSERVATION
+                        </p>
+                    </a>
                 </div>
-
+                <div id="newsletter" class="col-xs-12">
+                    <form method="post" action="{{ path('newsletter_subscribed') }}" class="content-action">
+                        <input type="email" placeholder="Renseigner votre email" name="email" class="form-control text-center">
+                        <button type="submit" class="btn btn-nao-2 btn-block">RECEVOIR LA NEWSLETTER</button>
+                    </form>
+                </div>
             </div>
             <div id="sociallink" class="text-center">
                 <h1>SUIVEZ-NOUS</h1>
                 <div class="row" id="sociallinks">
                     <div class="logo-sociaux col-md-4">
                         <a href="https://facebook.com" class="btn btn-social-icon ">
-                            <img src="{{ asset('bundles/observation/images/icones/facebook.png') }}" class="img-responsive" alt="facebook">
+                            <img src="{{ asset('bundles/observation/images/icones/facebook.png') }}"
+                                 class="img-responsive" alt="facebook">
                         </a>
                     </div>
                     <div class="logo-sociaux col-md-4">
                         <a href="https://instagram.com" class="btn">
-                            <img src="{{ asset('bundles/observation/images/icones/instagram.jpg') }}" class="img-responsive" alt="instagram">
+                            <img src="{{ asset('bundles/observation/images/icones/instagram.jpg') }}"
+                                 class="img-responsive" alt="instagram">
                         </a>
                     </div>
                     <div class="logo-sociaux col-md-4">
                         <a href="https://twitter.com" class="btn btn-social-icon">
-                            <img src="{{ asset('bundles/observation/images/icones/twitter.png') }}" class="img-responsive" alt="twitter">
+                            <img src="{{ asset('bundles/observation/images/icones/twitter.png') }}"
+                                 class="img-responsive" alt="twitter">
                         </a>
                     </div>
                 </div>

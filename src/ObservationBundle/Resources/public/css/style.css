@@ -19,13 +19,11 @@ body {
     background-size: auto 100%;
 }
 
-
 h1 {
     font-size: 36px;
     color: #a1d0f3;
 
 }
-
 
 #picBird img {
 
@@ -100,14 +98,22 @@ Retour bas de page
     background-color: rgb(243, 243, 243);
 }
 
-#retour a {
-    margin-top: 5px;
+a#retour, a#add-birds {
+    position: absolute;
+    bottom:0;
+    left: calc( 0px - ( 100% / 8 ));
+    right: calc( 0px - (100% / 8 ));
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     color: #99d1c8;
 }
 
 /*------------------ Styel pour les écans de largeur superieur à 992 px -------*/
-@media (min-width: 1024px) {
+@media (min-width: 993px) {
     /* Marge du body pour la navbar et utilisation de flex pour coller le footer en bas de page */
     body {
         margin: 0;
@@ -122,9 +128,10 @@ Retour bas de page
     }
 
     #content > .center-80 {
-        min-height: calc(100vh - 140px - 70px);
+        /* Hauteur minimum = hautreur fenetre - hauteur footer - hauteur navbar déplier*/
+        min-height: calc(100vh - 180px - 90px);
         padding-top: 20px;
-
+        position: relative;
     }
 
     #listing .row {
@@ -136,21 +143,19 @@ Retour bas de page
 
 /* -------------------------------- Fin style écran petit ----------------------------------------*/
 /* -------------------------------- Ecran de moins de 992 px de large ----------------------------------------*/
-@media (max-width: 1024px) {
-    body {
-        min-height: 100vh;
-        margin: 0;
-    }
+@media (max-width: 992px) {
 
     /* Marge speciale pour ne pas affiché sous la navbar */
     #view {
-        padding-bottom: 70px;
-        min-height: 100vh;
-        padding-top: 40px;
+        min-height: calc(100vh - 40px - 70px);
+        margin-top: 40px;
+        margin-bottom: 70px;
     }
 
-    #view > .center-80 {
-        padding-top: 40px;
+    #view > .center-90 {
+        position: relative;
+        min-height: calc(100vh - 40px - 70px);
+        height: 100%;
     }
 
     #contentAdd {
@@ -174,10 +179,6 @@ Retour bas de page
 .capital {
     text-transform: uppercase;
     font-size: small;
-}
-
-#birds {
-    margin-top: 20px;
 }
 
 /*------- Loader -----*/
@@ -266,6 +267,7 @@ Boutons text editor
     color: black;
     width: 40px;
 }
+
 .btn-nao > img {
     height: 20px;
 }
@@ -282,6 +284,7 @@ Boutons text editor
 .btn-form {
     max-width: 100px;
 }
+
 /*Background gris*/
 .grey {
     background-color: #fbfbfb;
@@ -293,13 +296,13 @@ Boutons text editor
 }
 
 /* Style bloquer la largeur des boutons */
-.center-button{
+.center-button {
     width: 120px;
     margin: auto;
 }
 
 /* Style for flash message */
-.alert{
+.alert {
     border-radius: 0;
     width: 64%;
     margin: 10px auto;

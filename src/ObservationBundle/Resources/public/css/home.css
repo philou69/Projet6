@@ -2,19 +2,47 @@
     Home page
      */
 
-#bienvenue, #gallery, #actions {
-    margin-top: 50px;
+#bienvenue {
+    padding-top: 50px;
+}
+#gallery, #actions {
+
+    padding-top: 40px;
 }
 /* Le contenue suivant la photo d'acceuil fait au minimum 80% de l'écran pour assuere le scroll*/
 #second-part{
     min-height: 80vh;
+    padding-top: 50px;
 }
-/* On ajoute un padding top à bienvenue pour empeche la navbar de caché le texte */
-#bienvenue{
-    padding-top: 90px;
+/*---- Style sur l'opacité du pbloc action -----*/
+
+#newsletter {
+    background: url('../images/Visuels/encartNewsletter_background.jpg') no-repeat center;
+    -webkit-background-size: cover;
+    height: 200px;
+    position: relative;
 }
-/*
-Partie observation et newsletter
+#saisie {
+    background: url('../images/Visuels/encartObservation_background.jpg') no-repeat center;
+    -webkit-background-size: cover;
+    height: 200px;
+    position: relative;
+}
+.content-action{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    padding: 10px;
+}
+/*---- fin du style sur l'opacité du pbloc action -----*/
+/*Partie observation et newsletter
  */
 
 #actions {
@@ -31,13 +59,6 @@ Partie observation et newsletter
     min-height: 200px;
     height: 200px;
     width: 100%;
-}
-#saisie {
-    background: url('../images/Visuels/encartObservation_background.jpg') no-repeat center;
-    -webkit-background-size: cover;
-    height: 200px;
-    padding-top: 70px;
-    opacity: 0.8;
 }
 
 #saisie p {
@@ -59,13 +80,6 @@ Partie observation et newsletter
     margin-bottom: 15px;
 }
 
-#newsletter {
-    background: url('../images/Visuels/encartNewsletter_background.jpg') no-repeat center;
-    -webkit-background-size: cover;
-    height: 200px;
-    padding-top: 70px;
-    opacity: 0.7;
-}
 
 #newsletter .form-control, #newsletter button {
 
@@ -76,9 +90,9 @@ Partie observation et newsletter
     position: relative;
 }
 @media (max-width: 992px) {
-    /* On reduit le padding bottom pour collé à la navbar*/
+    /* On reduit le margin bottom pour collé à la navbar*/
     #view{
-        padding-bottom: 40px;
+        margin-bottom: 40px;
     }
     #homePicture {
         background: url('../images/Visuels/accueil_background.jpg') no-repeat center;
@@ -96,13 +110,16 @@ Partie observation et newsletter
     .images {
         margin-bottom: 10px;
     }
+    #actions>div{
+        height: 150px;
+    }
     /*
 Social links
 stylisation des buttons
  */
 
     #sociallink {
-        margin-bottom: 100px;
+        margin-bottom: 20px;
     }
 
     #sociallink ul {
@@ -128,8 +145,18 @@ stylisation des buttons
 }
 
 /* Style special pour la navbar */
-.navbar-fixed-top {
+.navbar-transparent {
     background-color: transparent;
+    background: linear-gradient(to bottom,#000 0,rgba(255,255,255,0) 100%);
+}
+.navbar-transparent>#first{
+    background: transparent;
+}
+.navbar-transparent>.tab-content{
+    background: transparent;
+}
+.navbar-transparent .first_line.active>a{
+    color: #99d1c8;
 }
 
 /*Style sur le div principal de la page
@@ -145,7 +172,8 @@ stylisation des buttons
     }
 
     #bienvenue a{
-        width: auto;
+        width: 40%;
+        margin: 0 30%;
     }
 
     #sociallinks {
@@ -155,13 +183,8 @@ stylisation des buttons
     #sociallinks a {
         width: 100px;
     }
-
-    #center-decouvrir{
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    .navbar-transparent .second_line>a{
+        color: white;
     }
 }
 
