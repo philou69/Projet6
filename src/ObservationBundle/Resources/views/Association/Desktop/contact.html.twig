@@ -1,5 +1,10 @@
 {% extends '@Observation/layout.desktop.html.twig' %}
 
+{# Definition des variables pour le referencement#}
+{% set metadescription = "Contactez l'association Nos Amis les Oiseaux -  NAO - l'application web d'observation des oiseaux, contribuez à la préservation de la biodiversité." %}
+{% set ogtitle = "Contact" %}
+{% set ogurl= url('contact_message') %}
+
 {% block title %}Contact{% endblock %}
 
 {% block link %}
