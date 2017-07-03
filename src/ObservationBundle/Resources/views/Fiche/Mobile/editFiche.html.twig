@@ -21,8 +21,7 @@
                     </h2>
                 </div>
             </div>
-            <div class="panel panel-default center-90" id="formEdit">
-                <div class="panel-body">
+            <div id="formEdit">
                     {{ form_start(form) }}
                     <div class="row">
                         <div class="col-xs-12">
@@ -66,7 +65,6 @@
                     </div>
                     {{ form_end(form) }}
                 </div>
-            </div>
         </div>
     </div>
     <div class="row">
@@ -83,7 +81,7 @@
 
     <script>
         $(document).ready(function () {
-            $('#contentEdit').summernote({
+            $('#observationbundle_fiche_description').summernote({
                 height: 300,
                 toolbar: [
                     // [groupName, [list of button]]
