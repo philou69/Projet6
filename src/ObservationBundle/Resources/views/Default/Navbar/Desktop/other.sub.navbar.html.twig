@@ -1,10 +1,10 @@
-<div id="other" class="tab-pane center-80 {% if app.request.attributes.get('_route') in ['blog_view', 'contact_message', 'faq'] %}active{% endif %}">
+<div id="other" class="tab-pane center-80 {% if app.request.attributes.get('_route') in ['blog_view', 'contact_message', 'faq'] %}active always-active{% endif %}">
     <ul class=" nav navbar-nav pull-right">
-        <li class="second_line {% if app.request.attributes.get('_route')  == 'blog_view' %}active{% endif %}"><a
-                    href="{{ path('blog_view') }}">L'association</a></li>
-        <li class="second_line {% if app.request.attributes.get('_route')  == 'contact_message' %}active{% endif %}"><a
-                    href="{{ path('contact_message') }}">Nous contacter</a></li>
-        <li class="second_line {% if app.request.attributes.get('_route')  == 'faq' %}active{% endif %}"><a
-                    href="{{ path('faq') }}">Faq</a></li>
+        <li class="second_line {{ app.request.attributes.get('_route')  == 'blog_view' ? 'active always-active' : '' }}"><a
+                    href="{{ path('blog_view') }}" data-hide="#other">L'association</a></li>
+        <li class="second_line {{ app.request.attributes.get('_route')  == 'contact_message' ? 'active always-active' : '' }}"><a
+                    href="{{ path('contact_message') }}" data-hide="#other">Nous contacter</a></li>
+        <li class="second_line {{ app.request.attributes.get('_route')  == 'faq' ? 'active always-active' : '' }}"><a
+                    href="{{ path('faq') }}" data-hide="#other">Faq</a></li>
     </ul>
 </div>

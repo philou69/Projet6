@@ -3,32 +3,32 @@
     <div class="second_line col-xs-3 text-center {{ app.request.attributes.get('_route') == 'user_profil' ? 'active' :'' }}">
         <a href="{{ path('user_profil') }}">
             <img src="{{ app.request.attributes.get('_route') == 'user_profil' ? asset('bundles/observation/images/icones/profil_icon_hover.png') : asset('bundles/observation/images/icones/profil_icon.png') }}"
-                 alt="">
+                 alt="lien vers la page de profil">
         </a>
     </div>
     <div class="second_line col-xs-3 text-center {{ app.request.attributes.get('_route') == 'user_my_observations' ? 'active' : '' }}">
         <a href="{{ path('user_my_observations') }}">
             <img src="{{ app.request.attributes.get('_route') == 'user_my_observations' ? asset('bundles/observation/images/icones/observationsProfil_icon_hover.png') : asset('bundles/observation/images/icones/observationsProfil_icon.png') }}"
-                 alt="">
+                 alt="lien vers la page de vos observations">
         </a>
     </div>
         {% if 'ROLE_NATURALISTE' in app.user.roles %}
             <div class="second_line col-xs-3 text-center {{ app.request.attributes.get('_route')  == 'user_observations' ? 'active' : '' }}">
                 <a href="{{ path('user_observations') }}">
                     <img src="{{ app.request.attributes.get('_route') == 'user_observations' ? asset('bundles/observation/images/icones/observationsProfil_icon_hover.png') : asset('bundles/observation/images/icones/observationsProfil_icon.png') }}"
-                         alt="">
+                         alt="lien vers la page des observations">
                 </a>
             </div>
         {% else %}
             <div class="second_line col-xs-3 text-center {{ app.request.attributes.get('_route') == 'user_stars' ? 'active' : '' }}">
                 <a href="{{ path('user_stars') }}">
                     <img src="{{ app.request.attributes.get('_route') == 'user_stars' ? asset('bundles/observation/images/icones/medailles_icon_hover.png') : asset('bundles/observation/images/icones/medailles_icon.png') }}"
-                         alt="">
+                         alt="lien vers vos medailles">
                 </a></div>
         {% endif %}
     <div class="second_line col-xs-3 text-center">
         <a href="{{ path('user_logout') }}">
-            <img src="{{ asset('bundles/observation/images/icones/deconnexion_icon.png') }}" alt="">
+            <img src="{{ asset('bundles/observation/images/icones/deconnexion_icon.png') }}" alt="lien pour se deconnecter">
         </a>
     </div>
 </div>

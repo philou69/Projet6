@@ -129,8 +129,9 @@ class BirdController extends Controller
                 $couleurBec = strlen(htmlspecialchars($request->query->get('bec'))) == 0 ? null : htmlspecialchars($request->query->get('bec'));
                 $couleurPlumage = strlen(htmlspecialchars($request->query->get('plumage'))) == 0 ? null : htmlspecialchars($request->query->get('plumage'));
                 $couleurPatte = strlen(htmlspecialchars($request->query->get('patte'))) == 0 ? null : htmlspecialchars($request->query->get('patte'));
+                $typeBec = strlen(htmlspecialchars($request->query->get('typeBec'))) == 0 ? null : htmlspecialchars($request->query->get('typeBec'));
                 // On effectu la requete doctrine getPage()
-                $birds = $em->getRepository('ObservationBundle:Bird')->getPage($page, $number, $search, $couleurBec, $couleurPatte, $couleurPlumage);
+                $birds = $em->getRepository('ObservationBundle:Bird')->getPage($page, $number, $search, $couleurBec, $couleurPatte, $couleurPlumage, $typeBec);
 
                 // On calcul le nombre de page max
                 $nbPage = ceil(count($birds)/$number);

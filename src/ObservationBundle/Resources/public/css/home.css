@@ -145,8 +145,18 @@ stylisation des buttons
 }
 
 /* Style special pour la navbar */
-.navbar-fixed-top {
+.navbar-transparent {
     background-color: transparent;
+    background: linear-gradient(to bottom,#000 0,rgba(255,255,255,0) 100%);
+}
+.navbar-transparent>#first{
+    background: transparent;
+}
+.navbar-transparent>.tab-content{
+    background: transparent;
+}
+.navbar-transparent .first_line.active>a{
+    color: #99d1c8;
 }
 
 /*Style sur le div principal de la page
@@ -172,6 +182,9 @@ stylisation des buttons
 
     #sociallinks a {
         width: 100px;
+    }
+    .navbar-transparent .second_line>a{
+        color: white;
     }
 }
 

@@ -7,7 +7,7 @@
                         <div class="up">
                             {% if app.user in groupStar.users%}
                                 {#{{ dump(groupStar.getHighest(app.user)) }}#}
-                                <img src="{{ asset(groupStar.getHighest(app.user).image) }}" alt="Medaille">
+                                <img src="{{ asset(groupStar.getHighest(app.user).image) }}" alt="dernière médaille">
                             {% else %}
                                 <p>Vous n'avez pas encore déverouillez cette categorie</p>
                             {% endif %}
@@ -15,9 +15,9 @@
                         <div class="down">
                             {% for star in groupStar.stars | reverse %}
                                 {% if app.user in star.users %}
-                                    <img src="{{ asset(star.image) }}" alt="{{ star.title }}">
+                                    <img src="{{ asset(star.image) }}" alt="{{ star.title }}" alt="Medaille">
                                 {% else %}
-                                    <img src="{{ asset(groupStar.image) }}" alt="medaille">
+                                    <img src="{{ asset(groupStar.image) }}" alt="medaille bloqué">
                                 {% endif %}
                             {% endfor %}
                         </div>

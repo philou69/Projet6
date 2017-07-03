@@ -30,13 +30,13 @@
              class="{{ 'ROLE_NATURALISTE' in app.user.roles ? 'col-xs-12' : 'col-xs-6' }} text-center count">
             <h5>Observations</h5>
             <div><img src="{{ asset('bundles/observation/images/icones/observationsProfil_icon.png') }}"
-                      alt=""> {{ app.user.observations | length }}</div>
+                      alt="jumelles"> {{ app.user.observations | length }}</div>
         </div>
         {% if 'ROLE_NATURALISTE' not in app.user.roles %}
             <div id="stars-count" class="col-xs-6 text-center count">
                 <h5>Médailles</h5>
                 <div><img src="{{ asset('bundles/observation/images/icones/medailles_icon.png') }}"
-                          alt=""> {{ app.user.stars |length }}</div>
+                          alt="medailles"> {{ app.user.stars |length }}</div>
 
             </div>
         {% endif %}

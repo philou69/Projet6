@@ -1,11 +1,11 @@
 <div id="bird"
-     class="tab-pane center-80 {% if app.request.attributes.get('_route') in ['bird_description','bird_location'] %}active{% endif %}">
+     class="tab-pane center-80 {% if app.request.attributes.get('_route') in ['bird_description','bird_location'] %}active always-active{% endif %}">
     <ul class=" nav navbar-nav pull-right">
-        <li class="second_line {% if app.request.attributes.get('_route') == 'bird_description' %}active{% endif %}"><a
-                    href="{{ path('bird_description', {'id': bird.id}) }}">Fiche descriptive</a></li>
-        <li class="second_line {% if app.request.attributes.get('_route') == 'bird_location' %}active{% endif %}"><a
-                    href="{{ path('bird_location', {'id': bird.id}) }}">Répartition géographique</a></li>
-        <li class="second_line"><a href="{{ path('bird_observation', {'id': bird.id}) }}">Ajouté une observation</a>
+        <li class="second_line {{ app.request.attributes.get('_route') == 'bird_description' ? 'active always-active' : '' }}"><a
+                    href="{{ path('bird_description', {'id': bird.id}) }}" data-hide="#bird">Fiche descriptive</a></li>
+        <li class="second_line {{ app.request.attributes.get('_route') == 'bird_location' ? 'active always-active' : '' }}"><a
+                    href="{{ path('bird_location', {'id': bird.id}) }}" data-hide="#bird">Répartition géographique</a></li>
+        <li class="second_line"><a href="{{ path('bird_observation', {'id': bird.id}) }}" data-hide="#bird">Ajouté une observation</a>
         </li>
     </ul>
 </div>
