@@ -1,5 +1,10 @@
 {% extends '@Observation/layout.mobile.html.twig' %}
 
+{# Definition des variables pour le referencement#}
+{% set metadescription = "Découvrez les espèces d'oiseaux observées dans l'étude ornithologique conduite par NAO. l'application web d'observation des oiseaux, contribuez à la préservation de la biodiversité. Protection des oiseaux, photographie naturaliste, ornithologie" %}
+{% set ogtitle = "Liste des oiseaux" %}
+{% set ogurl= url('bird_list') %}
+
 {% block title %}Liste des oiseaux{% endblock %}
 {% block link %}
     {{ parent() }}

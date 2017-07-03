@@ -1,4 +1,10 @@
 {% extends 'ObservationBundle::layout.mobile.html.twig' %}
+
+{# Definition des variables pour le referencement#}
+{% set metadescription = "NAO l'application web d'observation des oiseaux, contribuez à la préservation de la biodiversité. Protection des oiseaux, photographie naturaliste, ornithologie" %}
+{% set ogtitle = "Accueil" %}
+{% set ogurl= url('homepage') %}
+
 {% block  title %}Accueil{% endblock %}
 
 {% block link %}
@@ -37,7 +43,7 @@
                 <div class="row">
                     {% for picture in gallery %}
                         <div class="col-xs-6">
-                            <img src="{{ asset('uploads/images/bird/' ~picture.url) }}"></div>
+                            <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" alt="image de la galerie"></div>
                     {% else %}
                         <p>Prochainement les dernières photos</p>
                     {% endfor %}

@@ -1,11 +1,16 @@
 {% extends '@Observation/layout.desktop.html.twig' %}
 
+{# Definition des variables pour le referencement#}
+{% set metadescription = "Rejoignez les observateurs volontaires et contribuez à l'étude NAO l'application web d'observation des oiseaux, contribuez à la préservation de la biodiversité." %}
+{% set ogtitle = "S'identifier" %}
+{% set ogurl= url('user_connect') %}
+
 {% block link %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/observation/css/connect.css') }}">
     <link rel="stylesheet" href="{{ asset('bundles/observation/css/toggle.switch.newsletter.css') }}">
 {% endblock %}
-{% block title %}S'inscrire{% endblock %}
+{% block title %}S'identifier{% endblock %}
 {% block content %}
     <div id="content-connect">
         <div class="center-80">
