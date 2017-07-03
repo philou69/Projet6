@@ -2,8 +2,10 @@
 
 namespace ObservationBundle\Form\Type\Bird;
 
+use ObservationBundle\Form\Type\Picture\PictureType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -83,7 +85,13 @@ class BirdType extends AbstractType
                     'Rouge/orange' => 'rouge/orange',
                     'Vert' => 'vert',
                 )
-            ));
+            ))
+            ->add('avatar', PictureType::class, array(
+                'label' => 'photo de l\'oiseau',
+                    'required' => false
+
+                )
+            );
     }
 
     /**
