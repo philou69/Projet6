@@ -1,8 +1,16 @@
 {# Vue générale #}
 <!doctype html>
-<html lang="fr">
+<html xmlns:og="http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
+    <meta lang="fr-FR">
+    <meta name="keywords" content="Observation oiseaux, ornithologie, photo naturalise, photographie animalière, randonnée, parcs naturels, biodiversité, oiseaux des jardins, oiseaux protégés, protection des oiseaux, classe avès">
+    <meta name="description" content="{{ metadescription }}">
+    <meta name="author" content="Nos Amis les Oiseaux" >
+    <meta property="og:title" content="NAO-{{ ogtitle }}-l'appli web d'observation des oiseaux">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ ogurl }}">
+    <meta property="og:image" content="{{ asset('bundles/observation/images/logo/logo_footer_couleur.png') }}">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">

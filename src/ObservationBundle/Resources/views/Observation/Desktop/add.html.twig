@@ -1,4 +1,10 @@
 {% extends 'ObservationBundle::layout.desktop.html.twig' %}
+
+{# Definition des variables pour le referencement#}
+{% set metadescription = "Rejoignez les observateurs volontaires et contribuez à l'étude NAO l'application web d'observation des oiseaux, contribuez à la préservation de la biodiversité." %}
+{% set ogtitle = "Ajouter une observation" %}
+{% set ogurl= url('observation_add') %}
+
 {% block title %}Observation{% endblock %}
 
 {% block link %}
