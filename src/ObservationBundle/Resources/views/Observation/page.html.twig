@@ -8,7 +8,7 @@
             <div class="observation row" data-href="{{ path('observation_view', {'id': observation.id}) }}">
                 <div class="text-center col-xs-12 col-md-2 first-bloc">
                             <small>Espèce observé</small>{% if not is_mobile() %}<br>{% endif %}
-                            {{ observation.bird.nomVern }}
+                            {{ observation.bird }}
                 </div>
                 <div class="text-center col-md-2 col-xs-4 right-border second-bloc">
                             <small>
