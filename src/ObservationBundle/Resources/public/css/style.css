@@ -101,8 +101,8 @@ Retour bas de page
 a#retour, a#add-birds {
     position: absolute;
     bottom:0;
-    left: -20%;
-    right: -20%;
+    left: calc( 0px - ( 100% / 8 ));
+    right: calc( 0px - (100% / 8 ));
     width: auto;
     display: flex;
     flex-direction: row;
