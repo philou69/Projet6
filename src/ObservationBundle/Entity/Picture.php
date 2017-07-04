@@ -49,6 +49,8 @@ class Picture
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Observation", inversedBy="pictures")
      */
     private $observation;
+
+
     /**
      * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\User", mappedBy="avatar")
      */
@@ -265,4 +267,5 @@ class Picture
     {
         return $this->getUploadDir(). '/'.  $this->url;
     }
+
 }

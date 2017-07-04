@@ -1,11 +1,15 @@
 {% extends 'ObservationBundle::layout.desktop.html.twig' %}
-{% block  title %}Home Page{% endblock %}
+{# Definition des variables pour le referencement#}
+{% set metadescription = "NAO l'application web d'observation des oiseaux, contribuez à la préservation de la biodiversité. Protection des oiseaux, photographie naturaliste, ornithologie" %}
+{% set ogtitle = "Accueil" %}
+{% set ogurl= 'https://nao.site-projet.fr' %}
+
+{% block  title %}Accueil{% endblock %}
 
 {% block link %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/observation/css/home.css') }}">
 {% endblock %}
-
 
 {% block content %}
     <div id="contentHome">

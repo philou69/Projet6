@@ -1,5 +1,10 @@
 {% extends '@Observation/layout.desktop.html.twig' %}
 
+{# Definition des variables pour le referencement#}
+{% set meta-description = "Toute l'actualité de l'association Nos Amis les Oiseaux. Restez informés sur nos actions et sur l'étude . NAO l'application web d'observation des oiseaux, contribuez à la préservation de la biodiversité" %}
+{% set og-title = "L'association" %}
+{% set og-url= url('blog_view') %}
+
 {% block title %}L'association{% endblock %}
 {% block link %}
     {{ parent() }}

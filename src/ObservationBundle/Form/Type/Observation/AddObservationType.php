@@ -49,53 +49,18 @@ class AddObservationType extends AbstractType
                                 'max' => 20,
                                 'value' => 1)
             ))
-//            ->add('pictures', FileType::class, [
-//                'data_class' => null,
-//                'mapped' => false,
-//                'multiple' => true,
-//                'attr' => [
-//                    'accept' => 'image/*',
-//                        'class' => 'filestyle',
-//                        'data-input' => 'false',
-//                        'data-badge' => 'false',
-//                        'data-icon' => 'false'
-//                ]
-//            ])
-
-            ->add('pictures', CollectionType::class, [
-                'entry_type' => PictureType::class,
-                'allow_add' => true,
-                'required' => false,
-                'entry_options' => [
-                    'label' => false
-                ]
+            ->add('pictures', PictureType::class, [
+                'data_class' => null,
             ])
-//            ->add('pictures', RepeatedType::class, array(
-//                'type' => FileType::class,
-//                'label' => 'Importer une image',
-//                'required' => false,
-//                'options' => array(
-//                    'data_class' => null,
-//                    'mapped' => false,
-//                    'multiple' => true,
-//                    'attr' => array(
-//                        'accept' => 'image/*',
-//                        'class' => 'filestyle',
-//                        'data-input' => 'false',
-//                        'data-badge' => 'false',
-//                        'data-icon' => 'false'
-//                    )
-//                )
-//            ))
-
+//            ->add('pictures_2', PictureType::class, [
+//                'data_class' => null,
+//            ])
             ->add( 'save', SubmitType::class, array(
                 'label' => 'Valider la saisie',
                 'attr' => array(
                     'class' => 'btn btn-success'
                 )
             ))
-
-
 
         ;
     }

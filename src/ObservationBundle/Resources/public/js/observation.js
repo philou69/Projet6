@@ -54,16 +54,16 @@ let imgURL1,
 
 let div = document.getElementById("picBird");
 
-    if ($('#add_observation_pictures_1').length) {
-        $('#add_observation_pictures_1 > div > label').text('Prendre une photo');
-        $('#add_observation_pictures_1_file').attr('capture', true);
-    }
+    // if ($('#add_observation_pictures_1').length) {
+    //     $('#add_observation_pictures_1 > div > label').text('Prendre une photo');
+    //     $('#add_observation_pictures_1_file').attr('capture', true);
+    // }
 
 //Reset de l'upload des photos
     $(".close").click(function () {
     $('#closePic').attr('hidden', true);
-        $('#add_observation_pictures_0').val("");
-        $('#add_observation_pictures_1').val("");
+        $('#add_observation_pictures').val("");
+        $('#add_observation_pictures_2').val("");
 
 
         removePicture();
@@ -78,17 +78,17 @@ let div = document.getElementById("picBird");
 
 
 //On determine quel boutton est cliqué puis on selectionne le mode
-    $('[for=add_observation_pictures_0_file]').click(function () {
+    $('[for=add_observation_pictures_file]').click(function () {
         //On verifie quel bouton est cliqué
-        idPicture = 'add_observation_pictures_0';
+        idPicture = 'add_observation_pictures_file';
         console.log(idPicture)
 
         selectPicture(idPicture);
     });
 
-    $('[for=add_observation_pictures_1_file]').click(function () {
+    $('[for=add_observation_pictures_2_file]').click(function () {
         //On verifie quel bouton est cliqué
-        idPicture = 'add_observation_pictures_1';
+        idPicture = 'add_observation_pictures_2_file';
         console.log(idPicture)
 
         selectPicture(idPicture);

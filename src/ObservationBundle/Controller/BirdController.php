@@ -4,8 +4,10 @@
 namespace ObservationBundle\Controller;
 
 
+use DoctrineExtensions\Query\Mysql\Pi;
 use ObservationBundle\Entity\Bird;
 use ObservationBundle\Entity\Fiche;
+use ObservationBundle\Form\Type\Picture\PictureType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ObservationBundle\Entity\Observation;
 use ObservationBundle\Form\Type\Observation\AddObservationType;
@@ -169,7 +171,9 @@ class BirdController extends Controller
         if ($bird->getFiche() === null) {
             // Creation fiche et passage à l'oiseaux
             $fiche = new Fiche();
-            $bird->setFiche($fiche);
+            $avatar = new Picture();
+            $bird->setFiche($fiche)
+                ->setAvatar($avatar);
             $fiche->setBird($bird);
             $form = $this->createForm(FicheType::class, $fiche, array(
                 'attr' => array(
@@ -179,6 +183,10 @@ class BirdController extends Controller
             ));
         } //Si la fiche existe deja on la modifie
         else {
+            if($bird->getAvatar() === null){
+                $avatar = new Picture();
+                $bird->setAvatar($avatar);
+            }
             $form = $this->createForm(FicheType::class, $bird->getFiche(), array(
                 'attr' => array(
                     'minVal' => $bird->getFiche()->getMinQuantity(),
@@ -199,9 +207,12 @@ class BirdController extends Controller
                 'id' => $bird->getId()
             ));
         }
-
-        return $this->render('@Observation/Fiche/Desktop/editFiche.html.twig', array('bird' => $bird,
-            'form' => $form->createView()));
+        $device = $this->get('mobile_detect.mobile_detector');
+        if($device->isMobile() || $device->isTablet()){
+            return $this->render('@Observation/Fiche/Mobile/editFiche.html.twig', array('bird' => $bird, 'form' => $form->createView()));
+        }else{
+            return $this->render('@Observation/Fiche/Desktop/editFiche.html.twig', array('bird' => $bird, 'form' => $form->createView()));
+        }
 
     }
 }

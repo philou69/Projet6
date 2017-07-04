@@ -1,4 +1,10 @@
 {% extends 'ObservationBundle::layout.mobile.html.twig' %}
+
+{# Definition des variables pour le referencement#}
+{% set metadescription = "Rejoignez les observateurs volontaires et contribuez à l'étude NAO l'application web d'observation des oiseaux, contribuez à la préservation de la biodiversité." %}
+{% set ogtitle = "Ajouter une observation" %}
+{% set ogurl= url('observation_add') %}
+
 {% block title %}Observation{% endblock %}
 
 {% block link %}
@@ -92,15 +98,19 @@
                                 {{ form_errors(form.pictures) }}
                             </div>
                             <div id="picture-input" class="row">
-
-                                {% for pictureField in form.pictures %}
-                                    <div class="col-xs-12">
+                                    <div class="col-xs-6">
                                         {{ form_widget(form.pictures) }}
                                     </div>
-                                {% endfor %}
+                                <div class="col-xs-6">
 
-                                {#<div class="col-xs-6 col-sm-4">#}
-                                {#{{ form_widget(form.pictures, {'attr': {'data-buttonText': 'Prendre Photo(s)', 'capture': 'true'}}) }}#}
+                                    {{ form_widget(form.pictures_2) }}
+
+                                    {#<div id="add_observation_pictures_2">#}
+                                        {#<div class="form-group">#}
+                                            {#<label class="control-label" for="add_observation_pictures_2_file">Importer une image#}
+                                            {#</label>#}
+                                            {#<input type="file" id="add_observation_pictures_2_file" name="add_observation[pictures_2][file][]" accept="image/*" class="filestyle" data-input="false" data-badge="false" data-icon="false" data-buttontext="Choisir Photo" multiple="multiple" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);" capture="true">#}
+                                    {#</div>#}
                                 {#</div>#}
                             </div>
                             <div id="picBird" class="col-xs-12">

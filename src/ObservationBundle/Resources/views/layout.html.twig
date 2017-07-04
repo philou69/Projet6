@@ -1,8 +1,25 @@
 {# Vue générale #}
 <!doctype html>
-<html lang="fr">
+<html prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
+    <meta lang="fr-FR">
+    {% if meatadescription is defined %}
+        <meta name="keywords" content="Observation oiseaux, ornithologie, photo naturalise, photographie animalière, randonnée, parcs naturels, biodiversité, oiseaux des jardins, oiseaux protégés, protection des oiseaux, classe avès">
+        <meta name="description" content="{{ metadescription }}">
+        <meta name="author" content="Nos Amis les Oiseaux" >
+        <meta property="og:title" content="NAO-{{ ogtitle }}-l'appli web d'observation des oiseaux">
+        <meta property="og:type" content="website">
+        <meta property="og:description" content="{{ metadescription }}">
+        <meta property="og:url" content="{{ ogurl }}">
+        <meta property="og:image" content="{{ absolute_url(asset('bundles/observation/images/logo/logo_footer_couleur.png')) }}">
+        <meta property="og:image:url" content="{{ absolute_url(asset('bundles/observation/images/logo/logo_footer_couleur.png')) }}">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="182">
+        <meta property="og:image:height" content="89">
+        <meta property="fb:app_id" content="{{ facebook_id }}">
+    {% endif %}
+
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">

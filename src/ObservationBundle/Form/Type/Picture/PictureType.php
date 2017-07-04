@@ -19,6 +19,7 @@ class PictureType extends AbstractType
         $builder
             ->add('file', FileType::class, array(
                     'label' => 'Importer une image',
+                    'multiple' => true,
                     'required' => false,
                     'attr' => [
                         'accept' => 'image/*',
@@ -29,13 +30,10 @@ class PictureType extends AbstractType
                         'data-buttonText' => 'Choisir Photo'
                     ],
                     'constraints' => [
-                        new All([
-                            new Image()
-                        ])
+                        new Image()
                     ],
                     'data_class' => null,
-                    'mapped' => false,
-                    'multiple' => true,
+//                    'mapped' => false,
                 )
             );
 
