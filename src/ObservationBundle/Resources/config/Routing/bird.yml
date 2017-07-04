@@ -3,6 +3,15 @@ bird_list:
     defaults:
       _controller: ObservationBundle:Bird:list
     methods:  [GET]
+bird_listing:
+    path: /paging-all
+    defaults:
+      _controller: ObservationBundle:Bird:listing
+bird_map_list:
+    path: /map-list
+    defaults:
+      _controller: ObservationBundle:Bird:mapping
+    methods:  [GET]
 
 bird_description:
     path: /{id}/description
