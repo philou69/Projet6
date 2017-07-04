@@ -1,7 +1,8 @@
-#content, #view{
+#content, #view {
     position: relative;
 }
-#content>.center-80>a.btn, #view>.center-90>a.btn{
+
+#content > .center-80 > a.btn, #view > .center-90 > a.btn {
     position: absolute;
     top: 60px;
     right: 10px;

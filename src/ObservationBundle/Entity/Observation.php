@@ -71,6 +71,9 @@ class Observation
      */
     private $pictures;
 
+
+    private $pictures_2;
+
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Location", inversedBy="observations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
@@ -105,7 +108,9 @@ class Observation
      */
     public function __construct()
     {
+
         $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
+//        $this->pictures_2 = new \Doctrine\Common\Collections\ArrayCollection();
         $this->postedAt = new \DateTime();
     }
 
@@ -392,4 +397,5 @@ class Observation
     {
         return $this->pictures;
     }
+    
 }

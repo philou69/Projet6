@@ -20,7 +20,7 @@ class PictureRepository extends \Doctrine\ORM\EntityRepository
         $query = $qb
             ->select('p.url')
             ->leftJoin('p.observation', 'obs')
-            ->where('obs.validated = 0 ')
+            ->where('obs.validated = true ')
             ->orderBy('p.id', 'DESC')
             ->setMaxResults(4);
 

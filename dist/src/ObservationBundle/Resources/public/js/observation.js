@@ -39,9 +39,6 @@ $(document).ready(function () {
         $('#datepicker').datepicker('hide');
     });
 
-    //$('#datepicker').datepicker("setDate", new Date());
-
-
     //resuired a false pour element caché pour validation formulaire
     document.getElementById("add_observation_location_latitude").required = false;
     document.getElementById("add_observation_location_longitude").required = false;
@@ -54,29 +51,45 @@ $(document).ready(function () {
 
     var div = document.getElementById("picBird");
 
+    // if ($('#add_observation_pictures_1').length) {
+    //     $('#add_observation_pictures_1 > div > label').text('Prendre une photo');
+    //     $('#add_observation_pictures_1_file').attr('capture', true);
+    // }
+
     //Reset de l'upload des photos
     $(".close").click(function () {
         $('#closePic').attr('hidden', true);
-        $('#add_observation_pictures_first').val("");
-        $('#add_observation_pictures_second').val("");
+        $('#add_observation_pictures').val("");
+        $('#add_observation_pictures_2').val("");
 
         removePicture();
     });
 
-    //Recupération de(s )l'image(s)
-    $('.filestyle').click(function () {
+    if ($('#getBird').attr('hidden') === 'hidden') {
+
+        document.getElementById("add_observation_bird").required = false;
+    }
+    ;
+
+    //On determine quel boutton est cliqué puis on selectionne le mode
+    $('[for=add_observation_pictures_file]').click(function () {
         //On verifie quel bouton est cliqué
-        if ($(this).attr('id') === 'add_observation_pictures_first') {
-            idPicture = 'add_observation_pictures_first';
-        } else if ($(this).attr('id') === 'add_observation_pictures_second') {
+        idPicture = 'add_observation_pictures_file';
+        console.log(idPicture);
 
-            idPicture = 'add_observation_pictures_second';
-        }
+        selectPicture(idPicture);
+    });
 
-        //resuired a false pour element caché pour validation formulaire
-        if (document.getElementById('getBird')) {
-            document.getElementById("idPicture").required = false;
-        }
+    $('[for=add_observation_pictures_2_file]').click(function () {
+        //On verifie quel bouton est cliqué
+        idPicture = 'add_observation_pictures_2_file';
+        console.log(idPicture);
+
+        selectPicture(idPicture);
+    });
+
+    //Recupération de(s )l'image(s)
+    function selectPicture(idPicture) {
 
         document.getElementById(idPicture).onchange = function (file) {
             //On remove les photos existantes
@@ -128,7 +141,7 @@ $(document).ready(function () {
 
             $('#closePic').attr('hidden', false);
         };
-    });
+    }
 
     //Effacer les images
     function removePicture() {

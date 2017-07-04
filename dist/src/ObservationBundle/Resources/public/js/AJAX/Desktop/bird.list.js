@@ -10,6 +10,7 @@ $(document).ready(function () {
     var $colorBec = $('#color-bec');
     var $colorPlumage = $('#color-plumage');
     var $colorPatte = $('#color-patte');
+    var $typeBec = $('#type-bec');
     // Création de la variable page
     var page = 1;
 
@@ -27,6 +28,7 @@ $(document).ready(function () {
         var becParameter = $colorBec.val() === '' ? '' : 'bec=' + $colorBec.val() + '&';
         var patteParameter = $colorPatte.val() === '' ? '' : 'patte=' + $colorPatte.val() + '&';
         var plumageParameter = $colorPlumage.val() === '' ? '' : 'plumage=' + $colorPlumage.val() + '&';
+        var typeBecParameter = $typeBec.val() === '' ? '' : 'typeBec=' + $typeBec.val() + '&';
         var parameters = '?' + searchParameter + becParameter + patteParameter + plumageParameter;
         return parameters;
     }

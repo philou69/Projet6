@@ -121,12 +121,12 @@ class DefaultController extends Controller
     {
         $form = $this->createForm(ContentType::class, $content);
         $form->handleRequest($request);
-        if($form->isValid()){
+        if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($content);
             $em->flush();
             $this->addFlash('success', 'Vos modifications ont bien été enregistrer!');
-            return $this->redirectToRoute('asso_mention_legal', array('page'=> 'mentions-legales'));
+            return $this->redirectToRoute('asso_mention_legal', array('page' => 'mentions-legales'));
         }
 
         $device = $this->get('mobile_detect.mobile_detector');

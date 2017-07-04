@@ -3,7 +3,9 @@
 namespace ObservationBundle\Form\Type\Observation;
 
 use ObservationBundle\Form\Type\Location\LocationType;
+use ObservationBundle\Form\Type\Picture\PictureType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -47,32 +49,18 @@ class AddObservationType extends AbstractType
                                 'max' => 20,
                                 'value' => 1)
             ))
-            ->add('pictures', RepeatedType::class, array(
-                'type' => FileType::class,
-                'label' => 'Importer une image',
-                'required' => false,
-                'options' => array(
-                    'data_class' => null,
-                    'mapped' => false,
-                    'multiple' => true,
-                    'attr' => array(
-                        'accept' => 'image/*',
-                        'class' => 'filestyle',
-                        'data-input' => 'false',
-                        'data-badge' => 'false',
-                        'data-icon' => 'false'
-                    )
-                )
-            ))
-
+            ->add('pictures', PictureType::class, [
+                'data_class' => null,
+            ])
+//            ->add('pictures_2', PictureType::class, [
+//                'data_class' => null,
+//            ])
             ->add( 'save', SubmitType::class, array(
                 'label' => 'Valider la saisie',
                 'attr' => array(
                     'class' => 'btn btn-success'
                 )
             ))
-
-
 
         ;
     }

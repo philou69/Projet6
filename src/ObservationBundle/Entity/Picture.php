@@ -16,7 +16,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Picture
 {
     /**
-     * @var
      * @Assert\Image()
      */
     protected $file;
@@ -50,6 +49,8 @@ class Picture
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Observation", inversedBy="pictures")
      */
     private $observation;
+
+
     /**
      * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\User", mappedBy="avatar")
      */
@@ -266,4 +267,5 @@ class Picture
     {
         return $this->getUploadDir(). '/'.  $this->url;
     }
+
 }
