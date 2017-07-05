@@ -100,7 +100,7 @@
                             </div>
                             <div id="picture-input" class="row">
                                 <div class="col-xs-12">
-                                    {{ form_widget(form.files) }}
+                                    {{ form_widget(form.files, {'attr': {'accept': 'image/*;capture=camera'}}) }}
                                     </div>
                             <div id="picBird" class="col-xs-12">
                                 <button type="button" class="close" aria-label="Close" id="closePic" hidden>

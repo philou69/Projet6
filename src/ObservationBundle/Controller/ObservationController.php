@@ -178,18 +178,21 @@ class ObservationController extends Controller
     public function validateAction(Observation $observation)
     {
         // Action simple de mise à jour de l'entity sans vue renvoyant à la page de l'observation
-        // on s'assure que l'observation n'est pas déjà valider
-        if ($observation->getValidated() === false) {
-            $obsListener = $this->get('observation.event_listener');
-            $obsListener->validate($observation, $this->getUser());
-            $em = $this->getDoctrine()->getManager();
+        // on passe l'observation en validé
+        $observation->setValidated(true)
+            ->setValidatedAt(new \DateTime())
+            ->setValidatedBy($this->getUser());
+        foreach ($observation->getPictures() as $picture)
+        {
+            $picture->setBird($observation->getBird());
+        }
+        $em = $this->getDoctrine()->getManager();
 
             $em->persist($observation);
             $em->flush();
             $this->get('event_dispatcher')->dispatch('observation.captured', new ObservationEvent($observation));
+            $this->addFlash('info', "L'observation a bien été enregistrée !");
         }
-        $this->addFlash('info', "L'observation a bien été enregistrée !");
-
         return $this->redirectToRoute('observation_view', array('id' => $observation->getId()));
 
     }
@@ -202,14 +205,15 @@ class ObservationController extends Controller
         // Action simple de mise à jour de l'entity sans vue renvoyant à la page de l'observation
         // On vérifie si l'observation est validé
 
-        if ($observation->getValidated() === true) {
+        if ($observation->getValidated() === true){
             $obsListener = $this->get('observation.event_listener');
             $obsListener->unvalidate($observation);
             $em = $this->getDoctrine()->getManager();
             $em->persist($observation);
             $em->flush();
+
+            $this->addFlash('success', 'L\'observation a bien été invalidée');
         }
-        $this->addFlash('success', 'L\'observation a bien été invalidée');
         return $this->redirectToRoute('observation_view', array('id' => $observation->getId()));
 
     }
