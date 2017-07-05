@@ -10,7 +10,7 @@ function initMap() {
         marqueur = new google.maps.Marker(),
         geocoder = new google.maps.Geocoder(),
         infowindow = new google.maps.InfoWindow(),
-        iconBaseOiseaux = '/bundles/observation/images/icones/crow_red.png';
+        iconBaseOiseaux = '../bundles/observation/images/icones/crow_red.png';
     var lat_lng = void 0;
 
     /*
@@ -44,8 +44,8 @@ function initMap() {
         var lat = place.geometry.location.lat(),
             lng = place.geometry.location.lng();
 
-        document.getElementById("add_observation_location_latitude").value = lat;
-        document.getElementById("add_observation_location_longitude").value = lng;
+        $("#add_observation_location_latitude").value = lat;
+        $("#add_observation_location_longitude").value = lng;
     });
 
     //Création d'un marqueur sur la carte lors d'un clic. Remplissage automatique des champs Lat et Long
@@ -55,19 +55,21 @@ function initMap() {
         geocoder.geocode({ 'location': lat_lng }, function (results, status) {
             if (status === 'OK') {
                 if (results[0]) {
+                    console.log(results[0]);
                     marqueur.setMap(map);
                     marqueur.setIcon(iconBaseOiseaux);
                     marqueur.setPosition(new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()));
                     map.setCenter(lat_lng);
 
-                    document.getElementById("add_observation_location_latitude").value = event.latLng.lat();
-                    document.getElementById("add_observation_location_longitude").value = event.latLng.lng();
+                    $("#add_observation_location_latitude").value = event.latLng.lat();
+                    $("#add_observation_location_longitude").value = event.latLng.lng();
 
                     var locationField = document.getElementById("add_observation_location_lieu");
-                    locationField.value = results[0].address_components[2].long_name;
+                    // locationField.value = results[0].formatted_address;
+                    locationField.value = results[0].address_components[1].long_name + ', ' + results[0].address_components[2].long_name + ', ' + results[0].address_components[3].long_name + ' ' + results[0].address_components[5].long_name;
 
-                    document.getElementById("infoPosition").textContent = locationField.value;
-                    infowindow.setContent(results[0].address_components[2].long_name);
+                    $("#infoPosition").textContent = locationField.value;
+                    infowindow.setContent(locationField.value);
                     infowindow.open(map, marqueur);
                 } else {
                     window.alert('Aucun résultat');
@@ -90,18 +92,18 @@ function initMap() {
                 geocoder.geocode({ 'location': lat_lng }, function (results, status) {
                     if (status === 'OK') {
                         if (results[0]) {
-
+                            console.log(results[0]);
                             marqueur.setMap(map);
                             marqueur.setPosition(lat_lng);
                             marqueur.setIcon(iconBaseOiseaux);
                             map.setCenter(lat_lng);
                             map.setZoom(14);
 
-                            document.getElementById("add_observation_location_latitude").value = lat_lng.lat;
-                            document.getElementById("add_observation_location_longitude").value = lat_lng.lng;
-                            document.getElementById("add_observation_location_lieu").value = results[0].address_components[2].long_name;
+                            $("#add_observation_location_latitude").value = lat_lng.lat;
+                            "#add_observation_location_longitude".value = lat_lng.lng;
+                            $("#add_observation_location_lieu").value = results[0].address_components[1].long_name + ', ' + results[0].address_components[2].long_name + ', ' + results[0].address_components[3].long_name + ' ' + results[0].address_components[5].long_name;
 
-                            infowindow.setContent(results[0].address_components[2].long_name);
+                            infowindow.setContent($("#add_observation_location_lieu").value);
                             infowindow.open(map, marqueur);
                         } else {
                             window.alert('Aucun résultat');
