@@ -106,8 +106,7 @@
     #bienvenue{
         padding-top: 30px;
     }
-
-    #bienvenue a.btn {
+    #bienvenue a.btn{
         margin-top: 10px;
     }
     .images {
@@ -176,7 +175,6 @@ stylisation des buttons
 
     #bienvenue a{
         width: 40%;
-        margin: 0 30%;
     }
 
     #sociallinks {

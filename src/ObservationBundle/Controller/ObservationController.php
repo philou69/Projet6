@@ -178,16 +178,11 @@ class ObservationController extends Controller
     public function validateAction(Observation $observation)
     {
         // Action simple de mise à jour de l'entity sans vue renvoyant à la page de l'observation
-        // on passe l'observation en validé
-        $observation->setValidated(true)
-            ->setValidatedAt(new \DateTime())
-            ->setValidatedBy($this->getUser());
-        foreach ($observation->getPictures() as $picture)
-        {
-            $picture->setBird($observation->getBird());
-        }
-        $em = $this->getDoctrine()->getManager();
-
+        // on s'assure que l'observation n'est pas déjà valider
+        if($observation->getValidated() === false ){
+            $obsListener = $this->get('observation.event_listener');
+            $obsListener->validate($observation, $this->getUser());
+            $em = $this->getDoctrine()->getManager();
             $em->persist($observation);
             $em->flush();
             $this->get('event_dispatcher')->dispatch('observation.captured', new ObservationEvent($observation));
