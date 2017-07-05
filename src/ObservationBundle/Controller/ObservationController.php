@@ -114,6 +114,15 @@ class ObservationController extends Controller
         $em = $this->getDoctrine()->getManager();
         $device = $this->get('mobile_detect.mobile_detector');
 
+
+        // On verifie si le visiteur est un naturaliste
+        if($this->getUser()->hasRole('ROLE_NATURALISTE')){
+            // Dans ce cas, l'observation est automatiquement validé par lui-même
+            $observation->setValidated(true)
+                ->setValidatedAt(new \DateTime())
+                ->setValidatedBy($this->getUser());
+        }
+
         $form = $this->createForm(AddObservationType::class, $observation);
 
         $form->handleRequest($request);
@@ -129,6 +138,10 @@ class ObservationController extends Controller
                     ->setObservation($observation);
                 $observation->addPicture($picture);
 
+                // Si l'observation est dejà validé, on ajoute l'oiseau à la photo.
+                if($observation->getValidated() === true){
+                    $picture->setBird($observation->getBird());
+                }
                 $em->persist($picture);
             }
             // Appel du listener pour naturaliste
@@ -170,7 +183,6 @@ class ObservationController extends Controller
             $obsListener = $this->get('observation.event_listener');
             $obsListener->validate($observation, $this->getUser());
             $em = $this->getDoctrine()->getManager();
-
             $em->persist($observation);
             $em->flush();
             $this->get('event_dispatcher')->dispatch('observation.captured', new ObservationEvent($observation));
