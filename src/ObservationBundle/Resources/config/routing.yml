@@ -46,3 +46,7 @@ newsletter:
     prefix: /newsletter
     resource: Routing/newsletter.yml
 
+picture:
+    prefix: /picture
+    resource: 'Routing/picture.yml'
+

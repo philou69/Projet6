@@ -1,0 +1,21 @@
+{% extends 'ObservationBundle::layout.desktop.html.twig' %}
+{% block title %}Gallerie{% endblock %}
+
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/gallery.css') }}">
+{% endblock %}
+{% block content %}
+
+    <h1>Gallerie photos</h1>
+    <div id="list-gallery" class="row">
+        {% for picture in gallery %}
+            <div class="col-md-3 col-xs-6">
+                <img src="{{ asset('uploads/images/bird/' ~picture.url) }}">
+            </div>
+        {% else %}
+            <p>Prochainement les dernières photos</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}

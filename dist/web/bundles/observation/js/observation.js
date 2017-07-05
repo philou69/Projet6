@@ -39,9 +39,6 @@ $(document).ready(function () {
         $('#datepicker').datepicker('hide');
     });
 
-    //$('#datepicker').datepicker("setDate", new Date());
-
-
     //resuired a false pour element caché pour validation formulaire
     document.getElementById("add_observation_location_latitude").required = false;
     document.getElementById("add_observation_location_longitude").required = false;
@@ -54,29 +51,45 @@ $(document).ready(function () {
 
     var div = document.getElementById("picBird");
 
+    // if ($('#add_observation_pictures_1').length) {
+    //     $('#add_observation_pictures_1 > div > label').text('Prendre une photo');
+    //     $('#add_observation_pictures_1_file').attr('capture', true);
+    // }
+
     //Reset de l'upload des photos
     $(".close").click(function () {
         $('#closePic').attr('hidden', true);
-        $('#add_observation_pictures_first').val("");
-        $('#add_observation_pictures_second').val("");
+        $('#add_observation_pictures').val("");
+        $('#add_observation_pictures_2').val("");
 
         removePicture();
     });
 
-    //Recupération de(s )l'image(s)
-    $('.filestyle').click(function () {
+    if ($('#getBird').attr('hidden') === 'hidden') {
+
+        document.getElementById("add_observation_bird").required = false;
+    }
+    ;
+
+    //On determine quel boutton est cliqué puis on selectionne le mode
+    $('[for=add_observation_pictures_file]').click(function () {
         //On verifie quel bouton est cliqué
-        if ($(this).attr('id') === 'add_observation_pictures_first') {
-            idPicture = 'add_observation_pictures_first';
-        } else if ($(this).attr('id') === 'add_observation_pictures_second') {
+        idPicture = 'add_observation_pictures_file';
+        console.log(idPicture);
 
-            idPicture = 'add_observation_pictures_second';
-        }
+        selectPicture(idPicture);
+    });
 
-        //resuired a false pour element caché pour validation formulaire
-        if (document.getElementById('getBird')) {
-            document.getElementById("idPicture").required = false;
-        }
+    $('[for=add_observation_pictures_2_file]').click(function () {
+        //On verifie quel bouton est cliqué
+        idPicture = 'add_observation_pictures_2_file';
+        console.log(idPicture);
+
+        selectPicture(idPicture);
+    });
+
+    //Recupération de(s )l'image(s)
+    function selectPicture(idPicture) {
 
         document.getElementById(idPicture).onchange = function (file) {
             //On remove les photos existantes
@@ -101,34 +114,34 @@ $(document).ready(function () {
             }
             //Pour une photo choisie
             else {
-                if (file.target.files[0]) {
+                    if (file.target.files[0]) {
 
-                    imgURL1 = URL.createObjectURL(file.target.files[0]);
-                    img1 = document.createElement('img');
-                    img1.id = "testImg1";
-                    // img1.className = "img-thumbnail";
-                    // img1.style.width = '200px';
-                    // img1.style.marginRight = '10px';
-                    img1.src = imgURL1;
+                        imgURL1 = URL.createObjectURL(file.target.files[0]);
+                        img1 = document.createElement('img');
+                        img1.id = "testImg1";
+                        // img1.className = "img-thumbnail";
+                        // img1.style.width = '200px';
+                        // img1.style.marginRight = '10px';
+                        img1.src = imgURL1;
 
-                    div.appendChild(img1);
-                } else if (file.target.files[1]) {
+                        div.appendChild(img1);
+                    } else if (file.target.files[1]) {
 
-                    imgURL2 = URL.createObjectURL(file.target.files[1]);
-                    img2 = document.createElement('img');
-                    img2.id = "testImg2";
-                    // img2.className = "img-thumbnail";
-                    // img2.style.width = '200px';
-                    // img2.style.marginRight = '10px';
-                    img2.src = imgURL2;
+                        imgURL2 = URL.createObjectURL(file.target.files[1]);
+                        img2 = document.createElement('img');
+                        img2.id = "testImg2";
+                        // img2.className = "img-thumbnail";
+                        // img2.style.width = '200px';
+                        // img2.style.marginRight = '10px';
+                        img2.src = imgURL2;
 
-                    div.appendChild(img2);
+                        div.appendChild(img2);
+                    }
                 }
-            }
 
             $('#closePic').attr('hidden', false);
         };
-    });
+    }
 
     //Effacer les images
     function removePicture() {

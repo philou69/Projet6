@@ -4,6 +4,7 @@ namespace ObservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Observation
@@ -69,7 +70,7 @@ class Observation
      *
      * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="observation", cascade={"persist"})
      */
-    private $pictures;
+    private $files;
 
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Location", inversedBy="observations", cascade={"persist"})
@@ -105,7 +106,9 @@ class Observation
      */
     public function __construct()
     {
-        $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
+
+        $this->files = new \Doctrine\Common\Collections\ArrayCollection();
+//        $this->pictures_2 = new \Doctrine\Common\Collections\ArrayCollection();
         $this->postedAt = new \DateTime();
     }
 
@@ -359,37 +362,38 @@ class Observation
         return $this;
     }
 
+
     /**
-     * Add picture
+     * Add file
      *
-     * @param \ObservationBundle\Entity\Picture $picture
+     * @param \ObservationBundle\Entity\Picture $file
      *
      * @return Observation
      */
-    public function addPicture(\ObservationBundle\Entity\Picture $picture)
+    public function addFile(\ObservationBundle\Entity\Picture $file)
     {
-        $this->pictures[] = $picture;
+        $this->files[] = $file;
 
         return $this;
     }
 
     /**
-     * Remove picture
+     * Remove file
      *
-     * @param \ObservationBundle\Entity\Picture $picture
+     * @param \ObservationBundle\Entity\Picture $file
      */
-    public function removePicture(\ObservationBundle\Entity\Picture $picture)
+    public function removeFile(\ObservationBundle\Entity\Picture $file)
     {
-        $this->pictures->removeElement($picture);
+        $this->files->removeElement($file);
     }
 
     /**
-     * Get pictures
+     * Get files
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPictures()
+    public function getFiles()
     {
-        return $this->pictures;
+        return $this->files;
     }
 }

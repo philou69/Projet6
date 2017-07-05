@@ -9,6 +9,7 @@ use ObservationBundle\Entity\Observation;
 use ObservationBundle\Entity\Picture;
 use ObservationBundle\Event\ObservationEvent;
 use ObservationBundle\Form\Type\Observation\AddObservationType;
+use ObservationBundle\Form\Type\Picture\PictureType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -110,6 +111,8 @@ class ObservationController extends Controller
         $session = new Session();
         $session->set('getBird', false);
         $em = $this->getDoctrine()->getManager();
+        $device = $this->get('mobile_detect.mobile_detector');
+
 
         // On verifie si le visiteur est un naturaliste
         if($this->getUser()->hasRole('ROLE_NATURALISTE')){
@@ -118,6 +121,7 @@ class ObservationController extends Controller
                 ->setValidatedAt(new \DateTime())
                 ->setValidatedBy($this->getUser());
         }
+
         $form = $this->createForm(AddObservationType::class, $observation);
 
         $form->handleRequest($request);
@@ -125,19 +129,21 @@ class ObservationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Recuperation des photos uploader
-            $files = $form->get('pictures')->getData();
+            $files = $form->get('files')->getData();
 
-            // On boucle sur les photos pour les ajoutés à l'observation
             foreach ($files as $file) {
+                dump($file);
                 $picture = new Picture();
                 $picture->setFile($file)
                     ->setObservation($observation);
+
                 // Si l'observation est dejà validé, on ajoute l'oiseau à la photo.
                 if($observation->getValidated() === true){
                     $picture->setBird($observation->getBird());
                 }
                 $em->persist($picture);
             }
+
             $observation->setUser($this->getUser());
 
 
@@ -151,7 +157,7 @@ class ObservationController extends Controller
             return $this->redirectToRoute('observation_add');
         }
 
-        $device = $this->get('mobile_detect.mobile_detector');
+//        $device = $this->get('mobile_detect.mobile_detector');
         if($device->isMobile() || $device->isTablet()){
             return $this->render(
             'ObservationBundle:Observation:Mobile/add.html.twig', array(

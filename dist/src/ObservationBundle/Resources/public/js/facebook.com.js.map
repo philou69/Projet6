@@ -1,0 +1,43 @@
+{
+  "version": 3,
+  "sources": [
+    "../../../../../../src/ObservationBundle/Resources/public/js/facebook.com.js"
+  ],
+  "names": [
+    "window",
+    "fbAsyncInit",
+    "FB",
+    "init",
+    "appId",
+    "id",
+    "channelUrl",
+    "home",
+    "status",
+    "xfbml",
+    "d",
+    "s",
+    "js",
+    "fjs",
+    "getElementsByTagName",
+    "getElementById",
+    "createElement",
+    "src",
+    "parentNode",
+    "insertBefore",
+    "document",
+    "fb_login",
+    "getLoginStatus",
+    "response",
+    "location",
+    "url",
+    "login",
+    "authResponse",
+    "alert",
+    "scope"
+  ],
+  "mappings": ";;AAAA;AACAA,OAAOC,WAAP,GAAqB,YAAW;AAC5B;AACAC,OAAGC,IAAH,CAAQ;AACJC,eAAaC,EADT,EACoC;AACxCC,oBAAaC,IAFT,EAEoB;AACxBC,gBAAa,IAHT,EAG+C;AACnDC,eAAa,IAJT,CAI+C;AAJ/C,KAAR;AAMH,CARD;;AAUA;AACC,WAASC,CAAT,EAAYC,CAAZ,EAAeN,EAAf,EAAkB;AACf,QAAIO,EAAJ;AAAA,QAAQC,MAAMH,EAAEI,oBAAF,CAAuBH,CAAvB,EAA0B,CAA1B,CAAd;AACA,QAAID,EAAEK,cAAF,CAAiBV,EAAjB,CAAJ,EAA0B;AAAC;AAAQ;AACnCO,SAAKF,EAAEM,aAAF,CAAgBL,CAAhB,CAAL,CAAyBC,GAAGP,EAAH,GAAQA,EAAR;AACzBO,OAAGK,GAAH,GAAS,qCAAT;AACAJ,QAAIK,UAAJ,CAAeC,YAAf,CAA4BP,EAA5B,EAAgCC,GAAhC;AACH,CANA,EAMCO,QAND,EAMW,QANX,EAMqB,gBANrB,CAAD;;AAQA,SAASC,QAAT,GAAoB;AAChBnB,OAAGoB,cAAH,CAAkB,UAASC,QAAT,EAAmB;AACjC,YAAIA,SAASf,MAAT,KAAoB,WAAxB,EAAqC;AACjC;AACAY,qBAASI,QAAT,GAAoBC,GAApB;AACH,SAHD,MAGO;AACH;AACAvB,eAAGwB,KAAH,CAAS,UAASH,QAAT,EAAmB;AACxB,oBAAIA,SAASI,YAAb,EAA2B;AACvBP,6BAASI,QAAT,GAAoBC,GAApB;AACH,iBAFD,MAEO;AACHG,0BAAM,YAAN;AACH;AACJ,aAND,EAMG,EAACC,OAAO,OAAR,EANH;AAOH;AACJ,KAdD;AAeH",
+  "file": "facebook.com.js",
+  "sourcesContent": [
+    "// Script de connection a facebook\nwindow.fbAsyncInit = function() {\n    // init the FB JS SDK\n    FB.init({\n        appId      : id,                        // App ID from the app dashboard\n        channelUrl : home,      // Channel file for x-domain comms\n        status     : true,                                 // Check Facebook Login status\n        xfbml      : true                                  // Look for social plugins on the page\n    });\n};\n\n// Load the SDK asynchronously\n(function(d, s, id){\n    var js, fjs = d.getElementsByTagName(s)[0];\n    if (d.getElementById(id)) {return;}\n    js = d.createElement(s); js.id = id;\n    js.src = \"//connect.facebook.net/en_US/all.js\";\n    fjs.parentNode.insertBefore(js, fjs);\n}(document, 'script', 'facebook-jssdk'));\n\nfunction fb_login() {\n    FB.getLoginStatus(function(response) {\n        if (response.status === 'connected') {\n            // connected\n            document.location = url;\n        } else {\n            // not_authorized\n            FB.login(function(response) {\n                if (response.authResponse) {\n                    document.location = url;\n                } else {\n                    alert('Cancelled.');\n                }\n            }, {scope: 'email'});\n        }\n    });\n}\n"
+  ]
+}

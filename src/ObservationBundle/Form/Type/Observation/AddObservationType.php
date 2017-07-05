@@ -3,7 +3,9 @@
 namespace ObservationBundle\Form\Type\Observation;
 
 use ObservationBundle\Form\Type\Location\LocationType;
+use ObservationBundle\Form\Type\Picture\PictureType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -13,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
 
 class AddObservationType extends AbstractType
 {
@@ -30,6 +33,7 @@ class AddObservationType extends AbstractType
                 'label' => 'Date de l\'observation: ',
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd',
+                'attr' => array('class' => 'dateObs'),
                 'with_minutes' => false
             ))
             ->add('location', LocationType::class, array(
@@ -47,32 +51,28 @@ class AddObservationType extends AbstractType
                                 'max' => 20,
                                 'value' => 1)
             ))
-            ->add('pictures', RepeatedType::class, array(
-                'type' => FileType::class,
-                'label' => 'Importer une image',
-                'required' => false,
-                'options' => array(
-                    'data_class' => null,
-                    'mapped' => false,
+            ->add('files', FileType::class, array(
+                    'label' => 'Importer une image',
                     'multiple' => true,
-                    'attr' => array(
-                        'accept' => 'image/*',
+                    'required' => false,
+                    'mapped' => false,
+                    'attr' => [
+                        'accept' => 'image/*;capture=camera',
                         'class' => 'filestyle',
                         'data-input' => 'false',
                         'data-badge' => 'false',
-                        'data-icon' => 'false'
-                    )
+                        'data-icon' => 'false',
+                        'data-buttonText' => 'Choisir Photo',
+                    ],
+                    'data_class' => null
                 )
-            ))
-
+            )
             ->add( 'save', SubmitType::class, array(
                 'label' => 'Valider la saisie',
                 'attr' => array(
                     'class' => 'btn btn-success'
                 )
             ))
-
-
 
         ;
     }
