@@ -106,6 +106,10 @@
     #bienvenue{
         padding-top: 30px;
     }
+
+    #bienvenue a.btn {
+        margin-top: 10px;
+    }
     .images {
         margin-bottom: 10px;
     }

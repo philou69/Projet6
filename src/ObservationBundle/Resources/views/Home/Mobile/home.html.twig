@@ -30,8 +30,9 @@
                     nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
                     à l'aide de fiches détaillés sur nos amis les oiseaux</p>
                 <div class="text-center">
-                    <a id="show-blog" class="btn btn-nao" href="{{ path('blog_view') }}" role="button">DECOUVRIR
-                        L'ASSOCIATION</a>
+                    <a class="btn btn-nao" href="{{ path('blog_view') }}" role="button">DECOUVRIR L'ASSOCIATION</a>
+                    <a class="btn btn-nao" href="{{ path('bird_map_list') }}" role="button">LES OISEAUX PRES DE CHEZ
+                        VOUS</a>
                 </div>
             </div>
             {# Galeery des photos d'oiseaux#}
@@ -74,19 +75,19 @@
                 <h1>SUIVEZ-NOUS</h1>
                 <div class="row" id="sociallinks">
                     <div class="logo-sociaux col-md-4">
-                        <a href="https://facebook.com" class="btn btn-social-icon ">
+                        <a href="{{ facebook }}" class="btn btn-social-icon ">
                             <img src="{{ asset('bundles/observation/images/icones/facebook.png') }}"
                                  class="img-responsive" alt="facebook">
                         </a>
                     </div>
                     <div class="logo-sociaux col-md-4">
-                        <a href="https://instagram.com" class="btn">
+                        <a href="{{ instagram }}" class="btn">
                             <img src="{{ asset('bundles/observation/images/icones/instagram.jpg') }}"
                                  class="img-responsive" alt="instagram">
                         </a>
                     </div>
                     <div class="logo-sociaux col-md-4">
-                        <a href="https://twitter.com" class="btn btn-social-icon">
+                        <a href="{{ twitter }}" class="btn btn-social-icon">
                             <img src="{{ asset('bundles/observation/images/icones/twitter.png') }}"
                                  class="img-responsive" alt="twitter">
                         </a>

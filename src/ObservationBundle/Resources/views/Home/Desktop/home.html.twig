@@ -29,17 +29,18 @@
                 <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
                     nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
                     à l'aide de fiches détaillés sur nos amis les oiseaux</p>
-                <a class="btn btn-nao" href="#" role="button">DECOUVRIR L'ASSOCIATION</a>
+                <a class="btn btn-nao" href="{{ path('blog_view') }}" role="button">DECOUVRIR L'ASSOCIATION</a>
+                <a class="btn btn-nao" href="{{ path('bird_map_list') }}" role="button">DECOUVRIR LES OISEAUX PROCHE DE
+                    CHEZ VOUS</a>
             </div>
             {# Galeery des photos d'oiseaux#}
             <div id="gallery" class="center-80">
                 <div class="row">
                     <h1 class="col-md-9">Les dernières photos</h1>
                     <a id="link-gallery" href="{{ path('gallerie') }}" class="col-md-3 text-center link-desktop">
-                        Accéder à la gallerie
-                        {#<img id="img-gallery"#}
-                        {#src="{{ asset('bundles/observation/images/icones/importPhoto_icon.png') }}" alt="galerie"#}
-                        {#class="img-responsive">#}
+                        <img id="img-gallery"
+                             src="{{ asset('bundles/observation/images/icones/importPhoto_icon.png') }}" alt="galerie"
+                             class="img-responsive">
                     </a>
                 </div>
                 <div id="list-gallery" class="row">

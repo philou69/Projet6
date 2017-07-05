@@ -17,4 +17,5 @@
 /src/ObservationBundle/Entity/*.php~
 /web/uploads/images/bird/*
 /web/uploads/images/avatar/*
-.idea/workspace.xml
+/.idea/*
+/dist/*
