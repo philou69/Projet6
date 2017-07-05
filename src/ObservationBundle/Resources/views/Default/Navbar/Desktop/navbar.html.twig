@@ -6,7 +6,8 @@
             {#  Block title navbar #}
             <div class="navbar-header">
                 <a href="{{ path('homepage') }}">
-                    <img src="{{ asset ('bundles/observation/images/logo/logo_header_blanc.png') }}" alt="logo du header de l'association">
+                    <img src="{{ asset ('bundles/observation/images/logo/logo_header_blanc.svg') }}"
+                         alt="logo du header de l'association">
                 </a>
             </div>
             {# Liste des menus principaux avec vérification de la route pour activé dynamiquement la navbar à l'aide de app.request.get('_route') #}
@@ -24,13 +25,13 @@
                     </li>
                     {% if app.request.attributes.get('_route') in ['bird_list','bird_description', 'bird_location'] %}
                         <li class=" tabs active always-active first_line">
-                            <a href="#bird" data-toggle="tab" data-navbar="true">
+                            <a href="#bird" data-toggle="tab" data-navbar="true" data-hide="#bird">
                                 Fiches oiseaux
                             </a>
                         </li>
                     {% else %}
                         <li class="{{ app.request.attributes.get('_route') == 'bird_list' ? 'active' : '' }} first_line">
-                            <a href="{{ path('bird_list') }}" data-hide="#bird">
+                            <a href="{{ path('bird_list') }}">
                                 Fiches oiseaux
                             </a>
                         </li>
@@ -52,11 +53,11 @@
                         <a id="test" href="#other" data-toggle="tab" data-navbar="true" data-hide="#other">Information</a>
                     </li>
                     <li class="logo-sociaux first_line">
-                        <a href="https://facebook.com" class="social-network"><i class="fa fa-facebook-f"></i></a></li>
+                        <a href="{{ facebook }}" class="social-network"><i class="fa fa-facebook-f"></i></a></li>
                     <li class="logo-sociaux first_line">
-                        <a href="https://instagram.com" class="social-network"><i class="fa fa-instagram"></i></a></li>
+                        <a href="{{ instagram }}" class="social-network"><i class="fa fa-instagram"></i></a></li>
                     <li class="logo-sociaux first_line">
-                        <a href="https://plus.google.com" class="social-network"><i class="fa fa-google-plus"></i></a>
+                        <a href="{{ twitter }}" class="social-network"><i class="fa fa-twitter"></i></a>
                     </li>
                     {% if app.user %}
                         <li class="first_line"><a href="{{ path('user_logout') }}"><i class="fa fa-sign-out "></i></a>

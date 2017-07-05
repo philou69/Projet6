@@ -1,8 +1,214 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="23e96b56-b8e7-4505-a095-5edbbabb5c99" name="Default" comment="Changes localisation Form Add Obs">
+    <list default="true" id="23e96b56-b8e7-4505-a095-5edbbabb5c99" name="Default" comment="Merge branch 'dev' into feature/observation&#10;&#10;# Conflicts:&#10;#&#9;.idea/libraries/Generated_files.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;dist/src/ObservationBundle/Resources/public/js/Maps/observation.add.js&#10;#&#9;dist/src/ObservationBundle/Resources/public/js/Maps/observation.add.js.map&#10;#&#9;dist/web/bundles/observation/js/Maps/observation.add.js&#10;#&#9;dist/web/bundles/observation/js/Maps/observation.add.js.map&#10;#&#9;dist/web/bundles/observation/js/observation.js&#10;#&#9;dist/web/bundles/observation/js/observation.js.map">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/public/images/logo/logo_footer_couleur.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/public/images/logo/logo_header_blanc.svg" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources/a8b403a7-8d16-4315-be6c-b0a24f6b8c99.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/symfony2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/dist/src/ObservationBundle/Resources/public/js/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/dist/src/ObservationBundle/Resources/public/js/main.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/dist/web/bundles/observation/js/AJAX/observations.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/dist/web/bundles/observation/js/AJAX/observations.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/dist/web/bundles/observation/js/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/dist/web/bundles/observation/js/main.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/observations.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/observations.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/src/ObservationBundle/Resources/public/js/edit.profil.user.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/src/ObservationBundle/Resources/public/js/edit.profil.user.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/src/ObservationBundle/Resources/public/js/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/src/ObservationBundle/Resources/public/js/main.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/web/bundles/observation/js/AJAX/observations.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/web/bundles/observation/js/AJAX/observations.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/web/bundles/observation/js/edit.profil.user.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/web/bundles/observation/js/edit.profil.user.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/web/bundles/observation/js/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/dist/web/bundles/observation/js/main.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/jquery.ui.datepicker-fr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/jquery.ui.datepicker-fr.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/Desktop/contact.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/Desktop/contact.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/Mobile/bird.list.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/Mobile/bird.list.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/bird.location.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/bird.location.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/observations.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/observations.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/Maps/location.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/Maps/location.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/edit.profil.user.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/edit.profil.user.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/home.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/home.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/main.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/scroll.desktop.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/scroll.desktop.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/slider.pictures.obs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/slider.pictures.obs.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/Desktop/contact.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/Desktop/contact.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/Mobile/bird.list.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/Mobile/bird.list.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/bird.location.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/bird.location.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/observations.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/observations.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/Maps/location.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/Maps/location.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/edit.profil.user.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/edit.profil.user.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/home.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/home.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/main.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/scroll.desktop.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/scroll.desktop.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/slider.pictures.obs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/dist/web/bundles/observation/js/slider.pictures.obs.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/jquery.ui.datepicker-fr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/jquery.ui.datepicker-fr.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/bootstrap.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/cse.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/cse.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/element.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/element.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/element_main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/element_main.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/gpt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/gpt.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/jquery.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/main.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/w3schools_footer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Bootstrap Button Groups_files/w3schools_footer.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Wimi - Chat_files/chat-5.30.0.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Wimi - Chat_files/chat-5.30.0.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Wimi - Chat_files/core-5.30.0.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Wimi - Chat_files/core-5.30.0.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Wimi - Chat_files/lang.fr-fr-5.30.0.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Wimi - Chat_files/lang.fr-fr-5.30.0.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Wimi - Chat_files/lib-5.30.0.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Wimi - Chat_files/lib-5.30.0.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Wimi - Chat_files/raven.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Wimi - Chat_files/raven.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Wimi - Chat_files/script-5.30.0.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/images/Wimi - Chat_files/script-5.30.0.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/Desktop/bird.list.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/Desktop/bird.list.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/Desktop/contact.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/Desktop/contact.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/Mobile/bird.list.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/Mobile/bird.list.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/bird.location.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/bird.location.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/observations.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/observations.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/Maps/location.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/Maps/location.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/edit.profil.user.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/edit.profil.user.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/facebook.com.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/facebook.com.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/home.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/home.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/main.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/map.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/map.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/observation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/observation.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/play.bird.sound.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/play.bird.sound.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/role.user.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/role.user.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/scroll.desktop.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/scroll.desktop.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/slider.pictures.obs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/slider.pictures.obs.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/toogle.switch.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/toogle.switch.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/bootstrap.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/cse.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/cse.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/element.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/element.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/element_main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/element_main.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/gpt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/gpt.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/jquery.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/main.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/w3schools_footer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Bootstrap Button Groups_files/w3schools_footer.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Wimi - Chat_files/chat-5.30.0.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Wimi - Chat_files/chat-5.30.0.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Wimi - Chat_files/core-5.30.0.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Wimi - Chat_files/core-5.30.0.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Wimi - Chat_files/lang.fr-fr-5.30.0.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Wimi - Chat_files/lang.fr-fr-5.30.0.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Wimi - Chat_files/lib-5.30.0.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Wimi - Chat_files/lib-5.30.0.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Wimi - Chat_files/raven.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Wimi - Chat_files/raven.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Wimi - Chat_files/script-5.30.0.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/images/Wimi - Chat_files/script-5.30.0.min.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Desktop/contact.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Desktop/contact.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/bird.location.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/bird.location.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/observations.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/observations.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/Maps/location.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/Maps/location.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/edit.profil.user.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/edit.profil.user.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/facebook.com.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/facebook.com.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/home.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/home.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/main.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/play.bird.sound.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/play.bird.sound.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/role.user.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/role.user.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/scroll.desktop.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/scroll.desktop.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/slider.pictures.obs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/slider.pictures.obs.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/toogle.switch.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/toogle.switch.js.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/jquery.ui.datepicker-fr.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/NAO.iml" afterPath="$PROJECT_DIR$/.idea/NAO.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Generated_files.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Desktop/bird.list.js" afterPath="$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Desktop/bird.list.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Desktop/bird.list.js.map" afterPath="$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Desktop/bird.list.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Mobile/bird.list.js" afterPath="$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Mobile/bird.list.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Mobile/bird.list.js.map" afterPath="$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Mobile/bird.list.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/Maps/mapping.js" afterPath="$PROJECT_DIR$/dist/web/bundles/observation/js/Maps/mapping.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/Maps/mapping.js.map" afterPath="$PROJECT_DIR$/dist/web/bundles/observation/js/Maps/mapping.js.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Form/Type/Picture/PictureType.php" afterPath="$PROJECT_DIR$/src/ObservationBundle/Form/Type/Picture/PictureType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/AJAX/Desktop/bird.list.js" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/AJAX/Desktop/bird.list.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/AJAX/Mobile/bird.list.js" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/AJAX/Mobile/bird.list.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/Maps/mapping.js" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/Maps/mapping.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Bird/Mobile/list.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Bird/Mobile/list.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Default/Navbar/Desktop/navbar.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Default/Navbar/Desktop/navbar.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Default/Navbar/Mobile/navbar.top.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Default/Navbar/Mobile/navbar.top.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Default/footer.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Default/footer.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -74,11 +280,21 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="add.html.twig" pinned="false" current-in-tab="true">
+              <file leaf-file-name="add.html.twig" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/views/Observation/Mobile/add.html.twig">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="15">
-                      <caret line="43" column="56" lean-forward="false" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="56" />
+                    <state relative-caret-position="945">
+                      <caret line="63" column="4" lean-forward="false" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="4" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="BirdController.php" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Controller/BirdController.php">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="225">
+                      <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
                       <folding />
                     </state>
                   </provider>
@@ -123,7 +339,9 @@
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="165">
                       <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-                      <folding />
+                      <folding>
+                        <element signature="e#57#97#0#PHP" expanded="false" />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -131,11 +349,9 @@
               <file leaf-file-name="AddObservationType.php" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Form/Type/Observation/AddObservationType.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="99">
-                      <caret line="56" column="4" lean-forward="false" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
-                      <folding>
-                        <element signature="e#59#113#0#PHP" expanded="true" />
-                      </folding>
+                    <state relative-caret-position="193">
+                      <caret line="57" column="38" lean-forward="true" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
+                      <folding />
                     </state>
                   </provider>
                 </entry>
@@ -143,9 +359,11 @@
               <file leaf-file-name="Observation.php" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Entity/Observation.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="90">
+                    <state relative-caret-position="60">
                       <caret line="6" column="55" lean-forward="false" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
-                      <folding />
+                      <folding>
+                        <element signature="e#44#76#0#PHP" expanded="false" />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -159,8 +377,8 @@
           <file leaf-file-name="observation.add.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/Maps/observation.add.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="750">
-                  <caret line="50" column="6" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
+                <state relative-caret-position="240">
+                  <caret line="16" column="55" lean-forward="false" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
                   <folding />
                 </state>
               </provider>
@@ -171,7 +389,25 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="375">
                   <caret line="25" column="35" lean-forward="false" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
-                  <folding />
+                  <folding>
+                    <marker date="1499236104000" expanded="true" signature="30:3219" ph="{...}" />
+                    <marker date="1499236104000" expanded="true" signature="192:247" ph="{&quot;minDate&quot;: '-12M -0D'...}" />
+                    <marker date="1499236104000" expanded="true" signature="651:814" ph="{...}" />
+                    <marker date="1499236104000" expanded="true" signature="869:952" ph="{...}" />
+                    <marker date="1499236104000" expanded="true" signature="1073:2889" ph="{...}" />
+                    <marker date="1499236104000" expanded="true" signature="1163:1232" ph="//..." />
+                    <marker date="1499236104000" expanded="true" signature="1299:1786" ph="{...}" />
+                    <marker date="1499236104000" expanded="true" signature="1841:2828" ph="{...}" />
+                    <marker date="1499236104000" expanded="true" signature="1885:2326" ph="{...}" />
+                    <marker date="1499236104000" expanded="true" signature="2081:2224" ph="//..." />
+                    <marker date="1499236104000" expanded="true" signature="2374:2814" ph="{...}" />
+                    <marker date="1499236104000" expanded="true" signature="2570:2713" ph="//..." />
+                    <marker date="1499236104000" expanded="true" signature="2946:3217" ph="{...}" />
+                    <marker date="1499236104000" expanded="true" signature="2974:3041" ph="{...}" />
+                    <marker date="1499236104000" expanded="true" signature="3055:3211" ph="{...}" />
+                    <marker date="1499236104000" expanded="true" signature="3079:3127" ph="{...}" />
+                    <marker date="1499236104000" expanded="true" signature="3155:3201" ph="{...}" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -362,8 +598,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -424,10 +658,12 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -590,6 +826,7 @@
       <workItem from="1498156764248" duration="14415000" />
       <workItem from="1498485049157" duration="22581000" />
       <workItem from="1499059501573" duration="48488000" />
+      <workItem from="1499247405026" duration="539000" />
     </task>
     <task id="LOCAL-00012" summary="Home Step 4 customization">
       <created>1496499323452</created>
@@ -938,7 +1175,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="523960000" />
+    <option name="totallyTimeSpent" value="524685000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -964,23 +1201,13 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.4978701" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52931595" sideWeight="0.5371567" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32694355" sideWeight="0.48303714" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3397231" sideWeight="0.4802982" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14205816" sideWeight="0.4628433" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16187434" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875606" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1036,7 +1263,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Form edit description update" />
     <MESSAGE value="Edition autocomplete input Map" />
     <MESSAGE value="Form edit description update 2" />
     <MESSAGE value="Form edit description update 3 with summernote" />
@@ -1061,7 +1287,8 @@
     <MESSAGE value="Fix upload 2" />
     <MESSAGE value="Fix upload and capture Form Obs" />
     <MESSAGE value="Changes localisation Form Add Obs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes localisation Form Add Obs" />
+    <MESSAGE value="Merge branch 'dev' into feature/observation&#10;&#10;# Conflicts:&#10;#&#9;.idea/libraries/Generated_files.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;dist/src/ObservationBundle/Resources/public/js/Maps/observation.add.js&#10;#&#9;dist/src/ObservationBundle/Resources/public/js/Maps/observation.add.js.map&#10;#&#9;dist/web/bundles/observation/js/Maps/observation.add.js&#10;#&#9;dist/web/bundles/observation/js/Maps/observation.add.js.map&#10;#&#9;dist/web/bundles/observation/js/observation.js&#10;#&#9;dist/web/bundles/observation/js/observation.js.map" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'dev' into feature/observation&#10;&#10;# Conflicts:&#10;#&#9;.idea/libraries/Generated_files.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;dist/src/ObservationBundle/Resources/public/js/Maps/observation.add.js&#10;#&#9;dist/src/ObservationBundle/Resources/public/js/Maps/observation.add.js.map&#10;#&#9;dist/web/bundles/observation/js/Maps/observation.add.js&#10;#&#9;dist/web/bundles/observation/js/Maps/observation.add.js.map&#10;#&#9;dist/web/bundles/observation/js/observation.js&#10;#&#9;dist/web/bundles/observation/js/observation.js.map" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1169,6 +1396,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-594">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1215,14 +1443,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Controller/BirdController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2060">
-          <caret line="75" column="13" lean-forward="false" selection-start-line="75" selection-start-column="13" selection-end-line="75" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="490">
@@ -1256,6 +1476,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="22" column="104" lean-forward="false" selection-start-line="22" selection-start-column="76" selection-end-line="22" selection-end-column="104" />
+          <folding>
+            <element signature="e#778#819#0#PHP" expanded="true" />
+            <marker date="1499059627000" expanded="true" signature="5437:5439" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1308,7 +1532,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1316,7 +1539,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-889">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1324,6 +1546,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+          <folding>
+            <element signature="e#284#311#1#PHP" expanded="false" />
+            <element signature="e#354#407#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1338,7 +1564,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
+          <folding>
+            <element signature="e#57#97#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1346,17 +1574,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="135" column="41" lean-forward="false" selection-start-line="135" selection-start-column="41" selection-end-line="135" selection-end-column="41" />
-          <folding>
-            <element signature="e#50#84#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Entity/Observation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="60">
           <caret line="6" column="55" lean-forward="false" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
-          <folding />
+          <folding>
+            <element signature="e#44#76#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1399,16 +1626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Form/Type/Observation/AddObservationType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="56" column="4" lean-forward="false" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
-          <folding>
-            <element signature="e#59#113#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/home.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="885">
@@ -1417,26 +1634,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/observation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="35" lean-forward="false" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/footer.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="1" lean-forward="false" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/Maps/observation.add.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="50" column="6" lean-forward="false" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -1454,7 +1655,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
+        <state relative-caret-position="285">
           <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding />
         </state>
@@ -1462,8 +1663,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/views/Observation/Mobile/add.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="43" column="56" lean-forward="false" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="56" />
+        <state relative-caret-position="945">
+          <caret line="63" column="4" lean-forward="false" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/observation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="35" lean-forward="false" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
+          <folding>
+            <marker date="1499236104000" expanded="true" signature="30:3219" ph="{...}" />
+            <marker date="1499236104000" expanded="true" signature="192:247" ph="{&quot;minDate&quot;: '-12M -0D'...}" />
+            <marker date="1499236104000" expanded="true" signature="651:814" ph="{...}" />
+            <marker date="1499236104000" expanded="true" signature="869:952" ph="{...}" />
+            <marker date="1499236104000" expanded="true" signature="1073:2889" ph="{...}" />
+            <marker date="1499236104000" expanded="true" signature="1163:1232" ph="//..." />
+            <marker date="1499236104000" expanded="true" signature="1299:1786" ph="{...}" />
+            <marker date="1499236104000" expanded="true" signature="1841:2828" ph="{...}" />
+            <marker date="1499236104000" expanded="true" signature="1885:2326" ph="{...}" />
+            <marker date="1499236104000" expanded="true" signature="2081:2224" ph="//..." />
+            <marker date="1499236104000" expanded="true" signature="2374:2814" ph="{...}" />
+            <marker date="1499236104000" expanded="true" signature="2570:2713" ph="//..." />
+            <marker date="1499236104000" expanded="true" signature="2946:3217" ph="{...}" />
+            <marker date="1499236104000" expanded="true" signature="2974:3041" ph="{...}" />
+            <marker date="1499236104000" expanded="true" signature="3055:3211" ph="{...}" />
+            <marker date="1499236104000" expanded="true" signature="3079:3127" ph="{...}" />
+            <marker date="1499236104000" expanded="true" signature="3155:3201" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/Maps/observation.add.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="55" lean-forward="false" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Controller/BirdController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Form/Type/Observation/AddObservationType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="57" column="38" lean-forward="true" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
           <folding />
         </state>
       </provider>

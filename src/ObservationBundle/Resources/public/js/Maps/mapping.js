@@ -11,7 +11,7 @@ function initMap() {
     });
     // Requete ajax pour récuperer la liste des localisation des oiseaux
     $.ajax({
-        url: '/app_dev.php/bird/paging-all',
+        url: '/bird/paging-all',
         type: 'GET',
         success: function (data) {
             // la requete est un success
@@ -36,7 +36,7 @@ function initMap() {
         // On retire tout texte précedent de filter
         $('#status').remove();
         $.ajax({
-            url: '/app_dev.php/bird/paging-all?bird=' + $(this).val(),
+            url: '/bird/paging-all?bird=' + $(this).val(),
             type: 'GET',
             success: function (data) {
 

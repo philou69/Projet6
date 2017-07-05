@@ -2,74 +2,13 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/home.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/scroll.desktop.js" />
-        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/scroll.desktop.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/home.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/scroll.desktop.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/scroll.desktop.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/dist/src/ObservationBundle/Resources/public/js/edit.profil.user.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/Desktop/contact.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/role.user.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/Desktop/contact.js" />
         <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/Maps/observation.add.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/facebook.com.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/bird.location.js" />
-        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Desktop/bird.list.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/Maps/location.js" />
-        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/role.user.js" />
+        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Mobile/bird.list.js" />
         <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/Maps/mapping.js" />
         <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/Maps/observation.add.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/Maps/location.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/observation.js" />
+        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Desktop/bird.list.js" />
         <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/Maps/mapping.js" />
-        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/facebook.com.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/dist/web/bundles/observation/js/edit.profil.user.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/bird.location.js" />
         <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/observation.js" />
-        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/play.bird.sound.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/slider.pictures.obs.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/play.bird.sound.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/slider.pictures.obs.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/dist/dist/web/bundles/observation/js/main.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/dist/dist/web/bundles/observation/js/AJAX/observations.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/dist/web/bundles/observation/js/AJAX/observations.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/jquery.ui.datepicker-fr.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/dist/dist/src/ObservationBundle/Resources/public/js/main.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/dist/web/bundles/observation/js/main.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/observations.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/dist/src/ObservationBundle/Resources/public/js/main.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/edit.profil.user.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/Desktop/contact.js" />
-        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Desktop/contact.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/bird.location.js" />
-        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/observations.js" />
-        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/main.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/main.js" />
-        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/bird.location.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/slider.pictures.obs.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/observations.js" />
-        <item url="file://$PROJECT_DIR$/dist/jquery.ui.datepicker-fr.js" />
-        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/slider.pictures.obs.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/Desktop/bird.list.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/Maps/location.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/edit.profil.user.js" />
-        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/Maps/location.js" />
-        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/edit.profil.user.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/map.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/edit.profil.user.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/toogle.switch.js" />
-        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/toogle.switch.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/home.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/home.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/Mobile/bird.list.js" />
-        <item url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/Mobile/bird.list.js" />
-        <item url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Mobile/bird.list.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/observations.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/Mobile/bird.list.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/main.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/observations.js" />
-        <item url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/main.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
@@ -178,21 +117,15 @@
       <root url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/Desktop/contact.js" />
       <root url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/role.user.js" />
       <root url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/Desktop/contact.js" />
-      <root url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/Maps/observation.add.js" />
       <root url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/facebook.com.js" />
       <root url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/bird.location.js" />
-      <root url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Desktop/bird.list.js" />
       <root url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/Maps/location.js" />
       <root url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/role.user.js" />
-      <root url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/Maps/mapping.js" />
-      <root url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/Maps/observation.add.js" />
       <root url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/Maps/location.js" />
       <root url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/observation.js" />
-      <root url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/Maps/mapping.js" />
       <root url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/facebook.com.js" />
       <root url="file://$PROJECT_DIR$/dist/dist/dist/web/bundles/observation/js/edit.profil.user.js" />
       <root url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/bird.location.js" />
-      <root url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/observation.js" />
       <root url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/play.bird.sound.js" />
       <root url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/slider.pictures.obs.js" />
       <root url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/play.bird.sound.js" />
@@ -230,12 +163,18 @@
       <root url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/home.js" />
       <root url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/Mobile/bird.list.js" />
       <root url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/AJAX/Mobile/bird.list.js" />
-      <root url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Mobile/bird.list.js" />
       <root url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/observations.js" />
       <root url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/Mobile/bird.list.js" />
       <root url="file://$PROJECT_DIR$/dist/dist/src/ObservationBundle/Resources/public/js/main.js" />
       <root url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/AJAX/observations.js" />
       <root url="file://$PROJECT_DIR$/dist/dist/web/bundles/observation/js/main.js" />
+      <root url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/Maps/observation.add.js" />
+      <root url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Mobile/bird.list.js" />
+      <root url="file://$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/Maps/mapping.js" />
+      <root url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/Maps/observation.add.js" />
+      <root url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/AJAX/Desktop/bird.list.js" />
+      <root url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/Maps/mapping.js" />
+      <root url="file://$PROJECT_DIR$/dist/web/bundles/observation/js/observation.js" />
     </CLASSES>
     <SOURCES />
   </library>
