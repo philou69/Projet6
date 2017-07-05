@@ -2,45 +2,12 @@ $(document).ready(function () {
 
     //Selecteur avec champ de saisie
     $('#add_observation_bird').select2().hide;
-    $('#add_observation_bird').hide();
+    // $('#add_observation_bird').hide();
 
-    // Formatage du datepicker
-    $.datepicker.regional['fr'] = {
-        altField: "#datepicker",
-        closeText: 'Fermer',
-        prevText: '&#x3c;Préc',
-        nextText: 'Suiv&#x3e;',
-        currentText: 'Aujourd\'hui',
-        monthNames: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',
-            'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
-        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Jun',
-            'Jul', 'Aou', 'Sep', 'Oct', 'Nov', 'Dec'],
-        dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-        dayNamesShort: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'],
-        dayNamesMin: ['Di', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'],
-        weekHeader: 'Sm',
-        dateFormat: 'dd-mm-yy',
-        firstDay: 1,
-        isRTL: false,
-        showMonthAfterYear: false,
-        yearSuffix: '',
-        minDate: 0,
-        maxDate: '+12M +0D',
-        numberOfMonths: 2,
-        showButtonPanel: true
-    };
-    $.datepicker.setDefaults($.datepicker.regional['fr']);
-    //$('#datepicker').datepicker("setDate", new Date());
     $('#datepicker').datepicker({
-        format: 'yyyy-mm-dd'
+        maxDate: 0,
+        minDate: '-12M -0D'
     });
-
-    $('#datepicker').datepicker().on('changeDate', function () {
-        $('#datepicker').datepicker('hide');
-
-    });
-
-
 
 //resuired a false pour element caché pour validation formulaire
 document.getElementById("add_observation_location_latitude").required = false;
@@ -54,16 +21,12 @@ let imgURL1,
 
 let div = document.getElementById("picBird");
 
-    // if ($('#add_observation_pictures_1').length) {
-    //     $('#add_observation_pictures_1 > div > label').text('Prendre une photo');
-    //     $('#add_observation_pictures_1_file').attr('capture', true);
-    // }
 
 //Reset de l'upload des photos
     $(".close").click(function () {
     $('#closePic').attr('hidden', true);
-        $('#add_observation_pictures').val("");
-        $('#add_observation_pictures_2').val("");
+        $('#add_observation_files').val("");
+        $('#add_observation_files_2').val("");
 
 
         removePicture();
@@ -76,29 +39,9 @@ let div = document.getElementById("picBird");
     }
     ;
 
-
-//On determine quel boutton est cliqué puis on selectionne le mode
-    $('[for=add_observation_pictures_file]').click(function () {
-        //On verifie quel bouton est cliqué
-        idPicture = 'add_observation_pictures_file';
-        console.log(idPicture)
-
-        selectPicture(idPicture);
-    });
-
-    $('[for=add_observation_pictures_2_file]').click(function () {
-        //On verifie quel bouton est cliqué
-        idPicture = 'add_observation_pictures_2_file';
-        console.log(idPicture)
-
-        selectPicture(idPicture);
-    });
-
-
 //Recupération de(s )l'image(s)
-    function selectPicture(idPicture) {
 
-        document.getElementById(idPicture).onchange = function (file) {
+    document.getElementById('add_observation_files').onchange = function (file) {
             //On remove les photos existantes
             removePicture();
 
@@ -151,7 +94,7 @@ let div = document.getElementById("picBird");
 
             $('#closePic').attr('hidden', false);
         }
-    }
+
 
     //Effacer les images
     function removePicture() {
