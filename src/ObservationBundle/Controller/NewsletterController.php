@@ -35,8 +35,7 @@ class NewsletterController extends Controller
             }
             $this->addFlash(
                 $mailler->isSuccess() === true ? 'success' : 'warning',
-                $mailler->isSuccess(
-                ) === true ? 'Votre email a bien été ajouté' : 'Votre email n\'a pas pu être ajouté!'
+                $mailler->isSuccess() === true ? 'Votre email a bien été ajouté' : 'Votre email n\'a pas pu être ajouté!'
             );
         }
 

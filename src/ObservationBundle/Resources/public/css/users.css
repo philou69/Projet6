@@ -22,7 +22,8 @@
 .user small {
     color: white;
 }
-.user>div>div.row>div{
+
+.user > div > div.row > div {
     padding: 0;
     padding-left: 3px;
 }

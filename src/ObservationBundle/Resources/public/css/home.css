@@ -53,7 +53,6 @@
     height: 40px;
 }
 
-
 #gallery #list-gallery img, #picBird img {
     margin: 10px auto;
     min-height: 200px;
@@ -106,6 +105,9 @@
     }
     #bienvenue{
         padding-top: 30px;
+    }
+    #bienvenue a.btn{
+        margin-top: 10px;
     }
     .images {
         margin-bottom: 10px;
@@ -173,7 +175,6 @@ stylisation des buttons
 
     #bienvenue a{
         width: 40%;
-        margin: 0 30%;
     }
 
     #sociallinks {

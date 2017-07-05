@@ -59,7 +59,7 @@ class Observation
     private $validated = false;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observations")
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $bird;
@@ -105,7 +105,9 @@ class Observation
      */
     public function __construct()
     {
+
         $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
+//        $this->pictures_2 = new \Doctrine\Common\Collections\ArrayCollection();
         $this->postedAt = new \DateTime();
     }
 
@@ -358,6 +360,7 @@ class Observation
 
         return $this;
     }
+
 
     /**
      * Add picture

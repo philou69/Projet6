@@ -69,7 +69,7 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
         }
         if($user->getSleeping() && $user->getRequestOpen() === null ){
             $requestOpen = new RequestOpen();
-            $requestOpen->setToken(str_replace(['/', '+', '*','-'], '', base64_encode(random_bytes(60))))->setAdresseIP($this->getIp());
+            $requestOpen->setToken(str_replace(['/', '+', '*', '-'], '', base64_encode(random_bytes(60))))->setAdresseIP($this->getIp());
             $user->setRequestOpen($requestOpen);
             $this->getObjectManager()->persist($user);
             $this->getObjectManager()->flush();
@@ -89,6 +89,11 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
     private function getObjectManager()
     {
         return $this->registry->getManager($this->managerName);
+    }
+
+    private function getIp()
+    {
+        return $this->container->get('request_stack')->getCurrentRequest()->getClientIp();
     }
 
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
@@ -137,11 +142,6 @@ class UserProvider extends EntityUserProvider implements OAuthAwareUserProviderI
         }
         // On retourne le user
         return $user;
-    }
-
-    private function getIp()
-    {
-        return $this->container->get('request_stack')->getCurrentRequest()->getClientIp();
     }
 
 }

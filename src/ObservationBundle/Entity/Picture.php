@@ -16,8 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Picture
 {
     /**
-     * @var
-     * @Assert\Image()
+     * @var Assert\Image
      */
     protected $file;
     protected $tempFileName;
@@ -47,9 +46,11 @@ class Picture
      */
     private $bird;
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Observation", inversedBy="pictures")
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Observation", inversedBy="files")
      */
     private $observation;
+
+
     /**
      * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\User", mappedBy="avatar")
      */
@@ -133,7 +134,6 @@ class Picture
     public function setBird(\ObservationBundle\Entity\Bird $bird = null)
     {
         $this->bird = $bird;
-
         return $this;
     }
 
@@ -190,6 +190,11 @@ class Picture
         return $this->file;
     }
 
+    /**
+     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
+     *
+     * @return Picture
+     */
     public function setFile(UploadedFile $file)
     {
         $this->file = $file;
@@ -266,4 +271,5 @@ class Picture
     {
         return $this->getUploadDir(). '/'.  $this->url;
     }
+
 }

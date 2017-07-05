@@ -10,7 +10,7 @@ function initMap()
         marqueur = new google.maps.Marker(),
         geocoder = new google.maps.Geocoder(),
         infowindow = new google.maps.InfoWindow(),
-        iconBaseOiseaux = '/bundles/observation/images/icones/crow_red.png';
+        iconBaseOiseaux = '../../bundles/observation/images/icones/crow_red.png';
     let lat_lng;
 
     /*
@@ -45,8 +45,8 @@ function initMap()
         let lat = place.geometry.location.lat(),
             lng = place.geometry.location.lng();
 
-        document.getElementById("add_observation_location_latitude").value = lat;
-        document.getElementById("add_observation_location_longitude").value = lng;
+        $("#add_observation_location_latitude").val(lat);
+        $("#add_observation_location_longitude").val(lng);
 
     })
 
@@ -65,15 +65,21 @@ function initMap()
                     marqueur.setPosition(new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()));
                     map.setCenter(lat_lng);
 
-                    document.getElementById("add_observation_location_latitude").value = event.latLng.lat();
-                    document.getElementById("add_observation_location_longitude").value = event.latLng.lng();
+                    $("#add_observation_location_latitude").val(event.latLng.lat());
+                    $("#add_observation_location_longitude").val(event.latLng.lng());
 
-                    let locationField = document.getElementById("add_observation_location_lieu");
-                    locationField.value = results[0].address_components[2].long_name;
+                    let locationField = $("#add_observation_location_lieu");
 
-                    document.getElementById("infoPosition").textContent = locationField.value;
-                    infowindow.setContent(results[0].address_components[2].long_name);
+                    locationField.val(results[0].address_components[1].long_name + ', ' + results[0].address_components[2].long_name + ', ' + results[0].address_components[3].long_name + ' ' + results[0].address_components[5].long_name);
+
+
+                    //Affichage des coordonnées
+                    $('#coordinates').html("<p><strong>Coordonnées GPS:</strong> Latitude ( " + event.latLng.lat() + '), Longitude: ( ' + event.latLng.lng() + ').</p>');
+
+                    $("#infoPosition").text(locationField.val());
+                    infowindow.setContent(locationField.val());
                     infowindow.open(map, marqueur);
+
                 }
                 else
                 {
@@ -90,7 +96,7 @@ function initMap()
 
 //Recupération des coordonées par geolocalisation du user
 
-    document.getElementById("autoGeo").addEventListener("click", function () {
+    $("#autoGeo").on("click", function () {
 
         // Géolocalisation du user.
         if (navigator.geolocation)
@@ -104,19 +110,23 @@ function initMap()
                         {
                             if (results[0])
                             {
-
                                 marqueur.setMap(map);
                                 marqueur.setPosition(lat_lng);
                                 marqueur.setIcon(iconBaseOiseaux);
                                 map.setCenter(lat_lng);
                                 map.setZoom(14);
 
-                                document.getElementById("add_observation_location_latitude").value = lat_lng.lat;
-                                document.getElementById("add_observation_location_longitude").value = lat_lng.lng;
-                                document.getElementById("add_observation_location_lieu").value = results[0].address_components[2].long_name;
+                                $("#add_observation_location_latitude").val(lat_lng.lat);
+                                $("#add_observation_location_longitude").val(lat_lng.lng);
+                                let locationField = $("#add_observation_location_lieu");
 
-                                infowindow.setContent(results[0].address_components[2].long_name);
+                                locationField.val(results[0].address_components[1].long_name + ', ' + results[0].address_components[2].long_name + ', ' + results[0].address_components[3].long_name + ' ' + results[0].address_components[5].long_name);
+
+                                infowindow.setContent(locationField.val());
                                 infowindow.open(map, marqueur);
+
+                                //Affichage des coordonnées
+                                $('#coordinates').html("<p><strong>Coordonnées GPS:</strong> Latitude ( " + lat_lng.lat + '), Longitude: ( ' + lat_lng.lng + ').</strong></p>');
                             }
                             else
                             {
@@ -152,7 +162,7 @@ function initMap()
 }
 
 //Affihage de la fenêtre modale de la map
-document.getElementById("locationChoice").addEventListener('click', function () {
+$("#locationChoice").on('click', function () {
     $('#myModal').modal('show').on('shown.bs.modal', function () {
         initMap();
     });

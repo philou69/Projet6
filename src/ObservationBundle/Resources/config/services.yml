@@ -20,6 +20,9 @@ services:
         tags:
           - { name: kernel.event_subscriber }
 
+    observation.event_listener:
+        class:  ObservationBundle\EventListener\ObservationListener
+
     user.captured.event_subscriber:
         class: ObservationBundle\EventListener\UserSubscriber
         arguments: ['@doctrine.orm.entity_manager']

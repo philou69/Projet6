@@ -70,7 +70,7 @@ class BirdController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $files = $form->get('files')->getData();
+            $files = $form->get('pictures')->getData();
 
             foreach ($files as $file) {
                 $picture = new Picture();
