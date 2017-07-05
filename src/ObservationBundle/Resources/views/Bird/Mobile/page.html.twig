@@ -6,11 +6,11 @@
     {% for bird in birds %}
         <div class="bird" data-href="{{ path('bird_description', {'id': bird.id}) }}">
             <div class="left">
-                {% for picture in bird.pictures if picture.observation is null %}
-                    <img src="{{ picture.webPath }}" class="img-responsive" alt="bird">
+                {% if bird.avatar is not null %}
+                    <img src="{{ bird.avatar.webPath }}" class="img-responsive" alt="{{ bird }}">
                 {% else %}
                     Pas de photos
-                {% endfor %}
+                {% endif %}
             </div>
 
             <div class="right">

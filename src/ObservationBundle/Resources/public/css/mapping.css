@@ -1,0 +1,26 @@
+#filter{
+    height: 30px;
+    margin-bottom: 10px;
+}
+#map{
+    height: calc(100vh - 180px - 40px - 80px);
+    width: 100%;
+    margin-bottom: 10px;
+}
+#map .img-maps{
+    width: 100%;
+}
+#map .container{
+    min-width: 400px;
+}
+#filters{
+    width: 150px;
+}
+
+@media (max-width: 992px){
+    #map{
+        height: calc(100vh - 40px - 40px - 80px);
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

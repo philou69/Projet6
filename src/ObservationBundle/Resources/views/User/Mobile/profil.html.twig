@@ -14,7 +14,7 @@
         <div id="content_avatar">
             {% if app.user.avatar is not null %}
                 <img src="{{ asset(app.user.avatar.webPath) }}" class="img-responsive img-circle"
-                     alt="{{ app.user.avatar.alt }}">
+                     alt="{{ app.user.username }}">
             {% else %}
                 <p>Choissisez une image</p>
             {% endif %}
