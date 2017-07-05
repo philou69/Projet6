@@ -646,7 +646,7 @@ class Bird
 
     public function __toString()
     {
-        return $this->nomVern == '' ? $this->lbNom : $this->getNomVern();
+        return ($this->nomVern == null ? ''  : $this->nomVern . ' ' ) .   $this->lbNom ;
     }
 
     /**

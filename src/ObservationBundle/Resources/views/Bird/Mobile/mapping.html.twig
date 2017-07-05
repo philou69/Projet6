@@ -1,0 +1,32 @@
+{% extends '@Observation/layout.mobile.html.twig' %}
+
+{% block title %}Cartographie des oiseaux{% endblock %}
+
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/mapping.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="center-90">
+        <div id="filter">
+            <label for="filters">Filtrer sur </label>
+            <select name="filters" id="filters" disabled>
+                <option >Choisiser une espece</option>
+                {% for bird in birds %}
+                    {#{{ dump(bird[0]) }}#}
+                    <option value="{{ bird[0].id }}">{{ bird[0] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div id="map" >
+
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/observation/js/Maps/mapping.js') }}"></script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&callback=initMap">
+    </script>
+{% endblock %}

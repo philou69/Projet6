@@ -63,4 +63,15 @@ class BirdRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getQuery()->getResult();
     }
+
+    public function findAllSort()
+    {
+       $querybuilder = $this->_em->createQueryBuilder();
+       $query = $querybuilder->select('b, COALESCE(b.nomVern, b.lbNom) as columnOrder')
+           ->from('ObservationBundle:Bird', 'b')
+           ->addOrderBy('columnOrder', 'ASC')
+           ->getQuery();
+//       $query = $this->_em->createQuery('SELECT b, COALESCE( b.nomVern, b.lbNom) AS tri FROM ObservationBundle:Bird b ORDER BY tri ');
+       return $query->getResult();
+    }
 }
