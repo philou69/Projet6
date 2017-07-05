@@ -17,7 +17,7 @@ class PictureType extends AbstractType
     {
 
         $builder
-            ->add('file',FileType::class, array(
+            ->add('file', FileType::class, array(
                     'label' => 'Importer une image',
                     'multiple' => false,
                     'required' => false,

@@ -6,7 +6,8 @@
             {#  Block title navbar #}
             <div class="navbar-header">
                 <a href="{{ path('homepage') }}">
-                    <img src="{{ asset ('bundles/observation/images/logo/logo_header_blanc.svg') }}" alt="logo du header de l'association">
+                    <img src="{{ asset ('bundles/observation/images/logo/logo_header_blanc.svg') }}"
+                         alt="logo du header de l'association">
                 </a>
             </div>
             {# Liste des menus principaux avec vérification de la route pour activé dynamiquement la navbar à l'aide de app.request.get('_route') #}
@@ -30,7 +31,7 @@
                         </li>
                     {% else %}
                         <li class="{{ app.request.attributes.get('_route') == 'bird_list' ? 'active' : '' }} first_line">
-                            <a href="{{ path('bird_list') }}" >
+                            <a href="{{ path('bird_list') }}">
                                 Fiches oiseaux
                             </a>
                         </li>

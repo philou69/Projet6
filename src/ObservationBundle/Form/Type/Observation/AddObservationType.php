@@ -32,7 +32,7 @@ class AddObservationType extends AbstractType
             ->add( 'seeAt', DateTimeType::class, array(
                 'label' => 'Date de l\'observation: ',
                 'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd',
+                'format' => 'dd-MM-yyy',
                 'attr' => array('class' => 'dateObs'),
                 'with_minutes' => false
             ))
