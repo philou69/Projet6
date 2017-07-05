@@ -6,7 +6,8 @@ $(document).ready(function () {
 
     $('#datepicker').datepicker({
         maxDate: 0,
-        minDate: '-12M -0D'
+        minDate: '-12M -0D',
+        dateFormat: 'dd-mm-yy'
     });
 
 //resuired a false pour element caché pour validation formulaire
