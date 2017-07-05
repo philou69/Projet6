@@ -17,23 +17,14 @@ class PictureType extends AbstractType
     {
 
         $builder
-            ->add('file', FileType::class, array(
+            ->add('file',FileType::class, array(
                     'label' => 'Importer une image',
-                    'multiple' => true,
+                    'multiple' => false,
                     'required' => false,
                     'attr' => [
                         'accept' => 'image/*',
-                        'class' => 'filestyle',
-                        'data-input' => 'false',
-                        'data-badge' => 'false',
-                        'data-icon' => 'false',
-                        'data-buttonText' => 'Choisir Photo'
                     ],
-                    'constraints' => [
-                        new Image()
-                    ],
-                    'data_class' => null,
-//                    'mapped' => false,
+                    'constraints' => new Image(),
                 )
             );
 
@@ -42,9 +33,11 @@ class PictureType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'ObservationBundle\Entity\Picture',
-            'cascade_validation' => true
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'ObservationBundle\Entity\Picture',
+                'cascade_validation' => true,
+            )
+        );
     }
 }
