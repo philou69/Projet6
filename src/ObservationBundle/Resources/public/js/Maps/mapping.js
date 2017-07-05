@@ -20,9 +20,9 @@ function initMap() {
                 addMarkers(data)
             }else{
                 // Il n'y a pas d'oiseaux à localiser
-                $('#filter').append('<p id="status">Aucuns oiseaux  observer</p>');
+                $('#filter').append('<p id="status">Aucun oiseaux observés</p>');
             }
-            $('#filters').removeAttr('disabled');
+            $('#filter').removeAttr('hidden');
         }
     });
     $("#filters").on('change', function (event) {
@@ -45,7 +45,7 @@ function initMap() {
                     addMarkers(data)
                 }else{
                     // Sinon aucune observation pour l'espece
-                    $('#filter').append('<p id="status">Aucune observation pour l\'espece séléctionne</p>')
+                    $('#filter').append('<p id="status">Aucune observation pour l\'espèce sélectionnée</p>')
                 }
 
             }
