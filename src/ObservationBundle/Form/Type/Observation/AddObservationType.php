@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\All;
 use Symfony\Component\Validator\Constraints\Image;
 
 class AddObservationType extends AbstractType
@@ -32,7 +33,7 @@ class AddObservationType extends AbstractType
             ->add( 'seeAt', DateTimeType::class, array(
                 'label' => 'Date de l\'observation: ',
                 'widget' => 'single_text',
-                'format' => 'dd-MM-yyy',
+                'format' => 'dd-MM-yyyy',
                 'attr' => array('class' => 'dateObs'),
                 'with_minutes' => false
             ))
@@ -57,14 +58,18 @@ class AddObservationType extends AbstractType
                     'required' => false,
                     'mapped' => false,
                     'attr' => [
-                        'accept' => 'image/*;capture=camera',
                         'class' => 'filestyle',
                         'data-input' => 'false',
                         'data-badge' => 'false',
                         'data-icon' => 'false',
                         'data-buttonText' => 'Choisir Photo',
                     ],
-                    'data_class' => null
+                    'data_class' => null,
+                    'constraints' => [
+                        new All([
+                            new Image()
+                        ])
+                    ]
                 )
             )
             ->add( 'save', SubmitType::class, array(

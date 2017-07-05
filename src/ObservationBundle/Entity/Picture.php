@@ -134,7 +134,6 @@ class Picture
     public function setBird(\ObservationBundle\Entity\Bird $bird = null)
     {
         $this->bird = $bird;
-
         return $this;
     }
 
@@ -158,7 +157,7 @@ class Picture
     public function setObservation(\ObservationBundle\Entity\Observation $observation)
     {
         $this->observation = $observation;
-        $observation->addFile($this);
+        $observation->addPicture($this);
         return $this;
     }
 

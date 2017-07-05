@@ -4,7 +4,6 @@ namespace ObservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Observation
@@ -60,7 +59,7 @@ class Observation
     private $validated = false;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observations")
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Bird", inversedBy="observations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $bird;
@@ -70,7 +69,7 @@ class Observation
      *
      * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="observation", cascade={"persist"})
      */
-    private $files;
+    private $pictures;
 
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Location", inversedBy="observations", cascade={"persist"})
@@ -107,7 +106,7 @@ class Observation
     public function __construct()
     {
 
-        $this->files = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
 //        $this->pictures_2 = new \Doctrine\Common\Collections\ArrayCollection();
         $this->postedAt = new \DateTime();
     }
@@ -364,36 +363,36 @@ class Observation
 
 
     /**
-     * Add file
+     * Add picture
      *
-     * @param \ObservationBundle\Entity\Picture $file
+     * @param \ObservationBundle\Entity\Picture $picture
      *
      * @return Observation
      */
-    public function addFile(\ObservationBundle\Entity\Picture $file)
+    public function addPicture(\ObservationBundle\Entity\Picture $picture)
     {
-        $this->files[] = $file;
+        $this->pictures[] = $picture;
 
         return $this;
     }
 
     /**
-     * Remove file
+     * Remove picture
      *
-     * @param \ObservationBundle\Entity\Picture $file
+     * @param \ObservationBundle\Entity\Picture $picture
      */
-    public function removeFile(\ObservationBundle\Entity\Picture $file)
+    public function removePicture(\ObservationBundle\Entity\Picture $picture)
     {
-        $this->files->removeElement($file);
+        $this->pictures->removeElement($picture);
     }
 
     /**
-     * Get files
+     * Get pictures
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getFiles()
+    public function getPictures()
     {
-        return $this->files;
+        return $this->pictures;
     }
 }
