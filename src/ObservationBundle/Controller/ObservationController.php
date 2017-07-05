@@ -122,16 +122,6 @@ class ObservationController extends Controller
                 ->setValidatedBy($this->getUser());
         }
 
-        //Ajout de 1 ou 2 bouton en fonction du device
-        $btnPicture_1 = new Picture();
-        $observation->addPicture($btnPicture_1);
-        if ($device->isMobile() || $device->isTablet()) {
-            $btnPicture_2 = new Picture();
-            $observation->addPicture($btnPicture_2);
-        }
-
-
-
         $form = $this->createForm(AddObservationType::class, $observation);
 
         $form->handleRequest($request);
@@ -139,9 +129,8 @@ class ObservationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Recuperation des photos uploader
-            $files = $form->get('pictures')->getData();
-            dump($files);
-            // On boucle sur les photos pour les ajoutés à l'observation
+            $files = $form->get('files')->getData();
+
             foreach ($files as $file) {
                 dump($file);
                 $picture = new Picture();
@@ -154,8 +143,6 @@ class ObservationController extends Controller
                 }
                 $em->persist($picture);
             }
-
-
 
             $observation->setUser($this->getUser());
 

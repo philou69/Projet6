@@ -95,24 +95,12 @@
                     <div class="row">
                         <div class="col-xs-10 col-xs-offset-1">
                             <div>
-                                {{ form_errors(form.pictures) }}
+                                {{ form_errors(form.files) }}
                             </div>
                             <div id="picture-input" class="row">
-                                    <div class="col-xs-6">
-                                        {{ form_widget(form.pictures) }}
+                                <div class="col-xs-12">
+                                    {{ form_widget(form.files) }}
                                     </div>
-                                <div class="col-xs-6">
-
-                                    {{ form_widget(form.pictures_2) }}
-
-                                    {#<div id="add_observation_pictures_2">#}
-                                        {#<div class="form-group">#}
-                                            {#<label class="control-label" for="add_observation_pictures_2_file">Importer une image#}
-                                            {#</label>#}
-                                            {#<input type="file" id="add_observation_pictures_2_file" name="add_observation[pictures_2][file][]" accept="image/*" class="filestyle" data-input="false" data-badge="false" data-icon="false" data-buttontext="Choisir Photo" multiple="multiple" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);" capture="true">#}
-                                    {#</div>#}
-                                {#</div>#}
-                            </div>
                             <div id="picBird" class="col-xs-12">
                                 <button type="button" class="close" aria-label="Close" id="closePic" hidden>
                                     <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>

@@ -5,38 +5,16 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/observation.js" afterPath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/observation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/observation.js.map" afterPath="$PROJECT_DIR$/dist/src/ObservationBundle/Resources/public/js/observation.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/observation.js" afterPath="$PROJECT_DIR$/dist/web/bundles/observation/js/observation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/web/bundles/observation/js/observation.js.map" afterPath="$PROJECT_DIR$/dist/web/bundles/observation/js/observation.js.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Controller/BirdController.php" afterPath="$PROJECT_DIR$/src/ObservationBundle/Controller/BirdController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Controller/ObservationController.php" afterPath="$PROJECT_DIR$/src/ObservationBundle/Controller/ObservationController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Entity/Bird.php" afterPath="$PROJECT_DIR$/src/ObservationBundle/Entity/Bird.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Entity/Observation.php" afterPath="$PROJECT_DIR$/src/ObservationBundle/Entity/Observation.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Entity/Picture.php" afterPath="$PROJECT_DIR$/src/ObservationBundle/Entity/Picture.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/ObservationBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Form/Type/Bird/BirdType.php" afterPath="$PROJECT_DIR$/src/ObservationBundle/Form/Type/Bird/BirdType.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Form/Type/Observation/AddObservationType.php" afterPath="$PROJECT_DIR$/src/ObservationBundle/Form/Type/Observation/AddObservationType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Form/Type/Picture/PictureType.php" afterPath="$PROJECT_DIR$/src/ObservationBundle/Form/Type/Picture/PictureType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/add.observation.css" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/add.observation.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/style.css" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/observation.js" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/observation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Association/Desktop/contact.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Association/Desktop/contact.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Association/Desktop/faq.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Association/Desktop/faq.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Association/Mobile/contact.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Association/Mobile/contact.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Association/Mobile/faq.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Association/Mobile/faq.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Bird/Desktop/description.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Bird/Desktop/description.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Bird/Desktop/list.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Bird/Desktop/list.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Bird/Mobile/description.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Bird/Mobile/description.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Bird/Mobile/list.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Bird/Mobile/list.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Blog/Desktop/view.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Blog/Desktop/view.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Blog/Mobile/view.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Blog/Mobile/view.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Fiche/Desktop/editFiche.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Fiche/Desktop/editFiche.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Fiche/Mobile/editFiche.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Fiche/Mobile/editFiche.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Home/Desktop/home.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Home/Desktop/home.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Home/Mobile/home.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Home/Mobile/home.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Default/javasrcipt.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Default/javasrcipt.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Observation/Desktop/add.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Observation/Desktop/add.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Observation/Mobile/add.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Observation/Mobile/add.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/User/Desktop/connect.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/User/Desktop/connect.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/User/Mobile/connect.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/User/Mobile/connect.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/layout.html.twig" afterPath="$PROJECT_DIR$/src/ObservationBundle/Resources/views/layout.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -78,8 +56,8 @@
               <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/style.css">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="72">
-                      <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+                    <state relative-caret-position="277">
+                      <caret line="77" column="23" lean-forward="false" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="23" />
                       <folding />
                     </state>
                   </provider>
@@ -95,39 +73,29 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="add.html.twig" pinned="false" current-in-tab="true">
+              <file leaf-file-name="add.html.twig" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/views/Observation/Desktop/add.html.twig">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="231">
-                      <caret line="98" column="47" lean-forward="false" selection-start-line="98" selection-start-column="47" selection-end-line="98" selection-end-column="47" />
+                    <state relative-caret-position="-483">
+                      <caret line="61" column="22" lean-forward="false" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
                       <folding>
-                        <element signature="e#369#384#0#Twig" expanded="true" />
+                        <element signature="e#12#55#0#Twig" expanded="false" />
+                        <element signature="e#671#717#0#Twig" expanded="false" />
+                        <element signature="e#2206#2264#0#Twig" expanded="false" />
+                        <element signature="e#3210#3219#0#Twig" expanded="false" />
                       </folding>
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="add.html.twig" pinned="false" current-in-tab="false">
+              <file leaf-file-name="add.html.twig" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/views/Observation/Mobile/add.html.twig">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="-47">
-                      <caret line="101" column="72" lean-forward="false" selection-start-line="101" selection-start-column="40" selection-end-line="101" selection-end-column="72" />
+                    <state relative-caret-position="285">
+                      <caret line="100" column="59" lean-forward="false" selection-start-line="100" selection-start-column="59" selection-end-line="100" selection-end-column="59" />
                       <folding>
-                        <element signature="e#12#54#0#Twig" expanded="false" />
-                        <element signature="e#776#822#0#Twig" expanded="false" />
-                        <element signature="e#2306#2364#0#Twig" expanded="false" />
-                        <element signature="e#3368#3377#0#Twig" expanded="false" />
+                        <element signature="e#368#383#0#Twig" expanded="true" />
                       </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="add.observation.css" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/add.observation.css">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="75">
-                      <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-                      <folding />
                     </state>
                   </provider>
                 </entry>
@@ -135,8 +103,8 @@
               <file leaf-file-name="home.css" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/home.css">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="327">
-                      <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+                    <state relative-caret-position="176">
+                      <caret line="59" column="16" lean-forward="false" selection-start-line="56" selection-start-column="4" selection-end-line="59" selection-end-column="16" />
                       <folding />
                     </state>
                   </provider>
@@ -168,23 +136,11 @@
           </split-first>
           <split-second>
             <leaf>
-              <file leaf-file-name="Picture.php" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Entity/Picture.php">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="2840">
-                      <caret line="193" column="40" lean-forward="false" selection-start-line="193" selection-start-column="28" selection-end-line="193" selection-end-column="40" />
-                      <folding>
-                        <element signature="e#44#76#0#PHP" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
               <file leaf-file-name="PictureType.php" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Form/Type/Picture/PictureType.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="286">
-                      <caret line="33" column="22" lean-forward="false" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+                    <state relative-caret-position="230">
+                      <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
                       <folding>
                         <element signature="e#57#97#0#PHP" expanded="true" />
                       </folding>
@@ -192,25 +148,13 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="AddObservationType.php" pinned="false" current-in-tab="false">
+              <file leaf-file-name="AddObservationType.php" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Form/Type/Observation/AddObservationType.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="479">
-                      <caret line="56" column="16" lean-forward="false" selection-start-line="54" selection-start-column="13" selection-end-line="56" selection-end-column="16" />
+                    <state relative-caret-position="153">
+                      <caret line="59" column="59" lean-forward="false" selection-start-line="59" selection-start-column="59" selection-end-line="59" selection-end-column="59" />
                       <folding>
                         <element signature="e#59#113#0#PHP" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="LocationType.php" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Form/Type/Location/LocationType.php">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="-156">
-                      <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                      <folding>
-                        <element signature="e#56#96#0#PHP" expanded="false" />
                       </folding>
                     </state>
                   </provider>
@@ -219,8 +163,8 @@
               <file leaf-file-name="Observation.php" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Entity/Observation.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="864">
-                      <caret line="107" column="7" lean-forward="false" selection-start-line="107" selection-start-column="7" selection-end-line="107" selection-end-column="7" />
+                    <state relative-caret-position="-5372">
+                      <caret line="6" column="55" lean-forward="false" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
                       <folding>
                         <element signature="e#44#76#0#PHP" expanded="true" />
                       </folding>
@@ -234,26 +178,43 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="observation.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="observation.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/observation.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="31" column="58" lean-forward="false" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
+                <state relative-caret-position="3">
+                  <caret line="17" column="12" lean-forward="false" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ObservationController.php" pinned="false" current-in-tab="true">
+          <file leaf-file-name="javasrcipt.html.twig" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/views/Default/javasrcipt.html.twig">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="405">
+                  <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="link.html.twig" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/views/Default/link.html.twig">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ObservationController.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Controller/ObservationController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="373">
-                  <caret line="156" column="0" lean-forward="true" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+                <state relative-caret-position="361">
+                  <caret line="135" column="41" lean-forward="false" selection-start-line="135" selection-start-column="41" selection-end-line="135" selection-end-column="41" />
                   <folding>
                     <element signature="e#50#84#0#PHP" expanded="true" />
-                    <element signature="e#1724#1755#1#PHP" expanded="true" />
-                    <element signature="e#3123#3154#1#PHP" expanded="true" />
-                    <element signature="e#10507#10535#1#PHP" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -267,6 +228,18 @@
                   <folding>
                     <element signature="e#284#311#1#PHP" expanded="false" />
                     <element signature="e#354#407#0#PHP" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Picture.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Entity/Picture.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="431">
+                  <caret line="29" column="16" lean-forward="false" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+                  <folding>
+                    <element signature="e#44#76#0#PHP" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -299,6 +272,7 @@
       <find>actions</find>
       <find>m</find>
       <find>#link-ga</find>
+      <find>#picBird</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -312,7 +286,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/footer.css" />
         <option value="$PROJECT_DIR$/src/ObservationBundle/Controller/BlogController.php" />
         <option value="$PROJECT_DIR$/src/ObservationBundle/Entity/User.php" />
@@ -336,7 +309,6 @@
         <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/config/Routing/contact.yml" />
         <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Default/footer.html.twig" />
         <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/navbar.css" />
-        <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/style.css" />
         <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Association/Desktop/contact.html.twig" />
         <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/views/User/Desktop/profil.html.twig" />
         <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/profil.css" />
@@ -354,15 +326,17 @@
         <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/home.css" />
         <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Home/Desktop/home.html.twig" />
         <option value="$PROJECT_DIR$/src/ObservationBundle/Repository/PictureRepository.php" />
-        <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/add.observation.css" />
-        <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Observation/Mobile/add.html.twig" />
-        <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/observation.js" />
+        <option value="$PROJECT_DIR$/src/ObservationBundle/Form/Type/Picture/PictureType.php" />
         <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Observation/Desktop/add.html.twig" />
-        <option value="$PROJECT_DIR$/src/ObservationBundle/Form/Type/Observation/AddObservationType.php" />
-        <option value="$PROJECT_DIR$/src/ObservationBundle/Entity/Picture.php" />
         <option value="$PROJECT_DIR$/src/ObservationBundle/Controller/ObservationController.php" />
         <option value="$PROJECT_DIR$/src/ObservationBundle/Entity/Observation.php" />
-        <option value="$PROJECT_DIR$/src/ObservationBundle/Form/Type/Picture/PictureType.php" />
+        <option value="$PROJECT_DIR$/src/ObservationBundle/Entity/Picture.php" />
+        <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Default/javasrcipt.html.twig" />
+        <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/observation.js" />
+        <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/add.observation.css" />
+        <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/style.css" />
+        <option value="$PROJECT_DIR$/src/ObservationBundle/Resources/views/Observation/Mobile/add.html.twig" />
+        <option value="$PROJECT_DIR$/src/ObservationBundle/Form/Type/Observation/AddObservationType.php" />
       </list>
     </option>
   </component>
@@ -437,7 +411,7 @@
     <option name="x" value="-1920" />
     <option name="y" value="23" />
     <option name="width" value="1920" />
-    <option name="height" value="1012" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -649,7 +623,11 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Default" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -676,10 +654,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -1038,14 +1012,7 @@
       <workItem from="1498129107450" duration="1237000" />
       <workItem from="1498156764248" duration="14415000" />
       <workItem from="1498485049157" duration="22581000" />
-      <workItem from="1499059501573" duration="34053000" />
-    </task>
-    <task id="LOCAL-00008" summary="Home Step 2">
-      <created>1496305361050</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1496305361050</updated>
+      <workItem from="1499059501573" duration="42109000" />
     </task>
     <task id="LOCAL-00009" summary="Home Step 3 gallery bird">
       <created>1496321522167</created>
@@ -1383,11 +1350,18 @@
       <option name="project" value="LOCAL" />
       <updated>1499088500900</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Fix upload 2">
+      <created>1499180001720</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1499180001720</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="508530000" />
+    <option name="totallyTimeSpent" value="516586000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1399,7 +1373,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1920" y="23" width="1920" height="1012" extended-state="0" />
+    <frame x="-1920" y="23" width="1920" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16187434" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1475,7 +1449,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Config Map page Observation list-Info windows" />
     <MESSAGE value="Config capture Mobile photo Form" />
     <MESSAGE value="Form edit description" />
     <MESSAGE value="Form edit description update" />
@@ -1500,7 +1473,8 @@
     <MESSAGE value="Adjust Home page" />
     <MESSAGE value="part 1 Gallerie" />
     <MESSAGE value="Images Upload fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Images Upload fix" />
+    <MESSAGE value="Fix upload 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix upload 2" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1527,23 +1501,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-515">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/views/Default/footer.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="36" column="29" lean-forward="false" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
-          <folding>
-            <element signature="e#189#197#0#Twig" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/views/layout.mobile.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1803,25 +1760,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Controller/PictureController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-          <folding>
-            <element signature="e#284#311#1#PHP" expanded="false" />
-            <element signature="e#354#407#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Entity/Bird.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
@@ -1830,39 +1768,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/views/Observation/Mobile/add.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-47">
-          <caret line="101" column="72" lean-forward="false" selection-start-line="101" selection-start-column="40" selection-end-line="101" selection-end-column="72" />
-          <folding>
-            <element signature="e#12#54#0#Twig" expanded="false" />
-            <element signature="e#776#822#0#Twig" expanded="false" />
-            <element signature="e#2306#2364#0#Twig" expanded="false" />
-            <element signature="e#3368#3377#0#Twig" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/gallery.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/home.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/add.observation.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -1885,24 +1794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/observation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="31" column="58" lean-forward="false" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/views/Observation/Desktop/add.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="98" column="47" lean-forward="false" selection-start-line="98" selection-start-column="47" selection-end-line="98" selection-end-column="47" />
-          <folding>
-            <element signature="e#369#384#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Entity/Location.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1919,40 +1810,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Form/Type/Location/LocationType.php">
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Controller/PictureController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-156">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="225">
+          <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
           <folding>
-            <element signature="e#56#96#0#PHP" expanded="false" />
+            <element signature="e#284#311#1#PHP" expanded="false" />
+            <element signature="e#354#407#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Form/Type/Observation/AddObservationType.php">
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Form/Type/Location/LocationType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="56" column="16" lean-forward="false" selection-start-line="54" selection-start-column="13" selection-end-line="56" selection-end-column="16" />
-          <folding>
-            <element signature="e#59#113#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="-156">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Form/Type/Picture/PictureType.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="33" column="22" lean-forward="false" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+        <state relative-caret-position="230">
+          <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
           <folding>
             <element signature="e#57#97#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Controller/ObservationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="135" column="41" lean-forward="false" selection-start-line="135" selection-start-column="41" selection-end-line="135" selection-end-column="41" />
+          <folding>
+            <element signature="e#50#84#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Entity/Observation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="107" column="7" lean-forward="false" selection-start-line="107" selection-start-column="7" selection-end-line="107" selection-end-column="7" />
+        <state relative-caret-position="-5372">
+          <caret line="6" column="55" lean-forward="false" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="55" />
           <folding>
             <element signature="e#44#76#0#PHP" expanded="true" />
           </folding>
@@ -1961,23 +1861,91 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Entity/Picture.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2840">
-          <caret line="193" column="40" lean-forward="false" selection-start-line="193" selection-start-column="28" selection-end-line="193" selection-end-column="40" />
+        <state relative-caret-position="431">
+          <caret line="29" column="16" lean-forward="false" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
           <folding>
             <element signature="e#44#76#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Controller/ObservationController.php">
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/views/Default/link.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="156" column="0" lean-forward="true" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/views/Default/javasrcipt.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/add.observation.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/js/observation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3">
+          <caret line="17" column="12" lean-forward="false" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/home.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="59" column="16" lean-forward="false" selection-start-line="56" selection-start-column="4" selection-end-line="59" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/public/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="77" column="23" lean-forward="false" selection-start-line="77" selection-start-column="23" selection-end-line="77" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/views/Observation/Desktop/add.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-483">
+          <caret line="61" column="22" lean-forward="false" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
           <folding>
-            <element signature="e#50#84#0#PHP" expanded="true" />
-            <element signature="e#1724#1755#1#PHP" expanded="true" />
-            <element signature="e#3123#3154#1#PHP" expanded="true" />
-            <element signature="e#10507#10535#1#PHP" expanded="true" />
+            <element signature="e#12#55#0#Twig" expanded="false" />
+            <element signature="e#671#717#0#Twig" expanded="false" />
+            <element signature="e#2206#2264#0#Twig" expanded="false" />
+            <element signature="e#3210#3219#0#Twig" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Resources/views/Observation/Mobile/add.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="100" column="59" lean-forward="false" selection-start-line="100" selection-start-column="59" selection-end-line="100" selection-end-column="59" />
+          <folding>
+            <element signature="e#368#383#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ObservationBundle/Form/Type/Observation/AddObservationType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="59" column="59" lean-forward="false" selection-start-line="59" selection-start-column="59" selection-end-line="59" selection-end-column="59" />
+          <folding>
+            <element signature="e#59#113#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
