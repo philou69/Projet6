@@ -18,15 +18,3 @@
 /web/uploads/images/bird/*
 /web/uploads/images/avatar/*
 .idea/workspace.xml
-.idea/libraries/Generated_files.xml
-dist/dist/dist/dist/src/ObservationBundle/Resources/public/js/AJAX/
-dist/dist/dist/dist/web/bundles/observation/images/
-dist/dist/dist/src/ObservationBundle/Resources/public/images/
-dist/dist/dist/web/bundles/observation/images/
-dist/dist/src/ObservationBundle/Resources/public/images/
-dist/dist/web/bundles/observation/images/
-src/ObservationBundle/Resources/config/Services/
-src/ObservationBundle/Resources/views/Location/
-src/ObservationBundle/Resources/views/Picture/Mobile/
-src/ObservationBundle/Resources/views/Star/Desktop/
-src/ObservationBundle/Resources/views/Star/Mobile/
