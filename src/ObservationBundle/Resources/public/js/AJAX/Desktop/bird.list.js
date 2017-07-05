@@ -27,7 +27,7 @@ $(document).ready(function () {
         var patteParameter = $colorPatte.val() === '' ? '' : 'patte=' + $colorPatte.val() + '&';
         var plumageParameter = $colorPlumage.val() === '' ? '' : 'plumage=' + $colorPlumage.val() + '&';
         var typeBecParameter = $typeBec.val() === '' ? '' : 'typeBec=' + $typeBec.val() + '&';
-        var parameters = '?' + searchParameter + becParameter + patteParameter + plumageParameter;
+        var parameters = '?' + searchParameter + becParameter + patteParameter + plumageParameter + typeBecParameter;
         return parameters;
     }
 
@@ -38,7 +38,7 @@ $(document).ready(function () {
         var url = $addBirds.data('href').replace("1", page) + getParameters() ;
 
         $.ajax({
-            url: url + parameters,
+            url: url,
             dataType: 'html',
             success: function (code_html, status) {
                 success(code_html)
