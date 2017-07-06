@@ -2,3 +2,9 @@ gallerie:
     path: /gallerie
     defaults:
       _controller: ObservationBundle:Picture:gallerie
+
+gallerie_pagination:
+    path: /pagination/{page}
+    defaults:
+        _controller: ObservationBundle:Picture:pagination
+    methods:  [GET]

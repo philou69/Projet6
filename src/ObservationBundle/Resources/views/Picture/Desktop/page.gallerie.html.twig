@@ -1,0 +1,16 @@
+{% if pictures is null %}
+    <div>
+        Il n'y a pas encore de photos.
+    </div>
+{% else %}
+    <div id="list-gallery" class="row">
+        {% for picture in pictures %}
+            <div class="col-md-3 col-xs-6">
+                <img src="{{ asset('uploads/images/bird/' ~picture.url) }}">
+            </div>
+        {% else %}
+            <p>Prochainement les dernières photos</p>
+        {% endfor %}
+    </div>
+    <div class="length" data-length="{{ pictures| length }}" hidden></div>
+{% endif %}
