@@ -14,18 +14,22 @@ $(document).ready(function () {
         dataType: 'html',
         success: function (code_html, status) {
             success(code_html)
+
+                // Get the modal
+                let modal = document.getElementById('myModal');
+
+                $('#list-gallery img').on('click', function () {
+                    let img = $(this).attr('id')
+                    let modalImg = document.getElementById('img01');
+                    let captionText = document.getElementById("caption");
+
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                    captionText.innerHTML = this.alt;
+
+                })
         }
     })
-    // // Fonction qui gerer la liste des parametres GET passer aux requetes
-    // function getParameters() {
-    //     var searchParameter = $search.val() === '' ? '' : 'search=' + $search.val() + '&';
-    //     var becParameter = $colorBec.val() === '' ? '' : 'bec=' + $colorBec.val() + '&';
-    //     var patteParameter = $colorPatte.val() === '' ? '' : 'patte=' + $colorPatte.val() + '&';
-    //     var plumageParameter = $colorPlumage.val() === '' ? '' : 'plumage=' + $colorPlumage.val() + '&';
-    //     var typeBecParameter = $typeBec.val() === '' ? '' : 'typeBec=' + $typeBec.val() + '&';
-    //     var parameters = '?' + searchParameter + becParameter + patteParameter + plumageParameter + typeBecParameter;
-    //     return parameters;
-    // }
 
     // Requte Ajax lors du click sur le bouton add
     addPicture.on('click', function (event) {
@@ -38,6 +42,19 @@ $(document).ready(function () {
             dataType: 'html',
             success: function (code_html, status) {
                 success(code_html)
+
+                    // Get the modal
+                // Get the modal
+                let modal = document.getElementById('myModal');
+
+                $('#list-gallery img').on('click', function () {
+                    let modalImg = document.getElementById('img01');
+                    let captionText = document.getElementById("caption");
+
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                    captionText.innerHTML = this.alt;
+                    })
             }
         })
     })
@@ -77,9 +94,13 @@ $(document).ready(function () {
         page++;
     }
 
-    // listener sur les div des oiseaux pour générer un lien au click
-    // $(document).on('click', '.bird', function (event) {
-    //     window.document.location = $(this).data('href');
-    // })
-
 })
+
+
+
+
+
+
+
+
+
