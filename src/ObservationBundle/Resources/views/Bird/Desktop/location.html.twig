@@ -39,8 +39,9 @@
     {{ parent() }}
     <script src="{{ asset('bundles/observation/js/AJAX/bird.location.js') }}"></script>
     <script src="{{ asset('bundles/observation/js/Maps/location.js') }}"></script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}&libraries=places">
+            src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}&callback=initMap">
     </script>
 
 {% endblock %}

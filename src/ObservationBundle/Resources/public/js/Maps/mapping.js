@@ -93,6 +93,14 @@ function addInfoWindow(marker, content) {
         content: content
     });
 
+    google.maps.event.addListener(marker, 'click', function () {
+        // On vérifie si une autre windows est ouvert, dans ce cas on la ferme
+        if (lastOpenInfoWindow != null) {
+            lastOpenInfoWindow.close();
+        }
+        infoWindow.open(map, marker);
+        lastOpenInfoWindow = infoWindow;
+    });
     google.maps.event.addListener(marker, 'mouseover', function () {
         // On vérifie si une autre windows est ouvert, dans ce cas on la ferme
         if (lastOpenInfoWindow != null) {
