@@ -107,7 +107,6 @@ class Observation
     {
 
         $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
-//        $this->pictures_2 = new \Doctrine\Common\Collections\ArrayCollection();
         $this->postedAt = new \DateTime();
     }
 

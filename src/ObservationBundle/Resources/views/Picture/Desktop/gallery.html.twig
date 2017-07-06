@@ -1,21 +1,29 @@
 {% extends 'ObservationBundle::layout.desktop.html.twig' %}
-{% block title %}Gallerie{% endblock %}
+{% block title %}Gallerie d'image{% endblock %}
 
 {% block link %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/observation/css/gallery.css') }}">
 {% endblock %}
 {% block content %}
+    <div class="center-80">
+        <h1>Gallerie photos</h1>
+        <div id="pictures"
+             data-href="{{ path('gallerie_pagination', {'page': 1}) }}">
+        </div>
+        <div class="row">
+            <div class="col-sm-2 col-sm-offset-5 loader"></div>
+        </div>
+        <a href="#" id="add-pictures" class="btn grey text-center"
+           data-href="{{ path('gallerie_pagination', {'page': 1}) }}"><i
+                    class="fa fa-long-arrow-down"></i> Voir plus de photos
+        </a>
 
-    <h1>Gallerie photos</h1>
-    <div id="list-gallery" class="row">
-        {% for picture in gallery %}
-            <div class="col-md-3 col-xs-6">
-                <img src="{{ asset('uploads/images/bird/' ~picture.url) }}">
-            </div>
-        {% else %}
-            <p>Prochainement les dernières photos</p>
-        {% endfor %}
     </div>
 
+{% endblock %}
+{% block javascript %}
+    {{ parent() }}
+<script src="{{ asset('bundles/observation/js/AJAX/Desktop/galery.list.js') }}"></script>
+<script src="{{ asset('bundles/observation/js/scroll.desktop.js') }}"></script>
 {% endblock %}
