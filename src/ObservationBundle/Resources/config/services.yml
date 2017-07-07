@@ -28,3 +28,7 @@ services:
         arguments: ['@doctrine.orm.entity_manager']
         tags:
           - {name: kernel.event_subscriber }
+
+    observation.generator:
+        class: ObservationBundle\Generator\GeneraterCsv
+        arguments: ['@doctrine.orm.entity_manager', '%csv_path%']

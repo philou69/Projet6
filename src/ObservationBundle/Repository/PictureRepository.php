@@ -3,6 +3,7 @@
 namespace ObservationBundle\Repository;
 
 use ObservationBundle\Entity\User;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * PictureRepository
@@ -18,7 +19,7 @@ class PictureRepository extends \Doctrine\ORM\EntityRepository
 
         $qb = $this->createQueryBuilder('p');
         $query = $qb
-            ->select('p.url')
+//            ->select('p.url')
             ->leftJoin('p.observation', 'obs')
             ->where('obs.validated = true ')
             ->orderBy('p.id', 'DESC')
@@ -37,5 +38,17 @@ class PictureRepository extends \Doctrine\ORM\EntityRepository
             ->andWhere('o.validated = true');
 
         return $query->getQuery()->getResult();
+    }
+
+    public function getPage($page, $numbers)
+    {
+        $query = $this->createQueryBuilder('b');
+        // On regarde s'il s'agit d'une recherche
+
+        $query->orderBy('b.id', 'DESC');
+
+        $query->setFirstResult(($page - 1) * $numbers)->setMaxResults($numbers);
+
+        return new Paginator($query, true);
     }
 }

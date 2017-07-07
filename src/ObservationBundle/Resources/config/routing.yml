@@ -50,3 +50,8 @@ picture:
     prefix: /picture
     resource: 'Routing/picture.yml'
 
+user_export:
+    path: /export-csv
+    defaults:
+      _controller: ObservationBundle:Export:export
+

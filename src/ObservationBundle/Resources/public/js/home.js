@@ -1,4 +1,18 @@
 $(document).ready(function () {
+
+    // Get the modal
+    let modal = document.getElementById('myModal');
+
+    $('#list-gallery img').on('click', function () {
+        console.log('test')
+        let modalImg = document.getElementById('img01');
+        let captionText = document.getElementById("caption");
+
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    })
+
     $(document).scroll(function () { // check if scroll event happened
         if ($(document).scrollTop() > $(window).height()) { // check if user scrolled more than height of the window
             // Passage des couleur traditionnelles aux élément de la navbar, en enlevant la class narbar-transparent

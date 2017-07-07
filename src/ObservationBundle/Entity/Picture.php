@@ -46,7 +46,7 @@ class Picture
      */
     private $bird;
     /**
-     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Observation", inversedBy="files")
+     * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Observation", inversedBy="pictures")
      */
     private $observation;
 

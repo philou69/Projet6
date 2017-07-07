@@ -107,7 +107,6 @@ class Observation
     {
 
         $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
-//        $this->pictures_2 = new \Doctrine\Common\Collections\ArrayCollection();
         $this->postedAt = new \DateTime();
     }
 
@@ -152,7 +151,8 @@ class Observation
      */
     public function getPostedAt()
     {
-        return $this->postedAt;
+        $posted = $this->postedAt->format('y:m:d');
+        return $posted;
     }
 
     /**

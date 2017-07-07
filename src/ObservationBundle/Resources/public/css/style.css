@@ -116,7 +116,7 @@ Retour bas de page
     background-color: rgb(243, 243, 243);
 }
 
-a#retour, a#add-birds {
+a#retour, a#add-birds, a#add-pictures {
     position: absolute;
     bottom:0;
     left: calc( 0px - ( 100% / 8 ));

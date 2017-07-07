@@ -45,8 +45,7 @@ class BirdRepository extends \Doctrine\ORM\EntityRepository
                 ->setParameter('typeBec', $typeBec);
         }
 
-        $query->orderBy('b.nomVern', 'ASC')
-            ->addOrderBy('b.lbNom', 'ASC')->getQuery();
+        $query->orderBy('b.nameSearch', 'ASC')->getQuery();
 
         $query->setFirstResult(($page - 1) * $numbers)->setMaxResults($numbers);
 
@@ -66,12 +65,15 @@ class BirdRepository extends \Doctrine\ORM\EntityRepository
 
     public function findAllSort()
     {
-       $querybuilder = $this->_em->createQueryBuilder();
-       $query = $querybuilder->select('b, COALESCE(b.nomVern, b.lbNom) as columnOrder')
-           ->from('ObservationBundle:Bird', 'b')
-           ->addOrderBy('columnOrder', 'ASC')
-           ->getQuery();
-//       $query = $this->_em->createQuery('SELECT b, COALESCE( b.nomVern, b.lbNom) AS tri FROM ObservationBundle:Bird b ORDER BY tri ');
-       return $query->getResult();
+       $query= $this->createQueryBuilder('b');
+       $query->orderBy('b.nameSearch', 'ASC');
+       return $query->getQuery()->getResult();
+    }
+
+    public function findForCSV()
+    {
+        $query = $this->createQueryBuilder('b');
+        return $query->getQuery()->getArrayResult();
+
     }
 }

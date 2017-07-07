@@ -40,16 +40,31 @@
                     <h1 class="col-md-10 col-xs-12">Les dernières photos</h1>
 
                 </div>
-                <div class="row">
+                <div id="list-gallery" class="text-center col-md-10 col-md-offset-1">
                     {% for picture in gallery %}
-                        <div class="col-xs-6">
-                            <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" alt="image de la galerie"></div>
+                        <div class="col-xs-8 col-xs-offset-1 col-md-6" style="min-width: 250px">
+                            <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" alt="{{ picture.alt }}"></div>
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+
+                            <!-- The Close Button -->
+                            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+                            <!-- Modal Content (The Image) -->
+                            <img class="modal-content" id="img01">
+
+                            <!-- Modal Caption (Image Text) -->
+                            <div id="caption"></div>
+                        </div>
+
                     {% else %}
                         <p>Prochainement les dernières photos</p>
                     {% endfor %}
 
+
+
                 </div>
-                <a href="#" class="col-md-12 col-xs-12 text-center link-mobile">accéder à la gallerie</a>
+                <a href="{{ path('gallerie') }}" class="col-md-12 col-xs-12 text-center link-mobile">accéder à la gallerie</a>
 
             </div>
             {#block de saisie obs et newsletter#}
