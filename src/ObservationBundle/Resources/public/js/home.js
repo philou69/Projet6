@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     $('#list-gallery img').on('click', function () {
         console.log('test')
-        let modalImg = document.getElementById('img01');
+        let modalImg = document.getElementById('picZoom');
         let captionText = document.getElementById("caption");
 
         modal.style.display = "block";
