@@ -63,5 +63,10 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getQuery()->getResult();
     }
+    public function findForCSV()
+    {
+        $query = $this->createQueryBuilder('o');
+        return $query->getQuery()->getArrayResult();
 
+    }
 }

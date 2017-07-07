@@ -151,7 +151,8 @@ class Observation
      */
     public function getPostedAt()
     {
-        return $this->postedAt;
+        $posted = $this->postedAt->format('y:m:d');
+        return $posted;
     }
 
     /**

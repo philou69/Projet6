@@ -66,6 +66,9 @@
                                 <li>
                                     <a href="{{ path('user_contacts') }}">Liste des messages</a>
                                 </li>
+                                <li>
+                                    <a href="{{ path('user_export') }}">Export CSV</a>
+                                </li>
                             {% endif %}
                             {% if 'ROLE_NATURALISTE' in app.user.roles %}
                                 <li>

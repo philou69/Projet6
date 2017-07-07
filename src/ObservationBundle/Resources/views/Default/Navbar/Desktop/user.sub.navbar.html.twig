@@ -17,6 +17,8 @@
                         href="{{ path('user_users') }}" data-hide="#user">Liste des visiteurs</a></li>
             <li class="second_line {{ app.request.attributes.get('_route') == 'user_contacts' ? 'active always-active' : '' }}"><a
                         href="{{ path('user_contacts') }}" data-hide="#user">Les messages</a></li>
+            <li class="second_line {{ app.request.attributes.get('_route') == 'user_export' ? 'active always-active' : '' }}"><a
+                        href="{{ path('user_export') }}" data-hide="#user">Export CSV</a></li>
         {% endif %}
     </ul>
 </div>

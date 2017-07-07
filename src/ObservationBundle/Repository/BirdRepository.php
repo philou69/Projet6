@@ -69,4 +69,11 @@ class BirdRepository extends \Doctrine\ORM\EntityRepository
        $query->orderBy('b.nameSearch', 'ASC');
        return $query->getQuery()->getResult();
     }
+
+    public function findForCSV()
+    {
+        $query = $this->createQueryBuilder('b');
+        return $query->getQuery()->getArrayResult();
+
+    }
 }
