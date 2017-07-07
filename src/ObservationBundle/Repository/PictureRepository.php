@@ -19,7 +19,7 @@ class PictureRepository extends \Doctrine\ORM\EntityRepository
 
         $qb = $this->createQueryBuilder('p');
         $query = $qb
-            ->select('p.url')
+//            ->select('p.url')
             ->leftJoin('p.observation', 'obs')
             ->where('obs.validated = true ')
             ->orderBy('p.id', 'DESC')

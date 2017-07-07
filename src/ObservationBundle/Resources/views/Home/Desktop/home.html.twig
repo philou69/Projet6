@@ -37,13 +37,26 @@
                 <div class="row">
                     <h1 class="col-md-9">Les dernières photos</h1>
                     <a id="link-gallery" href="{{ path('gallerie') }}" class="col-md-3 text-center link-desktop">
-                        <img id="img-gallery" src="{{ asset('bundles/observation/images/icones/importPhoto_icon.png') }}" alt="galerie" class="img-responsive">
+                        <img id="img-gallery" src="{{ asset('bundles/observation/images/icones/importPhoto_icon.png') }}" alt="galerie" class="img-responsive"><p>Accéder à la gallerie</p>
                     </a>
                 </div>
                 <div id="list-gallery" class="row">
                     {% for picture in gallery %}
-                        <div class="col-md-3 col-xs-6">
-                            <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" alt="image issue de la gallerie">
+                        <div class="col-xs-12 col-md-3 col-lg-3">
+                            <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" alt="{{ picture.alt }}">
+                        </div>
+
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+
+                            <!-- The Close Button -->
+                            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+                            <!-- Modal Content (The Image) -->
+                            <img class="modal-content" id="img01">
+
+                            <!-- Modal Caption (Image Text) -->
+                            <div id="caption"></div>
                         </div>
                     {% else %}
                         <p>Prochainement les dernières photos</p>
