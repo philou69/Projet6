@@ -43,24 +43,28 @@
                 <div id="list-gallery" class="row">
                     {% for picture in gallery %}
                         <div class="col-xs-12 col-md-3 col-lg-3">
-                            <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" alt="{{ picture.alt }}">
-                        </div>
-
-                        <!-- The Modal -->
-                        <div id="myModal" class="modal">
-
-                            <!-- The Close Button -->
-                            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
-
-                            <!-- Modal Content (The Image) -->
-                            <img class="modal-content" id="img01">
-
-                            <!-- Modal Caption (Image Text) -->
-                            <div id="caption"></div>
+                            <img src="{{ asset(picture.webPath) }}" alt="{{ picture.bird }}">
                         </div>
                     {% else %}
                         <p>Prochainement les dernières photos</p>
                     {% endfor %}
+
+                    {% for picture in gallery %}
+                        {%  include '@Observation/Modal/picture.html.twig' %}
+                    {% endfor %}
+                </div>
+
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                    <!-- The Close Button -->
+                    <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+                    <!-- Modal Content (The Image) -->
+                    <img class="modal-content" id="img01">
+
+                    <!-- Modal Caption (Image Text) -->
+                    <div id="caption"></div>
                 </div>
 
             </div>

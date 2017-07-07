@@ -16,18 +16,18 @@ $(document).ready(function () {
             success(code_html)
 
                 // Get the modal
-                let modal = document.getElementById('myModal');
+            let modal = document.getElementById('myModal');
 
-                $('#list-gallery img').on('click', function () {
-                    let img = $(this).attr('id')
-                    let modalImg = document.getElementById('img01');
-                    let captionText = document.getElementById("caption");
+            $('#list-gallery img').on('click', function () {
 
-                    modal.style.display = "block";
-                    modalImg.src = this.src;
-                    captionText.innerHTML = this.alt;
+                let modalImg = document.getElementById('picZoom');
+                let captionText = document.getElementById("caption");
 
-                })
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            })
+
         }
     })
 
@@ -43,18 +43,18 @@ $(document).ready(function () {
             success: function (code_html, status) {
                 success(code_html)
 
-                    // Get the modal
                 // Get the modal
                 let modal = document.getElementById('myModal');
 
                 $('#list-gallery img').on('click', function () {
-                    let modalImg = document.getElementById('img01');
+
+                    let modalImg = document.getElementById('picZoom');
                     let captionText = document.getElementById("caption");
 
                     modal.style.display = "block";
                     modalImg.src = this.src;
                     captionText.innerHTML = this.alt;
-                    })
+                })
             }
         })
     })

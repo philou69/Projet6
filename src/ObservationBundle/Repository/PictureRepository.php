@@ -40,12 +40,20 @@ class PictureRepository extends \Doctrine\ORM\EntityRepository
         return $query->getQuery()->getResult();
     }
 
+    public function getUserPicture(){
+        $query = $this->createQueryBuilder('p')
+            ->innerJoin('p.observation', 'o');
+
+        return $query->getQuery()->getResult();
+    }
+
     public function getPage($page, $numbers)
     {
-        $query = $this->createQueryBuilder('b');
+        $query = $this->createQueryBuilder('p');
         // On regarde s'il s'agit d'une recherche
 
-        $query->orderBy('b.id', 'DESC');
+        $query->leftJoin('p.observation', 'o')
+              ->orderBy('p.id', 'DESC');
 
         $query->setFirstResult(($page - 1) * $numbers)->setMaxResults($numbers);
 
