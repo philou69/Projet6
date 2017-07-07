@@ -14,7 +14,7 @@
                 <option >Choisiser une espece</option>
                 {% for bird in birds %}
                     {#{{ dump(bird[0]) }}#}
-                    <option value="{{ bird[0].id }}">{{ bird[0] }}</option>
+                    <option value="{{ bird.id }}">{{ bird.nameSearch }}</option>
                 {% endfor %}
             </select>
         </div>

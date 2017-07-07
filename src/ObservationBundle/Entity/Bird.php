@@ -157,7 +157,10 @@ class Bird
      * @ORM\OneToOne(targetEntity="ObservationBundle\Entity\Picture", cascade={"persist"})
      */
     private $avatar;
-
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $nameSearch;
     /**
      * Constructor
      */
@@ -791,5 +794,29 @@ class Bird
     public function getAvatar()
     {
         return $this->avatar;
+    }
+
+    /**
+     * Set nameSearch
+     *
+     * @param string $nameSearch
+     *
+     * @return Bird
+     */
+    public function setNameSearch($nameSearch)
+    {
+        $this->nameSearch = $nameSearch;
+
+        return $this;
+    }
+
+    /**
+     * Get nameSearch
+     *
+     * @return string
+     */
+    public function getNameSearch()
+    {
+        return $this->nameSearch;
     }
 }
