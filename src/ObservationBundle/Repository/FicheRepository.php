@@ -10,4 +10,11 @@ namespace ObservationBundle\Repository;
  */
 class FicheRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findForCSV()
+    {
+        $query = $this->createQueryBuilder('f');
+
+        return $query->getQuery()->getArrayResult();
+
+    }
 }

@@ -37,4 +37,10 @@ class LocationRepository extends \Doctrine\ORM\EntityRepository
         return $query;
     }
 
+    public function findForCSV()
+    {
+        $query = $this->createQueryBuilder('l');
+        return $query->getQuery()->getArrayResult();
+
+    }
 }

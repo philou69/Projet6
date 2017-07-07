@@ -3,6 +3,7 @@
 parameters:
     #parameter_name: value
     event.dispatcher: \Symfony\Component\EventDispatcher\EventDispatcher
+    csv_path: "%kernel.root_dir%/../web/uploads/CSV"
 
 services:
     #service_name:
