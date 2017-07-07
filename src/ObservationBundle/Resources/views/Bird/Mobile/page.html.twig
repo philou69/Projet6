@@ -7,7 +7,7 @@
         <div class="bird" data-href="{{ path('bird_description', {'id': bird.id}) }}">
             <div class="left">
                 {% if bird.avatar is not null %}
-                    <img src="{{ bird.avatar.webPath }}" class="img-responsive" alt="{{ bird }}">
+                    <img src="{{ bird.avatar.webPath }}" class="img-responsive" alt="{{ bird.nameSearch }}">
                 {% else %}
                     Pas de photos
                 {% endif %}
