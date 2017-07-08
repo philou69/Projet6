@@ -45,7 +45,7 @@ class ObservationListener
             ->setValidatedAt(new \DateTime());
     }
 
-    public function unvalidate(Observation $observation)
+    public function unvalidate(Observation $observation, User $user)
     {
         // On va passer l'observation à invalider
         // On retire les photos à l'oiseau
@@ -56,7 +56,7 @@ class ObservationListener
         }
         $bird->removeLocation($observation->getLocation());
         $observation->setValidated(false)
-            ->setValidatedBy(null)
-            ->setValidatedAt(null);
+            ->setValidatedBy($user)
+            ->setValidatedAt(new \DateTime());
     }
 }

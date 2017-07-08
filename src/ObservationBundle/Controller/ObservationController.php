@@ -192,8 +192,6 @@ class ObservationController extends Controller
     public function validateAction(Observation $observation)
     {
         // Action simple de mise à jour de l'entity sans vue renvoyant à la page de l'observation
-        // on s'assure que l'observation n'est pas déjà valider
-        if ($observation->getValidated() === false) {
             $obsListener = $this->get('observation.event_listener');
             $obsListener->validate($observation, $this->getUser());
             $em = $this->getDoctrine()->getManager();
@@ -201,7 +199,6 @@ class ObservationController extends Controller
             $em->flush();
             $this->get('event_dispatcher')->dispatch('observation.captured', new ObservationEvent($observation));
             $this->addFlash('info', "L'observation a bien été enregistrée !");
-        }
 
         return $this->redirectToRoute('observation_view', array('id' => $observation->getId()));
 
@@ -213,18 +210,14 @@ class ObservationController extends Controller
     public function unvalideAction(Observation $observation)
     {
         // Action simple de mise à jour de l'entity sans vue renvoyant à la page de l'observation
-        // On vérifie si l'observation est validé
-
-        if ($observation->getValidated() === true) {
             $obsListener = $this->get('observation.event_listener');
-            $obsListener->unvalidate($observation);
+            $obsListener->unvalidate($observation, $this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($observation);
+            $em->persist($observation->getBird());
             $em->flush();
 
             $this->addFlash('success', 'L\'observation a bien été invalidée');
-        }
-
         return $this->redirectToRoute('observation_view', array('id' => $observation->getId()));
 
     }

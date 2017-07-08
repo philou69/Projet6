@@ -16,7 +16,7 @@
     <div class="center-90">
         {# Zone d'identification avec google ou facebook #}
         <div id="oauth" class="text-center">
-            <h4>connectez vous avec :</h4>
+            <h4>Connectez vous avec :</h4>
             <div class="row">
                 <div class="col-xs-4 col-xs-push-2">
                     <a href="{{ url('hwi_oauth_service_redirect', {service: 'facebook'}) }}" class="btn btn-blue ">Facebook</a>
@@ -32,7 +32,7 @@
             #}
             <div id="content-switch">
                 <label class="switch"><input type="checkbox" id="choice" {{ form.vars.valid ? '' : 'checked' }}>
-                    <div class="slider"><span class="on">Se connecter</span><span class="off">S'incrire</span></div>
+                    <div class="slider"><span class="on">Se connecter</span><span class="off">S'inscrire</span></div>
                 </label>
             </div>
             <div id="login" {{ form.vars.valid ? '' : "hidden='hidden'" }}>
@@ -43,7 +43,7 @@
                             {{ error.messageKey| trans(error.messageData, 'security') }}
                         </div>
                     {% endif %}
-                    <label for="username" class="control-label">Identifiant ou mot de passe</label>
+                    <label for="username" class="control-label">Identifiant ou Email</label>
                     <input type="text" name="_username" id="username" class="form-control"
                            placeholder="Identifiant ou Email">
                     <label for="password" class="control-label">Mot de passe</label>

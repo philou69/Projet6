@@ -70,7 +70,7 @@ class UserType extends AbstractType
                 'required' => false,
             ))
             ->add('newsletter', CheckboxType::class, array(
-                'label' => 'Newsletter ',
+                'label' => 'Recevoir newsletter ',
                 'required' => false
             ))
             ->add('save', SubmitType::class, array(
