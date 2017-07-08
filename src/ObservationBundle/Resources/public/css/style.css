@@ -79,6 +79,12 @@ Page Observation
     min-width: 250px;
 }
 
+#userPicture
+{
+    text-align: center;
+    color: #ccc;
+}
+
 /*
 Formatage input
  */

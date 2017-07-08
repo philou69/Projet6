@@ -26,11 +26,11 @@
             {#Zone de présentation du site #}
             <div id="bienvenue" class="center-80">
                 <h1>Bienvenue</h1>
-                <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
+                <p>Bienvenue sur l'application participative de l'association Nos amis les oiseaux.<br/>Vous pourrez
                     nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
-                    à l'aide de fiches détaillés sur nos amis les oiseaux</p>
-                <a class="btn btn-nao" href="{{ path('blog_view') }}" role="button">DECOUVRIR L'ASSOCIATION</a>
-                <a class="btn btn-nao" href="{{ path('bird_map_list') }}" role="button">DECOUVRIR LES OISEAUX PROCHE DE CHEZ VOUS</a>
+                    à l'aide de fiches détaillées sur nos amis les oiseaux</p>
+                <a class="btn btn-nao" href="{{ path('blog_view') }}" role="button">D&Eacute;COUVRIR L'ASSOCIATION</a>
+                <a class="btn btn-nao" href="{{ path('bird_map_list') }}" role="button">D&Eacute;COUVRIR LES OISEAUX PROCHE DE CHEZ VOUS</a>
             </div>
             {# Galeery des photos d'oiseaux#}
             <div id="gallery" class="center-80">
@@ -43,24 +43,28 @@
                 <div id="list-gallery" class="row">
                     {% for picture in gallery %}
                         <div class="col-xs-12 col-md-3 col-lg-3">
-                            <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" alt="{{ picture.alt }}">
-                        </div>
-
-                        <!-- The Modal -->
-                        <div id="myModal" class="modal">
-
-                            <!-- The Close Button -->
-                            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
-
-                            <!-- Modal Content (The Image) -->
-                            <img class="modal-content" id="img01">
-
-                            <!-- Modal Caption (Image Text) -->
-                            <div id="caption"></div>
+                            <img src="{{ asset(picture.webPath) }}" alt="{{ picture.bird }}">
                         </div>
                     {% else %}
                         <p>Prochainement les dernières photos</p>
                     {% endfor %}
+
+                    {% for picture in gallery %}
+                        {%  include '@Observation/Modal/picture.html.twig' %}
+                    {% endfor %}
+                </div>
+
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                    <!-- The Close Button -->
+                    <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+                    <!-- Modal Content (The Image) -->
+                    <img class="modal-content" id="img01">
+
+                    <!-- Modal Caption (Image Text) -->
+                    <div id="caption"></div>
                 </div>
 
             </div>

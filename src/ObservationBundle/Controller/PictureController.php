@@ -33,6 +33,9 @@ class PictureController extends Controller
                     $number
                 );
 
+
+//                $user = $em->getRepository('ObservationBundle:Picture')->getUserPicture();
+
                 // On calcul le nombre de page max
                 $nbPage = ceil(count($pictures) / $number);
 
@@ -47,16 +50,18 @@ class PictureController extends Controller
                 $nbPage = null;
             }
 
+
+
             $device = $this->get('mobile_detect.mobile_detector');
             if ($device->isMobile() || $device->isTablet()) {
                 return $this->render(
-                    '@Observation/Picture/Mobile/page.gallerie.html.twig', compact('pictures', 'nbPage', 'page', 'number')
+                    '@Observation/Picture/Mobile/page.gallerie.html.twig', compact('pictures', 'nbPage', 'page', 'number','user')
 
                 );
             } else {
                 return $this->render(
                     '@Observation/Picture/Desktop/page.gallerie.html.twig',
-                    compact('pictures', 'nbPage', 'page', 'number')
+                    compact('pictures', 'nbPage', 'page', 'number', 'user')
                 );
             }
         } else {

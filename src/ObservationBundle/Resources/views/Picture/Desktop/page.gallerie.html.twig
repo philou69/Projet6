@@ -7,24 +7,19 @@
         {% for picture in pictures %}
 
             <div class="col-md-3 col-xs-6">
-                <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" alt="{{ picture.alt }}" id="picture_{{ loop.index }}">
+                <a href="#modal_picture_{{ picture.id }}" data-toggle="modal">
+                    <img src="{{ asset(picture.webPath) }}" alt="{{ picture.bird }}">
+                </a>
             </div>
 
-    <!-- The Modal -->
-        <div id="myModal" class="modal">
-
-        <!-- The Close Button -->
-        <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
-
-            <!-- Modal Content (The Image) -->
-            <img class="modal-content" id="img01">
-
-            <!-- Modal Caption (Image Text) -->
-            <div id="caption"></div>
-        </div>
         {% else %}
             <p>Prochainement les dernières photos</p>
         {% endfor %}
+
+        {% for picture in pictures %}
+            {%  include '@Observation/Modal/picture.html.twig' %}
+        {% endfor %}
+
     </div>
     <div class="length" data-length="{{ pictures| length }}" hidden></div>
 {% endif %}

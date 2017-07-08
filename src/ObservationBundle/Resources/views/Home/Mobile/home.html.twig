@@ -26,11 +26,11 @@
             {#Zone de présentation du site #}
             <div id="bienvenue">
                 <h1>Bienvenue</h1>
-                <p>Bienvenue sur l'application participative de L'association Nos amis les oiseaux.<br/>Vous pourrez
+                <p>Bienvenue sur l'application participative de l'association Nos amis les oiseaux.<br/>Vous pourrez
                     nous faire part de vos observations sur le terrain ou approfondir vos connaissances en ornithologie
-                    à l'aide de fiches détaillés sur nos amis les oiseaux</p>
+                    à l'aide de fiches détaillées sur nos amis les oiseaux</p>
                 <div class="text-center">
-                    <a class="btn btn-nao" href="{{ path('blog_view') }}" role="button">DECOUVRIR L'ASSOCIATION</a>
+                    <a class="btn btn-nao" href="{{ path('blog_view') }}" role="button">D&Eacute;COUVRIR L'ASSOCIATION</a>
                     <a class="btn btn-nao" href="{{ path('bird_map_list') }}" role="button">LES OISEAUX PRES DE CHEZ VOUS</a>
                 </div>
             </div>
@@ -44,24 +44,24 @@
                     {% for picture in gallery %}
                         <div class="col-xs-8 col-xs-offset-1 col-md-6" style="min-width: 250px">
                             <img src="{{ asset('uploads/images/bird/' ~picture.url) }}" alt="{{ picture.alt }}"></div>
-                        <!-- The Modal -->
-                        <div id="myModal" class="modal">
 
-                            <!-- The Close Button -->
-                            <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
-
-                            <!-- Modal Content (The Image) -->
-                            <img class="modal-content" id="img01">
-
-                            <!-- Modal Caption (Image Text) -->
-                            <div id="caption"></div>
-                        </div>
 
                     {% else %}
                         <p>Prochainement les dernières photos</p>
                     {% endfor %}
 
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
 
+                        <!-- The Close Button -->
+                        <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+                        <!-- Modal Content (The Image) -->
+                        <img class="modal-content" id="img01">
+
+                        <!-- Modal Caption (Image Text) -->
+                        <div id="caption"></div>
+                    </div>
 
                 </div>
                 <a href="{{ path('gallerie') }}" class="col-md-12 col-xs-12 text-center link-mobile">accéder à la gallerie</a>
