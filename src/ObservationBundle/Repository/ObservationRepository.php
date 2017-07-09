@@ -31,7 +31,8 @@ class ObservationRepository extends \Doctrine\ORM\EntityRepository
 
         // On les trie par date de post
         $query->setParameter('status', $status)
-            ->orderBy('o.postedAt', 'DESC')
+            ->orderBy('o.validatedAt', 'ASC')
+            ->addOrderBy('o.postedAt', 'ASC')
             ->getQuery();
         // On récupere la quantité et on commence par page -1 fois la quantité.
         $query->setFirstResult(($page - 1) * $limit)

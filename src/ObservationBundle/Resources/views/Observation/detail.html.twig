@@ -50,7 +50,7 @@
                             </div>
                         {% endif %}
                         <div class="picture col-sm-8" {{ loop.index > 1 ? 'hidden' }} id="{{ loop.index }}">
-                            <img src="{{ asset(picture.webPath) }}" alt="{{ picture.alt }}"  alt="{{ picture.bird.nameSearch }}">
+                            <img src="{{ asset(picture.webPath) }}" alt="{{ observation.bird.nameSearch }}">
                         </div>
                         {% if loop.last %}
                             <div class="col-sm-2 paging">
@@ -59,30 +59,49 @@
                                 </button>
                             </div>
                         {% endif %}
-                        {% else %}
+                    {% else %}
                         Aucunes photos
                     {% endfor %}
                 </td>
             </tr>
+            {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
+                <tr>
+                    <th scope="row">Status</th>
+                    <td>{{ observation.status }}</td>
+                </tr>
+            {% endif %}
+
             </tbody>
         </table>
         {% if app.user and 'ROLE_NATURALISTE' in app.user.roles %}
         <div class="row">
-            <div class="col-md-3 col-md-push-4">
-                {% if observation.validated == true %}
+            <div class="col-md-8 col-md-push-2">
+                {% if observation.validatedBy is null %}
+                    {# L'observation n'a jamias été verifier on propose les deux choix #}
                     <a href="#invalide_observation_{{ observation.id }}" class="btn  btn-nao" data-toggle="modal">Unvalidé l'observation</a>
-                {% else %}
                     <a href="#valide_observation_{{ observation.id }}" class="btn btn-nao" data-toggle="modal">Validé l'observation</a>
+                {% else %}
+                    {# Elle a déjà été verifier, on propose le choix correspondant #}
+                    {% if observation.validated == true %}
+                        <a href="#invalide_observation_{{ observation.id }}" class="btn  btn-nao" data-toggle="modal">Unvalidé l'observation</a>
+                    {% else %}
+                        <a href="#valide_observation_{{ observation.id }}" class="btn btn-nao" data-toggle="modal">Validé l'observation</a>
+                    {% endif %}
                 {% endif %}
             </div>
 
         </div>
         {% endif %}
         {% if app.user and 'ROLE_NATURALISTE' in app.user.roles %}
-            {% if observation.validated == true %}
+            {% if observation.validatedBy is null %}
                 {%  include 'ObservationBundle:Modal:unvalide.observation.html.twig' with {'observation': observation} %}
-            {% else %}
                 {%  include 'ObservationBundle:Modal:valide.observation.html.twig' with {'observation': observation} %}
+            {% else %}
+                {% if observation.validated == true %}
+                    {%  include 'ObservationBundle:Modal:unvalide.observation.html.twig' with {'observation': observation} %}
+                {% else %}
+                    {%  include 'ObservationBundle:Modal:valide.observation.html.twig' with {'observation': observation} %}
+                {% endif %}
             {% endif %}
             <a id="retour" href="{{ path('user_observations') }}" class="btn grey">Reourner à la liste</a>
         {% else %}
