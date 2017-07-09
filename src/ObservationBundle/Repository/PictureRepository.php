@@ -52,7 +52,9 @@ class PictureRepository extends \Doctrine\ORM\EntityRepository
         $query = $this->createQueryBuilder('p');
         // On regarde s'il s'agit d'une recherche
 
-        $query->leftJoin('p.observation', 'o')
+        $query->join('p.observation', 'o')
+              ->addSelect('o')
+              ->where('p.bird IS NOT NULL')
               ->orderBy('p.id', 'DESC');
 
         $query->setFirstResult(($page - 1) * $numbers)->setMaxResults($numbers);

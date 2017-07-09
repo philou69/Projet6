@@ -6,9 +6,12 @@
     <div id="list-gallery" class="row">
 
         {% for picture in pictures %}
-            <div class="col-md-3 col-xs-6">
+            <div class="col-md-3 col-xs-12 col-sm-4">
                 <a href="#modal_picture_{{ picture.id }}" data-toggle="modal">
-                    <img src="{{ asset(picture.webPath) }}" alt="{{ picture.bird }}">
+                    <figure>
+                        <img src="{{ asset(picture.webPath) }}" alt="{{ picture.bird }}" class="img-responsive">
+                        <figcaption>{{ picture.bird }}</figcaption>
+                    </figure>
                 </a>
             </div>
 

@@ -1,6 +1,8 @@
 // Requetes AJAX sur la pagination et recherche des oiseaux
 // Appeller dans la vue Bird/Desktop/list.html.twig
 $(document).ready(function () {
+
+
     // Récuperation des differents elements
     var $birds = $('#birds');
     var $search = $('#search');
@@ -11,6 +13,7 @@ $(document).ready(function () {
     var $typeBec = $('#type-bec');
     // Création de la variable page
     var page = 1
+
 
     // Première requete ajax lors du chargement de la page
     $.ajax({
@@ -93,12 +96,24 @@ $(document).ready(function () {
         // On récuperer la taille du resultat
         var numbers = Number($('.length').data('length'));
         // On comparse celui-ci à 20 et aux nombres d'oiseaux affiché s'ils correspondent celà signifie qu'il n'y a pas d'autres pages
-        if(numbers <= 20 || numbers == $('.bird').length ){
+
+        if ($('.bird').length === 0)
+        {
+
+        }
+
+        if(numbers <= 20 || numbers === $('.bird').length || $('.bird').length === 0){
+
             // On cache donc le bouton add
-            $addBirds.attr('hidden', true);
-        }else{
+            // $addBirds.attr('hidden', true);
+            $addBirds.hide();
+
+        }
+        else
+        {
             // Sinon on l'affiche
-            $addBirds.removeAttr('hidden');
+            // $addBirds.removeAttr('hidden');
+            $addBirds.show();
         }
         // On supprime le div comptenant la taille du resultat pour évité les doublons
         $('.length').remove();
