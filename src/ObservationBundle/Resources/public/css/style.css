@@ -186,6 +186,10 @@ a#retour, a#add-birds, a#add-pictures {
         background: none;
         width: 90%;
     }
+    .alert{
+        margin: 50px auto !important;
+        width: 90% !important;
+    }
 
 }
 
