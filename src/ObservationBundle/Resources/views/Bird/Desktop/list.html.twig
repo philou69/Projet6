@@ -16,8 +16,8 @@
         <a href="#" id="up"><i class="fa fa-chevron-circle-up fa-2x"></i></a>
         <div id="filter" class="row">
             <div class="col-md-3 row">
-                <label for="color-plumage" class="control-label col-sm-4">Plumage</label>
-                <div class="col-sm-8">
+                <label for="color-plumage" class="control-label col-md-6">Plumage</label>
+                <div class="col-md-6">
                     <select name="color-plumage" id="color-plumage" class="form-control">
                         <option value="" selected>Couleur</option>
                         <option value="blanc">Blanc</option>
@@ -33,8 +33,8 @@
                 </div>
             </div>
             <div class="col-md-3 row">
-                <label for="color-patte" class="control-label col-sm-4">Pattes</label>
-                <div class="col-sm-8">
+                <label for="color-patte" class="control-label col-md-6">Pattes</label>
+                <div class="col-md-6">
                     <select name="color-patte" id="color-patte" class="form-control">
                         <option value="" selected>Couleur</option>
                         <option value="blanc">Blanc</option>
@@ -49,9 +49,9 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-2 row">
-                <label for="color-bec" class="control-label col-sm-4">Bec</label>
-                <div class="col-sm-8">
+            <div class="col-md-3 row">
+                <label for="color-bec" class="control-label col-md-6">Bec</label>
+                <div class="col-md-6">
                     <select name="color-bec" id="color-bec" class="form-control">
                         <option value="" selected>Couleur</option>
                         <option value="blanc">Blanc</option>
@@ -66,9 +66,9 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-4 row">
-                <label for="type-bec" class="control-label col-sm-4">Forme du bec</label>
-                <div class="col-sm-8">
+            <div class="col-md-3 row">
+                <label for="type-bec" class="control-label col-md-6">Forme du bec</label>
+                <div class="col-md-6">
                     <select name="type-bec" id="type-bec" class="form-control">
                         <option value="" selected>Type</option>
                         <option value="autre">Autre</option>
@@ -102,7 +102,7 @@
              data-href="{{ path('bird_pagination', {'page': 1}) }}"></div>
 
         <div class="row">
-            <div class="col-sm-2 col-sm-offset-5 loader"></div>
+            <div class="col-md-2 col-md-offset-5 loader"></div>
         </div>
         <a href="#" id="add-birds" class="btn grey text-center"
            data-href="{{ path('bird_pagination', {'page': 1}) }}"><i

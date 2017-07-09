@@ -10,15 +10,18 @@ $(document).ready(function () {
             const tabId = $(this).data('hide');
             /* On regarde ou est partie la souris */
             $(document).on('mousemove', function (e) {
-                if(e.target.attributes['data-hide'] === undefined){
-                    // On est parti sur un endroit ne contenant pas data-hide, on cache la sous nav
-                    var dataId = "[data-hide='" + tabId + "']";
-                    $(dataId).parent().removeClass('active')
-                    $(tabId).removeClass('active');
-                    $('.always-active').addClass('active');
+                if(typeof $(e.target).data('hide') === typeof undefined) {
+                    // On vértifie si on ne se trouve pas sur la sous bar
+                    if(!$(e.target).hasClass('tab-content')){
+                        // On est parti sur un endroit ne contenant pas data-hide, on cache la sous nav
+                        var dataId = "[data-hide='" + tabId + "']";
+                        $(dataId).parent().removeClass('active')
+                        $(tabId).removeClass('active');
+                        $('.always-active').addClass('active');
+                    }
                 }else{
                     // On est bien sur un lien en rapport avefc une sous nav
-                    if(e.target.attributes['data-hide'].value !== tabId){
+                    if($(e.target).data('hide') !== tabId){
                         // Mais pas les mêmes, on cache la premiere
                         // On est parti sur un endroit ne contenant pas data-hide, on cache la sous nav
                         var dataId = "[data-hide='" + tabId + "']";

@@ -152,6 +152,7 @@ class Observation
     public function getPostedAt()
     {
         $posted = $this->postedAt->format('y:m:d');
+
         return $posted;
     }
 
@@ -394,5 +395,11 @@ class Observation
     public function getPictures()
     {
         return $this->pictures;
+    }
+
+    public function getStatus()
+    {
+        $message = $this->validatedBy === null ? 'En attente de vérification' : 'Verifiée et '. ($this->getValidated() ? 'validée ' : 'invalidée ') .'par ' . $this->getValidatedBy()->getUsername();
+        return $message;
     }
 }
