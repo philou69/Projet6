@@ -8,6 +8,7 @@
 {% block content %}
     <div class="center-80">
         <h1>Gallerie photos</h1>
+        <a href="#" id="up"><i class="fa fa-chevron-circle-up fa-2x"></i></a>
         <div id="pictures"
              data-href="{{ path('gallerie_pagination', {'page': 1}) }}">
         </div>
@@ -18,7 +19,6 @@
            data-href="{{ path('gallerie_pagination', {'page': 1}) }}"><i
                     class="fa fa-long-arrow-down"></i> Voir plus de photos
         </a>
-
     </div>
 
 {% endblock %}

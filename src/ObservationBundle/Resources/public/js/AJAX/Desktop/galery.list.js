@@ -33,7 +33,7 @@ $(document).ready(function () {
 
     // Requte Ajax lors du click sur le bouton add
     addPicture.on('click', function (event) {
-        event.preventDefault();
+         event.preventDefault();
         prepareRequete(false);
         let url = addPicture.data('href').replace("1", page);
 
@@ -74,23 +74,26 @@ $(document).ready(function () {
     // Fonction utiliser lors du success d'une requete
     function success(code_html){
         // on cache le loader
-        $('.loader').attr('hidden', true)
+        $('.loader').attr('hidden', true);
         // On inserre le resultat dans la zone contentBirds
-        pictures.append(code_html)
+        pictures.append(code_html);
         // On récuperer la taille du resultat
         let numbers = Number($('.length').data('length'));
-        // On comparse celui-ci à 20 et aux nombres d'oiseaux affiché s'ils correspondent celà signifie qu'il n'y a pas d'autres pages
-        if(numbers <= 20 || numbers == $('.bird').length ){
+        console.log($('.picture').length);
+        // On compare celui-ci à 12 et aux nombres d'oiseaux affichés s'ils correspondent celà signifie qu'il n'y a pas d'autres pages
+        if(numbers <= 12 || numbers === $('.picture').length || $('.picture').length === 0){
             // On cache donc le bouton add
-            addPicture.attr('hidden', true);
-        }else{
+            addPicture.hide();
+        }
+        else
+        {
             // Sinon on l'affiche
-            addPicture.removeAttr('hidden');
+            addPicture.show();
         }
         // On supprime le div comptenant la taille du resultat pour évité les doublons
         $('.length').remove();
 
-        // On incrimente la page pour le prochain add
+        // On incrémente la page pour le prochain add
         page++;
     }
 

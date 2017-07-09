@@ -10,9 +10,16 @@ class PictureController extends Controller
 
     public function gallerieAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $gallery = $em->getRepository('ObservationBundle:Picture')->findAll();
-        return $this->render('ObservationBundle:Picture/Desktop:gallery.html.twig', array('gallery' => $gallery));
+//        $em = $this->getDoctrine()->getManager();
+//        $gallery = $em->getRepository('ObservationBundle:Picture')->findAll();
+        $device = $this->get('mobile_detect.mobile_detector');
+
+        if ($device->isMobile() || $device->isTablet()) {
+            return $this->render('@Observation/Picture/Mobile/gallery.html.twig');
+        } else {
+            return $this->render('@Observation/Picture/Desktop/gallery.html.twig');
+        }
+
     }
 
     public function paginationAction($page, Request $request)
@@ -33,9 +40,6 @@ class PictureController extends Controller
                     $number
                 );
 
-
-//                $user = $em->getRepository('ObservationBundle:Picture')->getUserPicture();
-
                 // On calcul le nombre de page max
                 $nbPage = ceil(count($pictures) / $number);
 
@@ -53,15 +57,16 @@ class PictureController extends Controller
 
 
             $device = $this->get('mobile_detect.mobile_detector');
+
             if ($device->isMobile() || $device->isTablet()) {
                 return $this->render(
-                    '@Observation/Picture/Mobile/page.gallerie.html.twig', compact('pictures', 'nbPage', 'page', 'number','user')
+                    '@Observation/Picture/Mobile/page.gallerie.html.twig', compact('pictures', 'nbPage', 'page', 'number')
 
                 );
             } else {
                 return $this->render(
                     '@Observation/Picture/Desktop/page.gallerie.html.twig',
-                    compact('pictures', 'nbPage', 'page', 'number', 'user')
+                    compact('pictures', 'nbPage', 'page', 'number')
                 );
             }
         } else {
