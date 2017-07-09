@@ -17,6 +17,10 @@
 #filter>.row{
     margin-top: 5px;
 }
+#filter>.row label{
+    margin-top: 5px;
+    text-align: center;
+}
 /* fin style pour la zone titre et input search ---------*/
 
 /** Affichage main pour les div oiseaux **/
@@ -119,6 +123,9 @@ a.grey {
     }
     #filter>.row>label, #filter>.row>div{
         padding: 0;
+    }
+    #filter select{
+        max-width: 100px;
     }
 }
 @media (min-width: 993px) and (max-width: 1100px){
