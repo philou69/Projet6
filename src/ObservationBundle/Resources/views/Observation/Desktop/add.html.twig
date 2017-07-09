@@ -18,12 +18,6 @@
 
 {% block content %}
     <div id="contentAdd" class="center-80">
-    <div id="flash">{% for flash_message in app.session.flashBag.get('notice') %}
-            <div class="alert alert-success">
-                <strong>{{ flash_message }}</strong>
-            </div>
-        {% endfor %}
-    </div>
         <div id="formObs">
             {% if app.session.get('getBird') == true %}
                 <h1>{{ bird.LbNom }}</h1>
