@@ -25,8 +25,8 @@
                     {{ is_mobile() == true ? observation.location.lieu | slice(0,15) :  observation.location.lieu }}
                 </div>
                 <div class="text-center col-md-3 hidden-xs second-bloc">
-                            <small>Description libre</small><br>
-                            {{ observation.observation | slice(0,150) }}
+                            <small>Status</small><br>
+                            {{ observation.status }}
                 </div>
                 </div>
         {% endfor %}
