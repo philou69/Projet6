@@ -19,7 +19,8 @@ class PictureRepository extends \Doctrine\ORM\EntityRepository
 
         $query = $this->createQueryBuilder('p');
         $query->where('p.bird IS NOT null')
-            ->setMaxResults(4);
+              ->orderBy('p.id', 'DESC')
+              ->setMaxResults(4);
 
         return $query->getQuery()
             ->getResult();

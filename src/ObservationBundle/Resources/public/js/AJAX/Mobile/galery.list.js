@@ -148,7 +148,7 @@ $(document).ready(function ()
         }
     }
 
-    // Fonction utiliser lors du success d'une requete
+    // Fonction utiliser lors du success d'une requête
     function success(code_html)
     {
         // on cache le loader
@@ -158,8 +158,9 @@ $(document).ready(function ()
         // On récuperer la taille du resultat
         let numbers = Number($('.length').data('length'));
         // On compare celui-ci à 12 et aux nombres d'oiseaux affiché s'ils correspondent celà signifie qu'il n'y a pas d'autres pages
-
-        if (numbers <= 12 || numbers === $('.picture').length )
+        console.log(numbers);
+        console.log($('.picture').length );
+        if ( numbers === $('.picture').length )
         {
             // On passe endPage à true
             $(window).data('endPage', true);

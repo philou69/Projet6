@@ -51,7 +51,7 @@ $(document).ready(function () {
     // Requete ajax lors d'une recherche
     $search.on('keyup', function (event) {
         prepareRequete(true );
-        let url = $search.data('href') + getParameters();
+        var url = $search.data('href') + getParameters();
          $.ajax({
             url: url,
             dataType: 'html',
@@ -65,7 +65,7 @@ $(document).ready(function () {
     // Event sur les select du filtre
     $('select').on('change', function () {
         prepareRequete(true);
-        let url = $birds.data('href') + getParameters();
+        var url = $birds.data('href') + getParameters();
         $.ajax({
             url: url,
             dataType: 'html',
