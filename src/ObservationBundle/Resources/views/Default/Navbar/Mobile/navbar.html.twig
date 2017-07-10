@@ -36,7 +36,7 @@
             {% else %}
                 <li class="first_line text-center {{ app.request.attributes.get('_route') == 'bird_list' ? 'active' :'' }}">
                     <a href="{{ path('bird_list') }}" id="fiche_bird">
-                        <img src="{{ app.request.attributes.get('_routes') == 'bird_list' ? asset('bundles/observation/images/icones/fiches_icon_hover.png') : asset('bundles/observation/images/icones/fiches_icon.png') }}"
+                        <img src="{{ app.request.attributes.get('_route') == 'bird_list' ? asset('bundles/observation/images/icones/fiches_icon_hover.png') : asset('bundles/observation/images/icones/fiches_icon.png') }}"
                              alt="lien vers la liste des oiseaux">
                     </a>
                 </li>

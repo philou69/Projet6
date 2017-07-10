@@ -159,7 +159,7 @@ $(document).ready(function ()
         let numbers = Number($('.length').data('length'));
         // On compare celui-ci à 12 et aux nombres d'oiseaux affiché s'ils correspondent celà signifie qu'il n'y a pas d'autres pages
 
-        if (numbers <= 12 || numbers === $('.picture').length )
+        if (numbers === $('.picture').length )
         {
             // On passe endPage à true
             $(window).data('endPage', true);

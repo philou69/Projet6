@@ -1,7 +1,12 @@
 {%  extends is_mobile() ? '@Observation/layout.mobile.html.twig' : is_tablet() ? '@Observation/layout.mobile.html.twig': '@Observation/layout.desktop.html.twig' %}
 
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/error.css') }}">
+{% endblock %}
+
 {% block content %}
-    <div class="center-80">
+    <div id="error-403" class="center-80">
         <h1>Une erreur est survenue</h1>
         <p>
 
