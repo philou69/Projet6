@@ -33,7 +33,7 @@
                     </ul>
                 </div>
                 <div id="footer-actions" class="col-sm-6">
-                        <div id="footer-newsletter">
+                        <div id="footer-newsletter" class="col-sm-6">
                             <form action="{{ path('newsletter_subscribed') }}" method="post">
                                 <label for="newsletter">Recevoir les actualités de l'étude</label>
                                 <div class="input-group">
@@ -44,11 +44,14 @@
                                 </div>
                             </form>
                         </div>
-                        <div id="footer-social">
+                        <div id="footer-social" class="col-sm-6">
                             <a href="{{ facebook }}" class="social-network"><i class="fa fa-facebook-f fa-2x"></i></a>
                             <a href="{{ instagram }}" class="social-network"><i class="fa fa-instagram fa-2x"></i></a>
                             <a href="{{ twitter }}" class="social-network"><i class="fa fa-twitter fa-2x"></i></a>
                         </div>
+                    <div id="commons" class="col-sm-3 col-sm-offset-9">
+                        <a href="http://creativecommons.fr"><img src="{{ asset ('bundles/observation/images/logo/CC.png') }}" alt="commons" class="img-responsive"></a>
+                    </div>
                 </div>
 
             </div>
