@@ -1,9 +1,14 @@
 // Requetes AJAX sur la pagination et recherche des oiseaux
 // Appeller dans la vue Bird/Desktop/list.html.twig
 $(document).ready(function () {
+
+    //Selecteur avec champ de saisie
+    $('#filters-gallerie').select2().hide;
+
     // Récuperation des differents elements
     let pictures = $('#pictures');
     let addPicture = $('#add-pictures');
+    let filters = $('#filters-gallerie');
 
     // Création de la variable page
     let page = 1
@@ -31,11 +36,19 @@ $(document).ready(function () {
         }
     })
 
+    // Fonction qui gerer la liste des parametres GET passer aux requetes
+    function getParameters() {
+        let filtersParameter = filters.val() === '' ? '' : 'filters=' + filters.val();
+
+        // let parameters = '?' + filtersParameter;
+        return parameters= '?' + filtersParameter;
+    }
+
     // Requte Ajax lors du click sur le bouton add
     addPicture.on('click', function (event) {
          event.preventDefault();
         prepareRequete(false);
-        let url = addPicture.data('href').replace("1", page);
+        let url = addPicture.data('href').replace("1", page) + getParameters();
 
         $.ajax({
             url: url,
@@ -43,6 +56,32 @@ $(document).ready(function () {
             success: function (code_html, status) {
                 success(code_html)
 
+                // Get the modal
+                let modal = document.getElementById('myModal');
+
+                $('#list-gallery img').on('click', function () {
+
+                    let modalImg = document.getElementById('picZoom');
+                    let captionText = document.getElementById("caption");
+
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                    captionText.innerHTML = this.alt;
+                })
+            }
+        })
+    })
+
+    // Event sur les select du filtre
+    $('select').on('change', function () {
+        prepareRequete(true);
+        let url = pictures.data('href') + getParameters();
+        $.ajax({
+            url: url,
+            dataType: 'html',
+            success: function (code_html, status) {
+                pictures.empty()
+                success(code_html)
                 // Get the modal
                 let modal = document.getElementById('myModal');
 

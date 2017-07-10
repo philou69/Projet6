@@ -4,7 +4,7 @@ $(document).ready(function () {
     let modal = document.getElementById('myModal');
 
     $('#list-gallery img').on('click', function () {
-        console.log('test')
+
         let modalImg = document.getElementById('picZoom');
         let captionText = document.getElementById("caption");
 
