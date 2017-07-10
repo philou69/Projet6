@@ -68,10 +68,24 @@ footer > div > div > div > div:nth-child(3) > div.col-lg-5 {
 }
 #footer-actions{
     white-space: nowrap;
+    padding-top: 20px;
 }
 #footer-newsletter{
     width: 70%;
 }
 #footer-social{
     width: 30%;
+    padding-top: 6px;   
+}
+
+#commons
+{
+    margin-top: 10px;
+
+}
+
+#commons img
+{
+    width: 50px;
+    height: 50px;
 }
