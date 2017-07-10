@@ -47,13 +47,23 @@ class PictureRepository extends \Doctrine\ORM\EntityRepository
         return $query->getQuery()->getResult();
     }
 
-    public function getPage($page, $numbers)
+    public function getPage($page, $numbers, $filters)
     {
         $query = $this->createQueryBuilder('p');
+
+        $query->join('p.observation', 'o')
+            ->addSelect('o')
+            ->where('p.bird IS NOT NULL')
+            ->orderBy('p.id', 'DESC');
         // On regarde s'il s'agit d'une recherche
 
-        $query->leftJoin('p.observation', 'o')
-              ->orderBy('p.id', 'DESC');
+        if ($filters !== null) {
+            $query
+                ->andWhere('o.bird = :bird')
+                ->setParameter('bird', $filters);
+        }
+
+
 
         $query->setFirstResult(($page - 1) * $numbers)->setMaxResults($numbers);
 

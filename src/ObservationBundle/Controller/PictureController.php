@@ -11,17 +11,30 @@ class PictureController extends Controller
     public function gallerieAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $gallery = $em->getRepository('ObservationBundle:Picture')->findAll();
-        return $this->render('ObservationBundle:Picture/Desktop:gallery.html.twig', array('gallery' => $gallery));
+        $birds = $em->getRepository('ObservationBundle:Bird')->findAllSort();
+        $device = $this->get('mobile_detect.mobile_detector');
+
+        if ($device->isMobile() || $device->isTablet()) {
+            return $this->render('@Observation/Picture/Mobile/gallery.html.twig', compact('birds'));
+        } else {
+            return $this->render('@Observation/Picture/Desktop/gallery.html.twig', compact('birds'));
+        }
+
     }
 
     public function paginationAction($page, Request $request)
     {
         // On vérifie s'il s'agit d'une reuqete ajax
         if ($request->isXmlHttpRequest()) {
+
             // On verifie le numero de la page
             // Superieur à 0, on recuper la liste
             if ($page > 0) {
+
+                $filters = strlen(htmlspecialchars($request->query->get('filters'))) == 0 ? null : htmlspecialchars(
+                    $request->query->get('filters')
+                );
+
                 // On définit la quantité d'oiseaux
                 $number = 12;
                 $em = $this->getDoctrine()->getManager();
@@ -30,11 +43,9 @@ class PictureController extends Controller
                 // On effectue la requete doctrine getPage()
                 $pictures = $em->getRepository('ObservationBundle:Picture')->getPage(
                     $page,
-                    $number
+                    $number,
+                    $filters
                 );
-
-
-//                $user = $em->getRepository('ObservationBundle:Picture')->getUserPicture();
 
                 // On calcul le nombre de page max
                 $nbPage = ceil(count($pictures) / $number);
@@ -53,15 +64,16 @@ class PictureController extends Controller
 
 
             $device = $this->get('mobile_detect.mobile_detector');
+
             if ($device->isMobile() || $device->isTablet()) {
                 return $this->render(
-                    '@Observation/Picture/Mobile/page.gallerie.html.twig', compact('pictures', 'nbPage', 'page', 'number','user')
+                    '@Observation/Picture/Mobile/page.gallerie.html.twig', compact('pictures', 'nbPage', 'page', 'number')
 
                 );
             } else {
                 return $this->render(
                     '@Observation/Picture/Desktop/page.gallerie.html.twig',
-                    compact('pictures', 'nbPage', 'page', 'number', 'user')
+                    compact('pictures', 'nbPage', 'page', 'number')
                 );
             }
         } else {

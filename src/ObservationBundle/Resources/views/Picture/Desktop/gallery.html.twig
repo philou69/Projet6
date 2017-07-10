@@ -8,6 +8,16 @@
 {% block content %}
     <div class="center-80">
         <h1>Gallerie photos</h1>
+        <a href="#" id="up"><i class="fa fa-chevron-circle-up fa-2x"></i></a>
+        <div id="filter-gallerie">
+            <label for="filters">Filtrer sur: </label>
+            <select name="filters" id="filters-gallerie" >
+                <option value="">Choisissez une espece</option>
+                {% for bird in birds %}
+                    <option value="{{ bird.id }}">{{ bird.nameSearch }}</option>
+                {% endfor %}
+            </select>
+        </div>
         <div id="pictures"
              data-href="{{ path('gallerie_pagination', {'page': 1}) }}">
         </div>
@@ -18,7 +28,6 @@
            data-href="{{ path('gallerie_pagination', {'page': 1}) }}"><i
                     class="fa fa-long-arrow-down"></i> Voir plus de photos
         </a>
-
     </div>
 
 {% endblock %}

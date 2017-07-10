@@ -1,12 +1,13 @@
-<div id="myModal" class="modal">
+<div id="myModal" class="modal-galery picture">
 
     <!-- The Close Button -->
-    <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+    <span class="close-galery" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
 
     <!-- Modal Content (The Image) -->
-    <img class="modal-content" id="picZoom">
-    {#<div id="userPicture">Prise par {{ picture.observation.user.username }}</div>#}
+    <img class="modal-content-galery" id="picZoom">
+
     <!-- Modal Caption (Image Text) -->
     <div id="caption"></div>
+    <div id="userPicture">Prise par <strong>{{ picture.observation.user.username }}</strong><br>Vers: <strong>{{ picture.observation.location.lieu }}</strong></div>
 
 </div>
