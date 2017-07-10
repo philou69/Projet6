@@ -82,6 +82,18 @@
         border: 0;
         border-bottom: 3px solid #dbefed;
     }
+    .first_line> a:hover {
+        background-color: #dbefed !important;
+        color: #333333;
+    }
+    .second_line> a:hover {
+        background-color: transparent !important;
+        color: white;
+    }
+    .navbar-transparent .first_line> a:hover,.navbar-transparent .second_line> a:hover  {
+        background-color: transparent !important;
+        color: #99d1c8;
+    }
 
     .tab-pane > .navbar-nav > li > a {
         padding-top: 10px;
