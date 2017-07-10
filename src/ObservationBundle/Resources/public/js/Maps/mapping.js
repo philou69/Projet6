@@ -4,6 +4,10 @@ var markers = [];
 var markerClusterer
 // fonction appelant la carte maps et ajoutant les markers
 function initMap() {
+
+    //Selecteur avec champ de saisie
+    $('#filters').select2().hide;
+
     // Appelle de la map
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 6,
