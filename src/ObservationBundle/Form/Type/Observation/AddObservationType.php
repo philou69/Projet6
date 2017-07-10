@@ -4,6 +4,7 @@ namespace ObservationBundle\Form\Type\Observation;
 
 use ObservationBundle\Form\Type\Location\LocationType;
 use ObservationBundle\Form\Type\Picture\PictureType;
+use ObservationBundle\Repository\BirdRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -42,7 +43,11 @@ class AddObservationType extends AbstractType
             ))
             ->add('bird', EntityType::class, array(
                 'class' => 'ObservationBundle:Bird',
-                'choice_label' => 'getAName',
+                'query_builder' => function (BirdRepository $er) {
+                    return $er->createQueryBuilder('o')
+                        ->orderBy('o.nameSearch', 'ASC');
+                },
+                'choice_label' => 'nameSearch',
                 'label' => 'Nom de l\'espèce observée',
                 'placeholder' => 'Choisissez ou saisisez le nom d\'un oiseau'
             ))
