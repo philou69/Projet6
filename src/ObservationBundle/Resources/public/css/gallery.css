@@ -1,4 +1,17 @@
 /*
+Style filtre
+ */
+
+#filter-gallerie{
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+#filters-gallerie{
+    width: 200px;
+}
+
+/*
 stylisation images gallerie
  */
 
@@ -7,6 +20,7 @@ stylisation images gallerie
     min-height: 200px;
     height: 200px;
     width: 100%;
+    max-width: 300px;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
@@ -17,9 +31,15 @@ stylisation images gallerie
     opacity: 0.7;
 }
 
+#list-gallery a:hover
+{
+    text-decoration: none;
+}
+
 #myModal img
 {
     height: 80%;
+    max-width: 50%;
 }
 
 #pictures
