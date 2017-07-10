@@ -17,12 +17,8 @@ class PictureRepository extends \Doctrine\ORM\EntityRepository
     public function getPictureGallery()
     {
 
-        $qb = $this->createQueryBuilder('p');
-        $query = $qb
-//            ->select('p.url')
-            ->leftJoin('p.observation', 'obs')
-            ->where('obs.validated = true ')
-            ->orderBy('p.id', 'DESC')
+        $query = $this->createQueryBuilder('p');
+        $query->where('p.bird IS NOT null')
             ->setMaxResults(4);
 
         return $query->getQuery()
