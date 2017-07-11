@@ -1,27 +1,23 @@
-{% if pictures is null %}
-    <div>
-        Il n'y a pas encore de photos.
-    </div>
-{% else %}
-    <div id="list-gallery" class="row">
+<div id="list-gallery" class="row">
 
-        {% for picture in pictures %}
-            <div class="col-md-3 col-xs-12 col-sm-4">
-                <a href="#modal_picture_{{ picture.id }}" data-toggle="modal">
-                    <figure>
-                        <img src="{{ asset(picture.webPath) }}" alt="{{ picture.bird }}" class="img-responsive">
-                        <figcaption>{{ picture.bird }}</figcaption>
-                    </figure>
-                </a>
-            </div>
+    {% for picture in pictures %}
+        <div class="col-md-3 col-xs-12 col-sm-4">
+            <a href="#modal_picture_{{ picture.id }}" data-toggle="modal">
+                <figure>
+                    <img src="{{ asset(picture.webPath) }}" alt="{{ picture.bird }}" class="img-responsive">
+                    <figcaption>{{ picture.bird }}</figcaption>
+                </figure>
+            </a>
+        </div>
 
-        {% else %}
-            <p>Prochainement les dernières photos</p>
-        {% endfor %}
+    {% else %}
+        <div>
+            Il n'y a pas encore de photos.
+        </div>
+    {% endfor %}
 
-        {% for picture in pictures %}
-            {%  include '@Observation/Modal/picture.html.twig' %}
-        {% endfor %}
-    </div>
-    <div class="length" data-length="{{ pictures| length }}" hidden></div>
-{% endif %}
+    {% for picture in pictures %}
+        {% include '@Observation/Modal/picture.html.twig' %}
+    {% endfor %}
+</div>
+<div class="length" data-length="{{ pictures| length }}" hidden></div>

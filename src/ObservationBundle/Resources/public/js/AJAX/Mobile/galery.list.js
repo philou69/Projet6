@@ -158,9 +158,8 @@ $(document).ready(function ()
         // On récuperer la taille du resultat
         let numbers = Number($('.length').data('length'));
         // On compare celui-ci à 12 et aux nombres d'oiseaux affiché s'ils correspondent celà signifie qu'il n'y a pas d'autres pages
-        console.log(numbers);
-        console.log($('.picture').length );
-        if ( numbers === $('.picture').length )
+
+        if (numbers === $('.picture').length )
         {
             // On passe endPage à true
             $(window).data('endPage', true);

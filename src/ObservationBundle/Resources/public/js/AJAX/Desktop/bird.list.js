@@ -102,7 +102,7 @@ $(document).ready(function () {
 
         }
 
-        if(numbers <= 20 || numbers === $('.bird').length || $('.bird').length === 0){
+        if(numbers === $('.bird').length){
 
             // On cache donc le bouton add
             // $addBirds.attr('hidden', true);
