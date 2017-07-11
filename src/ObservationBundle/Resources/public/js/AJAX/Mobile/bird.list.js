@@ -119,7 +119,7 @@ $(document).ready(function () {
         // On récuperer la taille du resultat
         var numbers = Number($('.length').data('length'));
         // On comparse celui-ci à 20 et aux nombres d'oiseaux affiché s'ils correspondent celà signifie qu'il n'y a pas d'autres pages
-        if (numbers <= 20 || numbers == $('.bird').length) {
+        if (numbers == $('.bird').length) {
             // On passe endPage à true
             $(window).data('endPage', true);
         } else {

@@ -1,22 +1,20 @@
-{% if birds is null %}
+{% for bird in birds %}
+    <div class="bird " data-href="{{ path('bird_description', {'id': bird.id}) }}">
+        {% if bird.avatar is not null %}
+            <img src="{{ asset(bird.avatar.webPath) }}" class="left img-responsive" alt="{{ bird.nameSearch }}">
+        {% else %}
+            <p class="left text-center">Pas de photos</p>
+        {% endif %}
+
+        <div class="right">
+            <h4>{{ bird.nomVern != null ? bird.nomVern : bird.lbNom }}</h4>
+            <small>{{ bird.lbNom }}</small>
+        </div>
+
+    </div>
+{% else %}
     <div>
         Il n'y a aucun oiseaux.
     </div>
-{% else %}
-        {% for bird in birds %}
-            <div class="bird " data-href="{{ path('bird_description', {'id': bird.id}) }}">
-                {% if bird.avatar is not null %}
-                    <img src="{{ asset(bird.avatar.webPath) }}" class="left img-responsive" alt="{{ bird.nameSearch }}">
-                    {% else %}
-                        <p class="left text-center">Pas de photos</p>
-                {% endif %}
-
-                <div class="right">
-                    <h4>{{ bird.nomVern != null ? bird.nomVern : bird.lbNom}}</h4>
-                    <small>{{ bird.lbNom }}</small>
-                </div>
-
-            </div>
-        {% endfor %}
-    <div class="length" data-length="{{ birds| length }}" hidden></div>
-{% endif %}
+{% endfor %}
+<div class="length" data-length="{{ birds| length }}" hidden></div>

@@ -1,0 +1,12 @@
+#error{
+    background: url('../images/Visuels/pageErreur.png') no-repeat center;
+    background-size: 100% auto;
+}
+#error-403{
+    background: url('../images/Visuels/403-pageErreur.png') no-repeat center;
+    background-size: 100% auto;
+}
+#error-404{
+    background: url('../images/Visuels/404-pageErreur.png') no-repeat center;
+    background-size: 100% auto;
+}
