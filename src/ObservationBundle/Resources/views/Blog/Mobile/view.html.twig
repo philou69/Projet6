@@ -24,7 +24,7 @@
            </div>
         {% endfor %}
         {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
-            <a href="{{ path('billet_create') }}" class="btn btn-nao">Ajouté un billet</a>
+            <a href="{{ path('billet_create') }}" class="btn btn-nao">Ajouter un billet</a>
         {% endif %}
     </div>
 {% endblock %}
