@@ -10,7 +10,12 @@
     background-size: auto 100%;
     position: relative;
 }
-
+/* Style du titre d'accueil*/
+#welcome-title{
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
+}
 /*Style du formulaire */
 #content-aleatory{
     width: 40%;
