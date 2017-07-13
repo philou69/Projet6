@@ -7,7 +7,7 @@
     height: 90vh;
     width: 100%;
     background: url("/bundles/observation/images/Visuels/connexionInscription_background.jpg") center no-repeat;
-    background-size: auto 100%;
+    background-size: 100% 100%;
     position: relative;
 }
 /* Style du titre d'accueil*/
