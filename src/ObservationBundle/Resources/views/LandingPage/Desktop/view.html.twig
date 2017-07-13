@@ -1,0 +1,107 @@
+{% extends '@Observation/layout.html.twig' %}
+
+{% block title %}Landing page{% endblock %}
+
+{% block link %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/landing.page.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div id="container">
+        <div id="first">
+            <nav class="navbar">
+                <div class="center-80">
+                    <div class="navbar-header">
+                        <a href="{{ path('homepage') }}">
+                            <img src="{{ asset ('bundles/observation/images/logo/logo_header_blanc.svg') }}"
+                                 alt="logo du header de l'association">
+                        </a>
+                    </div>
+                    <div>
+                        <ul class="navbar-nav nav pull-right">
+                            <li class="logo-sociaux first_line">
+                                <a href="{{ facebook }}" class="social-network"><i class="fa fa-facebook-f"></i></a></li>
+                            <li class="logo-sociaux first_line">
+                                <a href="{{ instagram }}" class="social-network"><i class="fa fa-instagram"></i></a></li>
+                            <li class="logo-sociaux first_line">
+                                <a href="{{ twitter }}" class="social-network"><i class="fa fa-twitter"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div id="content-aleatory">
+                {% if form is defined %}
+                    <h1 id="form-title" class="text-center">Je m'inscris</h1>
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
+                    <div class="center-80">
+                        <div class="form-group">
+                            {{ form_label(form.username) }}
+                            {{ form_widget(form.username) }}
+                            {{ form_errors(form.username) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.email) }}
+                            {{ form_widget(form.email) }}
+                            {{ form_errors(form.email) }}
+                        </div>
+                        {% for password in form.plainPassword.children %}
+                            <div class="form-group">
+                                {{ form_label(password) }}
+                                {{ form_widget(password) }}
+                                {{ form_errors(password) }}
+                            </div>
+                        {% endfor %}
+                        <div class="form-group">
+                            {{ form_label(form.firstname) }}
+                            {{ form_widget(form.firstname) }}
+                            {{ form_errors(form.firstname) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.lastname) }}
+                            {{ form_widget(form.lastname) }}
+                            {{ form_errors(form.lastname) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.birthDate) }}
+                            {{ form_widget(form.birthDate) }}
+                            {{ form_errors(form.birthDate) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.newsletter) }}
+                            {{ form_widget(form.newsletter) }}
+                            {{ form_errors(form.newsletter) }}
+                        </div>
+                        {{ form_widget(form.save) }}
+                    </div>
+                    {{ form_end(form) }}
+                {% else %}
+                    <p>Texte à mettre ici.</p>
+                {% endif %}
+            </div>
+        </div>
+        <div id="bottom-pictures" class="center-80">
+            <img src="{{ asset('bundles/observation/images/Visuels/accueil_background.jpg') }}" id="img-left" alt="">
+            <h1 id="explain-title" class="text-center">Comment ca marche</h1>
+            <img src="{{ asset('bundles/observation/images/Visuels/accueil_background.jpg') }}" id="img-right" alt="">
+        </div>
+        <div class="row center-80">
+            <div class="col-md-4">
+                <h2>Une interface intuitive disponible sur mobile et ordinateur</h2>
+                <p class="blue"></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Je ne connais pas l'ornitologie...<br>
+                Nous vous guidons</h2>
+                <p class="blue"></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Je participe à des challenges et j'invite mes amis à participer</h2>
+                <p class="blue"></p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -55,3 +55,6 @@ user_export:
     defaults:
       _controller: ObservationBundle:Export:export
 
+landing_page:
+    prefix: /landing
+    resource: Routing/landing.yml

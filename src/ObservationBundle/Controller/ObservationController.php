@@ -54,7 +54,6 @@ class ObservationController extends Controller
                     $nbPage = null;
                 }
             }
-
             // On retourne la même vue quelque soit le device
             return $this->render(
                 'ObservationBundle:Observation:page.html.twig',

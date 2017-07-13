@@ -1,0 +1,9 @@
+landing_page_1:
+  path: /page-1
+  defaults:
+    _controller: ObservationBundle:LandingPage:page1
+
+landing_page_2:
+  path: /page-2
+  defaults:
+    _controller: ObservationBundle:LandingPage:page2
