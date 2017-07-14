@@ -12,8 +12,8 @@
 }
 /* Style du titre d'accueil*/
 #welcome-title{
-    margin-top: 20px;
-    font-size: 20px;
+    margin-top: 100px;
+    font-size: 35px;
     color: white;
 }
 /*Style du formulaire ou texte  */
@@ -23,8 +23,9 @@
     bottom: 20px;
     left: 30%;
 }
-#content-aleatory h1{
+#content-aleatory h2{
     color: white;
+    font-size: 25px;
 }
 #content-aleatory .center-80{
     background-color: rgba(243, 243, 243, 0.5);
@@ -110,8 +111,8 @@
 
     /* Style du titre d'accueil*/
     #welcome-title{
-        margin-top: 15px;
-        font-size: 15px;
+        margin-top: 70px;
+        font-size: 20px;
     }
     #bottom-pictures{
         top: -25px;
