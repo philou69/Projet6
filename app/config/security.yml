@@ -51,6 +51,7 @@ security:
             #form_login: ~
     access_control:
         - { path: ^/observation/list, role: ROLE_OBS }
+        - { path: ^/bird/*/edit, role: ROLE_ADMIN }
         - { path: ^/observation/add, role: ROLE_OBS }
         - { path: ^/user/profil, role: ROLE_OBS }
         - { path: ^/user/observation, role: ROLE_NATURALISTE }

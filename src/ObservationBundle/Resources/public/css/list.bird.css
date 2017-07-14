@@ -104,7 +104,6 @@ a.grey {
     #content > .center-80 {
         /* Hauteur minimum = hautreur fenetre - hauteur footer - hauteur navbar déplier*/
         min-height: calc(100vh - 180px - 50px);
-        padding-top: 20px;
 
     }
     #filter{

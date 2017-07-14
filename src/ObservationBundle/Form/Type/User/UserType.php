@@ -51,13 +51,15 @@ class UserType extends AbstractType
                 'label' => 'Prénom',
                 'attr' => [
                     'placeholder' => 'Prénom'
-                ]
+                ],
+                'required' => false
             ))
             ->add('lastname', TextType::class,array(
                 'label' => 'Nom',
                 'attr' => [
                     'placeholder' => 'Nom'
-                ]
+                ],
+                'required' => false
             ))
             ->add('birthDate', BirthdayType::class, array(
                 'label' => 'Date de naissance',

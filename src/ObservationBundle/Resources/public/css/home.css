@@ -157,6 +157,12 @@ stylisation des buttons
 .navbar-transparent {
     background-color: transparent;
     background: linear-gradient(to bottom,#000 0,rgba(255,255,255,0) 100%);
+    max-width: 1600px;
+    margin: auto;
+}
+.navbar-transparent, .navbar-general {
+    max-width: 1600px;
+    margin: auto;
 }
 .navbar-transparent>#first{
     background: transparent;

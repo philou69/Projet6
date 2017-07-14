@@ -8,60 +8,57 @@
 {% block title %}Observation{% endblock %}
 
 {% block link %}
-{{ parent() }}
-<link rel="stylesheet" href="{{ asset('bundles/observation/css/add.observation.css') }}">
-<link rel="stylesheet" href="{{ asset('bundles/observation/css/modal.css') }}">
-<link rel="stylesheet" href="{{ asset('bundles/observation/css/modal.location.css') }}">
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/add.observation.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/modal.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/observation/css/modal.location.css') }}">
 {% endblock %}
 {% form_theme form 'ObservationBundle:Form:locationField.html.twig' %}
 
 
 {% block content %}
     <div id="contentAdd" class="center-80">
-        <div id="formObs">
             {% if app.session.get('getBird') == true %}
                 <h1>{{ bird.LbNom }}</h1>
             {% else %}
                 <h1>Saisir une observation</h1>
             {% endif %}
-
-            <div class="panel-body">
-                {{ form_start(form, {'attr': {'class': 'form-horizontal', 'enctype': 'multipart/form-data'}}) }}
-                {#upload_form#}
-                {{ form_errors(form) }}
+            {{ form_start(form, {'attr': {'class': 'form-horizontal row', 'enctype': 'multipart/form-data'}}) }}
+            {#upload_form#}
+            {{ form_errors(form) }}
 
             {#Localisation Observation#}
-                <div class="form-group col-xs-8">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            {{ form_label(form.location) }}
-                            {{ form_errors(form.location) }}
-                            {{ form_errors(form.location.latitude) }}
-                            {{ form_errors(form.location.longitude) }}
-                            {{ form_errors(form.location.lieu) }}
-                            {{ form_widget(form.location, {'attr':{'class': 'col-xs-12'}}) }}
-                            <div id="coordinates"></div>
-                            <button type="button" class="btn btn-nao" id="locationChoice">
-                                Selectioner votre position
-                            </button>
-                        </div>
+            <div class="form-group col-xs-8">
+                <div class="row">
+                    <div class="col-xs-12">
+                        {{ form_label(form.location) }}
+                        {{ form_errors(form.location) }}
+                        {{ form_errors(form.location.latitude) }}
+                        {{ form_errors(form.location.longitude) }}
+                        {{ form_errors(form.location.lieu) }}
+                        {{ form_widget(form.location, {'attr':{'class': 'col-xs-12'}}) }}
+                        <div id="coordinates"></div>
+                        <button type="button" class="btn btn-nao" id="locationChoice">
+                            Selectioner votre position
+                        </button>
                     </div>
                 </div>
+            </div>
             {#Modale de la map#}
-                {% include 'ObservationBundle:Modal:add.location.observation.html.twig'  %}
+            {% include 'ObservationBundle:Modal:add.location.observation.html.twig' %}
             {#Date de l'observation#}
-                <div class="form-group col-xs-8">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            {{ form_label(form.seeAt, form.vars.label) }}
-                            {{ form_errors(form.seeAt) }}
-                            {{ form_widget(form.seeAt, { 'id': 'datepicker'}) }}
-                        </div>
+            <div class="form-group col-xs-8">
+                <div class="row">
+                    <div class="col-xs-12">
+                        {{ form_label(form.seeAt, form.vars.label) }}
+                        {{ form_errors(form.seeAt) }}
+                        {{ form_widget(form.seeAt, { 'id': 'datepicker'}) }}
                     </div>
                 </div>
-                {#Choix de l'oiseau#}
-                {% if app.session.get('getBird') == false %}
-                    <div class="form-group col-xs-8">
+            </div>
+            {#Choix de l'oiseau#}
+            {% if app.session.get('getBird') == false %}
+                <div class="form-group col-xs-8">
                     <div class="row">
                         <div class="col-xs-12">
                             {{ form_label(form.bird, form.vars.label) }}
@@ -72,72 +69,70 @@
                         </div>
                     </div>
 
-                    </div>
-                {% endif %}
-                {% if app.session.get('getBird') == true %}
-                    <div id="getBird" hidden>
-                        {#style="display: none"#}
-                        {{ form_label(form.bird, form.vars.label) }}
-                        {{ form_errors(form.bird) }}
-                        {{ form_widget(form.bird) }}
-                    </div>
-                {% endif %}
-                {#Nombre de spécimens observés#}
-                <div class="form-group col-xs-8">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            {{ form_label(form.quantity, form.vars.label) }}
-                            {{ form_errors(form.quantity) }}
-                            {{ form_widget(form.quantity, {'type': 'number'}) }}
-                        </div>
-                    </div>
                 </div>
-                {#Ajout de Photos#}
-                <div class="form-group col-xs-10">
-                    <div class="row">
-                        <div class="col-xs-12">
-
-                            {{ form_widget(form.files, {'attr': {'accept': 'image/*'}}) }}
-                            {{ form_errors(form.files) }}
-                            <div id="picBird" class="col-xs-12">
-                                <button type="button" class="close" aria-label="Close" id="closePic" hidden>
-                                    <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
-                                </button>
-                            </div>
-                        </div>
+            {% endif %}
+            {% if app.session.get('getBird') == true %}
+                <div id="getBird" hidden>
+                    {#style="display: none"#}
+                    {{ form_label(form.bird, form.vars.label) }}
+                    {{ form_errors(form.bird) }}
+                    {{ form_widget(form.bird) }}
+                </div>
+            {% endif %}
+            {#Nombre de spécimens observés#}
+            <div class="form-group col-xs-8">
+                <div class="row">
+                    <div class="col-xs-12">
+                        {{ form_label(form.quantity, form.vars.label) }}
+                        {{ form_errors(form.quantity) }}
+                        {{ form_widget(form.quantity, {'type': 'number'}) }}
                     </div>
                 </div>
-                {#AJout d'une observation#}
-                <div class="form-group col-xs-8">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            {{ form_label(form.observation) }}
-                            {{ form_errors(form.observation) }}
-                            {{ form_widget(form.observation) }}
-                        </div>
-                </div>
-                    <p>* Champs Obligatoires</p>
-                </div>
-                {#Soumission du formulaire#}
-                <div class="form-group text-center col-xs-8">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            {{ form_widget(form.save, {'attr':{'class': 'btn-nao'}}) }}
-                        </div>
-                    </div>
-                </div>
-                {{ form_widget(form._token) }}
-                {{ form_end(form,{'render_rest': false}) }}
             </div>
-        </div>
+            {#Ajout de Photos#}
+            <div class="form-group col-xs-10">
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        {{ form_widget(form.files, {'attr': {'accept': 'image/*'}}) }}
+                        {{ form_errors(form.files) }}
+                        <div id="picBird" class="col-xs-12">
+                            <button type="button" class="close" aria-label="Close" id="closePic" hidden>
+                                <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {#AJout d'une observation#}
+            <div class="form-group col-xs-8">
+                <div class="row">
+                    <div class="col-xs-12">
+                        {{ form_label(form.observation) }}
+                        {{ form_errors(form.observation) }}
+                        {{ form_widget(form.observation) }}
+                    </div>
+                </div>
+                <p>* Champs Obligatoires</p>
+            </div>
+            {#Soumission du formulaire#}
+            <div class="form-group text-center col-xs-8">
+                <div class="row">
+                    <div class="col-xs-12">
+                        {{ form_widget(form.save, {'attr':{'class': 'btn-nao'}}) }}
+                    </div>
+                </div>
+            </div>
+            {{ form_widget(form._token) }}
+            {{ form_end(form,{'render_rest': false}) }}
     </div>
 {% endblock %}
 
 {% block javascript %}
     {{ parent() }}
-        <script src="{{ asset('bundles/observation/js/Maps/observation.add.js') }}"></script>
-        <script src="{{ asset('bundles/observation/js/observation.js') }}"></script>
-            <script async defer
-                    src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}&callback=initMap&libraries=places">
-            </script>
+    <script src="{{ asset('bundles/observation/js/Maps/observation.add.js') }}"></script>
+    <script src="{{ asset('bundles/observation/js/observation.js') }}"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?v=3&amp;key={{ google_api_key }}&callback=initMap&libraries=places">
+    </script>
 {% endblock %}

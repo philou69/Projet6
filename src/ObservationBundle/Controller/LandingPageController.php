@@ -15,6 +15,10 @@ class LandingPageController extends Controller
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user, ['action' => $this->generateUrl('user_connect')]);
+        $form->remove('newsletter')
+            ->remove('birthDate')
+            ->remove('firstname')
+            ->remove('lastname');
         $form->handleRequest($request);
 
         return $this->render('@Observation/LandingPage/Desktop/view.html.twig', array('form' => $form->createView()));

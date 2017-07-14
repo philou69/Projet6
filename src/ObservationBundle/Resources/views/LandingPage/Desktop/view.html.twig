@@ -14,16 +14,18 @@
                 <div class="center-80">
                     <div class="navbar-header">
                         <a href="{{ path('homepage') }}">
-                            <img src="{{ asset ('bundles/observation/images/logo/logo_header_blanc.svg') }}"
+                            <img src="{{ is_mobile() ? asset('bundles/observation/images/logo/logo_landing_page_mobile.png') : asset ('bundles/observation/images/logo/logo_header_blanc.svg') }}"
                                  alt="logo du header de l'association">
                         </a>
                     </div>
-                    <div>
-                        <ul class="navbar-nav nav pull-right">
+                    <div class=" pull-right ">
+                        <ul class="navbar-nav {{ is_mobile() ? 'list-inline' : ' nav ' }}">
                             <li class="logo-sociaux first_line">
-                                <a href="{{ facebook }}" class="social-network"><i class="fa fa-facebook-f"></i></a></li>
+                                <a href="{{ facebook }}" class="social-network"><i class="fa fa-facebook-f"></i></a>
+                            </li>
                             <li class="logo-sociaux first_line">
-                                <a href="{{ instagram }}" class="social-network"><i class="fa fa-instagram"></i></a></li>
+                                <a href="{{ instagram }}" class="social-network"><i class="fa fa-instagram"></i></a>
+                            </li>
                             <li class="logo-sociaux first_line">
                                 <a href="{{ twitter }}" class="social-network"><i class="fa fa-twitter"></i></a>
                             </li>
@@ -31,13 +33,14 @@
                     </div>
                 </div>
             </nav>
-            <h1 id="welcome-title" class="text-center">PARTICIPER &Aacute; LA GRANDE CAMPAGNE NATIONALE D'OBSERVATION DES OISEAUX</h1>
+            <h1 id="welcome-title" class="text-center">PARTICIPER &Aacute; LA GRANDE CAMPAGNE NATIONALE D'OBSERVATION
+                DES OISEAUX</h1>
             <div id="content-aleatory">
                 {% if form is defined %}
                     <h1 id="form-title" class="text-center">Je m'inscris</h1>
                     {{ form_start(form) }}
                     {{ form_errors(form) }}
-                    <div class="center-80">
+                    <div class="{{ is_mobile() ? '' : 'center-80' }}">
                         <div class="form-group">
                             {{ form_label(form.username) }}
                             {{ form_widget(form.username) }}
@@ -55,26 +58,6 @@
                                 {{ form_errors(password) }}
                             </div>
                         {% endfor %}
-                        <div class="form-group">
-                            {{ form_label(form.firstname) }}
-                            {{ form_widget(form.firstname) }}
-                            {{ form_errors(form.firstname) }}
-                        </div>
-                        <div class="form-group">
-                            {{ form_label(form.lastname) }}
-                            {{ form_widget(form.lastname) }}
-                            {{ form_errors(form.lastname) }}
-                        </div>
-                        <div class="form-group">
-                            {{ form_label(form.birthDate) }}
-                            {{ form_widget(form.birthDate) }}
-                            {{ form_errors(form.birthDate) }}
-                        </div>
-                        <div class="form-group">
-                            {{ form_label(form.newsletter) }}
-                            {{ form_widget(form.newsletter) }}
-                            {{ form_errors(form.newsletter) }}
-                        </div>
                         {{ form_widget(form.save) }}
                     </div>
                     {{ form_end(form) }}
@@ -84,18 +67,22 @@
             </div>
         </div>
         <div id="bottom-pictures" class="center-80">
-            <img src="{{ asset('bundles/observation/images/Visuels/accueil_background.jpg') }}" id="img-left" alt="">
+            <div id="img-left" class="text-center" >
+                <img src="{{ asset('bundles/observation/images/Visuels/mobileMockup.png') }}"alt="">
+            </div>
             <h1 id="explain-title" class="text-center">Comment ca marche</h1>
-            <img src="{{ asset('bundles/observation/images/Visuels/accueil_background.jpg') }}" id="img-right" alt="">
+            <div id="img-right" class="text-center">
+                <img src="{{ asset('bundles/observation/images/Visuels/desktopMockup.png') }}"  alt="">
+            </div>
         </div>
-        <div class="row center-80">
+        <div class="row {{ is_mobile() ? 'center-90' : 'center-80' }}">
             <div class="col-md-4">
                 <h2>Une interface intuitive disponible sur mobile et ordinateur</h2>
                 <p class="blue"></p>
             </div>
             <div class="col-md-4">
                 <h2>Je ne connais pas l'ornitologie...<br>
-                Nous vous guidons</h2>
+                    Nous vous guidons</h2>
                 <p class="blue"></p>
             </div>
             <div class="col-md-4">

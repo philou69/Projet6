@@ -175,9 +175,9 @@
 
 }
 
-@media (min-width: 993px) and ( max-width: 1220px) {
-    #first>.center-80{
-        width: 90%;
+@media (min-width: 993px) and ( max-width: 1200px) {
+    .center-80{
+        width: 90% !important;
     }
     .navbar-header img{
         width: 160px;
@@ -200,6 +200,12 @@
     }
     #ident-li, #ident-a{
         width: 180px !important;
+    }
+    #first #home, #first #home>a{
+        width: 75px;
+    }
+    #first #information, #first #information>a{
+        width: 100px;
     }
 }
 @media (max-width: 992px) {

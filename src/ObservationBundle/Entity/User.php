@@ -55,12 +55,12 @@ class User implements AdvancedUserInterface, \Serializable
     protected $isActive;
 
     /**
-     * @ORM\Column(name="firstname", type="string", length=150)
+     * @ORM\Column(name="firstname", type="string", length=150, nullable=true)
      */
     protected $firstname;
 
     /**
-     * @ORM\Column(name="lastname", type="string", length=150)
+     * @ORM\Column(name="lastname", type="string", length=150, nullable=true)
      */
     protected  $lastname;
 
