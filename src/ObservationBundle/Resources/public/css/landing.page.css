@@ -20,20 +20,20 @@
 #content-aleatory{
     width: 40%;
     position: absolute;
-    bottom: 20px;
+    top: 230px;
     left: 30%;
 }
 #content-aleatory h2{
     color: white;
     font-size: 25px;
 }
-#content-aleatory .center-80{
+#content-aleatory form{
     background-color: rgba(243, 243, 243, 0.5);
     padding: 10px 0;
 }
-#content-aleatory .center-80 .form-group, #content-aleatory .center-80 button{
+#content-aleatory form .form-group, #content-aleatory form .btn{
     width: 80%;
-    margin: 15px auto;
+    margin: 15px 10%;
 }
 #content-aleatory .center-80 button{
     display: block;
@@ -81,7 +81,7 @@
     #content-aleatory{
         width: 60%;
         left: 20%;
-        bottom: 90px;
+        top: 230px;
     }/* style des deux images*/
     #bottom-pictures{
         top: -40px;
@@ -106,12 +106,12 @@
     #content-aleatory{
         width: 90%;
         left: 5%;
-        bottom: 30px;
+        top: 120px;
     }
 
     /* Style du titre d'accueil*/
     #welcome-title{
-        margin-top: 70px;
+        margin-top: 20px;
         font-size: 20px;
     }
     #bottom-pictures{
