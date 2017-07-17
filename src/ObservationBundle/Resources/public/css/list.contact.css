@@ -3,11 +3,13 @@
     background-color: #99d1c8;
     min-height: 200px;
     margin-bottom: 20px;
+    margin-top: 50px;
 }
 
 .up {
-    height: 50px;
+    height: 80px;
     background-color: #dbefed;
+    display: flex;
 }
 
 .down {
@@ -16,11 +18,12 @@
 }
 
 .left, .right {
-    display: inline-block;
-    height: 100%;
+    /*display: inline-block;*/
+    /*height: 100%;*/
     width: 49%;
-    margin: 0;
+    /*margin: 0;*/
     padding-left: 10px;
+    padding-top: 10px;
 }
 
 .left > h5 {
@@ -35,4 +38,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+/* -------------------------------- Fin style écran petit ----------------------------------------*/
+/* -------------------------------- Ecran de moins de 992 px de large ----------------------------------------*/
+@media (max-width: 992px) {
+
+    .up {
+        height: 100px;
+
+    }
+
+    .left, .right
+    {
+        /*display: block;*/
+        padding-top: 10px;
+    }
 }

@@ -460,7 +460,14 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $messages = $em->getRepository('ObservationBundle:Message')->findAllOrdering();
-        return $this->render('ObservationBundle:User/Desktop:list.contacts.html.twig', array('messages' => $messages));
+
+        $device = $this->get('mobile_detect.mobile_detector');
+        if ($device->isMobile() || $device->isTablet()) {
+            return $this->render('ObservationBundle:User/Mobile:list.contacts.html.twig', array('messages' => $messages));
+        } else {
+            return $this->render('ObservationBundle:User/Desktop:list.contacts.html.twig', array('messages' => $messages));
+        }
+
     }
 
     public function loginAction()
