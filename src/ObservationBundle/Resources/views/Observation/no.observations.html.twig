@@ -1,11 +1,11 @@
 <p class="text-center">
     {% if status is defined %}
         Vous n'avez aucunes observations {{ status == 'true' ? 'validé' : 'en attente' }}.<br>
-        N'hesité pas à nous faire <a
-            href="{{ path('observation_add') }}">connaitre</a> les oiseaux que vous avez rencontré.
+        N'hesitez pas à nous faire <a
+            href="{{ path('observation_add') }}">connaitre</a> les oiseaux que vous avez rencontrés.
     {% else %}
-        {{ bird.aName }} n'a aucunes observations<br>
-        N'hesité pas à nous faire <a href="{{ path('observation_add') }}">part</a> que vous avez recolté sur lui.
+        {{ bird.aName }} n'a aucune observation<br>
+        N'hesitez pas à nous faire <a href="{{ path('observation_add') }}">part</a> de ce que vous avez recolté sur lui.
     {% endif %}
 
 </p>
