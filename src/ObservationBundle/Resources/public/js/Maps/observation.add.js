@@ -16,8 +16,10 @@ function initMap()
     /*
      Positionnement de la carte à l'affichage de la Map
      */
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
+    if (navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(function (position)
+        {
             myLatlng = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
@@ -28,7 +30,8 @@ function initMap()
             handleLocationError(true, infoWindow, map.getCenter());
         });
     }
-    else {
+    else
+    {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
@@ -36,17 +39,23 @@ function initMap()
     /*
      Autocomplete du champ input/ récupération des infos
      */
-    let input = document.getElementById('add_observation_location_lieu');
-    let autocomplete = new google.maps.places.Autocomplete(input);
+    let input = document.getElementById('add_observation_location_lieu'),
+        autocomplete = new google.maps.places.Autocomplete(input);
 
     google.maps.event.addListener(autocomplete, 'place_changed', function () {
 
-        let place = autocomplete.getPlace();
-        let lat = place.geometry.location.lat(),
-            lng = place.geometry.location.lng();
+        let place = autocomplete.getPlace(),
+            lat = place.geometry.location.lat(),
+            lng = place.geometry.location.lng(),
+            loc = place.address_components[1].long_name + ', ' + place.address_components[2].long_name + ', ' + place.address_components[3].long_name;
 
         $("#add_observation_location_latitude").val(lat);
         $("#add_observation_location_longitude").val(lng);
+        $("#add_observation_location_lieu").val(loc);
+
+
+
+        $('#coordinates').html("<p><strong>Coordonnées GPS:</strong> Latitude ( " + lat + '), Longitude: ( ' + lng + ').</p>');
 
     })
 
@@ -70,7 +79,7 @@ function initMap()
 
                     let locationField = $("#add_observation_location_lieu");
 
-                    locationField.val(results[0].address_components[1].long_name + ', ' + results[0].address_components[2].long_name + ', ' + results[0].address_components[3].long_name + ' ' + results[0].address_components[5].long_name);
+                    locationField.val(results[0].address_components[2].long_name + ', ' + results[0].address_components[3].long_name + ' ' + results[0].address_components[5].long_name);
 
 
                     //Affichage des coordonnées
@@ -120,7 +129,7 @@ function initMap()
                                 $("#add_observation_location_longitude").val(lat_lng.lng);
                                 let locationField = $("#add_observation_location_lieu");
 
-                                locationField.val(results[0].address_components[1].long_name + ', ' + results[0].address_components[2].long_name + ', ' + results[0].address_components[3].long_name + ' ' + results[0].address_components[5].long_name);
+                                locationField.val(results[0].address_components[2].long_name + ', ' + results[0].address_components[3].long_name + ' ' + results[0].address_components[5].long_name);
 
                                 infowindow.setContent(locationField.val());
                                 infowindow.open(map, marqueur);
