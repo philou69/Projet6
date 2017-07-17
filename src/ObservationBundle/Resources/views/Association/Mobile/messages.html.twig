@@ -5,7 +5,7 @@
                 <h5><strong>{{ message.title | upper}}</strong></h5>
                 <small>Posté le : {{ message.postedAt | date('d/m/Y H:i') }}, {{ message.received == true ? 'Reçu' : 'En attente' }}, {{ message.answered ==  true ? 'Répondu' : ' répondre'}}</small>
             </div>
-            <div class="right text-right">
+            <div class="right">
                 {% if message.received != true %}
                     <a class="contact-resend" href="#" data-href="{{ path('contact_resend', {'id' : message.id}) }}">Renvoyer</a>
                     <a href="#" class="contact-received" data-href="{{ path('contact_received', {'id': message.id}) }}">Recu</a>

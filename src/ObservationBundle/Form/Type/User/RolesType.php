@@ -15,7 +15,7 @@ class RolesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('roles', ChoiceType::class, array(
-            'label' => 'Séléctionné les roles du visiteur ',
+            'label' => 'Sélectionner les roles du visiteur ',
             'choices' => array(
                 'Naturaliste' => 'ROLE_NATURALISTE',
                 'Administrateur' => 'ROLE_ADMIN'
