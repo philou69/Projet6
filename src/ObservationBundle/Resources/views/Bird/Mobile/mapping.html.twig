@@ -11,7 +11,7 @@
         <div id="filter" hidden>
             <label for="filters">Filtrer sur </label>
             <select name="filters" id="filters">
-                <option >Choisiser une espece</option>
+                <option >Choisissez une espèce</option>
                 {% for bird in birds %}
                     {#{{ dump(bird[0]) }}#}
                     <option value="{{ bird.id }}">{{ bird.nameSearch }}</option>
