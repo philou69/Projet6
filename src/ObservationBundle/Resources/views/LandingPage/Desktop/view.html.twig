@@ -62,7 +62,12 @@
                     </div>
                     {{ form_end(form) }}
                 {% else %}
-                    <p>Texte à mettre ici.</p>
+                    <ul>
+                        <li>Contribuez à la protection des oiseaux</li>
+                        <li>Aidez-nous à mesurer l'impact de l'urbanisation sur la biodiversité</li>
+                        <li>Rejoignez une communauté de professionnels et d'amateurs</li>
+                    </ul>
+                    <a href="{{ path('homepage') }}" class="btn-nao btn">Je veux en savoir plus</a>
                 {% endif %}
             </div>
         </div>
@@ -77,17 +82,31 @@
         </div>
         <div class="row {{ is_mobile() ? 'center-90' : 'center-80' }}">
             <div class="col-md-4">
-                <h2>Une interface intuitive disponible sur mobile et ordinateur</h2>
-                <p class="blue"></p>
+                <h2><i class="fa fa-phone"></i> Une interface intuitive disponible sur mobile et ordinateur</h2>
+                <ul class="blue">
+                    <li>Une application reconnue par sa simplicité d'utilisation</li>
+                    <li>Géolocalisation et ajout de photographies en 2 clics</li>
+                    <li>Saisie en temps réel sur le terrain ou en différé depuis chez vous</li>
+                    <li>Des tutos pour vous accompagner dans la prise en main</li>
+                </ul>
             </div>
             <div class="col-md-4">
-                <h2>Je ne connais pas l'ornitologie...<br>
+                <h2><i class="fa fa-search"></i> Je ne connais pas l'ornithologie...<br>
                     Nous vous guidons</h2>
-                <p class="blue"></p>
+                <ul class="blue">
+                    <li>Des fiches descriptives illustrées</li>
+                    <li>+ de 3500 espèces réfèrencés</li>
+                    <li>Un module innovant d'aide à l'identification grâce à des filtres</li>
+                </ul>
             </div>
             <div class="col-md-4">
-                <h2>Je participe à des challenges et j'invite mes amis à participer</h2>
-                <p class="blue"></p>
+                <h2><i class="fa fa-bulhorn"></i> Je participe à des challenges et j'invite mes amis à participer</h2>
+                <ul class="blue">
+                    <li>Débloquez différents niveaux de gratifications en fonction de votre activité</li>
+                    <li>Développez vos connaissances grâce à des quizz</li>
+                    <li>Invité vos amis à rejoindre la communauté des observations</li>
+                    <li>Tentez de gagner un séjour pour 2 personnes dans un parc régional de votre choix<</li>
+                </ul>
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@
 #content-aleatory{
     width: 40%;
     position: absolute;
-    top: 230px;
+    top: 250px;
     left: 30%;
 }
 #content-aleatory h2{
@@ -39,7 +39,9 @@
     display: block;
     margin-bottom: 10px;
 }
-
+#content-aleatory>ul>li{
+    width: 100% !important;
+}
 /* style des deux images*/
 #bottom-pictures{
     position: relative;
@@ -72,7 +74,7 @@
     height: 60px;
     font-size: 20px;
 }
-.row>.col-md-4>p{
+.row>.col-md-4>.blue{
     height: 300px;
     background: #99d1c8;
 }
@@ -137,4 +139,14 @@
     #explain-title{
         font-size: 30px;
     }
+}
+
+/* Style liste à puce */
+.blue, #content-aleatory ul{
+    list-style: none;
+}
+.blue li:before, #content-aleatory li:before{
+    content: '\2022 ';
+    color: white;
+    font-size: 25px;
 }
