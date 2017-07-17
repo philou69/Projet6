@@ -49,9 +49,13 @@
 
 
             {% else %}
-                <p class="text-center">Cet oiseau n'a pas encore de fiche descritpif. <a
-                            href="{{ path('bird_edit', {'id': bird.id}) }}" class="text-right">Editer cette Fiche</a>
+                <p class="text-center">Cet oiseau n'a pas encore de fiche descritpif.
                 </p>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <div class="row text-right">
+                        <a href="{{ path('bird_edit', {'id': bird.id}) }}">Editer cette Fiche</a>
+                    </div>
+                {% endif %}
             {% endif %}
         </div>
         <a id="retour" href="{{ path('bird_list') }}" class="col-xs-12 text-center"><span

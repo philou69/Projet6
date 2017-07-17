@@ -9,6 +9,7 @@ use ObservationBundle\Entity\Bird;
 use ObservationBundle\Entity\Fiche;
 use ObservationBundle\Entity\Location;
 use ObservationBundle\Form\Type\Picture\PictureType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ObservationBundle\Entity\Observation;
 use ObservationBundle\Form\Type\Observation\AddObservationType;
@@ -196,7 +197,8 @@ class BirdController extends Controller
         }
     }
 
-    /*
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
      * Edition par l'admin de la fiche de l'oiseau
      */
     public function editAction(Bird $bird, Request $request)

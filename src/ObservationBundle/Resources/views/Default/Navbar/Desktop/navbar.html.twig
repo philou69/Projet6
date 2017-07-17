@@ -13,7 +13,7 @@
             {# Liste des menus principaux avec vérification de la route pour activé dynamiquement la navbar à l'aide de app.request.get('_route') #}
             <div>
                 <ul class="navbar-nav nav pull-right capital">
-                    <li class="{{  app.request.attributes.get('_route') == 'homepage' ? 'active always-active' : '' }} first_line">
+                    <li id="home" class="{{  app.request.attributes.get('_route') == 'homepage' ? 'active always-active' : '' }} first_line">
                         <a href="{{ path('homepage') }}">
                             Accueil
                         </a>
@@ -49,7 +49,7 @@
                             </a>
                         </li>
                     {% endif %}
-                    <li class="tabs first_line {% if app.request.attributes.get('_route') in ['contact_message', 'faq', 'blog_view'] %}active always-active{% endif %}">
+                    <li id="information" class="tabs first_line {% if app.request.attributes.get('_route') in ['contact_message', 'faq', 'blog_view'] %}active always-active{% endif %}">
                         <a id="test" href="#other" data-toggle="tab" data-navbar="true" data-hide="#other">Information</a>
                     </li>
                     <li class="logo-sociaux first_line">
