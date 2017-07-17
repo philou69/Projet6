@@ -148,7 +148,7 @@ $(document).ready(function ()
         }
     }
 
-    // Fonction utiliser lors du success d'une requete
+    // Fonction utiliser lors du success d'une requête
     function success(code_html)
     {
         // on cache le loader

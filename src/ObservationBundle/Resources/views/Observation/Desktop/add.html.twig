@@ -37,7 +37,10 @@
                         {{ form_errors(form.location.longitude) }}
                         {{ form_errors(form.location.lieu) }}
                         {{ form_widget(form.location, {'attr':{'class': 'col-xs-12'}}) }}
+
+                        {% if is_granted('ROLE_NATURALISTE') %}
                         <div id="coordinates"></div>
+                        {% endif %}
                         <button type="button" class="btn btn-nao" id="locationChoice">
                             Selectioner votre position
                         </button>
