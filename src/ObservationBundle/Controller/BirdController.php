@@ -71,7 +71,7 @@ class BirdController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $files = $form->get('pictures')->getData();
+            $files = $form->get('files')->getData();
 
             foreach ($files as $file) {
                 $picture = new Picture();
@@ -90,7 +90,7 @@ class BirdController extends Controller
             $em->flush();
 
             $this->addFlash(
-                'notice',
+                'success',
                 'Votre observation a été envoyé! En attente de validation'
             );
 

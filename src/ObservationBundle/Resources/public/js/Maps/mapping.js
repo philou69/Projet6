@@ -1,7 +1,7 @@
-var locations = [];
-var lastOpenInfoWindow;
-var markers = [];
-var markerClusterer
+let locations = [],
+    lastOpenInfoWindow,
+    markers = [],
+    markerClusterer;
 // fonction appelant la carte maps et ajoutant les markers
 function initMap() {
 
@@ -9,13 +9,13 @@ function initMap() {
     $('#filters').select2().hide;
 
     // Appelle de la map
-    var map = new google.maps.Map(document.getElementById('map'), {
+    let map = new google.maps.Map(document.getElementById('map'), {
         zoom: 6,
         center: {lat: 46.2276, lng: 2.2137}
     });
     // Requete ajax pour récuperer la liste des localisation des oiseaux
     $.ajax({
-        url: '/bird/paging-all',
+        url: $('#map').data('href'),
         type: 'GET',
         success: function (data) {
             // la requete est un success
@@ -40,7 +40,7 @@ function initMap() {
         // On retire tout texte précedent de filter
         $('#status').remove();
         $.ajax({
-            url: '/bird/paging-all?bird=' + $(this).val(),
+            url: $('#map').data('href')+ '?bird=' + $(this).val(),
             type: 'GET',
             success: function (data) {
 

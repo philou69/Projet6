@@ -19,3 +19,4 @@
 /web/uploads/images/avatar/*
 .idea/
 dist/
+.DS_Store
