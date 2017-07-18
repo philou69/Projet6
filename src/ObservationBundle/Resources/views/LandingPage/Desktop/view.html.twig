@@ -1,4 +1,8 @@
 {% extends '@Observation/layout.html.twig' %}
+{# Definition des variables pour le referencement#}
+{% set metadescription = "NAO l'application web d'observation des oiseaux, contribuez à la préservation de la biodiversité. Protection des oiseaux, photographie naturaliste, ornithologie" %}
+{% set ogtitle = "Accueil" %}
+{% set ogurl= app.request.getUri %}
 
 {% block title %}Landing page{% endblock %}
 
@@ -33,7 +37,7 @@
                     </div>
                 </div>
             </nav>
-            <h1 id="welcome-title" class="text-center">PARTICIPEZ &Aacute; LA GRANDE CAMPAGNE NATIONALE D'OBSERVATION
+            <h1 id="welcome-title" class="text-center">PARTICIPEZ &Agrave; LA GRANDE CAMPAGNE NATIONALE D'OBSERVATION
                 DES OISEAUX</h1>
             <div id="content-aleatory">
                 {% if form is defined %}
@@ -62,11 +66,9 @@
                     </div>
                     {{ form_end(form) }}
                 {% else %}
-                    <ul>
-                        <li>Contribuez à la protection des oiseaux</li>
-                        <li>Aidez-nous à mesurer l'impact de l'urbanisation sur la biodiversité</li>
-                        <li>Rejoignez une communauté de professionnels et d'amateurs</li>
-                    </ul>
+                    <h2 class="title-description">Contribuez à la protection des oiseaux</h2>
+                    <h2 class="title-description">Aidez-nous à mesurer l'impact de l'urbanisation sur la biodiversité</h2>
+                    <h2 class="title-description">Rejoignez une communauté de professionnels et d'amateurs</h2>
                     <a href="{{ path('homepage') }}" class="btn-nao btn">Je veux en savoir plus</a>
                 {% endif %}
             </div>
@@ -82,7 +84,7 @@
         </div>
         <div class="row {{ is_mobile() ? 'center-90' : 'center-80' }}">
             <div class="col-md-4">
-                <h2><i class="fa fa-phone"></i> Une interface intuitive disponible sur mobile et ordinateur</h2>
+                <h2><i class="fa fa-mobile"></i> Une interface intuitive disponible sur mobile et ordinateur</h2>
                 <ul class="blue">
                     <li>Une application reconnue par sa simplicité d'utilisation</li>
                     <li>Géolocalisation et ajout de photographies en 2 clics</li>
@@ -95,17 +97,20 @@
                     Nous vous guidons</h2>
                 <ul class="blue">
                     <li>Des fiches descriptives illustrées</li>
-                    <li>+ de 3500 espèces réfèrencés</li>
+                    <li>+ de 3500 espèces réfèrencées</li>
                     <li>Un module innovant d'aide à l'identification grâce à des filtres</li>
+                    <li>
+                        <img src="{{ asset('bundles/observation/images/Visuels/filter-landing-page.jpg') }}"  alt="">
+                    </li>
                 </ul>
             </div>
             <div class="col-md-4">
-                <h2><i class="fa fa-bulhorn"></i> Je participe à des challenges et j'invite mes amis à participer</h2>
+                <h2><i class="fa fa-bullhorn"></i> Je participe à des challenges et j'invite mes amis à participer</h2>
                 <ul class="blue">
-                    <li>Débloquez différents niveaux de gratifications en fonction de votre activité</li>
+                    <li>Débloquez différents niveaux de gratification en fonction de votre activité</li>
                     <li>Développez vos connaissances grâce à des quizz</li>
-                    <li>Invité vos amis à rejoindre la communauté des observations</li>
-                    <li>Tentez de gagner un séjour pour 2 personnes dans un parc régional de votre choix<</li>
+                    <li>Invitez vos amis à rejoindre la communauté des observations</li>
+                    <li>Tentez de gagner un séjour pour 2 personnes dans un parc régional de votre choix</li>
                 </ul>
             </div>
         </div>
