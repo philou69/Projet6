@@ -119,16 +119,7 @@ function initMap() {
             content: content
         });
 
-
-        google.maps.event.addListener(circle, 'click', function (ev) {
-            // On vérifie si une autre windows est ouvert, dans ce cas on la ferme
-            if (lastOpenInfoWindow != null) {
-                lastOpenInfoWindow.close();
-            }
-            infoWindow.setPosition(ev.latLng);
-            infoWindow.open(map);
-            lastOpenInfoWindow = infoWindow;
-        });
+        //Event sur le hover marker
         google.maps.event.addListener(circle, 'mouseover', function (ev) {
             // On vérifie si une autre windows est ouvert, dans ce cas on la ferme
             if (lastOpenInfoWindow != null) {
@@ -139,16 +130,17 @@ function initMap() {
             lastOpenInfoWindow = infoWindow;
         });
 
+        //customization infowindows
         google.maps.event.addListener(infoWindow, 'domready', function() {
 
             // Reference to the DIV which receives the contents of the infowindow using jQuery
-            var iwOuter = $('.gm-style-iw');
+            let iwOuter = $('.gm-style-iw');
 
             /* The DIV we want to change is above the .gm-style-iw DIV.
              * So, we use jQuery and create a iwBackground variable,
              * and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
              */
-            var iwBackground = iwOuter.prev();
+            let iwBackground = iwOuter.prev();
 
             // Remove the background shadow DIV
             iwBackground.children(':nth-child(2)').css({'display' : 'none'});
@@ -170,7 +162,7 @@ function initMap() {
 // The .find('div').children() method refers to all the div which are direct descendants of the previous div.
             iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px', 'z-index' : '1'});
 
-            var iwCloseBtn = iwOuter.next();
+            let iwCloseBtn = iwOuter.next();
 
 // Apply the desired effect to the close button
             iwCloseBtn.css({
@@ -188,14 +180,8 @@ function initMap() {
             iwCloseBtn.mouseout(function(){
                 $(this).css({opacity: '1'});
             });
-
         });
-
-
-
     }
-
-
 }
 
 
