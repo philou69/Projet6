@@ -12,7 +12,7 @@
 }
 /* Style du titre d'accueil*/
 #welcome-title{
-    margin-top: 100px;
+    margin-top: 10px;
     font-size: 35px;
     color: white;
 }
@@ -20,7 +20,7 @@
 #content-aleatory{
     width: 40%;
     position: absolute;
-    top: 250px;
+    top: 130px;
     left: 30%;
 }
 #content-aleatory h2{
@@ -68,14 +68,14 @@
     margin-top: -75px;
 }
 .row>.col-md-4{
-    height: 360px;
+    height: 500px;
 }
 .row>.col-md-4>h2{
     height: 60px;
     font-size: 20px;
 }
 .row>.col-md-4>.blue{
-    height: 300px;
+    height: calc(500px - 60px - 30px);
     background: #99d1c8;
 }
 
@@ -144,9 +144,28 @@
 /* Style liste à puce */
 .blue, #content-aleatory ul{
     list-style: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0;
 }
-.blue li:before, #content-aleatory li:before{
-    content: '\2022 ';
+.blue li:before, #content-aleatory .title-description:before{
+    content: '\2022  ';
     color: white;
     font-size: 25px;
+}
+
+.blue>li>img{
+    width: 60%;
+    margin-left: 15%;
+}
+#content-aleatory>.title-description:first-child{
+    margin-top: 100px;
+}
+@media (min-height: 769px) {
+    #welcome-title{
+        margin-top: 70px;
+    }
+    #content-aleatory{
+       top: 200px;
+    }
 }
