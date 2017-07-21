@@ -210,39 +210,14 @@ class BirdController extends Controller
         if ($bird->getFiche() === null) {
             // Creation fiche et passage à l'oiseaux
             $fiche = new Fiche();
-            $avatar = new Picture();
-            $bird->setFiche($fiche)
-                ->setAvatar($avatar);
+            $bird->setFiche($fiche);
             $fiche->setBird($bird);
-            $form = $this->createForm(
-                FicheType::class,
-                $fiche,
-                array(
-                    'attr' => array(
-                        'minVal' => 1,
-                        'maxVal' => 1,
-                    ),
-                )
-            );
+
         } //Si la fiche existe deja on la modifie
         else {
-            if ($bird->getAvatar() === null) {
-                $avatar = new Picture();
-                $bird->setAvatar($avatar);
-            }
-            $form = $this->createForm(
-                FicheType::class,
-                $bird->getFiche(),
-                array(
-                    'attr' => array(
-                        'minVal' => $bird->getFiche()->getMinQuantity(),
-                        'maxVal' => $bird->getFiche()->getMaxQuantity(),
-                    ),
-
-                )
-            );
+            $fiche = $bird->getFiche();
         }
-
+        $form = $this->createForm(FicheType::class, $fiche);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
