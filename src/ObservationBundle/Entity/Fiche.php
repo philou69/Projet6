@@ -28,15 +28,15 @@ class Fiche
     /**
      * @ORM\Column(name="min_quantity",type="integer")
      */
-    protected $minQuantity;
+    protected $minQuantity = 0;
 
     /**
      * @ORM\Column(name="max_quantity", type="integer")
      */
-    protected $maxQuantity;
+    protected $maxQuantity = 0;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
 

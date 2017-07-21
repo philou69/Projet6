@@ -22,9 +22,9 @@
             {% if bird.fiche is not null %}
                 <div class="col-xs-4">
                     {% if bird.avatar is not null %}
-                        <img src="{{ asset(bird.avatar.webPath) }}" class="left img-responsive" alt="{{ bird.nameSearch }}">
+                        <img src="{{ asset(bird.avatar.webPath) }}" class="img-responsive" alt="{{ bird.nameSearch }}">
                     {% else %}
-                        <p class="left text-center">Pas de photos</p>
+                        <p class="text-center">Pas de photos</p>
                     {% endif %}
                     <div>
                         <strong>Estimation :</strong> {{ bird.fiche.minQuantity }} - {{ bird.fiche.maxQuantity }}
@@ -40,7 +40,7 @@
                     <p class="text-justify">
                         {{ bird.fiche.description | rawdescr }}
                     </p>
-                    {% if is_granted('ROLE_ADMIN') %}
+                    {% if 'ROLE_ADMIN' in app.user.roles %}
                         <div class="row text-right">
                             <a href="{{ path('bird_edit', {'id': bird.id}) }}">Editer cette Fiche</a>
                         </div>
@@ -50,12 +50,10 @@
 
             {% else %}
                 <p class="text-center">Cet oiseau n'a pas encore de fiche descritpif.
-                </p>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <div class="row text-right">
+                    {% if 'ROLE_ADMIN' in app.user.roles %}
                         <a href="{{ path('bird_edit', {'id': bird.id}) }}">Editer cette Fiche</a>
-                    </div>
-                {% endif %}
+                    {% endif %}
+                </p>
             {% endif %}
         </div>
         <a id="retour" href="{{ path('bird_list') }}" class="col-xs-12 text-center"><span

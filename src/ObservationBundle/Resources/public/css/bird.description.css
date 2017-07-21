@@ -4,6 +4,7 @@
 
 #description img {
     height: 200px;
+    margin: auto;
 }
 
 #description > div:nth-child(4) > div.col-xs-4 > hr {
