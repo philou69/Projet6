@@ -22,19 +22,18 @@ class FicheType extends AbstractType
         $builder
             ->add('minQuantity', IntegerType::class, array(
                 'label' => 'Quantité minimum de spécimens',
-                'attr' => array('min' => 1,
-                    'max' => 20000,
-                    'value' => $options['attr']['minVal'])
-            ))
+                'attr' => array('min' => 0,
+                    'max' => 20000
+                )))
             ->add('maxQuantity', IntegerType::class, array(
                 'label' => 'Quantité maximum de spécimens',
-                'attr' => array('min' => 1,
-                    'max' => 20000,
-                    'value' => $options['attr']['maxVal'])
-            ))
+                'attr' => array('min' => 0,
+                    'max' => 20000
+                )))
             ->add('description', TextareaType::class, array(
                 'label' => 'Description de l\'oiseau',
-                'attr' => array('rows' => '10')
+                'attr' => array('rows' => '10'),
+                'required' => false
             ))
             ->add('status', ChoiceType::class, array(
                 'choices' => [

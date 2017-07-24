@@ -127,7 +127,6 @@ class Bird
     private $observations;
     /**
      * @ORM\OneToMany(targetEntity="ObservationBundle\Entity\Picture", mappedBy="bird", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
      */
     private $pictures;
     /**

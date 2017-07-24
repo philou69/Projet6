@@ -43,24 +43,6 @@
     margin-right: 2%;
 }
 
-.bird > .left {
-    display: inline-block;
-    width: 33%;
-    height: 100%;
-    vertical-align: top;
-}
-
-.bird > p.left {
-    margin: 0;
-}
-
-.bird > .right {
-    display: inline-block;
-    width: 65%;
-    height: 100%;
-    padding: 0 10px;
-}
-
 .bird > .right > h4 {
     height: 29%;
     margin: 20px 0;
@@ -133,4 +115,16 @@ a.grey {
         font-size: 13px;
         font-weight: normal;
     }
+}
+
+/* Style image bird */
+.bird> .col-xs-4 {
+    padding: 0;
+    height: 100%;
+}
+.bird-avatar{
+    max-height: 100%;
+    width: auto;
+    max-width: 100%;
+    margin: auto;
 }
