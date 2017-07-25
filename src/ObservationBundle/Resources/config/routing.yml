@@ -17,6 +17,7 @@ star:
 blog:
     prefix: /asso
     resource: 'Routing/blog.yml'
+
 contact:
     prefix: /contact
     resource: Routing/contact.yml

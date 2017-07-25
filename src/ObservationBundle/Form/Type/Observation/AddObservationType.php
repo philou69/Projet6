@@ -90,7 +90,8 @@ class AddObservationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ObservationBundle\Entity\Observation'
+            'data_class' => 'ObservationBundle\Entity\Observation',
+            ''
         ));
     }
 }

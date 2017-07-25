@@ -3,12 +3,14 @@
 namespace ObservationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ObservationBundle\Validator\Constraints as ObsAssert;
 
 /**
  * Location
  *
  * @ORM\Table(name="location")
  * @ORM\Entity(repositoryClass="ObservationBundle\Repository\LocationRepository")
+ * @ObsAssert\Location
  */
 class Location
 {

@@ -131,8 +131,6 @@ class ObservationController extends Controller
 
         $observation = new Observation();
         $observation->setUser($this->getUser());
-        $session = new Session();
-        $session->set('getBird', false);
         $em = $this->getDoctrine()->getManager();
         $device = $this->get('mobile_detect.mobile_detector');
 
