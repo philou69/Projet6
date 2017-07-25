@@ -79,7 +79,7 @@ function initMap()
 
                     let locationField = $("#add_observation_location_lieu");
 
-                    locationField.val(results[0].address_components[2].long_name + ', ' + results[0].address_components[3].long_name + ' ' + results[0].address_components[5].long_name);
+                    locationField.val(results[0].address_components[1].long_name + ', ' + results[0].address_components[2].long_name + ', ' + results[0].address_components[3].long_name + ' ' + results[0].address_components[5].long_name);
 
 
                     //Affichage des coordonnées
@@ -129,7 +129,7 @@ function initMap()
                                 $("#add_observation_location_longitude").val(lat_lng.lng);
                                 let locationField = $("#add_observation_location_lieu");
 
-                                locationField.val(results[0].address_components[2].long_name + ', ' + results[0].address_components[3].long_name + ' ' + results[0].address_components[5].long_name);
+                                locationField.val(results[0].address_components[1].long_name + ', ' + results[0].address_components[2].long_name + ', ' + results[0].address_components[3].long_name + ' ' + results[0].address_components[5].long_name);
 
                                 infowindow.setContent(locationField.val());
                                 infowindow.open(map, marqueur);
