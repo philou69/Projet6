@@ -96,12 +96,6 @@ $(document).ready(function () {
         // On récuperer la taille du resultat
         var numbers = Number($('.length').data('length'));
         // On comparse celui-ci à 20 et aux nombres d'oiseaux affiché s'ils correspondent celà signifie qu'il n'y a pas d'autres pages
-
-        if ($('.bird').length === 0)
-        {
-
-        }
-
         if(numbers === $('.bird').length){
 
             // On cache donc le bouton add
