@@ -71,7 +71,7 @@ class BirdController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $files = $form->get('pictures')->getData();
+            $files = $form->get('files')->getData();
 
             foreach ($files as $file) {
                 $picture = new Picture();
@@ -90,7 +90,7 @@ class BirdController extends Controller
             $em->flush();
 
             $this->addFlash(
-                'notice',
+                'success',
                 'Votre observation a été envoyé! En attente de validation'
             );
 
@@ -210,39 +210,14 @@ class BirdController extends Controller
         if ($bird->getFiche() === null) {
             // Creation fiche et passage à l'oiseaux
             $fiche = new Fiche();
-            $avatar = new Picture();
-            $bird->setFiche($fiche)
-                ->setAvatar($avatar);
+            $bird->setFiche($fiche);
             $fiche->setBird($bird);
-            $form = $this->createForm(
-                FicheType::class,
-                $fiche,
-                array(
-                    'attr' => array(
-                        'minVal' => 1,
-                        'maxVal' => 1,
-                    ),
-                )
-            );
+
         } //Si la fiche existe deja on la modifie
         else {
-            if ($bird->getAvatar() === null) {
-                $avatar = new Picture();
-                $bird->setAvatar($avatar);
-            }
-            $form = $this->createForm(
-                FicheType::class,
-                $bird->getFiche(),
-                array(
-                    'attr' => array(
-                        'minVal' => $bird->getFiche()->getMinQuantity(),
-                        'maxVal' => $bird->getFiche()->getMaxQuantity(),
-                    ),
-
-                )
-            );
+            $fiche = $bird->getFiche();
         }
-
+        $form = $this->createForm(FicheType::class, $fiche);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -307,9 +282,9 @@ class BirdController extends Controller
                                 'addUrl' => $this->generateUrl('bird_observation', array('id' => $bird->getId())),
                                 'name' => $bird->__toString(),
                                 'description' => $bird->getFiche() === null ? 'Pas de description' : substr(
-                                    $bird->getFiche()->getDescription(),
+                                    strip_tags($bird->getFiche()->getDescription()),
                                     0,
-                                    100
+                                    200
                                 ),
                                 'image' => $bird->getAvatar(
                                 ) === null ? 'Pas d\'image' : '<img src="/'.$bird->getAvatar()->getWebPath(
@@ -331,9 +306,9 @@ class BirdController extends Controller
                                     'addUrl' => $this->generateUrl('bird_observation', array('id' => $bird->getId())),
                                     'name' => $bird->__toString(),
                                     'description' => $bird->getFiche() === null ? 'Pas de description' : substr(
-                                        $bird->getFiche()->getDescription(),
+                                        strip_tags($bird->getFiche()->getDescription()),
                                         0,
-                                        100
+                                        200
                                     ),
                                     'image' => $bird->getAvatar(
                                     ) === null ? 'Pas d\'image' : '<img src="/'.$bird->getAvatar()->getWebPath(

@@ -74,6 +74,7 @@ class Observation
     /**
      * @ORM\ManyToOne(targetEntity="ObservationBundle\Entity\Location", inversedBy="observations", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
     private $location;
 

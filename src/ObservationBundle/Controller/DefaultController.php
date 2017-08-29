@@ -39,7 +39,7 @@ class DefaultController extends Controller
             $this->get('observation.contact.mailer')->sendMessage($message);
             $this->addFlash('success', 'Votre message à bien été envoyer!');
 
-            return $this->redirectToRoute('contact');
+            return $this->redirectToRoute('contact_message');
         }
 
         $device = $this->get('mobile_detect.mobile_detector');

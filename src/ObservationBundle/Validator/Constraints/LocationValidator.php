@@ -7,13 +7,13 @@ namespace ObservationBundle\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-class FicheValidator extends ConstraintValidator
+class LocationValidator extends ConstraintValidator
 {
     public function validate($value, Constraint $constraint)
     {
-        if($value->getMaxQuantity() <= $value->getMinQuantity() && $value->getMinQuantity() > 0){
+        if($value->getLatitude() === null || $value->getLongitude() === null){
             $this->context->buildViolation($constraint->message)
-                ->atPath('maxQuantity')
+                ->atPath('lieu')
                 ->addViolation();
         }
     }

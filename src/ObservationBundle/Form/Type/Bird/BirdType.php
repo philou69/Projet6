@@ -87,7 +87,7 @@ class BirdType extends AbstractType
                 )
             ))
             ->add('avatar', PictureType::class, array(
-                'label' => 'photo de l\'oiseau',
+                    'label' => 'photo de l\'oiseau',
                     'required' => false
 
                 )

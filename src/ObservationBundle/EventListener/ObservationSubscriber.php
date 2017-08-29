@@ -32,12 +32,6 @@ class ObservationSubscriber implements EventSubscriberInterface
         );
     }
 
-    public function countObservations($event)
-    {
-        $observation = $event->getObservation();
-
-        $this->countEntities(self::OBS, $observation->getUser());
-    }
 
     public function countEntities($nameEntity, User $user)
     {
@@ -53,6 +47,12 @@ class ObservationSubscriber implements EventSubscriberInterface
             $this->em->persist($star);
         }
         $this->em->flush();
+    }
+    public function countObservations($event)
+    {
+        $observation = $event->getObservation();
+
+        $this->countEntities(self::OBS, $observation->getUser());
     }
 
     public function countPictures($event)
